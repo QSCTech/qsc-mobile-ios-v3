@@ -2,7 +2,7 @@
 //  QSCMobileV3Tests.swift
 //  QSCMobileV3Tests
 //
-//  Created by 郑虎 on 15 年 9. 11..
+//  Created by 郑虎 on 2015-09-11.
 //  Copyright © 2015年 QSC Tech. All rights reserved.
 //
 
