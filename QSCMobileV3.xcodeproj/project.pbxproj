@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
+		04C331CB1BA2F2E600EF959F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331CA1BA2F2E600EF959F /* FirstViewController.swift */; };
+		04C331CD1BA2F2E600EF959F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331CC1BA2F2E600EF959F /* SecondViewController.swift */; };
+		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
+		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
+		04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */; };
+		04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */; };
+		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04C331DC1BA2F2E700EF959F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04C331C41BA2F2E600EF959F;
+			remoteInfo = QSCMobileV3;
+		};
+		04C331E71BA2F2E700EF959F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04C331C41BA2F2E600EF959F;
+			remoteInfo = QSCMobileV3;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04C331C51BA2F2E600EF959F /* QSCMobileV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QSCMobileV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C331C81BA2F2E600EF959F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04C331CA1BA2F2E600EF959F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		04C331CC1BA2F2E600EF959F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04C331D41BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileV3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileV3Tests.swift; sourceTree = "<group>"; };
+		04C331E11BA2F2E700EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileV3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileV3UITests.swift; sourceTree = "<group>"; };
+		04C331EC1BA2F2E700EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04C331C21BA2F2E600EF959F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04C331D81BA2F2E700EF959F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04C331E31BA2F2E700EF959F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04C331BC1BA2F2E600EF959F = {
+			isa = PBXGroup;
+			children = (
+				04C331C71BA2F2E600EF959F /* QSCMobileV3 */,
+				04C331DE1BA2F2E700EF959F /* QSCMobileV3Tests */,
+				04C331E91BA2F2E700EF959F /* QSCMobileV3UITests */,
+				04C331C61BA2F2E600EF959F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04C331C61BA2F2E600EF959F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04C331C51BA2F2E600EF959F /* QSCMobileV3.app */,
+				04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */,
+				04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04C331C71BA2F2E600EF959F /* QSCMobileV3 */ = {
+			isa = PBXGroup;
+			children = (
+				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
+				04C331CA1BA2F2E600EF959F /* FirstViewController.swift */,
+				04C331CC1BA2F2E600EF959F /* SecondViewController.swift */,
+				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
+				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
+				04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */,
+				04C331D61BA2F2E600EF959F /* Info.plist */,
+			);
+			path = QSCMobileV3;
+			sourceTree = "<group>";
+		};
+		04C331DE1BA2F2E700EF959F /* QSCMobileV3Tests */ = {
+			isa = PBXGroup;
+			children = (
+				04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */,
+				04C331E11BA2F2E700EF959F /* Info.plist */,
+			);
+			path = QSCMobileV3Tests;
+			sourceTree = "<group>";
+		};
+		04C331E91BA2F2E700EF959F /* QSCMobileV3UITests */ = {
+			isa = PBXGroup;
+			children = (
+				04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */,
+				04C331EC1BA2F2E700EF959F /* Info.plist */,
+			);
+			path = QSCMobileV3UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04C331C41BA2F2E600EF959F /* QSCMobileV3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04C331EF1BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3" */;
+			buildPhases = (
+				04C331C11BA2F2E600EF959F /* Sources */,
+				04C331C21BA2F2E600EF959F /* Frameworks */,
+				04C331C31BA2F2E600EF959F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QSCMobileV3;
+			productName = QSCMobileV3;
+			productReference = 04C331C51BA2F2E600EF959F /* QSCMobileV3.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04C331DA1BA2F2E700EF959F /* QSCMobileV3Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04C331F21BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3Tests" */;
+			buildPhases = (
+				04C331D71BA2F2E700EF959F /* Sources */,
+				04C331D81BA2F2E700EF959F /* Frameworks */,
+				04C331D91BA2F2E700EF959F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04C331DD1BA2F2E700EF959F /* PBXTargetDependency */,
+			);
+			name = QSCMobileV3Tests;
+			productName = QSCMobileV3Tests;
+			productReference = 04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04C331E51BA2F2E700EF959F /* QSCMobileV3UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04C331F51BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3UITests" */;
+			buildPhases = (
+				04C331E21BA2F2E700EF959F /* Sources */,
+				04C331E31BA2F2E700EF959F /* Frameworks */,
+				04C331E41BA2F2E700EF959F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04C331E81BA2F2E700EF959F /* PBXTargetDependency */,
+			);
+			name = QSCMobileV3UITests;
+			productName = QSCMobileV3UITests;
+			productReference = 04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04C331BD1BA2F2E600EF959F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "QSC Tech";
+				TargetAttributes = {
+					04C331C41BA2F2E600EF959F = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					04C331DA1BA2F2E700EF959F = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 04C331C41BA2F2E600EF959F;
+					};
+					04C331E51BA2F2E700EF959F = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 04C331C41BA2F2E600EF959F;
+					};
+				};
+			};
+			buildConfigurationList = 04C331C01BA2F2E600EF959F /* Build configuration list for PBXProject "QSCMobileV3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04C331BC1BA2F2E600EF959F;
+			productRefGroup = 04C331C61BA2F2E600EF959F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04C331C41BA2F2E600EF959F /* QSCMobileV3 */,
+				04C331DA1BA2F2E700EF959F /* QSCMobileV3Tests */,
+				04C331E51BA2F2E700EF959F /* QSCMobileV3UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04C331C31BA2F2E600EF959F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */,
+				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
+				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04C331D91BA2F2E700EF959F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04C331E41BA2F2E700EF959F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04C331C11BA2F2E600EF959F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04C331CD1BA2F2E600EF959F /* SecondViewController.swift in Sources */,
+				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
+				04C331CB1BA2F2E600EF959F /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04C331D71BA2F2E700EF959F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04C331E21BA2F2E700EF959F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04C331DD1BA2F2E700EF959F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04C331C41BA2F2E600EF959F /* QSCMobileV3 */;
+			targetProxy = 04C331DC1BA2F2E700EF959F /* PBXContainerItemProxy */;
+		};
+		04C331E81BA2F2E700EF959F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04C331C41BA2F2E600EF959F /* QSCMobileV3 */;
+			targetProxy = 04C331E71BA2F2E700EF959F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04C331CE1BA2F2E600EF959F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04C331CF1BA2F2E600EF959F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04C331D41BA2F2E600EF959F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04C331ED1BA2F2E700EF959F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04C331EE1BA2F2E700EF959F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04C331F01BA2F2E700EF959F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QSCMobileV3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		04C331F11BA2F2E700EF959F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QSCMobileV3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		04C331F31BA2F2E700EF959F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QSCMobileV3.app/QSCMobileV3";
+			};
+			name = Debug;
+		};
+		04C331F41BA2F2E700EF959F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QSCMobileV3.app/QSCMobileV3";
+			};
+			name = Release;
+		};
+		04C331F61BA2F2E700EF959F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = QSCMobileV3UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = QSCMobileV3;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		04C331F71BA2F2E700EF959F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = QSCMobileV3UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = QSCMobileV3;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04C331C01BA2F2E600EF959F /* Build configuration list for PBXProject "QSCMobileV3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04C331ED1BA2F2E700EF959F /* Debug */,
+				04C331EE1BA2F2E700EF959F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04C331EF1BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04C331F01BA2F2E700EF959F /* Debug */,
+				04C331F11BA2F2E700EF959F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		04C331F21BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04C331F31BA2F2E700EF959F /* Debug */,
+				04C331F41BA2F2E700EF959F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		04C331F51BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04C331F61BA2F2E700EF959F /* Debug */,
+				04C331F71BA2F2E700EF959F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04C331BD1BA2F2E600EF959F /* Project object */;
+}
