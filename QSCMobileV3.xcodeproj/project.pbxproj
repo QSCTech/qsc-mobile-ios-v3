@@ -977,7 +977,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -999,7 +999,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 301D649BD08396FAD5436D05 /* Pods-QSCMobileKit.release.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
