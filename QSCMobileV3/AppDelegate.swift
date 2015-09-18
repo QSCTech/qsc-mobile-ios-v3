@@ -8,6 +8,8 @@
 
 import UIKit
 
+let UMengAppKey = "55fb9cb3e0f55a7eef0003e7"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        MobClick.startWithAppkey(UMengAppKey)
         return true
     }
 

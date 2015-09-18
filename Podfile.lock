@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (2.0.1)
+  - SwiftyJSON (2.3.0)
+  - UMengAnalytics-NO-IDFA (3.5.15)
+
+DEPENDENCIES:
+  - Alamofire (~> 2.0)
+  - SwiftyJSON (~> 2.3)
+  - UMengAnalytics-NO-IDFA
+
+SPEC CHECKSUMS:
+  Alamofire: 1d8e208d616fbbfd2391b15eae766d07c96cdc49
+  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
+  UMengAnalytics-NO-IDFA: 239efe4e0a0dafc96ac391f2d65c50b158c52a3a
+
+COCOAPODS: 0.38.2
