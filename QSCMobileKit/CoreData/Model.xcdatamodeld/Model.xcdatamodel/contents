@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+    <entity name="Adjustment" representedClassName=".Adjustment" syncable="YES">
+        <attribute name="fromEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fromStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="toStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="adjustment" inverseEntity="Year" syncable="YES"/>
+    </entity>
+    <entity name="Bus" representedClassName=".Bus" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceDays" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="busStop" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BusStop" inverseName="bus" inverseEntity="BusStop" syncable="YES"/>
+    </entity>
+    <entity name="BusStop" representedClassName=".BusStop" syncable="YES">
+        <attribute name="campus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bus" inverseName="busStop" inverseEntity="Bus" syncable="YES"/>
+    </entity>
+    <entity name="Calendar" representedClassName=".Calendar" syncable="YES">
+        <relationship name="year" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Year" inverseName="calendar" inverseEntity="Year" syncable="YES"/>
+    </entity>
+    <entity name="Course" representedClassName=".Course" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="credit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="determined" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="englishName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="faculty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teacher" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timePlace" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimePlace" inverseName="course" inverseEntity="TimePlace" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="course" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Exam" representedClassName=".Exam" syncable="YES">
+        <attribute name="credit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRelearning" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="exam" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Holiday" representedClassName=".Holiday" syncable="YES">
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="holiday" inverseEntity="Year" syncable="YES"/>
+    </entity>
+    <entity name="Score" representedClassName=".Score" syncable="YES">
+        <attribute name="credit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradePoint" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="makeup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="score" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Semester" representedClassName=".Semester" syncable="YES">
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startsWithWeekZero" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="semester" inverseEntity="Year" syncable="YES"/>
+    </entity>
+    <entity name="SemesterScore" representedClassName=".SemesterScore" syncable="YES">
+        <attribute name="averageGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="majorCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="majorGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="semesterScore" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="TimePlace" representedClassName=".TimePlace" syncable="YES">
+        <attribute name="period" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="week" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="weekday" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="timePlace" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="sid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="course" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="user" inverseEntity="Course" syncable="YES"/>
+        <relationship name="exam" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exam" inverseName="user" inverseEntity="Exam" syncable="YES"/>
+        <relationship name="score" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Score" inverseName="user" inverseEntity="Score" syncable="YES"/>
+        <relationship name="semesterScore" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SemesterScore" inverseName="user" inverseEntity="SemesterScore" syncable="YES"/>
+    </entity>
+    <entity name="Year" representedClassName=".Year" syncable="YES">
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="adjustment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Adjustment" inverseName="year" inverseEntity="Adjustment" syncable="YES"/>
+        <relationship name="calendar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calendar" inverseName="year" inverseEntity="Calendar" syncable="YES"/>
+        <relationship name="holiday" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Holiday" inverseName="year" inverseEntity="Holiday" syncable="YES"/>
+        <relationship name="semester" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Semester" inverseName="year" inverseEntity="Semester" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Course" positionX="-63" positionY="-18" width="128" height="238"/>
+        <element name="Exam" positionX="-45" positionY="0" width="128" height="223"/>
+        <element name="Score" positionX="-27" positionY="18" width="128" height="180"/>
+        <element name="TimePlace" positionX="-9" positionY="108" width="128" height="133"/>
+        <element name="SemesterScore" positionX="9" positionY="126" width="128" height="148"/>
+        <element name="User" positionX="27" positionY="153" width="128" height="118"/>
+        <element name="Bus" positionX="-18" positionY="117" width="128" height="105"/>
+        <element name="BusStop" positionX="-9" positionY="126" width="128" height="120"/>
+        <element name="Calendar" positionX="0" positionY="135" width="128" height="60"/>
+        <element name="Year" positionX="9" positionY="144" width="128" height="150"/>
+        <element name="Semester" positionX="18" positionY="153" width="128" height="120"/>
+        <element name="Holiday" positionX="27" positionY="162" width="128" height="105"/>
+        <element name="Adjustment" positionX="36" positionY="171" width="128" height="135"/>
+    </elements>
+</model>
