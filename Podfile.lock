@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (3.1.3)
+  - KeychainAccess (2.3.1)
   - SwiftyJSON (2.3.1)
   - UMengAnalytics-NO-IDFA (3.6.7)
 
 DEPENDENCIES:
   - Alamofire
+  - KeychainAccess
   - SwiftyJSON
   - UMengAnalytics-NO-IDFA
 
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  KeychainAccess: d54b31c75745cfa595b3654590e8cb491a75d411
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
 
