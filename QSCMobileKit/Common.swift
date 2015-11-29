@@ -15,8 +15,8 @@ let NoticeURL     = "https://notice.zjuqsc.com"
 let BoxURL        = "https://box.zjuqsc.com"
 let TideURL       = "http://tide.zjuqsc.com/wp/"
 
-let ZJUWLANLoginURL  = "https://net.zju.edu.cn/cgi-bin/srun_portal"
-let ZJUWLANLogoutURL = "https://net.zju.edu.cn/rad_online.php"
+let ZjuwlanLoginURL  = "https://net.zju.edu.cn/cgi-bin/srun_portal"
+let ZjuwlanLogoutURL = "https://net.zju.edu.cn/rad_online.php"
 
 /**
  Index of weekdays, consistent with NSDateComponents. Note Monday is NOT 1 BUT 2, etc.

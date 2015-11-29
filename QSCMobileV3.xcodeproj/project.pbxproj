@@ -15,8 +15,11 @@
 		04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */; };
 		04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */; };
 		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
+		0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */; };
 		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; };
 		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
+		9D6A895E1C0B0603008EC60B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* APIManager.swift */; };
+		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
 		9DCDE7811C0728E40087C31F /* Exam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7831C0728E40087C31F /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */; };
@@ -154,12 +157,17 @@
 		04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileV3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileV3UITests.swift; sourceTree = "<group>"; };
 		04C331EC1BA2F2E700EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1390A63062D2AEEA562DCB1A /* Pods-QSCMobileV3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		301D649BD08396FAD5436D05 /* Pods-QSCMobileKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.release.xcconfig"; sourceTree = "<group>"; };
 		3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41EC86554F19E53293B94FA8 /* Pods-QSCMobileV3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.release.xcconfig"; sourceTree = "<group>"; };
+		7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileV3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.debug.xcconfig"; sourceTree = "<group>"; };
 		91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
+		9D6A895D1C0B0603008EC60B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = API/APIManager.swift; sourceTree = "<group>"; };
+		9D6A89611C0B11BB008EC60B /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Accounts/AccountManager.swift; sourceTree = "<group>"; };
 		9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Exam+CoreDataProperties.swift"; path = "CoreData/Exam+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataProperties.swift"; path = "CoreData/Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +345,8 @@
 				301D649BD08396FAD5436D05 /* Pods-QSCMobileKit.release.xcconfig */,
 				C0BA9F2E9D9E0E036FD78895 /* Pods-QSCMobileV3.debug.xcconfig */,
 				41EC86554F19E53293B94FA8 /* Pods-QSCMobileV3.release.xcconfig */,
+				1390A63062D2AEEA562DCB1A /* Pods-QSCMobileV3Tests.debug.xcconfig */,
+				98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -343,9 +354,18 @@
 		9D6A895C1C0B046D008EC60B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9D6A895D1C0B0603008EC60B /* APIManager.swift */,
 				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		9D6A89601C0B1175008EC60B /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
+			);
+			name = Accounts;
 			sourceTree = "<group>";
 		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
@@ -396,6 +416,7 @@
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
 				9D6A895C1C0B046D008EC60B /* API */,
+				9D6A89601C0B1175008EC60B /* Accounts */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
 				9DCDE7B11C0840900087C31F /* Support Files */,
 			);
@@ -418,6 +439,7 @@
 				9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */,
 				91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */,
 				3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */,
+				7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,9 +507,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04C331F21BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3Tests" */;
 			buildPhases = (
+				B296670CCF19A217740AF53F /* Check Pods Manifest.lock */,
 				04C331D71BA2F2E700EF959F /* Sources */,
 				04C331D81BA2F2E700EF959F /* Frameworks */,
 				04C331D91BA2F2E700EF959F /* Resources */,
+				EA21A6553C5B1164BEE4AA76 /* Embed Pods Frameworks */,
+				FBE671BFFC3423B8F86FAEEA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -757,6 +782,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B296670CCF19A217740AF53F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		E7607D63DEC6AA8F0814A943 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -772,6 +812,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EA21A6553C5B1164BEE4AA76 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F1200D818D888EB54CBC4D48 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -785,6 +840,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FBE671BFFC3423B8F86FAEEA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -823,6 +893,7 @@
 				9DCDE7A31C083C070087C31F /* Holiday+CoreDataProperties.swift in Sources */,
 				9DCDE7AD1C083C070087C31F /* Semester+CoreDataProperties.swift in Sources */,
 				9DCDE79F1C083C070087C31F /* TimePlace+CoreDataProperties.swift in Sources */,
+				9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */,
 				9DCDE79E1C083C070087C31F /* Bus.swift in Sources */,
 				9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */,
 				9DCDE7AB1C083C070087C31F /* Year+CoreDataProperties.swift in Sources */,
@@ -832,6 +903,7 @@
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
+				9D6A895E1C0B0603008EC60B /* APIManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
 				9DCDE79B1C083C070087C31F /* Calendar+CoreDataProperties.swift in Sources */,
 				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,
@@ -1071,6 +1143,7 @@
 		};
 		04C331F31BA2F2E700EF959F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1390A63062D2AEEA562DCB1A /* Pods-QSCMobileV3Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
@@ -1083,6 +1156,7 @@
 		};
 		04C331F41BA2F2E700EF959F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;

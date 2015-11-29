@@ -21,16 +21,19 @@ class APISession: NSObject {
      - returns: A session object initialized.
      */
     init(username: String, password: String) {
-        super.init()
         self.username = username
         self.password = password
+        super.init()
     }
     
-    private var username: String!
-    private var password: String!
+    private let username: String
+    private let password: String
     private var sessionId: String!
     private var sessionKey: String!
-
+    
+    
+    // MARK: - Hash Functions
+    
     /**
      Generate salt for API login request. Salt should be random data of 6 bytes.
      
@@ -96,6 +99,9 @@ class APISession: NSObject {
         return signature.substringToIndex(signature.startIndex.advancedBy(lengthOfSignature))
     }
     
+    
+    // MARK: - JSON Conversions
+    
     /**
      Create a UTF-8 encoded String from the given JSON object. Note it will CRASH if the JSON is invalid.
      
@@ -112,6 +118,9 @@ class APISession: NSObject {
         let jsonData = string.dataUsingEncoding(NSUTF8StringEncoding)!
         return try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions())
     }
+    
+    
+    // MARK: - API Requests
     
     /**
      Send a login request to API asynchronously and execute a closure after completion.

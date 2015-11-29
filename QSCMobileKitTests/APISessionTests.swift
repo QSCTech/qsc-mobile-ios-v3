@@ -25,7 +25,7 @@ class APISessionTests: XCTestCase {
         super.tearDown()
     }
     
-    func testHashHelpers() {
+    func testHashFunctions() {
         XCTAssertEqual(session.generateSalt().length, 6)
         // and so on...
     }
