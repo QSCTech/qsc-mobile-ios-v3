@@ -97,20 +97,34 @@ class APISession: NSObject {
     }
     
     /**
+     Create a UTF-8 encoded String from the given JSON object. Note it will CRASH if the JSON is invalid.
+     
+     - parameter object: A valid JSON object.
+     
+     - returns: A UTF-8 encoded String.
+     */
+    func stringFromJSONObject(object: AnyObject) -> String? {
+        let jsonData = try! NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions())
+        return NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
+    }
+    
+    /**
      Send a login request to API asynchronously and execute a closure after completion.
      
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is whether the request is successful, and the second one is the description of error.
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
      */
     func loginRequest(callback: (Bool, String?) -> Void) {
-        var postData = [String: AnyObject]()
-        
         let salt = generateSalt()
-        postData["salt"] = salt.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
-        postData["appKeyHash"] = pbkdf2HmacSha1(password: AppKey, salt: salt)
-        
-        let jwbinfosysData = ["userName": username, "userPass": password]
-        postData["login"] = ["jwbinfosys": jwbinfosysData]
-        
+        let postData = [
+            "appKeyHash": pbkdf2HmacSha1(password: AppKey, salt: salt),
+            "salt": salt.base64EncodedDataWithOptions(NSDataBase64EncodingOptions()),
+            "login": [
+                "jwbinfosys": [
+                    "userName": username,
+                    "userPass": password
+                ]
+            ]
+        ]
         let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")
         Alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON)
                  .responseJSON { response in
@@ -133,7 +147,7 @@ class APISession: NSObject {
      Send a resource request to API asynchronously and execute a closure after completion.
      
      - parameter requestList: A request list used in JSON.
-     - parameter callback:    A closure to be executed once the request has finished. The first parameter is the response JSON, and the second one is the description of error.
+     - parameter callback:    A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
      */
     func resourceRequest(requestList: [AnyObject], callback: (JSON?, String?) -> Void) {
         if sessionId == nil || sessionKey == nil {
@@ -141,12 +155,11 @@ class APISession: NSObject {
             sessionId = ""
             sessionKey = ""
         }
-        var postData = [String: String]()
-        postData["sessionId"] = sessionId
-        postData["sessionKey"] = sessionKey
-        let requestData = try! NSJSONSerialization.dataWithJSONObject(requestList, options: NSJSONWritingOptions())
-        postData["requestList"] = NSString(data: requestData, encoding: NSUTF8StringEncoding)! as String
-        
+        let postData = [
+            "sessionId": sessionId,
+            "sessionKey": sessionKey,
+            "requestList": stringFromJSONObject(requestList)
+        ]
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         Alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
                  .responseJSON { response in
@@ -172,5 +185,90 @@ class APISession: NSObject {
                     }
                  }
     }
-
+    
+    /**
+     Send a course request to API asynchronously and execute a closure after completion.
+     
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     */
+    func courseRequest(callback: (JSON?, String?) -> Void) {
+        let requestList = [
+            [
+                "uuid": "",
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"CourseAll\"}",
+                "version": ""
+            ]
+        ]
+        resourceRequest(requestList, callback: callback)
+    }
+    
+    /**
+     Send a exam request to API asynchronously and execute a closure after completion.
+     
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     */
+    func examRequest(callback: (JSON?, String?) -> Void) {
+        let requestList = [
+            [
+                "uuid": "",
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"ExamAll\"}",
+                "version": ""
+            ]
+        ]
+        resourceRequest(requestList, callback: callback)
+    }
+    
+    /**
+     Send a score request to API asynchronously and execute a closure after completion.
+     
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     */
+    func scoreRequest(callback: (JSON?, String?) -> Void) {
+        let requestList = [
+            [
+                "uuid": "",
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"ScoreAll\"}",
+                "version": ""
+            ]
+        ]
+        resourceRequest(requestList, callback: callback)
+    }
+    
+    /**
+     Send a calendar request to API asynchronously and execute a closure after completion.
+     
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     */
+    func calendarRequest(callback: (JSON?, String?) -> Void) {
+        let requestList = [
+            [
+                "uuid": "",
+                "fetcher": "staticInterface",
+                "data": "{\"action\":\"schoolCal.all\"}",
+                "version": ""
+            ]
+        ]
+        resourceRequest(requestList, callback: callback)
+    }
+    
+    /**
+     Send a bus request to API asynchronously and execute a closure after completion.
+     
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     */
+    func busRequest(callback: (JSON?, String?) -> Void) {
+        let requestList = [
+            [
+                "uuid": "",
+                "fetcher": "staticInterface",
+                "data": "{\"action\":\"schoolBus\"}",
+                "version": ""
+            ]
+        ]
+        resourceRequest(requestList, callback: callback)
+    }
+    
 }
