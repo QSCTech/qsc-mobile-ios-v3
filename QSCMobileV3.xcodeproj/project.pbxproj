@@ -15,7 +15,8 @@
 		04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */; };
 		04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */; };
 		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
-		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; };
+		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
 		9DCDE7811C0728E40087C31F /* Exam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7831C0728E40087C31F /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */; };
@@ -42,7 +43,7 @@
 		9DCDE7AC1C083C070087C31F /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7981C083C070087C31F /* Year.swift */; };
 		9DCDE7AD1C083C070087C31F /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */; };
 		9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE79A1C083C070087C31F /* Semester.swift */; };
-		9DCDE7B01C08401D0087C31F /* MobileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* MobileAPI.swift */; };
+		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
 		9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */; };
@@ -57,7 +58,7 @@
 		9DF612981BAA8A32004B0A8A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612971BAA8A32004B0A8A /* ShareViewController.swift */; };
 		9DF6129B1BAA8A32004B0A8A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF612991BAA8A32004B0A8A /* MainInterface.storyboard */; };
 		9DF6129F1BAA8A32004B0A8A /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9DF612951BAA8A32004B0A8A /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BFF5C4808600773BC20B1AB4 /* Pods_QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BFF5C4808600773BC20B1AB4 /* Pods_QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		41EC86554F19E53293B94FA8 /* Pods-QSCMobileV3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.release.xcconfig"; sourceTree = "<group>"; };
 		7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.debug.xcconfig"; sourceTree = "<group>"; };
 		91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
 		9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Exam+CoreDataProperties.swift"; path = "CoreData/Exam+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataProperties.swift"; path = "CoreData/Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		9DCDE7981C083C070087C31F /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = CoreData/Year.swift; sourceTree = "<group>"; };
 		9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Semester+CoreDataProperties.swift"; path = "CoreData/Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
-		9DCDE7AF1C08401D0087C31F /* MobileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileAPI.swift; sourceTree = "<group>"; };
+		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -338,13 +340,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9DCDE7B11C0840900087C31F /* Supporting Files */ = {
+		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */,
 				9DE34AF91C0999DC00C9534A /* Info.plist */,
 			);
-			name = "Supporting Files";
+			name = "Support Files";
 			sourceTree = "<group>";
 		};
 		9DEF30391BFD7B8100508504 /* CoreData */ = {
@@ -385,9 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
-				9DCDE7AF1C08401D0087C31F /* MobileAPI.swift */,
+				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
-				9DCDE7B11C0840900087C31F /* Supporting Files */,
+				9DCDE7B11C0840900087C31F /* Support Files */,
 			);
 			path = QSCMobileKit;
 			sourceTree = "<group>";
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */,
+				9D6A895A1C09D670008EC60B /* APISessionTests.swift */,
 				9DF6126F1BAA89CC004B0A8A /* Info.plist */,
 			);
 			path = QSCMobileKitTests;
@@ -818,7 +821,7 @@
 				9DCDE7861C0728E40087C31F /* Score.swift in Sources */,
 				9DCDE79C1C083C070087C31F /* Calendar.swift in Sources */,
 				9DCDE7811C0728E40087C31F /* Exam+CoreDataProperties.swift in Sources */,
-				9DCDE7B01C08401D0087C31F /* MobileAPI.swift in Sources */,
+				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
@@ -846,6 +849,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF6126E1BAA89CC004B0A8A /* QSCMobileKitTests.swift in Sources */,
+				9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
