@@ -186,7 +186,7 @@
 		9DCDE7981C083C070087C31F /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = CoreData/Year.swift; sourceTree = "<group>"; };
 		9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Semester+CoreDataProperties.swift"; path = "CoreData/Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
-		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
+		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = API/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -340,6 +340,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9D6A895C1C0B046D008EC60B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,7 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
-				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
+				9D6A895C1C0B046D008EC60B /* API */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
 				9DCDE7B11C0840900087C31F /* Support Files */,
 			);

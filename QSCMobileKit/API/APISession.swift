@@ -103,9 +103,14 @@ class APISession: NSObject {
      
      - returns: A UTF-8 encoded String.
      */
-    func stringFromJSONObject(object: AnyObject) -> String? {
+    func stringFromJSONObject(object: AnyObject) -> String {
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions())
         return NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
+    }
+    
+    func jsonObjectFromString(string: String) -> AnyObject {
+        let jsonData = string.dataUsingEncoding(NSUTF8StringEncoding)!
+        return try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions())
     }
     
     /**
@@ -169,7 +174,12 @@ class APISession: NSObject {
                     }
                     let json = JSON(response.result.value!)
                     if (json["status"].string == "ok") {
-                        callback(json["responseList"], nil)
+                        if let responseList = json["responseList"].string {
+                            let responseJSON = JSON(self.jsonObjectFromString(responseList))
+                            callback(responseJSON[0]["data"], nil)
+                        } else {
+                            callback(nil, "API 返回数据为空")
+                        }
                     } else if (json["status"].string == "sessionFail") {
                         self.loginRequest { status, error in
                             if status {
