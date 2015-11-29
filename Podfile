@@ -6,6 +6,6 @@ target 'QSCMobileV3' do
 end
 
 target 'QSCMobileKit' do
-  pod 'Alamofire', '~> 2.0'
-  pod 'SwiftyJSON', '~> 2.3'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 end
