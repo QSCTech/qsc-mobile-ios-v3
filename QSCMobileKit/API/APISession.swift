@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+/// A session of API used to send login and resource requests.
 class APISession: NSObject {
     
     /**
@@ -129,9 +130,9 @@ class APISession: NSObject {
      */
     func loginRequest(callback: (Bool, String?) -> Void) {
         let salt = generateSalt()
-        let postData = [
+        let postData: [String: AnyObject] = [
             "appKeyHash": pbkdf2HmacSha1(password: AppKey, salt: salt),
-            "salt": salt.base64EncodedDataWithOptions(NSDataBase64EncodingOptions()),
+            "salt": salt.base64EncodedStringWithOptions(NSDataBase64EncodingOptions()),
             "login": [
                 "jwbinfosys": [
                     "userName": username,
@@ -169,7 +170,7 @@ class APISession: NSObject {
             sessionId = ""
             sessionKey = ""
         }
-        let postData = [
+        let postData: [String: AnyObject] = [
             "sessionId": sessionId,
             "sessionKey": sessionKey,
             "requestList": stringFromJSONObject(requestList)
