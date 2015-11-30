@@ -164,7 +164,7 @@ class APISession: NSObject {
      - parameter requestList: A request list used in JSON.
      - parameter callback:    A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
      */
-    func resourceRequest(requestList: [AnyObject], callback: (JSON?, String?) -> Void) {
+    private func resourceRequest(requestList: [AnyObject], callback: (JSON?, String?) -> Void) {
         if sessionId == nil || sessionKey == nil {
             // Delay processing until `sessionFail`
             sessionId = ""

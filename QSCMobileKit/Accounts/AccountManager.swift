@@ -9,14 +9,16 @@
 import Foundation
 import KeychainAccess
 
-class AccountManager: NSObject {
+public class AccountManager: NSObject {
     
     /// Return the shared account manager.
-    let sharedInstance = AccountManager()
+    public static let sharedInstance = AccountManager()
+    
+    private let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
     
     // MARK: - JWBInfoSys
-    let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
-    let jwbinfosysKeychain = Keychain(service: NSBundle.mainBundle().bundleIdentifier! + ".jwbinfosys")
+    private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
+    private let jwbinfosysKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.jwbinfosys")
     
     /**
      Add an account to JWBInfoSys. If this account already exists, its password would be updated.
@@ -24,7 +26,7 @@ class AccountManager: NSObject {
      - parameter username: Username of the account.
      - parameter password: Password of the account.
      */
-    func addAccountToJwbinfosys(username: String, password: String) {
+    public func addAccountToJwbinfosys(username: String, password: String) {
         jwbinfosysKeychain[username] = password
     }
     
@@ -33,22 +35,23 @@ class AccountManager: NSObject {
      
      - parameter username: Username of the account.
      */
-    func removeAccountFromJwbinfosys(username: String) {
+    public func removeAccountFromJwbinfosys(username: String) {
         jwbinfosysKeychain[username] = nil
     }
     
     /// Retrive all stored accounts of JWBInfoSys.
-    var allAccountsForJwbinfosys: [String] {
+    public var allAccountsForJwbinfosys: [String] {
         return jwbinfosysKeychain.allKeys()
     }
     
-    /// Get or set current account of JWBInfosys.
-    var currentAccountForJwbinfosys: String {
+    /// Get or set current account of JWBInfosys. If so far there is no account, you will get nil.
+    public var currentAccountForJwbinfosys: String? {
         get {
-            return NSUserDefaults.standardUserDefaults().stringForKey(JwbinfosysCurrentAccountKey)!
+            return groupDefaults.stringForKey(JwbinfosysCurrentAccountKey)
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JwbinfosysCurrentAccountKey)
+            groupDefaults.setObject(newValue, forKey: JwbinfosysCurrentAccountKey)
+            groupDefaults.synchronize()
         }
     }
     
@@ -57,33 +60,36 @@ class AccountManager: NSObject {
      
      - parameter username: Username of the account.
      
-     - returns: Password of the account.
+     - returns: Password of the account or nil if username is not found.
      */
-    func passwordForJwbinfosys(username: String) -> String {
-        return jwbinfosysKeychain[username]!
+    public func passwordForJwbinfosys(username: String) -> String? {
+        return jwbinfosysKeychain[username]
     }
     
     // MARK: - ZJUWLAN
-    let ZjuwlanAccountKey = "ZjuwlanAccount"
-    let zjuwlanKeychain = Keychain(service: NSBundle.mainBundle().bundleIdentifier! + ".zjuwlan")
+    private let ZjuwlanAccountKey = "ZjuwlanAccount"
+    private let zjuwlanKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.zjuwlan")
     
-    /// Get or set username of ZJUWLAN.
-    var accountForZjuwlan: String {
+    /// Get or set username of ZJUWLAN. If so far there is no account, you will get nil.
+    public var accountForZjuwlan: String? {
         get {
-            return NSUserDefaults.standardUserDefaults().stringForKey(ZjuwlanAccountKey)!
+            return groupDefaults.stringForKey(ZjuwlanAccountKey)
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: ZjuwlanAccountKey)
+            groupDefaults.setObject(newValue, forKey: ZjuwlanAccountKey)
+            groupDefaults.synchronize()
         }
     }
     
-    /// Get or set password of ZJUWLAN.
-    var passwordForZjuwlan: String {
+    /// Get or set password of ZJUWLAN. If username of ZJUWLAN hasn't been set, you will get nil and settings will fail gracefully.
+    public var passwordForZjuwlan: String? {
         get {
-            return zjuwlanKeychain[accountForZjuwlan]!
+            return accountForZjuwlan != nil ? zjuwlanKeychain[accountForZjuwlan!] : nil
         }
         set {
-            zjuwlanKeychain[accountForZjuwlan] = newValue
+            if accountForZjuwlan != nil {
+                zjuwlanKeychain[accountForZjuwlan!] = newValue
+            }
         }
     }
 
