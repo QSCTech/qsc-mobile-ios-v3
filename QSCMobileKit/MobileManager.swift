@@ -1,5 +1,5 @@
 //
-//  DataManager.swift
+//  MobileManager.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2015-11-29.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class DataManager: NSObject {
+class MobileManager: NSObject {
     
-    static let sharedInstance = DataManager()
+    static let sharedInstance = MobileManager()
     
     
 }

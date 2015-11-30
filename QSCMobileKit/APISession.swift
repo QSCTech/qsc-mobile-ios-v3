@@ -144,7 +144,7 @@ class APISession: NSObject {
         Alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON)
                  .responseJSON { response in
                     if response.result.isFailure {
-                        callback(false, "网络错误：" + response.result.error!.description)
+                        callback(false, response.result.error!.description)
                         return
                     }
                     let json = JSON(response.result.value!)
@@ -179,7 +179,7 @@ class APISession: NSObject {
         Alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
                  .responseJSON { response in
                     if response.result.isFailure {
-                        callback(nil, "网络错误：" + response.result.error!.description)
+                        callback(nil, response.result.error!.description)
                         return
                     }
                     let json = JSON(response.result.value!)
@@ -188,7 +188,7 @@ class APISession: NSObject {
                             let responseJSON = JSON(self.jsonObjectFromString(responseList))
                             callback(responseJSON[0]["data"], nil)
                         } else {
-                            callback(nil, "API 返回数据为空")
+                            callback(nil, "The response list is null.")
                         }
                     } else if (json["status"].string == "sessionFail") {
                         self.loginRequest { status, error in

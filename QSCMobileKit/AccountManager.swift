@@ -9,6 +9,7 @@
 import Foundation
 import KeychainAccess
 
+/// The account manager of JWBInfoSys and ZJUWLAN. Singleton pattern is used in this class.
 public class AccountManager: NSObject {
     
     /// Return the shared account manager.
