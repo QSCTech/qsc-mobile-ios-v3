@@ -18,7 +18,7 @@
 		0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */; };
 		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; };
 		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
-		9D6A895E1C0B0603008EC60B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* APIManager.swift */; };
+		9D6A895E1C0B0603008EC60B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* DataManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
 		9DCDE7811C0728E40087C31F /* Exam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
@@ -166,8 +166,8 @@
 		91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
-		9D6A895D1C0B0603008EC60B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = API/APIManager.swift; sourceTree = "<group>"; };
-		9D6A89611C0B11BB008EC60B /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Accounts/AccountManager.swift; sourceTree = "<group>"; };
+		9D6A895D1C0B0603008EC60B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		9D6A89611C0B11BB008EC60B /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Exam+CoreDataProperties.swift"; path = "CoreData/Exam+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		9DCDE7981C083C070087C31F /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = CoreData/Year.swift; sourceTree = "<group>"; };
 		9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Semester+CoreDataProperties.swift"; path = "CoreData/Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
-		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = API/APISession.swift; sourceTree = "<group>"; };
+		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -354,23 +354,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9D6A895C1C0B046D008EC60B /* API */ = {
-			isa = PBXGroup;
-			children = (
-				9D6A895D1C0B0603008EC60B /* APIManager.swift */,
-				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
-			);
-			name = API;
-			sourceTree = "<group>";
-		};
-		9D6A89601C0B1175008EC60B /* Accounts */ = {
-			isa = PBXGroup;
-			children = (
-				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
-			);
-			name = Accounts;
-			sourceTree = "<group>";
-		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,8 +401,9 @@
 			isa = PBXGroup;
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
-				9D6A895C1C0B046D008EC60B /* API */,
-				9D6A89601C0B1175008EC60B /* Accounts */,
+				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
+				9D6A895D1C0B0603008EC60B /* DataManager.swift */,
+				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
 				9DCDE7B11C0840900087C31F /* Support Files */,
 			);
@@ -920,7 +904,7 @@
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
-				9D6A895E1C0B0603008EC60B /* APIManager.swift in Sources */,
+				9D6A895E1C0B0603008EC60B /* DataManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
 				9DCDE79B1C083C070087C31F /* Calendar+CoreDataProperties.swift in Sources */,
 				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,

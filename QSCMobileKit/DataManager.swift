@@ -1,5 +1,5 @@
 //
-//  APIManager.swift
+//  DataManager.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2015-11-29.
@@ -8,8 +8,9 @@
 
 import Foundation
 
-class APIManager: NSObject {
+class DataManager: NSObject {
     
-    static let sharedInstance = APIManager()
+    static let sharedInstance = DataManager()
+    
     
 }
