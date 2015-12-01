@@ -21,34 +21,21 @@
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */; };
-		9DCDE7811C0728E40087C31F /* Exam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
-		9DCDE7831C0728E40087C31F /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
-		9DCDE7851C0728E40087C31F /* Score+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77F1C0728E40087C31F /* Score+CoreDataProperties.swift */; };
 		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
-		9DCDE79B1C083C070087C31F /* Calendar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7871C083C070087C31F /* Calendar+CoreDataProperties.swift */; };
-		9DCDE79C1C083C070087C31F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7881C083C070087C31F /* Calendar.swift */; };
-		9DCDE79D1C083C070087C31F /* Bus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7891C083C070087C31F /* Bus+CoreDataProperties.swift */; };
 		9DCDE79E1C083C070087C31F /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78A1C083C070087C31F /* Bus.swift */; };
-		9DCDE79F1C083C070087C31F /* TimePlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78B1C083C070087C31F /* TimePlace+CoreDataProperties.swift */; };
 		9DCDE7A01C083C070087C31F /* TimePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78C1C083C070087C31F /* TimePlace.swift */; };
-		9DCDE7A11C083C070087C31F /* Adjustment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78D1C083C070087C31F /* Adjustment+CoreDataProperties.swift */; };
 		9DCDE7A21C083C070087C31F /* Adjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78E1C083C070087C31F /* Adjustment.swift */; };
-		9DCDE7A31C083C070087C31F /* Holiday+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78F1C083C070087C31F /* Holiday+CoreDataProperties.swift */; };
 		9DCDE7A41C083C070087C31F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7901C083C070087C31F /* Holiday.swift */; };
-		9DCDE7A51C083C070087C31F /* SemesterScore+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7911C083C070087C31F /* SemesterScore+CoreDataProperties.swift */; };
 		9DCDE7A61C083C070087C31F /* SemesterScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7921C083C070087C31F /* SemesterScore.swift */; };
-		9DCDE7A71C083C070087C31F /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7931C083C070087C31F /* User+CoreDataProperties.swift */; };
 		9DCDE7A81C083C070087C31F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7941C083C070087C31F /* User.swift */; };
-		9DCDE7A91C083C070087C31F /* BusStop+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7951C083C070087C31F /* BusStop+CoreDataProperties.swift */; };
 		9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7961C083C070087C31F /* BusStop.swift */; };
-		9DCDE7AB1C083C070087C31F /* Year+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7971C083C070087C31F /* Year+CoreDataProperties.swift */; };
 		9DCDE7AC1C083C070087C31F /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7981C083C070087C31F /* Year.swift */; };
-		9DCDE7AD1C083C070087C31F /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */; };
 		9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE79A1C083C070087C31F /* Semester.swift */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
+		9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
 		9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */; };
 		9DF612671BAA89CC004B0A8A /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
@@ -171,34 +158,21 @@
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Exam+CoreDataProperties.swift"; path = "CoreData/Exam+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
-		9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataProperties.swift"; path = "CoreData/Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
-		9DCDE77F1C0728E40087C31F /* Score+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Score+CoreDataProperties.swift"; path = "CoreData/Score+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
-		9DCDE7871C083C070087C31F /* Calendar+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Calendar+CoreDataProperties.swift"; path = "CoreData/Calendar+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9DCDE7881C083C070087C31F /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = CoreData/Calendar.swift; sourceTree = "<group>"; };
-		9DCDE7891C083C070087C31F /* Bus+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bus+CoreDataProperties.swift"; path = "CoreData/Bus+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE78A1C083C070087C31F /* Bus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bus.swift; path = CoreData/Bus.swift; sourceTree = "<group>"; };
-		9DCDE78B1C083C070087C31F /* TimePlace+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimePlace+CoreDataProperties.swift"; path = "CoreData/TimePlace+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE78C1C083C070087C31F /* TimePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePlace.swift; path = CoreData/TimePlace.swift; sourceTree = "<group>"; };
-		9DCDE78D1C083C070087C31F /* Adjustment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Adjustment+CoreDataProperties.swift"; path = "CoreData/Adjustment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE78E1C083C070087C31F /* Adjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Adjustment.swift; path = CoreData/Adjustment.swift; sourceTree = "<group>"; };
-		9DCDE78F1C083C070087C31F /* Holiday+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Holiday+CoreDataProperties.swift"; path = "CoreData/Holiday+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE7901C083C070087C31F /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Holiday.swift; path = CoreData/Holiday.swift; sourceTree = "<group>"; };
-		9DCDE7911C083C070087C31F /* SemesterScore+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SemesterScore+CoreDataProperties.swift"; path = "CoreData/SemesterScore+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE7921C083C070087C31F /* SemesterScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SemesterScore.swift; path = CoreData/SemesterScore.swift; sourceTree = "<group>"; };
-		9DCDE7931C083C070087C31F /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "CoreData/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE7941C083C070087C31F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = CoreData/User.swift; sourceTree = "<group>"; };
-		9DCDE7951C083C070087C31F /* BusStop+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BusStop+CoreDataProperties.swift"; path = "CoreData/BusStop+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE7961C083C070087C31F /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusStop.swift; path = CoreData/BusStop.swift; sourceTree = "<group>"; };
-		9DCDE7971C083C070087C31F /* Year+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Year+CoreDataProperties.swift"; path = "CoreData/Year+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE7981C083C070087C31F /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = CoreData/Year.swift; sourceTree = "<group>"; };
-		9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Semester+CoreDataProperties.swift"; path = "CoreData/Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Init.swift"; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -368,31 +342,18 @@
 			children = (
 				9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */,
 				9DCDE7941C083C070087C31F /* User.swift */,
-				9DCDE7931C083C070087C31F /* User+CoreDataProperties.swift */,
 				9DCDE77E1C0728E40087C31F /* Course.swift */,
-				9DCDE77D1C0728E40087C31F /* Course+CoreDataProperties.swift */,
 				9DCDE78C1C083C070087C31F /* TimePlace.swift */,
-				9DCDE78B1C083C070087C31F /* TimePlace+CoreDataProperties.swift */,
 				9DCDE77C1C0728E40087C31F /* Exam.swift */,
-				9DCDE77B1C0728E40087C31F /* Exam+CoreDataProperties.swift */,
 				9DCDE7801C0728E40087C31F /* Score.swift */,
-				9DCDE77F1C0728E40087C31F /* Score+CoreDataProperties.swift */,
 				9DCDE7921C083C070087C31F /* SemesterScore.swift */,
-				9DCDE7911C083C070087C31F /* SemesterScore+CoreDataProperties.swift */,
-				9DCDE7881C083C070087C31F /* Calendar.swift */,
-				9DCDE7871C083C070087C31F /* Calendar+CoreDataProperties.swift */,
 				9DCDE7981C083C070087C31F /* Year.swift */,
-				9DCDE7971C083C070087C31F /* Year+CoreDataProperties.swift */,
 				9DCDE79A1C083C070087C31F /* Semester.swift */,
-				9DCDE7991C083C070087C31F /* Semester+CoreDataProperties.swift */,
 				9DCDE7901C083C070087C31F /* Holiday.swift */,
-				9DCDE78F1C083C070087C31F /* Holiday+CoreDataProperties.swift */,
 				9DCDE78E1C083C070087C31F /* Adjustment.swift */,
-				9DCDE78D1C083C070087C31F /* Adjustment+CoreDataProperties.swift */,
 				9DCDE78A1C083C070087C31F /* Bus.swift */,
-				9DCDE7891C083C070087C31F /* Bus+CoreDataProperties.swift */,
 				9DCDE7961C083C070087C31F /* BusStop.swift */,
-				9DCDE7951C083C070087C31F /* BusStop+CoreDataProperties.swift */,
+				9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -892,35 +853,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DCDE7A31C083C070087C31F /* Holiday+CoreDataProperties.swift in Sources */,
-				9DCDE7AD1C083C070087C31F /* Semester+CoreDataProperties.swift in Sources */,
-				9DCDE79F1C083C070087C31F /* TimePlace+CoreDataProperties.swift in Sources */,
 				9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */,
 				9DCDE79E1C083C070087C31F /* Bus.swift in Sources */,
 				9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */,
-				9DCDE7AB1C083C070087C31F /* Year+CoreDataProperties.swift in Sources */,
 				9D6A89671C0C4EF7008EC60B /* CoreDataManager.swift in Sources */,
 				9DCDE7861C0728E40087C31F /* Score.swift in Sources */,
-				9DCDE79C1C083C070087C31F /* Calendar.swift in Sources */,
-				9DCDE7811C0728E40087C31F /* Exam+CoreDataProperties.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
+				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
-				9DCDE79B1C083C070087C31F /* Calendar+CoreDataProperties.swift in Sources */,
 				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,
 				9DCDE7A41C083C070087C31F /* Holiday.swift in Sources */,
 				9DCDE7A61C083C070087C31F /* SemesterScore.swift in Sources */,
-				9DCDE7831C0728E40087C31F /* Course+CoreDataProperties.swift in Sources */,
-				9DCDE7851C0728E40087C31F /* Score+CoreDataProperties.swift in Sources */,
 				9DCDE7A21C083C070087C31F /* Adjustment.swift in Sources */,
-				9DCDE7A91C083C070087C31F /* BusStop+CoreDataProperties.swift in Sources */,
-				9DCDE7A11C083C070087C31F /* Adjustment+CoreDataProperties.swift in Sources */,
-				9DCDE79D1C083C070087C31F /* Bus+CoreDataProperties.swift in Sources */,
 				9DCDE7A01C083C070087C31F /* TimePlace.swift in Sources */,
-				9DCDE7A51C083C070087C31F /* SemesterScore+CoreDataProperties.swift in Sources */,
-				9DCDE7A71C083C070087C31F /* User+CoreDataProperties.swift in Sources */,
 				9DCDE7AC1C083C070087C31F /* Year.swift in Sources */,
 				9DCDE7821C0728E40087C31F /* Exam.swift in Sources */,
 				9DCDE7A81C083C070087C31F /* User.swift in Sources */,

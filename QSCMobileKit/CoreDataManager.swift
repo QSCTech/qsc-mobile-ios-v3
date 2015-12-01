@@ -8,10 +8,12 @@
 
 import Foundation
 import CoreData
+import SwiftyJSON
 
+/// The CoreData manager, in which Singleton pattern is used. Make sure current account is not nil, otherwise initialization will crash.
 class CoreDataManager: NSObject {
     
-    override init() {
+    private override init() {
         let modelURL = NSBundle(identifier: "com.zjuqsc.QSCMobileKit")!.URLForResource("Model", withExtension: "momd")!
         let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.zjuqsc.QSCMobileV3")!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
         
@@ -20,11 +22,16 @@ class CoreDataManager: NSObject {
         try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
+        
+        let accountManager = AccountManager.sharedInstance
+        currentAccount = accountManager.currentAccountForJwbinfosys!
+        
         super.init()
     }
     
+    static let sharedInstance = CoreDataManager()
+    
     var managedObjectContext: NSManagedObjectContext
-    
-    
+    var currentAccount: String
     
 }

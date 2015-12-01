@@ -12,6 +12,10 @@ import CoreData
 
 class BusStop: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    @NSManaged var campus: String?
+    @NSManaged var time: String?
+    @NSManaged var location: String?
+    @NSManaged var index: NSNumber?
+    @NSManaged var bus: Bus?
 
 }

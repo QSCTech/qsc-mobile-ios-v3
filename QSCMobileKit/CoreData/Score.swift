@@ -12,6 +12,14 @@ import CoreData
 
 class Score: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    @NSManaged var credit: NSNumber?
+    @NSManaged var gradePoint: NSNumber?
+    @NSManaged var identifier: String?
+    @NSManaged var name: String?
+    @NSManaged var score: NSNumber?
+    @NSManaged var year: String?
+    @NSManaged var semester: String?
+    @NSManaged var makeup: String?
+    @NSManaged var user: User?
 
 }

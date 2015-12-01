@@ -12,6 +12,11 @@ import CoreData
 
 class TimePlace: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    @NSManaged var weekday: NSNumber?
+    @NSManaged var week: NSNumber?
+    @NSManaged var period: String?
+    @NSManaged var place: String?
+    @NSManaged var time: String?
+    @NSManaged var course: Course?
 
 }

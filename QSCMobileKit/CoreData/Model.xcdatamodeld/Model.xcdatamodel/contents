@@ -21,9 +21,6 @@
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bus" inverseName="busStop" inverseEntity="Bus" syncable="YES"/>
     </entity>
-    <entity name="Calendar" representedClassName=".Calendar" syncable="YES">
-        <relationship name="year" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Year" inverseName="calendar" inverseEntity="Year" syncable="YES"/>
-    </entity>
     <entity name="Course" representedClassName=".Course" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
@@ -106,23 +103,21 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="adjustment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Adjustment" inverseName="year" inverseEntity="Adjustment" syncable="YES"/>
-        <relationship name="calendar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calendar" inverseName="year" inverseEntity="Calendar" syncable="YES"/>
         <relationship name="holiday" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Holiday" inverseName="year" inverseEntity="Holiday" syncable="YES"/>
         <relationship name="semester" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Semester" inverseName="year" inverseEntity="Semester" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="-63" positionY="-18" width="128" height="238"/>
-        <element name="Exam" positionX="-45" positionY="0" width="128" height="223"/>
-        <element name="Score" positionX="-27" positionY="18" width="128" height="180"/>
-        <element name="TimePlace" positionX="-9" positionY="108" width="128" height="133"/>
-        <element name="SemesterScore" positionX="9" positionY="126" width="128" height="148"/>
-        <element name="User" positionX="27" positionY="153" width="128" height="118"/>
+        <element name="Adjustment" positionX="36" positionY="171" width="128" height="135"/>
         <element name="Bus" positionX="-18" positionY="117" width="128" height="105"/>
         <element name="BusStop" positionX="-9" positionY="126" width="128" height="120"/>
-        <element name="Calendar" positionX="0" positionY="135" width="128" height="60"/>
-        <element name="Year" positionX="9" positionY="144" width="128" height="150"/>
-        <element name="Semester" positionX="18" positionY="153" width="128" height="120"/>
+        <element name="Course" positionX="-63" positionY="-18" width="128" height="238"/>
+        <element name="Exam" positionX="-45" positionY="0" width="128" height="223"/>
         <element name="Holiday" positionX="27" positionY="162" width="128" height="105"/>
-        <element name="Adjustment" positionX="36" positionY="171" width="128" height="135"/>
+        <element name="Score" positionX="-27" positionY="18" width="128" height="180"/>
+        <element name="Semester" positionX="18" positionY="153" width="128" height="120"/>
+        <element name="SemesterScore" positionX="9" positionY="126" width="128" height="148"/>
+        <element name="TimePlace" positionX="-9" positionY="108" width="128" height="133"/>
+        <element name="User" positionX="27" positionY="153" width="128" height="118"/>
+        <element name="Year" positionX="9" positionY="144" width="128" height="135"/>
     </elements>
 </model>

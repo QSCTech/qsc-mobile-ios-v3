@@ -12,6 +12,18 @@ import CoreData
 
 class Course: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    @NSManaged var code: String?
+    @NSManaged var name: String?
+    @NSManaged var englishName: String?
+    @NSManaged var credit: NSNumber?
+    @NSManaged var category: String?
+    @NSManaged var faculty: String?
+    @NSManaged var teacher: String?
+    @NSManaged var semester: String?
+    @NSManaged var year: String?
+    @NSManaged var identifier: String?
+    @NSManaged var determined: NSNumber?
+    @NSManaged var user: User?
+    @NSManaged var timePlace: NSSet?
 
 }

@@ -12,6 +12,11 @@ import CoreData
 
 class Year: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    @NSManaged var name: String?
+    @NSManaged var start: NSDate?
+    @NSManaged var end: NSDate?
+    @NSManaged var semester: NSSet?
+    @NSManaged var holiday: NSSet?
+    @NSManaged var adjustment: NSSet?
 
 }

@@ -12,6 +12,11 @@ import CoreData
 
 class Adjustment: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    @NSManaged var name: String?
+    @NSManaged var fromStart: NSDate?
+    @NSManaged var fromEnd: NSDate?
+    @NSManaged var toStart: NSDate?
+    @NSManaged var toEnd: NSDate?
+    @NSManaged var year: Year?
 
 }

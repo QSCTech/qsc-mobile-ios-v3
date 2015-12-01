@@ -12,7 +12,13 @@ import KeychainAccess
 /// The account manager of JWBInfoSys and ZJUWLAN. Singleton pattern is used in this class.
 public class AccountManager: NSObject {
     
-    /// Return the shared account manager.
+    /**
+     Override just to make init() private.
+     */
+    private override init() {
+        super.init()
+    }
+    
     public static let sharedInstance = AccountManager()
     
     private let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
@@ -23,9 +29,6 @@ public class AccountManager: NSObject {
     
     /**
      Add an account to JWBInfoSys. If this account already exists, its password would be updated.
-     
-     - parameter username: Username of the account.
-     - parameter password: Password of the account.
      */
     public func addAccountToJwbinfosys(username: String, password: String) {
         jwbinfosysKeychain[username] = password
@@ -33,8 +36,6 @@ public class AccountManager: NSObject {
     
     /**
      Remove an account from JWBInfoSys.
-     
-     - parameter username: Username of the account.
      */
     public func removeAccountFromJwbinfosys(username: String) {
         jwbinfosysKeychain[username] = nil
