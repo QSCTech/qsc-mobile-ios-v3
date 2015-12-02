@@ -21,14 +21,5 @@ class User: NSManagedObject {
     @NSManaged var exam: NSSet?
     @NSManaged var score: NSSet?
     @NSManaged var semesterScore: NSSet?
-    
-    @NSManaged func addCourseObject(value: Course)
-    @NSManaged func removeCourseObject(value: Course)
-    @NSManaged func addExamObject(value: Exam)
-    @NSManaged func removeExamObject(value: Exam)
-    @NSManaged func addScoreObject(value: Score)
-    @NSManaged func removeScoreObject(value: Score)
-    @NSManaged func addSemesterScoreObject(value: SemesterScore)
-    @NSManaged func removeSemesterScoreObject(value: SemesterScore)
 
 }
