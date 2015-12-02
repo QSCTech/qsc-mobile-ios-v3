@@ -21,7 +21,6 @@
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */; };
-		9DB473281C0EBED00025CC35 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB473261C0EBED00025CC35 /* Statistics.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
 		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
@@ -159,7 +158,6 @@
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		9DB473261C0EBED00025CC35 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Statistics.swift; path = CoreData/Statistics.swift; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 				9DCDE77C1C0728E40087C31F /* Exam.swift */,
 				9DCDE7801C0728E40087C31F /* Score.swift */,
 				9DCDE7921C083C070087C31F /* SemesterScore.swift */,
-				9DB473261C0EBED00025CC35 /* Statistics.swift */,
 				9DCDE7981C083C070087C31F /* Year.swift */,
 				9DCDE79A1C083C070087C31F /* Semester.swift */,
 				9DCDE7901C083C070087C31F /* Holiday.swift */,
@@ -863,7 +860,6 @@
 				9DCDE7861C0728E40087C31F /* Score.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,
-				9DB473281C0EBED00025CC35 /* Statistics.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,

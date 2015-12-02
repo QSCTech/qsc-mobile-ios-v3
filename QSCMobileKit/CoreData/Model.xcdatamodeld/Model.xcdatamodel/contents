@@ -81,13 +81,6 @@
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="semesterScore" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Statistics" representedClassName=".Statistics" syncable="YES">
-        <attribute name="averageGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="majorCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="majorGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="totalCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statistics" inverseEntity="User" syncable="YES"/>
-    </entity>
     <entity name="TimePlace" representedClassName=".TimePlace" syncable="YES">
         <attribute name="periods" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
@@ -97,12 +90,15 @@
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="timePlace" inverseEntity="Course" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="averageGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="majorCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="majorGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="course" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="user" inverseEntity="Course" syncable="YES"/>
         <relationship name="exam" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exam" inverseName="user" inverseEntity="Exam" syncable="YES"/>
         <relationship name="score" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Score" inverseName="user" inverseEntity="Score" syncable="YES"/>
         <relationship name="semesterScore" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SemesterScore" inverseName="user" inverseEntity="SemesterScore" syncable="YES"/>
-        <relationship name="statistics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Statistics" inverseName="user" inverseEntity="Statistics" syncable="YES"/>
     </entity>
     <entity name="Year" representedClassName=".Year" syncable="YES">
         <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
@@ -123,8 +119,7 @@
         <element name="Semester" positionX="18" positionY="153" width="128" height="120"/>
         <element name="SemesterScore" positionX="9" positionY="126" width="128" height="120"/>
         <element name="TimePlace" positionX="-9" positionY="108" width="128" height="135"/>
-        <element name="User" positionX="27" positionY="153" width="128" height="135"/>
+        <element name="User" positionX="27" positionY="153" width="128" height="180"/>
         <element name="Year" positionX="9" positionY="144" width="128" height="135"/>
-        <element name="Statistics" positionX="-9" positionY="126" width="128" height="120"/>
     </elements>
 </model>

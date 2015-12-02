@@ -13,11 +13,14 @@ import CoreData
 class User: NSManagedObject {
 
     @NSManaged var sid: String?
+    @NSManaged var totalCredit: NSNumber?
+    @NSManaged var averageGrade: NSNumber?
+    @NSManaged var majorCredit: NSNumber?
+    @NSManaged var majorGrade: NSNumber?
     @NSManaged var course: NSSet?
     @NSManaged var exam: NSSet?
     @NSManaged var score: NSSet?
     @NSManaged var semesterScore: NSSet?
-    @NSManaged var statistics: NSSet?
     
     @NSManaged func addCourseObject(value: Course)
     @NSManaged func removeCourseObject(value: Course)
@@ -27,7 +30,5 @@ class User: NSManagedObject {
     @NSManaged func removeScoreObject(value: Score)
     @NSManaged func addSemesterScoreObject(value: SemesterScore)
     @NSManaged func removeSemesterScoreObject(value: SemesterScore)
-    @NSManaged func addStatisticsObject(value: Statistics)
-    @NSManaged func removeStatisticsObject(value: Statistics)
 
 }

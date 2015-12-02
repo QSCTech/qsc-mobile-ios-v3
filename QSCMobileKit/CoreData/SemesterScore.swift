@@ -16,8 +16,6 @@ class SemesterScore: NSManagedObject {
     @NSManaged var semester: String?
     @NSManaged var totalCredit: NSNumber?
     @NSManaged var averageGrade: NSNumber?
-    @NSManaged var majorCredit: NSNumber?
-    @NSManaged var majorGrade: NSNumber?
     @NSManaged var user: User?
 
 }
