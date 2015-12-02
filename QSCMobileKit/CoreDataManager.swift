@@ -47,12 +47,12 @@ class CoreDataManager: NSObject {
         course.name = json["name"].string
         course.teacher = json["teacher"].string
         course.semester = json["semester"].string
-        course.determined = json["determined"].bool // FIXME
-        course.identifier = json["hash"].string // Workaround
+        course.determined = json["determined"].bool
+        course.identifier = json["hash"].string
         course.year = json["year"].string
         
         let basicInfo = json["basicInfo"]
-        course.credit = basicInfo["Credit"].float // FIXME
+        course.credit = basicInfo["Credit"].float
         course.englishName = basicInfo["EnglishName"].string
         course.faculty = basicInfo["Faculty"].string
         course.category = basicInfo["Category"].string
@@ -86,9 +86,9 @@ class CoreDataManager: NSObject {
         let exam = Exam(context: managedObjectContext)
         // FIXME: Set user
         
-        exam.credit = json["credit"].float // FIXME
+        exam.credit = json["credit"].float
         exam.identifier = json["identifier"].string
-        exam.isRelearning = json["isRelearning"].bool // FIXME
+        exam.isRelearning = json["isRelearning"].bool
         exam.name = json["name"].string
         exam.place = json["name"].string
         exam.seat = json["seat"].string
@@ -107,7 +107,7 @@ class CoreDataManager: NSObject {
         let score = Score(context: managedObjectContext)
         // FIXME: set user
         
-        score.credit = json["credit"].float // FIXME
+        score.credit = json["credit"].float
         score.identifier = json["identifier"].string
         score.makeup = json["makeup"].string
         score.name = json["name"].string

@@ -18,5 +18,12 @@ class Year: NSManagedObject {
     @NSManaged var semester: NSSet?
     @NSManaged var holiday: NSSet?
     @NSManaged var adjustment: NSSet?
+    
+    @NSManaged func addYearObject(value: Year)
+    @NSManaged func removeYearObject(value: Year)
+    @NSManaged func addHolidayObject(value: Holiday)
+    @NSManaged func removeHolidayObject(value: Holiday)
+    @NSManaged func addAdjustmentObject(value: Adjustment)
+    @NSManaged func removeAdjustmentObject(value: Adjustment)
 
 }

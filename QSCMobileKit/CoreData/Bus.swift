@@ -16,5 +16,8 @@ class Bus: NSManagedObject {
     @NSManaged var serviceDays: String?
     @NSManaged var note: String?
     @NSManaged var busStop: NSSet?
+    
+    @NSManaged func addBusStopObject(value: BusStop)
+    @NSManaged func removeBusStopObject(value: BusStop)
 
 }
