@@ -13,8 +13,8 @@ import CoreData
 class TimePlace: NSManagedObject {
 
     @NSManaged var weekday: NSNumber?
-    @NSManaged var week: NSNumber?
-    @NSManaged var period: String?
+    @NSManaged var week: String?
+    @NSManaged var periods: String?
     @NSManaged var place: String?
     @NSManaged var time: String?
     @NSManaged var course: Course?

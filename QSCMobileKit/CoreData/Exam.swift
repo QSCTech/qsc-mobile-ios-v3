@@ -20,8 +20,8 @@ class Exam: NSManagedObject {
     @NSManaged var seat: String?
     @NSManaged var semester: String?
     @NSManaged var time: String?
-    @NSManaged var timeStart: NSDate?
-    @NSManaged var timeEnd: NSDate?
+    @NSManaged var startTime: NSDate?
+    @NSManaged var endTime: NSDate?
     @NSManaged var year: String?
     @NSManaged var user: User?
 

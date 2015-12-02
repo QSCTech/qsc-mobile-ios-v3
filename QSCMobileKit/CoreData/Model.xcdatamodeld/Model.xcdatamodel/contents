@@ -38,15 +38,15 @@
     </entity>
     <entity name="Exam" representedClassName=".Exam" syncable="YES">
         <attribute name="credit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isRelearning" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="exam" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -84,10 +84,10 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="semesterScore" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="TimePlace" representedClassName=".TimePlace" syncable="YES">
-        <attribute name="period" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="periods" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="week" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="week" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weekday" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="timePlace" inverseEntity="Course" syncable="YES"/>
     </entity>
@@ -111,12 +111,12 @@
         <element name="Bus" positionX="-18" positionY="117" width="128" height="105"/>
         <element name="BusStop" positionX="-9" positionY="126" width="128" height="120"/>
         <element name="Course" positionX="-63" positionY="-18" width="128" height="238"/>
-        <element name="Exam" positionX="-45" positionY="0" width="128" height="223"/>
+        <element name="Exam" positionX="-45" positionY="0" width="128" height="225"/>
         <element name="Holiday" positionX="27" positionY="162" width="128" height="105"/>
         <element name="Score" positionX="-27" positionY="18" width="128" height="180"/>
         <element name="Semester" positionX="18" positionY="153" width="128" height="120"/>
         <element name="SemesterScore" positionX="9" positionY="126" width="128" height="148"/>
-        <element name="TimePlace" positionX="-9" positionY="108" width="128" height="133"/>
+        <element name="TimePlace" positionX="-9" positionY="108" width="128" height="135"/>
         <element name="User" positionX="27" positionY="153" width="128" height="118"/>
         <element name="Year" positionX="9" positionY="144" width="128" height="135"/>
     </elements>

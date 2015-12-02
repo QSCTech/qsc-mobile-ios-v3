@@ -25,5 +25,8 @@ class Course: NSManagedObject {
     @NSManaged var determined: NSNumber?
     @NSManaged var user: User?
     @NSManaged var timePlace: NSSet?
+    
+    @NSManaged func addTimePlaceObject(value: TimePlace)
+    @NSManaged func removeTimePlaceObject(value: TimePlace)
 
 }
