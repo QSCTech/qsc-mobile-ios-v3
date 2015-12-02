@@ -214,9 +214,9 @@ class APISession: NSObject {
     func courseRequest(callback: (JSON?, String?) -> Void) {
         let requestList = [
             [
-                "uuid": "",
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"CourseAll\"}",
+                "uuid": "",
                 "version": ""
             ]
         ]
@@ -231,9 +231,9 @@ class APISession: NSObject {
     func examRequest(callback: (JSON?, String?) -> Void) {
         let requestList = [
             [
-                "uuid": "",
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"ExamAll\"}",
+                "uuid": "",
                 "version": ""
             ]
         ]
@@ -248,9 +248,26 @@ class APISession: NSObject {
     func scoreRequest(callback: (JSON?, String?) -> Void) {
         let requestList = [
             [
-                "uuid": "",
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"ScoreAll\"}",
+                "uuid": "",
+                "version": ""
+            ]
+        ]
+        resourceRequest(requestList, callback: callback)
+    }
+    
+    /**
+     Send a statistics  request to API asynchronously and execute a closure after completion.
+     
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     */
+    func statisticsRequest(callback: (JSON?, String?) -> Void) {
+        let requestList = [
+            [
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"Statistics\"}",
+                "uuid": "",
                 "version": ""
             ]
         ]
@@ -265,9 +282,9 @@ class APISession: NSObject {
     func calendarRequest(callback: (JSON?, String?) -> Void) {
         let requestList = [
             [
-                "uuid": "",
                 "fetcher": "staticInterface",
-                "data": "{\"action\":\"schoolCal.all\"}",
+                "data": "{\"key\":\"schoolCal.all\"}",
+                "uuid": "",
                 "version": ""
             ]
         ]
@@ -282,9 +299,9 @@ class APISession: NSObject {
     func busRequest(callback: (JSON?, String?) -> Void) {
         let requestList = [
             [
-                "uuid": "",
                 "fetcher": "staticInterface",
-                "data": "{\"action\":\"schoolBus\"}",
+                "data": "{\"key\":\"schoolBus\"}",
+                "uuid": "",
                 "version": ""
             ]
         ]
