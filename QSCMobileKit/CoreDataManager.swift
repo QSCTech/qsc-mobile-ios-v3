@@ -42,8 +42,8 @@ class CoreDataManager: NSObject {
      - parameter json: JSON of a course.
      */
     func createCourses(json: JSON) {
-        for (_, courses) in json.dictionary! {
-            for json in courses.array! {
+        for (_, json) in json {
+            for (_, json) in json {
                 
                 let course = Course(context: managedObjectContext)
                 currentUser.addCourseObject(course)
@@ -62,38 +62,37 @@ class CoreDataManager: NSObject {
                 course.faculty = basicInfo["Faculty"].string
                 course.category = basicInfo["Category"].string
                 
-                if let array = json["timePlace"].array {
-                    for item in array {
-                        let timePlace = TimePlace(context: managedObjectContext)
-                        timePlace.place = item["place"].string
-                        
-                        timePlace.week = item["week"].string
-                        timePlace.time = timePlace.week
-                        
-                        timePlace.weekday = Int(item["dayOfWeek"].string!, radix: 10)! % 7 + 1
-                        timePlace.time! += timePlace.weekday!.stringForWeekday
-                        
-                        timePlace.periods = ""
-                        for period in item["course"].array! {
-                            timePlace.periods! += String(Int(period.string!, radix: 10)!, radix: 16)
-                        }
-                        timePlace.time! += " \(item["course"].array!.map({ $0.string! }).joinWithSeparator("/")) 节"
-                        let startTime = timePlace.periods!.startTimeForPeriods
-                        let endTime = timePlace.periods!.endTimeForPeriods
-                        timePlace.time! += "（\(startTime.hour):\(startTime.minute) - \(endTime.hour):\(endTime.minute)）"
-                        
-                        course.addTimePlaceObject(timePlace)
+                for (_, json) in json["timePlace"] {
+                    let timePlace = TimePlace(context: managedObjectContext)
+                    timePlace.place = json["place"].string
+                    
+                    timePlace.week = json["week"].string
+                    timePlace.time = timePlace.week
+                    
+                    timePlace.weekday = Int(json["dayOfWeek"].string!, radix: 10)! % 7 + 1
+                    timePlace.time! += timePlace.weekday!.stringForWeekday
+                    
+                    timePlace.periods = ""
+                    for (_, period) in json["course"] {
+                        timePlace.periods! += String(Int(period.string!, radix: 10)!, radix: 16)
                     }
+                    timePlace.time! += " \(json["course"].array!.map({ $0.string! }).joinWithSeparator("/")) 节"
+                    let startTime = timePlace.periods!.startTimeForPeriods
+                    let endTime = timePlace.periods!.endTimeForPeriods
+                    timePlace.time! += "（\(startTime.hour):\(startTime.minute) - \(endTime.hour):\(endTime.minute)）"
+                    
+                    course.addTimePlaceObject(timePlace)
                 }
                 
             }
         }
+        try! managedObjectContext.save()
     }
     
     func createExams(json: JSON) {
-        for (_, exams) in json.dictionary! {
-            for json in exams.array! {
-        
+        for (_, json) in json {
+            for (_, json) in json {
+                
                 let exam = Exam(context: managedObjectContext)
                 currentUser.addExamObject(exam)
                 
@@ -108,13 +107,13 @@ class CoreDataManager: NSObject {
                 
                 let formatter = NSDateFormatter()
                 formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-                formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 exam.startTime = formatter.dateFromString(json["timeStart"].string!)
                 exam.endTime = formatter.dateFromString(json["timeEnd"].string!)
                 
             }
         }
+        try! managedObjectContext.save()
     }
     
     private func createScore(json: JSON) {
@@ -130,7 +129,7 @@ class CoreDataManager: NSObject {
     }
     
     func createSemesterScores(json: JSON) {
-        for (semester, json) in json["scoreObject"].dictionary! {
+        for (semester, json) in json["scoreObject"] {
             let semesterScore = SemesterScore(context: managedObjectContext)
             currentUser.addSemesterScoreObject(semesterScore)
             
@@ -139,10 +138,11 @@ class CoreDataManager: NSObject {
             semesterScore.totalCredit = json["totalCredit"].float
             semesterScore.averageGrade = json["averageScore"].float
             
-            for score in json["scoreList"].array! {
+            for (_, score) in json["scoreList"] {
                 createScore(score)
             }
         }
+        try! managedObjectContext.save()
     }
     
     func createStatistics(json: JSON) {
@@ -150,7 +150,65 @@ class CoreDataManager: NSObject {
         currentUser.averageGrade = json["averageGradePoint"].float
         currentUser.majorCredit = json["totalCreditMajor"].float
         currentUser.majorGrade = json["averageGradePointMajor"].float
-        // FIXME: Do not forget to save context
+        try! managedObjectContext.save()
+    }
+    
+    func createCalendar(json: JSON) {
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mmz"
+        
+        for (key, json) in json {
+            let year = Year(context: managedObjectContext)
+            year.name = key
+            year.start = formatter.dateFromString(json["start"].string!)
+            year.end = formatter.dateFromString(json["end"].string!)
+            
+            for (key, json) in json["semesters"] {
+                let semester = Semester(context: managedObjectContext)
+                year.addSemesterObject(semester)
+                semester.name = key
+                semester.start = formatter.dateFromString(json["start"].string!)
+                semester.end = formatter.dateFromString(json["end"].string!)
+                semester.startsWithWeekZero = json["startsWithWeekZero"].bool
+            }
+            for (_, json) in json["holidays"] {
+                let holiday = Holiday(context: managedObjectContext)
+                year.addHolidayObject(holiday)
+                holiday.name = json["name"].string
+                holiday.start = formatter.dateFromString(json["start"].string!)
+                holiday.end = formatter.dateFromString(json["end"].string!)
+            }
+            for (_, json) in json["adjustments"] {
+                let adjustment = Adjustment(context: managedObjectContext)
+                year.addAdjustmentObject(adjustment)
+                adjustment.name = json["name"].string
+                adjustment.fromStart = formatter.dateFromString(json["fromStart"].string!)
+                adjustment.fromEnd = formatter.dateFromString(json["fromEnd"].string!)
+                adjustment.toStart = formatter.dateFromString(json["toStart"].string!)
+                adjustment.toEnd = formatter.dateFromString(json["toEnd"].string!)
+            }
+        }
+        try! managedObjectContext.save()
+    }
+    
+    func createBuses(json: JSON) {
+        for (_, json) in json {
+            let bus = Bus(context: managedObjectContext)
+            bus.name = json["name"].string
+            bus.serviceDays = json["serviceDays"].string
+            bus.note = json["note"].string
+            
+            for (index, json) in json["stops"] {
+                let busStop = BusStop(context: managedObjectContext)
+                bus.addBusStopObject(busStop)
+                busStop.campus = json["campus"].string
+                busStop.time = json["time"].string
+                busStop.location = json["time"].string
+                busStop.index = Int(index, radix: 10)
+            }
+        }
+        try! managedObjectContext.save()
     }
     
 }
