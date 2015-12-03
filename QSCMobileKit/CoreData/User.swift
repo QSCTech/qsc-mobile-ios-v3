@@ -17,9 +17,9 @@ class User: NSManagedObject {
     @NSManaged var averageGrade: NSNumber?
     @NSManaged var majorCredit: NSNumber?
     @NSManaged var majorGrade: NSNumber?
-    @NSManaged var course: NSSet?
-    @NSManaged var exam: NSSet?
-    @NSManaged var score: NSSet?
-    @NSManaged var semesterScore: NSSet?
+    @NSManaged var courses: NSSet?
+    @NSManaged var exams: NSSet?
+    @NSManaged var scores: NSSet?
+    @NSManaged var semesterScores: NSSet?
 
 }

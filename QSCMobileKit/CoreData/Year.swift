@@ -15,7 +15,7 @@ class Year: NSManagedObject {
     @NSManaged var name: String?
     @NSManaged var start: NSDate?
     @NSManaged var end: NSDate?
-    @NSManaged var semester: NSSet?
-    @NSManaged var holiday: NSSet?
-    @NSManaged var adjustment: NSSet?
+    @NSManaged var semesters: NSSet?
+    @NSManaged var holidays: NSSet?
+    @NSManaged var adjustments: NSSet?
 }

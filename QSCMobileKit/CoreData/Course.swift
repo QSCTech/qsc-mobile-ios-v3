@@ -24,5 +24,5 @@ class Course: NSManagedObject {
     @NSManaged var identifier: String?
     @NSManaged var determined: NSNumber?
     @NSManaged var user: User?
-    @NSManaged var timePlace: NSSet?
+    @NSManaged var timePlaces: NSSet?
 }

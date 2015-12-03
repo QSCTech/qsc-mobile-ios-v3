@@ -23,18 +23,23 @@ class CoreDataManager: NSObject {
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
         
-        let currentAccount = AccountManager.sharedInstance.currentAccountForJwbinfosys!
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "sid == ", currentAccount)
-        currentUser = try! managedObjectContext.executeFetchRequest(fetchRequest).first! as! User
-        
         super.init()
+        
+        setUser(AccountManager.sharedInstance.currentAccountForJwbinfosys!)
     }
     
     static let sharedInstance = CoreDataManager()
     
     var managedObjectContext: NSManagedObjectContext
-    var currentUser: User
+    var currentUser: User!
+    
+    func setUser(username: String) {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "sid == ", username)
+        currentUser = try! managedObjectContext.executeFetchRequest(fetchRequest).first! as! User
+    }
+    
+    // MARK: - Creation
     
     /**
       Create all courses in managed object context.
@@ -243,6 +248,54 @@ class CoreDataManager: NSObject {
             }
         }
         try! managedObjectContext.save()
+    }
+    
+    // MARK: - Deletion
+    
+    /**
+     Delete all entities with the specified name. This method uses APIs only available on iOS 9.0 or newer.
+     
+     - parameter entityName: The name of entities.
+     */
+    private func deleteEntities(entityName: String) {
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        if #available(iOSApplicationExtension 9.0, *) {
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            try! managedObjectContext.persistentStoreCoordinator!.executeRequest(deleteRequest, withContext: managedObjectContext)
+        } else {
+            fetchRequest.includesPropertyValues = false
+            let entities = try! managedObjectContext.executeFetchRequest(fetchRequest)
+            for entity in entities {
+                managedObjectContext.deleteObject(entity as! NSManagedObject)
+            }
+            try! managedObjectContext.save()
+        }
+    }
+    
+    func deleteCourses() {
+        deleteEntities("Course")
+        deleteEntities("TimePlace")
+    }
+    
+    func deleteExams() {
+        deleteEntities("Exam")
+    }
+    
+    func deleteScores() {
+        deleteEntities("SemesterScore")
+        deleteEntities("Score")
+    }
+    
+    func deleteCalendar() {
+        deleteEntities("Year")
+        deleteEntities("Semester")
+        deleteEntities("Holiday")
+        deleteEntities("Adjustment")
+    }
+    
+    func deleteBuses() {
+        deleteEntities("Bus")
+        deleteEntities("BusStop")
     }
     
 }

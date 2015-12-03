@@ -32,6 +32,9 @@ public class AccountManager: NSObject {
      */
     public func addAccountToJwbinfosys(username: String, password: String) {
         jwbinfosysKeychain[username] = password
+        if currentAccountForJwbinfosys == nil {
+            currentAccountForJwbinfosys = username
+        }
     }
     
     /**
@@ -39,6 +42,9 @@ public class AccountManager: NSObject {
      */
     public func removeAccountFromJwbinfosys(username: String) {
         jwbinfosysKeychain[username] = nil
+        if currentAccountForJwbinfosys == username {
+            currentAccountForJwbinfosys = nil
+        }
     }
     
     /// Retrive all stored accounts of JWBInfoSys.
@@ -46,7 +52,7 @@ public class AccountManager: NSObject {
         return jwbinfosysKeychain.allKeys()
     }
     
-    /// Get or set current account of JWBInfosys. If so far there is no account, you will get nil.
+    /// Get or set current account of JWBInfosys. If so far there is no account, you will get nil. Settings of current account will also update CoreDataManager.
     public var currentAccountForJwbinfosys: String? {
         get {
             return groupDefaults.stringForKey(JwbinfosysCurrentAccountKey)
@@ -54,6 +60,7 @@ public class AccountManager: NSObject {
         set {
             groupDefaults.setObject(newValue, forKey: JwbinfosysCurrentAccountKey)
             groupDefaults.synchronize()
+            CoreDataManager.sharedInstance.setUser(newValue!)
         }
     }
     
@@ -89,8 +96,8 @@ public class AccountManager: NSObject {
             return accountForZjuwlan != nil ? zjuwlanKeychain[accountForZjuwlan!] : nil
         }
         set {
-            if accountForZjuwlan != nil {
-                zjuwlanKeychain[accountForZjuwlan!] = newValue
+            if let account = accountForZjuwlan {
+                zjuwlanKeychain[account] = newValue
             }
         }
     }

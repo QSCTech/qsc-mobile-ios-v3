@@ -15,6 +15,6 @@ class Bus: NSManagedObject {
     @NSManaged var name: String?
     @NSManaged var serviceDays: String?
     @NSManaged var note: String?
-    @NSManaged var busStop: NSSet?
+    @NSManaged var busStops: NSSet?
 
 }
