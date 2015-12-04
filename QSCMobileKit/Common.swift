@@ -159,7 +159,8 @@ enum CourseSemester: String {
 /**
  Abbreviations for semesters, used in JSON of calendar.
  */
-enum CalendarSemester: String {
+public enum CalendarSemester: String {
+    
     case SummerMini     = "SM"
     case Autumn         = "Au"
     case Winter         = "Wi"
@@ -167,4 +168,65 @@ enum CalendarSemester: String {
     case Spring         = "Sp"
     case Summer         = "Su"
     case SummerVacation = "ST"
+    case Unknown        = "Unknown"
+    
+    var name: String {
+        switch self {
+        case .SummerMini:
+            return "暑假短学期"
+        case .Autumn:
+            return "秋学期"
+        case .Winter:
+            return "冬学期"
+        case .WinterMini:
+            return "寒假短学期"
+        case .Spring:
+            return "春学期"
+        case .Summer:
+            return "夏学期"
+        case .SummerVacation:
+            return "暑假"
+        default:
+            return ""
+        }
+    }
+    
+}
+
+extension String {
+    
+    /**
+     Judge a string of course semester if includes the specified `CalendarSemester`. Note currently mini semesters have NOT been taken into account.
+     
+     - parameter semester: One of `CalendarSemester`.
+     
+     - returns: Whether it includes.
+     */
+    func includesSemester(semester: CalendarSemester) -> Bool {
+        switch semester {
+        case .Autumn:
+            return containsString("秋")
+        case .Winter:
+            return containsString("冬")
+        case .Spring:
+            return containsString("春")
+        case .Summer:
+            return containsString("夏")
+        default:
+            return false
+        }
+    }
+    
+}
+
+public func == (left: NSDate, right: NSDate) -> Bool {
+    return left.compare(right) == .OrderedSame
+}
+public func < (left: NSDate, right: NSDate) -> Bool {
+    return left.compare(right) == .OrderedAscending
+}
+extension NSDate: Comparable {}
+
+public func += (inout left: String!, right: String) {
+    left = (left ?? "") + right
 }

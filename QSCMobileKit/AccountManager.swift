@@ -28,13 +28,11 @@ public class AccountManager: NSObject {
     private let jwbinfosysKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.jwbinfosys")
     
     /**
-     Add an account to JWBInfoSys. If this account already exists, its password would be updated.
+     Add an account to JWBInfoSys and set it to current account. If this account already exists, its password would be updated.
      */
     public func addAccountToJwbinfosys(username: String, password: String) {
         jwbinfosysKeychain[username] = password
-        if currentAccountForJwbinfosys == nil {
-            currentAccountForJwbinfosys = username
-        }
+        currentAccountForJwbinfosys = username
     }
     
     /**

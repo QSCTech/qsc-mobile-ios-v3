@@ -17,6 +17,7 @@
 		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
 		0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */; };
 		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; };
+		9D64D4E81C1077A60012BB3F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* CalendarManager.swift */; };
 		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
@@ -152,6 +153,7 @@
 		7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.debug.xcconfig"; sourceTree = "<group>"; };
 		91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9D64D4E71C1077A60012BB3F /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
 		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileManager.swift; sourceTree = "<group>"; };
 		9D6A89611C0B11BB008EC60B /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
 				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
+				9D64D4E71C1077A60012BB3F /* CalendarManager.swift */,
 				9D6A895D1C0B0603008EC60B /* MobileManager.swift */,
 				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
 				9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */,
@@ -862,6 +865,7 @@
 				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
+				9D64D4E81C1077A60012BB3F /* CalendarManager.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
 				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,

@@ -30,7 +30,7 @@ class CoreDataManager: NSObject {
     
     static let sharedInstance = CoreDataManager()
     
-    var managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext
     var currentUser: User!
     
     func setUser(username: String) {

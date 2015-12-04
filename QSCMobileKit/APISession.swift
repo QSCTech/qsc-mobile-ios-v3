@@ -73,7 +73,7 @@ class APISession: NSObject {
             UInt32(numberOfIterations),
             UnsafeMutablePointer<UInt8>(derivedKey.mutableBytes), derivedKey.length
         )
-        return derivedKey.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
+        return derivedKey.base64EncodedStringWithOptions([])
     }
     
     /**
@@ -96,7 +96,7 @@ class APISession: NSObject {
             message.bytes, message.length,
             mac.mutableBytes
         )
-        let signature = mac.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
+        let signature = mac.base64EncodedStringWithOptions([])
         return signature.substringToIndex(signature.startIndex.advancedBy(lengthOfSignature))
     }
     
@@ -111,13 +111,13 @@ class APISession: NSObject {
      - returns: A UTF-8 encoded String.
      */
     func stringFromJSONObject(object: AnyObject) -> String {
-        let jsonData = try! NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions())
+        let jsonData = try! NSJSONSerialization.dataWithJSONObject(object, options: [])
         return NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
     }
     
     func jsonObjectFromString(string: String) -> AnyObject {
         let jsonData = string.dataUsingEncoding(NSUTF8StringEncoding)!
-        return try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions())
+        return try! NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
     }
     
     
@@ -132,7 +132,7 @@ class APISession: NSObject {
         let salt = generateSalt()
         let postData: [String: AnyObject] = [
             "appKeyHash": pbkdf2HmacSha1(password: AppKey, salt: salt),
-            "salt": salt.base64EncodedStringWithOptions(NSDataBase64EncodingOptions()),
+            "salt": salt.base64EncodedStringWithOptions([]),
             "login": [
                 "jwbinfosys": [
                     "userName": username,
