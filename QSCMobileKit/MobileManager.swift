@@ -35,6 +35,17 @@ public class MobileManager: NSObject {
     }
     
     /**
+     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both gracefully.
+     */
+    public func refreshAll() {
+        refreshCalendar({ _ in })
+        refreshCourses({ _ in })
+        refreshExams({ _ in })
+        refreshScores({ _ in })
+        refreshBuses({ _ in })
+    }
+    
+    /**
      Delete and retrive course data from API.
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.

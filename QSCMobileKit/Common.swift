@@ -18,13 +18,17 @@ let TideURL       = "http://tide.zjuqsc.com/wp/"
 let ZjuwlanLoginURL  = "https://net.zju.edu.cn/cgi-bin/srun_portal"
 let ZjuwlanLogoutURL = "https://net.zju.edu.cn/rad_online.php"
 
-extension NSNumber {
+enum Weekday: Int {
+    case Sunday = 1, Monday, Tuesday, Thursday, Friday, Saturday
+}
+
+extension Int {
     
     /**
      Create a string from the index of weekday, consistent with NSDateComponents. Note Monday is NOT 1 BUT 2, etc.
      */
     var stringForWeekday: String {
-        switch integerValue {
+        switch self {
         case 1:
             return "星期日"
         case 2:

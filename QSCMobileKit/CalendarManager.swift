@@ -28,6 +28,20 @@ public class CalendarManager: NSObject {
         return try! moc.executeFetchRequest(fetchRequest).first as? Year
     }
     
+    private func entityForSemester(date: NSDate) -> Semester? {
+        if let year = entityForYear(date) {
+            for semester in year.semesters! {
+                let semester = semester as! Semester
+                if semester.start! <= date && date < semester.end! {
+                    return semester
+                }
+            }
+            return nil
+        } else {
+            return nil
+        }
+    }
+    
     /**
      Return a string describing the academic year of the specified date.
      
@@ -47,14 +61,8 @@ public class CalendarManager: NSObject {
      - returns: Corresponding `CalendarSemester` or `.Unknown` if failed.
      */
     public func semesterForDate(date: NSDate = NSDate()) -> CalendarSemester {
-        if let year = entityForYear(date) {
-            for semester in year.semesters! {
-                let semester = semester as! Semester
-                if semester.start! <= date && date < semester.end! {
-                    return CalendarSemester(rawValue: semester.name!) ?? .Unknown
-                }
-            }
-            return .Unknown
+        if let semester = entityForSemester(date) {
+            return CalendarSemester(rawValue: semester.name!) ?? .Unknown
         } else {
             return .Unknown
         }
@@ -102,5 +110,35 @@ public class CalendarManager: NSObject {
             return nil
         }
     }
+    
+    /**
+     Return the week ordinal of the specified date. We assume the first day of a week is Monday.
+     
+     - parameter date: A date to be queried.
+     
+     - returns: An integer representing the week ordinal or -1 if failed.
+     */
+    public func weekOrdinalForDate(date: NSDate = NSDate()) -> Int {
+        if let semester = entityForSemester(date) {
+            let weekTimeInterval = NSTimeInterval(604800)
+            let dayTimeInterval = NSTimeInterval(86400)
+            let calendar = NSCalendar.currentCalendar()
+            
+            var zeroMonday = semester.start!
+            if (semester.startsWithWeekZero == false) {
+                zeroMonday = zeroMonday.dateByAddingTimeInterval(-weekTimeInterval)
+            }
+            while calendar.component([.Weekday], fromDate: zeroMonday) != Weekday.Monday.rawValue {
+                zeroMonday = zeroMonday.dateByAddingTimeInterval(-dayTimeInterval)
+            }
+            
+            let components = calendar.components([.WeekdayOrdinal], fromDate: zeroMonday, toDate: date, options: [])
+            return components.weekdayOrdinal
+        } else {
+            return -1
+        }
+    }
+    
+    
     
 }
