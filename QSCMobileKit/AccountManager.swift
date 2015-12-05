@@ -45,7 +45,7 @@ public class AccountManager: NSObject {
         }
     }
     
-    /// Retrive all stored accounts of JWBInfoSys.
+    /// Retrieve all stored accounts of JWBInfoSys.
     public var allAccountsForJwbinfosys: [String] {
         return jwbinfosysKeychain.allKeys()
     }
@@ -63,7 +63,7 @@ public class AccountManager: NSObject {
     }
     
     /**
-     Retrive the password of the given account in JWBInfoSys.
+     Retrieve the password of the given account in JWBInfoSys.
      
      - parameter username: Username of the account.
      

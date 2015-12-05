@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 /// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Singleton pattern is used here.
 public class MobileManager: NSObject {
@@ -34,8 +35,63 @@ public class MobileManager: NSObject {
         }
     }
     
+    // MARK: - Retrieve events
+    
     /**
-     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both gracefully.
+    Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already.
+    
+    - parameter date: A date to be queried.
+    
+    - returns: An array of type `Event` sorted by starting time.
+    */
+    func coursesForDate(var date: NSDate) -> [Event] {
+        let calendarManager = CalendarManager.sharedInstance
+        if calendarManager.holidayForDate(date) != nil {
+            return []
+        }
+        if let adjustment = calendarManager.adjustmentForDate(date) {
+            date = adjustment.toDate
+        }
+        
+        let year = calendarManager.yearForDate(date)
+        let semester = calendarManager.semesterForDate(date)
+        let weekOrdinal = calendarManager.weekOrdinalForDate(date)
+        let calendar = NSCalendar.currentCalendar()
+        let weekday = calendar.component(.Weekday, fromDate: date)
+        let todayComponents = calendar.components([.Year, .Month, .Day], fromDate: NSDate())
+        
+        let request = NSFetchRequest(entityName: "Course")
+        request.predicate = NSPredicate(format: "(year == %@) AND (semester contains %@)", year, semester.name)
+        let moc = CoreDataManager.sharedInstance.managedObjectContext
+        let courses = try! moc.executeFetchRequest(request) as! [Course]
+        
+        var array = [Event]()
+        for course in courses {
+            for timePlace in course.timePlaces! {
+                let timePlace = timePlace as! TimePlace
+                if timePlace.weekday == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
+                    let startComponents = timePlace.periods!.startTimeForPeriods
+                    todayComponents.hour = startComponents.hour
+                    todayComponents.minute = startComponents.minute
+                    let start = calendar.dateFromComponents(todayComponents)!
+                    
+                    let endComponents = timePlace.periods!.endTimeForPeriods
+                    todayComponents.hour = endComponents.hour
+                    todayComponents.minute = endComponents.minute
+                    let end = calendar.dateFromComponents(todayComponents)!
+                    
+                    let event = Event(type: .PartialTime, category: .Course, tags: [], name: course.name!, time: timePlace.time!, place: timePlace.place!, start: start, end: end, object: course)
+                    array.append(event)
+                }
+            }
+        }
+        return array.sort { $0.start <= $1.start }
+    }
+    
+    // MARK: - Refresh data
+    
+    /**
+     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both gracefully, which is expected to be called while launching.
      */
     public func refreshAll() {
         refreshCalendar({ _ in })
@@ -46,7 +102,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Delete and retrive course data from API.
+     Delete and retrieve course data from API.
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
@@ -64,7 +120,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Delete and retrive exam data from API.
+     Delete and retrieve exam data from API.
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
@@ -82,7 +138,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Delete and retrive score data from API.
+     Delete and retrieve score data from API.
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
@@ -108,7 +164,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Delete and retrive calendar data from API.
+     Delete and retrieve calendar data from API.
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
@@ -126,7 +182,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Delete and retrive bus data from API.
+     Delete and retrieve bus data from API.
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */

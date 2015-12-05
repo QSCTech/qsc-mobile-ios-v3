@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 let AppKey = "aq86L/EUgOPxD7ZJzr3rK4zBRyo8oVzF"
 
@@ -17,6 +18,24 @@ let TideURL       = "http://tide.zjuqsc.com/wp/"
 
 let ZjuwlanLoginURL  = "https://net.zju.edu.cn/cgi-bin/srun_portal"
 let ZjuwlanLogoutURL = "https://net.zju.edu.cn/rad_online.php"
+
+public struct Event {
+    public enum Type {
+        case AllDay, PartialTime
+    }
+    public enum Category {
+        case Course, Exam, Quiz, Custom
+    }
+    let type: Type
+    let category: Category
+    let tags: [String]
+    let name: String
+    let time: String
+    let place: String
+    let start: NSDate
+    let end: NSDate
+    let object: NSManagedObject
+}
 
 enum Weekday: Int {
     case Sunday = 1, Monday, Tuesday, Thursday, Friday, Saturday
@@ -177,19 +196,19 @@ public enum CalendarSemester: String {
     var name: String {
         switch self {
         case .SummerMini:
-            return "暑假短学期"
+            return "夏短"
         case .Autumn:
-            return "秋学期"
+            return "秋"
         case .Winter:
-            return "冬学期"
+            return "冬"
         case .WinterMini:
-            return "寒假短学期"
+            return "冬短"
         case .Spring:
-            return "春学期"
+            return "春"
         case .Summer:
-            return "夏学期"
+            return "夏"
         case .SummerVacation:
-            return "暑假"
+            return "暑"
         default:
             return ""
         }
@@ -200,7 +219,7 @@ public enum CalendarSemester: String {
 extension String {
     
     /**
-     Judge a string of course semester if includes the specified `CalendarSemester`. Note currently mini semesters have NOT been taken into account.
+     Judge if a string of course semester includes the specified `CalendarSemester`. Note currently mini semesters have NOT been taken into account.
      
      - parameter semester: One of `CalendarSemester`.
      
@@ -216,6 +235,26 @@ extension String {
             return containsString("春")
         case .Summer:
             return containsString("夏")
+        default:
+            return false
+        }
+    }
+    
+    /**
+     Judge if a string of odd/even week matches the specified week ordinal.
+     
+     - parameter weekOrdinal: An integer representing the week ordinal.
+     
+     - returns: Whether it matches.
+     */
+    func matchesWeekOrdinal(weekOrdinal: Int) -> Bool {
+        switch self {
+        case "每周":
+            return true
+        case "单":
+            return weekOrdinal % 2 == 1
+        case "双":
+            return weekOrdinal % 2 == 0
         default:
             return false
         }

@@ -77,7 +77,7 @@ class CoreDataManager: NSObject {
                     timePlace.time = timePlace.week
                     
                     timePlace.weekday = Int(json["dayOfWeek"].stringValue, radix: 10)! % 7 + 1
-                    timePlace.time! += timePlace.weekday!.stringForWeekday
+                    timePlace.time! += timePlace.weekday!.integerValue.stringForWeekday
                     
                     timePlace.periods = ""
                     for (_, period) in json["course"] {
@@ -249,8 +249,6 @@ class CoreDataManager: NSObject {
         }
         try! managedObjectContext.save()
     }
-    
-    func 
     
     // MARK: - Deletion
     
