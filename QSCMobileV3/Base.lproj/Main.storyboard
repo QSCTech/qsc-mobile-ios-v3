@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="896" y="390"/>
         </scene>
-        <!--Discovery-->
+        <!--Mine-->
         <scene sceneID="PMc-gB-JyH">
             <objects>
-                <viewController title="Discovery" id="GZT-3I-Ny7" customClass="DiscoveryViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Mine" id="GZT-3I-Ny7" customClass="MineViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tn7-4h-PoX"/>
                         <viewControllerLayoutGuide type="bottom" id="tTc-5g-4CU"/>
@@ -120,11 +120,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发现" image="first" id="0E9-fc-AVf"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="first" id="0E9-fc-AVf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUn-S0-C4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="390"/>
+            <point key="canvasLocation" x="2812" y="390"/>
         </scene>
         <!--Tools-->
         <scene sceneID="GyW-vO-Dvk">
@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="2174" y="390"/>
         </scene>
-        <!--Mine-->
+        <!--Discovery-->
         <scene sceneID="Y1E-ox-Juv">
             <objects>
-                <viewController title="Mine" id="Afn-hq-3wE" customClass="MineViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Discovery" id="Afn-hq-3wE" customClass="DiscoveryViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L4j-BR-56u"/>
                         <viewControllerLayoutGuide type="bottom" id="Df1-gi-Awh"/>
@@ -160,11 +160,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的" image="first" id="ELC-ks-08q"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="first" id="ELC-ks-08q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9G-XH-uKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2812" y="390"/>
+            <point key="canvasLocation" x="1534" y="390"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

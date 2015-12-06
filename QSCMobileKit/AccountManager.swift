@@ -19,7 +19,7 @@ public class AccountManager: NSObject {
         super.init()
     }
     
-    static let sharedInstance = AccountManager()
+    public static let sharedInstance = AccountManager()
     
     private let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
     

@@ -67,25 +67,29 @@ class DataStore: NSObject {
                 course.category = basicInfo["Category"].stringValue
                 
                 for (_, json) in json["timePlace"] {
+                    if json["course"].array == nil {
+                        continue
+                    }
                     let timePlace = TimePlace(context: managedObjectContext)
                     timePlace.course = course
-                    
                     timePlace.place = json["place"].stringValue
                     
+                    timePlace.time = ""
+                    if let dayOfWeek = Int(json["dayOfWeek"].stringValue, radix:10) {
+                        timePlace.weekday = dayOfWeek % 7 + 1
+                        timePlace.time! += timePlace.weekday!.integerValue.stringForWeekday
+                    }
                     timePlace.week = json["week"].stringValue
-                    timePlace.time = timePlace.week
-                    
-                    timePlace.weekday = Int(json["dayOfWeek"].stringValue, radix: 10)! % 7 + 1
-                    timePlace.time! += timePlace.weekday!.integerValue.stringForWeekday
+                    timePlace.time! += "（\(timePlace.week!)）"
                     
                     timePlace.periods = ""
                     for (_, period) in json["course"] {
                         timePlace.periods! += String(Int(period.stringValue, radix: 10)!, radix: 16)
                     }
-                    timePlace.time! += " \(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
+                    timePlace.time! += "\n\(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
-                    timePlace.time! += "（\(startTime.hour):\(startTime.minute) - \(endTime.hour):\(endTime.minute)）"
+                    timePlace.time! += String(format: "（%02d:%02d - %02d:%02d）", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
                 }
                 
             }
@@ -99,7 +103,7 @@ class DataStore: NSObject {
      - parameter json: JSON of exams.
      */
     func createExams(json: JSON) {
-        for (_, json) in json {
+        for (semester, json) in json {
             for (_, json) in json {
                 
                 let exam = Exam(context: managedObjectContext)
@@ -113,6 +117,7 @@ class DataStore: NSObject {
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
                 exam.time = json["time"].stringValue
+                exam.year = semester.substringToIndex(semester.startIndex.advancedBy(9))
                 
                 let formatter = NSDateFormatter()
                 formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
@@ -128,9 +133,11 @@ class DataStore: NSObject {
     /**
      Create a single score in managed object context. Note this is a private helper for `createSemesterScores()`.
      
-     - parameter json: JSON of a single score.
+     - parameter json:     JSON of a single score.
+     - parameter year:     A string representing the academic year.
+     - parameter semester: A string representing the semester.
      */
-    private func createScore(json: JSON) {
+    private func createScore(json: JSON, year: String, semester: String) {
         let score = Score(context: managedObjectContext)
         score.user = currentUser
         
@@ -140,6 +147,8 @@ class DataStore: NSObject {
         score.name = json["name"].stringValue
         score.gradePoint = (json["gradePoint"].stringValue as NSString).floatValue
         score.score = Int(json["score"].stringValue, radix:10)
+        score.year = year
+        score.semester = semester
     }
     
     /**
@@ -158,7 +167,7 @@ class DataStore: NSObject {
             semesterScore.averageGrade = json["averageScore"].floatValue
             
             for (_, score) in json["scoreList"] {
-                createScore(score)
+                createScore(score, year: semesterScore.year!, semester: semesterScore.semester!)
             }
         }
         try! managedObjectContext.save()

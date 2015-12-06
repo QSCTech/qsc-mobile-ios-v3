@@ -17,8 +17,8 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         
         let mobileManager = MobileManager.sharedInstance
-        mobileManager.loginValidate("freshman", password: "ios", callback: { _, _ in })
         mobileManager.refreshAll()
+        sleep(3) // FIXME: Async refresh should accept a closure.
         let courses = mobileManager.coursesForDate(NSDate().dateByAddingTimeInterval(3600*24))
         print(courses)
     }

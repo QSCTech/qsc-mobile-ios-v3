@@ -73,6 +73,9 @@ extension String {
     
     var startTimeForPeriods: NSDateComponents {
         let time = NSDateComponents()
+        if self.characters.count == 0 {
+            return time
+        }
         switch characters.first! {
         case "1":
             time.hour = 8
@@ -121,6 +124,9 @@ extension String {
     
     var endTimeForPeriods: NSDateComponents {
         let time = NSDateComponents()
+        if characters.count == 0 {
+            return time
+        }
         switch characters.last! {
         case "1":
             time.hour = 8
@@ -180,7 +186,7 @@ enum CourseSemester: String {
 }
 
 /**
- Abbreviations for semesters, used in JSON of calendar.
+ Abbreviations for semesters, used in JSON of calendar and scores.
  */
 public enum CalendarSemester: String {
     
@@ -193,6 +199,7 @@ public enum CalendarSemester: String {
     case SummerVacation = "ST"
     case Unknown        = "Unknown"
     
+    /// Chinese name of semesters, used in JSON of courses and exams.
     var name: String {
         switch self {
         case .SummerMini:
@@ -219,7 +226,7 @@ public enum CalendarSemester: String {
 extension String {
     
     /**
-     Judge if a string of course semester includes the specified `CalendarSemester`. Note currently mini semesters have NOT been taken into account.
+     Judge if the specified Chinese characters includes the specified `CalendarSemester`. Note currently mini semesters have NOT been taken into account.
      
      - parameter semester: One of `CalendarSemester`.
      
