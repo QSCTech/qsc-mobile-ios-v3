@@ -10,17 +10,9 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-/// A session of API used to send login and resource requests.
+/// A session of API used to send login and resource requests. This class is used by mobile manager.
 class APISession: NSObject {
     
-    /**
-     Initialize a session of API with username and password.
-     
-     - parameter username: The username of jwbinfosys.
-     - parameter password: The password of jwbinfosys.
-     
-     - returns: A session object initialized.
-     */
     init(username: String, password: String) {
         self.username = username
         self.password = password

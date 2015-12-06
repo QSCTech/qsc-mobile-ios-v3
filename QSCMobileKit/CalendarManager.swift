@@ -24,8 +24,7 @@ public class CalendarManager: NSObject {
     private func entityForYear(date: NSDate) -> Year? {
         let fetchRequest = NSFetchRequest(entityName: "Year")
         fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
-        let moc = CoreDataManager.sharedInstance.managedObjectContext
-        return try! moc.executeFetchRequest(fetchRequest).first as? Year
+        return try! DataStore.managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
     }
     
     private func entityForSemester(date: NSDate) -> Semester? {

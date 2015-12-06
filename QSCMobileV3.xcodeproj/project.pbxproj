@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
-		04C331CB1BA2F2E600EF959F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331CA1BA2F2E600EF959F /* FirstViewController.swift */; };
-		04C331CD1BA2F2E600EF959F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331CC1BA2F2E600EF959F /* SecondViewController.swift */; };
 		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */; };
@@ -21,7 +19,7 @@
 		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
-		9D6A89671C0C4EF7008EC60B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */; };
+		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
 		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
@@ -39,6 +37,11 @@
 		9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
 		9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */; };
+		9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */; };
+		9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */; };
+		9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */; };
+		9DEF638C1C12FDC200A70C5B /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */; };
+		9DEF638E1C12FDD200A70C5B /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638D1C12FDD200A70C5B /* MineViewController.swift */; };
 		9DF612671BAA89CC004B0A8A /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		9DF6126E1BAA89CC004B0A8A /* QSCMobileKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -133,8 +136,6 @@
 /* Begin PBXFileReference section */
 		04C331C51BA2F2E600EF959F /* QSCMobileV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QSCMobileV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C331C81BA2F2E600EF959F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04C331CA1BA2F2E600EF959F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		04C331CC1BA2F2E600EF959F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D41BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -159,7 +160,7 @@
 		9D6A89611C0B11BB008EC60B /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
-		9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
@@ -179,6 +180,11 @@
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DEF303B1BFD7C1800508504 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
+		9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
+		9DEF638D1C12FDD200A70C5B /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612661BAA89CC004B0A8A /* QSCMobileKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileKitTests.swift; sourceTree = "<group>"; };
@@ -286,15 +292,14 @@
 		04C331C71BA2F2E600EF959F /* QSCMobileV3 */ = {
 			isa = PBXGroup;
 			children = (
-				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
-				04C331CA1BA2F2E600EF959F /* FirstViewController.swift */,
-				04C331CC1BA2F2E600EF959F /* SecondViewController.swift */,
-				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
+				9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */,
+				9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */,
+				9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */,
+				9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */,
+				9DEF638D1C12FDD200A70C5B /* MineViewController.swift */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
-				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
-				04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */,
-				04C331D61BA2F2E600EF959F /* Info.plist */,
+				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
 			path = QSCMobileV3;
 			sourceTree = "<group>";
@@ -360,15 +365,27 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		9DEF63841C12FB9000A70C5B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
+				04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */,
+				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
+				04C331D61BA2F2E600EF959F /* Info.plist */,
+				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
 		9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */ = {
 			isa = PBXGroup;
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
-				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
 				9D64D4E71C1077A60012BB3F /* CalendarManager.swift */,
+				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
 				9D6A895D1C0B0603008EC60B /* MobileManager.swift */,
 				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
-				9D6A89661C0C4EF7008EC60B /* CoreDataManager.swift */,
+				9D6A89661C0C4EF7008EC60B /* DataStore.swift */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
 				9DCDE7B11C0840900087C31F /* Support Files */,
 			);
@@ -830,9 +847,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C331CD1BA2F2E600EF959F /* SecondViewController.swift in Sources */,
+				9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */,
+				9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */,
+				9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */,
+				9DEF638E1C12FDD200A70C5B /* MineViewController.swift in Sources */,
+				9DEF638C1C12FDC200A70C5B /* DiscoveryViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
-				04C331CB1BA2F2E600EF959F /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,7 +879,7 @@
 				9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */,
 				9DCDE79E1C083C070087C31F /* Bus.swift in Sources */,
 				9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */,
-				9D6A89671C0C4EF7008EC60B /* CoreDataManager.swift in Sources */,
+				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
 				9DCDE7861C0728E40087C31F /* Score.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,

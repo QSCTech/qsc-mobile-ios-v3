@@ -9,15 +9,31 @@
 import Foundation
 import CoreData
 
-/// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Singleton pattern is used here.
+/// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Make sure current account exists or login validation is invoked before using instance methods. Singleton pattern is used here.
 public class MobileManager: NSObject {
+    
+    // TODO: Check if password has been changed since added to account manager.
+    private override init() {
+        super.init()
+        if let account = accountManager.currentAccountForJwbinfosys {
+            changeUser(account)
+        }
+    }
     
     public static let sharedInstance = MobileManager()
     
-    private var apiSession: APISession!
+    private let accountManager = AccountManager.sharedInstance
+    private let calendarManager = CalendarManager.sharedInstance
+    private let managedObjectContext = DataStore.managedObjectContext
     
+    private var apiSession: APISession!
+    private var dataStore: DataStore!
+    
+    // MARK: - Manage accounts
+    
+    // TODO: Refresh data
     /**
-     Validate an account of JWBInfoSys and add to account manager if valid. Notice to call this method before other requests.
+     Validate a newly added account of JWBInfoSys. If valid, it will be added to account manager as current account and created as a user entity.
      
      - parameter username: Username of the account.
      - parameter password: Password of the account.
@@ -27,12 +43,44 @@ public class MobileManager: NSObject {
         apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { status, error in
             if status {
-                AccountManager.sharedInstance.addAccountToJwbinfosys(username, password: password)
+                let user = User(context: self.managedObjectContext)
+                user.sid = username
+                try! self.managedObjectContext.save()
+                self.accountManager.addAccountToJwbinfosys(username, password: password)
+                self.dataStore = DataStore(username: username)
                 callback(status, error)
             } else {
                 callback(status, error)
             }
         }
+    }
+    
+    /**
+     Change current account to already existed one and then refresh data.
+     
+     - parameter username: Username of the account.
+     */
+    public func changeUser(username: String) {
+        apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
+        dataStore = DataStore(username: username)
+    }
+    
+    // TODO: automatically change user
+    /**
+     Delete an account and clear its data from CoreData. If it is current account, all related variable will be set to nil.
+     
+     - parameter username: Username of the account
+     */
+    public func deleteUser(username: String) {
+        // Change user and delete data.
+        let anotherDataSource: DataStore = DataStore(username: username)
+        anotherDataSource.deleteCourses()
+        anotherDataSource.deleteExams()
+        anotherDataSource.deleteScores()
+        anotherDataSource.deleteUser()
+        accountManager.removeAccountFromJwbinfosys(username)
+        apiSession = nil
+        dataStore = nil
     }
     
     // MARK: - Retrieve events
@@ -44,8 +92,7 @@ public class MobileManager: NSObject {
     
     - returns: An array of type `Event` sorted by starting time.
     */
-    func coursesForDate(var date: NSDate) -> [Event] {
-        let calendarManager = CalendarManager.sharedInstance
+    public func coursesForDate(var date: NSDate) -> [Event] {
         if calendarManager.holidayForDate(date) != nil {
             return []
         }
@@ -62,8 +109,7 @@ public class MobileManager: NSObject {
         
         let request = NSFetchRequest(entityName: "Course")
         request.predicate = NSPredicate(format: "(year == %@) AND (semester contains %@)", year, semester.name)
-        let moc = CoreDataManager.sharedInstance.managedObjectContext
-        let courses = try! moc.executeFetchRequest(request) as! [Course]
+        let courses = try! managedObjectContext.executeFetchRequest(request) as! [Course]
         
         var array = [Event]()
         for course in courses {
@@ -107,11 +153,10 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
     public func refreshCourses(callback: (Bool) -> Void) {
-        let dataManager = CoreDataManager.sharedInstance
-        dataManager.deleteCourses()
         apiSession.courseRequest { json, error in
             if let json = json {
-                dataManager.createCourses(json)
+                self.dataStore.deleteCourses()
+                self.dataStore.createCourses(json)
                 callback(true)
             } else {
                 callback(false)
@@ -125,11 +170,10 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
     public func refreshExams(callback: (Bool) -> Void) {
-        let dataManager = CoreDataManager.sharedInstance
-        dataManager.deleteExams()
         apiSession.examRequest { json, error in
             if let json = json {
-                dataManager.createExams(json)
+                self.dataStore.deleteExams()
+                self.dataStore.createExams(json)
                 callback(true)
             } else {
                 callback(false)
@@ -143,11 +187,10 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
     public func refreshScores(callback: (Bool) -> Void) {
-        let dataManager = CoreDataManager.sharedInstance
-        dataManager.deleteScores()
         apiSession.scoreRequest { json, error in
             if let json = json {
-                dataManager.createSemesterScores(json)
+                self.dataStore.deleteScores()
+                self.dataStore.createSemesterScores(json)
                 callback(true)
             } else {
                 callback(false)
@@ -155,7 +198,7 @@ public class MobileManager: NSObject {
         }
         apiSession.statisticsRequest { json, error in
             if let json = json {
-                dataManager.createStatistics(json)
+                self.dataStore.createStatistics(json)
                 callback(true)
             } else {
                 callback(false)
@@ -169,11 +212,10 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
     public func refreshCalendar(callback: (Bool) -> Void) {
-        let dataManager = CoreDataManager.sharedInstance
-        dataManager.deleteCalendar()
         apiSession.calendarRequest { json, error in
             if let json = json {
-                dataManager.createCalendar(json)
+                self.dataStore.deleteCalendar()
+                self.dataStore.createCalendar(json)
                 callback(true)
             } else {
                 callback(false)
@@ -187,11 +229,10 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
     public func refreshBuses(callback: (Bool) -> Void) {
-        let dataManager = CoreDataManager.sharedInstance
-        dataManager.deleteBuses()
         apiSession.busRequest { json, error in
             if let json = json {
-                dataManager.createBuses(json)
+                self.dataStore.deleteBuses()
+                self.dataStore.createBuses(json)
                 callback(true)
             } else {
                 callback(false)

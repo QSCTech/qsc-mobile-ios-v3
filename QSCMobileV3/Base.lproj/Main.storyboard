@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Today-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Today" id="9pv-A4-QxB" customClass="TodayViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -54,19 +54,19 @@
                             <constraint firstAttribute="leadingMargin" secondItem="rAU-Dh-UZX" secondAttribute="leading" id="xvF-EV-2o4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="今天" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="textView" destination="rAU-Dh-UZX" id="EII-FC-gXk"/>
+                        <outlet property="textView" destination="rAU-Dh-UZX" id="8a0-Ad-XD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="254" y="390"/>
         </scene>
-        <!--Second-->
+        <!--Calendar-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Calendar" id="8rJ-Kc-sve" customClass="CalendarViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -100,11 +100,71 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="日程" image="second" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="896" y="390"/>
+        </scene>
+        <!--Discovery-->
+        <scene sceneID="PMc-gB-JyH">
+            <objects>
+                <viewController title="Discovery" id="GZT-3I-Ny7" customClass="DiscoveryViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tn7-4h-PoX"/>
+                        <viewControllerLayoutGuide type="bottom" id="tTc-5g-4CU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2P1-Nb-DUo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="发现" image="first" id="0E9-fc-AVf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUn-S0-C4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="390"/>
+        </scene>
+        <!--Tools-->
+        <scene sceneID="GyW-vO-Dvk">
+            <objects>
+                <viewController title="Tools" id="ITb-uh-h1B" customClass="ToolsViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Td-PC-vgu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ie8-1s-0Ha"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zhj-JV-LIK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="工具" image="second" id="2vL-wP-Qk1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lqn-W3-vv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2174" y="390"/>
+        </scene>
+        <!--Mine-->
+        <scene sceneID="Y1E-ox-Juv">
+            <objects>
+                <viewController title="Mine" id="Afn-hq-3wE" customClass="MineViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L4j-BR-56u"/>
+                        <viewControllerLayoutGuide type="bottom" id="Df1-gi-Awh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cGs-no-uHb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="我的" image="first" id="ELC-ks-08q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u9G-XH-uKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2812" y="390"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -120,11 +180,14 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="Afn-hq-3wE" kind="relationship" relationship="viewControllers" id="Dfl-bC-UB8"/>
+                        <segue destination="ITb-uh-h1B" kind="relationship" relationship="viewControllers" id="m1R-pK-mNd"/>
+                        <segue destination="GZT-3I-Ny7" kind="relationship" relationship="viewControllers" id="wZx-yE-eM4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="1534" y="-542"/>
         </scene>
     </scenes>
     <resources>

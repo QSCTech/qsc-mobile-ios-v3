@@ -9,7 +9,7 @@
 import Foundation
 import KeychainAccess
 
-/// The account manager of JWBInfoSys and ZJUWLAN. Singleton pattern is used in this class.
+/// The account manager of JWBInfoSys and ZJUWLAN. This class does NOT handle login validation, which is in the control of mobile manager. Singleton pattern is used in this class.
 public class AccountManager: NSObject {
     
     /**
@@ -19,7 +19,7 @@ public class AccountManager: NSObject {
         super.init()
     }
     
-    public static let sharedInstance = AccountManager()
+    static let sharedInstance = AccountManager()
     
     private let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
     
@@ -28,17 +28,25 @@ public class AccountManager: NSObject {
     private let jwbinfosysKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.jwbinfosys")
     
     /**
-     Add an account to JWBInfoSys and set it to current account. If this account already exists, its password would be updated.
+     Add an account to JWBInfoSys and set it to current account.
      */
-    public func addAccountToJwbinfosys(username: String, password: String) {
+    func addAccountToJwbinfosys(username: String, password: String) {
         jwbinfosysKeychain[username] = password
         currentAccountForJwbinfosys = username
+    }
+    
+    // TODO: Modify password from UI.
+    /**
+     Modify the password of the specified account.
+     */
+    func modifyAccountOfJwbinfosys(username: String, password: String) {
+        jwbinfosysKeychain[username] = password
     }
     
     /**
      Remove an account from JWBInfoSys.
      */
-    public func removeAccountFromJwbinfosys(username: String) {
+    func removeAccountFromJwbinfosys(username: String) {
         jwbinfosysKeychain[username] = nil
         if currentAccountForJwbinfosys == username {
             currentAccountForJwbinfosys = nil
@@ -50,7 +58,7 @@ public class AccountManager: NSObject {
         return jwbinfosysKeychain.allKeys()
     }
     
-    /// Get or set current account of JWBInfosys. If so far there is no account, you will get nil. Settings of current account will also update CoreDataManager.
+    /// Get or set current account of JWBInfosys. If so far there is no account, you will get nil. If you want to change current account from UI, you should call `MobileManager.changeUser()`.
     public var currentAccountForJwbinfosys: String? {
         get {
             return groupDefaults.stringForKey(JwbinfosysCurrentAccountKey)
@@ -58,7 +66,6 @@ public class AccountManager: NSObject {
         set {
             groupDefaults.setObject(newValue, forKey: JwbinfosysCurrentAccountKey)
             groupDefaults.synchronize()
-            CoreDataManager.sharedInstance.setUser(newValue!)
         }
     }
     
@@ -69,7 +76,7 @@ public class AccountManager: NSObject {
      
      - returns: Password of the account or nil if username is not found.
      */
-    public func passwordForJwbinfosys(username: String) -> String? {
+    func passwordForJwbinfosys(username: String) -> String? {
         return jwbinfosysKeychain[username]
     }
     

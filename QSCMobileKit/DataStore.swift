@@ -1,5 +1,5 @@
 //
-//  CoreDataManager.swift
+//  DataStore.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2015-11-30.
@@ -10,39 +10,38 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-/// The CoreData manager, in which Singleton pattern is used. Make sure current account is not nil, otherwise initialization will crash.
-class CoreDataManager: NSObject {
+/// The CoreData store manager, used by mobile manager. Make sure the corresponding user entity exists, otherwise initialization will crash.
+class DataStore: NSObject {
     
-    private override init() {
+    init(username: String) {
+        managedObjectContext = DataStore.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "sid == %@", username)
+        currentUser = try! managedObjectContext.executeFetchRequest(fetchRequest).first as! User
+        
+        super.init()
+    }
+    
+    static let managedObjectContext: NSManagedObjectContext = {
         let modelURL = NSBundle(identifier: "com.zjuqsc.QSCMobileKit")!.URLForResource("Model", withExtension: "momd")!
         let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.zjuqsc.QSCMobileV3")!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
         
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
-        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
-        
-        super.init()
-        
-        setUser(AccountManager.sharedInstance.currentAccountForJwbinfosys!)
-    }
+        return managedObjectContext
+    }()
     
-    static let sharedInstance = CoreDataManager()
-    
-    let managedObjectContext: NSManagedObjectContext
-    var currentUser: User!
-    
-    func setUser(username: String) {
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "sid == ", username)
-        currentUser = try! managedObjectContext.executeFetchRequest(fetchRequest).first! as! User
-    }
+    private let managedObjectContext: NSManagedObjectContext
+    private let currentUser: User
     
     // MARK: - Creation
     
     /**
-      Create all courses in managed object context.
+     Create all courses in managed object context.
      
      - parameter json: JSON of courses.
      */
@@ -272,20 +271,9 @@ class CoreDataManager: NSObject {
         }
     }
     
-    func deleteCourses() {
-        deleteEntities("Course")
-        deleteEntities("TimePlace")
-    }
-    
-    func deleteExams() {
-        deleteEntities("Exam")
-    }
-    
-    func deleteScores() {
-        deleteEntities("SemesterScore")
-        deleteEntities("Score")
-    }
-    
+    /**
+     Delete all data about calendar.
+     */
     func deleteCalendar() {
         deleteEntities("Year")
         deleteEntities("Semester")
@@ -293,9 +281,61 @@ class CoreDataManager: NSObject {
         deleteEntities("Adjustment")
     }
     
+    /**
+     Delete all data about school buses.
+     */
     func deleteBuses() {
         deleteEntities("Bus")
         deleteEntities("BusStop")
+    }
+    
+    /**
+     Delete all courses of current user.
+     */
+    func deleteCourses() {
+        for course in currentUser.courses! {
+            let course = course as! Course
+            for timePlace in course.timePlaces! {
+                let timePlace = timePlace as! TimePlace
+                managedObjectContext.deleteObject(timePlace)
+            }
+            managedObjectContext.deleteObject(course)
+        }
+        try! managedObjectContext.save()
+    }
+    
+    /**
+     Delete all exams of current user.
+     */
+    func deleteExams() {
+        for exam in currentUser.exams! {
+            let exam = exam as! Exam
+            managedObjectContext.deleteObject(exam)
+        }
+        try! managedObjectContext.save()
+    }
+    
+    /**
+     Delete all scores of current user.
+     */
+    func deleteScores() {
+        for semesterScore in currentUser.semesterScores! {
+            let semesterScore = semesterScore as! SemesterScore
+            managedObjectContext.deleteObject(semesterScore)
+        }
+        for score in currentUser.scores! {
+            let score = score as! Score
+            managedObjectContext.deleteObject(score)
+        }
+        try! managedObjectContext.save()
+    }
+    
+    /**
+     Delete current user entity, after which you should release this instance ASAP.
+     */
+    func deleteUser() {
+        managedObjectContext.deleteObject(currentUser)
+        try! managedObjectContext.save()
     }
     
 }
