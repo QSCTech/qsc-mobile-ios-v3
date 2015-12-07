@@ -41,7 +41,7 @@ public class AccountManager: NSObject {
     func removeAccountFromJwbinfosys(username: String) {
         jwbinfosysKeychain[username] = nil
         if currentAccountForJwbinfosys == username {
-            currentAccountForJwbinfosys = nil
+            currentAccountForJwbinfosys = allAccountsForJwbinfosys.first
         }
     }
     

@@ -12,7 +12,6 @@ import CoreData
 /// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Make sure current account exists or login validation is invoked before using instance methods. Singleton pattern is used here.
 public class MobileManager: NSObject {
     
-    // TODO: Check if password has been changed since added to account manager.
     private override init() {
         super.init()
         if let account = accountManager.currentAccountForJwbinfosys {
@@ -31,7 +30,6 @@ public class MobileManager: NSObject {
     
     // MARK: - Manage accounts
     
-    // TODO: Refresh data
     /**
      Validate a newly added account of JWBInfoSys. If valid, it will be added to account manager as current account and created as a user entity.
      
@@ -48,6 +46,7 @@ public class MobileManager: NSObject {
                 try! self.managedObjectContext.save()
                 self.accountManager.addAccountToJwbinfosys(username, password: password)
                 self.dataStore = DataStore(username: username)
+                self.refreshAll {}
                 callback(status, error)
             } else {
                 callback(status, error)
@@ -63,24 +62,27 @@ public class MobileManager: NSObject {
     public func changeUser(username: String) {
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
         dataStore = DataStore(username: username)
+        refreshAll {}
     }
     
-    // TODO: automatically change user
     /**
-     Delete an account and clear its data from CoreData. If it is current account, all related variable will be set to nil.
+     Delete an account and clear its data from CoreData. If current account is deleted, it will be reset to another account.
      
      - parameter username: Username of the account
      */
     public func deleteUser(username: String) {
-        // Change user and delete data.
-        let anotherDataSource: DataStore = DataStore(username: username)
+        accountManager.removeAccountFromJwbinfosys(username)
+        let anotherDataSource = DataStore(username: username)
         anotherDataSource.deleteCourses()
         anotherDataSource.deleteExams()
         anotherDataSource.deleteScores()
         anotherDataSource.deleteUser()
-        accountManager.removeAccountFromJwbinfosys(username)
-        apiSession = nil
-        dataStore = nil
+        if let account = accountManager.currentAccountForJwbinfosys {
+            changeUser(account)
+        } else {
+            dataStore = nil
+            apiSession = nil
+        }
     }
     
     // MARK: - Retrieve events

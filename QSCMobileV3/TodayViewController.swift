@@ -24,7 +24,7 @@ class TodayViewController: UIViewController {
             } else {
                 self.textView.text += error!
             }
-            self.textView.text += "\nHalo"
+            self.textView.text += "\n."
         }
     }
 
