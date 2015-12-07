@@ -17,10 +17,15 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         
         let mobileManager = MobileManager.sharedInstance
-        mobileManager.refreshAll()
-        sleep(3) // FIXME: Async refresh should accept a closure.
-        let courses = mobileManager.coursesForDate(NSDate().dateByAddingTimeInterval(3600*24))
-        print(courses)
+        mobileManager.refreshCourses { status, error in
+            if status {
+                let courses = mobileManager.coursesForDate(NSDate())
+                self.textView.text += courses.description
+            } else {
+                self.textView.text += error!
+            }
+            self.textView.text += "\nHalo"
+        }
     }
 
     override func didReceiveMemoryWarning() {

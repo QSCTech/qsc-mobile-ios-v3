@@ -98,7 +98,7 @@ class DataStore: NSObject {
     }
     
     /**
-     Create all exams in managed object context.
+     Create all exams in managed object context. Time and place may be empty for some exams.
      
      - parameter json: JSON of exams.
      */

@@ -137,14 +137,21 @@ public class MobileManager: NSObject {
     // MARK: - Refresh data
     
     /**
-     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both gracefully, which is expected to be called while launching.
+     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both silently, which is expected to be called while launching.
+    
+     - parameter callback: A closure to be executed once the request has finished.
      */
-    public func refreshAll() {
-        refreshCalendar({ _ in })
-        refreshCourses({ _ in })
-        refreshExams({ _ in })
-        refreshScores({ _ in })
-        refreshBuses({ _ in })
+    public func refreshAll(callback: () -> Void) {
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let group = dispatch_group_create()
+        
+        dispatch_group_async(group, queue) { self.refreshCalendar({ _ in }) }
+        dispatch_group_async(group, queue) { self.refreshCourses({ _ in }) }
+        dispatch_group_async(group, queue) { self.refreshExams({ _ in }) }
+        dispatch_group_async(group, queue) { self.refreshScores({ _ in }) }
+        dispatch_group_async(group, queue) { self.refreshBuses({ _ in }) }
+        
+        dispatch_group_notify(group, dispatch_get_main_queue(), callback)
     }
     
     /**
@@ -152,14 +159,14 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshCourses(callback: (Bool) -> Void) {
+    public func refreshCourses(callback: (Bool, String?) -> Void) {
         apiSession.courseRequest { json, error in
             if let json = json {
                 self.dataStore.deleteCourses()
                 self.dataStore.createCourses(json)
-                callback(true)
+                callback(true, error)
             } else {
-                callback(false)
+                callback(false, error)
             }
         }
     }
@@ -169,14 +176,14 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshExams(callback: (Bool) -> Void) {
+    public func refreshExams(callback: (Bool, String?) -> Void) {
         apiSession.examRequest { json, error in
             if let json = json {
                 self.dataStore.deleteExams()
                 self.dataStore.createExams(json)
-                callback(true)
+                callback(true, error)
             } else {
-                callback(false)
+                callback(false, error)
             }
         }
     }
@@ -186,22 +193,22 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshScores(callback: (Bool) -> Void) {
+    public func refreshScores(callback: (Bool, String?) -> Void) {
         apiSession.scoreRequest { json, error in
             if let json = json {
                 self.dataStore.deleteScores()
                 self.dataStore.createSemesterScores(json)
-                callback(true)
+                callback(true, error)
             } else {
-                callback(false)
+                callback(false, error)
             }
         }
         apiSession.statisticsRequest { json, error in
             if let json = json {
                 self.dataStore.createStatistics(json)
-                callback(true)
+                callback(true, error)
             } else {
-                callback(false)
+                callback(false, error)
             }
         }
     }
@@ -211,14 +218,14 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshCalendar(callback: (Bool) -> Void) {
+    public func refreshCalendar(callback: (Bool, String?) -> Void) {
         apiSession.calendarRequest { json, error in
             if let json = json {
                 self.dataStore.deleteCalendar()
                 self.dataStore.createCalendar(json)
-                callback(true)
+                callback(true, error)
             } else {
-                callback(false)
+                callback(false, error)
             }
         }
     }
@@ -228,14 +235,14 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshBuses(callback: (Bool) -> Void) {
+    public func refreshBuses(callback: (Bool, String?) -> Void) {
         apiSession.busRequest { json, error in
             if let json = json {
                 self.dataStore.deleteBuses()
                 self.dataStore.createBuses(json)
-                callback(true)
+                callback(true, error)
             } else {
-                callback(false)
+                callback(false, error)
             }
         }
     }

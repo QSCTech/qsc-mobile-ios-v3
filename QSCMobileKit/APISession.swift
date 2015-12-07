@@ -14,16 +14,22 @@ import SwiftyJSON
 class APISession: NSObject {
     
     init(username: String, password: String) {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.timeoutIntervalForResource = 10
+        alamofireManager = Alamofire.Manager(configuration: configuration)
+        
         self.username = username
         self.password = password
+        
         super.init()
     }
+    
+    private let alamofireManager: Alamofire.Manager
     
     private let username: String
     private let password: String
     private var sessionId: String!
     private var sessionKey: String!
-    
     
     // MARK: - Hash Functions
     
@@ -133,21 +139,21 @@ class APISession: NSObject {
             ]
         ]
         let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")
-        Alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON)
-                 .responseJSON { response in
-                    if response.result.isFailure {
-                        callback(false, response.result.error!.description)
-                        return
-                    }
-                    let json = JSON(response.result.value!)
-                    if (json["status"].string == "ok") {
-                        self.sessionId = json["sessionId"].string
-                        self.sessionKey = json["sessionKey"].string
-                        callback(true, nil)
-                    } else {
-                        callback(false, json["error"].string)
-                    }
-                 }
+        alamofireManager.request(.POST, loginURL, parameters: postData, encoding: .JSON)
+                        .responseJSON { response in
+                            if response.result.isFailure {
+                                callback(false, response.result.error!.localizedDescription)
+                                return
+                            }
+                            let json = JSON(response.result.value!)
+                            if (json["status"].string == "ok") {
+                                self.sessionId = json["sessionId"].string
+                                self.sessionKey = json["sessionKey"].string
+                                callback(true, nil)
+                            } else {
+                                callback(false, json["error"].string)
+                            }
+                        }
     }
     
     /**
@@ -168,34 +174,34 @@ class APISession: NSObject {
             "requestList": stringFromJSONObject(requestList)
         ]
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
-        Alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
-                 .responseJSON { response in
-                    if response.result.isFailure {
-                        callback(nil, response.result.error!.description)
-                        return
-                    }
-                    let json = JSON(response.result.value!)
-                    if (json["status"].string == "ok") {
-                        if let responseList = json["responseList"].string {
-                            let responseJSON = JSON(self.jsonObjectFromString(responseList))
-                            callback(responseJSON[0]["data"], nil)
-                        } else {
-                            callback(nil, "The response list is null.")
-                        }
-                    } else if (json["status"].string == "sessionFail") {
-                        self.loginRequest { status, error in
-                            if status {
-                                self.resourceRequest(requestList) { json, error in
-                                    callback(json, error)
+        alamofireManager.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
+                        .responseJSON { response in
+                            if response.result.isFailure {
+                                callback(nil, response.result.error!.localizedDescription)
+                                return
+                            }
+                            let json = JSON(response.result.value!)
+                            if (json["status"].string == "ok") {
+                                if let responseList = json["responseList"].string {
+                                    let responseJSON = JSON(self.jsonObjectFromString(responseList))
+                                    callback(responseJSON[0]["data"], nil)
+                                } else {
+                                    callback(nil, "The response list is null.")
+                                }
+                            } else if (json["status"].string == "sessionFail") {
+                                self.loginRequest { status, error in
+                                    if status {
+                                        self.resourceRequest(requestList) { json, error in
+                                            callback(json, error)
+                                        }
+                                    } else {
+                                        callback(nil, error)
+                                    }
                                 }
                             } else {
-                                callback(nil, error)
+                                callback(nil, json["error"].string)
                             }
                         }
-                    } else {
-                        callback(nil, json["error"].string)
-                    }
-                 }
     }
     
     /**

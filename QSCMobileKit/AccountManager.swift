@@ -35,14 +35,6 @@ public class AccountManager: NSObject {
         currentAccountForJwbinfosys = username
     }
     
-    // TODO: Modify password from UI.
-    /**
-     Modify the password of the specified account.
-     */
-    func modifyAccountOfJwbinfosys(username: String, password: String) {
-        jwbinfosysKeychain[username] = password
-    }
-    
     /**
      Remove an account from JWBInfoSys.
      */
