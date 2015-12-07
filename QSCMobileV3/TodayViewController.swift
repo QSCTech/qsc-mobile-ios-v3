@@ -17,14 +17,9 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         
         let mobileManager = MobileManager.sharedInstance
-        mobileManager.refreshCourses { status, error in
-            if status {
-                let courses = mobileManager.coursesForDate(NSDate())
-                self.textView.text += courses.description
-            } else {
-                self.textView.text += error!
-            }
-            self.textView.text += "\n."
+        mobileManager.refreshAll {
+            let courses = mobileManager.coursesForDate(NSDate())
+            self.textView.text += courses.description
         }
     }
 

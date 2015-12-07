@@ -113,7 +113,7 @@ class DataStore: NSObject {
                 exam.identifier = json["identifier"].stringValue
                 exam.isRelearning = json["isRelearning"].boolValue
                 exam.name = json["name"].stringValue
-                exam.place = json["name"].stringValue
+                exam.place = json["place"].stringValue
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
                 exam.time = json["time"].stringValue

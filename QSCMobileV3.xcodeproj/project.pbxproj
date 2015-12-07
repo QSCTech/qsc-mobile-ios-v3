@@ -134,7 +134,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04C331C51BA2F2E600EF959F /* 求是潮.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "求是潮.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C331C51BA2F2E600EF959F /* QSCMobileV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QSCMobileV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C331C81BA2F2E600EF959F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 		04C331C61BA2F2E600EF959F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04C331C51BA2F2E600EF959F /* 求是潮.app */,
+				04C331C51BA2F2E600EF959F /* QSCMobileV3.app */,
 				04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */,
 				04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */,
 				9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */,
@@ -470,7 +470,7 @@
 			);
 			name = QSCMobileV3;
 			productName = QSCMobileV3;
-			productReference = 04C331C51BA2F2E600EF959F /* 求是潮.app */;
+			productReference = 04C331C51BA2F2E600EF959F /* QSCMobileV3.app */;
 			productType = "com.apple.product-type.application";
 		};
 		04C331DA1BA2F2E700EF959F /* QSCMobileV3Tests */ = {
@@ -1096,7 +1096,7 @@
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
-				PRODUCT_NAME = "求是潮";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1116,7 +1116,7 @@
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
-				PRODUCT_NAME = "求是潮";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 			};
