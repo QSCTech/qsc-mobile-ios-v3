@@ -48,7 +48,7 @@ public class CalendarManager: NSObject {
      
      - returns: A description like "2015-2016" or "" if failed.
      */
-    public func yearForDate(date: NSDate = NSDate()) -> String {
+    public func yearForDate(date: NSDate) -> String {
         return entityForYear(date)?.name ?? ""
     }
     
@@ -59,7 +59,7 @@ public class CalendarManager: NSObject {
      
      - returns: Corresponding `CalendarSemester` or `.Unknown` if failed.
      */
-    public func semesterForDate(date: NSDate = NSDate()) -> CalendarSemester {
+    public func semesterForDate(date: NSDate) -> CalendarSemester {
         if let semester = entityForSemester(date) {
             return CalendarSemester(rawValue: semester.name!) ?? .Unknown
         } else {
@@ -74,7 +74,7 @@ public class CalendarManager: NSObject {
      
      - returns: The name of a holiday or nil.
      */
-    public func holidayForDate(date: NSDate = NSDate()) -> String? {
+    public func holidayForDate(date: NSDate) -> String? {
         if let year = entityForYear(date) {
             for holiday in year.holidays! {
                 let holiday = holiday as! Holiday
@@ -95,7 +95,7 @@ public class CalendarManager: NSObject {
      
      - returns: A tuple containing the name and the destination date of an adjustment or nil.
      */
-    public func adjustmentForDate(date: NSDate = NSDate()) -> (name: String, toDate: NSDate)? {
+    public func adjustmentForDate(date: NSDate) -> (name: String, toDate: NSDate)? {
         if let year = entityForYear(date) {
             for adjustment in year.adjustments! {
                 let adjustment = adjustment as! Adjustment
@@ -117,7 +117,7 @@ public class CalendarManager: NSObject {
      
      - returns: An integer representing the week ordinal or -1 if failed.
      */
-    public func weekOrdinalForDate(date: NSDate = NSDate()) -> Int {
+    public func weekOrdinalForDate(date: NSDate) -> Int {
         if let semester = entityForSemester(date) {
             let weekTimeInterval = NSTimeInterval(604800)
             let dayTimeInterval = NSTimeInterval(86400)

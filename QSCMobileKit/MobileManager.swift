@@ -91,11 +91,8 @@ public class MobileManager: NSObject {
     
     // MARK: - Retrieve events
     
-    // FIXME: to filter user
     /**
      Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already.
-    
-     - parameter date: A date to be queried.
     
      - returns: An array of type `Event` sorted by starting time.
      */
@@ -114,10 +111,7 @@ public class MobileManager: NSObject {
         let weekday = calendar.component(.Weekday, fromDate: date)
         let todayComponents = calendar.components([.Year, .Month, .Day], fromDate: NSDate())
         
-        let request = NSFetchRequest(entityName: "Course")
-        request.predicate = NSPredicate(format: "(year == %@) AND (semester contains %@)", year, semester.name)
-        let courses = try! managedObjectContext.executeFetchRequest(request) as! [Course]
-        
+        let courses = dataStore.getCourses(year: year, semester: semester)
         var array = [Event]()
         for course in courses {
             for timePlace in course.timePlaces! {
@@ -141,10 +135,37 @@ public class MobileManager: NSObject {
         return array.sort { $0.start <= $1.start }
     }
     
+    /**
+     Retrieve an array of exams on the specified date.
+     
+     - returns: An array of type `Event` sorted by starting time.
+     */
+    public func examsForDate(date: NSDate) -> [Event] {
+        let year = calendarManager.yearForDate(date)
+        let semester = calendarManager.semesterForDate(date)
+        let calendar = NSCalendar.currentCalendar()
+        let todayComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
+        let today = calendar.dateFromComponents(todayComponents)!
+        let dayTimeInterval = NSTimeInterval(86400)
+        let tomorrow = today.dateByAddingTimeInterval(dayTimeInterval)
+        
+        let exams = dataStore.getExams(year: year, semester: semester)
+        var array = [Event]()
+        for exam in exams {
+            if let startTime = exam.startTime, endTime = exam.endTime {
+                if !(exam.endTime! < today || exam.startTime! > tomorrow) {
+                    let event = Event(type: .PartialTime, category: .Exam, tags: [], name: exam.name!, time: exam.time!, place: exam.place!, start: startTime, end: endTime, object: exam)
+                    array.append(event)
+                }
+            }
+        }
+        return array.sort { $0.start <= $1.start }
+    }
+    
     // MARK: - Refresh data
     
     /**
-     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both silently, which is expected to be called while launching.
+     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both silently.
     
      - parameter callback: A closure to be executed once the request has finished.
      */

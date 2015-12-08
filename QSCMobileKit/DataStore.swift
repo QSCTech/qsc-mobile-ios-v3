@@ -89,7 +89,7 @@ class DataStore: NSObject {
                     timePlace.time! += "\n\(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
-                    timePlace.time! += String(format: "（%02d:%02d - %02d:%02d）", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
+                    timePlace.time! += String(format: "（%02d:%02d-%02d:%02d）", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
                 }
                 
             }
@@ -345,6 +345,47 @@ class DataStore: NSObject {
     func deleteUser() {
         managedObjectContext.deleteObject(currentUser)
         try! managedObjectContext.save()
+    }
+    
+    // MARK: - Retrieval
+    
+    /**
+     Retrieve current user's courses with the specified semester.
+    
+     - returns: An array of courses sorted by credit.
+    */
+    func getCourses(year year: String, semester: CalendarSemester) -> [Course] {
+        let array = currentUser.courses!.filter {
+            let course = $0 as! Course
+            return course.year == year && course.semester!.includesSemester(semester)
+        } as! [Course]
+        return array.sort { $0.credit! >= $1.credit! }
+    }
+    
+    /**
+     Retrieve current user's exams with the specified semester.
+     
+     - returns: An array of exams sorted by credit.
+     */
+    func getExams(year year: String, semester: CalendarSemester) -> [Exam] {
+        let array = currentUser.exams!.filter {
+            let exam = $0 as! Exam
+            return exam.year == year && exam.semester!.includesSemester(semester)
+        } as! [Exam]
+        return array.sort { $0.credit! >= $1.credit! }
+    }
+    
+    /**
+     Retrieve current user's scores with the specified semester.
+     
+     - returns: An array of scores sorted by grade.
+     */
+    func getScores(year year: String, semester: CalendarSemester) -> [Score] {
+        let array = currentUser.scores!.filter {
+            let score = $0 as! Score
+            return score.year == year && score.semester!.includesSemester(semester)
+        } as! [Score]
+        return array.sort { $0.gradePoint! >= $1.gradePoint! }
     }
     
 }

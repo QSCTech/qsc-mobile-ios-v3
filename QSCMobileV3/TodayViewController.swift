@@ -18,8 +18,7 @@ class TodayViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         mobileManager.refreshAll {
-            let courses = self.mobileManager.coursesForDate(NSDate())
-            self.textView.text += courses.description
+            self.textView.text += self.mobileManager.coursesForDate(NSDate()).description
         }
     }
     
