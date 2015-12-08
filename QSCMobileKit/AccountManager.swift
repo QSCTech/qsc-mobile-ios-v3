@@ -24,8 +24,10 @@ public class AccountManager: NSObject {
     private let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
     
     // MARK: - JWBInfoSys
-    private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
     private let jwbinfosysKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.jwbinfosys")
+    private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
+    private let JwbinfosysSessionId = "JwbinfosysSessionId"
+    private let JwbinfosysSessionKey = "JwbinfosysSessionKey"
     
     /**
      Add an account to JWBInfoSys and set it to current account.
@@ -57,6 +59,18 @@ public class AccountManager: NSObject {
         }
         set {
             groupDefaults.setObject(newValue, forKey: JwbinfosysCurrentAccountKey)
+            groupDefaults.synchronize()
+        }
+    }
+    
+    /// Get or set session id and key of JWBInfoSys. This property is represented as a tuple, either of which can be nil.
+    var sessionForCurrentAccount: (id: String?, key: String?) {
+        get {
+            return (groupDefaults.stringForKey(JwbinfosysSessionId), groupDefaults.stringForKey(JwbinfosysSessionKey))
+        }
+        set {
+            groupDefaults.setObject(newValue.id, forKey: JwbinfosysSessionId)
+            groupDefaults.setObject(newValue.key, forKey: JwbinfosysSessionKey)
             groupDefaults.synchronize()
         }
     }

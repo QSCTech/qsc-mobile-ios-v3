@@ -11,24 +11,18 @@ import QSCMobileKit
 
 class TodayViewController: UIViewController {
 
+    let mobileManager: MobileManager = MobileManager.sharedInstance
+    
     @IBOutlet weak var textView: UITextView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let mobileManager = MobileManager.sharedInstance
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         mobileManager.refreshAll {
-            let courses = mobileManager.coursesForDate(NSDate())
+            let courses = self.mobileManager.coursesForDate(NSDate())
             self.textView.text += courses.description
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
     /*
     // MARK: - Navigation
 

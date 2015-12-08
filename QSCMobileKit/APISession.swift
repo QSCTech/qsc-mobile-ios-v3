@@ -17,19 +17,25 @@ class APISession: NSObject {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForResource = 10
         alamofireManager = Alamofire.Manager(configuration: configuration)
+        accountManager = AccountManager.sharedInstance
         
         self.username = username
         self.password = password
+        session = accountManager.sessionForCurrentAccount
         
         super.init()
     }
     
     private let alamofireManager: Alamofire.Manager
+    private let accountManager: AccountManager
     
     private let username: String
     private let password: String
-    private var sessionId: String!
-    private var sessionKey: String!
+    private var session: (id: String?, key: String?) {
+        willSet {
+            accountManager.sessionForCurrentAccount = newValue
+        }
+    }
     
     // MARK: - Hash Functions
     
@@ -142,17 +148,16 @@ class APISession: NSObject {
         alamofireManager.request(.POST, loginURL, parameters: postData, encoding: .JSON)
                         .responseJSON { response in
                             if response.result.isFailure {
-                                print("Login error: \(response.result.error!.localizedDescription)")
+                                print("Login request: \(response.result.error!.localizedDescription)")
                                 callback(false, "网络连接失败")
                                 return
                             }
                             let json = JSON(response.result.value!)
                             if (json["status"].string == "ok") {
-                                self.sessionId = json["sessionId"].string
-                                self.sessionKey = json["sessionKey"].string
+                                self.session = (json["sessionId"].string, json["sessionKey"].string)
                                 callback(true, nil)
                             } else {
-                                print("Login error: \(json["status"].string) - \(json["error"].string)")
+                                print("Login request: \(json["status"].string) - \(json["error"].string)")
                                 callback(false, "账户或密码错误")
                             }
                         }
@@ -165,21 +170,20 @@ class APISession: NSObject {
      - parameter callback:    A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
      */
     private func resourceRequest(requestList: [AnyObject], callback: (JSON?, String?) -> Void) {
-        if sessionId == nil || sessionKey == nil {
+        if session.id == nil || session.key == nil {
             // Delay processing until `sessionFail`
-            sessionId = ""
-            sessionKey = ""
+            session = ("", "")
         }
         let postData: [String: AnyObject] = [
-            "sessionId": sessionId,
-            "sessionKey": sessionKey,
+            "sessionId": session.id!,
+            "sessionKey": session.key!,
             "requestList": stringFromJSONObject(requestList)
         ]
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         alamofireManager.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
                         .responseJSON { response in
                             if response.result.isFailure {
-                                print("Resource request error: \(response.result.error!.localizedDescription)")
+                                print("Resource request: \(response.result.error!.localizedDescription)")
                                 callback(nil, "网络连接失败")
                                 return
                             }
@@ -189,21 +193,20 @@ class APISession: NSObject {
                                     let responseJSON = JSON(self.jsonObjectFromString(responseList))
                                     callback(responseJSON[0]["data"], nil)
                                 } else {
-                                    print("Resource request error: Response list is null.")
+                                    print("Resource request: Response list is null.")
                                     callback(nil, "刷新失败，请重试")
                                 }
                             } else if (json["status"].string == "sessionFail") {
+                                print("Resource request: sessionFail")
                                 self.loginRequest { status, error in
                                     if status {
-                                        self.resourceRequest(requestList) { json, error in
-                                            callback(json, error)
-                                        }
+                                        self.resourceRequest(requestList, callback: callback)
                                     } else {
                                         callback(nil, error)
                                     }
                                 }
                             } else {
-                                print("Resource request error: \(json["status"].string) - \(json["error"].string))")
+                                print("Resource request: \(json["status"].string) - \(json["error"].string))")
                                 callback(nil, "刷新失败，请重试")
                             }
                         }

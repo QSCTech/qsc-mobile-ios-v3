@@ -12,6 +12,9 @@ import CoreData
 /// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Make sure current account exists or login validation is invoked before using instance methods. Singleton pattern is used here.
 public class MobileManager: NSObject {
     
+    /**
+     Try to initialize manager with current account stored in keychain and login to get session ID.
+     */
     private override init() {
         super.init()
         if let account = accountManager.currentAccountForJwbinfosys {
@@ -38,13 +41,14 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
      */
     public func loginValidate(username: String, password: String, callback: (Bool, String?) -> Void) {
-        apiSession = APISession(username: username, password: password)
+        let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { status, error in
             if status {
                 let user = User(context: self.managedObjectContext)
                 user.sid = username
                 try! self.managedObjectContext.save()
                 self.accountManager.addAccountToJwbinfosys(username, password: password)
+                self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
                 self.refreshAll {}
                 callback(status, error)
@@ -61,8 +65,8 @@ public class MobileManager: NSObject {
      */
     public func changeUser(username: String) {
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
+        apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
-        refreshAll {}
     }
     
     /**
@@ -87,13 +91,14 @@ public class MobileManager: NSObject {
     
     // MARK: - Retrieve events
     
+    // FIXME: to filter user
     /**
-    Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already.
+     Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already.
     
-    - parameter date: A date to be queried.
+     - parameter date: A date to be queried.
     
-    - returns: An array of type `Event` sorted by starting time.
-    */
+     - returns: An array of type `Event` sorted by starting time.
+     */
     public func coursesForDate(var date: NSDate) -> [Event] {
         if calendarManager.holidayForDate(date) != nil {
             return []
@@ -144,15 +149,15 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished.
      */
     public func refreshAll(callback: () -> Void) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         let group = dispatch_group_create()
-        
-        dispatch_group_async(group, queue) { self.refreshCalendar({ _ in }) }
-        dispatch_group_async(group, queue) { self.refreshCourses({ _ in }) }
-        dispatch_group_async(group, queue) { self.refreshExams({ _ in }) }
-        dispatch_group_async(group, queue) { self.refreshScores({ _ in }) }
-        dispatch_group_async(group, queue) { self.refreshBuses({ _ in }) }
-        
+        for _ in 0..<5 {
+            dispatch_group_enter(group)
+        }
+        refreshCalendar { _ in dispatch_group_leave(group) }
+        refreshCourses { _ in dispatch_group_leave(group) }
+        refreshExams { _ in dispatch_group_leave(group) }
+        refreshScores { _ in dispatch_group_leave(group) }
+        refreshBuses { _ in dispatch_group_leave(group) }
         dispatch_group_notify(group, dispatch_get_main_queue(), callback)
     }
     
@@ -200,15 +205,14 @@ public class MobileManager: NSObject {
             if let json = json {
                 self.dataStore.deleteScores()
                 self.dataStore.createSemesterScores(json)
-                callback(true, error)
-            } else {
-                callback(false, error)
-            }
-        }
-        apiSession.statisticsRequest { json, error in
-            if let json = json {
-                self.dataStore.createStatistics(json)
-                callback(true, error)
+                self.apiSession.statisticsRequest { json, error in
+                    if let json = json {
+                        self.dataStore.createStatistics(json)
+                        callback(true, error)
+                    } else {
+                        callback(false, error)
+                    }
+                }
             } else {
                 callback(false, error)
             }

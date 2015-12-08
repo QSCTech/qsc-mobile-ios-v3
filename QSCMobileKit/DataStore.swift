@@ -194,7 +194,7 @@ class DataStore: NSObject {
     func createCalendar(json: JSON) {
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mmz"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         for (key, json) in json {
             let year = Year(context: managedObjectContext)
