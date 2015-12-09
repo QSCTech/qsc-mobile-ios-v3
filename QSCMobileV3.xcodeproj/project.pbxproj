@@ -15,10 +15,11 @@
 		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
 		0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */; };
 		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; };
-		9D64D4E81C1077A60012BB3F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* CalendarManager.swift */; };
+		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
+		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
 		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
-		9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* AccountManager.swift */; };
+		9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* CalendarManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
@@ -154,13 +155,14 @@
 		7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.debug.xcconfig"; sourceTree = "<group>"; };
 		91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.release.xcconfig"; sourceTree = "<group>"; };
-		9D64D4E71C1077A60012BB3F /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
+		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
 		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
-		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileManager.swift; sourceTree = "<group>"; };
-		9D6A89611C0B11BB008EC60B /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
+		9D6A89611C0B11BB008EC60B /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarManager.swift; path = Mobile/CalendarManager.swift; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
-		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
@@ -173,9 +175,9 @@
 		9DCDE7961C083C070087C31F /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusStop.swift; path = CoreData/BusStop.swift; sourceTree = "<group>"; };
 		9DCDE7981C083C070087C31F /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = CoreData/Year.swift; sourceTree = "<group>"; };
 		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
-		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
+		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Init.swift"; sourceTree = "<group>"; };
+		9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "CoreData/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -335,6 +337,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9D42D2DA1C1867800066EEFC /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				9D64D4E71C1077A60012BB3F /* AccountManager.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		9D42D2DC1C1867950066EEFC /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				9D6A89611C0B11BB008EC60B /* CalendarManager.swift */,
+				9D6A895D1C0B0603008EC60B /* MobileManager.swift */,
+				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
+				9D6A89661C0C4EF7008EC60B /* DataStore.swift */,
+			);
+			name = Mobile;
+			sourceTree = "<group>";
+		};
+		9D42D2DD1C1867B00066EEFC /* ZJUWLAN */ = {
+			isa = PBXGroup;
+			children = (
+				9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */,
+			);
+			name = ZJUWLAN;
+			sourceTree = "<group>";
+		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,12 +410,10 @@
 			isa = PBXGroup;
 			children = (
 				9DCDE7B61C0841130087C31F /* Common.swift */,
-				9D64D4E71C1077A60012BB3F /* CalendarManager.swift */,
-				9D6A89611C0B11BB008EC60B /* AccountManager.swift */,
-				9D6A895D1C0B0603008EC60B /* MobileManager.swift */,
-				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
-				9D6A89661C0C4EF7008EC60B /* DataStore.swift */,
+				9D42D2DA1C1867800066EEFC /* Account */,
+				9D42D2DC1C1867950066EEFC /* Mobile */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
+				9D42D2DD1C1867B00066EEFC /* ZJUWLAN */,
 				9DCDE7B11C0840900087C31F /* Support Files */,
 			);
 			path = QSCMobileKit;
@@ -876,7 +903,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D6A89621C0B11BB008EC60B /* AccountManager.swift in Sources */,
+				9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */,
 				9DCDE79E1C083C070087C31F /* Bus.swift in Sources */,
 				9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */,
 				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
@@ -885,7 +912,7 @@
 				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
-				9D64D4E81C1077A60012BB3F /* CalendarManager.swift in Sources */,
+				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
 				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,
@@ -895,6 +922,7 @@
 				9DCDE7A01C083C070087C31F /* TimePlace.swift in Sources */,
 				9DCDE7AC1C083C070087C31F /* Year.swift in Sources */,
 				9DCDE7821C0728E40087C31F /* Exam.swift in Sources */,
+				9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */,
 				9DCDE7A81C083C070087C31F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
