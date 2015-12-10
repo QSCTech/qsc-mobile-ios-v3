@@ -11,10 +11,10 @@ import CoreData
 
 let AppKey = "aq86L/EUgOPxD7ZJzr3rK4zBRyo8oVzF"
 
-let MobileAPIURL  = "https://m.zjuqsc.com/v3api/"
-let NoticeURL     = "https://notice.zjuqsc.com"
-let BoxURL        = "https://box.zjuqsc.com"
-let TideURL       = "http://tide.zjuqsc.com/wp/"
+let MobileAPIURL = "https://m.zjuqsc.com/v3api/"
+let NoticeURL    = "https://notice.zjuqsc.com"
+let BoxURL       = "https://box.zjuqsc.com"
+let TideURL      = "http://tide.zjuqsc.com/wp/"
 
 let ZjuwlanLoginURL  = "https://net.zju.edu.cn/cgi-bin/srun_portal"
 let ZjuwlanLogoutURL = "https://net.zju.edu.cn/rad_online.php"

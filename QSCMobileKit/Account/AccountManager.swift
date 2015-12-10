@@ -32,7 +32,7 @@ public class AccountManager: NSObject {
     /**
      Add an account to JWBInfoSys and set it to current account.
      */
-    func addAccountToJwbinfosys(username: String, password: String) {
+    func addAccountToJwbinfosys(username: String, _ password: String) {
         jwbinfosysKeychain[username] = password
         currentAccountForJwbinfosys = username
     }

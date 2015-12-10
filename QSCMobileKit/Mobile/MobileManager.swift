@@ -40,14 +40,14 @@ public class MobileManager: NSObject {
      - parameter password: Password of the account.
      - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
      */
-    public func loginValidate(username: String, password: String, callback: (Bool, String?) -> Void) {
+    public func loginValidate(username: String, _ password: String, callback: (Bool, String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { status, error in
             if status {
                 let user = User(context: self.managedObjectContext)
                 user.sid = username
                 try! self.managedObjectContext.save()
-                self.accountManager.addAccountToJwbinfosys(username, password: password)
+                self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
                 self.refreshAll {}

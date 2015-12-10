@@ -17,8 +17,14 @@ class TodayViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        mobileManager.refreshAll {
-            self.textView.text += self.mobileManager.coursesForDate(NSDate()).description
+        self.textView.text += ZjuwlanConnection.currentSSID + "\n"
+        ZjuwlanConnection.link { status, error in
+            if !status {
+                print(error!)
+            }
+            self.mobileManager.refreshAll {
+                self.textView.text += self.mobileManager.coursesForDate(NSDate()).description
+            }
         }
     }
     

@@ -157,8 +157,8 @@ class APISession: NSObject {
                                 self.session = (json["sessionId"].string, json["sessionKey"].string)
                                 callback(true, nil)
                             } else {
-                                print("Login request: \(json["status"].string) - \(json["error"].string)")
-                                callback(false, "账户或密码错误")
+                                print("Login request: \(json["status"].stringValue) - \(json["error"].stringValue)")
+                                callback(false, "用户名或密码错误")
                             }
                         }
     }
@@ -206,7 +206,7 @@ class APISession: NSObject {
                                     }
                                 }
                             } else {
-                                print("Resource request: \(json["status"].string) - \(json["error"].string))")
+                                print("Resource request: \(json["status"].stringValue) - \(json["error"].stringValue))")
                                 callback(nil, "刷新失败，请重试")
                             }
                         }
