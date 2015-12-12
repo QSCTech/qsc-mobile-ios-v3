@@ -11,7 +11,7 @@ import SwiftyJSON
 
 public class NoticeManager: NSObject {
     
-    let sharedInstance = NoticeManager()
+    public static let sharedInstance = NoticeManager()
     
     private let noticeAPI = NoticeAPI.sharedInstance
     
@@ -35,7 +35,7 @@ public class NoticeManager: NSObject {
             sponsorLogoURL: NSURL(string: json["sponsor"]["logo"].stringValue)!,
             sponsorLogo: nil,
             bonus: nil,
-            description: nil,
+            content: nil,
             poster: nil
         )
     }
@@ -75,7 +75,7 @@ public class NoticeManager: NSObject {
                 bonus += "二课加分 \(json["event"]["dierketang"].stringValue)"
             }
             event.bonus = bonus
-            event.description = json["event"]["description"].stringValue
+            event.content = json["event"]["description"].stringValue
             let url = json["cover"]["filename"].stringValue
             guard !url.hasSuffix("default.jpg") else {
                 callback(event, nil)

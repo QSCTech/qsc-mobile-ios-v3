@@ -10,20 +10,20 @@ import UIKit
 
 public struct NoticeEvent {
     
-    let id: String
-    let name: String
-    let place: String
-    let summary: String
-    let start: NSDate
-    let end: NSDate
-    let categoryId: String
-    let categoryName: String
-    let sponsorId: String
-    let sponsorName: String
-    let sponsorLogoURL: NSURL
-    var sponsorLogo: UIImage?
-    var bonus: String!
-    var description: String!
-    var poster: UIImage?
+    public let id: String
+    public let name: String
+    public let place: String
+    public let summary: String
+    public let start: NSDate
+    public let end: NSDate
+    public let categoryId: String
+    public let categoryName: String
+    public let sponsorId: String
+    public let sponsorName: String
+    public let sponsorLogoURL: NSURL
+    public var sponsorLogo: UIImage?
+    public var bonus: String!
+    public var content: String!
+    public var poster: UIImage?
     
 }

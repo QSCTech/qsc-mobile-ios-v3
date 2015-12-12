@@ -26,15 +26,15 @@ public struct Event {
     public enum Category {
         case Course, Exam, Quiz, Custom
     }
-    let type: Type
-    let category: Category
-    let tags: [String]
-    let name: String
-    let time: String
-    let place: String
-    let start: NSDate
-    let end: NSDate
-    let object: NSManagedObject
+    public let type: Type
+    public let category: Category
+    public let tags: [String]
+    public let name: String
+    public let time: String
+    public let place: String
+    public let start: NSDate
+    public let end: NSDate
+    public let object: NSManagedObject
 }
 
 enum Weekday: Int {

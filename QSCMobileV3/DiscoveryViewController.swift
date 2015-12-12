@@ -7,15 +7,36 @@
 //
 
 import UIKit
+import QSCMobileKit
 
 class DiscoveryViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let noticeManager = NoticeManager.sharedInstance
+        noticeManager.allEventsWithPage(1) { events, error in
+            guard let events = events else {
+                self.textView.text = error
+                return
+            }
+            self.textView.text = events.description
+            noticeManager.updateSpnsorImageWithEvent(events[0]) { event in
+                self.imageView.image = event.sponsorLogo
+            }
+            noticeManager.updateDetailWithEvent(events[0]) { event, error in
+                guard let event = event else {
+                    self.textView.text = error
+                    return
+                }
+                self.textView.text = event.content
+            }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

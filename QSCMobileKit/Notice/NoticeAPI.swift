@@ -44,12 +44,12 @@ class NoticeAPI: NSObject {
     }
     
     func getAllEventsWithPage(page: Int, callback: (JSON?, String?) -> Void) {
-        let url = NSURL(string: NoticeURL)!.URLByAppendingPathComponent("events?page=\(page)")
+        let url = NSURL(string: "\(NoticeURL)/events?page=\(page)")!
         noticeRequest(url, callback: callback)
     }
     
     func getEventDetailWithId(id: String, callback: (JSON?, String?) -> Void) {
-        let url = NSURL(string: NoticeURL)!.URLByAppendingPathComponent("events/\(id)")
+        let url = NSURL(string: "\(NoticeURL)/events/\(id)")!
         noticeRequest(url, callback: callback)
     }
     

@@ -1,5 +1,5 @@
 //
-//  MineViewController.swift
+//  PreferenceViewController.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2015-12-05.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MineViewController: UIViewController {
+class PreferenceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

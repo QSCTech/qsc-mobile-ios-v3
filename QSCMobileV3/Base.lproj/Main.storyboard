@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -54,7 +54,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="rAU-Dh-UZX" secondAttribute="leading" id="xvF-EV-2o4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="今天" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="今日" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="textView" destination="rAU-Dh-UZX" id="8a0-Ad-XD7"/>
                     </connections>
@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="896" y="390"/>
         </scene>
-        <!--Mine-->
+        <!--Preference-->
         <scene sceneID="PMc-gB-JyH">
             <objects>
-                <viewController title="Mine" id="GZT-3I-Ny7" customClass="MineViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Preference" id="GZT-3I-Ny7" customClass="PreferenceViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tn7-4h-PoX"/>
                         <viewControllerLayoutGuide type="bottom" id="tTc-5g-4CU"/>
@@ -120,7 +120,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的" image="first" id="0E9-fc-AVf"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="first" id="0E9-fc-AVf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUn-S0-C4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -140,7 +140,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="工具" image="second" id="2vL-wP-Qk1"/>
+                    <tabBarItem key="tabBarItem" title="查询" image="second" id="2vL-wP-Qk1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqn-W3-vv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,10 +157,58 @@
                     <view key="view" contentMode="scaleToFill" id="cGs-no-uHb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-UI-CcN">
+                                <rect key="frame" x="20" y="28" width="560" height="515"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hlU-X0-tdd">
+                                <rect key="frame" x="520" y="483" width="60" height="60"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="95p-1h-KMp"/>
+                                    <constraint firstAttribute="height" constant="60" id="csm-EM-fIu"/>
+                                    <constraint firstAttribute="width" constant="240" id="u1s-cI-FTh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="u1s-cI-FTh"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YiO-UI-CcN" firstAttribute="top" secondItem="L4j-BR-56u" secondAttribute="bottom" constant="8" symbolic="YES" id="6CF-x7-NdF"/>
+                            <constraint firstItem="hlU-X0-tdd" firstAttribute="top" secondItem="L4j-BR-56u" secondAttribute="bottom" constant="395" id="6sI-pm-QhA"/>
+                            <constraint firstItem="YiO-UI-CcN" firstAttribute="leading" secondItem="cGs-no-uHb" secondAttribute="leadingMargin" id="F3c-cZ-h0a"/>
+                            <constraint firstItem="hlU-X0-tdd" firstAttribute="top" secondItem="YiO-UI-CcN" secondAttribute="bottom" constant="-128" id="MTn-Wh-vdq"/>
+                            <constraint firstItem="Df1-gi-Awh" firstAttribute="top" secondItem="hlU-X0-tdd" secondAttribute="bottom" constant="8" symbolic="YES" id="ZHW-ie-ffV"/>
+                            <constraint firstItem="hlU-X0-tdd" firstAttribute="bottom" secondItem="YiO-UI-CcN" secondAttribute="bottom" id="fPa-9Y-Cxh"/>
+                            <constraint firstItem="Df1-gi-Awh" firstAttribute="top" secondItem="YiO-UI-CcN" secondAttribute="bottom" constant="8" symbolic="YES" id="fxk-WT-DoI"/>
+                            <constraint firstItem="YiO-UI-CcN" firstAttribute="trailing" secondItem="cGs-no-uHb" secondAttribute="trailingMargin" id="gf0-ea-5S4"/>
+                            <constraint firstItem="hlU-X0-tdd" firstAttribute="trailing" secondItem="YiO-UI-CcN" secondAttribute="trailing" id="iiw-Kf-9jQ"/>
+                            <constraint firstItem="Df1-gi-Awh" firstAttribute="top" secondItem="YiO-UI-CcN" secondAttribute="bottom" constant="8" symbolic="YES" id="kyk-h6-kTO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6sI-pm-QhA"/>
+                                <exclude reference="MTn-Wh-vdq"/>
+                                <exclude reference="ZHW-ie-ffV"/>
+                                <exclude reference="kyk-h6-kTO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="发现" image="first" id="ELC-ks-08q"/>
+                    <connections>
+                        <outlet property="imageView" destination="hlU-X0-tdd" id="NUa-cP-Gyi"/>
+                        <outlet property="textView" destination="YiO-UI-CcN" id="Sli-IM-66g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9G-XH-uKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

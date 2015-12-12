@@ -45,7 +45,7 @@
 		9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */; };
 		9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */; };
 		9DEF638C1C12FDC200A70C5B /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */; };
-		9DEF638E1C12FDD200A70C5B /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638D1C12FDD200A70C5B /* MineViewController.swift */; };
+		9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */; };
 		9DF612671BAA89CC004B0A8A /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		9DF6126E1BAA89CC004B0A8A /* QSCMobileKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -192,7 +192,7 @@
 		9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
-		9DEF638D1C12FDD200A70C5B /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612661BAA89CC004B0A8A /* QSCMobileKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileKitTests.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 				9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */,
 				9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */,
 				9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */,
-				9DEF638D1C12FDD200A70C5B /* MineViewController.swift */,
+				9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
@@ -894,7 +894,7 @@
 				9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */,
 				9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */,
 				9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */,
-				9DEF638E1C12FDD200A70C5B /* MineViewController.swift in Sources */,
+				9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */,
 				9DEF638C1C12FDC200A70C5B /* DiscoveryViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 			);
