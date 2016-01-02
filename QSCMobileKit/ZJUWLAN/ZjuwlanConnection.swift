@@ -59,7 +59,7 @@ public class ZjuwlanConnection: NSObject {
             "ac_id": 5,
             "is_ldap": 1,
             "type": 2,
-            "local_auth": 1
+            "local_auth": 1,
         ]
         Alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData)
                  .responseString { response in
@@ -79,7 +79,7 @@ public class ZjuwlanConnection: NSObject {
         let postData: [String: AnyObject] = [
             "action": "auto_dm",
             "username": username,
-            "password": password
+            "password": password,
         ]
         Alamofire.request(.POST, ZjuwlanLogoutURL, parameters: postData)
                  .responseString { response in

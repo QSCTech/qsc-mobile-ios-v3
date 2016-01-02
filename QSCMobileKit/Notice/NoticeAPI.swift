@@ -23,9 +23,8 @@ class NoticeAPI: NSObject {
     private let alamofireManager: Alamofire.Manager
     
     private func noticeRequest(url: NSURL, callback: (JSON?, String?) -> Void) {
-        let headers = [
-            "X-Requested-With": "XMLHttpRequest"
-        ]
+        let headers = ["X-Requested-With": "XMLHttpRequest"]
+        
         alamofireManager.request(.GET, url, headers: headers)
             .responseJSON { response in
                 if response.result.isFailure {

@@ -140,7 +140,7 @@ class APISession: NSObject {
             "login": [
                 "jwbinfosys": [
                     "userName": username,
-                    "userPass": password
+                    "userPass": password,
                 ]
             ]
         ]
@@ -177,7 +177,7 @@ class APISession: NSObject {
         let postData: [String: AnyObject] = [
             "sessionId": session.id!,
             "sessionKey": session.key!,
-            "requestList": stringFromJSONObject(requestList)
+            "requestList": stringFromJSONObject(requestList),
         ]
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         alamofireManager.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
@@ -223,7 +223,7 @@ class APISession: NSObject {
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"CourseAll\"}",
                 "uuid": "",
-                "version": ""
+                "version": "",
             ]
         ]
         resourceRequest(requestList, callback: callback)
@@ -240,7 +240,7 @@ class APISession: NSObject {
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"ExamAll\"}",
                 "uuid": "",
-                "version": ""
+                "version": "",
             ]
         ]
         resourceRequest(requestList, callback: callback)
@@ -257,7 +257,7 @@ class APISession: NSObject {
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"ScoreAll\"}",
                 "uuid": "",
-                "version": ""
+                "version": "",
             ]
         ]
         resourceRequest(requestList, callback: callback)
@@ -274,7 +274,7 @@ class APISession: NSObject {
                 "fetcher": "jwbInfoSystem",
                 "data": "{\"action\":\"Statistics\"}",
                 "uuid": "",
-                "version": ""
+                "version": "",
             ]
         ]
         resourceRequest(requestList, callback: callback)
@@ -291,7 +291,7 @@ class APISession: NSObject {
                 "fetcher": "staticInterface",
                 "data": "{\"key\":\"schoolCal.all\"}",
                 "uuid": "",
-                "version": ""
+                "version": "",
             ]
         ]
         resourceRequest(requestList, callback: callback)
@@ -308,7 +308,7 @@ class APISession: NSObject {
                 "fetcher": "staticInterface",
                 "data": "{\"key\":\"schoolBus\"}",
                 "uuid": "",
-                "version": ""
+                "version": "",
             ]
         ]
         resourceRequest(requestList, callback: callback)
