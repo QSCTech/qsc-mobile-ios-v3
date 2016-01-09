@@ -13,8 +13,7 @@
 		04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */; };
 		04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */; };
 		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
-		0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */; };
-		38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */; };
+		340C21CFCAEC95A61DA2E312 /* Pods_QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6DC31084F027F438C7E46B /* Pods_QSCMobileKit.framework */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
@@ -56,7 +55,7 @@
 		9DF612981BAA8A32004B0A8A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612971BAA8A32004B0A8A /* ShareViewController.swift */; };
 		9DF6129B1BAA8A32004B0A8A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF612991BAA8A32004B0A8A /* MainInterface.storyboard */; };
 		9DF6129F1BAA8A32004B0A8A /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9DF612951BAA8A32004B0A8A /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BFF5C4808600773BC20B1AB4 /* Pods_QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */; };
+		CC88A4A8CFBD6EDE2BD97E46 /* Pods_QSCMobileV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284FD83E38621A369013ED34 /* Pods_QSCMobileV3.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,14 +149,11 @@
 		04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileV3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileV3UITests.swift; sourceTree = "<group>"; };
 		04C331EC1BA2F2E700EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1390A63062D2AEEA562DCB1A /* Pods-QSCMobileV3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		301D649BD08396FAD5436D05 /* Pods-QSCMobileKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.release.xcconfig"; sourceTree = "<group>"; };
-		3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		41EC86554F19E53293B94FA8 /* Pods-QSCMobileV3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.release.xcconfig"; sourceTree = "<group>"; };
-		7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileV3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.debug.xcconfig"; sourceTree = "<group>"; };
-		91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests.release.xcconfig"; sourceTree = "<group>"; };
+		0E6FF2D6B1550A65BCF5B18B /* Pods-QSCMobileKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.release.xcconfig"; sourceTree = "<group>"; };
+		284FD83E38621A369013ED34 /* Pods_QSCMobileV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DDD987A34ED89842DDBDC80 /* Pods-QSCMobileV3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.debug.xcconfig"; sourceTree = "<group>"; };
+		7E0971AD333C8C7AC2E057CE /* Pods-QSCMobileV3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.release.xcconfig"; sourceTree = "<group>"; };
+		90D078FFD516FBF653CB53A6 /* Pods-QSCMobileKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.debug.xcconfig"; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
@@ -206,7 +202,7 @@
 		9DF612971BAA8A32004B0A8A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		9DF6129A1BAA8A32004B0A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		9DF6129C1BAA8A32004B0A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0BA9F2E9D9E0E036FD78895 /* Pods-QSCMobileV3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.debug.xcconfig"; sourceTree = "<group>"; };
+		AB6DC31084F027F438C7E46B /* Pods_QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38CE5B78D34A225E91428AB1 /* Pods_QSCMobileV3.framework in Frameworks */,
+				CC88A4A8CFBD6EDE2BD97E46 /* Pods_QSCMobileV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +218,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B4718006058BD038B9B01FB /* Pods_QSCMobileV3Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF5C4808600773BC20B1AB4 /* Pods_QSCMobileKit.framework in Frameworks */,
+				340C21CFCAEC95A61DA2E312 /* Pods_QSCMobileKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +274,7 @@
 				9DF612961BAA8A32004B0A8A /* ShareExtension */,
 				9DF612801BAA8A03004B0A8A /* Frameworks */,
 				04C331C61BA2F2E600EF959F /* Products */,
-				0EB8309CAD6E63726E192594 /* Pods */,
+				65EE893D4ADA4866BD8E3EAB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -330,15 +325,13 @@
 			path = QSCMobileV3UITests;
 			sourceTree = "<group>";
 		};
-		0EB8309CAD6E63726E192594 /* Pods */ = {
+		65EE893D4ADA4866BD8E3EAB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */,
-				301D649BD08396FAD5436D05 /* Pods-QSCMobileKit.release.xcconfig */,
-				C0BA9F2E9D9E0E036FD78895 /* Pods-QSCMobileV3.debug.xcconfig */,
-				41EC86554F19E53293B94FA8 /* Pods-QSCMobileV3.release.xcconfig */,
-				1390A63062D2AEEA562DCB1A /* Pods-QSCMobileV3Tests.debug.xcconfig */,
-				98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */,
+				90D078FFD516FBF653CB53A6 /* Pods-QSCMobileKit.debug.xcconfig */,
+				0E6FF2D6B1550A65BCF5B18B /* Pods-QSCMobileKit.release.xcconfig */,
+				7DDD987A34ED89842DDBDC80 /* Pods-QSCMobileV3.debug.xcconfig */,
+				7E0971AD333C8C7AC2E057CE /* Pods-QSCMobileV3.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -450,9 +443,8 @@
 			isa = PBXGroup;
 			children = (
 				9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */,
-				91AB0B92DDF2D3AFC9377365 /* Pods_QSCMobileKit.framework */,
-				3DE47C9F52F9198D78DF4700 /* Pods_QSCMobileV3.framework */,
-				7A568AF6C95A8D27F849280F /* Pods_QSCMobileV3Tests.framework */,
+				AB6DC31084F027F438C7E46B /* Pods_QSCMobileKit.framework */,
+				284FD83E38621A369013ED34 /* Pods_QSCMobileV3.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -496,14 +488,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04C331EF1BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3" */;
 			buildPhases = (
-				636EF9A52FABBA754FDB995A /* Check Pods Manifest.lock */,
+				B13BF478CCF36E6FFE62B956 /* Check Pods Manifest.lock */,
 				04C331C11BA2F2E600EF959F /* Sources */,
 				04C331C21BA2F2E600EF959F /* Frameworks */,
 				04C331C31BA2F2E600EF959F /* Resources */,
 				9DF612791BAA89CC004B0A8A /* Embed Frameworks */,
 				9DF612901BAA8A03004B0A8A /* Embed App Extensions */,
-				9D660B0E0495C6164D89971A /* Embed Pods Frameworks */,
-				E7607D63DEC6AA8F0814A943 /* Copy Pods Resources */,
+				C39B8E8A439AD3EF553183DE /* Embed Pods Frameworks */,
+				2996D116AE5CADA4944AF740 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -521,12 +513,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04C331F21BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3Tests" */;
 			buildPhases = (
-				B296670CCF19A217740AF53F /* Check Pods Manifest.lock */,
 				04C331D71BA2F2E700EF959F /* Sources */,
 				04C331D81BA2F2E700EF959F /* Frameworks */,
 				04C331D91BA2F2E700EF959F /* Resources */,
-				EA21A6553C5B1164BEE4AA76 /* Embed Pods Frameworks */,
-				FBE671BFFC3423B8F86FAEEA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -560,12 +549,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DF612781BAA89CC004B0A8A /* Build configuration list for PBXNativeTarget "QSCMobileKit" */;
 			buildPhases = (
-				F1200D818D888EB54CBC4D48 /* Check Pods Manifest.lock */,
+				D6C00314470E22C78961EB10 /* Check Pods Manifest.lock */,
 				9DF612581BAA89CC004B0A8A /* Sources */,
 				9DF612591BAA89CC004B0A8A /* Frameworks */,
 				9DF6125A1BAA89CC004B0A8A /* Headers */,
 				9DF6125B1BAA89CC004B0A8A /* Resources */,
-				509A2F95E89C2142FBCB30EE /* Copy Pods Resources */,
+				AE2B132E07C79DAA48022795 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -764,67 +753,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		509A2F95E89C2142FBCB30EE /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		636EF9A52FABBA754FDB995A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9D660B0E0495C6164D89971A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B296670CCF19A217740AF53F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E7607D63DEC6AA8F0814A943 /* Copy Pods Resources */ = {
+		2996D116AE5CADA4944AF740 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -839,22 +768,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EA21A6553C5B1164BEE4AA76 /* Embed Pods Frameworks */ = {
+		AE2B132E07C79DAA48022795 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F1200D818D888EB54CBC4D48 /* Check Pods Manifest.lock */ = {
+		B13BF478CCF36E6FFE62B956 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -869,19 +798,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FBE671BFFC3423B8F86FAEEA /* Copy Pods Resources */ = {
+		C39B8E8A439AD3EF553183DE /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3Tests/Pods-QSCMobileV3Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C00314470E22C78961EB10 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1133,7 +1077,7 @@
 		};
 		04C331F01BA2F2E700EF959F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0BA9F2E9D9E0E036FD78895 /* Pods-QSCMobileV3.debug.xcconfig */;
+			baseConfigurationReference = 7DDD987A34ED89842DDBDC80 /* Pods-QSCMobileV3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1153,7 +1097,7 @@
 		};
 		04C331F11BA2F2E700EF959F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41EC86554F19E53293B94FA8 /* Pods-QSCMobileV3.release.xcconfig */;
+			baseConfigurationReference = 7E0971AD333C8C7AC2E057CE /* Pods-QSCMobileV3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1172,7 +1116,6 @@
 		};
 		04C331F31BA2F2E700EF959F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1390A63062D2AEEA562DCB1A /* Pods-QSCMobileV3Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
@@ -1185,7 +1128,6 @@
 		};
 		04C331F41BA2F2E700EF959F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98483B3F9DC93624017394CB /* Pods-QSCMobileV3Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
@@ -1222,7 +1164,7 @@
 		};
 		9DF612741BAA89CC004B0A8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F20D479D1A5518684CC5305 /* Pods-QSCMobileKit.debug.xcconfig */;
+			baseConfigurationReference = 90D078FFD516FBF653CB53A6 /* Pods-QSCMobileKit.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -1247,7 +1189,7 @@
 		};
 		9DF612751BAA89CC004B0A8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 301D649BD08396FAD5436D05 /* Pods-QSCMobileKit.release.xcconfig */;
+			baseConfigurationReference = 0E6FF2D6B1550A65BCF5B18B /* Pods-QSCMobileKit.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;

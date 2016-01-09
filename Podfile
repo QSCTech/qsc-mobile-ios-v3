@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'QSCMobileV3' do
   pod 'UMengAnalytics-NO-IDFA'
-  pod 'UMengFeedback'
+#  pod 'UMengFeedback'
 end
 
 target 'QSCMobileKit' do
