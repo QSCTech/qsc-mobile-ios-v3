@@ -269,13 +269,25 @@ extension String {
     
 }
 
+extension NSNumber: Comparable {}
+
+public func == (left: NSNumber, right: NSNumber) -> Bool {
+    return left.compare(right) == .OrderedSame
+}
+public func < (left: NSNumber, right: NSNumber) -> Bool {
+    return left.compare(right) == .OrderedAscending
+}
+
+
+extension NSDate: Comparable {}
+
 public func == (left: NSDate, right: NSDate) -> Bool {
     return left.compare(right) == .OrderedSame
 }
 public func < (left: NSDate, right: NSDate) -> Bool {
     return left.compare(right) == .OrderedAscending
 }
-extension NSDate: Comparable {}
+
 
 public func += (inout left: String!, right: String) {
     left = (left ?? "") + right
