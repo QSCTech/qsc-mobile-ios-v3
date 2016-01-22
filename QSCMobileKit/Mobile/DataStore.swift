@@ -180,10 +180,14 @@ class DataStore: NSObject {
      - parameter json: JSON of statistics.
      */
     func createStatistics(json: JSON) {
-        currentUser.totalCredit = json["totalCredit"].floatValue
-        currentUser.averageGrade = json["averageGradePoint"].floatValue
-        currentUser.majorCredit = json["totalCreditMajor"].floatValue
-        currentUser.majorGrade = json["averageGradePointMajor"].floatValue
+        let statistics = Statistics(context: managedObjectContext)
+        statistics.user = currentUser
+        
+        statistics.totalCredit = json["totalCredit"].floatValue
+        statistics.averageGrade = json["averageGradePoint"].floatValue
+        statistics.majorCredit = json["totalCreditMajor"].floatValue
+        statistics.majorGrade = json["averageGradePointMajor"].floatValue
+        
         try! managedObjectContext.save()
     }
     
@@ -358,7 +362,7 @@ class DataStore: NSObject {
     func getCourses(year year: String, semester: CalendarSemester) -> [Course] {
         let array = currentUser.courses!.filter {
             let course = $0 as! Course
-            return course.year == year && course.semester!.includesSemester(semester)
+            return course.determined!.boolValue && course.year == year && course.semester!.includesSemester(semester)
         } as! [Course]
         return array.sort { $0.credit! >= $1.credit! }
     }
@@ -387,6 +391,10 @@ class DataStore: NSObject {
             return score.year == year && score.semester!.includesSemester(semester)
         } as! [Score]
         return array.sort { $0.gradePoint! >= $1.gradePoint! }
+    }
+    
+    var statistics: Statistics {
+        return currentUser.statistics!
     }
     
 }

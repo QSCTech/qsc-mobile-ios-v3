@@ -13,13 +13,10 @@ import CoreData
 class User: NSManagedObject {
 
     @NSManaged var sid: String?
-    @NSManaged var totalCredit: NSNumber?
-    @NSManaged var averageGrade: NSNumber?
-    @NSManaged var majorCredit: NSNumber?
-    @NSManaged var majorGrade: NSNumber?
     @NSManaged var courses: NSSet?
     @NSManaged var exams: NSSet?
     @NSManaged var scores: NSSet?
     @NSManaged var semesterScores: NSSet?
+    @NSManaged var statistics: Statistics?
 
 }

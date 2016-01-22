@@ -17,6 +17,7 @@
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
+		9D5D164D1C52360B003AC6F2 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D164C1C52360B003AC6F2 /* Statistics.swift */; };
 		9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */; };
 		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
 		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
@@ -157,6 +158,7 @@
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
+		9D5D164C1C52360B003AC6F2 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Statistics.swift; path = CoreData/Statistics.swift; sourceTree = "<group>"; };
 		9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeAPI.swift; path = Notice/NoticeAPI.swift; sourceTree = "<group>"; };
 		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
 		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				9DCDE77C1C0728E40087C31F /* Exam.swift */,
 				9DCDE7801C0728E40087C31F /* Score.swift */,
 				9DCDE7921C083C070087C31F /* SemesterScore.swift */,
+				9D5D164C1C52360B003AC6F2 /* Statistics.swift */,
 				9DCDE7981C083C070087C31F /* Year.swift */,
 				9DCDE79A1C083C070087C31F /* Semester.swift */,
 				9DCDE7901C083C070087C31F /* Holiday.swift */,
@@ -865,6 +868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */,
+				9D5D164D1C52360B003AC6F2 /* Statistics.swift in Sources */,
 				9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */,
 				9DCDE79E1C083C070087C31F /* Bus.swift in Sources */,
 				9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */,

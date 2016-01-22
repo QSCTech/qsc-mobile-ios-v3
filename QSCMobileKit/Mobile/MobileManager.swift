@@ -114,9 +114,6 @@ public class MobileManager: NSObject {
         let courses = dataStore.getCourses(year: year, semester: semester)
         var array = [Event]()
         for course in courses {
-            if course.determined!.boolValue == false {
-                continue
-            }
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
                 if timePlace.weekday == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
@@ -164,6 +161,7 @@ public class MobileManager: NSObject {
         }
         return array.sort { $0.start <= $1.start }
     }
+    
     
     // MARK: - Refresh data
     
