@@ -11,21 +11,13 @@ import QSCMobileKit
 
 class TodayViewController: UIViewController {
 
-    let mobileManager: MobileManager = MobileManager.sharedInstance
+    let mobileManager = MobileManager.sharedInstance
     
     @IBOutlet weak var textView: UITextView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.textView.text += ZjuwlanConnection.currentSSID + "\n"
-        ZjuwlanConnection.link { status, error in
-            if !status {
-                print(error!)
-            }
-            self.mobileManager.refreshAll {
-                self.textView.text += self.mobileManager.coursesForDate(NSDate()).description
-            }
-        }
+        mobileManager.refreshAll { _ in }
     }
     
     /*

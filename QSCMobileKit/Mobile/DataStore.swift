@@ -57,7 +57,7 @@ class DataStore: NSObject {
                 course.teacher = json["teacher"].stringValue
                 course.semester = json["semester"].stringValue
                 course.determined = json["determined"].boolValue
-                course.identifier = json["hash"].stringValue
+                course.identifier = json["identifier"].stringValue
                 course.year = json["year"].stringValue
                 
                 let basicInfo = json["basicInfo"]
@@ -65,6 +65,7 @@ class DataStore: NSObject {
                 course.englishName = basicInfo["EnglishName"].stringValue
                 course.faculty = basicInfo["Faculty"].stringValue
                 course.category = basicInfo["Category"].stringValue
+                course.prerequisite = basicInfo["Prerequisite"].stringValue
                 
                 for (_, json) in json["timePlace"] {
                     if json["course"].array == nil {
@@ -146,7 +147,7 @@ class DataStore: NSObject {
         score.makeup = json["makeup"].stringValue
         score.name = json["name"].stringValue
         score.gradePoint = (json["gradePoint"].stringValue as NSString).floatValue
-        score.score = Int(json["score"].stringValue, radix:10)
+        score.score = json["score"].stringValue
         score.year = year
         score.semester = semester
     }

@@ -114,6 +114,9 @@ public class MobileManager: NSObject {
         let courses = dataStore.getCourses(year: year, semester: semester)
         var array = [Event]()
         for course in courses {
+            if course.determined!.boolValue == false {
+                continue
+            }
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
                 if timePlace.weekday == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {

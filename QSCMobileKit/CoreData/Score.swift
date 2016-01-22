@@ -16,7 +16,7 @@ class Score: NSManagedObject {
     @NSManaged var gradePoint: NSNumber?
     @NSManaged var identifier: String?
     @NSManaged var name: String?
-    @NSManaged var score: NSNumber?
+    @NSManaged var score: String?
     @NSManaged var year: String?
     @NSManaged var semester: String?
     @NSManaged var makeup: String?
