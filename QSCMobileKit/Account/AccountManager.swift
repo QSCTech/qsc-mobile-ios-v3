@@ -24,7 +24,7 @@ public class AccountManager: NSObject {
     private let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
     
     // MARK: - JWBInfoSys
-    private let jwbinfosysKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.jwbinfosys")
+    private let jwbinfosysKeychain = Keychain(server: "http://jwbinfosys.zju.edu.cn", protocolType: .HTTP)
     private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
     private let JwbinfosysSessionId = "JwbinfosysSessionId"
     private let JwbinfosysSessionKey = "JwbinfosysSessionKey"
@@ -88,7 +88,7 @@ public class AccountManager: NSObject {
     
     // MARK: - ZJUWLAN
     private let ZjuwlanAccountKey = "ZjuwlanAccount"
-    private let zjuwlanKeychain = Keychain(service: "com.zjuqsc.QSCMobileV3.zjuwlan")
+    private let zjuwlanKeychain = Keychain(server: "https://net.zju.edu.cn", protocolType: .HTTPS)
     
     /// Get or set username of ZJUWLAN. If so far there is no account, you will get nil.
     public var accountForZjuwlan: String? {
