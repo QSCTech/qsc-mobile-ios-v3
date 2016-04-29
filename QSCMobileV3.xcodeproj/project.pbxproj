@@ -11,8 +11,6 @@
 		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */; };
-		04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */; };
-		04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */; };
 		340C21CFCAEC95A61DA2E312 /* Pods_QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6DC31084F027F438C7E46B /* Pods_QSCMobileKit.framework */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
@@ -20,7 +18,6 @@
 		9D5D164D1C52360B003AC6F2 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D164C1C52360B003AC6F2 /* Statistics.swift */; };
 		9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */; };
 		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
-		9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895A1C09D670008EC60B /* APISessionTests.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* CalendarManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
@@ -46,8 +43,6 @@
 		9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */; };
 		9DEF638C1C12FDC200A70C5B /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */; };
 		9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */; };
-		9DF612671BAA89CC004B0A8A /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
-		9DF6126E1BAA89CC004B0A8A /* QSCMobileKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
 		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
@@ -60,34 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		04C331DC1BA2F2E700EF959F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04C331C41BA2F2E600EF959F;
-			remoteInfo = QSCMobileV3;
-		};
-		04C331E71BA2F2E700EF959F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04C331C41BA2F2E600EF959F;
-			remoteInfo = QSCMobileV3;
-		};
-		9DF612681BAA89CC004B0A8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9DF6125C1BAA89CC004B0A8A;
-			remoteInfo = QSCMobileKit;
-		};
-		9DF6126A1BAA89CC004B0A8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04C331C41BA2F2E600EF959F;
-			remoteInfo = QSCMobileV3;
-		};
 		9DF612701BAA89CC004B0A8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
@@ -144,12 +111,6 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D41BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileV3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileV3Tests.swift; sourceTree = "<group>"; };
-		04C331E11BA2F2E700EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileV3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileV3UITests.swift; sourceTree = "<group>"; };
-		04C331EC1BA2F2E700EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E6FF2D6B1550A65BCF5B18B /* Pods-QSCMobileKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileKit/Pods-QSCMobileKit.release.xcconfig"; sourceTree = "<group>"; };
 		284FD83E38621A369013ED34 /* Pods_QSCMobileV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QSCMobileV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDD987A34ED89842DDBDC80 /* Pods-QSCMobileV3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSCMobileV3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QSCMobileV3/Pods-QSCMobileV3.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +122,6 @@
 		9D5D164C1C52360B003AC6F2 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Statistics.swift; path = CoreData/Statistics.swift; sourceTree = "<group>"; };
 		9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeAPI.swift; path = Notice/NoticeAPI.swift; sourceTree = "<group>"; };
 		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
-		9D6A895A1C09D670008EC60B /* APISessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISessionTests.swift; sourceTree = "<group>"; };
 		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
 		9D6A89611C0B11BB008EC60B /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarManager.swift; path = Mobile/CalendarManager.swift; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
@@ -192,9 +152,6 @@
 		9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DF612661BAA89CC004B0A8A /* QSCMobileKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QSCMobileKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCMobileKitTests.swift; sourceTree = "<group>"; };
-		9DF6126F1BAA89CC004B0A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		9DF612841BAA8A03004B0A8A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -216,33 +173,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04C331D81BA2F2E700EF959F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04C331E31BA2F2E700EF959F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DF612591BAA89CC004B0A8A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				340C21CFCAEC95A61DA2E312 /* Pods_QSCMobileKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9DF612631BAA89CC004B0A8A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9DF612671BAA89CC004B0A8A /* QSCMobileKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,10 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				04C331C71BA2F2E600EF959F /* QSCMobileV3 */,
-				04C331DE1BA2F2E700EF959F /* QSCMobileV3Tests */,
-				04C331E91BA2F2E700EF959F /* QSCMobileV3UITests */,
 				9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */,
-				9DF6126C1BAA89CC004B0A8A /* QSCMobileKitTests */,
 				9DF612831BAA8A03004B0A8A /* TodayExtension */,
 				9DF612961BAA8A32004B0A8A /* ShareExtension */,
 				9DF612801BAA8A03004B0A8A /* Frameworks */,
@@ -284,10 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				04C331C51BA2F2E600EF959F /* QSCMobileV3.app */,
-				04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */,
-				04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */,
 				9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */,
-				9DF612661BAA89CC004B0A8A /* QSCMobileKitTests.xctest */,
 				9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */,
 				9DF612951BAA8A32004B0A8A /* ShareExtension.appex */,
 			);
@@ -307,24 +236,6 @@
 				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
 			path = QSCMobileV3;
-			sourceTree = "<group>";
-		};
-		04C331DE1BA2F2E700EF959F /* QSCMobileV3Tests */ = {
-			isa = PBXGroup;
-			children = (
-				04C331DF1BA2F2E700EF959F /* QSCMobileV3Tests.swift */,
-				04C331E11BA2F2E700EF959F /* Info.plist */,
-			);
-			path = QSCMobileV3Tests;
-			sourceTree = "<group>";
-		};
-		04C331E91BA2F2E700EF959F /* QSCMobileV3UITests */ = {
-			isa = PBXGroup;
-			children = (
-				04C331EA1BA2F2E700EF959F /* QSCMobileV3UITests.swift */,
-				04C331EC1BA2F2E700EF959F /* Info.plist */,
-			);
-			path = QSCMobileV3UITests;
 			sourceTree = "<group>";
 		};
 		65EE893D4ADA4866BD8E3EAB /* Pods */ = {
@@ -432,16 +343,6 @@
 			path = QSCMobileKit;
 			sourceTree = "<group>";
 		};
-		9DF6126C1BAA89CC004B0A8A /* QSCMobileKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				9DF6126D1BAA89CC004B0A8A /* QSCMobileKitTests.swift */,
-				9D6A895A1C09D670008EC60B /* APISessionTests.swift */,
-				9DF6126F1BAA89CC004B0A8A /* Info.plist */,
-			);
-			path = QSCMobileKitTests;
-			sourceTree = "<group>";
-		};
 		9DF612801BAA8A03004B0A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,42 +413,6 @@
 			productReference = 04C331C51BA2F2E600EF959F /* QSCMobileV3.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04C331DA1BA2F2E700EF959F /* QSCMobileV3Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04C331F21BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3Tests" */;
-			buildPhases = (
-				04C331D71BA2F2E700EF959F /* Sources */,
-				04C331D81BA2F2E700EF959F /* Frameworks */,
-				04C331D91BA2F2E700EF959F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04C331DD1BA2F2E700EF959F /* PBXTargetDependency */,
-			);
-			name = QSCMobileV3Tests;
-			productName = QSCMobileV3Tests;
-			productReference = 04C331DB1BA2F2E700EF959F /* QSCMobileV3Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		04C331E51BA2F2E700EF959F /* QSCMobileV3UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04C331F51BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3UITests" */;
-			buildPhases = (
-				04C331E21BA2F2E700EF959F /* Sources */,
-				04C331E31BA2F2E700EF959F /* Frameworks */,
-				04C331E41BA2F2E700EF959F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04C331E81BA2F2E700EF959F /* PBXTargetDependency */,
-			);
-			name = QSCMobileV3UITests;
-			productName = QSCMobileV3UITests;
-			productReference = 04C331E61BA2F2E700EF959F /* QSCMobileV3UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DF612781BAA89CC004B0A8A /* Build configuration list for PBXNativeTarget "QSCMobileKit" */;
@@ -567,25 +432,6 @@
 			productName = QSCMobileKit;
 			productReference = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		9DF612651BAA89CC004B0A8A /* QSCMobileKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9DF6127A1BAA89CC004B0A8A /* Build configuration list for PBXNativeTarget "QSCMobileKitTests" */;
-			buildPhases = (
-				9DF612621BAA89CC004B0A8A /* Sources */,
-				9DF612631BAA89CC004B0A8A /* Frameworks */,
-				9DF612641BAA89CC004B0A8A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9DF612691BAA89CC004B0A8A /* PBXTargetDependency */,
-				9DF6126B1BAA89CC004B0A8A /* PBXTargetDependency */,
-			);
-			name = QSCMobileKitTests;
-			productName = QSCMobileKitTests;
-			productReference = 9DF612661BAA89CC004B0A8A /* QSCMobileKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		9DF6127E1BAA8A03004B0A8A /* TodayExtension */ = {
 			isa = PBXNativeTarget;
@@ -643,21 +489,9 @@
 							};
 						};
 					};
-					04C331DA1BA2F2E700EF959F = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = 04C331C41BA2F2E600EF959F;
-					};
-					04C331E51BA2F2E700EF959F = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = 04C331C41BA2F2E600EF959F;
-					};
 					9DF6125C1BAA89CC004B0A8A = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = RURVDL9XJS;
-					};
-					9DF612651BAA89CC004B0A8A = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = 04C331C41BA2F2E600EF959F;
 					};
 					9DF6127E1BAA8A03004B0A8A = {
 						CreatedOnToolsVersion = 7.0;
@@ -688,10 +522,7 @@
 			projectRoot = "";
 			targets = (
 				04C331C41BA2F2E600EF959F /* QSCMobileV3 */,
-				04C331DA1BA2F2E700EF959F /* QSCMobileV3Tests */,
-				04C331E51BA2F2E700EF959F /* QSCMobileV3UITests */,
 				9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */,
-				9DF612651BAA89CC004B0A8A /* QSCMobileKitTests */,
 				9DF6127E1BAA8A03004B0A8A /* TodayExtension */,
 				9DF612941BAA8A32004B0A8A /* ShareExtension */,
 			);
@@ -709,28 +540,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04C331D91BA2F2E700EF959F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04C331E41BA2F2E700EF959F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DF6125B1BAA89CC004B0A8A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9DF612641BAA89CC004B0A8A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -847,22 +657,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04C331D71BA2F2E700EF959F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04C331E01BA2F2E700EF959F /* QSCMobileV3Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04C331E21BA2F2E700EF959F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04C331EB1BA2F2E700EF959F /* QSCMobileV3UITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DF612581BAA89CC004B0A8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -895,15 +689,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DF612621BAA89CC004B0A8A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9DF6126E1BAA89CC004B0A8A /* QSCMobileKitTests.swift in Sources */,
-				9D6A895B1C09D670008EC60B /* APISessionTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DF6127B1BAA8A03004B0A8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -923,26 +708,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		04C331DD1BA2F2E700EF959F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04C331C41BA2F2E600EF959F /* QSCMobileV3 */;
-			targetProxy = 04C331DC1BA2F2E700EF959F /* PBXContainerItemProxy */;
-		};
-		04C331E81BA2F2E700EF959F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04C331C41BA2F2E600EF959F /* QSCMobileV3 */;
-			targetProxy = 04C331E71BA2F2E700EF959F /* PBXContainerItemProxy */;
-		};
-		9DF612691BAA89CC004B0A8A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */;
-			targetProxy = 9DF612681BAA89CC004B0A8A /* PBXContainerItemProxy */;
-		};
-		9DF6126B1BAA89CC004B0A8A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04C331C41BA2F2E600EF959F /* QSCMobileV3 */;
-			targetProxy = 9DF6126A1BAA89CC004B0A8A /* PBXContainerItemProxy */;
-		};
 		9DF612711BAA89CC004B0A8A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */;
@@ -1088,14 +853,16 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3A000;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1108,61 +875,15 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3A000;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		04C331F31BA2F2E700EF959F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QSCMobileV3.app/QSCMobileV3";
-			};
-			name = Debug;
-		};
-		04C331F41BA2F2E700EF959F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = QSCMobileV3Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QSCMobileV3.app/QSCMobileV3";
-			};
-			name = Release;
-		};
-		04C331F61BA2F2E700EF959F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = QSCMobileV3UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = QSCMobileV3;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		04C331F71BA2F2E700EF959F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = QSCMobileV3UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = QSCMobileV3;
-				USES_XCTRUNNER = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1173,15 +894,15 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3A000;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 3A000;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileKit/QSCMobileKit-Bridging-Header.h";
@@ -1198,42 +919,20 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3A000;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 3A000;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileKit/QSCMobileKit-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9DF612761BAA89CC004B0A8A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = QSCMobileKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QSCMobileV3.app/QSCMobileV3";
-			};
-			name = Debug;
-		};
-		9DF612771BAA89CC004B0A8A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = QSCMobileKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QSCMobileV3.app/QSCMobileV3";
 			};
 			name = Release;
 		};
@@ -1243,12 +942,14 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3A000;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1258,12 +959,14 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3A000;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1271,11 +974,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3A000;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1283,11 +988,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3A000;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1312,38 +1019,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04C331F21BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04C331F31BA2F2E700EF959F /* Debug */,
-				04C331F41BA2F2E700EF959F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		04C331F51BA2F2E700EF959F /* Build configuration list for PBXNativeTarget "QSCMobileV3UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04C331F61BA2F2E700EF959F /* Debug */,
-				04C331F71BA2F2E700EF959F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		9DF612781BAA89CC004B0A8A /* Build configuration list for PBXNativeTarget "QSCMobileKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DF612741BAA89CC004B0A8A /* Debug */,
 				9DF612751BAA89CC004B0A8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9DF6127A1BAA89CC004B0A8A /* Build configuration list for PBXNativeTarget "QSCMobileKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9DF612761BAA89CC004B0A8A /* Debug */,
-				9DF612771BAA89CC004B0A8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
