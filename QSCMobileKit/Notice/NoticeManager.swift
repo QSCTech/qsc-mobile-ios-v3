@@ -54,14 +54,15 @@ public class NoticeManager: NSObject {
         }
     }
     
-    public func updateSpnsorImageWithEvent(var event: NoticeEvent, callback: (NoticeEvent) -> Void) {
+    public func updateSpnsorImageWithEvent(event: NoticeEvent, callback: (NoticeEvent) -> Void) {
         noticeAPI.downloadImage(event.sponsorLogoURL) { image in
+            var event = event
             event.sponsorLogo = image
             callback(event)
         }
     }
     
-    public func updateDetailWithEvent(var event: NoticeEvent, callback: (NoticeEvent?, String?) -> Void) {
+    public func updateDetailWithEvent(event: NoticeEvent, callback: (NoticeEvent?, String?) -> Void) {
         noticeAPI.getEventDetailWithId(event.id) { json, error in
             guard let json = json else {
                 callback(nil, error)
@@ -74,6 +75,7 @@ public class NoticeManager: NSObject {
             if json["event"]["dierketang"].stringValue != "0" {
                 bonus += "二课加分 \(json["event"]["dierketang"].stringValue)"
             }
+            var event = event
             event.bonus = bonus
             event.content = json["event"]["description"].stringValue
             let url = json["cover"]["filename"].stringValue

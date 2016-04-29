@@ -96,14 +96,14 @@ public class MobileManager: NSObject {
     
      - returns: An array of type `Event` sorted by starting time.
      */
-    public func coursesForDate(var date: NSDate) -> [Event] {
+    public func coursesForDate(date: NSDate) -> [Event] {
         if calendarManager.holidayForDate(date) != nil {
             return []
         }
+        var date = date
         if let adjustment = calendarManager.adjustmentForDate(date) {
             date = adjustment.toDate
         }
-        
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
         let weekOrdinal = calendarManager.weekOrdinalForDate(date)
