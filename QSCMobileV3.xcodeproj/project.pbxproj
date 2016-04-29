@@ -37,7 +37,7 @@
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
-		9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */; };
+		9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */; };
 		9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */; };
 		9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */; };
 		9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */; };
@@ -145,7 +145,7 @@
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DEF303B1BFD7C1800508504 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QSCMobileModel.xcdatamodel; sourceTree = "<group>"; };
 		9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 		9DEF30391BFD7B8100508504 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */,
+				9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */,
 				9DCDE7941C083C070087C31F /* User.swift */,
 				9DCDE77E1C0728E40087C31F /* Course.swift */,
 				9DCDE78C1C083C070087C31F /* TimePlace.swift */,
@@ -671,7 +671,7 @@
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
 				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,
-				9DEF303C1BFD7C1800508504 /* Model.xcdatamodeld in Sources */,
+				9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
 				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
@@ -853,7 +853,7 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -875,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -894,10 +894,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 3A000;
+				DYLIB_CURRENT_VERSION = 30000;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -919,10 +919,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 3A000;
+				DYLIB_CURRENT_VERSION = 30000;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -942,7 +942,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
@@ -959,7 +959,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
@@ -974,7 +974,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
@@ -988,7 +988,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3A000;
+				CURRENT_PROJECT_VERSION = 30000;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
@@ -1049,14 +1049,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9DEF303A1BFD7C1800508504 /* Model.xcdatamodeld */ = {
+		9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9DEF303B1BFD7C1800508504 /* Model.xcdatamodel */,
+				9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */,
 			);
-			currentVersion = 9DEF303B1BFD7C1800508504 /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = CoreData/Model.xcdatamodeld;
+			currentVersion = 9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */;
+			name = QSCMobileModel.xcdatamodeld;
+			path = CoreData/QSCMobileModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

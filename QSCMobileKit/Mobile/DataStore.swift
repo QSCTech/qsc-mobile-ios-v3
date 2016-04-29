@@ -24,8 +24,8 @@ class DataStore: NSObject {
     }
     
     static let managedObjectContext: NSManagedObjectContext = {
-        let modelURL = NSBundle(identifier: "com.zjuqsc.QSCMobileKit")!.URLForResource("Model", withExtension: "momd")!
-        let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.zjuqsc.QSCMobileV3")!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
+        let modelURL = NSBundle(identifier: "com.myqsc.iQSC.MobileKit")!.URLForResource("QSCMobileModel", withExtension: "momd")!
+        let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.QSCMobile")!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
         
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
