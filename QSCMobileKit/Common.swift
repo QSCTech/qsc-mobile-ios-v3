@@ -16,9 +16,6 @@ let NoticeURL    = "https://notice.zjuqsc.com"
 let BoxURL       = "https://box.zjuqsc.com"
 let TideURL      = "http://tide.zjuqsc.com/wp/"
 
-let ZjuwlanLoginURL  = "https://net.zju.edu.cn/cgi-bin/srun_portal"
-let ZjuwlanLogoutURL = "https://net.zju.edu.cn/rad_online.php"
-
 public struct Event {
     public enum Type {
         case AllDay, PartialTime

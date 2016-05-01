@@ -42,52 +42,35 @@ public class ZjuwlanConnection: NSObject {
         let username = accountManager.accountForZjuwlan!
         let password = accountManager.passwordForZjuwlan!
         
-        logout(username, password) { status, error in
-            if status {
-                login(username, password, callback: callback)
-            } else {
-                callback(false, error)
-            }
-        }
+        login(username, password, callback: callback)
     }
     
+    private static let ZjuwlanLoginURL  = "https://net.zju.edu.cn/include/auth_action.php"
+    
     private static func login(username: String, _ password: String, callback: (Bool, String?) -> Void) {
-        let postData: [String: AnyObject] = [
+        let postData = [
             "action": "login",
             "username": username,
             "password": password,
-            "ac_id": 5,
-            "is_ldap": 1,
-            "type": 2,
-            "local_auth": 1,
+            "ac_id": "3",
+            "user_ip": "",
+            "nas_ip": "",
+            "user_max": "",
+            "save_me": "0",
+            "ajax": "1",
         ]
         Alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData)
                  .responseString { response in
                     if let string = response.result.value {
-                        if string.containsString("ok") {
+                        if string.containsString("login_ok") {
                             callback(true, nil)
-                        } else {
+                        } else if string.containsString("E2532") {
+                            callback(false, "登录间隔小于十秒")
+                        } else if string.containsString("E2901") {
                             callback(false, "用户名或密码错误")
-                        }
-                    } else {
-                        callback(false, "网络连接失败")
-                    }
-                 }
-    }
-    
-    private static func logout(username: String, _ password: String, callback: (Bool, String?) -> Void) {
-        let postData: [String: AnyObject] = [
-            "action": "auto_dm",
-            "username": username,
-            "password": password,
-        ]
-        Alamofire.request(.POST, ZjuwlanLogoutURL, parameters: postData)
-                 .responseString { response in
-                    if let string = response.result.value {
-                        if string.containsString("ok") {
-                            callback(true, nil)
                         } else {
-                            callback(false, "用户名或密码错误")
+                            print("ZJUWLAN Login: \(string)")
+                            callback(false, "未知错误")
                         }
                     } else {
                         callback(false, "网络连接失败")
@@ -96,3 +79,4 @@ public class ZjuwlanConnection: NSObject {
     }
     
 }
+	
