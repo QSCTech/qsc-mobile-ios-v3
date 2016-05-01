@@ -12,22 +12,6 @@ import Alamofire
 
 public class ZjuwlanConnection: NSObject {
     
-    /// Get SSID of current network, or an empty string. Note this method uses deprecated APIs since iOS 9.0.
-    public static var currentSSID: String {
-        var ssid = ""
-        if let interfaces = CNCopySupportedInterfaces() {
-            let interfaces = interfaces as Array
-            for interfaceName in interfaces {
-                let interfaceName = String(interfaceName)
-                if let networkInfo = CNCopyCurrentNetworkInfo(interfaceName) {
-                    let networkInfo = networkInfo as Dictionary
-                    ssid = networkInfo[kCNNetworkInfoKeySSID] as! String
-                }
-            }
-        }
-        return ssid
-    }
-    
     /**
      Connect VPN under ZJUWLAN. This method tries to logout first in case that VPN has been logged in at another place.
      
@@ -66,6 +50,8 @@ public class ZjuwlanConnection: NSObject {
                             callback(true, nil)
                         } else if string.containsString("E2532") {
                             callback(false, "登录间隔小于十秒")
+                        } else if string.containsString("E2833") {
+                            callback(false, "您未连接 ZJUWLAN")
                         } else if string.containsString("E2901") {
                             callback(false, "用户名或密码错误")
                         } else {
@@ -79,4 +65,3 @@ public class ZjuwlanConnection: NSObject {
     }
     
 }
-	
