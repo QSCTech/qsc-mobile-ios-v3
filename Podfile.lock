@@ -1,17 +1,15 @@
 PODS:
-  - Alamofire (3.2.1)
+  - Alamofire (3.3.1)
   - KeychainAccess (2.3.5)
   - SwiftyJSON (2.3.2)
   - UMengAnalytics-NO-IDFA (3.6.7)
-  - UMengFeedback (2.3.4)
   - UMessage-NO-IDFA (1.2.6)
 
 DEPENDENCIES:
-  - Alamofire (= 3.2.1)
+  - Alamofire
   - KeychainAccess
   - SwiftyJSON
   - UMengAnalytics-NO-IDFA
-  - UMengFeedback
   - UMessage-NO-IDFA (from `https://github.com/QSCMobileV3/UMessage-NO-IDFA.git`)
 
 EXTERNAL SOURCES:
@@ -24,13 +22,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/QSCMobileV3/UMessage-NO-IDFA.git
 
 SPEC CHECKSUMS:
-  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   KeychainAccess: e283c1981a6c5655e1984cd411c6faf16fa165ae
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
-  UMengFeedback: 5283cc0e324dffca4dd54c4abb3cbded56487817
   UMessage-NO-IDFA: 52c01da064fb738d5503428f421e86e4d827b702
 
-PODFILE CHECKSUM: 3f8d50d0869b454d24c59c84e1e965d91321bb64
+PODFILE CHECKSUM: 4d302b954b8e81275b587bba45469636aa6b858f
 
 COCOAPODS: 1.0.0.rc.1
