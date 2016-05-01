@@ -345,9 +345,10 @@ class DataStore: NSObject {
     }
     
     func deleteStatistics() {
-        let statistics = currentUser.statistics!
-        managedObjectContext.deleteObject(statistics)
-        try! managedObjectContext.save()
+        if let statistics = currentUser.statistics {
+            managedObjectContext.deleteObject(statistics)
+            try! managedObjectContext.save()
+        }
     }
     
     /**
