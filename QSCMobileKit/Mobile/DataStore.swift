@@ -344,6 +344,12 @@ class DataStore: NSObject {
         try! managedObjectContext.save()
     }
     
+    func deleteStatistics() {
+        let statistics = currentUser.statistics!
+        managedObjectContext.deleteObject(statistics)
+        try! managedObjectContext.save()
+    }
+    
     /**
      Delete current user entity, after which you should release this instance ASAP.
      */

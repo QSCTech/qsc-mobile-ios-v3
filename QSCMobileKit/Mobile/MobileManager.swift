@@ -229,6 +229,7 @@ public class MobileManager: NSObject {
                 self.dataStore.createSemesterScores(json)
                 self.apiSession.statisticsRequest { json, error in
                     if let json = json {
+                        self.dataStore.deleteStatistics()
                         self.dataStore.createStatistics(json)
                         callback(true, error)
                     } else {
