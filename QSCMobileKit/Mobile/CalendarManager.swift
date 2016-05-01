@@ -89,19 +89,19 @@ public class CalendarManager: NSObject {
     }
     
     /**
-     Return a tuple if there is an adjustment on the specified date.
+     Return a tuple if there is an adjustment onto the specified date.
      
      - parameter date: A date to be queried.
      
-     - returns: A tuple containing the name and the destination date of an adjustment or nil.
+     - returns: A tuple containing the name and the source date of an adjustment or nil.
      */
-    public func adjustmentForDate(date: NSDate) -> (name: String, toDate: NSDate)? {
+    public func adjustmentForDate(date: NSDate) -> (name: String, fromDate: NSDate)? {
         if let year = entityForYear(date) {
             for adjustment in year.adjustments! {
                 let adjustment = adjustment as! Adjustment
-                if adjustment.fromStart! <= date && date < adjustment.fromEnd! {
-                    let toDate = adjustment.toStart!.dateByAddingTimeInterval(date.timeIntervalSinceDate(adjustment.fromStart!))
-                    return (adjustment.name!, toDate)
+                if adjustment.toStart! <= date && date < adjustment.toEnd! {
+                    let fromDate = adjustment.fromStart!.dateByAddingTimeInterval(date.timeIntervalSinceDate(adjustment.toStart!))
+                    return (adjustment.name!, fromDate)
                 }
             }
             return nil

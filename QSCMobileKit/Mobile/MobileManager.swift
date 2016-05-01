@@ -102,7 +102,7 @@ public class MobileManager: NSObject {
         }
         var date = date
         if let adjustment = calendarManager.adjustmentForDate(date) {
-            date = adjustment.toDate
+            date = adjustment.fromDate
         }
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
