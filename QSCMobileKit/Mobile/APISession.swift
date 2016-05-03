@@ -14,9 +14,6 @@ import SwiftyJSON
 class APISession: NSObject {
     
     init(username: String, password: String) {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForResource = 10
-        alamofireManager = Alamofire.Manager(configuration: configuration)
         accountManager = AccountManager.sharedInstance
         
         self.username = username
@@ -26,7 +23,6 @@ class APISession: NSObject {
         super.init()
     }
     
-    private let alamofireManager: Alamofire.Manager
     private let accountManager: AccountManager
     
     private let username: String

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Alamofire
 
 let AppKey = "aq86L/EUgOPxD7ZJzr3rK4zBRyo8oVzF"
 
@@ -32,6 +33,12 @@ public struct Event {
     public let start: NSDate
     public let end: NSDate
     public let object: NSManagedObject
+}
+
+var alamofireManager: Alamofire.Manager {
+    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    configuration.timeoutIntervalForResource = 10
+    return Alamofire.Manager(configuration: configuration)
 }
 
 enum Weekday: Int {

@@ -12,15 +12,7 @@ import SwiftyJSON
 
 class NoticeAPI: NSObject {
     
-    private override init() {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForResource = 10
-        alamofireManager = Alamofire.Manager(configuration: configuration)
-    }
-    
     static let sharedInstance = NoticeAPI()
-    
-    private let alamofireManager: Alamofire.Manager
     
     private func noticeRequest(url: NSURL, callback: (JSON?, String?) -> Void) {
         let headers = ["X-Requested-With": "XMLHttpRequest"]
@@ -53,14 +45,14 @@ class NoticeAPI: NSObject {
     }
     
     func downloadImage(url: NSURL, callback: (UIImage?) -> Void) {
-        Alamofire.request(.GET, url)
-                 .responseData { response in
-                    if let data = response.result.value {
-                        callback(UIImage(data: data))
-                    } else {
-                        callback(nil)
-                    }
-                 }
+        alamofireManager.request(.GET, url)
+                        .responseData { response in
+                            if let data = response.result.value {
+                                callback(UIImage(data: data))
+                            } else {
+                                callback(nil)
+                            }
+                        }
     }
     
 }

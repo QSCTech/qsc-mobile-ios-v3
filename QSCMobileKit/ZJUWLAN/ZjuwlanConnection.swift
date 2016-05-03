@@ -43,25 +43,25 @@ public class ZjuwlanConnection: NSObject {
             "save_me": "0",
             "ajax": "1",
         ]
-        Alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData)
-                 .responseString { response in
-                    if let string = response.result.value {
-                        if string.containsString("login_ok") {
-                            callback(true, nil)
-                        } else if string.containsString("E2532") {
-                            callback(false, "登录间隔小于十秒")
-                        } else if string.containsString("E2833") {
-                            callback(false, "您未连接 ZJUWLAN")
-                        } else if string.containsString("E2901") {
-                            callback(false, "用户名或密码错误")
-                        } else {
-                            print("ZJUWLAN Login: \(string)")
-                            callback(false, "未知错误")
+        alamofireManager.request(.POST, ZjuwlanLoginURL, parameters: postData)
+                        .responseString { response in
+                            if let string = response.result.value {
+                                if string.containsString("login_ok") {
+                                    callback(true, nil)
+                                } else if string.containsString("E2532") {
+                                    callback(false, "登录间隔小于十秒")
+                                } else if string.containsString("E2833") {
+                                    callback(false, "您未连接 ZJUWLAN")
+                                } else if string.containsString("E2901") {
+                                    callback(false, "用户名或密码错误")
+                                } else {
+                                    print("ZJUWLAN Login: \(string)")
+                                    callback(false, "未知错误")
+                                }
+                            } else {
+                                callback(false, "网络连接失败")
+                            }
                         }
-                    } else {
-                        callback(false, "网络连接失败")
-                    }
-                 }
     }
     
 }

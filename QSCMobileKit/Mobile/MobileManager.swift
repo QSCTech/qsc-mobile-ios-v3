@@ -59,7 +59,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Change current account to already existed one and then refresh data.
+     Change current account to already existed one and try to update sessions without refreshing its data.
      
      - parameter username: Username of the account.
      */
@@ -92,7 +92,7 @@ public class MobileManager: NSObject {
     // MARK: - Retrieve events
     
     /**
-     Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already.
+     Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already. Note that holidays is prior to adjustments.
     
      - returns: An array of type `Event` sorted by starting time.
      */
@@ -171,16 +171,20 @@ public class MobileManager: NSObject {
      - parameter callback: A closure to be executed once the request has finished.
      */
     public func refreshAll(callback: () -> Void) {
-        let group = dispatch_group_create()
-        for _ in 0..<5 {
-            dispatch_group_enter(group)
+        // First refresh calendar to prevent multiple sessionFail retries at the same time
+        refreshCalendar { status, error in
+            if status {
+                let group = dispatch_group_create()
+                for _ in 0..<4 {
+                    dispatch_group_enter(group)
+                }
+                self.refreshCourses { _ in dispatch_group_leave(group) }
+                self.refreshExams { _ in dispatch_group_leave(group) }
+                self.refreshScores { _ in dispatch_group_leave(group) }
+                self.refreshBuses { _ in dispatch_group_leave(group) }
+                dispatch_group_notify(group, dispatch_get_main_queue(), callback)
+            }
         }
-        refreshCalendar { _ in dispatch_group_leave(group) }
-        refreshCourses { _ in dispatch_group_leave(group) }
-        refreshExams { _ in dispatch_group_leave(group) }
-        refreshScores { _ in dispatch_group_leave(group) }
-        refreshBuses { _ in dispatch_group_leave(group) }
-        dispatch_group_notify(group, dispatch_get_main_queue(), callback)
     }
     
     /**
