@@ -35,12 +35,6 @@ public struct Event {
     public let object: NSManagedObject
 }
 
-var alamofireManager: Alamofire.Manager {
-    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-    configuration.timeoutIntervalForResource = 10
-    return Alamofire.Manager(configuration: configuration)
-}
-
 enum Weekday: Int {
     case Sunday = 1, Monday, Tuesday, Thursday, Friday, Saturday
 }
@@ -271,6 +265,19 @@ extension String {
         }
     }
     
+}
+
+/**
+ Return an Alamofire manager with specific timeout interval. Remember to store it as property to prevent being freed.
+ 
+ - parameter timeoutInterval: Timeout interval in seconds.
+ 
+ - returns: The Alamofire manager.
+ */
+func alamofireManager(timeoutInterval timeoutInterval: Double) -> Alamofire.Manager {
+    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    configuration.timeoutIntervalForResource = timeoutInterval
+    return Alamofire.Manager(configuration: configuration)
 }
 
 extension NSNumber: Comparable {}

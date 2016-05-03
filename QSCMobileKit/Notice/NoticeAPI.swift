@@ -14,23 +14,24 @@ class NoticeAPI: NSObject {
     
     static let sharedInstance = NoticeAPI()
     
+    private let alamofire = alamofireManager(timeoutInterval: 10)
+    
     private func noticeRequest(url: NSURL, callback: (JSON?, String?) -> Void) {
         let headers = ["X-Requested-With": "XMLHttpRequest"]
         
-        alamofireManager.request(.GET, url, headers: headers)
-            .responseJSON { response in
-                if response.result.isFailure {
-                    print("Notice request: \(response.result.error!.localizedDescription)")
-                    callback(nil, "网络连接失败")
-                    return
-                }
-                let json = JSON(response.result.value!)
-                if json["code"].int == 0 {
-                    callback(json["data"], nil)
-                } else {
-                    print("Notice request: \(json["message"].stringValue)")
-                    callback(nil, "获取数据失败")
-                }
+        alamofire.request(.GET, url, headers: headers).responseJSON { response in
+            if response.result.isFailure {
+                print("Notice request: \(response.result.error!.localizedDescription)")
+                callback(nil, "网络连接失败")
+                return
+            }
+            let json = JSON(response.result.value!)
+            if json["code"].int == 0 {
+                callback(json["data"], nil)
+            } else {
+                print("Notice request: \(json["message"].stringValue)")
+                callback(nil, "获取数据失败")
+            }
         }
     }
     
@@ -45,14 +46,13 @@ class NoticeAPI: NSObject {
     }
     
     func downloadImage(url: NSURL, callback: (UIImage?) -> Void) {
-        alamofireManager.request(.GET, url)
-                        .responseData { response in
-                            if let data = response.result.value {
-                                callback(UIImage(data: data))
-                            } else {
-                                callback(nil)
-                            }
-                        }
+        alamofire.request(.GET, url).responseData { response in
+            if let data = response.result.value {
+                callback(UIImage(data: data))
+            } else {
+                callback(nil)
+            }
+        }
     }
     
 }

@@ -23,6 +23,7 @@ class APISession: NSObject {
         super.init()
     }
     
+    private let alamofire = alamofireManager(timeoutInterval: 10)
     private let accountManager: AccountManager
     
     private let username: String
@@ -141,22 +142,21 @@ class APISession: NSObject {
             ]
         ]
         let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")
-        alamofireManager.request(.POST, loginURL, parameters: postData, encoding: .JSON)
-                        .responseJSON { response in
-                            if response.result.isFailure {
-                                print("Login request: \(response.result.error!.localizedDescription)")
-                                callback(false, "网络连接失败")
-                                return
-                            }
-                            let json = JSON(response.result.value!)
-                            if (json["status"].string == "ok") {
-                                self.session = (json["sessionId"].string, json["sessionKey"].string)
-                                callback(true, nil)
-                            } else {
-                                print("Login request: \(json["status"].stringValue) - \(json["error"].stringValue)")
-                                callback(false, "用户名或密码错误")
-                            }
-                        }
+        alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON).responseJSON { response in
+            if response.result.isFailure {
+                print("Login request: \(response.result.error!.localizedDescription)")
+                callback(false, "网络连接失败")
+                return
+            }
+            let json = JSON(response.result.value!)
+            if (json["status"].string == "ok") {
+                self.session = (json["sessionId"].string, json["sessionKey"].string)
+                callback(true, nil)
+            } else {
+                print("Login request: \(json["status"].stringValue) - \(json["error"].stringValue)")
+                callback(false, "用户名或密码错误")
+            }
+        }
     }
     
     /**
@@ -176,36 +176,35 @@ class APISession: NSObject {
             "requestList": stringFromJSONObject(requestList),
         ]
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
-        alamofireManager.request(.POST, resourcesURL, parameters: postData, encoding: .JSON)
-                        .responseJSON { response in
-                            if response.result.isFailure {
-                                print("Resource request: \(response.result.error!.localizedDescription)")
-                                callback(nil, "网络连接失败")
-                                return
-                            }
-                            let json = JSON(response.result.value!)
-                            if (json["status"].string == "ok") {
-                                if let responseList = json["responseList"].string {
-                                    let responseJSON = JSON(self.jsonObjectFromString(responseList))
-                                    callback(responseJSON[0]["data"], nil)
-                                } else {
-                                    print("Resource request: Response list is null.")
-                                    callback(nil, "刷新失败，请重试")
-                                }
-                            } else if (json["status"].string == "sessionFail") {
-                                print("Resource request: sessionFail")
-                                self.loginRequest { status, error in
-                                    if status {
-                                        self.resourceRequest(requestList, callback: callback)
-                                    } else {
-                                        callback(nil, error)
-                                    }
-                                }
-                            } else {
-                                print("Resource request: \(json["status"].stringValue) - \(json["error"].stringValue))")
-                                callback(nil, "刷新失败，请重试")
-                            }
-                        }
+        alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
+            if response.result.isFailure {
+                print("Resource request: \(response.result.error!.localizedDescription)")
+                callback(nil, "网络连接失败")
+                return
+            }
+            let json = JSON(response.result.value!)
+            if (json["status"].string == "ok") {
+                if let responseList = json["responseList"].string {
+                    let responseJSON = JSON(self.jsonObjectFromString(responseList))
+                    callback(responseJSON[0]["data"], nil)
+                } else {
+                    print("Resource request: Response list is null.")
+                    callback(nil, "刷新失败，请重试")
+                }
+            } else if (json["status"].string == "sessionFail") {
+                print("Resource request: sessionFail")
+                self.loginRequest { status, error in
+                    if status {
+                        self.resourceRequest(requestList, callback: callback)
+                    } else {
+                        callback(nil, error)
+                    }
+                }
+            } else {
+                print("Resource request: \(json["status"].stringValue) - \(json["error"].stringValue))")
+                callback(nil, "刷新失败，请重试")
+            }
+        }
     }
     
     /**
