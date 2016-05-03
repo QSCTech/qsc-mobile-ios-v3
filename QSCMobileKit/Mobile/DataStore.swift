@@ -14,8 +14,6 @@ import SwiftyJSON
 class DataStore: NSObject {
     
     init(username: String) {
-        managedObjectContext = DataStore.managedObjectContext
-        
         let fetchRequest = NSFetchRequest(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "sid == %@", username)
         currentUser = try! managedObjectContext.executeFetchRequest(fetchRequest).first as! User
@@ -23,7 +21,7 @@ class DataStore: NSObject {
         super.init()
     }
     
-    static let managedObjectContext: NSManagedObjectContext = {
+    private static let managedObjectContext: NSManagedObjectContext = {
         let modelURL = NSBundle(identifier: "com.myqsc.iQSC.MobileKit")!.URLForResource("QSCMobileModel", withExtension: "momd")!
         let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.QSCMobile")!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
         
@@ -34,8 +32,9 @@ class DataStore: NSObject {
         managedObjectContext.persistentStoreCoordinator = psc
         return managedObjectContext
     }()
+    // Defined as both type property and instance property to make it easy to use within either method.
+    private let managedObjectContext: NSManagedObjectContext = DataStore.managedObjectContext
     
-    private let managedObjectContext: NSManagedObjectContext
     private let currentUser: User
     
     // MARK: - Creation
@@ -263,6 +262,12 @@ class DataStore: NSObject {
         try! managedObjectContext.save()
     }
     
+    static func createUser(username: String) {
+        let user = User(context: managedObjectContext)
+        user.sid = username
+        try! managedObjectContext.save()
+    }
+    
     // MARK: - Deletion
     
     /**
@@ -270,7 +275,7 @@ class DataStore: NSObject {
      
      - parameter entityName: The name of entities.
      */
-    private func deleteEntities(entityName: String) {
+    private static func deleteEntities(entityName: String) {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         if #available(iOSApplicationExtension 9.0, *) {
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -289,18 +294,18 @@ class DataStore: NSObject {
      Delete all data about calendar.
      */
     func deleteCalendar() {
-        deleteEntities("Year")
-        deleteEntities("Semester")
-        deleteEntities("Holiday")
-        deleteEntities("Adjustment")
+        DataStore.deleteEntities("Year")
+        DataStore.deleteEntities("Semester")
+        DataStore.deleteEntities("Holiday")
+        DataStore.deleteEntities("Adjustment")
     }
     
     /**
      Delete all data about school buses.
      */
     func deleteBuses() {
-        deleteEntities("Bus")
-        deleteEntities("BusStop")
+        DataStore.deleteEntities("Bus")
+        DataStore.deleteEntities("BusStop")
     }
     
     /**
@@ -352,11 +357,21 @@ class DataStore: NSObject {
     }
     
     /**
-     Delete current user entity, after which you should release this instance ASAP.
+     Delete current user entity, after which you should release DataStore instance ASAP.
      */
     func deleteUser() {
         managedObjectContext.deleteObject(currentUser)
         try! managedObjectContext.save()
+    }
+    
+    /**
+     Delete **ALL** objects in CoreData.
+     */
+    static func dropCoreData() {
+        let entitiesByName = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName
+        for (name, _) in entitiesByName {
+            deleteEntities(name)
+        }
     }
     
     // MARK: - Retrieval
@@ -402,6 +417,13 @@ class DataStore: NSObject {
     
     var statistics: Statistics {
         return currentUser.statistics!
+    }
+    
+    
+    static func entityForYear(date: NSDate) -> Year? {
+        let fetchRequest = NSFetchRequest(entityName: "Year")
+        fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
+        return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
     }
     
 }

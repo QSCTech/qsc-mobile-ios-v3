@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreData
 
 /// The calendar manager which handles calendar queries. Singleton pattern is used in this class.
 public class CalendarManager: NSObject {
@@ -21,14 +20,8 @@ public class CalendarManager: NSObject {
     
     public static let sharedInstance = CalendarManager()
     
-    private func entityForYear(date: NSDate) -> Year? {
-        let fetchRequest = NSFetchRequest(entityName: "Year")
-        fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
-        return try! DataStore.managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
-    }
-    
     private func entityForSemester(date: NSDate) -> Semester? {
-        if let year = entityForYear(date) {
+        if let year = DataStore.entityForYear(date) {
             for semester in year.semesters! {
                 let semester = semester as! Semester
                 if semester.start! <= date && date < semester.end! {
@@ -49,7 +42,7 @@ public class CalendarManager: NSObject {
      - returns: A description like "2015-2016" or "" if failed.
      */
     public func yearForDate(date: NSDate) -> String {
-        return entityForYear(date)?.name ?? ""
+        return DataStore.entityForYear(date)?.name ?? ""
     }
     
     /**
@@ -75,7 +68,7 @@ public class CalendarManager: NSObject {
      - returns: The name of a holiday or nil.
      */
     public func holidayForDate(date: NSDate) -> String? {
-        if let year = entityForYear(date) {
+        if let year = DataStore.entityForYear(date) {
             for holiday in year.holidays! {
                 let holiday = holiday as! Holiday
                 if holiday.start! <= date && date < holiday.end! {
@@ -96,7 +89,7 @@ public class CalendarManager: NSObject {
      - returns: A tuple containing the name and the source date of an adjustment or nil.
      */
     public func adjustmentForDate(date: NSDate) -> (name: String, fromDate: NSDate)? {
-        if let year = entityForYear(date) {
+        if let year = DataStore.entityForYear(date) {
             for adjustment in year.adjustments! {
                 let adjustment = adjustment as! Adjustment
                 if adjustment.toStart! <= date && date < adjustment.toEnd! {

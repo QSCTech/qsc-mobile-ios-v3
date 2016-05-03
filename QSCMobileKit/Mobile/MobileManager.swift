@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreData
 
 /// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Make sure current account exists or login validation is invoked before using instance methods. Singleton pattern is used here.
 public class MobileManager: NSObject {
@@ -26,7 +25,6 @@ public class MobileManager: NSObject {
     
     private let accountManager = AccountManager.sharedInstance
     private let calendarManager = CalendarManager.sharedInstance
-    private let managedObjectContext = DataStore.managedObjectContext
     
     private var apiSession: APISession!
     private var dataStore: DataStore!
@@ -44,9 +42,7 @@ public class MobileManager: NSObject {
         let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { status, error in
             if status {
-                let user = User(context: self.managedObjectContext)
-                user.sid = username
-                try! self.managedObjectContext.save()
+                DataStore.createUser(username)
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
@@ -80,6 +76,7 @@ public class MobileManager: NSObject {
         anotherDataSource.deleteCourses()
         anotherDataSource.deleteExams()
         anotherDataSource.deleteScores()
+        anotherDataSource.deleteStatistics()
         anotherDataSource.deleteUser()
         if let account = accountManager.currentAccountForJwbinfosys {
             changeUser(account)
@@ -87,6 +84,15 @@ public class MobileManager: NSObject {
             dataStore = nil
             apiSession = nil
         }
+    }
+    
+    // MARK: - Drop Tables
+    
+    /**
+     Delete **ALL** objects in CoreData.
+     */
+    public func dropCoreData() {
+        DataStore.dropCoreData()
     }
     
     // MARK: - Retrieve events

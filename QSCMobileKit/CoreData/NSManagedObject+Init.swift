@@ -12,7 +12,7 @@ import CoreData
 extension NSManagedObject {
     
     /**
-     Covenience initializer for entity insertion. Here `dynamicType` is used to get the class name.
+     Covenience initializer for entity insertion.
      
      - parameter context: The managed object context to be inserted in.
      
