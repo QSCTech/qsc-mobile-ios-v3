@@ -303,3 +303,8 @@ public func < (left: NSDate, right: NSDate) -> Bool {
 public func += (inout left: String!, right: String) {
     left = (left ?? "") + right
 }
+
+public let Version: String = {
+    let info = NSBundle.mainBundle().infoDictionary!
+    return "\(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"
+}()

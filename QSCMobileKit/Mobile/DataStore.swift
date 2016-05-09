@@ -14,9 +14,7 @@ import SwiftyJSON
 class DataStore: NSObject {
     
     init(username: String) {
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "sid == %@", username)
-        currentUser = try! managedObjectContext.executeFetchRequest(fetchRequest).first as! User
+        currentUser = DataStore.entityForUser(username)!
         
         super.init()
     }
@@ -262,7 +260,15 @@ class DataStore: NSObject {
         try! managedObjectContext.save()
     }
     
+    /**
+     Create a entity for given username. If the user exists, it will return immediately.
+     
+     - parameter username: Username of the user.
+     */
     static func createUser(username: String) {
+        if DataStore.entityForUser(username) != nil {
+            return
+        }
         let user = User(context: managedObjectContext)
         user.sid = username
         try! managedObjectContext.save()
@@ -349,6 +355,9 @@ class DataStore: NSObject {
         try! managedObjectContext.save()
     }
     
+    /**
+     Delete statistics of current user.
+     */
     func deleteStatistics() {
         if let statistics = currentUser.statistics {
             managedObjectContext.deleteObject(statistics)
@@ -419,11 +428,16 @@ class DataStore: NSObject {
         return currentUser.statistics!
     }
     
-    
     static func entityForYear(date: NSDate) -> Year? {
         let fetchRequest = NSFetchRequest(entityName: "Year")
         fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
         return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
+    }
+    
+    static func entityForUser(username: String) -> User? {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "sid == %@", username)
+        return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? User
     }
     
 }

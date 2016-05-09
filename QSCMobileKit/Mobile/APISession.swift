@@ -113,7 +113,7 @@ class APISession: NSObject {
      */
     func stringFromJSONObject(object: AnyObject) -> String {
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(object, options: [])
-        return NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
+        return String(data: jsonData, encoding: NSUTF8StringEncoding)!
     }
     
     func jsonObjectFromString(string: String) -> AnyObject {

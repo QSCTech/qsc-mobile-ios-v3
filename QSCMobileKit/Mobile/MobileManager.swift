@@ -60,6 +60,7 @@ public class MobileManager: NSObject {
      - parameter username: Username of the account.
      */
     public func changeUser(username: String) {
+        accountManager.currentAccountForJwbinfosys = username
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
         apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
