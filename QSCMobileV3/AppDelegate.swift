@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MobClick.startWithAppkey(UMengAppKey)
         UMessage.startWithAppkey(UMengAppKey, launchOptions: launchOptions)
         UMessage.registerRemoteNotificationAndUserNotificationSettings(notificationSettings)
-        UMessage.setLogEnabled(true)
         return true
     }
 
