@@ -205,6 +205,10 @@ class DataStore: NSObject {
             year.end = formatter.dateFromString(json["end"].stringValue)
             
             for (key, json) in json["semesters"] {
+                if CalendarSemester(rawValue: key) == nil {
+                    continue
+                }
+                
                 let semester = Semester(context: managedObjectContext)
                 semester.year = year
                 
