@@ -14,6 +14,7 @@
 		9D031A291CE069E6008F3098 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D031A2A1CE069ED008F3098 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D031A2B1CE069EF008F3098 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
+		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
 		9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */; };
 		9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
@@ -117,6 +118,7 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D41BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendors/FontAwesome.otf; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		04C331C71BA2F2E600EF959F /* QSCMobileV3 */ = {
 			isa = PBXGroup;
 			children = (
+				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
 				9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */,
 				9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */,
@@ -244,7 +247,10 @@
 				9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */,
 				9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */,
 				9DA178AC1CDB73F100394647 /* AboutViewController.swift */,
+				9DA178B81CDE301500394647 /* About.html */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
+				04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */,
+				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
 			path = QSCMobileV3;
@@ -321,10 +327,7 @@
 		9DEF63841C12FB9000A70C5B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
-				04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */,
-				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
-				9DA178B81CDE301500394647 /* About.html */,
+				9D031A2F1CE180BB008F3098 /* FontAwesome.otf */,
 				04C331D61BA2F2E600EF959F /* Info.plist */,
 				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
 			);
@@ -424,7 +427,7 @@
 				9DF612591BAA89CC004B0A8A /* Frameworks */,
 				9DF6125A1BAA89CC004B0A8A /* Headers */,
 				9DF6125B1BAA89CC004B0A8A /* Resources */,
-				9D031A2E1CE06A44008F3098 /* ShellScript */,
+				9D031A2E1CE06A44008F3098 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -543,6 +546,7 @@
 				04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */,
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9DA178B91CDE301500394647 /* About.html in Resources */,
+				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +576,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9D031A2E1CE06A44008F3098 /* ShellScript */ = {
+		9D031A2E1CE06A44008F3098 /* Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -582,6 +586,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
+			name = "Carthage Copy Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
