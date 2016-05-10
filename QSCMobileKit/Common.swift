@@ -304,7 +304,7 @@ public func += (inout left: String!, right: String) {
     left = (left ?? "") + right
 }
 
-public let Version: String = {
+public let QSCVersion: String = {
     let info = NSBundle.mainBundle().infoDictionary!
     return "\(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"
 }()

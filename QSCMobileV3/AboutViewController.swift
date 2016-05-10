@@ -17,7 +17,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         if let htmlFile = NSBundle.mainBundle().pathForResource("About", ofType: "html"), htmlString = try? String(contentsOfFile: htmlFile, encoding: NSUTF8StringEncoding) {
-            let htmlString = htmlString.stringByReplacingOccurrencesOfString("<%= version %>", withString: "\(Version)")
+            let htmlString = htmlString.stringByReplacingOccurrencesOfString("<%= version %>", withString: "\(QSCVersion)")
             webView.loadHTMLString(htmlString, baseURL: nil)
         }
     }

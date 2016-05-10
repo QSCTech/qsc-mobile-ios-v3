@@ -100,7 +100,7 @@ class PreferenceViewController: UITableViewController {
             case 0:
                 performSegueWithIdentifier("showAbout", sender: nil)
             case 1:
-                let mailBody = "版本信息：\nQSCMobile Version \(Version)\niOS \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈：".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+                let mailBody = "版本信息：\nQSCMobile Version \(QSCVersion)\niOS \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈：".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
                 let mailLink = "mailto:mobile@zjuqsc.com?subject=%5BQSCMobileV3%5D%20Feedback&body=\(mailBody)"
                 UIApplication.sharedApplication().openURL(NSURL(string: mailLink)!)
             case 2:
