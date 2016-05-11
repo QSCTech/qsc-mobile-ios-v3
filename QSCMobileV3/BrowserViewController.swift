@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 
+// TODO: Toolbar actions not implemented
+// FIXME: Web view position & POST does not work
 class BrowserViewController: UIViewController {
     
     init(request: NSURLRequest) {
