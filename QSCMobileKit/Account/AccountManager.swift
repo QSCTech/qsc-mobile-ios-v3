@@ -82,7 +82,7 @@ public class AccountManager: NSObject {
      
      - returns: Password of the account or nil if username is not found.
      */
-    func passwordForJwbinfosys(username: String) -> String? {
+    public func passwordForJwbinfosys(username: String) -> String? {
         return jwbinfosysKeychain[username]
     }
     
