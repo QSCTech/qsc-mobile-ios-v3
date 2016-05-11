@@ -27,7 +27,10 @@
 		9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* CalendarManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
-		9DA178AD1CDB73F100394647 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA178AC1CDB73F100394647 /* AboutViewController.swift */; };
+		9D8C1C791CE23B40005BAB55 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */; };
+		9D8C1C7A1CE23B40005BAB55 /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */; };
+		9D8C1C7C1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C1C7B1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift */; };
+		9DA178AD1CDB73F100394647 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA178AC1CDB73F100394647 /* WebViewController.swift */; };
 		9DA178B91CDE301500394647 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9DA178B81CDE301500394647 /* About.html */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
@@ -136,7 +139,10 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
-		9DA178AC1CDB73F100394647 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserViewController.xib; sourceTree = "<group>"; };
+		9D8C1C7B1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentViewControllerWithAnimation.swift"; sourceTree = "<group>"; };
+		9DA178AC1CDB73F100394647 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9DA178B81CDE301500394647 /* About.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
@@ -241,12 +247,15 @@
 			children = (
 				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
+				9D8C1C7B1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift */,
+				9DA178AC1CDB73F100394647 /* WebViewController.swift */,
+				9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */,
+				9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */,
 				9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */,
 				9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */,
 				9DEF638B1C12FDC200A70C5B /* DiscoveryViewController.swift */,
 				9DEF63891C12FD9F00A70C5B /* ToolsViewController.swift */,
 				9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */,
-				9DA178AC1CDB73F100394647 /* AboutViewController.swift */,
 				9DA178B81CDE301500394647 /* About.html */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
 				04C331D31BA2F2E600EF959F /* LaunchScreen.storyboard */,
@@ -544,6 +553,7 @@
 			files = (
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				04C331D51BA2F2E600EF959F /* LaunchScreen.storyboard in Resources */,
+				9D8C1C7A1CE23B40005BAB55 /* BrowserViewController.xib in Resources */,
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9DA178B91CDE301500394647 /* About.html in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
@@ -601,13 +611,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8C1C7C1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift in Sources */,
 				9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */,
 				9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */,
 				9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */,
-				9DA178AD1CDB73F100394647 /* AboutViewController.swift in Sources */,
+				9DA178AD1CDB73F100394647 /* WebViewController.swift in Sources */,
 				9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */,
 				9DEF638C1C12FDC200A70C5B /* DiscoveryViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
+				9D8C1C791CE23B40005BAB55 /* BrowserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
