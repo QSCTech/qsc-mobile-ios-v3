@@ -101,7 +101,7 @@ class PreferenceViewController: UITableViewController {
                 let wvc = WebViewController(url: nil, title: "关于我们")
                 showViewController(wvc, sender: nil)
             case 1:
-                let mailBody = "版本信息：\nQSCMobile Version \(QSCVersion)\niOS \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈：".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                let mailBody = "版本信息：\nQSCMobile Version \(QSCVersion)\niOS \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈：".percentEncoded
                 let mailLink = "mailto:mobile@zjuqsc.com?subject=%5BQSCMobileV3%5D%20Feedback&body=\(mailBody)"
                 UIApplication.sharedApplication().openURL(NSURL(string: mailLink)!)
             case 2:

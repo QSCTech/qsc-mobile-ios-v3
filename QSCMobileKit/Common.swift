@@ -280,6 +280,15 @@ func alamofireManager(timeoutInterval timeoutInterval: Double) -> Alamofire.Mana
     return Alamofire.Manager(configuration: configuration)
 }
 
+extension String {
+    
+    /// Return a new string made by replacing all characters not allowed in a query URL component with percent encoded characters.
+    public var percentEncoded: String {
+        return stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    }
+    
+}
+
 extension NSNumber: Comparable {}
 
 public func == (left: NSNumber, right: NSNumber) -> Bool {
