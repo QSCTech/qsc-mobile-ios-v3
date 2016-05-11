@@ -54,17 +54,17 @@ class PreferenceViewController: UITableViewController {
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 let account = accounts[indexPath.row]
-                cell.textLabel!.text = account
+                cell.textLabel!.attributedText = "\u{f007}\t\(account)".attributedWithFontAwesome
                 if account == accountManager.currentAccountForJwbinfosys {
                     cell.accessoryType = .Checkmark
                 } else {
                     cell.accessoryType = .None
                 }
             } else {
-                cell.textLabel!.text = "添加用户"
+                cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
             }
         case Preference.Zjuwlan.rawValue:
-            cell.textLabel!.text = accountManager.accountForZjuwlan ?? "账号设置"
+            cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "账号设置")".attributedWithFontAwesome
         case Preference.About.rawValue:
             switch indexPath.row {
             case 0:

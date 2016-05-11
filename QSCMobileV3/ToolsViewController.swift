@@ -20,19 +20,19 @@ class ToolsViewController: UITableViewController {
     
     private let queries: [[String: String]] = [
         [
-            "name": "课程",
+            "name": "\u{f02d}\t课程",
             "segue": "showCourse",
         ],
         [
-            "name": "考试",
+            "name": "\u{f040}\t考试",
             "segue": "showExam",
         ],
         [
-            "name": "成绩",
+            "name": "\u{f0f6}\t成绩",
             "segue": "showScore",
         ],
         [
-            "name": "校车",
+            "name": "\u{f207}\t校车",
             "segue": "showBus",
         ],
     ]
@@ -96,7 +96,7 @@ class ToolsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
         switch indexPath.section {
         case Tools.Query.rawValue:
-            cell.textLabel!.text = queries[indexPath.row]["name"]
+            cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
         case Tools.Website.rawValue:
             cell.textLabel!.text = websites[indexPath.row]["name"]
         case Tools.Webpage.rawValue:

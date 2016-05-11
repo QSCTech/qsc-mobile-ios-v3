@@ -55,3 +55,13 @@ extension BrowserViewController: UINavigationBarDelegate {
     }
     
 }
+
+extension BrowserViewController: WKNavigationDelegate {
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        webView.evaluateJavaScript("document.title") { result, error in
+            self.navigationItem.title = result as? String
+        }
+    }
+    
+}

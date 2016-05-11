@@ -6,7 +6,7 @@
 //  Copyright © 2015年 QSC Tech. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 import Alamofire
 
@@ -285,6 +285,11 @@ extension String {
     /// Return a new string made by replacing all characters not allowed in a query URL component with percent encoded characters.
     public var percentEncoded: String {
         return stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    }
+    
+    /// Return an attributed string with FontAwesome 16.0
+    public var attributedWithFontAwesome: NSAttributedString {
+        return NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
     }
     
 }
