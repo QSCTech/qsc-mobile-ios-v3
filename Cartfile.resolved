@@ -1,3 +1,4 @@
-github "Alamofire/Alamofire" "3.3.1"
+github "Alamofire/Alamofire" "3.4.0"
+github "Mozharovsky/CVCalendar" "1.2.9"
 github "kishikawakatsumi/KeychainAccess" "v2.3.5"
 github "SwiftyJSON/SwiftyJSON" "2.3.3"
