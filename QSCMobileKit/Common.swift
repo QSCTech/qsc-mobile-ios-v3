@@ -322,3 +322,5 @@ public let QSCVersion: String = {
     let info = NSBundle.mainBundle().infoDictionary!
     return "\(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"
 }()
+
+public let groupDefaults = NSUserDefaults(suiteName: "group.QSCMobile")!

@@ -15,8 +15,8 @@ class PreferenceViewController: UITableViewController {
     private let mobileManager = MobileManager.sharedInstance
     
     private enum Preference: Int {
-        case Jwbinfosys = 0, Zjuwlan, About
-        static let count = 3
+        case Jwbinfosys = 0, Zjuwlan, Setting, About
+        static let count = 4
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -34,11 +34,22 @@ class PreferenceViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case Preference.About.rawValue:
+            return "Copyright © 2016 QSC Tech."
+        default:
+            return nil
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Preference.Jwbinfosys.rawValue:
             return accountManager.allAccountsForJwbinfosys.count + 1
         case Preference.Zjuwlan.rawValue:
+            return 1
+        case Preference.Setting.rawValue:
             return 1
         case Preference.About.rawValue:
             return 3
@@ -65,6 +76,16 @@ class PreferenceViewController: UITableViewController {
             }
         case Preference.Zjuwlan.rawValue:
             cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "账号设置")".attributedWithFontAwesome
+        case Preference.Setting.rawValue:
+            switch indexPath.row {
+            case 0:
+                cell.textLabel!.text = "日程提醒"
+                let switchView = UISwitch(frame: CGRectZero)
+                switchView.setOn(true, animated: false)
+                cell.accessoryView = switchView
+            default:
+                break
+            }
         case Preference.About.rawValue:
             switch indexPath.row {
             case 0:
@@ -95,6 +116,11 @@ class PreferenceViewController: UITableViewController {
             }
         case Preference.Zjuwlan.rawValue:
             performSegueWithIdentifier("showZjuwlan", sender: nil)
+        case Preference.Setting.rawValue:
+            switch indexPath.row {
+            default:
+                break
+            }
         case Preference.About.rawValue:
             switch indexPath.row {
             case 0:
