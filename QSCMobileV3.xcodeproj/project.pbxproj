@@ -679,6 +679,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -724,6 +725,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -766,9 +768,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendors",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -796,9 +797,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendors",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -824,7 +824,7 @@
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.QSCMobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileKit/QSCMobileKit-Bridging-Header.h";
@@ -854,7 +854,7 @@
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.QSCMobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileKit/QSCMobileKit-Bridging-Header.h";
@@ -872,9 +872,8 @@
 				CURRENT_PROJECT_VERSION = 30000;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -889,9 +888,8 @@
 				CURRENT_PROJECT_VERSION = 30000;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
