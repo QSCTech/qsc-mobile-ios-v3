@@ -14,6 +14,10 @@ class PreferenceViewController: UITableViewController {
     private let accountManager = AccountManager.sharedInstance
     private let mobileManager = MobileManager.sharedInstance
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     private enum Preference: Int {
         case Jwbinfosys = 0, Zjuwlan, Setting, About
         static let count = 4
@@ -50,7 +54,7 @@ class PreferenceViewController: UITableViewController {
         case Preference.Zjuwlan.rawValue:
             return 1
         case Preference.Setting.rawValue:
-            return 1
+            return 2
         case Preference.About.rawValue:
             return 3
         default:
@@ -59,34 +63,51 @@ class PreferenceViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
         switch indexPath.section {
         case Preference.Jwbinfosys.rawValue:
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 let account = accounts[indexPath.row]
-                cell.textLabel!.attributedText = "\u{f007}\t\(account)".attributedWithFontAwesome
+                let text = "\u{f007}\t\(account)".attributedWithFontAwesome
                 if account == accountManager.currentAccountForJwbinfosys {
-                    cell.accessoryType = .Checkmark
+                    let cell = tableView.dequeueReusableCellWithIdentifier("Checked")!
+                    cell.textLabel!.attributedText = text
+                    return cell
                 } else {
-                    cell.accessoryType = .None
+                    let cell = tableView.dequeueReusableCellWithIdentifier("Unchecked")!
+                    cell.textLabel!.attributedText = text
+                    return cell
                 }
             } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("Disclosure")!
                 cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
+                return cell
             }
         case Preference.Zjuwlan.rawValue:
-            cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "账号设置")".attributedWithFontAwesome
+            let cell = tableView.dequeueReusableCellWithIdentifier("Disclosure")!
+            cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
+            return cell
         case Preference.Setting.rawValue:
             switch indexPath.row {
             case 0:
-                cell.textLabel!.text = "日程提醒"
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
                 let switchView = UISwitch(frame: CGRectZero)
-                switchView.setOn(true, animated: false)
+                let refreshOnLaunch = groupDefaults.objectForKey(RefreshOnLaunchKey) as! Bool
+                switchView.setOn(refreshOnLaunch, animated: false)
+                switchView.addTarget(self, action: #selector(refreshSwitchChanged), forControlEvents: .ValueChanged)
                 cell.accessoryView = switchView
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+                cell.textLabel!.attributedText = "\u{f073}\t日程提醒".attributedWithFontAwesome
+                cell.detailTextLabel!.text = "从不"
+                return cell
             default:
-                break
+                return UITableViewCell()
             }
         case Preference.About.rawValue:
+            let cell = tableView.dequeueReusableCellWithIdentifier("Disclosure")!
             switch indexPath.row {
             case 0:
                 cell.textLabel!.text = "关于我们"
@@ -95,12 +116,12 @@ class PreferenceViewController: UITableViewController {
             case 2:
                 cell.textLabel!.text = "去评分"
             default:
-                break
+                return UITableViewCell()
             }
+            return cell
         default:
-            break
+            return UITableViewCell()
         }
-        return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -157,6 +178,11 @@ class PreferenceViewController: UITableViewController {
             tableView.reloadData()
         }
         return [delete]
+    }
+    
+    func refreshSwitchChanged(sender: AnyObject) {
+        let switchView = sender as! UISwitch
+        groupDefaults.setObject(switchView.on, forKey: RefreshOnLaunchKey)
     }
     
 }
