@@ -33,6 +33,41 @@
 	<array>
 		<string>FontAwesome.otf</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Course</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>课程</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Exam</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>考试</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Score</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>成绩</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Bus</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>校车</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string></string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
