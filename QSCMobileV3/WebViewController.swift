@@ -31,6 +31,7 @@ class WebViewController: UIViewController {
     
     override func loadView() {
         webView = WKWebView()
+        webView.backgroundColor = UIColor.whiteColor()
         view = webView
         if let request = request {
             webView.loadRequest(request)

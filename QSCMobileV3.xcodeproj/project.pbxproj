@@ -30,7 +30,6 @@
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9D8C1C791CE23B40005BAB55 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */; };
 		9D8C1C7A1CE23B40005BAB55 /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */; };
-		9D8C1C7C1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C1C7B1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift */; };
 		9DA178AD1CDB73F100394647 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA178AC1CDB73F100394647 /* WebViewController.swift */; };
 		9DA178B91CDE301500394647 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9DA178B81CDE301500394647 /* About.html */; };
 		9DB142161CE5BE130051A3BD /* Alamofire.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -148,7 +147,6 @@
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
 		9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserViewController.xib; sourceTree = "<group>"; };
-		9D8C1C7B1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentViewControllerWithAnimation.swift"; sourceTree = "<group>"; };
 		9DA178AC1CDB73F100394647 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9DA178B81CDE301500394647 /* About.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
 		9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 			children = (
 				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
-				9D8C1C7B1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift */,
 				9DA178AC1CDB73F100394647 /* WebViewController.swift */,
 				9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */,
 				9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */,
@@ -571,7 +568,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D8C1C7C1CE304FC005BAB55 /* UIViewController+presentViewControllerWithAnimation.swift in Sources */,
 				9DEF638A1C12FD9F00A70C5B /* ToolsViewController.swift in Sources */,
 				9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */,
 				9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */,

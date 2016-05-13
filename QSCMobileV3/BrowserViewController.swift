@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import WebKit
 
-// TODO: Toolbar actions not implemented
-// FIXME: Web view position & POST does not work
+// TODO: Change UIWebView to WKWebView
+// TODO: Toolbar actions and spinner not implemented
 class BrowserViewController: UIViewController {
     
     init(request: NSURLRequest) {
@@ -24,9 +23,10 @@ class BrowserViewController: UIViewController {
     
     var urlRequest: NSURLRequest!
     
-    var webView: WKWebView!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var navItem: UINavigationItem!
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var webView: UIWebView!
     
     @IBOutlet weak var backwardButton: UIBarButtonItem!
     @IBOutlet weak var forwardButton: UIBarButtonItem!
@@ -34,18 +34,15 @@ class BrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView = WKWebView(frame: view.bounds)
-        view.addSubview(webView)
-        view.sendSubviewToBack(webView)
-        
-        navigationBar.delegate = self
         backwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], forState: .Normal)
         forwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], forState: .Normal)
+        navBar.delegate = self
+        webView.delegate = self
         webView.loadRequest(urlRequest)
     }
 
     @IBAction func dismiss(sender: AnyObject) {
-        dismissViewControllerWithAnimation()
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
@@ -58,12 +55,10 @@ extension BrowserViewController: UINavigationBarDelegate {
     
 }
 
-extension BrowserViewController: WKNavigationDelegate {
+extension BrowserViewController: UIWebViewDelegate {
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        webView.evaluateJavaScript("document.title") { result, error in
-            self.navigationItem.title = result as? String
-        }
+    func webViewDidFinishLoad(webView: UIWebView) {
+        navItem.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
     }
     
 }

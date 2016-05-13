@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 import QSCMobileKit
 
 class ToolsViewController: UITableViewController {
@@ -14,8 +15,8 @@ class ToolsViewController: UITableViewController {
     private let accountManager = AccountManager.sharedInstance
     
     enum Tools: Int {
-        case Query = 0, Website, Webpage
-        static let count = 3
+        case Query = 0, Login, Website, Webpage
+        static let count = 4
     }
     
     private let queries: [[String: String]] = [
@@ -37,18 +38,41 @@ class ToolsViewController: UITableViewController {
         ],
     ]
     
-    private let websites: [[String: String]] = [
+    private let login: [[String: String]] = [
         [
             "name": "教务网",
             "url": "http://jwbinfosys.zju.edu.cn/default2.aspx",
         ],
         [
+            "name": "网络中心",
+            "url": "http://myvpn.zju.edu.cn/j_security_check",
+        ],
+        [
             "name": "浙大邮箱",
             "url": "https://mail.zju.edu.cn/coremail/login.jsp",
         ],
+    ]
+    
+    private let websites: [[String: String]] = [
         [
-            "name": "网络中心",
-            "url": "http://myvpn.zju.edu.cn/j_security_check",
+            "name": "院系网站",
+            "url": "https://info.zjuqsc.com/zju-websites/",
+        ],
+        [
+            "name": "图书馆",
+            "url": "http://webpac.zju.edu.cn",
+        ],
+        [
+            "name": "信息共享空间",
+            "url": "http://ic.zju.edu.cn/ClientWeb/xcus/zd/index.aspx",
+        ],
+        [
+            "name": "体质健康测试",
+            "url": "http://www.tyys.zju.edu.cn:8080/tzjk/",
+        ],
+        [
+            "name": "健康之友",
+            "url": "http://www.tyys.zju.edu.cn:8080/hyz/",
         ],
     ]
     
@@ -58,16 +82,12 @@ class ToolsViewController: UITableViewController {
             "url": "https://info.zjuqsc.com/academic-calendar/",
         ],
         [
+            "name": "体育锻炼制度",
+            "url": "https://info.zjuqsc.com/exercise-regulations/",
+        ],
+        [
             "name": "校园地图",
             "url": "http://m.zju.edu.cn:8080/m/maps/zjg.html",
-        ],
-        [
-            "name": "浙大图书馆",
-            "url": "http://m.5read.com/zju",
-        ],
-        [
-            "name": "信息共享空间",
-            "url": "http://ic.zju.edu.cn/ClientWeb/xcus/zd/index.aspx",
         ],
         [
             "name": "教室占用查询",
@@ -83,6 +103,8 @@ class ToolsViewController: UITableViewController {
         switch section {
         case Tools.Query.rawValue:
             return queries.count
+        case Tools.Login.rawValue:
+            return login.count
         case Tools.Website.rawValue:
             return websites.count
         case Tools.Webpage.rawValue:
@@ -97,6 +119,8 @@ class ToolsViewController: UITableViewController {
         switch indexPath.section {
         case Tools.Query.rawValue:
             cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
+        case Tools.Login.rawValue:
+            cell.textLabel!.text = login[indexPath.row]["name"]
         case Tools.Website.rawValue:
             cell.textLabel!.text = websites[indexPath.row]["name"]
         case Tools.Webpage.rawValue:
@@ -112,10 +136,10 @@ class ToolsViewController: UITableViewController {
         switch indexPath.section {
         case Tools.Query.rawValue:
             performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
-        case Tools.Website.rawValue:
+        case Tools.Login.rawValue:
             // TODO: Check whether logged in
             // TODO: Handle login errors
-            let url = NSURL(string: websites[indexPath.row]["url"]!)!
+            let url = NSURL(string: login[indexPath.row]["url"]!)!
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "POST"
             switch indexPath.row {
@@ -126,16 +150,26 @@ class ToolsViewController: UITableViewController {
             case 1:
                 let username = accountManager.accountForZjuwlan!.percentEncoded
                 let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.HTTPBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action:login=".dataUsingEncoding(NSASCIIStringEncoding)
+                request.HTTPBody = "j_username=\(username)&j_password=\(password)".dataUsingEncoding(NSASCIIStringEncoding)
             case 2:
                 let username = accountManager.accountForZjuwlan!.percentEncoded
                 let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.HTTPBody = "j_username=\(username)&j_password=\(password)".dataUsingEncoding(NSASCIIStringEncoding)
+                request.HTTPBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action:login=".dataUsingEncoding(NSASCIIStringEncoding)
             default:
                 break
             }
             let bvc = BrowserViewController(request: request)
-            presentViewControllerWithAnimation(bvc)
+            presentViewController(bvc, animated: true, completion: nil)
+        case Tools.Website.rawValue:
+            let url = NSURL(string: websites[indexPath.row]["url"]!)!
+            if #available(iOS 9.0, *) {
+                let svc = SFSafariViewController(URL: url)
+                presentViewController(svc, animated: true, completion: nil)
+            } else {
+                let request = NSURLRequest(URL: url)
+                let bvc = BrowserViewController(request: request)
+                presentViewController(bvc, animated: true, completion: nil)
+            }
         case Tools.Webpage.rawValue:
             let url = webpages[indexPath.row]["url"]!
             let title = webpages[indexPath.row]["name"]!
