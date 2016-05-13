@@ -50,7 +50,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="rAU-Dh-UZX" secondAttribute="leading" id="xvF-EV-2o4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="今日" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="今日" image="Today" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="textView" destination="rAU-Dh-UZX" id="8a0-Ad-XD7"/>
                     </connections>
@@ -93,7 +93,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="日程" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="日程" image="Calendar" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,7 +179,7 @@
         <scene sceneID="ZrD-2v-zQf">
             <objects>
                 <navigationController title="Tools" id="XZf-SV-YIi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工具" image="second" id="Iys-tw-le7"/>
+                    <tabBarItem key="tabBarItem" title="工具" image="Discovery" id="Iys-tw-le7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6B-iD-COS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -254,7 +254,7 @@
         <scene sceneID="uLV-Mc-gKV">
             <objects>
                 <navigationController title="Preference" id="nWB-Rd-QKm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" image="first" id="AEf-u5-uMk"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="Preference" id="AEf-u5-uMk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RG9-6b-56D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -322,7 +322,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发现" image="first" id="ELC-ks-08q"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="Discovery" id="ELC-ks-08q"/>
                     <connections>
                         <outlet property="imageView" destination="hlU-X0-tdd" id="NUa-cP-Gyi"/>
                         <outlet property="textView" destination="YiO-UI-CcN" id="Sli-IM-66g"/>
@@ -356,7 +356,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Calendar" width="26" height="25"/>
+        <image name="Discovery" width="25" height="25"/>
+        <image name="Preference" width="25" height="25"/>
+        <image name="Today" width="26" height="25"/>
     </resources>
 </document>
