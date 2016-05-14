@@ -149,7 +149,7 @@ class APISession: NSObject {
                 return
             }
             let json = JSON(response.result.value!)
-            if (json["status"].string == "ok") {
+            if json["status"].string == "ok" {
                 self.session = (json["sessionId"].string, json["sessionKey"].string)
                 callback(true, nil)
             } else {
@@ -183,7 +183,7 @@ class APISession: NSObject {
                 return
             }
             let json = JSON(response.result.value!)
-            if (json["status"].string == "ok") {
+            if json["status"].string == "ok" {
                 if let responseList = json["responseList"].string {
                     let responseJSON = JSON(self.jsonObjectFromString(responseList))
                     callback(responseJSON[0]["data"], nil)
@@ -191,7 +191,7 @@ class APISession: NSObject {
                     print("Resource request: Response list is null.")
                     callback(nil, "刷新失败，请重试")
                 }
-            } else if (json["status"].string == "sessionFail") {
+            } else if json["status"].string == "sessionFail" {
                 print("Resource request: sessionFail")
                 self.loginRequest { status, error in
                     if status {

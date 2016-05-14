@@ -117,7 +117,7 @@ public class CalendarManager: NSObject {
             let calendar = NSCalendar.currentCalendar()
             
             var zeroMonday = semester.start!
-            if (semester.startsWithWeekZero == false) {
+            if semester.startsWithWeekZero == false {
                 zeroMonday = zeroMonday.dateByAddingTimeInterval(-weekTimeInterval)
             }
             while calendar.component([.Weekday], fromDate: zeroMonday) != Weekday.Monday.rawValue {

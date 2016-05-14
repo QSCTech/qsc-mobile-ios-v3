@@ -93,6 +93,7 @@ class PreferenceViewController: UITableViewController {
             case 0:
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
+                // TODO: Change tint color (TBD)
                 let switchView = UISwitch(frame: CGRectZero)
                 let refreshOnLaunch = groupDefaults.objectForKey(RefreshOnLaunchKey) as! Bool
                 switchView.setOn(refreshOnLaunch, animated: false)
