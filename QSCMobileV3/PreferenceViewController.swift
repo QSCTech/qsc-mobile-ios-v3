@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 import QSCMobileKit
 
 class PreferenceViewController: UITableViewController {
@@ -148,9 +149,19 @@ class PreferenceViewController: UITableViewController {
                 let wvc = WebViewController(url: nil, title: "关于我们")
                 showViewController(wvc, sender: nil)
             case 1:
-                let mailBody = "版本信息：\nQSCMobile Version \(QSCVersion)\niOS \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈：".percentEncoded
-                let mailLink = "mailto:mobile@zjuqsc.com?subject=%5BQSCMobileV3%5D%20Feedback&body=\(mailBody)"
-                UIApplication.sharedApplication().openURL(NSURL(string: mailLink)!)
+                if MFMailComposeViewController.canSendMail() {
+                    let mcvc = MFMailComposeViewController()
+                    mcvc.mailComposeDelegate = self
+                    mcvc.setToRecipients(["mobile@zjuqsc.com"])
+                    mcvc.setSubject("[QSCMobileV3] Feedback")
+                    mcvc.setMessageBody("版本信息：\nQSCMobile Version \(QSCVersion)\niOS \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈：\n\u{200b}", isHTML: false)
+                    presentViewController(mcvc, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "用户反馈", message: "您尚未设置系统邮件账户，请先行设置或直接发送邮件至 mobile@zjuqsc.com", preferredStyle: .Alert)
+                    let action = UIAlertAction(title: "好", style: .Default, handler: nil)
+                    alert.addAction(action)
+                    presentViewController(alert, animated: true, completion: nil)
+                }
             case 2:
                 let appLink = "https://itunes.apple.com/cn/app/qiu-shi-chao-mobile/id583334920"
                 UIApplication.sharedApplication().openURL(NSURL(string: appLink)!)
@@ -183,6 +194,20 @@ class PreferenceViewController: UITableViewController {
     func refreshSwitchChanged(sender: AnyObject) {
         let switchView = sender as! UISwitch
         groupDefaults.setObject(switchView.on, forKey: RefreshOnLaunchKey)
+    }
+    
+}
+
+extension PreferenceViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+        if result == MFMailComposeResultSent {
+            let alert = UIAlertController(title: "用户反馈", message: "感谢您的反馈！\n我们将在一周内回复您的邮件", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "好", style: .Default, handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
 }

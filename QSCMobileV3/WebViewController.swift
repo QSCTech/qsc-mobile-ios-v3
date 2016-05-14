@@ -38,7 +38,7 @@ class WebViewController: UIViewController {
         } else {
             let htmlFile = NSBundle.mainBundle().pathForResource("About", ofType: "html")!
             let htmlString = try! String(contentsOfFile: htmlFile, encoding: NSUTF8StringEncoding).stringByReplacingOccurrencesOfString("<%= version %>", withString: "\(QSCVersion)")
-            webView.loadHTMLString(htmlString, baseURL: nil)
+            webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
         }
         self.navigationItem.title = name
     }

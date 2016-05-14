@@ -35,6 +35,7 @@
 		9DB142161CE5BE130051A3BD /* Alamofire.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DB142171CE5BE150051A3BD /* SwiftyJSON.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DB142181CE5BE170051A3BD /* KeychainAccess.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9DB1421A1CE6E15D0051A3BD /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB142191CE6E15D0051A3BD /* Logo.jpg */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
 		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
@@ -152,6 +153,7 @@
 		9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = ../Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		9DB142191CE6E15D0051A3BD /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo.jpg; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */,
 				9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */,
 				9D031A2F1CE180BB008F3098 /* FontAwesome.otf */,
+				9DB142191CE6E15D0051A3BD /* Logo.jpg */,
 				04C331D61BA2F2E600EF959F /* Info.plist */,
 				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
 			);
@@ -522,8 +525,9 @@
 				9D8C1C7A1CE23B40005BAB55 /* BrowserViewController.xib in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
-				9DA178B91CDE301500394647 /* About.html in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
+				9DA178B91CDE301500394647 /* About.html in Resources */,
+				9DB1421A1CE6E15D0051A3BD /* Logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
