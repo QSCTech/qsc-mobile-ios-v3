@@ -10,7 +10,6 @@ import UIKit
 import QSCMobileKit
 
 let UMengAppKey = "572381bf67e58e07a7005095"
-let RefreshOnLaunchKey = "RefreshOnLaunch"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Refresh on launch completed")
             }
         }
+        
+        if groupDefaults.objectForKey(EventNotificationKey) == nil {
+            // Here 0 means Never
+            groupDefaults.setObject(0, forKey: EventNotificationKey)
+        }
+        
         return true
     }
     

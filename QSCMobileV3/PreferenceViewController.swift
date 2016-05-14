@@ -10,6 +10,8 @@ import UIKit
 import MessageUI
 import QSCMobileKit
 
+let RefreshOnLaunchKey = "RefreshOnLaunch"
+
 class PreferenceViewController: UITableViewController {
     
     private let accountManager = AccountManager.sharedInstance
@@ -101,7 +103,7 @@ class PreferenceViewController: UITableViewController {
             case 1:
                 let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
                 cell.textLabel!.attributedText = "\u{f073}\t日程提醒".attributedWithFontAwesome
-                cell.detailTextLabel!.text = "从不"
+                cell.detailTextLabel!.text = EventNotificationViewController.status
                 return cell
             default:
                 return UITableViewCell()
@@ -143,6 +145,8 @@ class PreferenceViewController: UITableViewController {
             performSegueWithIdentifier("showZjuwlan", sender: nil)
         case Preference.Setting.rawValue:
             switch indexPath.row {
+            case 1:
+                performSegueWithIdentifier("showEventNotification", sender: nil)
             default:
                 break
             }

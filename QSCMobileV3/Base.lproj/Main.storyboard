@@ -115,7 +115,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HJW-Qx-lSs">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HJW-Qx-lSs">
                                             <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -159,29 +159,20 @@
             </objects>
             <point key="canvasLocation" x="2297.5" y="1710"/>
         </scene>
-        <!--Table View Controller-->
+        <!--日程提醒-->
         <scene sceneID="KM9-WE-Q82">
             <objects>
-                <tableViewController id="sdm-K9-4b5" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="20Z-Yz-g8D">
+                <tableViewController id="sdm-K9-4b5" customClass="EventNotificationViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="20Z-Yz-g8D">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ec2-BX-jdy">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ec2-BX-jdy" id="WJT-ea-YH3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
                             <outlet property="dataSource" destination="sdm-K9-4b5" id="BeV-rc-rGB"/>
                             <outlet property="delegate" destination="sdm-K9-4b5" id="6gx-r0-rTb"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="日程提醒" id="Tlg-td-B4m"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mG-sS-SSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,7 +271,7 @@
                     <connections>
                         <segue destination="sT8-kt-sC2" kind="show" identifier="showLogin" id="Gff-rK-zNV"/>
                         <segue destination="ZRG-c2-NMy" kind="show" identifier="showZjuwlan" id="Eee-IW-1ta"/>
-                        <segue destination="sdm-K9-4b5" kind="show" id="4Ni-Ba-UCv"/>
+                        <segue destination="sdm-K9-4b5" kind="show" identifier="showEventNotification" id="4Ni-Ba-UCv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qky-gE-LRo" userLabel="First Responder" sceneMemberID="firstResponder"/>

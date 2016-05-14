@@ -78,6 +78,10 @@ class QueryViewController: UITableViewController {
             "name": "健康之友",
             "url": "http://www.tyys.zju.edu.cn:8080/hyz/",
         ],
+        [
+            "name": "第二课堂",
+            "url": "http://www.qzlake.zju.edu.cn",
+        ],
     ]
     
     private let webpages: [[String: String]] = [

@@ -14,6 +14,7 @@
 		9D031A2A1CE069ED008F3098 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D031A2B1CE069EF008F3098 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
+		9D31394B1CE74E4200CD7DAD /* EventNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31394A1CE74E4200CD7DAD /* EventNotificationViewController.swift */; };
 		9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */; };
 		9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
@@ -127,6 +128,7 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendors/FontAwesome.otf; sourceTree = "<group>"; };
+		9D31394A1CE74E4200CD7DAD /* EventNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationViewController.swift; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				9DEF638B1C12FDC200A70C5B /* DiscoverViewController.swift */,
 				9DEF63891C12FD9F00A70C5B /* QueryViewController.swift */,
 				9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */,
+				9D31394A1CE74E4200CD7DAD /* EventNotificationViewController.swift */,
 				9DA178B81CDE301500394647 /* About.html */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
 				9D4179AC1CE4678E00955729 /* LaunchScreen.xib */,
@@ -578,6 +581,7 @@
 				9DA178AD1CDB73F100394647 /* WebViewController.swift in Sources */,
 				9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */,
 				9DEF638C1C12FDC200A70C5B /* DiscoverViewController.swift in Sources */,
+				9D31394B1CE74E4200CD7DAD /* EventNotificationViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				9D8C1C791CE23B40005BAB55 /* BrowserViewController.swift in Sources */,
 			);
