@@ -9,7 +9,6 @@
 import UIKit
 
 // TODO: Change UIWebView to WKWebView
-// TODO: Toolbar actions and spinner not implemented
 class BrowserViewController: UIViewController {
     
     init(request: NSURLRequest) {
@@ -25,6 +24,7 @@ class BrowserViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var webView: UIWebView!
     
@@ -39,12 +39,25 @@ class BrowserViewController: UIViewController {
         navBar.delegate = self
         webView.delegate = self
         webView.loadRequest(urlRequest)
+        activityIndicator.startAnimating()
     }
 
     @IBAction func dismiss(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
+    @IBAction func backward(sender: AnyObject) {
+        webView.goBack()
+    }
+    
+    @IBAction func forward(sender: AnyObject) {
+        webView.goForward()
+    }
+    
+    @IBAction func refresh(sender: AnyObject) {
+        webView.reload()
+    }
+    
 }
 
 extension BrowserViewController: UINavigationBarDelegate {
@@ -57,8 +70,15 @@ extension BrowserViewController: UINavigationBarDelegate {
 
 extension BrowserViewController: UIWebViewDelegate {
     
+    func webViewDidStartLoad(webView: UIWebView) {
+        activityIndicator.hidden = false
+    }
+    
     func webViewDidFinishLoad(webView: UIWebView) {
+        activityIndicator.hidden = true
         navItem.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+        backwardButton.enabled = webView.canGoBack
+        forwardButton.enabled = webView.canGoForward
     }
     
 }

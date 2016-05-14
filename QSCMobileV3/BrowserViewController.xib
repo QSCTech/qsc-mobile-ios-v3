@@ -3,10 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrowserViewController" customModule="QSCMobileV3" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="I0C-jJ-TAa" id="KuQ-Z3-SKA"/>
                 <outlet property="backwardButton" destination="WD7-73-hKa" id="jnp-hS-X4v"/>
                 <outlet property="forwardButton" destination="tAo-d6-fql" id="fZ5-fJ-g13"/>
                 <outlet property="navBar" destination="2B8-qo-LPi" id="Ew4-BF-P0U"/>
@@ -29,15 +31,27 @@
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <items>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CML-hO-Qeu"/>
-                        <barButtonItem title="" id="WD7-73-hKa"/>
+                        <barButtonItem enabled="NO" title="" id="WD7-73-hKa">
+                            <connections>
+                                <action selector="backward:" destination="-1" id="bx2-Tv-whp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="3kR-w3-otw"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="dFC-QK-K5M"/>
-                        <barButtonItem title="" id="tAo-d6-fql"/>
+                        <barButtonItem enabled="NO" title="" id="tAo-d6-fql">
+                            <connections>
+                                <action selector="forward:" destination="-1" id="HhQ-C6-b6a"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Ip9-ZI-YHL"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="1bf-fw-gAc"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="d7F-ZF-0ag"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Fkf-Z6-k3a"/>
-                        <barButtonItem systemItem="refresh" id="Vxq-D3-Par"/>
+                        <barButtonItem systemItem="refresh" id="Vxq-D3-Par">
+                            <connections>
+                                <action selector="refresh:" destination="-1" id="8bO-6s-6py"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="K2r-YC-xEU"/>
                     </items>
                 </toolbar>
@@ -53,15 +67,20 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-jJ-TAa">
+                    <rect key="frame" x="572" y="32" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="I0C-jJ-TAa" firstAttribute="centerY" secondItem="2B8-qo-LPi" secondAttribute="centerY" id="07D-j8-5wf"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" symbolic="YES" id="4aB-gB-ySk"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="top" secondItem="2B8-qo-LPi" secondAttribute="bottom" id="99D-2S-ymg"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="leading" secondItem="3gT-Tm-8VB" secondAttribute="leading" id="DIG-x4-9B8"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="leading" secondItem="2B8-qo-LPi" secondAttribute="trailing" constant="-600" id="Euz-Lw-o18"/>
                 <constraint firstItem="3gT-Tm-8VB" firstAttribute="top" secondItem="AUb-ye-IUD" secondAttribute="bottom" id="KF9-Kq-EFF"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="L1g-Zv-NUH"/>
+                <constraint firstItem="I0C-jJ-TAa" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="RfF-90-9QV"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TGB-gc-9Ta"/>
                 <constraint firstAttribute="bottom" secondItem="3gT-Tm-8VB" secondAttribute="bottom" symbolic="YES" id="a49-R3-yOE"/>
                 <constraint firstItem="3gT-Tm-8VB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" symbolic="YES" id="aIg-WW-p8C"/>
