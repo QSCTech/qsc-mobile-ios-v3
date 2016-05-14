@@ -36,7 +36,7 @@ public class AccountManager: NSObject {
     }
     
     /**
-     Remove an account from JWBInfoSys.
+     Remove an account from JWBInfoSys. If current account is just the removed one, it will be changed to the first of remaining accounts (or nil).
      */
     func removeAccountFromJwbinfosys(username: String) {
         jwbinfosysKeychain[username] = nil

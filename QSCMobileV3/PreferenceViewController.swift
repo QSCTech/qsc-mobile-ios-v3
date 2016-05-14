@@ -68,24 +68,22 @@ class PreferenceViewController: UITableViewController {
         case Preference.Jwbinfosys.rawValue:
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
                 let account = accounts[indexPath.row]
-                let text = "\u{f007}\t\(account)".attributedWithFontAwesome
+                cell.textLabel!.attributedText = "\u{f007}\t\(account)".attributedWithFontAwesome
                 if account == accountManager.currentAccountForJwbinfosys {
-                    let cell = tableView.dequeueReusableCellWithIdentifier("Checked")!
-                    cell.textLabel!.attributedText = text
-                    return cell
+                    cell.accessoryType = .Checkmark
                 } else {
-                    let cell = tableView.dequeueReusableCellWithIdentifier("Unchecked")!
-                    cell.textLabel!.attributedText = text
-                    return cell
+                    cell.accessoryType = .None
                 }
+                return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Disclosure")!
+                let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
                 cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
                 return cell
             }
         case Preference.Zjuwlan.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Disclosure")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
             cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
             return cell
         case Preference.Setting.rawValue:
@@ -109,7 +107,7 @@ class PreferenceViewController: UITableViewController {
                 return UITableViewCell()
             }
         case Preference.About.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Disclosure")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
             switch indexPath.row {
             case 0:
                 cell.textLabel!.text = "关于我们"
@@ -132,8 +130,12 @@ class PreferenceViewController: UITableViewController {
         case Preference.Jwbinfosys.rawValue:
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
+                for row in 0...(tableView.numberOfRowsInSection(indexPath.section) - 2) {
+                    let indexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                    tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .None
+                }
+                tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
                 mobileManager.changeUser(accounts[indexPath.row])
-                tableView.reloadData()
             } else {
                 performSegueWithIdentifier("showLogin", sender: nil)
             }
@@ -185,9 +187,13 @@ class PreferenceViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .Destructive, title: "注销") { action, indexPath in
             let account = self.accountManager.allAccountsForJwbinfosys[indexPath.row]
+            if account == self.accountManager.currentAccountForJwbinfosys && tableView.numberOfRowsInSection(indexPath.section) > 1 {
+                let indexPath = NSIndexPath(forRow: 0, inSection: indexPath.section)
+                let cell = tableView.cellForRowAtIndexPath(indexPath)!
+                cell.accessoryType = .Checkmark
+            }
             self.mobileManager.deleteUser(account)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            tableView.reloadData()
         }
         return [delete]
     }

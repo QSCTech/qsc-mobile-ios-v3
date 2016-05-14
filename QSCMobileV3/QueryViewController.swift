@@ -119,7 +119,7 @@ class QueryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         switch indexPath.section {
         case Tools.Query.rawValue:
             cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome

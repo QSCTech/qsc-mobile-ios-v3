@@ -67,7 +67,7 @@ public class MobileManager: NSObject {
     }
     
     /**
-     Delete an account and clear its data from CoreData. If current account is deleted, it will be reset to another account.
+     Delete an account and clear its data from CoreData. If current account is deleted, it will be reset to the first one of the rest (or nil).
      
      - parameter username: Username of the account
      */
