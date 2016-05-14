@@ -15,7 +15,6 @@ let AppKey = "aq86L/EUgOPxD7ZJzr3rK4zBRyo8oVzF"
 let MobileAPIURL = "https://m.zjuqsc.com/v3api/"
 let NoticeURL    = "https://notice.zjuqsc.com"
 let BoxURL       = "https://box.zjuqsc.com"
-let TideURL      = "http://tide.zjuqsc.com/wp/"
 
 public struct Event {
     public enum Type {

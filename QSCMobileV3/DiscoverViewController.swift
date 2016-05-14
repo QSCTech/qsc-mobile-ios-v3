@@ -1,5 +1,5 @@
 //
-//  DiscoveryViewController.swift
+//  DiscoverViewController.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2015-12-05.
@@ -9,7 +9,7 @@
 import UIKit
 import QSCMobileKit
 
-class DiscoveryViewController: UIViewController {
+class DiscoverViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!

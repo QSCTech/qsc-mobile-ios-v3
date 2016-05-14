@@ -1,5 +1,5 @@
 //
-//  ToolsViewController.swift
+//  QueryViewController.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2016-05-10.
@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import QSCMobileKit
 
-class ToolsViewController: UITableViewController {
+class QueryViewController: UITableViewController {
     
     private let accountManager = AccountManager.sharedInstance
     
@@ -54,6 +54,10 @@ class ToolsViewController: UITableViewController {
     ]
     
     private let websites: [[String: String]] = [
+        [
+            "name": "水朝夕",
+            "url": "https://tide.zjuqsc.com/wp/",
+        ],
         [
             "name": "院系网站",
             "url": "https://info.zjuqsc.com/zju-websites/",

@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Today-->
+        <!--今日-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="Today" id="9pv-A4-QxB" customClass="TodayViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="TodayViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="254" y="390"/>
         </scene>
-        <!--Calendar-->
+        <!--日程-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Calendar" id="8rJ-Kc-sve" customClass="CalendarViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="CalendarViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="896" y="390"/>
         </scene>
-        <!--工具-->
+        <!--查询-->
         <scene sceneID="ebA-ke-ivD">
             <objects>
-                <tableViewController id="dpq-qQ-P5a" customClass="ToolsViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dpq-qQ-P5a" customClass="QueryViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fV4-Nr-IKy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                             <outlet property="delegate" destination="dpq-qQ-P5a" id="wfp-cq-dlt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="工具" id="zRP-2p-OTY"/>
+                    <navigationItem key="navigationItem" title="查询" id="zRP-2p-OTY"/>
                     <connections>
                         <segue destination="5V3-Rq-8HP" kind="show" identifier="showCourse" id="9gb-iI-jMn"/>
                         <segue destination="Emk-wI-up8" kind="show" identifier="showExam" id="D31-3H-CGD"/>
@@ -175,11 +175,11 @@
             </objects>
             <point key="canvasLocation" x="2040.5" y="1710"/>
         </scene>
-        <!--Tools-->
+        <!--查询-->
         <scene sceneID="ZrD-2v-zQf">
             <objects>
-                <navigationController title="Tools" id="XZf-SV-YIi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工具" image="Discovery" id="Iys-tw-le7"/>
+                <navigationController id="XZf-SV-YIi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="查询" image="Discover" id="Iys-tw-le7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6B-iD-COS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -192,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="2172" y="390"/>
         </scene>
-        <!--Preference-->
+        <!--设置-->
         <scene sceneID="Xq9-LL-Wi8">
             <objects>
-                <tableViewController title="Preference" id="Jfx-gw-o0r" customClass="PreferenceViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Jfx-gw-o0r" customClass="PreferenceViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pk1-d6-UCg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,10 +308,10 @@
             </objects>
             <point key="canvasLocation" x="2966.5" y="1609"/>
         </scene>
-        <!--Preference-->
+        <!--设置-->
         <scene sceneID="uLV-Mc-gKV">
             <objects>
-                <navigationController title="Preference" id="nWB-Rd-QKm" sceneMemberID="viewController">
+                <navigationController id="nWB-Rd-QKm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="设置" image="Preference" id="AEf-u5-uMk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RG9-6b-56D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="2812" y="390"/>
         </scene>
-        <!--Discovery-->
+        <!--发现-->
         <scene sceneID="Y1E-ox-Juv">
             <objects>
-                <viewController title="Discovery" id="Afn-hq-3wE" customClass="DiscoveryViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Afn-hq-3wE" customClass="DiscoverViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L4j-BR-56u"/>
                         <viewControllerLayoutGuide type="bottom" id="Df1-gi-Awh"/>
@@ -380,7 +380,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发现" image="Discovery" id="ELC-ks-08q"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="Discover" id="ELC-ks-08q"/>
                     <connections>
                         <outlet property="imageView" destination="hlU-X0-tdd" id="NUa-cP-Gyi"/>
                         <outlet property="textView" destination="YiO-UI-CcN" id="Sli-IM-66g"/>
@@ -415,7 +415,7 @@
     </scenes>
     <resources>
         <image name="Calendar" width="26" height="25"/>
-        <image name="Discovery" width="25" height="25"/>
+        <image name="Discover" width="25" height="25"/>
         <image name="Preference" width="25" height="25"/>
         <image name="Today" width="26" height="25"/>
     </resources>
