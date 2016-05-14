@@ -14,7 +14,22 @@
 		9D031A2A1CE069ED008F3098 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D031A2B1CE069EF008F3098 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
-		9D31394B1CE74E4200CD7DAD /* EventNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31394A1CE74E4200CD7DAD /* EventNotificationViewController.swift */; };
+		9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */; };
+		9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */; };
+		9D3139651CE7859F00CD7DAD /* Int+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */; };
+		9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */; };
+		9D3139691CE7869400CD7DAD /* NSDate+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */; };
+		9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */; };
+		9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */; };
+		9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396D1CE789BF00CD7DAD /* WebViewController.swift */; };
+		9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */; };
+		9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */; };
+		9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */; };
+		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
+		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
+		9D3139811CE789BF00CD7DAD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139781CE789BF00CD7DAD /* TodayViewController.swift */; };
+		9D3139861CE78C7500CD7DAD /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* About.html */; };
+		9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139851CE78C7500CD7DAD /* Logo.jpg */; };
 		9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */; };
 		9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
@@ -29,14 +44,9 @@
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
-		9D8C1C791CE23B40005BAB55 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */; };
-		9D8C1C7A1CE23B40005BAB55 /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */; };
-		9DA178AD1CDB73F100394647 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA178AC1CDB73F100394647 /* WebViewController.swift */; };
-		9DA178B91CDE301500394647 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9DA178B81CDE301500394647 /* About.html */; };
 		9DB142161CE5BE130051A3BD /* Alamofire.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DB142171CE5BE150051A3BD /* SwiftyJSON.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DB142181CE5BE170051A3BD /* KeychainAccess.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9DB1421A1CE6E15D0051A3BD /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB142191CE6E15D0051A3BD /* Logo.jpg */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
 		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
@@ -51,14 +61,8 @@
 		9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE79A1C083C070087C31F /* Semester.swift */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
-		9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
 		9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */; };
-		9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */; };
-		9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */; };
-		9DEF638A1C12FD9F00A70C5B /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF63891C12FD9F00A70C5B /* QueryViewController.swift */; };
-		9DEF638C1C12FDC200A70C5B /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638B1C12FDC200A70C5B /* DiscoverViewController.swift */; };
-		9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
 		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
@@ -128,7 +132,22 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendors/FontAwesome.otf; sourceTree = "<group>"; };
-		9D31394A1CE74E4200CD7DAD /* EventNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationViewController.swift; sourceTree = "<group>"; };
+		9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "Extension/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
+		9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileV3.swift"; path = "Extension/String+QSCMobileV3.swift"; sourceTree = "<group>"; };
+		9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Weekday.swift"; path = "Extension/Int+Weekday.swift"; sourceTree = "<group>"; };
+		9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+Comparable.swift"; path = "Extension/NSNumber+Comparable.swift"; sourceTree = "<group>"; };
+		9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Comparable.swift"; path = "Extension/NSDate+Comparable.swift"; sourceTree = "<group>"; };
+		9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserViewController.xib; sourceTree = "<group>"; };
+		9D31396D1CE789BF00CD7DAD /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationViewController.swift; sourceTree = "<group>"; };
+		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
+		9D3139781CE789BF00CD7DAD /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		9D3139841CE78C7500CD7DAD /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
+		9D3139851CE78C7500CD7DAD /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo.jpg; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -148,14 +167,9 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
-		9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
-		9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserViewController.xib; sourceTree = "<group>"; };
-		9DA178AC1CDB73F100394647 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		9DA178B81CDE301500394647 /* About.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
 		9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = ../Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		9DB142191CE6E15D0051A3BD /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo.jpg; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
@@ -170,16 +184,10 @@
 		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "CoreData/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QSCMobileModel.xcdatamodel; sourceTree = "<group>"; };
-		9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		9DEF63891C12FD9F00A70C5B /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
-		9DEF638B1C12FDC200A70C5B /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -247,22 +255,91 @@
 			children = (
 				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
-				9DA178AC1CDB73F100394647 /* WebViewController.swift */,
-				9D8C1C771CE23B40005BAB55 /* BrowserViewController.swift */,
-				9D8C1C781CE23B40005BAB55 /* BrowserViewController.xib */,
-				9DEF63851C12FD2F00A70C5B /* TodayViewController.swift */,
-				9DEF63871C12FD8A00A70C5B /* CalendarViewController.swift */,
-				9DEF638B1C12FDC200A70C5B /* DiscoverViewController.swift */,
-				9DEF63891C12FD9F00A70C5B /* QueryViewController.swift */,
-				9DEF638D1C12FDD200A70C5B /* PreferenceViewController.swift */,
-				9D31394A1CE74E4200CD7DAD /* EventNotificationViewController.swift */,
-				9DA178B81CDE301500394647 /* About.html */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
 				9D4179AC1CE4678E00955729 /* LaunchScreen.xib */,
 				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
+				9D3139771CE789BF00CD7DAD /* Today */,
+				9D31396E1CE789BF00CD7DAD /* Calendar */,
+				9D3139701CE789BF00CD7DAD /* Discover */,
+				9D3139751CE789BF00CD7DAD /* Query */,
+				9D3139721CE789BF00CD7DAD /* Preference */,
+				9D31396A1CE789BF00CD7DAD /* Browser */,
+				9D3139831CE78C7500CD7DAD /* About */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
 			path = QSCMobileV3;
+			sourceTree = "<group>";
+		};
+		9D31395F1CE7844C00CD7DAD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */,
+				9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */,
+				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
+				9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */,
+				9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		9D31396A1CE789BF00CD7DAD /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				9D31396D1CE789BF00CD7DAD /* WebViewController.swift */,
+				9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */,
+				9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
+		9D31396E1CE789BF00CD7DAD /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		9D3139701CE789BF00CD7DAD /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		9D3139721CE789BF00CD7DAD /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */,
+				9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */,
+			);
+			path = Preference;
+			sourceTree = "<group>";
+		};
+		9D3139751CE789BF00CD7DAD /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				9D3139761CE789BF00CD7DAD /* QueryViewController.swift */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		9D3139771CE789BF00CD7DAD /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				9D3139781CE789BF00CD7DAD /* TodayViewController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		9D3139831CE78C7500CD7DAD /* About */ = {
+			isa = PBXGroup;
+			children = (
+				9D3139841CE78C7500CD7DAD /* About.html */,
+				9D3139851CE78C7500CD7DAD /* Logo.jpg */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		9D42D2DA1C1867800066EEFC /* Account */ = {
@@ -305,7 +382,6 @@
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */,
 				9DE34AF91C0999DC00C9534A /* Info.plist */,
 			);
 			name = "Support Files";
@@ -328,7 +404,6 @@
 				9DCDE78E1C083C070087C31F /* Adjustment.swift */,
 				9DCDE78A1C083C070087C31F /* Bus.swift */,
 				9DCDE7961C083C070087C31F /* BusStop.swift */,
-				9DE0342B1C0D5E8A004A7755 /* NSManagedObject+Init.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -340,7 +415,6 @@
 				9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */,
 				9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */,
 				9D031A2F1CE180BB008F3098 /* FontAwesome.otf */,
-				9DB142191CE6E15D0051A3BD /* Logo.jpg */,
 				04C331D61BA2F2E600EF959F /* Info.plist */,
 				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
 			);
@@ -350,12 +424,14 @@
 		9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */ = {
 			isa = PBXGroup;
 			children = (
+				9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */,
 				9DCDE7B61C0841130087C31F /* Common.swift */,
 				9D42D2DA1C1867800066EEFC /* Account */,
 				9D42D2DC1C1867950066EEFC /* Mobile */,
 				9DEF30391BFD7B8100508504 /* CoreData */,
 				9D42D2DD1C1867B00066EEFC /* ZJUWLAN */,
 				9D6413311C19AD5200EC5D95 /* Notice */,
+				9D31395F1CE7844C00CD7DAD /* Extension */,
 				9DCDE7B11C0840900087C31F /* Support Files */,
 			);
 			path = QSCMobileKit;
@@ -524,13 +600,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
-				9D8C1C7A1CE23B40005BAB55 /* BrowserViewController.xib in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
-				9DA178B91CDE301500394647 /* About.html in Resources */,
-				9DB1421A1CE6E15D0051A3BD /* Logo.jpg in Resources */,
+				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
+				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,15 +651,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DEF638A1C12FD9F00A70C5B /* QueryViewController.swift in Sources */,
-				9DEF63881C12FD8A00A70C5B /* CalendarViewController.swift in Sources */,
-				9DEF63861C12FD2F00A70C5B /* TodayViewController.swift in Sources */,
-				9DA178AD1CDB73F100394647 /* WebViewController.swift in Sources */,
-				9DEF638E1C12FDD200A70C5B /* PreferenceViewController.swift in Sources */,
-				9DEF638C1C12FDC200A70C5B /* DiscoverViewController.swift in Sources */,
-				9D31394B1CE74E4200CD7DAD /* EventNotificationViewController.swift in Sources */,
+				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
+				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
+				9D3139811CE789BF00CD7DAD /* TodayViewController.swift in Sources */,
+				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
-				9D8C1C791CE23B40005BAB55 /* BrowserViewController.swift in Sources */,
+				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
+				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
+				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
+				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,22 +676,26 @@
 				9DCDE7861C0728E40087C31F /* Score.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
-				9DE0342C1C0D5E8A004A7755 /* NSManagedObject+Init.swift in Sources */,
 				9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */,
 				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
 				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
 				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,
+				9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */,
 				9DCDE7A41C083C070087C31F /* Holiday.swift in Sources */,
 				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
 				9DCDE7A61C083C070087C31F /* SemesterScore.swift in Sources */,
+				9D3139651CE7859F00CD7DAD /* Int+Weekday.swift in Sources */,
 				9DCDE7A21C083C070087C31F /* Adjustment.swift in Sources */,
+				9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */,
 				9DCDE7A01C083C070087C31F /* TimePlace.swift in Sources */,
 				9DCDE7AC1C083C070087C31F /* Year.swift in Sources */,
+				9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */,
 				9DCDE7821C0728E40087C31F /* Exam.swift in Sources */,
 				9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */,
 				9DCDE7A81C083C070087C31F /* User.swift in Sources */,
+				9D3139691CE7869400CD7DAD /* NSDate+Comparable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
