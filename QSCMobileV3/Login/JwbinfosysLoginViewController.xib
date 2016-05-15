@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JwbinfosysLoginViewController" customModule="QSCMobileV3" customModuleProvider="target">
+            <connections>
+                <outlet property="passwordField" destination="hMe-of-fky" id="CDp-7k-lfO"/>
+                <outlet property="usernameField" destination="8pG-MZ-0Gc" id="jdy-7X-bOe"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="教务网密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-of-fky">
+                    <rect key="frame" x="50" y="195" width="500" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="uOy-WY-QGh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="uOy-WY-QGh"/>
+                        </mask>
+                    </variation>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-Ue-bPw">
+                    <rect key="frame" x="285" y="270" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="pEo-0X-0Qw"/>
+                    </constraints>
+                    <state key="normal" title="登录"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="pEo-0X-0Qw"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="XVD-n4-2ZZ"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8pG-MZ-0Gc">
+                    <rect key="frame" x="50" y="140" width="500" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="3z6-zZ-usm"/>
+                        <constraint firstAttribute="width" constant="200" id="dyl-9H-SQh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dyl-9H-SQh"/>
+                        </mask>
+                    </variation>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="hMe-of-fky" firstAttribute="leading" secondItem="8pG-MZ-0Gc" secondAttribute="leading" id="0Wq-iQ-YP7"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="height" secondItem="8pG-MZ-0Gc" secondAttribute="height" id="39e-sZ-IFQ"/>
+                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="140" id="9wR-nf-SkM"/>
+                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="D7U-mb-Z5v"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="width" secondItem="8pG-MZ-0Gc" secondAttribute="width" id="J4Q-mI-zEU"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" id="ND5-Bn-uv7"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="top" secondItem="hMe-of-fky" secondAttribute="bottom" constant="40" id="Nmc-FI-OUG"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="8pG-MZ-0Gc" secondAttribute="centerX" id="PTx-xL-U3B"/>
+                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="RRF-Tv-6LR"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="50" id="U9M-Er-yru"/>
+                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="Wy1-k3-qjv"/>
+                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aVL-NG-QQM"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="20" id="dE1-eF-X5j"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="diG-cN-3GH"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="leS-dY-PcF"/>
+                <constraint firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" constant="100" id="nRm-qd-vL1"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="RRF-Tv-6LR"/>
+                    <exclude reference="Wy1-k3-qjv"/>
+                    <exclude reference="nRm-qd-vL1"/>
+                    <exclude reference="0Wq-iQ-YP7"/>
+                    <exclude reference="ND5-Bn-uv7"/>
+                    <exclude reference="PTx-xL-U3B"/>
+                    <exclude reference="U9M-Er-yru"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

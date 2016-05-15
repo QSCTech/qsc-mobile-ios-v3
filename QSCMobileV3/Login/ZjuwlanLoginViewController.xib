@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZjuwlanLoginViewController" customModule="QSCMobileV3" customModuleProvider="target">
+            <connections>
+                <outlet property="passwordField" destination="DCq-Qc-WZl" id="fmJ-ie-Pat"/>
+                <outlet property="usernameField" destination="dpA-ux-ZCL" id="LKy-0f-wHY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dpA-ux-ZCL">
+                    <rect key="frame" x="50" y="140" width="501" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Cd6-w8-Ayg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ZJUWLAN 密码" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DCq-Qc-WZl">
+                    <rect key="frame" x="50" y="195" width="501" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="8av-ds-2rh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-1S-dmo">
+                    <rect key="frame" x="285" y="270" width="30" height="30"/>
+                    <state key="normal" title="保存"/>
+                    <connections>
+                        <action selector="save:" destination="-1" eventType="touchUpInside" id="ENU-g2-a84"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrH-fA-wee">
+                    <rect key="frame" x="240" y="510" width="120" height="30"/>
+                    <state key="normal" title="删除已保存的账号">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="remove:" destination="-1" eventType="touchUpInside" id="Mpe-EX-gb0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="DCq-Qc-WZl" firstAttribute="centerX" secondItem="dpA-ux-ZCL" secondAttribute="centerX" id="4by-Nz-yth"/>
+                <constraint firstItem="DCq-Qc-WZl" firstAttribute="width" secondItem="dpA-ux-ZCL" secondAttribute="width" id="9J4-Ip-bM5"/>
+                <constraint firstItem="dpA-ux-ZCL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Aow-f8-7nD"/>
+                <constraint firstItem="dpA-ux-ZCL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GWD-Pk-Shr"/>
+                <constraint firstItem="3g5-1S-dmo" firstAttribute="top" secondItem="DCq-Qc-WZl" secondAttribute="bottom" constant="40" id="Ifv-Bu-7v3"/>
+                <constraint firstItem="WrH-fA-wee" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OQL-Mf-J39"/>
+                <constraint firstItem="WrH-fA-wee" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" constant="-100" id="gGH-eD-qfX"/>
+                <constraint firstItem="DCq-Qc-WZl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hx3-tx-ChW"/>
+                <constraint firstItem="DCq-Qc-WZl" firstAttribute="top" secondItem="dpA-ux-ZCL" secondAttribute="bottom" constant="20" id="lnf-i1-Ii4"/>
+                <constraint firstItem="dpA-ux-ZCL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="140" id="n4V-lZ-qos"/>
+                <constraint firstItem="WrH-fA-wee" firstAttribute="centerX" secondItem="3g5-1S-dmo" secondAttribute="centerX" id="smI-sa-KpV"/>
+                <constraint firstAttribute="bottom" secondItem="WrH-fA-wee" secondAttribute="bottom" constant="60" id="uI6-if-2XA"/>
+                <constraint firstItem="3g5-1S-dmo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x2c-fa-3AC"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4by-Nz-yth"/>
+                    <exclude reference="gGH-eD-qfX"/>
+                    <exclude reference="smI-sa-KpV"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

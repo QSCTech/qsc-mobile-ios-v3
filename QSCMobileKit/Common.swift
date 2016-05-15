@@ -90,6 +90,10 @@ public enum CalendarSemester: String {
     
 }
 
+public func delayOneSecond(block: dispatch_block_t) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), block)
+}
+
 /**
  Return an Alamofire manager with specific timeout interval. Remember to store it as property to prevent being freed.
  

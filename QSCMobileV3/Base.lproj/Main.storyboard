@@ -166,7 +166,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="20Z-Yz-g8D">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="sdm-K9-4b5" id="BeV-rc-rGB"/>
                             <outlet property="delegate" destination="sdm-K9-4b5" id="6gx-r0-rTb"/>
@@ -231,7 +231,7 @@
                                             <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -248,7 +248,7 @@
                                             <rect key="frame" x="15" y="12" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pbD-hY-Mlr">
@@ -269,30 +269,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="6Jd-99-QpT"/>
                     <connections>
-                        <segue destination="sT8-kt-sC2" kind="show" identifier="showLogin" id="Gff-rK-zNV"/>
-                        <segue destination="ZRG-c2-NMy" kind="show" identifier="showZjuwlan" id="Eee-IW-1ta"/>
                         <segue destination="sdm-K9-4b5" kind="show" identifier="showEventNotification" id="4Ni-Ba-UCv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qky-gE-LRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2812" y="1144"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="0fZ-9m-Sec">
-            <objects>
-                <viewControllerPlaceholder id="sT8-kt-sC2" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HZl-K8-qky" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3376.5" y="1144"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="Njt-7q-0Dg">
-            <objects>
-                <viewControllerPlaceholder id="ZRG-c2-NMy" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7bP-4Q-tV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3376.5" y="1212"/>
         </scene>
         <!--设置-->
         <scene sceneID="uLV-Mc-gKV">

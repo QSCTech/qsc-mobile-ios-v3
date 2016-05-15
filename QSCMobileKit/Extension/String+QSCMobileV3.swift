@@ -20,6 +20,11 @@ extension String {
         return NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
     }
     
+    // TODO: Supplement the rule
+    public var isValidSid: Bool {
+        return characters.count == 10 || characters.count == 8
+    }
+    
     var startTimeForPeriods: NSDateComponents {
         let time = NSDateComponents()
         if self.characters.count == 0 {

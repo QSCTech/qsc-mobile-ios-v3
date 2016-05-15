@@ -193,8 +193,8 @@ class APISession: NSObject {
                 }
             } else if json["status"].string == "sessionFail" {
                 print("Resource request: sessionFail")
-                self.loginRequest { status, error in
-                    if status {
+                self.loginRequest { success, error in
+                    if success {
                         self.resourceRequest(requestList, callback: callback)
                     } else {
                         callback(nil, error)

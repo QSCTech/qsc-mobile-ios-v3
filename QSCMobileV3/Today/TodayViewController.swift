@@ -21,8 +21,8 @@ class TodayViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if accountManager.currentAccountForJwbinfosys == nil {
-            mobileManager.loginValidate("freshman", "ios") { status, error in
-                if status {
+            mobileManager.loginValidate("freshman", "ios") { success, error in
+                if success {
                     self.textView.text = "Login successfully"
                 } else {
                     self.textView.text = error

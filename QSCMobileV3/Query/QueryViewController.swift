@@ -157,6 +157,7 @@ class QueryViewController: UITableViewController {
                 let action = UIAlertAction(title: "好", style: .Default, handler: nil)
                 alert.addAction(action)
                 presentViewController(alert, animated: true, completion: nil)
+                break
             }
             // TODO: Handle login errors
             let url = NSURL(string: login[indexPath.row]["url"]!)!

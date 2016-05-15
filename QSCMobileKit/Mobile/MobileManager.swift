@@ -40,16 +40,16 @@ public class MobileManager: NSObject {
      */
     public func loginValidate(username: String, _ password: String, callback: (Bool, String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
-        apiSession.loginRequest { status, error in
-            if status {
+        apiSession.loginRequest { success, error in
+            if success {
                 DataStore.createUser(username)
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
                 self.refreshAll {}
-                callback(status, error)
+                callback(success, error)
             } else {
-                callback(status, error)
+                callback(success, error)
             }
         }
     }
@@ -179,8 +179,8 @@ public class MobileManager: NSObject {
      */
     public func refreshAll(callback: () -> Void) {
         // First refresh calendar to prevent multiple sessionFail retries at the same time
-        refreshCalendar { status, error in
-            if status {
+        refreshCalendar { success, error in
+            if success {
                 let group = dispatch_group_create()
                 for _ in 0..<4 {
                     dispatch_group_enter(group)

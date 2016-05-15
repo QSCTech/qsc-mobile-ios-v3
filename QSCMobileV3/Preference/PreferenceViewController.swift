@@ -43,6 +43,8 @@ class PreferenceViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
+        case Preference.Jwbinfosys.rawValue:
+            return "注销请在用户上左划"
         case Preference.About.rawValue:
             return "Copyright © 2016 QSC Tech."
         default:
@@ -139,10 +141,12 @@ class PreferenceViewController: UITableViewController {
                 tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
                 mobileManager.changeUser(accounts[indexPath.row])
             } else {
-                performSegueWithIdentifier("showLogin", sender: nil)
+                let vc = JwbinfosysLoginViewController()
+                showViewController(vc, sender: nil)
             }
         case Preference.Zjuwlan.rawValue:
-            performSegueWithIdentifier("showZjuwlan", sender: nil)
+            let vc = ZjuwlanLoginViewController()
+            showViewController(vc, sender: nil)
         case Preference.Setting.rawValue:
             switch indexPath.row {
             case 1:

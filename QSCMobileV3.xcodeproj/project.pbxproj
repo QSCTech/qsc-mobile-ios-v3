@@ -42,6 +42,9 @@
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
+		9D7851F21CE869F6008A7DBF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */; };
+		9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */; };
+		9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
@@ -59,6 +62,8 @@
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
+		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
+		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
 		9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
@@ -144,6 +149,9 @@
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
+		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
+		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
+		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
 		9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = Carthage/Build/iOS/CVCalendar.framework; sourceTree = "<group>"; };
 		9D8AB4441CD7838B0098451A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -168,6 +176,8 @@
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
+		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JwbinfosysLoginViewController.xib; path = Login/JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
 		9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QSCMobileModel.xcdatamodel; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +196,7 @@
 				9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */,
 				9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */,
 				9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */,
+				9D7851F21CE869F6008A7DBF /* MBProgressHUD.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */,
 				9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */,
@@ -244,6 +255,7 @@
 				9D3139701CE789BF00CD7DAD /* Discover */,
 				9D3139751CE789BF00CD7DAD /* Query */,
 				9D3139721CE789BF00CD7DAD /* Preference */,
+				9DE716021CE7A9E900282DCD /* Login */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
 				9D3139831CE78C7500CD7DAD /* About */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
@@ -368,6 +380,17 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
+		9DE716021CE7A9E900282DCD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */,
+				9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */,
+				9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */,
+				9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		9DEF30391BFD7B8100508504 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +441,7 @@
 		9DF612801BAA8A03004B0A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */,
 				9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */,
 				9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */,
 				9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */,
@@ -577,6 +601,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
+				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
 				9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
@@ -615,6 +641,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CVCalendar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -631,8 +658,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
+				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
 				9D3139811CE789BF00CD7DAD /* TodayViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
