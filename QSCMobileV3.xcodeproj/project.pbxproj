@@ -10,9 +10,6 @@
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
-		9D031A291CE069E6008F3098 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
-		9D031A2A1CE069ED008F3098 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
-		9D031A2B1CE069EF008F3098 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
 		9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */; };
 		9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */; };
@@ -42,11 +39,11 @@
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* CalendarManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
+		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
+		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
+		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
-		9DB142161CE5BE130051A3BD /* Alamofire.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9DB142171CE5BE150051A3BD /* SwiftyJSON.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9DB142181CE5BE170051A3BD /* KeychainAccess.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
 		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
 		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
@@ -88,19 +85,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9DB142151CE5BDF60051A3BD /* Carthage Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9DB142161CE5BE130051A3BD /* Alamofire.framework in Carthage Copy Frameworks */,
-				9DB142171CE5BE150051A3BD /* SwiftyJSON.framework in Carthage Copy Frameworks */,
-				9DB142181CE5BE170051A3BD /* KeychainAccess.framework in Carthage Copy Frameworks */,
-			);
-			name = "Carthage Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DF612791BAA89CC004B0A8A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,9 +151,6 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
-		9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = ../Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
 		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
 		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
@@ -201,6 +182,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */,
+				9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */,
+				9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */,
 				9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */,
@@ -212,9 +196,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D031A291CE069E6008F3098 /* Alamofire.framework in Frameworks */,
-				9D031A2B1CE069EF008F3098 /* SwiftyJSON.framework in Frameworks */,
-				9D031A2A1CE069ED008F3098 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,9 +392,6 @@
 		9DEF63841C12FB9000A70C5B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DB1420C1CE5BAD20051A3BD /* Alamofire.framework */,
-				9DB1420E1CE5BADA0051A3BD /* SwiftyJSON.framework */,
-				9DB142101CE5BADF0051A3BD /* KeychainAccess.framework */,
 				9D031A2F1CE180BB008F3098 /* FontAwesome.otf */,
 				04C331D61BA2F2E600EF959F /* Info.plist */,
 				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
@@ -507,7 +485,6 @@
 				9DF612591BAA89CC004B0A8A /* Frameworks */,
 				9DF6125A1BAA89CC004B0A8A /* Headers */,
 				9DF6125B1BAA89CC004B0A8A /* Resources */,
-				9DB142151CE5BDF60051A3BD /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -634,6 +611,9 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CVCalendar.framework",
 			);
 			name = "Carthage Copy Frameworks";
@@ -771,7 +751,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -818,7 +798,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -847,7 +827,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 30000;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -877,7 +857,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 30000;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -908,8 +888,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 30000;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				ENABLE_BITCODE = NO;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -939,8 +919,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 30000;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				ENABLE_BITCODE = NO;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -964,7 +944,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 30000;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
@@ -981,7 +961,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 30000;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
