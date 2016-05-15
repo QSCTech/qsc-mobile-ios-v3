@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JwbinfosysLoginViewController" customModule="QSCMobileV3" customModuleProvider="target">
             <connections>
+                <outlet property="loginButton" destination="BL1-Ue-bPw" id="Kp0-Ze-IQm"/>
                 <outlet property="passwordField" destination="hMe-of-fky" id="CDp-7k-lfO"/>
                 <outlet property="usernameField" destination="8pG-MZ-0Gc" id="jdy-7X-bOe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -18,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="教务网密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-of-fky">
-                    <rect key="frame" x="50" y="195" width="500" height="35"/>
+                    <rect key="frame" x="50" y="175" width="500" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="uOy-WY-QGh"/>
                     </constraints>
@@ -29,24 +30,12 @@
                             <exclude reference="uOy-WY-QGh"/>
                         </mask>
                     </variation>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-Ue-bPw">
-                    <rect key="frame" x="285" y="270" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="pEo-0X-0Qw"/>
-                    </constraints>
-                    <state key="normal" title="登录"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="pEo-0X-0Qw"/>
-                        </mask>
-                    </variation>
                     <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="XVD-n4-2ZZ"/>
+                        <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="BM3-8f-cck"/>
                     </connections>
-                </button>
+                </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8pG-MZ-0Gc">
-                    <rect key="frame" x="50" y="140" width="500" height="35"/>
+                    <rect key="frame" x="50" y="120" width="500" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="3z6-zZ-usm"/>
                         <constraint firstAttribute="width" constant="200" id="dyl-9H-SQh"/>
@@ -58,17 +47,54 @@
                             <exclude reference="dyl-9H-SQh"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="vNu-sO-XnU"/>
+                    </connections>
                 </textField>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-Ue-bPw">
+                    <rect key="frame" x="50" y="240" width="500" height="35"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="mu1-Qv-VKb"/>
+                        <constraint firstAttribute="width" constant="100" id="pEo-0X-0Qw"/>
+                        <constraint firstAttribute="height" constant="35" id="wDK-gq-Qhp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="登录">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="mu1-Qv-VKb"/>
+                            <exclude reference="pEo-0X-0Qw"/>
+                            <exclude reference="wDK-gq-Qhp"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="XVD-n4-2ZZ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码错误 10 次账号将被教务网锁定 1 小时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdu-XJ-xWo">
+                    <rect key="frame" x="170" y="523" width="261" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="hMe-of-fky" firstAttribute="leading" secondItem="8pG-MZ-0Gc" secondAttribute="leading" id="0Wq-iQ-YP7"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="height" secondItem="8pG-MZ-0Gc" secondAttribute="height" id="39e-sZ-IFQ"/>
-                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="140" id="9wR-nf-SkM"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="67P-RM-mKo"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="height" secondItem="hMe-of-fky" secondAttribute="height" id="8EN-K5-wlE"/>
+                <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="9wR-nf-SkM"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="D7U-mb-Z5v"/>
+                <constraint firstItem="Fdu-XJ-xWo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hcg-3T-Qvd"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="width" secondItem="hMe-of-fky" secondAttribute="width" id="HtQ-o7-8xs"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="width" secondItem="8pG-MZ-0Gc" secondAttribute="width" id="J4Q-mI-zEU"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" id="ND5-Bn-uv7"/>
-                <constraint firstItem="BL1-Ue-bPw" firstAttribute="top" secondItem="hMe-of-fky" secondAttribute="bottom" constant="40" id="Nmc-FI-OUG"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="top" secondItem="hMe-of-fky" secondAttribute="bottom" constant="30" id="Nmc-FI-OUG"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="8pG-MZ-0Gc" secondAttribute="centerX" id="PTx-xL-U3B"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="RRF-Tv-6LR"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="50" id="U9M-Er-yru"/>
@@ -76,6 +102,7 @@
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aVL-NG-QQM"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="20" id="dE1-eF-X5j"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="diG-cN-3GH"/>
+                <constraint firstAttribute="bottom" secondItem="Fdu-XJ-xWo" secondAttribute="bottom" constant="60" id="gvz-5y-qzb"/>
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="leS-dY-PcF"/>
                 <constraint firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" constant="100" id="nRm-qd-vL1"/>
             </constraints>
@@ -88,8 +115,17 @@
                     <exclude reference="ND5-Bn-uv7"/>
                     <exclude reference="PTx-xL-U3B"/>
                     <exclude reference="U9M-Er-yru"/>
+                    <exclude reference="67P-RM-mKo"/>
                 </mask>
             </variation>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="gJC-Op-Gf7" appends="YES" id="Qsp-ky-i20"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="gJC-Op-Gf7">
+            <connections>
+                <action selector="dismissKeyboard:" destination="-1" id="OjA-nJ-j58"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

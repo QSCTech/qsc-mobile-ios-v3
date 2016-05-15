@@ -24,24 +24,16 @@ class ZjuwlanLoginViewController: UIViewController {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         navigationItem.title = "ZJUWLAN 账号"
+        saveButton.layer.cornerRadius = 5
         usernameField.text = accountManager.accountForZjuwlan
         passwordField.text = accountManager.passwordForZjuwlan
     }
     
     @IBAction func save(sender: AnyObject) {
-        if !usernameField.text!.isValidSid {
-            let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            hud.mode = .CustomView
-            hud.customView = UIImageView(image: UIImage(named: "Cross"))
-            hud.labelText = "学号格式不正确"
-            delayOneSecond {
-                hud.hide(true)
-            }
-            return
-        }
         accountManager.accountForZjuwlan = usernameField.text
         accountManager.passwordForZjuwlan = passwordField.text
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -66,6 +58,21 @@ class ZjuwlanLoginViewController: UIViewController {
             hud.hide(true)
             self.navigationController?.popViewControllerAnimated(true)
         }
+    }
+    
+    @IBAction func textFieldDidChange(sender: AnyObject) {
+        let isValid = usernameField.text!.isValidSid && !passwordField.text!.isEmpty
+        if isValid {
+            saveButton.enabled = true
+            saveButton.alpha = 1
+        } else {
+            saveButton.enabled = false
+            saveButton.alpha = 0.5
+        }
+    }
+    
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        view.endEditing(true)
     }
     
 }

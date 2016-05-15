@@ -22,22 +22,14 @@ class JwbinfosysLoginViewController: UIViewController {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         navigationItem.title = "教务网账号"
+        loginButton.layer.cornerRadius = 5
     }
-
+    
     @IBAction func login(sender: AnyObject) {
-        if !usernameField.text!.isValidSid {
-            let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            hud.mode = .CustomView
-            hud.customView = UIImageView(image: UIImage(named: "Cross"))
-            hud.labelText = "学号格式不正确"
-            delayOneSecond {
-                hud.hide(true)
-            }
-            return
-        }
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
@@ -59,6 +51,21 @@ class JwbinfosysLoginViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func textFieldDidChange(sender: AnyObject) {
+        let isValid = usernameField.text!.isValidSid && !passwordField.text!.isEmpty
+        if isValid {
+            loginButton.enabled = true
+            loginButton.alpha = 1
+        } else {
+            loginButton.enabled = false
+            loginButton.alpha = 0.5
+        }
+    }
+    
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        view.endEditing(true)
     }
     
 }
