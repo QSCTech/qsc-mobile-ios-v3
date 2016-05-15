@@ -28,11 +28,19 @@ class WebViewController: UIViewController {
     var name: String?
     
     var webView: WKWebView!
+    var activityIndicator: UIActivityIndicatorView!
     
     override func loadView() {
         webView = WKWebView()
+        webView.navigationDelegate = self
         webView.backgroundColor = UIColor.whiteColor()
         view = webView
+        
+        navigationItem.title = name
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        
         if let request = request {
             webView.loadRequest(request)
         } else {
@@ -40,7 +48,18 @@ class WebViewController: UIViewController {
             let htmlString = try! String(contentsOfFile: htmlFile, encoding: NSUTF8StringEncoding).stringByReplacingOccurrencesOfString("<%= version %>", withString: "\(QSCVersion)")
             webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
         }
-        self.navigationItem.title = name
     }
 
+}
+
+extension WebViewController: WKNavigationDelegate {
+    
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.hidden = false
+    }
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        activityIndicator.hidden = true
+    }
+    
 }
