@@ -34,7 +34,8 @@ class ZjuwlanLoginViewController: UIViewController {
     @IBAction func save(sender: AnyObject) {
         if !usernameField.text!.isValidSid {
             let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            hud.mode = .Text
+            hud.mode = .CustomView
+            hud.customView = UIImageView(image: UIImage(named: "Cross"))
             hud.labelText = "学号格式不正确"
             delayOneSecond {
                 hud.hide(true)
@@ -44,8 +45,9 @@ class ZjuwlanLoginViewController: UIViewController {
         accountManager.accountForZjuwlan = usernameField.text
         accountManager.passwordForZjuwlan = passwordField.text
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = .Text
-        hud.labelText = "已保存"
+        hud.mode = .CustomView
+        hud.customView = UIImageView(image: UIImage(named: "Check"))
+        hud.labelText = "账号保存成功"
         delayOneSecond {
             hud.hide(true)
             self.navigationController?.popViewControllerAnimated(true)
@@ -57,8 +59,9 @@ class ZjuwlanLoginViewController: UIViewController {
         passwordField.text = nil
         accountManager.accountForZjuwlan = nil
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = .Text
-        hud.labelText = "已删除"
+        hud.mode = .CustomView
+        hud.customView = UIImageView(image: UIImage(named: "Check"))
+        hud.labelText = "账号删除成功"
         delayOneSecond {
             hud.hide(true)
             self.navigationController?.popViewControllerAnimated(true)

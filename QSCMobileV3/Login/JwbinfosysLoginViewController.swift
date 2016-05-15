@@ -30,7 +30,8 @@ class JwbinfosysLoginViewController: UIViewController {
     @IBAction func login(sender: AnyObject) {
         if !usernameField.text!.isValidSid {
             let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            hud.mode = .Text
+            hud.mode = .CustomView
+            hud.customView = UIImageView(image: UIImage(named: "Cross"))
             hud.labelText = "学号格式不正确"
             delayOneSecond {
                 hud.hide(true)
@@ -41,15 +42,17 @@ class JwbinfosysLoginViewController: UIViewController {
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
                 MobileManager.sharedInstance.refreshAll {
-                    hud.mode = .Text
-                    hud.labelText = "登录成功"
+                    hud.mode = .CustomView
+                    hud.customView = UIImageView(image: UIImage(named: "Check"))
+                    hud.labelText = "账号登录成功"
                     delayOneSecond {
                         hud.hide(true)
                         self.navigationController!.popViewControllerAnimated(true)
                     }
                 }
             } else {
-                hud.mode = .Text
+                hud.mode = .CustomView
+                hud.customView = UIImageView(image: UIImage(named: "Cross"))
                 hud.labelText = error
                 delayOneSecond {
                     hud.hide(true)
