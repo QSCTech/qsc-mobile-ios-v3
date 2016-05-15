@@ -97,7 +97,7 @@ class PreferenceViewController: UITableViewController {
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
                 // TODO: Change tint color (TBD)
                 let switchView = UISwitch(frame: CGRectZero)
-                let refreshOnLaunch = groupDefaults.objectForKey(RefreshOnLaunchKey) as! Bool
+                let refreshOnLaunch = groupDefaults.boolForKey(RefreshOnLaunchKey)
                 switchView.setOn(refreshOnLaunch, animated: false)
                 switchView.addTarget(self, action: #selector(refreshSwitchChanged), forControlEvents: .ValueChanged)
                 cell.accessoryView = switchView
@@ -208,7 +208,7 @@ class PreferenceViewController: UITableViewController {
     
     func refreshSwitchChanged(sender: AnyObject) {
         let switchView = sender as! UISwitch
-        groupDefaults.setObject(switchView.on, forKey: RefreshOnLaunchKey)
+        groupDefaults.setBool(switchView.on, forKey: RefreshOnLaunchKey)
     }
     
 }

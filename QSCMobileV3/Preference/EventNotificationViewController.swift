@@ -24,7 +24,7 @@ private let titlesForEventNotification = [
 class EventNotificationViewController: UITableViewController {
     
     static var status: String {
-        return titlesForEventNotification[groupDefaults.objectForKey(EventNotificationKey) as! Int]
+        return titlesForEventNotification[groupDefaults.integerForKey(EventNotificationKey)]
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,7 +34,7 @@ class EventNotificationViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
         cell.textLabel!.text = titlesForEventNotification[indexPath.row]
-        if indexPath.row == groupDefaults.objectForKey(EventNotificationKey) as! Int {
+        if indexPath.row == groupDefaults.integerForKey(EventNotificationKey) {
             cell.accessoryType = .Checkmark
         }
         return cell
@@ -44,8 +44,8 @@ class EventNotificationViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
-        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: groupDefaults.objectForKey(EventNotificationKey) as! Int, inSection: indexPath.section))!.accessoryType = .None
-        groupDefaults.setObject(indexPath.row, forKey: EventNotificationKey)
+        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: groupDefaults.integerForKey(EventNotificationKey), inSection: indexPath.section))!.accessoryType = .None
+        groupDefaults.setInteger(indexPath.row, forKey: EventNotificationKey)
     }
     
 }

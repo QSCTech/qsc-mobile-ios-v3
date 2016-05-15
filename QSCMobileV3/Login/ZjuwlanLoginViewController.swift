@@ -55,8 +55,8 @@ class ZjuwlanLoginViewController: UIViewController {
     }
     
     @IBAction func remove(sender: AnyObject) {
-        usernameField.text = nil
-        passwordField.text = nil
+        usernameField.text = ""
+        passwordField.text = ""
         accountManager.accountForZjuwlan = nil
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         hud.mode = .CustomView

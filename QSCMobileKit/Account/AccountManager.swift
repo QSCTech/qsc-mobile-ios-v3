@@ -94,6 +94,9 @@ public class AccountManager: NSObject {
             return groupDefaults.stringForKey(ZjuwlanAccountKey)
         }
         set {
+            if let account = accountForZjuwlan {
+                zjuwlanKeychain[account] = nil
+            }
             groupDefaults.setObject(newValue, forKey: ZjuwlanAccountKey)
             groupDefaults.synchronize()
         }

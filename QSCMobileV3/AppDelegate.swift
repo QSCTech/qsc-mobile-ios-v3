@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.registerRemoteNotificationAndUserNotificationSettings(notificationSettings)
         
         if groupDefaults.objectForKey(RefreshOnLaunchKey) == nil {
-            groupDefaults.setObject(true, forKey: RefreshOnLaunchKey)
+            groupDefaults.setBool(true, forKey: RefreshOnLaunchKey)
         }
-        if groupDefaults.objectForKey(RefreshOnLaunchKey) as! Bool && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil{
+        if groupDefaults.boolForKey(RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil{
             MobileManager.sharedInstance.refreshAll {
                 // TODO: Post a notification to force views to refresh.
                 print("Refresh on launch completed")
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if groupDefaults.objectForKey(EventNotificationKey) == nil {
             // Here 0 means Never
-            groupDefaults.setObject(0, forKey: EventNotificationKey)
+            groupDefaults.setInteger(0, forKey: EventNotificationKey)
         }
         
         return true

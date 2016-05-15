@@ -55,10 +55,6 @@ class QueryViewController: UITableViewController {
     
     private let websites: [[String: String]] = [
         [
-            "name": "水朝夕",
-            "url": "https://tide.zjuqsc.com/wp/",
-        ],
-        [
             "name": "院系网站",
             "url": "https://info.zjuqsc.com/zju-websites/",
         ],
@@ -81,6 +77,10 @@ class QueryViewController: UITableViewController {
         [
             "name": "第二课堂",
             "url": "http://www.qzlake.zju.edu.cn",
+        ],
+        [
+            "name": "综合数据服务平台",
+            "url": "http://zuds.zju.edu.cn/zfsjzx/jspdspp/zjuindex/index.jsp",
         ],
     ]
     
