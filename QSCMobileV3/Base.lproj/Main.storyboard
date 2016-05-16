@@ -91,10 +91,17 @@
                                     <constraint firstAttribute="height" constant="30" id="1pl-Le-SGe"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JtD-0b-lP7">
+                                <rect key="frame" x="0.0" y="168" width="600" height="383"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="JtD-0b-lP7" secondAttribute="trailing" id="2xa-sx-3B0"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="3to-fK-kST"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="leading" secondItem="faw-wO-Hlh" secondAttribute="leading" id="4qv-mS-ISB"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="5s2-Cz-5qa"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="7rb-Vg-NGn"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="BYB-Mk-e5U"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="trailing" secondItem="faw-wO-Hlh" secondAttribute="trailing" id="Bgt-xf-SAI"/>
@@ -104,9 +111,13 @@
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="QVQ-Hf-BOh"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="60" id="RRD-dK-8aA"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="WbF-E8-qyZ"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="XyT-Qa-nJn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JtD-0b-lP7" secondAttribute="trailing" id="YYO-XJ-l4V"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Z06-Ep-RTH"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="cEU-So-pPB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nYx-Yb-xsq" secondAttribute="trailing" id="kcT-W9-4GZ"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="499" id="kca-5x-bwq"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="centerX" secondItem="nYx-Yb-xsq" secondAttribute="centerX" id="lHD-t6-VC5"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="trailing" secondItem="faw-wO-Hlh" secondAttribute="trailing" id="pIY-Cp-SYl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nYx-Yb-xsq" secondAttribute="leading" id="qxd-JC-oTZ"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="tTq-oK-Vnt"/>
@@ -122,6 +133,9 @@
                                 <exclude reference="kcT-W9-4GZ"/>
                                 <exclude reference="pIY-Cp-SYl"/>
                                 <exclude reference="qxd-JC-oTZ"/>
+                                <exclude reference="2xa-sx-3B0"/>
+                                <exclude reference="YYO-XJ-l4V"/>
+                                <exclude reference="lHD-t6-VC5"/>
                                 <exclude reference="JEK-wO-YR3"/>
                                 <exclude reference="QVQ-Hf-BOh"/>
                                 <exclude reference="kca-5x-bwq"/>
@@ -140,6 +154,7 @@
                         <outlet property="calendarView" destination="nYx-Yb-xsq" id="9Bl-av-SEP"/>
                         <outlet property="menuView" destination="faw-wO-Hlh" id="dkH-bq-hhN"/>
                         <outlet property="monthViewButton" destination="Z9c-Kc-ppv" id="SO1-de-Gns"/>
+                        <outlet property="tableView" destination="JtD-0b-lP7" id="njk-gr-r9Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

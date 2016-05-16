@@ -72,19 +72,16 @@ class DataStore: NSObject {
                     timePlace.course = course
                     timePlace.place = json["place"].stringValue
                     
-                    timePlace.time = ""
                     if let dayOfWeek = Int(json["dayOfWeek"].stringValue, radix:10) {
                         timePlace.weekday = dayOfWeek % 7 + 1
-                        timePlace.time! += timePlace.weekday!.integerValue.stringForWeekday
                     }
                     timePlace.week = json["week"].stringValue
-                    timePlace.time! += "（\(timePlace.week!)）"
                     
                     timePlace.periods = ""
                     for (_, period) in json["course"] {
                         timePlace.periods! += String(Int(period.stringValue, radix: 10)!, radix: 16)
                     }
-                    timePlace.time! += "\n\(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
+                    timePlace.time = "\(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
                     timePlace.time! += String(format: "（%02d:%02d-%02d:%02d）", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
