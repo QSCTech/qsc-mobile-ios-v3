@@ -2,34 +2,49 @@
 //  CalendarViewController.swift
 //  QSCMobileV3
 //
-//  Created by 孙耀珠 on 2015-12-05.
-//  Copyright © 2015年 QSC Tech. All rights reserved.
+//  Created by 孙耀珠 on 2016-05-16.
+//  Copyright © 2016年 QSC Tech. All rights reserved.
 //
 
 import UIKit
+import CVCalendar
 
 class CalendarViewController: UIViewController {
-
+    
+    @IBOutlet weak var menuView: CVCalendarMenuView!
+    @IBOutlet weak var calendarView: CVCalendarView!
+    
+    @IBOutlet weak var monthViewButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        menuView.menuViewDelegate = self
+        calendarView.calendarDelegate = self
+        monthViewButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 20)!], forState: .Normal)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        menuView.commitMenuViewUpdate()
+        calendarView.commitCalendarViewUpdate()
     }
-    */
+    
+}
 
+extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+    
+    func presentationMode() -> CalendarMode {
+        return .WeekView
+    }
+    
+    func firstWeekday() -> Weekday {
+        return .Monday
+    }
+    
+    func shouldShowWeekdaysOut() -> Bool {
+        return true
+    }
+    
 }

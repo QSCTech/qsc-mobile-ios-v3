@@ -18,6 +18,7 @@ class PreferenceViewController: UITableViewController {
     private let mobileManager = MobileManager.sharedInstance
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     

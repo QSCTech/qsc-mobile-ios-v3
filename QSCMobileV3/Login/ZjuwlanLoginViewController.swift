@@ -27,6 +27,8 @@ class ZjuwlanLoginViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         navigationItem.title = "ZJUWLAN 账号"
         saveButton.layer.cornerRadius = 5
         usernameField.text = accountManager.accountForZjuwlan
@@ -40,7 +42,7 @@ class ZjuwlanLoginViewController: UIViewController {
         hud.mode = .CustomView
         hud.customView = UIImageView(image: UIImage(named: "Check"))
         hud.labelText = "账号保存成功"
-        delayOneSecond {
+        delay(1) {
             hud.hide(true)
             self.navigationController?.popViewControllerAnimated(true)
         }
@@ -54,7 +56,7 @@ class ZjuwlanLoginViewController: UIViewController {
         hud.mode = .CustomView
         hud.customView = UIImageView(image: UIImage(named: "Check"))
         hud.labelText = "账号删除成功"
-        delayOneSecond {
+        delay(1) {
             hud.hide(true)
             self.navigationController?.popViewControllerAnimated(true)
         }

@@ -41,7 +41,7 @@ class BrowserViewController: UIViewController {
         webView.loadRequest(urlRequest)
         activityIndicator.startAnimating()
     }
-
+    
     @IBAction func dismiss(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }

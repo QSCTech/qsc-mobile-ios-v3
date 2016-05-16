@@ -25,6 +25,8 @@ class JwbinfosysLoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         navigationItem.title = "教务网账号"
         loginButton.layer.cornerRadius = 5
     }
@@ -37,7 +39,7 @@ class JwbinfosysLoginViewController: UIViewController {
                     hud.mode = .CustomView
                     hud.customView = UIImageView(image: UIImage(named: "Check"))
                     hud.labelText = "账号登录成功"
-                    delayOneSecond {
+                    delay(1) {
                         hud.hide(true)
                         self.navigationController!.popViewControllerAnimated(true)
                     }
@@ -46,7 +48,7 @@ class JwbinfosysLoginViewController: UIViewController {
                 hud.mode = .CustomView
                 hud.customView = UIImageView(image: UIImage(named: "Cross"))
                 hud.labelText = error
-                delayOneSecond {
+                delay(1) {
                     hud.hide(true)
                 }
             }

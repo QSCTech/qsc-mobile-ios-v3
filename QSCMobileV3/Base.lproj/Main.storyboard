@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-Dh-UZX">
-                                <rect key="frame" x="20" y="28" width="560" height="515"/>
+                                <rect key="frame" x="20" y="72" width="560" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -50,14 +50,14 @@
                             <constraint firstAttribute="leadingMargin" secondItem="rAU-Dh-UZX" secondAttribute="leading" id="xvF-EV-2o4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="今日" image="Today" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="今日" id="Y3o-08-sGR"/>
                     <connections>
                         <outlet property="textView" destination="rAU-Dh-UZX" id="8a0-Ad-XD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="390"/>
+            <point key="canvasLocation" x="254" y="1144"/>
         </scene>
         <!--日程-->
         <scene sceneID="wg7-f3-ORb">
@@ -71,33 +71,140 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="210" height="42"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYx-Yb-xsq" customClass="CVCalendarView" customModule="CVCalendar">
+                                <rect key="frame" x="20" y="110" width="560" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="193" y="329" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="8dy-7J-pTt"/>
+                                    <constraint firstAttribute="height" constant="50" id="fvC-Ev-uCT"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8dy-7J-pTt"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faw-wO-Hlh" customClass="CVCalendarMenuView" customModule="CVCalendar">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1pl-Le-SGe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="leading" secondItem="faw-wO-Hlh" secondAttribute="leading" id="4qv-mS-ISB"/>
+                            <constraint firstItem="faw-wO-Hlh" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="7rb-Vg-NGn"/>
+                            <constraint firstItem="faw-wO-Hlh" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="BYB-Mk-e5U"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="trailing" secondItem="faw-wO-Hlh" secondAttribute="trailing" id="Bgt-xf-SAI"/>
+                            <constraint firstItem="faw-wO-Hlh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="D8y-iM-rnY"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="JEK-wO-YR3"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="leading" secondItem="faw-wO-Hlh" secondAttribute="leading" id="Nc7-vW-8sS"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="QVQ-Hf-BOh"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="60" id="RRD-dK-8aA"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="WbF-E8-qyZ"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="cEU-So-pPB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nYx-Yb-xsq" secondAttribute="trailing" id="kcT-W9-4GZ"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="499" id="kca-5x-bwq"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="trailing" secondItem="faw-wO-Hlh" secondAttribute="trailing" id="pIY-Cp-SYl"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="nYx-Yb-xsq" secondAttribute="leading" id="qxd-JC-oTZ"/>
+                            <constraint firstItem="faw-wO-Hlh" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="tTq-oK-Vnt"/>
+                            <constraint firstItem="faw-wO-Hlh" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="xAS-ZR-X7h"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7rb-Vg-NGn"/>
+                                <exclude reference="xAS-ZR-X7h"/>
+                                <exclude reference="4qv-mS-ISB"/>
+                                <exclude reference="RRD-dK-8aA"/>
+                                <exclude reference="cEU-So-pPB"/>
+                                <exclude reference="kcT-W9-4GZ"/>
+                                <exclude reference="pIY-Cp-SYl"/>
+                                <exclude reference="qxd-JC-oTZ"/>
+                                <exclude reference="JEK-wO-YR3"/>
+                                <exclude reference="QVQ-Hf-BOh"/>
+                                <exclude reference="kca-5x-bwq"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="日程" image="Calendar" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" title="日程" id="tK8-OC-7Ln">
+                        <barButtonItem key="leftBarButtonItem" title="" id="Z9c-Kc-ppv">
+                            <connections>
+                                <segue destination="rSL-ul-oMT" kind="show" id="hcs-dm-kdf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uUX-hh-sTC"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendarView" destination="nYx-Yb-xsq" id="9Bl-av-SEP"/>
+                        <outlet property="menuView" destination="faw-wO-Hlh" id="dkH-bq-hhN"/>
+                        <outlet property="monthViewButton" destination="Z9c-Kc-ppv" id="SO1-de-Gns"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="390"/>
+            <point key="canvasLocation" x="896" y="1144"/>
+        </scene>
+        <!--五月, 2016-->
+        <scene sceneID="ccG-Ej-7Zy">
+            <objects>
+                <viewController id="rSL-ul-oMT" customClass="CalendarMonthViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dhW-2B-p3g"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y5T-ai-QtI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NMA-QE-t7u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2q-su-lgi" customClass="CVCalendarMenuView" customModule="CVCalendar">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="lbF-iU-TeN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqG-rY-Iey" customClass="CVCalendarView" customModule="CVCalendar">
+                                <rect key="frame" x="20" y="110" width="560" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="9io-NS-WuZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qqG-rY-Iey" firstAttribute="leading" secondItem="A2q-su-lgi" secondAttribute="leading" id="3T5-tR-d5s"/>
+                            <constraint firstItem="A2q-su-lgi" firstAttribute="leading" secondItem="NMA-QE-t7u" secondAttribute="leadingMargin" id="Bcy-bq-5K0"/>
+                            <constraint firstItem="A2q-su-lgi" firstAttribute="top" secondItem="dhW-2B-p3g" secondAttribute="bottom" constant="8" symbolic="YES" id="P8c-0d-CLZ"/>
+                            <constraint firstItem="qqG-rY-Iey" firstAttribute="trailing" secondItem="A2q-su-lgi" secondAttribute="trailing" id="i1S-2o-ubj"/>
+                            <constraint firstItem="Y5T-ai-QtI" firstAttribute="top" secondItem="A2q-su-lgi" secondAttribute="bottom" constant="351" id="tGd-u0-4Mn"/>
+                            <constraint firstItem="A2q-su-lgi" firstAttribute="trailing" secondItem="NMA-QE-t7u" secondAttribute="trailingMargin" id="wIy-4P-3kE"/>
+                            <constraint firstItem="qqG-rY-Iey" firstAttribute="top" secondItem="A2q-su-lgi" secondAttribute="bottom" constant="8" symbolic="YES" id="xkx-Ti-xm5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tGd-u0-4Mn"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="五月, 2016" id="Csd-cr-1fD">
+                        <barButtonItem key="rightBarButtonItem" title="今日" id="bbe-5V-r9w">
+                            <connections>
+                                <action selector="todayButton:" destination="rSL-ul-oMT" id="ucp-lF-bGP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendarView" destination="qqG-rY-Iey" id="pev-OT-VEi"/>
+                        <outlet property="menuView" destination="A2q-su-lgi" id="IoX-fg-Rlp"/>
+                        <outlet property="navItem" destination="Csd-cr-1fD" id="uNM-jq-Hga"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Psi-B1-7As" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="1895"/>
         </scene>
         <!--查询-->
         <scene sceneID="ebA-ke-ivD">
@@ -306,9 +413,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-UI-CcN">
-                                <rect key="frame" x="20" y="28" width="560" height="515"/>
+                                <rect key="frame" x="20" y="72" width="560" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -348,7 +454,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发现" image="Discover" id="ELC-ks-08q"/>
+                    <navigationItem key="navigationItem" title="发现" id="BMB-JG-G0R"/>
                     <connections>
                         <outlet property="imageView" destination="hlU-X0-tdd" id="NUa-cP-Gyi"/>
                         <outlet property="textView" destination="YiO-UI-CcN" id="Sli-IM-66g"/>
@@ -356,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9G-XH-uKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="390"/>
+            <point key="canvasLocation" x="1534" y="1144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -369,9 +475,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="Afn-hq-3wE" kind="relationship" relationship="viewControllers" id="Dfl-bC-UB8"/>
+                        <segue destination="seq-ae-sVQ" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="Tzo-ct-FnG" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="HbO-Yt-UeN" kind="relationship" relationship="viewControllers" id="Dfl-bC-UB8"/>
                         <segue destination="XZf-SV-YIi" kind="relationship" relationship="viewControllers" id="yt4-2g-68H"/>
                         <segue destination="nWB-Rd-QKm" kind="relationship" relationship="viewControllers" id="U2Z-Dz-684"/>
                     </connections>
@@ -379,6 +485,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1534" y="-542"/>
+        </scene>
+        <!--日程-->
+        <scene sceneID="qKN-25-TcH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tzo-ct-FnG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="日程" image="Calendar" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cWw-OK-yzr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="2vW-RS-1tF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vld-M6-Qod" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="390"/>
+        </scene>
+        <!--发现-->
+        <scene sceneID="3yc-At-uPM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HbO-Yt-UeN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="发现" image="Discover" id="ELC-ks-08q"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bax-lW-qry">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Afn-hq-3wE" kind="relationship" relationship="rootViewController" id="LdN-ns-4Jy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0LM-dR-Mya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="390"/>
+        </scene>
+        <!--今日-->
+        <scene sceneID="FRy-pI-gFc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="seq-ae-sVQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="今日" image="Today" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tkj-iu-deY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="HvT-pV-tVn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8lU-Sc-TaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="254" y="390"/>
         </scene>
     </scenes>
     <resources>
