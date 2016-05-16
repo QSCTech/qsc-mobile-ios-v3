@@ -19,11 +19,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="教务网密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-of-fky">
-                    <rect key="frame" x="50" y="175" width="500" height="35"/>
+                    <rect key="frame" x="50" y="170" width="500" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="uOy-WY-QGh"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -35,12 +35,12 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8pG-MZ-0Gc">
-                    <rect key="frame" x="50" y="120" width="500" height="35"/>
+                    <rect key="frame" x="50" y="120" width="500" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="3z6-zZ-usm"/>
+                        <constraint firstAttribute="height" constant="40" id="3z6-zZ-usm"/>
                         <constraint firstAttribute="width" constant="200" id="dyl-9H-SQh"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -51,8 +51,8 @@
                         <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="vNu-sO-XnU"/>
                     </connections>
                 </textField>
-                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-Ue-bPw">
-                    <rect key="frame" x="50" y="240" width="500" height="35"/>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-Ue-bPw">
+                    <rect key="frame" x="50" y="230" width="500" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="mu1-Qv-VKb"/>
@@ -94,13 +94,13 @@
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="width" secondItem="hMe-of-fky" secondAttribute="width" id="HtQ-o7-8xs"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="width" secondItem="8pG-MZ-0Gc" secondAttribute="width" id="J4Q-mI-zEU"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" id="ND5-Bn-uv7"/>
-                <constraint firstItem="BL1-Ue-bPw" firstAttribute="top" secondItem="hMe-of-fky" secondAttribute="bottom" constant="30" id="Nmc-FI-OUG"/>
+                <constraint firstItem="BL1-Ue-bPw" firstAttribute="top" secondItem="hMe-of-fky" secondAttribute="bottom" constant="20" id="Nmc-FI-OUG"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="8pG-MZ-0Gc" secondAttribute="centerX" id="PTx-xL-U3B"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="RRF-Tv-6LR"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="50" id="U9M-Er-yru"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="Wy1-k3-qjv"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aVL-NG-QQM"/>
-                <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="20" id="dE1-eF-X5j"/>
+                <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="10" id="dE1-eF-X5j"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="diG-cN-3GH"/>
                 <constraint firstAttribute="bottom" secondItem="Fdu-XJ-xWo" secondAttribute="bottom" constant="60" id="gvz-5y-qzb"/>
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="leS-dY-PcF"/>

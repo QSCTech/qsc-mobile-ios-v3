@@ -20,29 +20,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dpA-ux-ZCL">
-                    <rect key="frame" x="50" y="120" width="501" height="35"/>
+                    <rect key="frame" x="50" y="120" width="501" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="Cd6-w8-Ayg"/>
+                        <constraint firstAttribute="height" constant="40" id="Cd6-w8-Ayg"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
                         <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="pOF-Yf-HUh"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ZJUWLAN 密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DCq-Qc-WZl">
-                    <rect key="frame" x="50" y="175" width="501" height="35"/>
+                    <rect key="frame" x="50" y="170" width="501" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="8av-ds-2rh"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="8av-ds-2rh"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="qeB-qF-lnL"/>
                     </connections>
                 </textField>
-                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-1S-dmo">
-                    <rect key="frame" x="50" y="240" width="501" height="35"/>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-1S-dmo">
+                    <rect key="frame" x="50" y="230" width="501" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="保存">
@@ -70,12 +75,13 @@
                 <constraint firstItem="DCq-Qc-WZl" firstAttribute="width" secondItem="dpA-ux-ZCL" secondAttribute="width" id="9J4-Ip-bM5"/>
                 <constraint firstItem="dpA-ux-ZCL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Aow-f8-7nD"/>
                 <constraint firstItem="dpA-ux-ZCL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GWD-Pk-Shr"/>
-                <constraint firstItem="3g5-1S-dmo" firstAttribute="top" secondItem="DCq-Qc-WZl" secondAttribute="bottom" constant="30" id="Ifv-Bu-7v3"/>
+                <constraint firstItem="3g5-1S-dmo" firstAttribute="top" secondItem="DCq-Qc-WZl" secondAttribute="bottom" constant="20" id="Ifv-Bu-7v3"/>
                 <constraint firstItem="WrH-fA-wee" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OQL-Mf-J39"/>
+                <constraint firstItem="DCq-Qc-WZl" firstAttribute="height" secondItem="dpA-ux-ZCL" secondAttribute="height" id="THG-an-j7n"/>
                 <constraint firstItem="WrH-fA-wee" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" constant="-100" id="gGH-eD-qfX"/>
                 <constraint firstItem="DCq-Qc-WZl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hx3-tx-ChW"/>
                 <constraint firstItem="3g5-1S-dmo" firstAttribute="height" secondItem="DCq-Qc-WZl" secondAttribute="height" id="jOm-ES-EEq"/>
-                <constraint firstItem="DCq-Qc-WZl" firstAttribute="top" secondItem="dpA-ux-ZCL" secondAttribute="bottom" constant="20" id="lnf-i1-Ii4"/>
+                <constraint firstItem="DCq-Qc-WZl" firstAttribute="top" secondItem="dpA-ux-ZCL" secondAttribute="bottom" constant="10" id="lnf-i1-Ii4"/>
                 <constraint firstItem="dpA-ux-ZCL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="n4V-lZ-qos"/>
                 <constraint firstItem="WrH-fA-wee" firstAttribute="centerX" secondItem="3g5-1S-dmo" secondAttribute="centerX" id="smI-sa-KpV"/>
                 <constraint firstAttribute="bottom" secondItem="WrH-fA-wee" secondAttribute="bottom" constant="60" id="uI6-if-2XA"/>
