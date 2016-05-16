@@ -20,6 +20,8 @@ public class AccountManager: NSObject {
     }
     
     public static let sharedInstance = AccountManager()
+    
+    let groupDefaults = NSUserDefaults(suiteName: AppGroupIdentifier)!
         
     // MARK: - JWBInfoSys
     private let jwbinfosysKeychain = Keychain(server: "http://jwbinfosys.zju.edu.cn", protocolType: .HTTP)

@@ -60,7 +60,7 @@ class PreferenceViewController: UITableViewController {
         case Preference.Zjuwlan.rawValue:
             return 1
         case Preference.Setting.rawValue:
-            return 2
+            return 3
         case Preference.About.rawValue:
             return 3
         default:
@@ -95,6 +95,9 @@ class PreferenceViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                if #available(iOS 9.0, *) {
+                    cell.focusStyle = .Custom
+                }
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
                 // TODO: Change tint color (TBD)
                 let switchView = UISwitch(frame: CGRectZero)
@@ -104,9 +107,15 @@ class PreferenceViewController: UITableViewController {
                 cell.accessoryView = switchView
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+                let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
                 cell.textLabel!.attributedText = "\u{f073}\t日程提醒".attributedWithFontAwesome
                 cell.detailTextLabel!.text = EventNotificationViewController.status
+                cell.accessoryType = .DisclosureIndicator
+                return cell
+            case 2:
+                let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+                cell.textLabel!.attributedText = "\u{f071}\t清空所有数据".attributedWithFontAwesome
+                cell.detailTextLabel!.text = mobileManager.sizeOfSqlite
                 return cell
             default:
                 return UITableViewCell()
@@ -152,6 +161,20 @@ class PreferenceViewController: UITableViewController {
             switch indexPath.row {
             case 1:
                 performSegueWithIdentifier("showEventNotification", sender: nil)
+            case 2:
+                let alert = UIAlertController(title: "清空所有数据", message: "包括账号密码、自定义日程和从教务网抓取的数据，确定要继续吗？", preferredStyle: .Alert)
+                let no = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+                alert.addAction(no)
+                let yes = UIAlertAction(title: "确定", style: .Destructive) { _ in
+                    self.accountManager.accountForZjuwlan = nil
+                    while self.accountManager.currentAccountForJwbinfosys != nil {
+                        self.mobileManager.deleteUser(self.accountManager.currentAccountForJwbinfosys!)
+                    }
+                    self.mobileManager.dropSqlite()
+                    self.tableView.reloadData()
+                }
+                alert.addAction(yes)
+                presentViewController(alert, animated: true, completion: nil)
             default:
                 break
             }

@@ -22,7 +22,7 @@ private let titlesForEventNotification = [
 ]
 
 class EventNotificationViewController: UITableViewController {
-    
+        
     static var status: String {
         return titlesForEventNotification[groupDefaults.integerForKey(EventNotificationKey)]
     }

@@ -87,15 +87,6 @@ public class MobileManager: NSObject {
         }
     }
     
-    // MARK: - Drop Tables
-    
-    /**
-     Delete **ALL** objects in CoreData.
-     */
-    public func dropCoreData() {
-        DataStore.dropCoreData()
-    }
-    
     // MARK: - Retrieve events
     
     /**
@@ -285,6 +276,16 @@ public class MobileManager: NSObject {
                 callback(false, error)
             }
         }
+    }
+    
+    // MARK: - Manage SQLite
+    
+    public func dropSqlite() {
+        DataStore.dropSqlite()
+    }
+    
+    public var sizeOfSqlite: String {
+        return DataStore.sizeOfSqlite
     }
     
 }

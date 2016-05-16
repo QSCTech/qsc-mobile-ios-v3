@@ -16,7 +16,8 @@ let MobileAPIURL = "https://m.zjuqsc.com/v3api/"
 let NoticeURL    = "https://notice.zjuqsc.com"
 let BoxURL       = "https://box.zjuqsc.com"
 
-public let groupDefaults = NSUserDefaults(suiteName: "group.com.zjuqsc.QSCMobileV3")!
+public let AppGroupIdentifier = "group.com.zjuqsc.QSCMobileV3"
+public let QSCMobileKitIdentifier = "com.zjuqsc.QSCMobileV3.QSCMobileKit"
 
 public let QSCVersion: String = {
     let info = NSBundle.mainBundle().infoDictionary!

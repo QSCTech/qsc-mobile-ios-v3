@@ -19,10 +19,10 @@ class DataStore: NSObject {
         super.init()
     }
     
+    private static let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
+    
     private static let managedObjectContext: NSManagedObjectContext = {
-        let modelURL = NSBundle(identifier: "com.zjuqsc.QSCMobileV3.QSCMobileKit")!.URLForResource("QSCMobileModel", withExtension: "momd")!
-        let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.zjuqsc.QSCMobileV3")!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
-        
+        let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("QSCMobileModel", withExtension: "momd")!
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
@@ -374,16 +374,6 @@ class DataStore: NSObject {
         try! managedObjectContext.save()
     }
     
-    /**
-     Delete **ALL** objects in CoreData.
-     */
-    static func dropCoreData() {
-        let entitiesByName = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName
-        for (name, _) in entitiesByName {
-            deleteEntities(name)
-        }
-    }
-    
     // MARK: - Retrieval
     
     /**
@@ -439,6 +429,31 @@ class DataStore: NSObject {
         let fetchRequest = NSFetchRequest(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "sid == %@", username)
         return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? User
+    }
+    
+    // MARK: - SQLite Management
+    
+    static func dropSqlite() {
+        let removeFile = { (path: String) -> Void in
+            if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                try! NSFileManager.defaultManager().removeItemAtPath(path)
+            }
+        }
+        removeFile(storeURL.path!)
+        removeFile(storeURL.path! + "-wal")
+        removeFile(storeURL.path! + "-shm")
+    }
+    
+    static var sizeOfSqlite: String {
+        let sizeOfFile = { (path: String) -> Int64 in
+            if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                return Int64((try! NSFileManager.defaultManager().attributesOfItemAtPath(path) as NSDictionary).fileSize())
+            } else {
+                return 0
+            }
+        }
+        let size = sizeOfFile(storeURL.path!) + sizeOfFile(storeURL.path! + "-wal") + sizeOfFile(storeURL.path! + "-shm")
+        return NSByteCountFormatter.stringFromByteCount(size, countStyle: .File)
     }
     
 }
