@@ -12,11 +12,16 @@ import KeychainAccess
 /// The account manager of JWBInfoSys and ZJUWLAN. This class does NOT handle login validation, which is in the control of mobile manager. Singleton pattern is used in this class.
 public class AccountManager: NSObject {
     
-    /**
-     Override just to make init() private.
-     */
     private override init() {
         super.init()
+        
+        // Prevent crashing when app is removed and installed again.
+        if currentAccountForJwbinfosys == nil && !jwbinfosysKeychain.allKeys().isEmpty {
+            try! jwbinfosysKeychain.removeAll()
+        }
+        if accountForZjuwlan == nil && !zjuwlanKeychain.allKeys().isEmpty {
+            try! zjuwlanKeychain.removeAll()
+        }
     }
     
     public static let sharedInstance = AccountManager()
