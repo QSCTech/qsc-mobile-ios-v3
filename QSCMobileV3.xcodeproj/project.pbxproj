@@ -33,7 +33,6 @@
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4179AC1CE4678E00955729 /* LaunchScreen.xib */; };
 		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
-		9D5D164D1C52360B003AC6F2 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D164C1C52360B003AC6F2 /* Statistics.swift */; };
 		9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */; };
 		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
@@ -48,24 +47,29 @@
 		9D7851F81CE99DB6008A7DBF /* CalendarMonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7851F71CE99DB6008A7DBF /* CalendarMonthViewController.swift */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
-		9DCDE7821C0728E40087C31F /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77C1C0728E40087C31F /* Exam.swift */; };
-		9DCDE7841C0728E40087C31F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE77E1C0728E40087C31F /* Course.swift */; };
-		9DCDE7861C0728E40087C31F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7801C0728E40087C31F /* Score.swift */; };
-		9DCDE79E1C083C070087C31F /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78A1C083C070087C31F /* Bus.swift */; };
-		9DCDE7A01C083C070087C31F /* TimePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78C1C083C070087C31F /* TimePlace.swift */; };
-		9DCDE7A21C083C070087C31F /* Adjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE78E1C083C070087C31F /* Adjustment.swift */; };
-		9DCDE7A41C083C070087C31F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7901C083C070087C31F /* Holiday.swift */; };
-		9DCDE7A61C083C070087C31F /* SemesterScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7921C083C070087C31F /* SemesterScore.swift */; };
-		9DCDE7A81C083C070087C31F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7941C083C070087C31F /* User.swift */; };
-		9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7961C083C070087C31F /* BusStop.swift */; };
-		9DCDE7AC1C083C070087C31F /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7981C083C070087C31F /* Year.swift */; };
-		9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE79A1C083C070087C31F /* Semester.swift */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
+		9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */; };
+		9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */; };
+		9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */; };
+		9DD491141CEAE68A009F70FA /* Homework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491001CEAE68A009F70FA /* Homework.swift */; };
+		9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491021CEAE68A009F70FA /* Adjustment.swift */; };
+		9DD491161CEAE68A009F70FA /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491031CEAE68A009F70FA /* Bus.swift */; };
+		9DD491171CEAE68A009F70FA /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491041CEAE68A009F70FA /* BusStop.swift */; };
+		9DD491181CEAE68A009F70FA /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491051CEAE68A009F70FA /* Course.swift */; };
+		9DD491191CEAE68A009F70FA /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491061CEAE68A009F70FA /* Exam.swift */; };
+		9DD4911A1CEAE68A009F70FA /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491071CEAE68A009F70FA /* Holiday.swift */; };
+		9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491081CEAE68A009F70FA /* Mobile.xcdatamodeld */; };
+		9DD4911C1CEAE68A009F70FA /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910A1CEAE68A009F70FA /* Score.swift */; };
+		9DD4911D1CEAE68A009F70FA /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910B1CEAE68A009F70FA /* Semester.swift */; };
+		9DD4911E1CEAE68A009F70FA /* SemesterScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910C1CEAE68A009F70FA /* SemesterScore.swift */; };
+		9DD4911F1CEAE68A009F70FA /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910D1CEAE68A009F70FA /* Statistics.swift */; };
+		9DD491201CEAE68A009F70FA /* TimePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910E1CEAE68A009F70FA /* TimePlace.swift */; };
+		9DD491211CEAE68A009F70FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910F1CEAE68A009F70FA /* User.swift */; };
+		9DD491221CEAE68A009F70FA /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491101CEAE68A009F70FA /* Year.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
 		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
-		9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
 		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
@@ -142,7 +146,6 @@
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
-		9D5D164C1C52360B003AC6F2 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Statistics.swift; path = CoreData/Statistics.swift; sourceTree = "<group>"; };
 		9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeAPI.swift; path = Notice/NoticeAPI.swift; sourceTree = "<group>"; };
 		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
 		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
@@ -161,26 +164,31 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
-		9DCDE77C1C0728E40087C31F /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exam.swift; path = CoreData/Exam.swift; sourceTree = "<group>"; };
-		9DCDE77E1C0728E40087C31F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = CoreData/Course.swift; sourceTree = "<group>"; };
-		9DCDE7801C0728E40087C31F /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = CoreData/Score.swift; sourceTree = "<group>"; };
-		9DCDE78A1C083C070087C31F /* Bus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bus.swift; path = CoreData/Bus.swift; sourceTree = "<group>"; };
-		9DCDE78C1C083C070087C31F /* TimePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePlace.swift; path = CoreData/TimePlace.swift; sourceTree = "<group>"; };
-		9DCDE78E1C083C070087C31F /* Adjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Adjustment.swift; path = CoreData/Adjustment.swift; sourceTree = "<group>"; };
-		9DCDE7901C083C070087C31F /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Holiday.swift; path = CoreData/Holiday.swift; sourceTree = "<group>"; };
-		9DCDE7921C083C070087C31F /* SemesterScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SemesterScore.swift; path = CoreData/SemesterScore.swift; sourceTree = "<group>"; };
-		9DCDE7941C083C070087C31F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = CoreData/User.swift; sourceTree = "<group>"; };
-		9DCDE7961C083C070087C31F /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusStop.swift; path = CoreData/BusStop.swift; sourceTree = "<group>"; };
-		9DCDE7981C083C070087C31F /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = CoreData/Year.swift; sourceTree = "<group>"; };
-		9DCDE79A1C083C070087C31F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = CoreData/Semester.swift; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEvent.swift; sourceTree = "<group>"; };
+		9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEvent.swift; sourceTree = "<group>"; };
+		9DD490FF1CEAE68A009F70FA /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
+		9DD491001CEAE68A009F70FA /* Homework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Homework.swift; sourceTree = "<group>"; };
+		9DD491021CEAE68A009F70FA /* Adjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adjustment.swift; sourceTree = "<group>"; };
+		9DD491031CEAE68A009F70FA /* Bus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		9DD491041CEAE68A009F70FA /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
+		9DD491051CEAE68A009F70FA /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		9DD491061CEAE68A009F70FA /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
+		9DD491071CEAE68A009F70FA /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
+		9DD491091CEAE68A009F70FA /* Mobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mobile.xcdatamodel; sourceTree = "<group>"; };
+		9DD4910A1CEAE68A009F70FA /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		9DD4910B1CEAE68A009F70FA /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
+		9DD4910C1CEAE68A009F70FA /* SemesterScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterScore.swift; sourceTree = "<group>"; };
+		9DD4910D1CEAE68A009F70FA /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		9DD4910E1CEAE68A009F70FA /* TimePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePlace.swift; sourceTree = "<group>"; };
+		9DD4910F1CEAE68A009F70FA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9DD491101CEAE68A009F70FA /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
 		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JwbinfosysLoginViewController.xib; path = Login/JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
-		9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QSCMobileModel.xcdatamodel; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -383,6 +391,38 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
+		9DD490FB1CEAE68A009F70FA /* EventModel */ = {
+			isa = PBXGroup;
+			children = (
+				9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */,
+				9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */,
+				9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */,
+				9DD491001CEAE68A009F70FA /* Homework.swift */,
+			);
+			path = EventModel;
+			sourceTree = "<group>";
+		};
+		9DD491011CEAE68A009F70FA /* MobileModel */ = {
+			isa = PBXGroup;
+			children = (
+				9DD491081CEAE68A009F70FA /* Mobile.xcdatamodeld */,
+				9DD4910F1CEAE68A009F70FA /* User.swift */,
+				9DD4910D1CEAE68A009F70FA /* Statistics.swift */,
+				9DD491051CEAE68A009F70FA /* Course.swift */,
+				9DD4910E1CEAE68A009F70FA /* TimePlace.swift */,
+				9DD491061CEAE68A009F70FA /* Exam.swift */,
+				9DD4910C1CEAE68A009F70FA /* SemesterScore.swift */,
+				9DD4910A1CEAE68A009F70FA /* Score.swift */,
+				9DD491101CEAE68A009F70FA /* Year.swift */,
+				9DD4910B1CEAE68A009F70FA /* Semester.swift */,
+				9DD491071CEAE68A009F70FA /* Holiday.swift */,
+				9DD491021CEAE68A009F70FA /* Adjustment.swift */,
+				9DD491031CEAE68A009F70FA /* Bus.swift */,
+				9DD491041CEAE68A009F70FA /* BusStop.swift */,
+			);
+			path = MobileModel;
+			sourceTree = "<group>";
+		};
 		9DE716021CE7A9E900282DCD /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,27 +432,6 @@
 				9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */,
 			);
 			name = Login;
-			sourceTree = "<group>";
-		};
-		9DEF30391BFD7B8100508504 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */,
-				9DCDE7941C083C070087C31F /* User.swift */,
-				9DCDE77E1C0728E40087C31F /* Course.swift */,
-				9DCDE78C1C083C070087C31F /* TimePlace.swift */,
-				9DCDE77C1C0728E40087C31F /* Exam.swift */,
-				9DCDE7801C0728E40087C31F /* Score.swift */,
-				9DCDE7921C083C070087C31F /* SemesterScore.swift */,
-				9D5D164C1C52360B003AC6F2 /* Statistics.swift */,
-				9DCDE7981C083C070087C31F /* Year.swift */,
-				9DCDE79A1C083C070087C31F /* Semester.swift */,
-				9DCDE7901C083C070087C31F /* Holiday.swift */,
-				9DCDE78E1C083C070087C31F /* Adjustment.swift */,
-				9DCDE78A1C083C070087C31F /* Bus.swift */,
-				9DCDE7961C083C070087C31F /* BusStop.swift */,
-			);
-			name = CoreData;
 			sourceTree = "<group>";
 		};
 		9DEF63841C12FB9000A70C5B /* Support Files */ = {
@@ -430,9 +449,10 @@
 			children = (
 				9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */,
 				9DCDE7B61C0841130087C31F /* Common.swift */,
+				9DD491011CEAE68A009F70FA /* MobileModel */,
+				9DD490FB1CEAE68A009F70FA /* EventModel */,
 				9D42D2DA1C1867800066EEFC /* Account */,
 				9D42D2DC1C1867950066EEFC /* Mobile */,
-				9DEF30391BFD7B8100508504 /* CoreData */,
 				9D42D2DD1C1867B00066EEFC /* ZJUWLAN */,
 				9D6413311C19AD5200EC5D95 /* Notice */,
 				9D31395F1CE7844C00CD7DAD /* Extension */,
@@ -680,35 +700,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD491161CEAE68A009F70FA /* Bus.swift in Sources */,
+				9DD4911E1CEAE68A009F70FA /* SemesterScore.swift in Sources */,
+				9DD4911D1CEAE68A009F70FA /* Semester.swift in Sources */,
+				9DD491141CEAE68A009F70FA /* Homework.swift in Sources */,
+				9DD491211CEAE68A009F70FA /* User.swift in Sources */,
 				9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */,
-				9D5D164D1C52360B003AC6F2 /* Statistics.swift in Sources */,
 				9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */,
-				9DCDE79E1C083C070087C31F /* Bus.swift in Sources */,
-				9DCDE7AA1C083C070087C31F /* BusStop.swift in Sources */,
 				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
-				9DCDE7861C0728E40087C31F /* Score.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
-				9DEF303C1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld in Sources */,
-				9DCDE7AE1C083C070087C31F /* Semester.swift in Sources */,
+				9DD4911C1CEAE68A009F70FA /* Score.swift in Sources */,
+				9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */,
 				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
+				9DD491201CEAE68A009F70FA /* TimePlace.swift in Sources */,
+				9DD491191CEAE68A009F70FA /* Exam.swift in Sources */,
 				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
-				9DCDE7841C0728E40087C31F /* Course.swift in Sources */,
 				9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */,
-				9DCDE7A41C083C070087C31F /* Holiday.swift in Sources */,
+				9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */,
 				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
-				9DCDE7A61C083C070087C31F /* SemesterScore.swift in Sources */,
 				9D3139651CE7859F00CD7DAD /* Int+Weekday.swift in Sources */,
-				9DCDE7A21C083C070087C31F /* Adjustment.swift in Sources */,
 				9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */,
-				9DCDE7A01C083C070087C31F /* TimePlace.swift in Sources */,
-				9DCDE7AC1C083C070087C31F /* Year.swift in Sources */,
+				9DD491221CEAE68A009F70FA /* Year.swift in Sources */,
 				9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */,
-				9DCDE7821C0728E40087C31F /* Exam.swift in Sources */,
+				9DD491171CEAE68A009F70FA /* BusStop.swift in Sources */,
 				9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */,
-				9DCDE7A81C083C070087C31F /* User.swift in Sources */,
 				9D3139691CE7869400CD7DAD /* NSDate+Comparable.swift in Sources */,
+				9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */,
+				9DD4911A1CEAE68A009F70FA /* Holiday.swift in Sources */,
+				9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */,
+				9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */,
+				9DD4911F1CEAE68A009F70FA /* Statistics.swift in Sources */,
+				9DD491181CEAE68A009F70FA /* Course.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,14 +1070,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9DEF303A1BFD7C1800508504 /* QSCMobileModel.xcdatamodeld */ = {
+		9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */,
+				9DD490FF1CEAE68A009F70FA /* Event.xcdatamodel */,
 			);
-			currentVersion = 9DEF303B1BFD7C1800508504 /* QSCMobileModel.xcdatamodel */;
-			name = QSCMobileModel.xcdatamodeld;
-			path = CoreData/QSCMobileModel.xcdatamodeld;
+			currentVersion = 9DD490FF1CEAE68A009F70FA /* Event.xcdatamodel */;
+			path = Event.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		9DD491081CEAE68A009F70FA /* Mobile.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9DD491091CEAE68A009F70FA /* Mobile.xcdatamodel */,
+			);
+			currentVersion = 9DD491091CEAE68A009F70FA /* Mobile.xcdatamodel */;
+			path = Mobile.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

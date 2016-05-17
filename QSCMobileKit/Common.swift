@@ -29,7 +29,7 @@ public struct Event {
         case AllDay, PartialTime
     }
     public enum Category {
-        case Course, Exam, Quiz, Custom
+        case Course, Exam, Quiz, Activity, Custom
     }
     public let type: Type
     public let category: Category
@@ -41,7 +41,6 @@ public struct Event {
     public let end: NSDate
     public let object: NSManagedObject
 }
-
 
 /**
  Chinese names of four seasons, used to identify the semester of courses.

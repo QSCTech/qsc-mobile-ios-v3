@@ -19,10 +19,10 @@ class DataStore: NSObject {
         super.init()
     }
     
-    private static let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("QSCMobileV3.sqlite")
+    private static let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("Mobile.sqlite")
     
     private static let managedObjectContext: NSManagedObjectContext = {
-        let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("QSCMobileModel", withExtension: "momd")!
+        let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("Mobile", withExtension: "momd")!
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
@@ -53,7 +53,7 @@ class DataStore: NSObject {
                 course.name = json["name"].stringValue
                 course.teacher = json["teacher"].stringValue
                 course.semester = json["semester"].stringValue
-                course.determined = json["determined"].boolValue
+                course.isDetermined = json["determined"].boolValue
                 course.identifier = json["identifier"].stringValue
                 course.year = json["year"].stringValue
                 
@@ -72,16 +72,21 @@ class DataStore: NSObject {
                     timePlace.course = course
                     timePlace.place = json["place"].stringValue
                     
+                    timePlace.time = ""
                     if let dayOfWeek = Int(json["dayOfWeek"].stringValue, radix:10) {
                         timePlace.weekday = dayOfWeek % 7 + 1
+                        timePlace.time! += timePlace.weekday!.integerValue.stringForWeekday
                     }
                     timePlace.week = json["week"].stringValue
+                    if timePlace.week != "每周" {
+                        timePlace.time! += "（\(timePlace.week!)）"
+                    }
                     
                     timePlace.periods = ""
                     for (_, period) in json["course"] {
                         timePlace.periods! += String(Int(period.stringValue, radix: 10)!, radix: 16)
                     }
-                    timePlace.time = "\(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
+                    timePlace.time! += " \(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
                     timePlace.time! += String(format: "（%02d:%02d-%02d:%02d）", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
@@ -384,7 +389,7 @@ class DataStore: NSObject {
     func getCourses(year year: String, semester: CalendarSemester) -> [Course] {
         let array = currentUser.courses!.filter {
             let course = $0 as! Course
-            return course.determined!.boolValue && course.year == year && course.semester!.includesSemester(semester)
+            return course.isDetermined!.boolValue && course.year == year && course.semester!.includesSemester(semester)
         } as! [Course]
         return array.sort { $0.credit! >= $1.credit! }
     }

@@ -114,7 +114,7 @@ class PreferenceViewController: UITableViewController {
                 return cell
             case 2:
                 let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-                cell.textLabel!.attributedText = "\u{f071}\t清空所有数据".attributedWithFontAwesome
+                cell.textLabel!.attributedText = "\u{f071}\t清空缓存".attributedWithFontAwesome
                 cell.detailTextLabel!.text = mobileManager.sizeOfSqlite
                 return cell
             default:
@@ -162,11 +162,10 @@ class PreferenceViewController: UITableViewController {
             case 1:
                 performSegueWithIdentifier("showEventNotification", sender: nil)
             case 2:
-                let alert = UIAlertController(title: "清空所有数据", message: "包括账号密码、自定义日程和从教务网抓取的数据，确定要继续吗？", preferredStyle: .Alert)
+                let alert = UIAlertController(title: "清空缓存", message: "包括所有教务网账号及其关联的教务信息、校历和校车数据，但不会删除您添加的日程和课程信息，确定要继续吗？", preferredStyle: .Alert)
                 let no = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
                 alert.addAction(no)
                 let yes = UIAlertAction(title: "确定", style: .Destructive) { _ in
-                    self.accountManager.accountForZjuwlan = nil
                     while self.accountManager.currentAccountForJwbinfosys != nil {
                         self.mobileManager.deleteUser(self.accountManager.currentAccountForJwbinfosys!)
                     }

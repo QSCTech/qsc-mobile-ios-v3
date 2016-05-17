@@ -22,7 +22,7 @@ class Course: NSManagedObject {
     @NSManaged var semester: String?
     @NSManaged var year: String?
     @NSManaged var identifier: String?
-    @NSManaged var determined: NSNumber?
+    @NSManaged var isDetermined: NSNumber?
     @NSManaged var prerequisite: String?
     @NSManaged var user: User?
     @NSManaged var timePlaces: NSSet?
