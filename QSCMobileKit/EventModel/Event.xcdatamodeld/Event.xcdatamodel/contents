@@ -13,7 +13,8 @@
         <relationship name="homeworks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Homework" inverseName="courseEvent" inverseEntity="Homework" syncable="YES"/>
     </entity>
     <entity name="CustomEvent" representedClassName=".CustomEvent" syncable="YES">
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,7 +22,6 @@
         <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Homework" representedClassName=".Homework" syncable="YES">
         <attribute name="deadline" optional="YES" attributeType="Date" syncable="YES"/>
@@ -31,7 +31,7 @@
     </entity>
     <elements>
         <element name="CourseEvent" positionX="-54" positionY="-9" width="128" height="195"/>
-        <element name="Homework" positionX="-36" positionY="63" width="128" height="105"/>
         <element name="CustomEvent" positionX="-45" positionY="63" width="128" height="180"/>
+        <element name="Homework" positionX="-36" positionY="63" width="128" height="105"/>
     </elements>
 </model>

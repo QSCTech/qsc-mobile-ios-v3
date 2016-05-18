@@ -63,6 +63,9 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
 }
 
+
+// TODO: Check whether logged in
+// TODO: Decide whether to use system time zone or UTC+8
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -73,12 +76,12 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mobileManager.coursesForDate(selectedDate).count
+        return mobileManager.eventsForDate(selectedDate).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-        let course = mobileManager.coursesForDate(selectedDate)[indexPath.row]
+        let course = mobileManager.eventsForDate(selectedDate)[indexPath.row]
         cell.textLabel!.text = course.name
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")

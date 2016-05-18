@@ -67,6 +67,8 @@
 		9DD491201CEAE68A009F70FA /* TimePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910E1CEAE68A009F70FA /* TimePlace.swift */; };
 		9DD491211CEAE68A009F70FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910F1CEAE68A009F70FA /* User.swift */; };
 		9DD491221CEAE68A009F70FA /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491101CEAE68A009F70FA /* Year.swift */; };
+		9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491241CEAFA81009F70FA /* EventManager.swift */; };
+		9DD491271CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */; };
 		9DE34AED1C09973000C9534A /* QSCMobileKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */; };
 		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
@@ -184,6 +186,8 @@
 		9DD4910E1CEAE68A009F70FA /* TimePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePlace.swift; sourceTree = "<group>"; };
 		9DD4910F1CEAE68A009F70FA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9DD491101CEAE68A009F70FA /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		9DD491241CEAFA81009F70FA /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+TodayTomorrow.swift"; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AEB1C09973000C9534A /* QSCMobileKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */,
 				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
 				9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */,
+				9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */,
 				9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */,
 			);
 			name = Extension;
@@ -423,6 +428,14 @@
 			path = MobileModel;
 			sourceTree = "<group>";
 		};
+		9DD491231CEAFA70009F70FA /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				9DD491241CEAFA81009F70FA /* EventManager.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		9DE716021CE7A9E900282DCD /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +466,7 @@
 				9DD490FB1CEAE68A009F70FA /* EventModel */,
 				9D42D2DA1C1867800066EEFC /* Account */,
 				9D42D2DC1C1867950066EEFC /* Mobile */,
+				9DD491231CEAFA70009F70FA /* Event */,
 				9D42D2DD1C1867B00066EEFC /* ZJUWLAN */,
 				9D6413311C19AD5200EC5D95 /* Notice */,
 				9D31395F1CE7844C00CD7DAD /* Extension */,
@@ -706,10 +720,12 @@
 				9DD491141CEAE68A009F70FA /* Homework.swift in Sources */,
 				9DD491211CEAE68A009F70FA /* User.swift in Sources */,
 				9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */,
+				9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */,
 				9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */,
 				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
+				9DD491271CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift in Sources */,
 				9DD4911C1CEAE68A009F70FA /* Score.swift in Sources */,
 				9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */,
 				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,

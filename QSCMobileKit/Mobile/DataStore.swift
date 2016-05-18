@@ -26,9 +26,9 @@ class DataStore: NSObject {
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = psc
-        return managedObjectContext
+        let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        moc.persistentStoreCoordinator = psc
+        return moc
     }()
     // Defined as both type property and instance property to make it easy to use within either method.
     private let managedObjectContext: NSManagedObjectContext = DataStore.managedObjectContext
@@ -63,6 +63,8 @@ class DataStore: NSObject {
                 course.faculty = basicInfo["Faculty"].stringValue
                 course.category = basicInfo["Category"].stringValue
                 course.prerequisite = basicInfo["Prerequisite"].stringValue
+                
+                EventManager.sharedInstance.createCourseEvent(course.code!)
                 
                 for (_, json) in json["timePlace"] {
                     if json["course"].array == nil {
@@ -426,7 +428,7 @@ class DataStore: NSObject {
     
     static func entityForYear(date: NSDate) -> Year? {
         let fetchRequest = NSFetchRequest(entityName: "Year")
-        fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
+        fetchRequest.predicate = NSPredicate(format: "%@ BETWEEN { start, end }", date)
         return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
     }
     

@@ -25,6 +25,7 @@ public class MobileManager: NSObject {
     
     private let accountManager = AccountManager.sharedInstance
     private let calendarManager = CalendarManager.sharedInstance
+    private let eventManager = EventManager.sharedInstance
     
     private var apiSession: APISession!
     private var dataStore: DataStore!
@@ -90,6 +91,10 @@ public class MobileManager: NSObject {
     
     // MARK: - Retrieve events
     
+    public func eventsForDate(date: NSDate) -> [Event] {
+        return (coursesForDate(date) + examsForDate(date) + customEventsForDate(date)).sort { $0.start <= $1.start }
+    }
+    
     /**
      Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already. Note that holidays is prior to adjustments.
     
@@ -126,7 +131,10 @@ public class MobileManager: NSObject {
                     todayComponents.minute = endComponents.minute
                     let end = calendar.dateFromComponents(todayComponents)!
                     
-                    let event = Event(type: .PartialTime, category: .Course, tags: [], name: course.name!, time: timePlace.time!, place: timePlace.place!, start: start, end: end, object: course)
+                    let courseEvent = eventManager.courseEventForCode(course.code!)!
+                    let tags = courseEvent.tags?.componentsSeparatedByString(",") ?? []
+                    
+                    let event = Event(duration: .PartialTime, category: .Course, tags: tags, name: course.name!, time: timePlace.time!, place: timePlace.place!, start: start, end: end, object: course)
                     array.append(event)
                 }
             }
@@ -142,23 +150,42 @@ public class MobileManager: NSObject {
     public func examsForDate(date: NSDate) -> [Event] {
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
-        let calendar = NSCalendar.currentCalendar()
-        let todayComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
-        let today = calendar.dateFromComponents(todayComponents)!
-        let dayTimeInterval = NSTimeInterval(86400)
-        let tomorrow = today.dateByAddingTimeInterval(dayTimeInterval)
         
         let exams = dataStore.getExams(year: year, semester: semester)
         var array = [Event]()
         for exam in exams {
             if let startTime = exam.startTime, endTime = exam.endTime {
-                if !(exam.endTime! < today || exam.startTime! > tomorrow) {
-                    let event = Event(type: .PartialTime, category: .Exam, tags: [], name: exam.name!, time: exam.time!, place: exam.place!, start: startTime, end: endTime, object: exam)
+                if exam.startTime! < date.tomorrow && exam.endTime! >= date.today  {
+                    let event = Event(duration: .PartialTime, category: .Exam, tags: [], name: exam.name!, time: exam.time!, place: exam.place!, start: startTime, end: endTime, object: exam)
                     array.append(event)
                 }
             }
         }
         return array.sort { $0.start <= $1.start }
+    }
+    
+    public func customEventsForDate(date: NSDate) -> [Event] {
+        let events = eventManager.customEventsForDate(date)
+        return events.map { event in
+            let duration = Event.Duration(rawValue: event.duration!.integerValue)!
+            let category = Event.Category(rawValue: event.category!.integerValue)!
+            let tags = event.tags!.componentsSeparatedByString(",")
+            
+            let formatter = NSDateFormatter()
+            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            formatter.dateFormat = "yyyy 年 MM 月 dd 日"
+            var startTime = formatter.stringFromDate(event.start!)
+            var endTime = formatter.stringFromDate(event.end!)
+            if startTime == endTime {
+                endTime = ""
+            }
+            formatter.dateFormat = "HH:mm"
+            startTime += formatter.stringFromDate(event.start!)
+            endTime += formatter.stringFromDate(event.end!)
+            let time = "\(startTime) - \(endTime)"
+            
+            return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: event.start!, end: event.end!, object: event)
+        }
     }
     
     

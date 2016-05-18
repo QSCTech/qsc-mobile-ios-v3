@@ -25,13 +25,13 @@ public let QSCVersion: String = {
 }()
 
 public struct Event {
-    public enum Type {
-        case AllDay, PartialTime
+    public enum Duration: Int {
+        case AllDay = 0, PartialTime
     }
-    public enum Category {
-        case Course, Exam, Quiz, Activity, Custom
+    public enum Category: Int {
+        case Course = 0, Exam, Quiz, Activity, Life, Custom
     }
-    public let type: Type
+    public let duration: Duration
     public let category: Category
     public let tags: [String]
     public let name: String

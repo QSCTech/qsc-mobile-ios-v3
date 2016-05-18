@@ -11,8 +11,8 @@ import CoreData
 
 class CustomEvent: NSManagedObject {
 
-    @NSManaged var type: String?
-    @NSManaged var category: String?
+    @NSManaged var duration: NSNumber?
+    @NSManaged var category: NSNumber?
     @NSManaged var name: String?
     @NSManaged var tags: String?
     @NSManaged var start: NSDate?
