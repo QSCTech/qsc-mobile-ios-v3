@@ -46,8 +46,9 @@ public class MobileManager: NSObject {
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
-                self.refreshAll {}
-                callback(success, error)
+                self.refreshAll {
+                    callback(success, error)
+                }
             } else {
                 callback(success, error)
             }

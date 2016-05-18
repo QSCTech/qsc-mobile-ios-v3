@@ -32,17 +32,16 @@ class JwbinfosysLoginViewController: UIViewController {
     }
     
     @IBAction func login(sender: AnyObject) {
+        view.endEditing(true)
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
-                MobileManager.sharedInstance.refreshAll {
-                    hud.mode = .CustomView
-                    hud.customView = UIImageView(image: UIImage(named: "Check"))
-                    hud.labelText = "账号登录成功"
-                    delay(1) {
-                        hud.hide(true)
-                        self.navigationController!.popViewControllerAnimated(true)
-                    }
+                hud.mode = .CustomView
+                hud.customView = UIImageView(image: UIImage(named: "Check"))
+                hud.labelText = "账号登录成功"
+                delay(1) {
+                    hud.hide(true)
+                    self.navigationController!.popViewControllerAnimated(true)
                 }
             } else {
                 hud.mode = .CustomView

@@ -36,6 +36,7 @@ class ZjuwlanLoginViewController: UIViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
+        view.endEditing(true)
         accountManager.accountForZjuwlan = usernameField.text
         accountManager.passwordForZjuwlan = passwordField.text
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
