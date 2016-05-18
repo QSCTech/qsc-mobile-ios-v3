@@ -24,7 +24,6 @@
 		9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */; };
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
-		9D3139811CE789BF00CD7DAD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139781CE789BF00CD7DAD /* TodayViewController.swift */; };
 		9D3139861CE78C7500CD7DAD /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* About.html */; };
 		9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139851CE78C7500CD7DAD /* Logo.jpg */; };
 		9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */; };
@@ -38,6 +37,7 @@
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
 		9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* CalendarManager.swift */; };
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
+		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -141,7 +141,6 @@
 		9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationViewController.swift; sourceTree = "<group>"; };
 		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
-		9D3139781CE789BF00CD7DAD /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		9D3139841CE78C7500CD7DAD /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
 		9D3139851CE78C7500CD7DAD /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo.jpg; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
@@ -155,6 +154,7 @@
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
+		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = QSCMobileV3/Moment/MomentViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
 				9D4179AC1CE4678E00955729 /* LaunchScreen.xib */,
 				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
-				9D3139771CE789BF00CD7DAD /* Today */,
+				9D3139771CE789BF00CD7DAD /* Moment */,
 				9D31396E1CE789BF00CD7DAD /* Calendar */,
 				9D3139701CE789BF00CD7DAD /* Discover */,
 				9D3139751CE789BF00CD7DAD /* Query */,
@@ -334,11 +334,12 @@
 			path = Query;
 			sourceTree = "<group>";
 		};
-		9D3139771CE789BF00CD7DAD /* Today */ = {
+		9D3139771CE789BF00CD7DAD /* Moment */ = {
 			isa = PBXGroup;
 			children = (
-				9D3139781CE789BF00CD7DAD /* TodayViewController.swift */,
+				9D6B336B1CEC77B500C5372F /* MomentViewController.swift */,
 			);
+			name = Moment;
 			path = Today;
 			sourceTree = "<group>";
 		};
@@ -699,11 +700,11 @@
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
-				9D3139811CE789BF00CD7DAD /* TodayViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
+				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D7851F81CE99DB6008A7DBF /* CalendarMonthViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,

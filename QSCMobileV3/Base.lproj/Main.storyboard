@@ -9,7 +9,7 @@
         <!--今日-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="TodayViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="MomentViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -18,41 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="221" y="279" width="158" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ka1-dQ-R6X">
+                                <rect key="frame" x="281" y="104" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05-18 周三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-79-XUo">
+                                <rect key="frame" x="260" y="308" width="80" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by FirstViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="203" y="329" width="195" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34:56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8u-aP-jTp">
+                                <rect key="frame" x="203" y="241" width="195" height="59"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-Dh-UZX">
-                                <rect key="frame" x="20" y="72" width="560" height="471"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rAU-Dh-UZX" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="2N7-70-uZp"/>
-                            <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
-                            <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="rAU-Dh-UZX" secondAttribute="bottom" constant="8" id="ltJ-zq-9Yu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rAU-Dh-UZX" secondAttribute="trailing" id="qRj-pI-AeQ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="rAU-Dh-UZX" secondAttribute="leading" id="xvF-EV-2o4"/>
+                            <constraint firstItem="D8u-aP-jTp" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-30" id="4XT-XQ-0k3"/>
+                            <constraint firstItem="Ka1-dQ-R6X" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="dbF-sw-pb7"/>
+                            <constraint firstItem="D8u-aP-jTp" firstAttribute="centerX" secondItem="Ka1-dQ-R6X" secondAttribute="centerX" id="fZG-d8-DEB"/>
+                            <constraint firstItem="Pew-79-XUo" firstAttribute="top" secondItem="D8u-aP-jTp" secondAttribute="bottom" constant="8" symbolic="YES" id="hGB-Zf-OHp"/>
+                            <constraint firstItem="Ka1-dQ-R6X" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="40" id="jH8-M0-LK8"/>
+                            <constraint firstItem="D8u-aP-jTp" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ohI-2K-2UT"/>
+                            <constraint firstItem="Pew-79-XUo" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="tJf-Ha-aiZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fZG-d8-DEB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="今日" id="Y3o-08-sGR"/>
                     <connections>
-                        <outlet property="textView" destination="rAU-Dh-UZX" id="8a0-Ad-XD7"/>
+                        <outlet property="dateLabel" destination="Pew-79-XUo" id="0qb-sn-dqQ"/>
+                        <outlet property="timeLabel" destination="D8u-aP-jTp" id="6JI-zO-u0X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
