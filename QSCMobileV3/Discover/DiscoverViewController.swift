@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 import QSCMobileKit
 
 class DiscoverViewController: UIViewController {
@@ -24,9 +25,7 @@ class DiscoverViewController: UIViewController {
                 return
             }
             self.textView.text = events.description
-            noticeManager.updateSpnsorImageWithEvent(events[0]) { event in
-                self.imageView.image = event.sponsorLogo
-            }
+            self.imageView.kf_setImageWithURL(events[0].sponsorLogoURL)
             noticeManager.updateDetailWithEvent(events[0]) { event, error in
                 guard let event = event else {
                     self.textView.text = error

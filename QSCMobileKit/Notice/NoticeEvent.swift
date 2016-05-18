@@ -21,9 +21,8 @@ public struct NoticeEvent {
     public let sponsorId: String
     public let sponsorName: String
     public let sponsorLogoURL: NSURL
-    public var sponsorLogo: UIImage?
     public var bonus: String!
     public var content: String!
-    public var poster: UIImage?
+    public var posterURL: NSURL!
     
 }

@@ -45,14 +45,4 @@ class NoticeAPI: NSObject {
         noticeRequest(url, callback: callback)
     }
     
-    func downloadImage(url: NSURL, callback: (UIImage?) -> Void) {
-        alamofire.request(.GET, url).responseData { response in
-            if let data = response.result.value {
-                callback(UIImage(data: data))
-            } else {
-                callback(nil)
-            }
-        }
-    }
-    
 }

@@ -33,10 +33,9 @@ public class NoticeManager: NSObject {
             sponsorId: json["category"]["id"].stringValue,
             sponsorName: json["sponsor"]["showname"].stringValue,
             sponsorLogoURL: NSURL(string: json["sponsor"]["logo"].stringValue)!,
-            sponsorLogo: nil,
             bonus: nil,
             content: nil,
-            poster: nil
+            posterURL: nil
         )
     }
     
@@ -51,14 +50,6 @@ public class NoticeManager: NSObject {
                 array.append(self.eventFromJSON(json))
             }
             callback(array, nil)
-        }
-    }
-    
-    public func updateSpnsorImageWithEvent(event: NoticeEvent, callback: (NoticeEvent) -> Void) {
-        noticeAPI.downloadImage(event.sponsorLogoURL) { image in
-            var event = event
-            event.sponsorLogo = image
-            callback(event)
         }
     }
     
@@ -79,14 +70,8 @@ public class NoticeManager: NSObject {
             event.bonus = bonus
             event.content = json["event"]["description"].stringValue
             let url = json["cover"]["filename"].stringValue
-            guard !url.hasSuffix("default.jpg") else {
-                callback(event, nil)
-                return
-            }
-            self.noticeAPI.downloadImage(NSURL(string: url)!) { image in
-                event.poster = image
-                callback(event, nil)
-            }
+            event.posterURL = NSURL(string: url)
+            callback(event, nil)
         }
     }
     
