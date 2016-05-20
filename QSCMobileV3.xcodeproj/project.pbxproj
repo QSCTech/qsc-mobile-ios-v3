@@ -39,6 +39,9 @@
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B336D1CECC0E200C5372F /* Kingfisher.framework */; };
+		9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B33741CED9A3100C5372F /* AddEvent.storyboard */; };
+		9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */; };
+		9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -157,6 +160,9 @@
 		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
 		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = QSCMobileV3/Moment/MomentViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		9D6B33741CED9A3100C5372F /* AddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEvent.storyboard; sourceTree = "<group>"; };
+		9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatTypeViewController.swift; sourceTree = "<group>"; };
 		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
@@ -273,6 +279,7 @@
 				9D3139751CE789BF00CD7DAD /* Query */,
 				9D3139721CE789BF00CD7DAD /* Preference */,
 				9DE716021CE7A9E900282DCD /* Login */,
+				9D6B336F1CED90CC00C5372F /* AddEvent */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
 				9D3139831CE78C7500CD7DAD /* About */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
@@ -390,6 +397,16 @@
 				9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */,
 			);
 			name = Notice;
+			sourceTree = "<group>";
+		};
+		9D6B336F1CED90CC00C5372F /* AddEvent */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B33741CED9A3100C5372F /* AddEvent.storyboard */,
+				9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */,
+				9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */,
+			);
+			path = AddEvent;
 			sourceTree = "<group>";
 		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
@@ -648,6 +665,7 @@
 				9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
+				9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */,
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
@@ -704,9 +722,11 @@
 				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
+				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
+				9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,

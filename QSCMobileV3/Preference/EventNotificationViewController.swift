@@ -43,9 +43,11 @@ class EventNotificationViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: groupDefaults.integerForKey(EventNotificationKey), inSection: indexPath.section))!.accessoryType = .None
+        tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
         groupDefaults.setInteger(indexPath.row, forKey: EventNotificationKey)
+        
+        navigationController!.popViewControllerAnimated(true)
     }
     
 }

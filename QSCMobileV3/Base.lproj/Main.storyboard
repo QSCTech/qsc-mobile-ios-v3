@@ -151,7 +151,11 @@
                                 <segue destination="rSL-ul-oMT" kind="show" id="hcs-dm-kdf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uUX-hh-sTC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uUX-hh-sTC">
+                            <connections>
+                                <segue destination="2xs-uO-Ddu" kind="presentation" id="hz0-YR-iHO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="nYx-Yb-xsq" id="9Bl-av-SEP"/>
@@ -163,6 +167,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="896" y="1144"/>
+        </scene>
+        <!--AddEvent-->
+        <scene sceneID="h7q-IP-KL4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEvent" id="2xs-uO-Ddu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiA-j3-RV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113.5" y="1609"/>
         </scene>
         <!--五月, 2016-->
         <scene sceneID="ccG-Ej-7Zy">
@@ -222,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psi-B1-7As" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="1895"/>
+            <point key="canvasLocation" x="871" y="1996"/>
         </scene>
         <!--查询-->
         <scene sceneID="ebA-ke-ivD">

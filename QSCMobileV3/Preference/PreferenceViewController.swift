@@ -44,8 +44,6 @@ class PreferenceViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case Preference.Jwbinfosys.rawValue:
-            return "注销请在用户上左划"
         case Preference.About.rawValue:
             return "Copyright © 2016 QSC Tech."
         default:
