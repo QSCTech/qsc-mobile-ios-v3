@@ -144,12 +144,8 @@ class PreferenceViewController: UITableViewController {
         case Preference.Jwbinfosys.rawValue:
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
-                for row in 0...(tableView.numberOfRowsInSection(indexPath.section) - 2) {
-                    let indexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
-                    tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .None
-                }
-                tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
                 mobileManager.changeUser(accounts[indexPath.row])
+                reloadRowsOfJwbinfosys(tableView)
             } else {
                 let vc = JwbinfosysLoginViewController()
                 showViewController(vc, sender: nil)
@@ -218,13 +214,9 @@ class PreferenceViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .Destructive, title: "注销") { action, indexPath in
             let account = self.accountManager.allAccountsForJwbinfosys[indexPath.row]
-            if account == self.accountManager.currentAccountForJwbinfosys && tableView.numberOfRowsInSection(indexPath.section) > 1 {
-                let indexPath = NSIndexPath(forRow: 0, inSection: indexPath.section)
-                let cell = tableView.cellForRowAtIndexPath(indexPath)!
-                cell.accessoryType = .Checkmark
-            }
             self.mobileManager.deleteUser(account)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            self.reloadRowsOfJwbinfosys(tableView)
         }
         return [delete]
     }
@@ -232,6 +224,14 @@ class PreferenceViewController: UITableViewController {
     func refreshSwitchChanged(sender: AnyObject) {
         let switchView = sender as! UISwitch
         groupDefaults.setBool(switchView.on, forKey: RefreshOnLaunchKey)
+    }
+    
+    private func reloadRowsOfJwbinfosys(tableView: UITableView) {
+        var indexPaths = [NSIndexPath]()
+        for row in 0...(tableView.numberOfRowsInSection(Preference.Jwbinfosys.rawValue) - 2) {
+            indexPaths.append(NSIndexPath(forRow: row, inSection: Preference.Jwbinfosys.rawValue))
+        }
+        tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
     }
     
 }
