@@ -148,7 +148,7 @@
                     <navigationItem key="navigationItem" title="日程" id="tK8-OC-7Ln">
                         <barButtonItem key="leftBarButtonItem" title="" id="Z9c-Kc-ppv">
                             <connections>
-                                <segue destination="rSL-ul-oMT" kind="show" id="hcs-dm-kdf"/>
+                                <segue destination="rSL-ul-oMT" kind="show" identifier="showMonthView" id="hcs-dm-kdf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uUX-hh-sTC">

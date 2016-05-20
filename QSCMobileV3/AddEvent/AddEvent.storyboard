@@ -28,6 +28,9 @@
                                                     <rect key="frame" x="16" y="0.0" width="568" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="titleDidChange:" destination="73V-NT-iNm" eventType="editingChanged" id="2Aj-G8-ksM"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -86,6 +89,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-9r-xgC">
                                                     <rect key="frame" x="535" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="allDaySwitchDidChange:" destination="73V-NT-iNm" eventType="valueChanged" id="dda-mj-25A"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -142,6 +148,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="485425129.69084001">
                                                         <!--2016-05-20 08:18:49 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="startTimeDidChange:" destination="73V-NT-iNm" eventType="valueChanged" id="gd3-yZ-ZKC"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -198,6 +207,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="485425129.69084001">
                                                         <!--2016-05-20 08:18:49 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="endTimeDidChange:" destination="73V-NT-iNm" eventType="valueChanged" id="dmI-I6-4J0"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -281,6 +293,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="485425129.69084001">
                                                         <!--2016-05-20 08:18:49 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="repeatEndDidChange:" destination="73V-NT-iNm" eventType="valueChanged" id="NJI-eo-b8Q"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -378,6 +393,7 @@
                         <connections>
                             <outlet property="dataSource" destination="73V-NT-iNm" id="asv-JD-CbY"/>
                             <outlet property="delegate" destination="73V-NT-iNm" id="phQ-qq-Wji"/>
+                            <outletCollection property="gestureRecognizers" destination="1Ma-yR-pyu" appends="YES" id="PN3-XD-HKg"/>
                         </connections>
                     </tableView>
                     <toolbarItems/>
@@ -387,7 +403,7 @@
                                 <action selector="cancel:" destination="73V-NT-iNm" id="Git-6K-9ed"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8Po-XW-YMA">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="8Po-XW-YMA">
                             <connections>
                                 <action selector="save:" destination="73V-NT-iNm" id="Hr7-DE-TBI"/>
                             </connections>
@@ -395,10 +411,27 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="allDaySwitch" destination="NmS-9r-xgC" id="Yy3-hg-cOS"/>
+                        <outlet property="endTimeLabel" destination="JTH-i9-8D0" id="jUV-bE-mvx"/>
+                        <outlet property="endTimePicker" destination="5fX-yW-6lD" id="B7G-bp-Vw2"/>
+                        <outlet property="notesTextView" destination="C11-Ry-oeT" id="58c-0x-8UR"/>
+                        <outlet property="placeField" destination="wWA-W2-2Qr" id="Kk2-ib-yT4"/>
+                        <outlet property="reminderSwitch" destination="76a-EB-fMN" id="dQ1-87-PL7"/>
+                        <outlet property="repeatEndLabel" destination="3fc-us-09R" id="wDx-x1-osW"/>
+                        <outlet property="repeatEndPicker" destination="bWt-ph-twc" id="eXw-cX-1Gf"/>
                         <outlet property="repeatTypeLabel" destination="5FC-Zk-euE" id="Ue6-3e-5o0"/>
+                        <outlet property="saveButton" destination="8Po-XW-YMA" id="nMe-SO-wlZ"/>
+                        <outlet property="startTimeLabel" destination="SJ4-n2-ala" id="4ct-q2-Uyb"/>
+                        <outlet property="startTimePicker" destination="GmR-1o-cif" id="d9w-4m-Isa"/>
+                        <outlet property="titleField" destination="5Dy-Uz-e0T" id="ZXe-Jy-ZCl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pa7-MV-K1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="1Ma-yR-pyu">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="73V-NT-iNm" id="k7o-vp-rxy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="322" y="1114"/>
         </scene>

@@ -40,6 +40,13 @@ class CalendarViewController: UIViewController {
         calendarView.commitCalendarViewUpdate()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMonthView" {
+            let vc = segue.destinationViewController as! CalendarMonthViewController
+            vc.calendarViewController = self
+        }
+    }
+    
 }
 
 extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {

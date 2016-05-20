@@ -10,7 +10,7 @@ import UIKit
 
 class RepeatTypeViewController: UITableViewController {
     
-    var repeatTypeLabel: UILabel?
+    var addEventViewController: AddEventViewController?
     
     var selectedCell: UITableViewCell?
     
@@ -18,7 +18,7 @@ class RepeatTypeViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         for cell in tableView.visibleCells {
-            if cell.textLabel!.text == repeatTypeLabel!.text {
+            if cell.textLabel!.text == addEventViewController!.repeatTypeLabel!.text {
                 selectedCell = cell
                 cell.accessoryType = .Checkmark
             }
@@ -26,10 +26,16 @@ class RepeatTypeViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         selectedCell!.accessoryType = .None
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
         cell.accessoryType = .Checkmark
-        repeatTypeLabel!.text = cell.textLabel!.text
+        
+        let text = cell.textLabel!.text!
+        addEventViewController!.repeatTypeLabel!.text = text
+        addEventViewController!.changeRepeatType(text)
+        
         navigationController?.popViewControllerAnimated(true)
     }
     

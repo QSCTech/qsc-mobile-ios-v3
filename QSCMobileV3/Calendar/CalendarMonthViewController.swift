@@ -17,6 +17,8 @@ class CalendarMonthViewController: UIViewController {
     
     @IBOutlet weak var navItem: UINavigationItem!
     
+    var calendarViewController: CalendarViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +36,10 @@ class CalendarMonthViewController: UIViewController {
     
     func returnToDate(date: NSDate?) {
         self.navigationController!.popViewControllerAnimated(true)
-        let calendarViewController = self.navigationController!.viewControllers.first as! CalendarViewController
         if let date = date {
-            calendarViewController.calendarView.toggleViewWithDate(date)
+            calendarViewController!.calendarView.toggleViewWithDate(date)
         } else {
-            calendarViewController.calendarView.toggleCurrentDayView()
+            calendarViewController!.calendarView.toggleCurrentDayView()
         }
     }
     

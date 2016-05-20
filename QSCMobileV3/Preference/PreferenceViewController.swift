@@ -143,7 +143,7 @@ class PreferenceViewController: UITableViewController {
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 mobileManager.changeUser(accounts[indexPath.row])
-                reloadRowsOfJwbinfosys(tableView)
+                reloadRowsOfJwbinfosys()
             } else {
                 let vc = JwbinfosysLoginViewController()
                 showViewController(vc, sender: nil)
@@ -214,7 +214,7 @@ class PreferenceViewController: UITableViewController {
             let account = self.accountManager.allAccountsForJwbinfosys[indexPath.row]
             self.mobileManager.deleteUser(account)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            self.reloadRowsOfJwbinfosys(tableView)
+            self.reloadRowsOfJwbinfosys()
         }
         return [delete]
     }
@@ -224,7 +224,7 @@ class PreferenceViewController: UITableViewController {
         groupDefaults.setBool(switchView.on, forKey: RefreshOnLaunchKey)
     }
     
-    private func reloadRowsOfJwbinfosys(tableView: UITableView) {
+    private func reloadRowsOfJwbinfosys() {
         var indexPaths = [NSIndexPath]()
         for row in 0...(tableView.numberOfRowsInSection(Preference.Jwbinfosys.rawValue) - 2) {
             indexPaths.append(NSIndexPath(forRow: row, inSection: Preference.Jwbinfosys.rawValue))
