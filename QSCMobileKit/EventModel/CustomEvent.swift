@@ -15,10 +15,14 @@ class CustomEvent: NSManagedObject {
     @NSManaged var category: NSNumber?
     @NSManaged var name: String?
     @NSManaged var tags: String?
+    @NSManaged var place: String?
     @NSManaged var start: NSDate?
     @NSManaged var end: NSDate?
     @NSManaged var time: String?
-    @NSManaged var place: String?
+    @NSManaged var repeatType: NSNumber?
+    @NSManaged var repeatEnd: NSDate?
+    @NSManaged var hasReminder: NSNumber?
     @NSManaged var sponsor: String?
+    @NSManaged var notes: String?
 
 }

@@ -29,7 +29,7 @@ public struct Event {
         case AllDay = 0, PartialTime
     }
     public enum Category: Int {
-        case Course = 0, Exam, Quiz, Activity, Life, Custom
+        case Course = 0, Exam, Lesson, Quiz, Activity, Life
     }
     public let duration: Duration
     public let category: Category
