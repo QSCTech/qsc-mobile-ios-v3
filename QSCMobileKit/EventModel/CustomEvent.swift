@@ -9,20 +9,19 @@
 import Foundation
 import CoreData
 
-class CustomEvent: NSManagedObject {
+public class CustomEvent: NSManagedObject {
 
-    @NSManaged var duration: NSNumber?
-    @NSManaged var category: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var tags: String?
-    @NSManaged var place: String?
-    @NSManaged var start: NSDate?
-    @NSManaged var end: NSDate?
-    @NSManaged var time: String?
-    @NSManaged var repeatType: NSNumber?
-    @NSManaged var repeatEnd: NSDate?
-    @NSManaged var hasReminder: NSNumber?
-    @NSManaged var sponsor: String?
-    @NSManaged var notes: String?
+    @NSManaged public var duration: NSNumber?
+    @NSManaged public var category: NSNumber?
+    @NSManaged public var tags: String?
+    @NSManaged public var name: String?
+    @NSManaged public var place: String?
+    @NSManaged public var start: NSDate?
+    @NSManaged public var end: NSDate?
+    @NSManaged public var repeatType: String?
+    @NSManaged public var repeatEnd: NSDate?
+    @NSManaged public var hasReminder: NSNumber?
+    @NSManaged public var sponsor: String?
+    @NSManaged public var notes: String?
 
 }

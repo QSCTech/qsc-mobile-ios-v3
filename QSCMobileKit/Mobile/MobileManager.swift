@@ -169,7 +169,7 @@ public class MobileManager: NSObject {
         return events.map { event in
             let duration = Event.Duration(rawValue: event.duration!.integerValue)!
             let category = Event.Category(rawValue: event.category!.integerValue)!
-            let tags = event.tags!.componentsSeparatedByString(",")
+            let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
             
             let formatter = NSDateFormatter()
             formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")

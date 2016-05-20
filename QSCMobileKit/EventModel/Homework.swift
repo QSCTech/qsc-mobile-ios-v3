@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-class Homework: NSManagedObject {
+public class Homework: NSManagedObject {
     
-    @NSManaged var name: String?
-    @NSManaged var notes: String?
-    @NSManaged var addTime: NSDate?
-    @NSManaged var deadline: NSDate?
-    @NSManaged var isFinished: NSNumber?
-    @NSManaged var courseEvent: CourseEvent?
+    @NSManaged public var name: String?
+    @NSManaged public var notes: String?
+    @NSManaged public var addTime: NSDate?
+    @NSManaged public var deadline: NSDate?
+    @NSManaged public var isFinished: NSNumber?
+    @NSManaged public var courseEvent: CourseEvent?
 
 }

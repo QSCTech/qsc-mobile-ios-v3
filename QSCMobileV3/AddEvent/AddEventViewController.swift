@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QSCMobileKit
 
 class AddEventViewController: UITableViewController {
     
@@ -214,6 +215,25 @@ class AddEventViewController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
+        EventManager.sharedInstance.createCustomEvent { event in
+            if self.allDaySwitch.on {
+                event.duration = Event.Duration.AllDay.rawValue
+            } else {
+                event.duration = Event.Duration.PartialTime.rawValue
+            }
+            // TODO: Category / Tags not set
+            event.category = Event.Category.Life.rawValue
+            event.tags = ""
+            event.name = self.titleField.text
+            event.place = self.placeField.text
+            event.start = self.startTimePicker.date
+            event.end = self.endTimePicker.date
+            event.repeatType = self.repeatTypeLabel.text
+            event.repeatEnd = self.repeatEndPicker.date
+            event.hasReminder = self.reminderSwitch.on
+            event.notes = self.notesTextView.text
+        }
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

@@ -32,12 +32,15 @@ public class EventManager: NSObject {
         return moc
     }()
     
-    func courseEventForCode(code: String) -> CourseEvent? {
+    // MARK: - Retrieval
+    
+    public func courseEventForCode(code: String) -> CourseEvent? {
         let request = NSFetchRequest(entityName: "CourseEvent")
         request.predicate = NSPredicate(format: "code CONTAINS %@", code)
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
     }
     
+    // TODO: Handle repetition
     func customEventsForDate(date: NSDate) -> [CustomEvent] {
         let request = NSFetchRequest(entityName: "CustomEvent")
         request.predicate = NSPredicate(format: "(start < %@) AND (end >= %@)", date.tomorrow, date.today)
@@ -45,6 +48,8 @@ public class EventManager: NSObject {
         
         return events.sort { $0.start <= $1.start }
     }
+    
+    // MARK: - Creation
     
     /**
      Create an event entity for the course with the given code. If that entity exists, this method will do nothing.
@@ -57,6 +62,17 @@ public class EventManager: NSObject {
             courseEvent.code = code
             try! managedObjectContext.save()
         }
+    }
+    
+    /**
+     Create a custom event and accept a handler to modify it before saving.
+     
+     - parameter handler: A handler which takes an custom event as argument.
+     */
+    public func createCustomEvent(handler: (CustomEvent) -> Void) {
+        let customEvent = CustomEvent(context: managedObjectContext)
+        handler(customEvent)
+        try! managedObjectContext.save()
     }
     
 }

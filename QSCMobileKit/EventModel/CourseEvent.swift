@@ -9,18 +9,18 @@
 import Foundation
 import CoreData
 
-class CourseEvent: NSManagedObject {
+public class CourseEvent: NSManagedObject {
 
-    @NSManaged var code: String?
-    @NSManaged var tags: String?
-    @NSManaged var notes: String?
-    @NSManaged var hasReminder: NSNumber?
-    @NSManaged var email: String?
-    @NSManaged var phone: String?
-    @NSManaged var website: String?
-    @NSManaged var qqGroup: String?
-    @NSManaged var publicEmail: String?
-    @NSManaged var publicPassword: String?
-    @NSManaged var homeworks: NSSet?
+    @NSManaged public var code: String?
+    @NSManaged public var tags: String?
+    @NSManaged public var notes: String?
+    @NSManaged public var hasReminder: NSNumber?
+    @NSManaged public var email: String?
+    @NSManaged public var phone: String?
+    @NSManaged public var website: String?
+    @NSManaged public var qqGroup: String?
+    @NSManaged public var publicEmail: String?
+    @NSManaged public var publicPassword: String?
+    @NSManaged public var homeworks: NSSet?
 
 }

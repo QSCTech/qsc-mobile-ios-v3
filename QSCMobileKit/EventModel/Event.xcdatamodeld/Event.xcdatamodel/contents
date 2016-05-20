@@ -22,11 +22,10 @@
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="repeatEnd" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="repeatType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="repeatType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sponsor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Homework" representedClassName=".Homework" syncable="YES">
         <attribute name="addTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -38,7 +37,7 @@
     </entity>
     <elements>
         <element name="CourseEvent" positionX="-54" positionY="-9" width="128" height="210"/>
-        <element name="CustomEvent" positionX="-45" positionY="63" width="128" height="240"/>
+        <element name="CustomEvent" positionX="-45" positionY="63" width="128" height="225"/>
         <element name="Homework" positionX="-36" positionY="63" width="128" height="135"/>
     </elements>
 </model>

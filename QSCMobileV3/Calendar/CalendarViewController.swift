@@ -33,6 +33,12 @@ class CalendarViewController: UIViewController {
         monthViewButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 20)!], forState: .Normal)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
