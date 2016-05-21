@@ -99,7 +99,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         formatter.dateFormat = "HH:mm"
-        cell.detailTextLabel!.text = "\(formatter.stringFromDate(course.start)) - \(formatter.stringFromDate(course.end))"
+        cell.detailTextLabel!.attributedText = "\(formatter.stringFromDate(course.start)) - \(formatter.stringFromDate(course.end))".attributedWithHelveticaNeue
         return cell
     }
     

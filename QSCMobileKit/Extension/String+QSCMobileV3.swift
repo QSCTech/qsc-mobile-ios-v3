@@ -20,6 +20,10 @@ extension String {
         return NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
     }
     
+    public var attributedWithHelveticaNeue: NSAttributedString {
+        return NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 16)!])
+    }
+    
     // TODO: Supplement the rule
     public var isValidSid: Bool {
         return characters.count == 10 || characters.count == 8

@@ -12,7 +12,7 @@ import QSCMobileKit
 class AddEventViewController: UITableViewController {
     
     private let timeSection = 1
-    private let notesSection = 3
+    private let notesSection = 2
     
     private enum Time: Int {
         case AllDay = 0
@@ -23,6 +23,7 @@ class AddEventViewController: UITableViewController {
         case RepeatType
         case RepeatEnd
         case RepeatPicker
+        case Reminder
     }
     
     // MARK: - Cell heights
