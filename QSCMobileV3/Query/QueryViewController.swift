@@ -34,7 +34,6 @@ class QueryViewController: UITableViewController {
         ],
         [
             "name": "\u{f207}\t校车",
-            "segue": "showBus",
         ],
     ]
     
@@ -143,7 +142,12 @@ class QueryViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
         case Tools.Query.rawValue:
-            performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
+            if indexPath.row < 3 {
+                performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
+            } else {
+                let vc = BusViewController()
+                showViewController(vc, sender: nil)
+            }
         case Tools.Login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
                 let alert = UIAlertController(title: "教务网", message: "您尚未添加教务网用户", preferredStyle: .Alert)

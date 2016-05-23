@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if groupDefaults.objectForKey(RefreshOnLaunchKey) == nil {
             groupDefaults.setBool(true, forKey: RefreshOnLaunchKey)
         }
-        if groupDefaults.boolForKey(RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil{
+        if groupDefaults.boolForKey(RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
             MobileManager.sharedInstance.refreshAll {
                 // TODO: Post a notification to force views to refresh.
                 print("Refresh on launch completed")

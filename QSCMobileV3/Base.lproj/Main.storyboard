@@ -273,7 +273,6 @@
                         <segue destination="5V3-Rq-8HP" kind="show" identifier="showCourse" id="9gb-iI-jMn"/>
                         <segue destination="Emk-wI-up8" kind="show" identifier="showExam" id="D31-3H-CGD"/>
                         <segue destination="wEn-pi-wNY" kind="show" identifier="showScore" id="Vqk-oz-OZD"/>
-                        <segue destination="EIk-cE-9Xq" kind="show" identifier="showBus" id="ICH-2u-Mk7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFB-TC-V6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,15 +285,7 @@
                 <viewControllerPlaceholder id="5V3-Rq-8HP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfq-AC-Rj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2040.5" y="1609"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="2EG-DB-vek">
-            <objects>
-                <viewControllerPlaceholder id="EIk-cE-9Xq" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8MA-F1-DaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2297.5" y="1710"/>
+            <point key="canvasLocation" x="1954.5" y="1609"/>
         </scene>
         <!--日程提醒-->
         <scene sceneID="KM9-WE-Q82">
@@ -321,7 +312,7 @@
                 <viewControllerPlaceholder id="Emk-wI-up8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQH-Ua-Nk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297.5" y="1609"/>
+            <point key="canvasLocation" x="2172.5" y="1609"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="dC9-wE-uJJ">
@@ -329,7 +320,7 @@
                 <viewControllerPlaceholder id="wEn-pi-wNY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0G-DS-sUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2040.5" y="1710"/>
+            <point key="canvasLocation" x="2389.5" y="1609"/>
         </scene>
         <!--查询-->
         <scene sceneID="ZrD-2v-zQf">

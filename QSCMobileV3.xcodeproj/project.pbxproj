@@ -42,6 +42,9 @@
 		9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B33741CED9A3100C5372F /* AddEvent.storyboard */; };
 		9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */; };
 		9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */; };
+		9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B337B1CF025F500C5372F /* BusViewController.swift */; };
+		9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B337C1CF025F500C5372F /* BusViewController.xib */; };
+		9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -163,6 +166,9 @@
 		9D6B33741CED9A3100C5372F /* AddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEvent.storyboard; sourceTree = "<group>"; };
 		9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatTypeViewController.swift; sourceTree = "<group>"; };
+		9D6B337B1CF025F500C5372F /* BusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusViewController.swift; path = Bus/BusViewController.swift; sourceTree = "<group>"; };
+		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusViewController.xib; path = Bus/BusViewController.xib; sourceTree = "<group>"; };
+		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
@@ -220,6 +226,7 @@
 				9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */,
 				9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */,
 				9D7851F21CE869F6008A7DBF /* MBProgressHUD.framework in Frameworks */,
+				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */,
 				9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */,
@@ -280,6 +287,7 @@
 				9D3139721CE789BF00CD7DAD /* Preference */,
 				9DE716021CE7A9E900282DCD /* Login */,
 				9D6B336F1CED90CC00C5372F /* AddEvent */,
+				9D6B337A1CF0215E00C5372F /* Bus */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
 				9D3139831CE78C7500CD7DAD /* About */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
@@ -409,6 +417,15 @@
 			path = AddEvent;
 			sourceTree = "<group>";
 		};
+		9D6B337A1CF0215E00C5372F /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B337B1CF025F500C5372F /* BusViewController.swift */,
+				9D6B337C1CF025F500C5372F /* BusViewController.xib */,
+			);
+			name = Bus;
+			sourceTree = "<group>";
+		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +516,7 @@
 		9DF612801BAA8A03004B0A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D6B336D1CECC0E200C5372F /* Kingfisher.framework */,
 				9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */,
 				9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */,
@@ -670,6 +688,7 @@
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
+				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +722,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CVCalendar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CoreActionSheetPicker.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -721,6 +741,7 @@
 			files = (
 				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
+				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
