@@ -11,6 +11,7 @@
 		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
+		9D2132BA1D227C0A00996856 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2132B91D227C0A00996856 /* Logo.png */; };
 		9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */; };
 		9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */; };
 		9D3139651CE7859F00CD7DAD /* Int+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */; };
@@ -25,7 +26,6 @@
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
 		9D3139861CE78C7500CD7DAD /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* About.html */; };
-		9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139851CE78C7500CD7DAD /* Logo.jpg */; };
 		9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */; };
 		9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
@@ -135,6 +135,7 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendors/FontAwesome.otf; sourceTree = "<group>"; };
+		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "Extension/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
 		9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileV3.swift"; path = "Extension/String+QSCMobileV3.swift"; sourceTree = "<group>"; };
 		9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Weekday.swift"; path = "Extension/Int+Weekday.swift"; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
 		9D3139841CE78C7500CD7DAD /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
-		9D3139851CE78C7500CD7DAD /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo.jpg; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				9D3139841CE78C7500CD7DAD /* About.html */,
-				9D3139851CE78C7500CD7DAD /* Logo.jpg */,
+				9D2132B91D227C0A00996856 /* Logo.png */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -678,17 +678,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
-				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
-				9D3139871CE78C7500CD7DAD /* Logo.jpg in Resources */,
-				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
+				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */,
-				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
-				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
-				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
+				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
+				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
+				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
+				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
+				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
+				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
