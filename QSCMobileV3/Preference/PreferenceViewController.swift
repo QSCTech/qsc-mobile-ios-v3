@@ -97,8 +97,8 @@ class PreferenceViewController: UITableViewController {
                     cell.focusStyle = .Custom
                 }
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
-                // TODO: Change tint color (TBD)
                 let switchView = UISwitch(frame: CGRectZero)
+                switchView.onTintColor = ThemeColor
                 let refreshOnLaunch = groupDefaults.boolForKey(RefreshOnLaunchKey)
                 switchView.setOn(refreshOnLaunch, animated: false)
                 switchView.addTarget(self, action: #selector(refreshSwitchChanged), forControlEvents: .ValueChanged)
@@ -146,7 +146,7 @@ class PreferenceViewController: UITableViewController {
                 reloadRowsOfJwbinfosys()
             } else {
                 let vc = JwbinfosysLoginViewController()
-                showViewController(vc, sender: nil)
+                presentViewController(vc, animated: true, completion: nil)
             }
         case Preference.Zjuwlan.rawValue:
             let vc = ZjuwlanLoginViewController()

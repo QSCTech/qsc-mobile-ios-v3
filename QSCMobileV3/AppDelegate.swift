@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             groupDefaults.setInteger(0, forKey: EventNotificationKey)
         }
         
+        window?.tintColor = ThemeColor
+        
         return true
     }
     

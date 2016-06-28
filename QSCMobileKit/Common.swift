@@ -19,6 +19,9 @@ let BoxURL       = "https://box.zjuqsc.com"
 public let AppGroupIdentifier = "group.com.zjuqsc.QSCMobileV3"
 public let QSCMobileKitIdentifier = "com.zjuqsc.QSCMobileV3.QSCMobileKit"
 
+// #85D3E5
+public let ThemeColor = UIColor(red:0.52, green:0.83, blue:0.90, alpha:1.0)
+
 public let QSCVersion: String = {
     let info = NSBundle.mainBundle().infoDictionary!
     return "\(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"

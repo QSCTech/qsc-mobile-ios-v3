@@ -41,7 +41,7 @@ class JwbinfosysLoginViewController: UIViewController {
                 hud.labelText = "账号登录成功"
                 delay(1) {
                     hud.hide(true)
-                    self.navigationController!.popViewControllerAnimated(true)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
             } else {
                 hud.mode = .CustomView
@@ -67,6 +67,10 @@ class JwbinfosysLoginViewController: UIViewController {
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
         view.endEditing(true)
+    }
+    
+    @IBAction func close(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
