@@ -21,8 +21,6 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var monthViewButton: UIBarButtonItem!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +28,6 @@ class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        monthViewButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 20)!], forState: .Normal)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,11 +43,17 @@ class CalendarViewController: UIViewController {
         calendarView.commitCalendarViewUpdate()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMonthView" {
-            let vc = segue.destinationViewController as! CalendarMonthViewController
-            vc.calendarViewController = self
+    @IBAction func changeMode(sender: AnyObject) {
+        if calendarView.calendarMode == .WeekView {
+            calendarView.changeMode(.MonthView)
+        } else {
+            calendarView.changeMode(.WeekView)
         }
+    }
+    
+    
+    @IBAction func toggleToday(sender: AnyObject) {
+        calendarView.toggleCurrentDayView()
     }
     
 }
@@ -76,15 +79,14 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
 }
 
-
 // TODO: Check whether logged in
 // TODO: Decide whether to use system time zone or UTC+8
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "zh_CN")
-        formatter.dateFormat = "yyyy 年 M 月 d 日（EEE）"
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy 年 M 月 d 日"
         return formatter.stringFromDate(selectedDate)
     }
     

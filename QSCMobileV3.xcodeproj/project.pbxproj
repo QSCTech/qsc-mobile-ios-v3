@@ -51,7 +51,6 @@
 		9D7851F21CE869F6008A7DBF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */; };
 		9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */; };
 		9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */; };
-		9D7851F81CE99DB6008A7DBF /* CalendarMonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7851F71CE99DB6008A7DBF /* CalendarMonthViewController.swift */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
@@ -172,7 +171,6 @@
 		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
-		9D7851F71CE99DB6008A7DBF /* CalendarMonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarMonthViewController.swift; sourceTree = "<group>"; };
 		9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = Carthage/Build/iOS/CVCalendar.framework; sourceTree = "<group>"; };
 		9D8AB4441CD7838B0098451A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -322,7 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */,
-				9D7851F71CE99DB6008A7DBF /* CalendarMonthViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -751,7 +748,6 @@
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
-				9D7851F81CE99DB6008A7DBF /* CalendarMonthViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
 			);

@@ -104,12 +104,27 @@ class AddEventViewController: UITableViewController {
         switch indexPath.row {
         case Time.StartTime.rawValue:
             startPickerHeight = pickerHeight - startPickerHeight
+            if startPickerHeight > 0 {
+                startTimeLabel.textColor = ThemeColor
+            } else {
+                startTimeLabel.textColor = GrayColor
+            }
             reloadRowFor(Time.StartPicker)
         case Time.EndTime.rawValue:
             endPickerHeight = pickerHeight - endPickerHeight
+            if endPickerHeight > 0 {
+                endTimeLabel.textColor = ThemeColor
+            } else {
+                endTimeLabel.textColor = GrayColor
+            }
             reloadRowFor(Time.EndPicker)
         case Time.RepeatEnd.rawValue:
             repeatPickerHeight = pickerHeight - repeatPickerHeight
+            if repeatPickerHeight > 0 {
+                repeatEndLabel.textColor = ThemeColor
+            } else {
+                repeatEndLabel.textColor = GrayColor
+            }
             reloadRowFor(Time.RepeatPicker)
         default:
             break

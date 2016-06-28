@@ -95,22 +95,34 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JtD-0b-lP7">
-                                <rect key="frame" x="0.0" y="168" width="600" height="383"/>
+                                <rect key="frame" x="0.0" y="176" width="600" height="375"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-PL-nXs">
+                                <rect key="frame" x="20" y="160" width="560" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="85l-sl-ezN"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeMode:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Qzg-dx-y8j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="JtD-0b-lP7" secondAttribute="trailing" id="2xa-sx-3B0"/>
-                            <constraint firstItem="JtD-0b-lP7" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="3to-fK-kST"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="50" id="3to-fK-kST"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="leading" secondItem="faw-wO-Hlh" secondAttribute="leading" id="4qv-mS-ISB"/>
                             <constraint firstItem="JtD-0b-lP7" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="5s2-Cz-5qa"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="7rb-Vg-NGn"/>
+                            <constraint firstItem="1Vd-PL-nXs" firstAttribute="trailing" secondItem="nYx-Yb-xsq" secondAttribute="trailing" id="BV1-2s-HzI"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="BYB-Mk-e5U"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="trailing" secondItem="faw-wO-Hlh" secondAttribute="trailing" id="Bgt-xf-SAI"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="D8y-iM-rnY"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="leading" secondItem="1Vd-PL-nXs" secondAttribute="trailing" constant="-580" id="FFT-xd-7JT"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="JEK-wO-YR3"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="leading" secondItem="faw-wO-Hlh" secondAttribute="leading" id="Nc7-vW-8sS"/>
+                            <constraint firstItem="JtD-0b-lP7" firstAttribute="top" secondItem="1Vd-PL-nXs" secondAttribute="bottom" id="OXu-vY-Vkk"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="QVQ-Hf-BOh"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="60" id="RRD-dK-8aA"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="WbF-E8-qyZ"/>
@@ -118,12 +130,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JtD-0b-lP7" secondAttribute="trailing" id="YYO-XJ-l4V"/>
                             <constraint firstItem="JtD-0b-lP7" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Z06-Ep-RTH"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="cEU-So-pPB"/>
+                            <constraint firstItem="1Vd-PL-nXs" firstAttribute="leading" secondItem="nYx-Yb-xsq" secondAttribute="leading" id="f2p-g6-gOU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nYx-Yb-xsq" secondAttribute="trailing" id="kcT-W9-4GZ"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="499" id="kca-5x-bwq"/>
                             <constraint firstItem="JtD-0b-lP7" firstAttribute="centerX" secondItem="nYx-Yb-xsq" secondAttribute="centerX" id="lHD-t6-VC5"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="trailing" secondItem="faw-wO-Hlh" secondAttribute="trailing" id="pIY-Cp-SYl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nYx-Yb-xsq" secondAttribute="leading" id="qxd-JC-oTZ"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="tTq-oK-Vnt"/>
+                            <constraint firstItem="1Vd-PL-nXs" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" id="vpI-5s-zNC"/>
                             <constraint firstItem="faw-wO-Hlh" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="xAS-ZR-X7h"/>
                         </constraints>
                         <variation key="default">
@@ -137,6 +151,8 @@
                                 <exclude reference="pIY-Cp-SYl"/>
                                 <exclude reference="qxd-JC-oTZ"/>
                                 <exclude reference="2xa-sx-3B0"/>
+                                <exclude reference="3to-fK-kST"/>
+                                <exclude reference="FFT-xd-7JT"/>
                                 <exclude reference="YYO-XJ-l4V"/>
                                 <exclude reference="lHD-t6-VC5"/>
                                 <exclude reference="JEK-wO-YR3"/>
@@ -146,9 +162,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="日程" id="tK8-OC-7Ln">
-                        <barButtonItem key="leftBarButtonItem" title="" id="Z9c-Kc-ppv">
+                        <barButtonItem key="leftBarButtonItem" title="今日" id="Voz-9R-dHw">
                             <connections>
-                                <segue destination="rSL-ul-oMT" kind="show" identifier="showMonthView" id="hcs-dm-kdf"/>
+                                <action selector="toggleToday:" destination="8rJ-Kc-sve" id="q81-OE-dyI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uUX-hh-sTC">
@@ -160,7 +176,6 @@
                     <connections>
                         <outlet property="calendarView" destination="nYx-Yb-xsq" id="9Bl-av-SEP"/>
                         <outlet property="menuView" destination="faw-wO-Hlh" id="dkH-bq-hhN"/>
-                        <outlet property="monthViewButton" destination="Z9c-Kc-ppv" id="SO1-de-Gns"/>
                         <outlet property="tableView" destination="JtD-0b-lP7" id="njk-gr-r9Z"/>
                     </connections>
                 </viewController>
@@ -174,67 +189,7 @@
                 <viewControllerPlaceholder storyboardName="AddEvent" id="2xs-uO-Ddu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiA-j3-RV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113.5" y="1609"/>
-        </scene>
-        <!--五月, 2016-->
-        <scene sceneID="ccG-Ej-7Zy">
-            <objects>
-                <viewController id="rSL-ul-oMT" customClass="CalendarMonthViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dhW-2B-p3g"/>
-                        <viewControllerLayoutGuide type="bottom" id="Y5T-ai-QtI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NMA-QE-t7u">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2q-su-lgi" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="20" y="72" width="560" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lbF-iU-TeN"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqG-rY-Iey" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="20" y="110" width="560" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="9io-NS-WuZ"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qqG-rY-Iey" firstAttribute="leading" secondItem="A2q-su-lgi" secondAttribute="leading" id="3T5-tR-d5s"/>
-                            <constraint firstItem="A2q-su-lgi" firstAttribute="leading" secondItem="NMA-QE-t7u" secondAttribute="leadingMargin" id="Bcy-bq-5K0"/>
-                            <constraint firstItem="A2q-su-lgi" firstAttribute="top" secondItem="dhW-2B-p3g" secondAttribute="bottom" constant="8" symbolic="YES" id="P8c-0d-CLZ"/>
-                            <constraint firstItem="qqG-rY-Iey" firstAttribute="trailing" secondItem="A2q-su-lgi" secondAttribute="trailing" id="i1S-2o-ubj"/>
-                            <constraint firstItem="Y5T-ai-QtI" firstAttribute="top" secondItem="A2q-su-lgi" secondAttribute="bottom" constant="351" id="tGd-u0-4Mn"/>
-                            <constraint firstItem="A2q-su-lgi" firstAttribute="trailing" secondItem="NMA-QE-t7u" secondAttribute="trailingMargin" id="wIy-4P-3kE"/>
-                            <constraint firstItem="qqG-rY-Iey" firstAttribute="top" secondItem="A2q-su-lgi" secondAttribute="bottom" constant="8" symbolic="YES" id="xkx-Ti-xm5"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="tGd-u0-4Mn"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" title="五月, 2016" id="Csd-cr-1fD">
-                        <barButtonItem key="rightBarButtonItem" title="今日" id="bbe-5V-r9w">
-                            <connections>
-                                <action selector="todayButton:" destination="rSL-ul-oMT" id="ucp-lF-bGP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="calendarView" destination="qqG-rY-Iey" id="pev-OT-VEi"/>
-                        <outlet property="menuView" destination="A2q-su-lgi" id="IoX-fg-Rlp"/>
-                        <outlet property="navItem" destination="Csd-cr-1fD" id="uNM-jq-Hga"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Psi-B1-7As" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="871" y="1996"/>
+            <point key="canvasLocation" x="896" y="1609"/>
         </scene>
         <!--查询-->
         <scene sceneID="ebA-ke-ivD">
