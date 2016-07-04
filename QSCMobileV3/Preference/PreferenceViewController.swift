@@ -72,6 +72,7 @@ class PreferenceViewController: UITableViewController {
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.tintColor = ThemeColor
                 let account = accounts[indexPath.row]
                 cell.textLabel!.attributedText = "\u{f007}\t\(account)".attributedWithFontAwesome
                 if account == accountManager.currentAccountForJwbinfosys {

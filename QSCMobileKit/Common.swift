@@ -20,8 +20,9 @@ public let AppGroupIdentifier = "group.com.zjuqsc.QSCMobileV3"
 public let QSCMobileKitIdentifier = "com.zjuqsc.QSCMobileV3.QSCMobileKit"
 
 
-public let ThemeColor = UIColor(red: 0.52, green: 0.83, blue: 0.90, alpha: 1.0) // #85D3E5
-public let GrayColor = UIColor(red: 0.56, green: 0.56, blue: 0.58, alpha: 1.0) // #8E8E93
+public let ThemeColor = UIColor(red: 0.523, green: 0.825, blue: 0.896, alpha: 1.0) // #85D3E5
+public let DarkColor = UIColor(red: 0.467, green: 0.467, blue: 0.467, alpha: 1.0) // #777777
+public let GrayColor = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1.0) // #8E8E93
 
 public let QSCVersion: String = {
     let info = NSBundle.mainBundle().infoDictionary!
