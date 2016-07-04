@@ -277,11 +277,13 @@
             </objects>
             <point key="canvasLocation" x="2389.5" y="1609"/>
         </scene>
-        <!--查询-->
+        <!--Navigation Controller-->
         <scene sceneID="ZrD-2v-zQf">
             <objects>
                 <navigationController id="XZf-SV-YIi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="查询" image="Discover" id="Iys-tw-le7"/>
+                    <tabBarItem key="tabBarItem" title="" image="Query" id="Iys-tw-le7">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6B-iD-COS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -336,11 +338,13 @@
             </objects>
             <point key="canvasLocation" x="2812" y="1144"/>
         </scene>
-        <!--设置-->
+        <!--Navigation Controller-->
         <scene sceneID="uLV-Mc-gKV">
             <objects>
                 <navigationController id="nWB-Rd-QKm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" image="Preference" id="AEf-u5-uMk"/>
+                    <tabBarItem key="tabBarItem" title="" image="Preference" id="AEf-u5-uMk">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RG9-6b-56D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -427,6 +431,11 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="seq-ae-sVQ" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -440,11 +449,13 @@
             </objects>
             <point key="canvasLocation" x="1534" y="-542"/>
         </scene>
-        <!--日程-->
+        <!--Navigation Controller-->
         <scene sceneID="qKN-25-TcH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tzo-ct-FnG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="日程" image="Calendar" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="Calendar" id="cPa-gy-q4n">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cWw-OK-yzr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -460,11 +471,13 @@
             </objects>
             <point key="canvasLocation" x="896" y="390"/>
         </scene>
-        <!--发现-->
+        <!--Navigation Controller-->
         <scene sceneID="3yc-At-uPM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HbO-Yt-UeN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现" image="Discover" id="ELC-ks-08q"/>
+                    <tabBarItem key="tabBarItem" title="" image="Discover" id="ELC-ks-08q">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bax-lW-qry">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -480,11 +493,13 @@
             </objects>
             <point key="canvasLocation" x="1534" y="390"/>
         </scene>
-        <!--今日-->
+        <!--Navigation Controller-->
         <scene sceneID="FRy-pI-gFc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="seq-ae-sVQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="今日" image="Today" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="" image="Today" id="acW-dT-cKf">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tkj-iu-deY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -502,9 +517,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar" width="26" height="25"/>
-        <image name="Discover" width="25" height="25"/>
-        <image name="Preference" width="25" height="25"/>
-        <image name="Today" width="26" height="25"/>
+        <image name="Calendar" width="32" height="30"/>
+        <image name="Discover" width="32" height="32"/>
+        <image name="Preference" width="32" height="32"/>
+        <image name="Query" width="32" height="32"/>
+        <image name="Today" width="32" height="26"/>
     </resources>
 </document>
