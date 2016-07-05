@@ -14,7 +14,7 @@
 		9D2132BA1D227C0A00996856 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2132B91D227C0A00996856 /* Logo.png */; };
 		9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */; };
 		9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */; };
-		9D3139651CE7859F00CD7DAD /* Int+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */; };
+		9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */; };
 		9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */; };
 		9D3139691CE7869400CD7DAD /* NSDate+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */; };
 		9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */; };
@@ -55,6 +55,8 @@
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
+		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
+		9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */; };
 		9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */; };
 		9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */; };
 		9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */; };
@@ -137,7 +139,7 @@
 		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "Extension/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
 		9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileV3.swift"; path = "Extension/String+QSCMobileV3.swift"; sourceTree = "<group>"; };
-		9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Weekday.swift"; path = "Extension/Int+Weekday.swift"; sourceTree = "<group>"; };
+		9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Chinese.swift"; path = "Extension/Int+Chinese.swift"; sourceTree = "<group>"; };
 		9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+Comparable.swift"; path = "Extension/NSNumber+Comparable.swift"; sourceTree = "<group>"; };
 		9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Comparable.swift"; path = "Extension/NSDate+Comparable.swift"; sourceTree = "<group>"; };
 		9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,8 @@
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEvent.swift; sourceTree = "<group>"; };
 		9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEvent.swift; sourceTree = "<group>"; };
 		9DD490FF1CEAE68A009F70FA /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
@@ -297,7 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */,
-				9D3139641CE7859F00CD7DAD /* Int+Weekday.swift */,
+				9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */,
 				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
 				9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */,
 				9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */,
@@ -320,6 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */,
+				9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */,
+				9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
+				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
 				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
@@ -743,6 +750,7 @@
 				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
+				9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
@@ -779,7 +787,7 @@
 				9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */,
 				9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */,
 				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
-				9D3139651CE7859F00CD7DAD /* Int+Weekday.swift in Sources */,
+				9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */,
 				9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */,
 				9DD491221CEAE68A009F70FA /* Year.swift in Sources */,
 				9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */,

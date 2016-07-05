@@ -18,9 +18,12 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var weekLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,7 @@ class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.registerNib(UINib(nibName: "EventCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Event")
         
         let rightBorder = CALayer()
         rightBorder.borderColor = QSCColor.dark.CGColor
@@ -40,9 +44,7 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadData()
-        calendarView.contentController.refreshPresentedMonth()
-        weekLabel.text = weekName
+        updateForSelectedDate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,6 +78,20 @@ class CalendarViewController: UIViewController {
         return name
     }
     
+    func updateDateLabel() {
+        let calendar = NSCalendar.currentCalendar()
+        dayLabel.text = String(calendar.component(.Day, fromDate: selectedDate))
+        monthLabel.text = calendar.component(.Month, fromDate: selectedDate).stringForMonth
+        yearLabel.text = String(calendar.component(.Year, fromDate: selectedDate))
+    }
+    
+    func updateForSelectedDate() {
+        tableView.reloadData()
+        calendarView.contentController.refreshPresentedMonth()
+        weekLabel.text = weekName
+        updateDateLabel()
+    }
+    
 }
 
 extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
@@ -94,9 +110,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
         selectedDate = dayView.date.convertedDate()!
-        tableView.reloadData()
-        calendarView.contentController.refreshPresentedMonth()
-        weekLabel.text = weekName
+        updateForSelectedDate()
     }
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
@@ -125,25 +139,58 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
 // TODO: Decide whether to use system time zone or UTC+8
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy 年 M 月 d 日"
-        return formatter.stringFromDate(selectedDate)
+        switch section {
+        case 0:
+            return "全天事项"
+        case 1:
+            return "日程"
+        default:
+            return nil
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mobileManager.eventsForDate(selectedDate).count
+        let events = mobileManager.eventsForDate(selectedDate)
+        switch section {
+        case 0:
+            return events.filter({ $0.duration == .AllDay }).count
+        case 1:
+            return events.filter({ $0.duration == .PartialTime }).count
+        default:
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-        let course = mobileManager.eventsForDate(selectedDate)[indexPath.row]
-        cell.textLabel!.text = course.name
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "HH:mm"
-        cell.detailTextLabel!.attributedText = "\(formatter.stringFromDate(course.start)) - \(formatter.stringFromDate(course.end))".attributedWithHelveticaNeue
+        let events: [Event]
+        if indexPath.section == 0 {
+            events = mobileManager.eventsForDate(selectedDate).filter { $0.duration == .AllDay }
+        } else {
+            events = mobileManager.eventsForDate(selectedDate).filter { $0.duration == .PartialTime }
+        }
+        let event = events[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("Event") as! EventCell
+        cell.nameLabel.text = event.name
+        cell.placeLabel.text = event.place
+        cell.timeLabel.text = event.time
+        var imageName = "Line"
+        switch event.category {
+        case .Course, .Lesson:
+            imageName += "Course"
+        case .Exam, .Quiz:
+            imageName += "Exam"
+        case .Activity:
+            imageName += "Activity"
+        default:
+            imageName += "Todo"
+        }
+        cell.lineView.image = UIImage(named: imageName)
         return cell
     }
     

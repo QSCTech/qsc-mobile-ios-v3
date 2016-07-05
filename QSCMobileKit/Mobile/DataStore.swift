@@ -91,7 +91,7 @@ class DataStore: NSObject {
                     timePlace.time! += " \(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
-                    timePlace.time! += String(format: "（%02d:%02d-%02d:%02d）", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
+                    timePlace.time! += String(format: " (%02d:%02d-%02d:%02d)", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
                 }
                 
             }
@@ -118,7 +118,7 @@ class DataStore: NSObject {
                 exam.place = json["place"].stringValue
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
-                exam.time = json["time"].stringValue
+                exam.time = json["time"].stringValue.stringByReplacingOccurrencesOfString("(", withString: " ").stringByReplacingOccurrencesOfString(")", withString: "")
                 exam.year = semester.substringToIndex(semester.startIndex.advancedBy(9))
                 
                 let formatter = NSDateFormatter()

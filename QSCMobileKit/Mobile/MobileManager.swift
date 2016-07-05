@@ -173,16 +173,18 @@ public class MobileManager: NSObject {
             
             let formatter = NSDateFormatter()
             formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            formatter.dateFormat = "yyyy 年 MM 月 dd 日"
+            formatter.dateFormat = "yyyy年MM月dd日"
             var startTime = formatter.stringFromDate(event.start!)
             var endTime = formatter.stringFromDate(event.end!)
+            let time: String
             if startTime == endTime {
-                endTime = ""
+                formatter.dateFormat = "HH:mm"
+                startTime += " " + formatter.stringFromDate(event.start!)
+                endTime = formatter.stringFromDate(event.end!)
+                time = startTime + "-" + endTime
+            } else {
+                time = startTime + " - " + endTime
             }
-            formatter.dateFormat = "HH:mm"
-            startTime += formatter.stringFromDate(event.start!)
-            endTime += formatter.stringFromDate(event.end!)
-            let time = "\(startTime) - \(endTime)"
             
             return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: event.start!, end: event.end!, object: event)
         }

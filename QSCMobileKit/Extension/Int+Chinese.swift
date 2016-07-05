@@ -1,5 +1,5 @@
 //
-//  Int+Weekday.swift
+//  Int+Chinese.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2016-05-15.
@@ -9,30 +9,6 @@
 import Foundation
 
 extension Int {
-    
-    /**
-     Create a string from the index of weekday, consistent with NSDateComponents. Note Monday is NOT 1 BUT 2, etc.
-     */
-    public var stringForWeekday: String {
-        switch self {
-        case 1:
-            return "星期日"
-        case 2:
-            return "星期一"
-        case 3:
-            return "星期二"
-        case 4:
-            return "星期三"
-        case 5:
-            return "星期四"
-        case 6:
-            return "星期五"
-        case 7:
-            return "星期六"
-        default:
-            return ""
-        }
-    }
     
     /**
      Return the Chinese character of 0..10.
@@ -63,6 +39,30 @@ extension Int {
             return "十"
         default:
             return ""
+        }
+    }
+    
+    /**
+     Return the Chinese name for the index of weekday, consistent with NSDateComponents. Note Monday is NOT 1 BUT 2, etc.
+     */
+    public var stringForWeekday: String {
+        if self == 1 {
+            return "星期日"
+        } else {
+            return "星期" + (self - 1).chinese
+        }
+    }
+    
+    /**
+     Return the Chinese name for the month.
+     */
+    public var stringForMonth: String {
+        if self == 11 {
+            return "十一月"
+        } else if self == 12 {
+            return "十二月"
+        } else {
+            return chinese + "月"
         }
     }
     
