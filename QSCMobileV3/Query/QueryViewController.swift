@@ -204,5 +204,11 @@ class QueryViewController: UITableViewController {
             break
         }
     }
+    
+    @IBAction func refresh(sender: UIRefreshControl) {
+        MobileManager.sharedInstance.refreshAll {
+            sender.endRefreshing()
+        }
+    }
 
 }

@@ -105,25 +105,25 @@ class AddEventViewController: UITableViewController {
         case Time.StartTime.rawValue:
             startPickerHeight = pickerHeight - startPickerHeight
             if startPickerHeight > 0 {
-                startTimeLabel.textColor = ThemeColor
+                startTimeLabel.textColor = QSCColor.theme
             } else {
-                startTimeLabel.textColor = GrayColor
+                startTimeLabel.textColor = QSCColor.detailText
             }
             reloadRowFor(Time.StartPicker)
         case Time.EndTime.rawValue:
             endPickerHeight = pickerHeight - endPickerHeight
             if endPickerHeight > 0 {
-                endTimeLabel.textColor = ThemeColor
+                endTimeLabel.textColor = QSCColor.theme
             } else {
-                endTimeLabel.textColor = GrayColor
+                endTimeLabel.textColor = QSCColor.detailText
             }
             reloadRowFor(Time.EndPicker)
         case Time.RepeatEnd.rawValue:
             repeatPickerHeight = pickerHeight - repeatPickerHeight
             if repeatPickerHeight > 0 {
-                repeatEndLabel.textColor = ThemeColor
+                repeatEndLabel.textColor = QSCColor.theme
             } else {
-                repeatEndLabel.textColor = GrayColor
+                repeatEndLabel.textColor = QSCColor.detailText
             }
             reloadRowFor(Time.RepeatPicker)
         default:
@@ -238,7 +238,7 @@ class AddEventViewController: UITableViewController {
                 event.duration = Event.Duration.PartialTime.rawValue
             }
             // TODO: Category / Tags not set
-            event.category = Event.Category.Life.rawValue
+            event.category = Event.Category.Todo.rawValue
             event.tags = ""
             event.name = self.titleField.text
             event.place = self.placeField.text

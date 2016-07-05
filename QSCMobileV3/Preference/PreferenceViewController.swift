@@ -72,7 +72,7 @@ class PreferenceViewController: UITableViewController {
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-                cell.tintColor = ThemeColor
+                cell.tintColor = QSCColor.theme
                 let account = accounts[indexPath.row]
                 cell.textLabel!.attributedText = "\u{f007}\t\(account)".attributedWithFontAwesome
                 if account == accountManager.currentAccountForJwbinfosys {
@@ -99,7 +99,7 @@ class PreferenceViewController: UITableViewController {
                 }
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
                 let switchView = UISwitch(frame: CGRectZero)
-                switchView.onTintColor = ThemeColor
+                switchView.onTintColor = QSCColor.theme
                 let refreshOnLaunch = groupDefaults.boolForKey(RefreshOnLaunchKey)
                 switchView.setOn(refreshOnLaunch, animated: false)
                 switchView.addTarget(self, action: #selector(refreshSwitchChanged), forControlEvents: .ValueChanged)

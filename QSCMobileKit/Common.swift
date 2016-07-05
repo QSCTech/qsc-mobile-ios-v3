@@ -19,10 +19,30 @@ let BoxURL       = "https://box.zjuqsc.com"
 public let AppGroupIdentifier = "group.com.zjuqsc.QSCMobileV3"
 public let QSCMobileKitIdentifier = "com.zjuqsc.QSCMobileV3.QSCMobileKit"
 
-
-public let ThemeColor = UIColor(red: 0.523, green: 0.825, blue: 0.896, alpha: 1.0) // #85D3E5
-public let DarkColor = UIColor(red: 0.467, green: 0.467, blue: 0.467, alpha: 1.0) // #777777
-public let GrayColor = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1.0) // #8E8E93
+public class QSCColor {
+    public static let theme = UIColor(red: 0.523, green: 0.825, blue: 0.896, alpha: 1.0) // #85D3E5
+    public static let dark = UIColor(red: 0.467, green: 0.467, blue: 0.467, alpha: 1.0) // #777777
+    public static let detailText = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1.0) // #8E8E93
+    
+    public static let course = UIColor(red: 0.290, green: 0.565, blue: 0.886, alpha: 1.0) // #4A90E2
+    public static let exam = UIColor(red: 0.878, green: 0.298, blue: 0.518, alpha: 1.0) // #E04C84
+    public static let homework = UIColor(red: 1.000, green: 0.820, blue: 0.000, alpha: 1.0) // #FFD100
+    public static let activity = UIColor(red: 0.502, green: 0.659, blue: 0.322, alpha: 1.0) // #80A852
+    public static let todo = UIColor(red: 0.627, green: 0.420, blue: 0.745, alpha: 1.0) // #A06BBE
+    
+    public static func event(category: Event.Category) -> UIColor {
+        switch category {
+        case .Course, .Lesson:
+            return course
+        case .Exam, .Quiz:
+            return exam
+        case .Activity:
+            return activity
+        default:
+            return todo
+        }
+    }
+}
 
 public let QSCVersion: String = {
     let info = NSBundle.mainBundle().infoDictionary!
@@ -34,7 +54,7 @@ public struct Event {
         case AllDay = 0, PartialTime
     }
     public enum Category: Int {
-        case Course = 0, Exam, Lesson, Quiz, Activity, Life
+        case Course = 0, Exam, Lesson, Quiz, Activity, Todo
     }
     public let duration: Duration
     public let category: Category
@@ -62,32 +82,32 @@ enum CourseSemester: String {
  */
 public enum CalendarSemester: String {
     
-    case SummerMini     = "SM"
-    case Autumn         = "Au"
-    case Winter         = "Wi"
-    case WinterMini     = "WM"
-    case Spring         = "Sp"
-    case Summer         = "Su"
-    case SummerVacation = "ST"
-    case Unknown        = "Unknown"
+    case SummerMini = "SM"
+    case Autumn     = "Au"
+    case Winter     = "Wi"
+    case WinterMini = "WM"
+    case Spring     = "Sp"
+    case Summer     = "Su"
+    case SummerTime = "ST"
+    case Unknown    = "Unknown"
     
     /// Chinese name of semesters, used in JSON of courses and exams.
-    var name: String {
+    public var name: String {
         switch self {
         case .SummerMini:
-            return "夏短"
+            return "暑假"
         case .Autumn:
             return "秋"
         case .Winter:
             return "冬"
         case .WinterMini:
-            return "冬短"
+            return "寒假"
         case .Spring:
             return "春"
         case .Summer:
             return "夏"
-        case .SummerVacation:
-            return "暑"
+        case .SummerTime:
+            return "暑短"
         default:
             return ""
         }

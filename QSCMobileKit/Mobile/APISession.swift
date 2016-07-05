@@ -144,7 +144,7 @@ class APISession: NSObject {
         let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")
         alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
-                print("Login request: \(response.result.error!.localizedDescription)")
+                print("Login request: Alamofire - \(response.result.error!.localizedDescription)")
                 callback(false, "网络连接失败")
                 return
             }
@@ -178,7 +178,7 @@ class APISession: NSObject {
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
-                print("Resource request: \(response.result.error!.localizedDescription)")
+                print("Resource request: Alamofire - \(response.result.error!.localizedDescription)")
                 callback(nil, "网络连接失败")
                 return
             }

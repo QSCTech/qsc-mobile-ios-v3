@@ -211,6 +211,7 @@ public class MobileManager: NSObject {
                 dispatch_group_notify(group, dispatch_get_main_queue(), callback)
             }
         }
+        // TODO: Send notifications if failed.
     }
     
     /**

@@ -19,6 +19,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     
+    @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -28,12 +29,20 @@ class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let rightBorder = CALayer()
+        rightBorder.borderColor = QSCColor.dark.CGColor
+        rightBorder.borderWidth = 1
+        rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
+        weekLabel.layer.addSublayer(rightBorder)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+        calendarView.contentController.refreshPresentedMonth()
+        weekLabel.text = weekName
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,14 +55,25 @@ class CalendarViewController: UIViewController {
     @IBAction func changeMode(sender: AnyObject) {
         if calendarView.calendarMode == .WeekView {
             calendarView.changeMode(.MonthView)
+            weekLabel.hidden = true
         } else {
             calendarView.changeMode(.WeekView)
+            weekLabel.hidden = false
         }
     }
     
     
     @IBAction func toggleToday(sender: AnyObject) {
         calendarView.toggleCurrentDayView()
+    }
+    
+    var weekName: String {
+        let calendarManager = CalendarManager.sharedInstance
+        var name = calendarManager.semesterForDate(selectedDate).name
+        if name.characters.count == 1 {
+            name += calendarManager.weekOrdinalForDate(selectedDate).chinese
+        }
+        return name
     }
     
 }
@@ -69,12 +89,34 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     }
     
     func shouldShowWeekdaysOut() -> Bool {
-        return true
+        return false
     }
     
     func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
         selectedDate = dayView.date.convertedDate()!
         tableView.reloadData()
+        calendarView.contentController.refreshPresentedMonth()
+        weekLabel.text = weekName
+    }
+    
+    func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
+        let date = dayView.date.convertedDate()!
+        let events = mobileManager.eventsForDate(date)
+        if events.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
+        let date = dayView.date.convertedDate()!
+        let events = mobileManager.eventsForDate(date)
+        var colors = Set<UIColor>()
+        for event in events {
+            colors.insert(QSCColor.event(event.category))
+        }
+        return Array(colors)
     }
     
 }

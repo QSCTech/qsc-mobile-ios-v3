@@ -33,7 +33,7 @@ class EventNotificationViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.tintColor = ThemeColor
+        cell.tintColor = QSCColor.theme
         cell.textLabel!.text = titlesForEventNotification[indexPath.row]
         if indexPath.row == groupDefaults.integerForKey(EventNotificationKey) {
             cell.accessoryType = .Checkmark
