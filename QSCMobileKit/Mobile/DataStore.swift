@@ -68,7 +68,7 @@ class DataStore: NSObject {
                 course.credit = basicInfo["Credit"].floatValue
                 course.englishName = basicInfo["EnglishName"].stringValue
                 course.faculty = basicInfo["Faculty"].stringValue
-                course.category = basicInfo["Category"].stringValue
+                course.category = basicInfo["Category"].stringValue.stringByReplacingOccurrencesOfString("\\", withString: "/")
                 course.prerequisite = basicInfo["Prerequisite"].stringValue
                 
                 EventManager.sharedInstance.createCourseEvent(course.identifier!)

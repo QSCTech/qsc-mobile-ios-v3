@@ -205,6 +205,7 @@ class QueryViewController: UITableViewController {
         }
     }
     
+    // TODO: Forbid refreshing when not logged in
     @IBAction func refresh(sender: UIRefreshControl) {
         MobileManager.sharedInstance.refreshAll {
             sender.endRefreshing()

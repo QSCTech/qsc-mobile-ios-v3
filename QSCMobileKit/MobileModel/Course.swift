@@ -10,20 +10,21 @@ import Foundation
 import CoreData
 
 
-class Course: NSManagedObject {
+public class Course: NSManagedObject {
 
-    @NSManaged var code: String?
-    @NSManaged var name: String?
-    @NSManaged var englishName: String?
-    @NSManaged var credit: NSNumber?
-    @NSManaged var category: String?
-    @NSManaged var faculty: String?
-    @NSManaged var teacher: String?
-    @NSManaged var semester: String?
-    @NSManaged var year: String?
-    @NSManaged var identifier: String?
-    @NSManaged var isDetermined: NSNumber?
-    @NSManaged var prerequisite: String?
+    @NSManaged public var code: String?
+    @NSManaged public var name: String?
+    @NSManaged public var englishName: String?
+    @NSManaged public var credit: NSNumber?
+    @NSManaged public var category: String?
+    @NSManaged public var faculty: String?
+    @NSManaged public var teacher: String?
+    @NSManaged public var semester: String?
+    @NSManaged public var year: String?
+    @NSManaged public var identifier: String?
+    @NSManaged public var isDetermined: NSNumber?
+    @NSManaged public var prerequisite: String?
+    @NSManaged public var timePlaces: NSSet?
     @NSManaged var user: User?
-    @NSManaged var timePlaces: NSSet?
+
 }

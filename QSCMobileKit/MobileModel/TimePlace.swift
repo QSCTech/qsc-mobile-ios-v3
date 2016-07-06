@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 
 
-class TimePlace: NSManagedObject {
+public class TimePlace: NSManagedObject {
 
-    @NSManaged var weekday: NSNumber?
-    @NSManaged var week: String?
-    @NSManaged var periods: String?
-    @NSManaged var place: String?
-    @NSManaged var time: String?
-    @NSManaged var course: Course?
+    @NSManaged public var weekday: NSNumber?
+    @NSManaged public var week: String?
+    @NSManaged public var periods: String?
+    @NSManaged public var place: String?
+    @NSManaged public var time: String?
+    @NSManaged public var course: Course?
 
 }

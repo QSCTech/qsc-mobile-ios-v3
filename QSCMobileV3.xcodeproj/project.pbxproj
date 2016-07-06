@@ -53,6 +53,10 @@
 		9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
+		9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */; };
+		9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */; };
+		9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475661D2D075800F4B3DF /* CourseNameCell.swift */; };
+		9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
@@ -180,6 +184,10 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
+		9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CourseDetail.storyboard; path = CourseDetail/CourseDetail.storyboard; sourceTree = "<group>"; };
+		9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = CourseDetail/CourseDetailViewController.swift; sourceTree = "<group>"; };
+		9DC475661D2D075800F4B3DF /* CourseNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseNameCell.swift; path = CourseDetail/CourseNameCell.swift; sourceTree = "<group>"; };
+		9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTimePlaceCell.swift; path = CourseDetail/CourseTimePlaceCell.swift; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -289,6 +297,7 @@
 				9D3139721CE789BF00CD7DAD /* Preference */,
 				9DE716021CE7A9E900282DCD /* Login */,
 				9D6B336F1CED90CC00C5372F /* AddEvent */,
+				9DC475611D2CF9A200F4B3DF /* CourseDetail */,
 				9D6B337A1CF0215E00C5372F /* Bus */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
 				9D3139831CE78C7500CD7DAD /* About */,
@@ -427,6 +436,17 @@
 				9D6B337C1CF025F500C5372F /* BusViewController.xib */,
 			);
 			name = Bus;
+			sourceTree = "<group>";
+		};
+		9DC475611D2CF9A200F4B3DF /* CourseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */,
+				9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */,
+				9DC475661D2D075800F4B3DF /* CourseNameCell.swift */,
+				9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */,
+			);
+			name = CourseDetail;
 			sourceTree = "<group>";
 		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
@@ -687,6 +707,7 @@
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
+				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
 				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
@@ -745,16 +766,19 @@
 			files = (
 				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
+				9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */,
 				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
+				9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
+				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,

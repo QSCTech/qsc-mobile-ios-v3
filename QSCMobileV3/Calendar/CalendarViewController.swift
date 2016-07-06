@@ -17,6 +17,7 @@ class CalendarViewController: UIViewController {
     let calendarManager = CalendarManager.sharedInstance
     
     var selectedDate = NSDate()
+    var selectedEvent: Event!
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -57,8 +58,17 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let nc = segue.destinationViewController as? UINavigationController, vc = nc.topViewController as? AddEventViewController {
+        switch segue.identifier! {
+        case "addEvent":
+            let nc = segue.destinationViewController as! UINavigationController
+            let vc = nc.topViewController as! AddEventViewController
             vc.selectedDate = selectedDate
+        case "showCourseDetail":
+            let vc = segue.destinationViewController as! CourseDetailViewController
+            vc.courseObject = selectedEvent.object as! Course
+            vc.courseEvent = EventManager.sharedInstance.courseEventForIdentifier(vc.courseObject.identifier!)
+        default:
+            break
         }
     }
     
@@ -153,40 +163,23 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let events = mobileManager.eventsForDate(selectedDate)
-        switch section {
-        case 1:
-            if events.contains({ $0.duration == .AllDay }) {
-                return "全天事项"
-            } else {
-                return nil
-            }
-        case 2:
-            if events.contains({ $0.duration == .PartialTime }) {
-                return "日程"
-            } else {
-                return nil
-            }
-        default:
+        if filteredEvents(section).isEmpty {
+            return nil
+        } else if section == 1 {
+            return "全天事项"
+        } else if section == 2 {
+            return "日程"
+        } else {
             return nil
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let events = mobileManager.eventsForDate(selectedDate)
-        switch section {
-        case 0:
-            if calendarManager.holidayForDate(selectedDate) != nil || calendarManager.adjustmentForDate(selectedDate) != nil || events.count == 0 {
-                return 1
-            } else {
-                return 0
-            }
-        case 1:
-            return events.filter({ $0.duration == .AllDay }).count
-        case 2:
-            return events.filter({ $0.duration == .PartialTime }).count
-        default:
-            return 0
+        let events = filteredEvents(section)
+        if section == 0 {
+            return Int(calendarManager.holidayForDate(selectedDate) != nil || calendarManager.adjustmentForDate(selectedDate) != nil || events.count == 0)
+        } else {
+            return events.count
         }
     }
     
@@ -199,7 +192,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var events = mobileManager.eventsForDate(selectedDate)
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
             cell.frame.height
@@ -216,13 +208,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-        if indexPath.section == 1 {
-            events = events.filter { $0.duration == .AllDay }
-        } else {
-            events = events.filter { $0.duration == .PartialTime }
-        }
-        let event = events[indexPath.row]
-        
+        let event = filteredEvents(indexPath.section)[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("Event") as! EventCell
         cell.nameLabel.text = event.name
         cell.placeLabel.text = event.place
@@ -240,6 +226,26 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.lineView.image = UIImage(named: imageName)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedEvent = filteredEvents(indexPath.section)[indexPath.row]
+        if selectedEvent.category == .Course {
+            performSegueWithIdentifier("showCourseDetail", sender: nil)
+        }
+    }
+    
+    func filteredEvents(section: Int) -> [Event] {
+        let events = mobileManager.eventsForDate(selectedDate)
+        switch section {
+        case 1:
+            return events.filter { $0.duration == .AllDay }
+        case 2:
+            return events.filter { $0.duration == .PartialTime }
+        default:
+            return events
+        }
     }
     
 }
