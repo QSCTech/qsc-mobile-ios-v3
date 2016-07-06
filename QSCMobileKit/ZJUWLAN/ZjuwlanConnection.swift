@@ -56,7 +56,7 @@ public class ZjuwlanConnection: NSObject {
                 } else if string.containsString("E2901") {
                     callback(false, "用户名或密码错误")
                 } else {
-                    print("ZJUWLAN Login: \(string)")
+                    print("[ZJUWLAN] \(string)")
                     callback(false, "未知错误")
                 }
             } else {

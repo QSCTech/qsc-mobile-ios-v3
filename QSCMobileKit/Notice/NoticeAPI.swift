@@ -21,7 +21,7 @@ class NoticeAPI: NSObject {
         
         alamofire.request(.GET, url, headers: headers).responseJSON { response in
             if response.result.isFailure {
-                print("Notice request: \(response.result.error!.localizedDescription)")
+                print("[Notice request] \(response.result.error!.localizedDescription)")
                 callback(nil, "网络连接失败")
                 return
             }
@@ -29,7 +29,7 @@ class NoticeAPI: NSObject {
             if json["code"].int == 0 {
                 callback(json["data"], nil)
             } else {
-                print("Notice request: \(json["message"].stringValue)")
+                print("[Notice request] \(json["message"].stringValue)")
                 callback(nil, "获取数据失败")
             }
         }
