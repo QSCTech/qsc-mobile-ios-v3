@@ -55,8 +55,14 @@ class AddEventViewController: UITableViewController {
     
     // MARK: - View controller override
     
+    var selectedDate: NSDate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startTimePicker.date = selectedDate
+        endTimePicker.date = selectedDate
+        repeatEndPicker.date = selectedDate
         
         startTimeLabel.text = datetimeFormatter.stringFromDate(startTimePicker.date)
         endTimeLabel.text = datetimeFormatter.stringFromDate(endTimePicker.date)

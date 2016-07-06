@@ -178,10 +178,14 @@ public class MobileManager: NSObject {
             var endTime = formatter.stringFromDate(event.end!)
             let time: String
             if startTime == endTime {
-                formatter.dateFormat = "HH:mm"
-                startTime += " " + formatter.stringFromDate(event.start!)
-                endTime = formatter.stringFromDate(event.end!)
-                time = startTime + "-" + endTime
+                if event.duration! == Event.Duration.PartialTime.rawValue {
+                    formatter.dateFormat = "HH:mm"
+                    startTime += " " + formatter.stringFromDate(event.start!)
+                    endTime = formatter.stringFromDate(event.end!)
+                    time = startTime + "-" + endTime
+                } else {
+                    time = startTime
+                }
             } else {
                 time = startTime + " - " + endTime
             }

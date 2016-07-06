@@ -10,9 +10,11 @@ import UIKit
 import CVCalendar
 import QSCMobileKit
 
+// MARK: - UIViewController
 class CalendarViewController: UIViewController {
     
     let mobileManager = MobileManager.sharedInstance
+    let calendarManager = CalendarManager.sharedInstance
     
     var selectedDate = NSDate()
     
@@ -54,6 +56,12 @@ class CalendarViewController: UIViewController {
         calendarView.commitCalendarViewUpdate()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let nc = segue.destinationViewController as? UINavigationController, vc = nc.topViewController as? AddEventViewController {
+            vc.selectedDate = selectedDate
+        }
+    }
+    
     @IBAction func changeMode(sender: AnyObject) {
         if calendarView.calendarMode == .WeekView {
             calendarView.changeMode(.MonthView)
@@ -64,13 +72,11 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    
     @IBAction func toggleToday(sender: AnyObject) {
         calendarView.toggleCurrentDayView()
     }
     
     var weekName: String {
-        let calendarManager = CalendarManager.sharedInstance
         var name = calendarManager.semesterForDate(selectedDate).name
         if name.characters.count == 1 {
             name += calendarManager.weekOrdinalForDate(selectedDate).chinese
@@ -94,6 +100,7 @@ class CalendarViewController: UIViewController {
     
 }
 
+// MARK: - CVCalendarViewDelegate
 extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     func presentationMode() -> CalendarMode {
@@ -137,18 +144,29 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
 
 // TODO: Check whether logged in
 // TODO: Decide whether to use system time zone or UTC+8
+
+// MARK: - UITableView{Delegate,DataSource}
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let events = mobileManager.eventsForDate(selectedDate)
         switch section {
-        case 0:
-            return "全天事项"
         case 1:
-            return "日程"
+            if events.contains({ $0.duration == .AllDay }) {
+                return "全天事项"
+            } else {
+                return nil
+            }
+        case 2:
+            if events.contains({ $0.duration == .PartialTime }) {
+                return "日程"
+            } else {
+                return nil
+            }
         default:
             return nil
         }
@@ -158,20 +176,50 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let events = mobileManager.eventsForDate(selectedDate)
         switch section {
         case 0:
-            return events.filter({ $0.duration == .AllDay }).count
+            if calendarManager.holidayForDate(selectedDate) != nil || calendarManager.adjustmentForDate(selectedDate) != nil || events.count == 0 {
+                return 1
+            } else {
+                return 0
+            }
         case 1:
+            return events.filter({ $0.duration == .AllDay }).count
+        case 2:
             return events.filter({ $0.duration == .PartialTime }).count
         default:
             return 0
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let events: [Event]
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            events = mobileManager.eventsForDate(selectedDate).filter { $0.duration == .AllDay }
+            return 30
         } else {
-            events = mobileManager.eventsForDate(selectedDate).filter { $0.duration == .PartialTime }
+            return 80
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var events = mobileManager.eventsForDate(selectedDate)
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+            cell.frame.height
+            if let holiday = calendarManager.holidayForDate(selectedDate) {
+                cell.textLabel!.text = holiday
+            } else if let adjustment = calendarManager.adjustmentForDate(selectedDate) {
+                let formatter = NSDateFormatter()
+                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                formatter.dateFormat = "yyyy年MM月dd日"
+                cell.textLabel!.text = "\(adjustment.name)调休（\(formatter.stringFromDate(adjustment.fromDate))）"
+            } else {
+                cell.textLabel!.text = "本日无事"
+            }
+            return cell
+        }
+        
+        if indexPath.section == 1 {
+            events = events.filter { $0.duration == .AllDay }
+        } else {
+            events = events.filter { $0.duration == .PartialTime }
         }
         let event = events[indexPath.row]
         
