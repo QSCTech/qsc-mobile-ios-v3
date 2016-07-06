@@ -11,7 +11,7 @@ import CoreData
 
 public class CourseEvent: NSManagedObject {
 
-    @NSManaged public var code: String?
+    @NSManaged public var identifier: String?
     @NSManaged public var tags: String?
     @NSManaged public var notes: String?
     @NSManaged public var hasReminder: NSNumber?

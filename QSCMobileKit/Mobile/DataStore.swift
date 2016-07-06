@@ -54,8 +54,15 @@ class DataStore: NSObject {
                 course.teacher = json["teacher"].stringValue
                 course.semester = json["semester"].stringValue
                 course.isDetermined = json["determined"].boolValue
-                course.identifier = json["identifier"].stringValue
                 course.year = json["year"].stringValue
+                
+                course.identifier = "(" + course.year!
+                if course.semester!.includesSemester(.Spring) || course.semester!.includesSemester(.Summer) {
+                    course.identifier! += "-2)-"
+                } else {
+                    course.identifier! += "-1)-"
+                }
+                course.identifier! += course.code!
                 
                 let basicInfo = json["basicInfo"]
                 course.credit = basicInfo["Credit"].floatValue
@@ -64,7 +71,7 @@ class DataStore: NSObject {
                 course.category = basicInfo["Category"].stringValue
                 course.prerequisite = basicInfo["Prerequisite"].stringValue
                 
-                EventManager.sharedInstance.createCourseEvent(course.code!)
+                EventManager.sharedInstance.createCourseEvent(course.identifier!)
                 
                 for (_, json) in json["timePlace"] {
                     if json["course"].array == nil {
@@ -81,7 +88,7 @@ class DataStore: NSObject {
                     }
                     timePlace.week = json["week"].stringValue
                     if timePlace.week != "每周" {
-                        timePlace.time! += "（\(timePlace.week!)）"
+                        timePlace.time! += " (\(timePlace.week!))"
                     }
                     
                     timePlace.periods = ""

@@ -34,9 +34,9 @@ public class EventManager: NSObject {
     
     // MARK: - Retrieval
     
-    public func courseEventForCode(code: String) -> CourseEvent? {
+    public func courseEventForIdentifier(identifier: String) -> CourseEvent? {
         let request = NSFetchRequest(entityName: "CourseEvent")
-        request.predicate = NSPredicate(format: "code CONTAINS %@", code)
+        request.predicate = NSPredicate(format: "identifier CONTAINS %@", identifier)
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
     }
     
@@ -52,14 +52,14 @@ public class EventManager: NSObject {
     // MARK: - Creation
     
     /**
-     Create an event entity for the course with the given code. If that entity exists, this method will do nothing.
+     Create an event entity for the course with the given identifier. If that entity exists, this method will do nothing.
      
-     - parameter code: Code of the course.
+     - parameter identifier: Identifier of the course, e.g. "(2015-2016-2)-051F0090".
      */
-    func createCourseEvent(code: String) {
-        if courseEventForCode(code) == nil {
+    func createCourseEvent(identifier: String) {
+        if courseEventForIdentifier(identifier) == nil {
             let courseEvent = CourseEvent(context: managedObjectContext)
-            courseEvent.code = code
+            courseEvent.identifier = identifier
             try! managedObjectContext.save()
         }
     }

@@ -131,7 +131,7 @@ public class MobileManager: NSObject {
                     todayComponents.minute = endComponents.minute
                     let end = calendar.dateFromComponents(todayComponents)!
                     
-                    let courseEvent = eventManager.courseEventForCode(course.code!)!
+                    let courseEvent = eventManager.courseEventForIdentifier(course.identifier!)!
                     let tags = courseEvent.tags?.componentsSeparatedByString(",") ?? []
                     
                     let event = Event(duration: .PartialTime, category: .Course, tags: tags, name: course.name!, time: timePlace.time!, place: timePlace.place!, start: start, end: end, object: course)
