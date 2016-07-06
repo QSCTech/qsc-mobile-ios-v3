@@ -191,15 +191,6 @@ class AddEventViewController: UITableViewController {
         return formatter
     }()
     
-    func updatePicker(picker: UIDatePicker) -> Bool {
-        if picker.date < picker.minimumDate {
-            picker.date = picker.minimumDate!
-            return true
-        } else {
-            return false
-        }
-    }
-    
     @IBAction func startTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
             startTimeLabel.text = dateFormatter.stringFromDate(sender.date)
@@ -207,9 +198,7 @@ class AddEventViewController: UITableViewController {
             startTimeLabel.text = datetimeFormatter.stringFromDate(sender.date)
         }
         endTimePicker.minimumDate = sender.date
-        if updatePicker(endTimePicker) {
-            endTimeDidChange(endTimePicker)
-        }
+        endTimeDidChange(endTimePicker)
     }
     
     @IBAction func endTimeDidChange(sender: UIDatePicker) {
@@ -219,9 +208,7 @@ class AddEventViewController: UITableViewController {
             endTimeLabel.text = datetimeFormatter.stringFromDate(sender.date)
         }
         repeatEndPicker.minimumDate = sender.date
-        if updatePicker(repeatEndPicker) {
-            repeatEndDidChange(repeatEndPicker)
-        }
+        repeatEndDidChange(repeatEndPicker)
     }
     
     @IBAction func repeatEndDidChange(sender: UIDatePicker) {
