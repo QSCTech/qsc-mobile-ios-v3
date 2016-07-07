@@ -129,7 +129,7 @@ class DataStore: NSObject {
                 exam.identifier = json["identifier"].stringValue
                 exam.isRelearning = json["isRelearning"].boolValue
                 exam.name = json["name"].stringValue
-                exam.place = json["place"].stringValue
+                exam.place = json["place"].string ?? "暂无考场信息"
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
                 exam.time = json["time"].stringValue.stringByReplacingOccurrencesOfString("(", withString: " ").stringByReplacingOccurrencesOfString(")", withString: "")

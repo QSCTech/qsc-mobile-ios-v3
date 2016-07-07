@@ -156,7 +156,11 @@ public class MobileManager: NSObject {
         for exam in exams {
             if let startTime = exam.startTime, endTime = exam.endTime {
                 if exam.startTime! < date.tomorrow && exam.endTime! >= date.today  {
-                    let event = Event(duration: .PartialTime, category: .Exam, tags: [], name: exam.name!, time: exam.time!, place: exam.place!, start: startTime, end: endTime, object: exam)
+                    var place = exam.place!
+                    if !exam.seat!.isEmpty {
+                        place += " #" + exam.seat!
+                    }
+                    let event = Event(duration: .PartialTime, category: .Exam, tags: [], name: exam.name!, time: exam.time!, place: place, start: startTime, end: endTime, object: exam)
                     array.append(event)
                 }
             }
