@@ -177,7 +177,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let events = filteredEvents(section)
         if section == 0 {
-            return Int(calendarManager.holidayForDate(selectedDate) != nil || calendarManager.adjustmentForDate(selectedDate) != nil || events.count == 0)
+            let semester = calendarManager.semesterForDate(selectedDate)
+            let holidays: [CalendarSemester] = [.WinterMini, .SummerMini, .SummerTime]
+            return Int(calendarManager.holidayForDate(selectedDate) != nil || calendarManager.adjustmentForDate(selectedDate) != nil || holidays.contains(semester) || events.count == 0)
         } else {
             return events.count
         }
@@ -194,7 +196,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
-            cell.frame.height
+            let semester = calendarManager.semesterForDate(selectedDate)
+            let holidays: [CalendarSemester] = [.WinterMini, .SummerMini, .SummerTime]
             if let holiday = calendarManager.holidayForDate(selectedDate) {
                 cell.textLabel!.text = holiday
             } else if let adjustment = calendarManager.adjustmentForDate(selectedDate) {
@@ -202,6 +205,12 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                 formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
                 formatter.dateFormat = "yyyy年MM月dd日"
                 cell.textLabel!.text = "\(adjustment.name)调休（\(formatter.stringFromDate(adjustment.fromDate))）"
+            } else if holidays.contains(semester) {
+                if semester == .SummerTime {
+                    cell.textLabel!.text = "暑期短学期"
+                } else {
+                    cell.textLabel!.text = semester.name
+                }
             } else {
                 cell.textLabel!.text = "本日无事"
             }
