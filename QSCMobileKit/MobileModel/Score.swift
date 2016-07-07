@@ -10,16 +10,16 @@ import Foundation
 import CoreData
 
 
-class Score: NSManagedObject {
+public class Score: NSManagedObject {
 
-    @NSManaged var credit: NSNumber?
-    @NSManaged var gradePoint: NSNumber?
-    @NSManaged var identifier: String?
-    @NSManaged var name: String?
-    @NSManaged var score: String?
-    @NSManaged var year: String?
-    @NSManaged var semester: String?
-    @NSManaged var makeup: String?
+    @NSManaged public var credit: NSNumber?
+    @NSManaged public var gradePoint: NSNumber?
+    @NSManaged public var identifier: String?
+    @NSManaged public var name: String?
+    @NSManaged public var score: String?
+    @NSManaged public var year: String?
+    @NSManaged public var semester: String?
+    @NSManaged public var makeup: String?
     @NSManaged var user: User?
 
 }

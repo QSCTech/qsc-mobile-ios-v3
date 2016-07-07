@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import CoreData
 import SafariServices
 import QSCMobileKit
 
 class CourseDetailViewController: UITableViewController {
     
-    var courseObject: Course!
+    var managedObject: NSManagedObject!
+    var courseObject: Course?
+    var examObject: Exam?
+    var scoreObject: Score?
     var courseEvent: CourseEvent!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let identifier = managedObject.valueForKey("identifier") as? String {
+            (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
+            courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
+        } else {
+            navigationController?.popViewControllerAnimated(true)
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,7 +78,7 @@ class CourseDetailViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Detail.Basic.rawValue:
-            return courseObject.timePlaces!.count + 1
+            return courseObject!.timePlaces!.count + 1
         case Detail.Exam.rawValue:
             return 0
         case Detail.Info.rawValue:
@@ -101,14 +116,14 @@ class CourseDetailViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCellWithIdentifier("Name") as! CourseNameCell
-                cell.nameLabel.text = courseObject.name
-                cell.identifierLabel!.text = courseObject.identifier
-                cell.categoryLabel!.text = courseObject.category
+                cell.nameLabel.text = courseObject!.name
+                cell.identifierLabel!.text = courseObject!.identifier
+                cell.categoryLabel!.text = courseObject!.category
                 return cell
             default:
                 let cell = tableView.dequeueReusableCellWithIdentifier("TimePlace") as! CourseTimePlaceCell
                 let sortDescriptors = [NSSortDescriptor(key: "weekday", ascending: true), NSSortDescriptor(key: "periods", ascending: true)]
-                let timePlace = courseObject.timePlaces!.sortedArrayUsingDescriptors(sortDescriptors)[indexPath.row - 1] as! TimePlace
+                let timePlace = courseObject!.timePlaces!.sortedArrayUsingDescriptors(sortDescriptors)[indexPath.row - 1] as! TimePlace
                 cell.placeLabel!.text = timePlace.place!
                 cell.timeLabel!.text = timePlace.time!
                 return cell
@@ -130,7 +145,7 @@ class CourseDetailViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 if #available(iOS 9.0, *) {
-                    let url = "http://chalaoshi.cn/search?q=" + courseObject.teacher!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                    let url = "http://chalaoshi.cn/search?q=" + courseObject!.teacher!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
                     let svc = SFSafariViewController(URL: NSURL(string: url)!)
                     presentViewController(svc, animated: true, completion: nil)
                 }

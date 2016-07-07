@@ -453,6 +453,20 @@ class DataStore: NSObject {
         return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? User
     }
     
+    /**
+     Retrieve the proper managed object with the identifier prefix.
+     
+     - parameter identifier: The identifier used as prefix.
+     - parameter entityName: The name of the entity.
+     
+     - returns: The managed object.
+     */
+    func objectWithIdentifier(identifier: String, entityName: String) -> NSManagedObject? {
+        let request = NSFetchRequest(entityName: entityName)
+        request.predicate = NSPredicate(format: "identifier LIKE %@", identifier + "*")
+        return try! managedObjectContext.executeFetchRequest(request).first as? NSManagedObject
+    }
+    
     // MARK: - SQLite Management
     
     static func dropSqlite() {

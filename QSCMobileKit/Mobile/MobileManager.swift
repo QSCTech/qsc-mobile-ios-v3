@@ -89,7 +89,7 @@ public class MobileManager: NSObject {
         }
     }
     
-    // MARK: - Retrieve events
+    // MARK: - Retrieve events or objects
     
     public func eventsForDate(date: NSDate) -> [Event] {
         return (coursesForDate(date) + examsForDate(date) + customEventsForDate(date)).sort { $0.start <= $1.start }
@@ -196,6 +196,21 @@ public class MobileManager: NSObject {
             
             return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: event.start!, end: event.end!, object: event)
         }
+    }
+    
+    /**
+     Get the managed object triple of course, exam and score with the identifier.
+     
+     - parameter identifier: Whose first 22 characters are taken as the identifier prefix.
+     
+     - returns: The triple of course, exam and score.
+     */
+    public func objectTripleWithIdentifier(identifier: String) -> (Course?, Exam?, Score?) {
+        let id = identifier.substringToIndex(identifier.startIndex.advancedBy(22))
+        return (dataStore.objectWithIdentifier(id, entityName: "Course") as? Course,
+                dataStore.objectWithIdentifier(id, entityName: "Exam") as? Exam,
+                dataStore.objectWithIdentifier(id, entityName: "Score") as? Score
+        )
     }
     
     

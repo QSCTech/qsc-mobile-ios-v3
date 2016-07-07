@@ -34,7 +34,15 @@ public class EventManager: NSObject {
     
     // MARK: - Retrieval
     
+    /**
+     Return the corresponding event for courses with the identifier.
+     
+     - parameter identifier: Whose first 22 characters are used as the identifier.
+     
+     - returns: The object of `CourseEvent`.
+     */
     public func courseEventForIdentifier(identifier: String) -> CourseEvent? {
+        let identifier = identifier.substringToIndex(identifier.startIndex.advancedBy(22))
         let request = NSFetchRequest(entityName: "CourseEvent")
         request.predicate = NSPredicate(format: "identifier CONTAINS %@", identifier)
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent

@@ -65,8 +65,7 @@ class CalendarViewController: UIViewController {
             vc.selectedDate = selectedDate
         case "showCourseDetail":
             let vc = segue.destinationViewController as! CourseDetailViewController
-            vc.courseObject = selectedEvent.object as! Course
-            vc.courseEvent = EventManager.sharedInstance.courseEventForIdentifier(vc.courseObject.identifier!)
+            vc.managedObject = selectedEvent.object
         default:
             break
         }
