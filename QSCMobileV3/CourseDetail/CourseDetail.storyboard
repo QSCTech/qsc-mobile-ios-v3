@@ -32,7 +32,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UB7-2F-tfg">
                                             <rect key="frame" x="16" y="16" width="10" height="10"/>
-                                            <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.52156862749999999" green="0.82745098039999998" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="10" id="dvd-dc-GUJ"/>
                                                 <constraint firstAttribute="height" constant="10" id="xTI-MN-Scb"/>
@@ -219,7 +219,7 @@
                                     <outlet property="timeLabel" destination="Ctu-PN-f91" id="2bC-Wq-fv6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Info" textLabel="v9h-8a-9ne" detailTextLabel="XCH-j4-P5f" style="IBUITableViewCellStyleValue1" id="s9S-yh-ko2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail" textLabel="v9h-8a-9ne" detailTextLabel="XCH-j4-P5f" style="IBUITableViewCellStyleValue1" id="s9S-yh-ko2">
                                 <rect key="frame" x="0.0" y="176" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9S-yh-ko2" id="pZj-lv-CrP">

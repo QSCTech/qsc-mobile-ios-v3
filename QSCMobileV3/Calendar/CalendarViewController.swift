@@ -239,7 +239,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedEvent = filteredEvents(indexPath.section)[indexPath.row]
-        if selectedEvent.category == .Course {
+        if selectedEvent.category == .Course || selectedEvent.category == .Exam {
             performSegueWithIdentifier("showCourseDetail", sender: nil)
         }
     }

@@ -11,6 +11,7 @@ import MessageUI
 import QSCMobileKit
 
 let RefreshOnLaunchKey = "RefreshOnLaunch"
+let ShowScoreKey = "ShowScore"
 
 class PreferenceViewController: UITableViewController {
     
@@ -58,7 +59,7 @@ class PreferenceViewController: UITableViewController {
         case Preference.Zjuwlan.rawValue:
             return 1
         case Preference.Setting.rawValue:
-            return 3
+            return 4
         case Preference.About.rawValue:
             return 3
         default:
@@ -94,11 +95,8 @@ class PreferenceViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-                if #available(iOS 9.0, *) {
-                    cell.focusStyle = .Custom
-                }
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
-                let switchView = UISwitch(frame: CGRectZero)
+                let switchView = UISwitch(frame: CGRect.zero)
                 switchView.onTintColor = QSCColor.theme
                 let refreshOnLaunch = groupDefaults.boolForKey(RefreshOnLaunchKey)
                 switchView.setOn(refreshOnLaunch, animated: false)
@@ -107,11 +105,21 @@ class PreferenceViewController: UITableViewController {
                 return cell
             case 1:
                 let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+                cell.textLabel!.attributedText = "\u{f06e}\t在课程页面显示成绩".attributedWithFontAwesome
+                let switchView = UISwitch(frame: CGRect.zero)
+                switchView.onTintColor = QSCColor.theme
+                let showScore = groupDefaults.boolForKey(ShowScoreKey)
+                switchView.setOn(showScore, animated: false)
+                switchView.addTarget(self, action: #selector(showScoreSwitchChanged), forControlEvents: .ValueChanged)
+                cell.accessoryView = switchView
+                return cell
+            case 2:
+                let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
                 cell.textLabel!.attributedText = "\u{f073}\t日程提醒".attributedWithFontAwesome
                 cell.detailTextLabel!.text = EventNotificationViewController.status
                 cell.accessoryType = .DisclosureIndicator
                 return cell
-            case 2:
+            case 3:
                 let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
                 cell.textLabel!.attributedText = "\u{f071}\t清空缓存".attributedWithFontAwesome
                 cell.detailTextLabel!.text = mobileManager.sizeOfSqlite
@@ -154,9 +162,9 @@ class PreferenceViewController: UITableViewController {
             showViewController(vc, sender: nil)
         case Preference.Setting.rawValue:
             switch indexPath.row {
-            case 1:
-                performSegueWithIdentifier("showEventNotification", sender: nil)
             case 2:
+                performSegueWithIdentifier("showEventNotification", sender: nil)
+            case 3:
                 let alert = UIAlertController(title: "清空缓存", message: "包括所有教务网账号及其关联的教务信息、校历和校车数据，但不会删除您添加的日程和课程信息，确定要继续吗？", preferredStyle: .Alert)
                 let no = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
                 alert.addAction(no)
@@ -223,6 +231,11 @@ class PreferenceViewController: UITableViewController {
     func refreshSwitchChanged(sender: AnyObject) {
         let switchView = sender as! UISwitch
         groupDefaults.setBool(switchView.on, forKey: RefreshOnLaunchKey)
+    }
+    
+    func showScoreSwitchChanged(sender: AnyObject) {
+        let switchView = sender as! UISwitch
+        groupDefaults.setBool(switchView.on, forKey: ShowScoreKey)
     }
     
     private func reloadRowsOfJwbinfosys() {

@@ -80,7 +80,7 @@ class CourseDetailViewController: UITableViewController {
         case Detail.Basic.rawValue:
             return courseObject!.timePlaces!.count + 1
         case Detail.Exam.rawValue:
-            return 0
+            return 2
         case Detail.Info.rawValue:
             var count = 0
             for info in infos {
@@ -105,6 +105,12 @@ class CourseDetailViewController: UITableViewController {
             default:
                 return 60
             }
+        case Detail.Exam.rawValue:
+            if indexPath.row == 1 && examObject?.startTime != nil {
+                return 60
+            } else {
+                return 44
+            }
         default:
             return 44
         }
@@ -119,6 +125,11 @@ class CourseDetailViewController: UITableViewController {
                 cell.nameLabel.text = courseObject!.name
                 cell.identifierLabel!.text = courseObject!.identifier
                 cell.categoryLabel!.text = courseObject!.category
+                if managedObject as? Course != nil {
+                    cell.dotView.backgroundColor = QSCColor.course
+                } else if managedObject as? Exam != nil {
+                    cell.dotView.backgroundColor = QSCColor.exam
+                }
                 return cell
             default:
                 let cell = tableView.dequeueReusableCellWithIdentifier("TimePlace") as! CourseTimePlaceCell
@@ -128,8 +139,40 @@ class CourseDetailViewController: UITableViewController {
                 cell.timeLabel!.text = timePlace.time!
                 return cell
             }
+        case Detail.Exam.rawValue:
+            switch indexPath.row {
+            case 1:
+                if let examObject = examObject, _ = examObject.startTime {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("TimePlace") as! CourseTimePlaceCell
+                    cell.placeLabel!.text = examObject.place
+                    if !examObject.seat!.isEmpty {
+                        cell.placeLabel!.text! += " #" + examObject.seat!
+                    }
+                    cell.timeLabel!.text = examObject.time
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+                    cell.selectionStyle = .None
+                    cell.textLabel!.text = "暂无考试信息"
+                    cell.detailTextLabel!.text = ""
+                    return cell
+                }
+            default:
+                let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+                cell.selectionStyle = .None
+                cell.textLabel!.text = "学分：" + courseObject!.credit!.stringValue
+                if let scoreObject = scoreObject {
+                    cell.detailTextLabel!.text =  "成绩：" + scoreObject.gradePoint!.stringValue + " / " + scoreObject.score!
+                } else {
+                    cell.detailTextLabel!.text = "暂无成绩信息"
+                }
+                if !groupDefaults.boolForKey(ShowScoreKey) {
+                    cell.detailTextLabel!.text = ""
+                }
+                return cell
+            }
         case Detail.Info.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Info")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
             cell.textLabel!.text = infos[indexPath.row]["title"]
             cell.detailTextLabel!.text = courseEvent.valueForKey(infos[indexPath.row]["key"]!) as? String
             return cell

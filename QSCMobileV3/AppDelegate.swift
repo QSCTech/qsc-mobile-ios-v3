@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Refresh on launch completed")
             }
         }
+        if groupDefaults.objectForKey(ShowScoreKey) == nil {
+            groupDefaults.setBool(false, forKey: ShowScoreKey)
+        }
         if groupDefaults.objectForKey(EventNotificationKey) == nil {
             // Here 0 means Never
             groupDefaults.setInteger(0, forKey: EventNotificationKey)
