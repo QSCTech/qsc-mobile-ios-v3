@@ -48,7 +48,7 @@ class CourseDetailViewController: UITableViewController {
         case Detail.Basic.rawValue:
             switch indexPath.row {
             case 0:
-                return 70
+                return 66
             default:
                 return 60
             }

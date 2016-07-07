@@ -68,8 +68,15 @@ class DataStore: NSObject {
                 course.credit = basicInfo["Credit"].floatValue
                 course.englishName = basicInfo["EnglishName"].stringValue
                 course.faculty = basicInfo["Faculty"].stringValue
-                course.category = basicInfo["Category"].stringValue.stringByReplacingOccurrencesOfString("\\", withString: "/")
                 course.prerequisite = basicInfo["Prerequisite"].stringValue
+                
+                course.category = basicInfo["Category"].stringValue
+                course.category = course.category!.stringByReplacingOccurrencesOfString("\\", withString: "/")
+                if course.code!.hasPrefix("401") {
+                    course.category = "体育课"
+                } else if Int(course.code!) != nil {
+                    course.category = course.faculty
+                }
                 
                 EventManager.sharedInstance.createCourseEvent(course.identifier!)
                 
@@ -154,7 +161,7 @@ class DataStore: NSObject {
         score.identifier = json["identifier"].stringValue
         score.makeup = json["makeup"].stringValue
         score.name = json["name"].stringValue
-        score.gradePoint = (json["gradePoint"].stringValue as NSString).floatValue
+        score.gradePoint = Float(json["gradePoint"].stringValue)
         score.score = json["score"].stringValue
         score.year = year
         score.semester = semester

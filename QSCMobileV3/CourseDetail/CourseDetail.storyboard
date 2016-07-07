@@ -23,11 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Name" rowHeight="70" id="t5L-mL-Fbb" customClass="CourseNameCell" customModule="QSCMobileV3" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="70"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Name" rowHeight="66" id="t5L-mL-Fbb" customClass="CourseNameCell" customModule="QSCMobileV3" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t5L-mL-Fbb" id="C8b-0s-jeX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UB7-2F-tfg">
@@ -50,11 +50,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Identifier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQY-sl-wlu">
-                                            <rect key="frame" x="16" y="44" width="58" height="17"/>
+                                            <rect key="frame" x="16" y="42" width="51" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="29" id="RPP-WV-T4w"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -64,11 +64,11 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azi-Y4-FWJ">
-                                            <rect key="frame" x="532" y="44" width="60" height="17"/>
+                                            <rect key="frame" x="540" y="42" width="52" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="38" id="dTj-YA-Sgb"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -125,7 +125,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimePlace" rowHeight="60" id="DsX-84-GLC" customClass="CourseTimePlaceCell" customModule="QSCMobileV3" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="120" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DsX-84-GLC" id="FIG-Gq-RWN">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
