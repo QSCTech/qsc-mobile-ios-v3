@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 import QSCMobileKit
 
 class CourseDetailViewController: UITableViewController {
@@ -14,15 +15,46 @@ class CourseDetailViewController: UITableViewController {
     var courseObject: Course!
     var courseEvent: CourseEvent!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     private enum Detail: Int {
         case Basic = 0, Exam, Info, Homework
         static let count = 4
     }
     
-    private enum Info: Int {
-        case Teacher = 0, Email, Phone, Website, QQGroup, PublicEmail, PublicPassword
-        static let count = 7
-    }
+    private let infos = [
+        [
+            "title": "教师",
+            "key": "teacher",
+        ],
+        [
+            "title": "电子邮箱",
+            "key": "email",
+        ],
+        [
+            "title": "联系电话",
+            "key": "phone",
+        ],
+        [
+            "title": "课程网站",
+            "key": "website",
+        ],
+        [
+            "title": "QQ 群",
+            "key": "qqGroup",
+        ],
+        [
+            "title": "公共邮箱",
+            "key": "publicEmail",
+        ],
+        [
+            "title": "公邮密码",
+            "key": "publicPassword",
+        ],
+    ]
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return Detail.count
@@ -35,7 +67,13 @@ class CourseDetailViewController: UITableViewController {
         case Detail.Exam.rawValue:
             return 0
         case Detail.Info.rawValue:
-            return Info.count
+            var count = 0
+            for info in infos {
+                if courseEvent.valueForKey(info["key"]!) != nil {
+                    count += 1
+                }
+            }
+            return count
         case Detail.Homework.rawValue:
             return courseEvent.homeworks!.count
         default:
@@ -75,8 +113,32 @@ class CourseDetailViewController: UITableViewController {
                 cell.timeLabel!.text = timePlace.time!
                 return cell
             }
+        case Detail.Info.rawValue:
+            let cell = tableView.dequeueReusableCellWithIdentifier("Info")!
+            cell.textLabel!.text = infos[indexPath.row]["title"]
+            cell.detailTextLabel!.text = courseEvent.valueForKey(infos[indexPath.row]["key"]!) as? String
+            return cell
         default:
             return UITableViewCell()
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        switch indexPath.section {
+        case Detail.Info.rawValue:
+            switch indexPath.row {
+            case 0:
+                if #available(iOS 9.0, *) {
+                    let url = "http://chalaoshi.cn/search?q=" + courseObject.teacher!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                    let svc = SFSafariViewController(URL: NSURL(string: url)!)
+                    presentViewController(svc, animated: true, completion: nil)
+                }
+            default:
+                break
+            }
+        default:
+            break
         }
     }
     

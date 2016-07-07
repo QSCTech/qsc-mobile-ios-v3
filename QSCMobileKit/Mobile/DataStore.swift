@@ -78,7 +78,7 @@ class DataStore: NSObject {
                     course.category = course.faculty
                 }
                 
-                EventManager.sharedInstance.createCourseEvent(course.identifier!)
+                EventManager.sharedInstance.createCourseEvent(course.identifier!, teacher: course.teacher!)
                 
                 for (_, json) in json["timePlace"] {
                     if json["course"].array == nil {

@@ -10,6 +10,7 @@
         <attribute name="publicPassword" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="qqGroup" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teacher" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="homeworks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Homework" inverseName="courseEvent" inverseEntity="Homework" syncable="YES"/>
     </entity>
@@ -36,7 +37,7 @@
         <relationship name="courseEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CourseEvent" inverseName="homeworks" inverseEntity="CourseEvent" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CourseEvent" positionX="-54" positionY="-9" width="128" height="210"/>
+        <element name="CourseEvent" positionX="-54" positionY="-9" width="128" height="225"/>
         <element name="CustomEvent" positionX="-45" positionY="63" width="128" height="225"/>
         <element name="Homework" positionX="-36" positionY="63" width="128" height="135"/>
     </elements>

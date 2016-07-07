@@ -15,6 +15,7 @@ public class CourseEvent: NSManagedObject {
     @NSManaged public var tags: String?
     @NSManaged public var notes: String?
     @NSManaged public var hasReminder: NSNumber?
+    @NSManaged public var teacher: String?
     @NSManaged public var email: String?
     @NSManaged public var phone: String?
     @NSManaged public var website: String?

@@ -56,10 +56,11 @@ public class EventManager: NSObject {
      
      - parameter identifier: Identifier of the course, e.g. "(2015-2016-2)-051F0090".
      */
-    func createCourseEvent(identifier: String) {
+    func createCourseEvent(identifier: String, teacher: String) {
         if courseEventForIdentifier(identifier) == nil {
             let courseEvent = CourseEvent(context: managedObjectContext)
             courseEvent.identifier = identifier
+            courseEvent.teacher = teacher
             try! managedObjectContext.save()
         }
     }
