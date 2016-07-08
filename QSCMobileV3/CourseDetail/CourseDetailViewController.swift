@@ -9,8 +9,11 @@
 import UIKit
 import CoreData
 import SafariServices
+import MessageUI
+import MBProgressHUD
 import QSCMobileKit
 
+// FIXME: Refresh in another tab will make courseObject nil.
 class CourseDetailViewController: UITableViewController {
     
     var managedObject: NSManagedObject!
@@ -25,6 +28,7 @@ class CourseDetailViewController: UITableViewController {
         if let identifier = managedObject.valueForKey("identifier") as? String {
             (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
             courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
         } else {
             navigationController?.popViewControllerAnimated(true)
         }
@@ -33,6 +37,11 @@ class CourseDetailViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = (segue.destinationViewController as! UINavigationController).topViewController as! CourseEditViewController
+        vc.courseEvent = courseEvent
     }
     
     private enum Detail: Int {
@@ -84,8 +93,10 @@ class CourseDetailViewController: UITableViewController {
         case Detail.Info.rawValue:
             var count = 0
             for info in infos {
-                if courseEvent.valueForKey(info["key"]!) != nil {
-                    count += 1
+                if let value = courseEvent.valueForKey(info["key"]!) as? String {
+                    if !value.isEmpty {
+                        count += 1
+                    }
                 }
             }
             return count
@@ -153,7 +164,7 @@ class CourseDetailViewController: UITableViewController {
                 } else {
                     let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
                     cell.selectionStyle = .None
-                    cell.textLabel!.text = "暂无考试信息"
+                    cell.textLabel!.text = "无考试信息"
                     cell.detailTextLabel!.text = ""
                     return cell
                 }
@@ -173,8 +184,16 @@ class CourseDetailViewController: UITableViewController {
             }
         case Detail.Info.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
-            cell.textLabel!.text = infos[indexPath.row]["title"]
-            cell.detailTextLabel!.text = courseEvent.valueForKey(infos[indexPath.row]["key"]!) as? String
+            var values = [(String, String)]()
+            for info in infos {
+                if let value = courseEvent.valueForKey(info["key"]!) as? String {
+                    if !value.isEmpty {
+                        values.append((info["title"]!, value))
+                    }
+                }
+            }
+            cell.textLabel!.text = values[indexPath.row].0
+            cell.detailTextLabel!.text = values[indexPath.row].1
             return cell
         default:
             return UITableViewCell()
@@ -185,19 +204,64 @@ class CourseDetailViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
         case Detail.Info.rawValue:
-            switch indexPath.row {
-            case 0:
+            let cell = tableView.cellForRowAtIndexPath(indexPath)!
+            switch cell.textLabel!.text! {
+            case infos[0]["title"]!:
+                let url = NSURL(string: "http://chalaoshi.cn/search?q=" + courseEvent.teacher!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
                 if #available(iOS 9.0, *) {
-                    let url = "http://chalaoshi.cn/search?q=" + courseObject!.teacher!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-                    let svc = SFSafariViewController(URL: NSURL(string: url)!)
+                    let svc = SFSafariViewController(URL: url)
                     presentViewController(svc, animated: true, completion: nil)
                 }
+            case infos[1]["title"]!:
+                let mcvc = MFMailComposeViewController()
+                mcvc.mailComposeDelegate = self
+                mcvc.setToRecipients([courseEvent.email!])
+                presentViewController(mcvc, animated: true, completion: nil)
+            case infos[2]["title"]!:
+                UIApplication.sharedApplication().openURL(NSURL(string: "telprompt:" + courseEvent.phone!)!)
+            case infos[3]["title"]!:
+                var prefix = ""
+                if !courseEvent.website!.containsString("://") {
+                    prefix = "http://"
+                } else if !courseEvent.website!.hasPrefix("http") {
+                    prefix = "不支持 "
+                }
+                if let url = NSURL(string: prefix + courseEvent.website!) {
+                    if #available(iOS 9.0, *) {
+                        let svc = SFSafariViewController(URL: url)
+                        presentViewController(svc, animated: true, completion: nil)
+                    }
+                } else {
+                    let alert = UIAlertController(title: "课程网站", message: "浏览器无法打开链接", preferredStyle: .Alert)
+                    let action = UIAlertAction(title: "好", style: .Default, handler: nil)
+                    alert.addAction(action)
+                    presentViewController(alert, animated: true, completion: nil)
+                }
             default:
-                break
+                let pasteboard = UIPasteboard.generalPasteboard()
+                pasteboard.string = cell.detailTextLabel!.text
+                let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+                hud.mode = .Text
+                hud.labelText = "已拷贝到剪贴板"
+                delay(1) {
+                    hud.hide(true)
+                }
             }
         default:
             break
         }
+    }
+    
+    func edit(sender: AnyObject) {
+        performSegueWithIdentifier("Edit", sender: nil)
+    }
+    
+}
+
+extension CourseDetailViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

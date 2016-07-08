@@ -95,6 +95,7 @@ class PreferenceViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.selectionStyle = .None
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
                 let switchView = UISwitch(frame: CGRect.zero)
                 switchView.onTintColor = QSCColor.theme
@@ -105,6 +106,7 @@ class PreferenceViewController: UITableViewController {
                 return cell
             case 1:
                 let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+                cell.selectionStyle = .None
                 cell.textLabel!.attributedText = "\u{f06e}\t在课程页面显示成绩".attributedWithFontAwesome
                 let switchView = UISwitch(frame: CGRect.zero)
                 switchView.onTintColor = QSCColor.theme

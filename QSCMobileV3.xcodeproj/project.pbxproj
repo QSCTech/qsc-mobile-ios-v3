@@ -57,6 +57,7 @@
 		9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */; };
 		9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475661D2D075800F4B3DF /* CourseNameCell.swift */; };
 		9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */; };
+		9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
@@ -188,6 +189,7 @@
 		9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = CourseDetail/CourseDetailViewController.swift; sourceTree = "<group>"; };
 		9DC475661D2D075800F4B3DF /* CourseNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseNameCell.swift; path = CourseDetail/CourseNameCell.swift; sourceTree = "<group>"; };
 		9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTimePlaceCell.swift; path = CourseDetail/CourseTimePlaceCell.swift; sourceTree = "<group>"; };
+		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseEditViewController.swift; path = CourseDetail/CourseEditViewController.swift; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			children = (
 				9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */,
 				9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */,
+				9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */,
 				9DC475661D2D075800F4B3DF /* CourseNameCell.swift */,
 				9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */,
 			);
@@ -779,6 +782,7 @@
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
+				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,

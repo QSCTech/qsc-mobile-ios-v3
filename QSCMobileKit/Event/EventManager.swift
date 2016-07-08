@@ -84,4 +84,10 @@ public class EventManager: NSObject {
         try! managedObjectContext.save()
     }
     
+    // MARK: - Save
+    
+    public func save() {
+        try! managedObjectContext.save()
+    }
+    
 }
