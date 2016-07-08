@@ -48,13 +48,38 @@ public class EventManager: NSObject {
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
     }
     
-    // TODO: Handle repetition
-    func customEventsForDate(date: NSDate) -> [CustomEvent] {
+    public func customEventsForDate(date: NSDate) -> [Event] {
         let request = NSFetchRequest(entityName: "CustomEvent")
         request.predicate = NSPredicate(format: "(start < %@) AND (end >= %@)", date.tomorrow, date.today)
+        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
         let events = try! managedObjectContext.executeFetchRequest(request) as! [CustomEvent]
         
-        return events.sort { $0.start <= $1.start }
+        return events.map { event in
+            let duration = Event.Duration(rawValue: event.duration!.integerValue)!
+            let category = Event.Category(rawValue: event.category!.integerValue)!
+            let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
+            
+            let formatter = NSDateFormatter()
+            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            formatter.dateFormat = "yyyy年MM月dd日"
+            var startTime = formatter.stringFromDate(event.start!)
+            var endTime = formatter.stringFromDate(event.end!)
+            let time: String
+            if startTime == endTime {
+                if event.duration! == Event.Duration.PartialTime.rawValue {
+                    formatter.dateFormat = "HH:mm"
+                    startTime += " " + formatter.stringFromDate(event.start!)
+                    endTime = formatter.stringFromDate(event.end!)
+                    time = startTime + "-" + endTime
+                } else {
+                    time = startTime
+                }
+            } else {
+                time = startTime + " - " + endTime
+            }
+            
+            return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: event.start!, end: event.end!, object: event)
+        }
     }
     
     // MARK: - Creation

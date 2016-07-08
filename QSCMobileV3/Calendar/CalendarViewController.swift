@@ -131,7 +131,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
         let date = dayView.date.convertedDate()!
-        let events = mobileManager.eventsForDate(date)
+        let events = eventsForDate(date)
         if events.isEmpty {
             return false
         } else {
@@ -141,7 +141,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
         let date = dayView.date.convertedDate()!
-        let events = mobileManager.eventsForDate(date)
+        let events = eventsForDate(date)
         var colors = Set<UIColor>()
         for event in events {
             colors.insert(QSCColor.event(event.category))
@@ -151,7 +151,6 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
 }
 
-// TODO: Check whether logged in
 // TODO: Decide whether to use system time zone or UTC+8
 
 // MARK: - UITableView{Delegate,DataSource}
@@ -244,8 +243,16 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func eventsForDate(date: NSDate) -> [Event] {
+        if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
+            return EventManager.sharedInstance.customEventsForDate(date)
+        } else {
+            return mobileManager.eventsForDate(date)
+        }
+    }
+    
     func filteredEvents(section: Int) -> [Event] {
-        let events = mobileManager.eventsForDate(selectedDate)
+        let events = eventsForDate(selectedDate)
         switch section {
         case 1:
             return events.filter { $0.duration == .AllDay }

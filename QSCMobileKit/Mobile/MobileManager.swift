@@ -92,7 +92,7 @@ public class MobileManager: NSObject {
     // MARK: - Retrieve events
     
     public func eventsForDate(date: NSDate) -> [Event] {
-        return (coursesForDate(date) + examsForDate(date) + customEventsForDate(date)).sort { $0.start <= $1.start }
+        return (coursesForDate(date) + examsForDate(date) + eventManager.customEventsForDate(date)).sort { $0.start <= $1.start }
     }
     
     /**
@@ -166,36 +166,6 @@ public class MobileManager: NSObject {
             }
         }
         return array.sort { $0.start <= $1.start }
-    }
-    
-    public func customEventsForDate(date: NSDate) -> [Event] {
-        let events = eventManager.customEventsForDate(date)
-        return events.map { event in
-            let duration = Event.Duration(rawValue: event.duration!.integerValue)!
-            let category = Event.Category(rawValue: event.category!.integerValue)!
-            let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
-            
-            let formatter = NSDateFormatter()
-            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            formatter.dateFormat = "yyyy年MM月dd日"
-            var startTime = formatter.stringFromDate(event.start!)
-            var endTime = formatter.stringFromDate(event.end!)
-            let time: String
-            if startTime == endTime {
-                if event.duration! == Event.Duration.PartialTime.rawValue {
-                    formatter.dateFormat = "HH:mm"
-                    startTime += " " + formatter.stringFromDate(event.start!)
-                    endTime = formatter.stringFromDate(event.end!)
-                    time = startTime + "-" + endTime
-                } else {
-                    time = startTime
-                }
-            } else {
-                time = startTime + " - " + endTime
-            }
-            
-            return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: event.start!, end: event.end!, object: event)
-        }
     }
     
     
