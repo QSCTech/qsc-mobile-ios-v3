@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
     <entity name="Adjustment" representedClassName=".Adjustment" syncable="YES">
         <attribute name="fromEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fromStart" optional="YES" attributeType="Date" syncable="YES"/>
@@ -99,7 +99,9 @@
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="timePlaces" inverseEntity="Course" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="endSemester" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startSemester" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="user" inverseEntity="Course" syncable="YES"/>
         <relationship name="exams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exam" inverseName="user" inverseEntity="Exam" syncable="YES"/>
         <relationship name="scores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Score" inverseName="user" inverseEntity="Score" syncable="YES"/>
@@ -126,7 +128,7 @@
         <element name="SemesterScore" positionX="9" positionY="126" width="128" height="120"/>
         <element name="Statistics" positionX="-9" positionY="135" width="128" height="135"/>
         <element name="TimePlace" positionX="-9" positionY="108" width="128" height="135"/>
-        <element name="User" positionX="27" positionY="153" width="128" height="135"/>
+        <element name="User" positionX="27" positionY="153" width="128" height="165"/>
         <element name="Year" positionX="9" positionY="144" width="128" height="135"/>
     </elements>
 </model>

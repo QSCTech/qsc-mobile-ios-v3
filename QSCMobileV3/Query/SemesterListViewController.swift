@@ -26,19 +26,18 @@ class SemesterListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mobileManager.semesterScores.count
+        return mobileManager.allSemesters.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-        let semesterScore = mobileManager.semesterScores[indexPath.row]
-        let semester: String
-        if semesterScore.semester == "SS" {
-            semester = "春夏"
+        let semester = mobileManager.allSemesters.reverse()[indexPath.row]
+        cell.textLabel!.text = semester.substringToIndex(semester.endIndex.advancedBy(-2))
+        if semester.hasSuffix("1") {
+            cell.textLabel!.text! += " 秋冬"
         } else {
-            semester = "秋冬"
+            cell.textLabel!.text! += " 春夏"
         }
-        cell.textLabel!.text = semesterScore.year! + " " + semester
         return cell
     }
     

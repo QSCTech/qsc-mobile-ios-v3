@@ -13,6 +13,8 @@ import CoreData
 class User: NSManagedObject {
 
     @NSManaged var sid: String?
+    @NSManaged var startSemester: String?
+    @NSManaged var endSemester: String?
     @NSManaged var courses: NSSet?
     @NSManaged var exams: NSSet?
     @NSManaged var scores: NSSet?

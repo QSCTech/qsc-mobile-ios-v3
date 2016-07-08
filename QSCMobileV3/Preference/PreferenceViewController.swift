@@ -241,6 +241,9 @@ class PreferenceViewController: UITableViewController {
     }
     
     private func reloadRowsOfJwbinfosys() {
+        if accountManager.currentAccountForJwbinfosys == nil {
+            return
+        }
         var indexPaths = [NSIndexPath]()
         for row in 0...(tableView.numberOfRowsInSection(Preference.Jwbinfosys.rawValue) - 2) {
             indexPaths.append(NSIndexPath(forRow: row, inSection: Preference.Jwbinfosys.rawValue))

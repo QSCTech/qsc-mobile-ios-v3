@@ -56,13 +56,20 @@ class DataStore: NSObject {
                 course.isDetermined = json["determined"].boolValue
                 course.year = json["year"].stringValue
                 
-                course.identifier = "(" + course.year!
                 if course.semester!.includesSemester(.Spring) || course.semester!.includesSemester(.Summer) {
-                    course.identifier! += "-2)-"
+                    course.identifier = course.year! + "-2"
                 } else {
-                    course.identifier! += "-1)-"
+                    course.identifier = course.year! + "-1"
                 }
-                course.identifier! += course.code!
+                currentUser.startSemester = currentUser.startSemester ?? course.identifier!
+                if course.identifier! < currentUser.startSemester! {
+                    currentUser.startSemester = course.identifier
+                }
+                currentUser.endSemester = currentUser.endSemester ?? course.identifier!
+                if course.identifier! > currentUser.endSemester! {
+                    currentUser.endSemester = course.identifier
+                }
+                course.identifier = "(\(course.identifier!))-\(course.code!)"
                 
                 let basicInfo = json["basicInfo"]
                 course.credit = basicInfo["Credit"].floatValue
@@ -300,7 +307,7 @@ class DataStore: NSObject {
     // MARK: - Deletion
     
     /**
-     Delete all entities with the specified name. This method uses APIs only available on iOS 9.0 or newer.
+     Delete all entities with the specified name.
      
      - parameter entityName: The name of entities.
      */
@@ -408,7 +415,7 @@ class DataStore: NSObject {
             let course = $0 as! Course
             return course.isDetermined!.boolValue && course.year == year && course.semester!.includesSemester(semester)
         } as! [Course]
-        return array.sort { $0.credit! >= $1.credit! }
+        return array.sort { $0.identifier! < $1.identifier! }
     }
     
     /**
@@ -421,7 +428,7 @@ class DataStore: NSObject {
             let exam = $0 as! Exam
             return exam.year == year && exam.semester!.includesSemester(semester)
         } as! [Exam]
-        return array.sort { $0.credit! >= $1.credit! }
+        return array.sort { $0.identifier! < $1.identifier! }
     }
     
     /**
@@ -434,7 +441,7 @@ class DataStore: NSObject {
             let score = $0 as! Score
             return score.year == year && score.semester!.includesSemester(semester)
         } as! [Score]
-        return array.sort { $0.gradePoint! >= $1.gradePoint! }
+        return array.sort { $0.gradePoint! > $1.gradePoint! }
     }
     
     var semesterScores: [SemesterScore] {
@@ -444,6 +451,26 @@ class DataStore: NSObject {
     
     var statistics: Statistics {
         return currentUser.statistics!
+    }
+    
+    /// All semesters in which the current user has studied.
+    var allSemesters: [String] {
+        if let start = currentUser.startSemester, end = currentUser.endSemester {
+            var semesters = [start]
+            while semesters.last != end {
+                var current = semesters.last!
+                if current.hasSuffix("1") {
+                    current = current.substringToIndex(current.endIndex.predecessor()) + "2"
+                } else {
+                    let year = Int(current.substringToIndex(current.startIndex.advancedBy(4)))!
+                    current = "\(year + 1)-\(year + 2)-1"
+                }
+                semesters.append(current)
+            }
+            return semesters
+        } else {
+            return []
+        }
     }
     
     static func entityForYear(date: NSDate) -> Year? {
@@ -459,17 +486,18 @@ class DataStore: NSObject {
     }
     
     /**
-     Retrieve the proper managed object with the identifier prefix.
+     Retrieve all proper managed objects with the identifier prefix.
      
      - parameter identifier: The identifier used as prefix.
      - parameter entityName: The name of the entity.
      
-     - returns: The managed object.
+     - returns: The array of managed objects.
      */
-    func objectWithIdentifier(identifier: String, entityName: String) -> NSManagedObject? {
+    func objectsWithIdentifier(identifier: String, entityName: String) -> [NSManagedObject] {
         let request = NSFetchRequest(entityName: entityName)
-        request.predicate = NSPredicate(format: "identifier LIKE %@", identifier + "*")
-        return try! managedObjectContext.executeFetchRequest(request).first as? NSManagedObject
+        request.predicate = NSPredicate(format: "user.sid == %@ AND identifier LIKE %@", currentUser.sid!, identifier + "*")
+        request.sortDescriptors = [NSSortDescriptor.init(key: "identifier", ascending: true)]
+        return try! managedObjectContext.executeFetchRequest(request) as! [NSManagedObject]
     }
     
     // MARK: - SQLite Management

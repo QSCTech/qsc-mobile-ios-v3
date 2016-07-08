@@ -143,7 +143,12 @@ class QueryViewController: UITableViewController {
         switch indexPath.section {
         case Tools.Query.rawValue:
             if indexPath.row < 3 {
-                performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
+                if accountManager.currentAccountForJwbinfosys == nil {
+                    let vc = JwbinfosysLoginViewController()
+                    presentViewController(vc, animated: true, completion: nil)
+                } else {
+                    performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
+                }
             } else {
                 let vc = BusViewController()
                 showViewController(vc, sender: nil)

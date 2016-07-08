@@ -210,9 +210,9 @@ public class MobileManager: NSObject {
      */
     public func objectTripleWithIdentifier(identifier: String) -> (Course?, Exam?, Score?) {
         let id = identifier.substringToIndex(identifier.startIndex.advancedBy(22))
-        return (dataStore.objectWithIdentifier(id, entityName: "Course") as? Course,
-                dataStore.objectWithIdentifier(id, entityName: "Exam") as? Exam,
-                dataStore.objectWithIdentifier(id, entityName: "Score") as? Score
+        return (dataStore.objectsWithIdentifier(id, entityName: "Course").first as? Course,
+                dataStore.objectsWithIdentifier(id, entityName: "Exam").first as? Exam,
+                dataStore.objectsWithIdentifier(id, entityName: "Score").first as? Score
         )
     }
     
@@ -220,16 +220,43 @@ public class MobileManager: NSObject {
         return dataStore.semesterScores
     }
     
-    public func getCourses(year: String, semester: CalendarSemester) -> [Course] {
-        return dataStore.getCourses(year: year, semester: semester)
+    /**
+     Get all courses of the given semester.
+     
+     - parameter semester: A string representing the semester, e.g. 2015-2016-2.
+     
+     - returns: The array of courses.
+     */
+    public func getCourses(semester: String) -> [Course] {
+        return dataStore.objectsWithIdentifier("(\(semester))", entityName: "Course") as! [Course]
     }
     
-    public func getExams(year: String, semester: CalendarSemester) -> [Exam] {
-        return dataStore.getExams(year: year, semester: semester)
+    /**
+     Get all exams of the given semester.
+     
+     - parameter semester: A string representing the semester, e.g. 2015-2016-2.
+     
+     - returns: The array of exams.
+     */
+    public func getExams(semester: String) -> [Exam] {
+        return dataStore.objectsWithIdentifier("(\(semester))", entityName: "Exam") as! [Exam]
     }
     
+    /**
+     Get all scores of the given year and semester.
+     
+     - parameter year:     A string representing the year, e.g. 2015-2016.
+     - parameter semester: A member of `CalendarSemester`.
+     
+     - returns: The array of scores.
+     */
     public func getScores(year: String, semester: CalendarSemester) -> [Score] {
         return dataStore.getScores(year: year, semester: semester)
+    }
+    
+    /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
+    public var allSemesters: [String] {
+        return dataStore.allSemesters
     }
     
     
