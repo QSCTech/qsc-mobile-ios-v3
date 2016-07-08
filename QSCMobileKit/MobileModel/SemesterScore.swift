@@ -10,12 +10,12 @@ import Foundation
 import CoreData
 
 
-class SemesterScore: NSManagedObject {
+public class SemesterScore: NSManagedObject {
 
-    @NSManaged var year: String?
-    @NSManaged var semester: String?
-    @NSManaged var totalCredit: NSNumber?
-    @NSManaged var averageGrade: NSNumber?
+    @NSManaged public var year: String?
+    @NSManaged public var semester: String?
+    @NSManaged public var totalCredit: NSNumber?
+    @NSManaged public var averageGrade: NSNumber?
     @NSManaged var user: User?
 
 }

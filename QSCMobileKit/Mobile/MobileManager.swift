@@ -89,7 +89,7 @@ public class MobileManager: NSObject {
         }
     }
     
-    // MARK: - Retrieve events or objects
+    // MARK: - Retrieve events
     
     public func eventsForDate(date: NSDate) -> [Event] {
         return (coursesForDate(date) + examsForDate(date) + customEventsForDate(date)).sort { $0.start <= $1.start }
@@ -198,6 +198,9 @@ public class MobileManager: NSObject {
         }
     }
     
+    
+    // MARK: - Retrieve managed objects
+    
     /**
      Get the managed object triple of course, exam and score with the identifier.
      
@@ -211,6 +214,22 @@ public class MobileManager: NSObject {
                 dataStore.objectWithIdentifier(id, entityName: "Exam") as? Exam,
                 dataStore.objectWithIdentifier(id, entityName: "Score") as? Score
         )
+    }
+    
+    public var semesterScores: [SemesterScore] {
+        return dataStore.semesterScores
+    }
+    
+    public func getCourses(year: String, semester: CalendarSemester) -> [Course] {
+        return dataStore.getCourses(year: year, semester: semester)
+    }
+    
+    public func getExams(year: String, semester: CalendarSemester) -> [Exam] {
+        return dataStore.getExams(year: year, semester: semester)
+    }
+    
+    public func getScores(year: String, semester: CalendarSemester) -> [Score] {
+        return dataStore.getScores(year: year, semester: semester)
     }
     
     

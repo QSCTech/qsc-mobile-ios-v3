@@ -22,15 +22,15 @@ class QueryViewController: UITableViewController {
     private let queries: [[String: String]] = [
         [
             "name": "\u{f02d}\t课程",
-            "segue": "showCourse",
+            "segue": "showCourses",
         ],
         [
             "name": "\u{f040}\t考试",
-            "segue": "showExam",
+            "segue": "showExams",
         ],
         [
             "name": "\u{f0f6}\t成绩",
-            "segue": "showScore",
+            "segue": "showScores",
         ],
         [
             "name": "\u{f207}\t校车",
@@ -209,6 +209,19 @@ class QueryViewController: UITableViewController {
     @IBAction func refresh(sender: UIRefreshControl) {
         MobileManager.sharedInstance.refreshAll {
             sender.endRefreshing()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "showCourses":
+            let vc = segue.destinationViewController as! SemesterListViewController
+            vc.source = .Course
+        case "showExams":
+            let vc = segue.destinationViewController as! SemesterListViewController
+            vc.source = .Exam
+        default:
+            break
         }
     }
 

@@ -437,6 +437,11 @@ class DataStore: NSObject {
         return array.sort { $0.gradePoint! >= $1.gradePoint! }
     }
     
+    var semesterScores: [SemesterScore] {
+        let descriptors = [NSSortDescriptor(key: "year", ascending: true), NSSortDescriptor(key: "semester", ascending: true)]
+        return currentUser.semesterScores!.sortedArrayUsingDescriptors(descriptors) as! [SemesterScore]
+    }
+    
     var statistics: Statistics {
         return currentUser.statistics!
     }
