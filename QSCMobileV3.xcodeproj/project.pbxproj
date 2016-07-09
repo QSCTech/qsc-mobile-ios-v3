@@ -26,8 +26,6 @@
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
 		9D3139861CE78C7500CD7DAD /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* About.html */; };
-		9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */; };
-		9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4179AC1CE4678E00955729 /* LaunchScreen.xib */; };
@@ -47,6 +45,8 @@
 		9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */; };
 		9D7173621D2FF4AA0074043E /* CourseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7173611D2FF4AA0074043E /* CourseListViewController.swift */; };
 		9D7173641D2FF4BF0074043E /* ExamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7173631D2FF4BF0074043E /* ExamListViewController.swift */; };
+		9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173651D3141BE0074043E /* libMobClickLibrary.a */; };
+		9D7173681D3141C00074043E /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -144,7 +144,7 @@
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendors/FontAwesome.otf; sourceTree = "<group>"; };
+		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendor/FontAwesome.otf; sourceTree = "<group>"; };
 		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "Extension/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
 		9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileV3.swift"; path = "Extension/String+QSCMobileV3.swift"; sourceTree = "<group>"; };
@@ -181,6 +181,8 @@
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		9D7173611D2FF4AA0074043E /* CourseListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListViewController.swift; sourceTree = "<group>"; };
 		9D7173631D2FF4BF0074043E /* ExamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamListViewController.swift; sourceTree = "<group>"; };
+		9D7173651D3141BE0074043E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendor/libMobClickLibrary.a; sourceTree = "<group>"; };
+		9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendor/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
 		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
@@ -248,8 +250,8 @@
 				9D7851F21CE869F6008A7DBF /* MBProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
-				9D3483791CD83E2000EFF8C6 /* libMobClickLibrary.a in Frameworks */,
-				9D34837A1CD83E2200EFF8C6 /* libUMessage_Sdk_1.2.6.a in Frameworks */,
+				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
+				9D7173681D3141C00074043E /* libUMessage_Sdk_1.2.6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +556,8 @@
 		9DF612801BAA8A03004B0A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */,
+				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D6B336D1CECC0E200C5372F /* Kingfisher.framework */,
 				9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */,
@@ -1000,12 +1004,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/QSCMobileV3/Vendors";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/QSCMobileV3/Vendor";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/QSCMobileV3/Vendors",
+					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1030,12 +1034,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/QSCMobileV3/Vendors";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/QSCMobileV3/Vendor";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/QSCMobileV3/Vendors",
+					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
