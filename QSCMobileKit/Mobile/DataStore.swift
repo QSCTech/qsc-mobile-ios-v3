@@ -408,40 +408,37 @@ class DataStore: NSObject {
     /**
      Retrieve current user's courses with the specified semester.
     
-     - returns: An array of courses sorted by credit.
+     - returns: An unsorted array of courses.
     */
     func getCourses(year year: String, semester: CalendarSemester) -> [Course] {
-        let array = currentUser.courses!.filter {
+        return currentUser.courses!.filter {
             let course = $0 as! Course
             return course.isDetermined!.boolValue && course.year == year && course.semester!.includesSemester(semester)
         } as! [Course]
-        return array.sort { $0.identifier! < $1.identifier! }
     }
     
     /**
      Retrieve current user's exams with the specified semester.
      
-     - returns: An array of exams sorted by credit.
+     - returns: An unsorted array of exams.
      */
     func getExams(year year: String, semester: CalendarSemester) -> [Exam] {
-        let array = currentUser.exams!.filter {
+        return currentUser.exams!.filter {
             let exam = $0 as! Exam
             return exam.year == year && exam.semester!.includesSemester(semester)
         } as! [Exam]
-        return array.sort { $0.identifier! < $1.identifier! }
     }
     
     /**
      Retrieve current user's scores with the specified semester.
      
-     - returns: An array of scores sorted by grade.
+     - returns: An unsorted array of scores.
      */
     func getScores(year year: String, semester: CalendarSemester) -> [Score] {
-        let array = currentUser.scores!.filter {
+        return currentUser.scores!.filter {
             let score = $0 as! Score
             return score.year == year && score.semester!.includesSemester(semester)
         } as! [Score]
-        return array.sort { $0.gradePoint! > $1.gradePoint! }
     }
     
     var semesterScores: [SemesterScore] {
@@ -491,12 +488,11 @@ class DataStore: NSObject {
      - parameter identifier: The identifier used as prefix.
      - parameter entityName: The name of the entity.
      
-     - returns: The array of managed objects.
+     - returns: The unsorted array of managed objects.
      */
     func objectsWithIdentifier(identifier: String, entityName: String) -> [NSManagedObject] {
         let request = NSFetchRequest(entityName: entityName)
         request.predicate = NSPredicate(format: "user.sid == %@ AND identifier LIKE %@", currentUser.sid!, identifier + "*")
-        request.sortDescriptors = [NSSortDescriptor.init(key: "identifier", ascending: true)]
         return try! managedObjectContext.executeFetchRequest(request) as! [NSManagedObject]
     }
     

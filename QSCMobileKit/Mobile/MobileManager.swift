@@ -195,10 +195,11 @@ public class MobileManager: NSObject {
      
      - parameter semester: A string representing the semester, e.g. 2015-2016-2.
      
-     - returns: The array of courses.
+     - returns: The array of courses sorted by identifier.
      */
     public func getCourses(semester: String) -> [Course] {
-        return dataStore.objectsWithIdentifier("(\(semester))", entityName: "Course") as! [Course]
+        let courses = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Course") as! [Course]
+        return courses.sort { $0.identifier! <= $1.identifier! }
     }
     
     /**
@@ -206,22 +207,11 @@ public class MobileManager: NSObject {
      
      - parameter semester: A string representing the semester, e.g. 2015-2016-2.
      
-     - returns: The array of exams.
+     - returns: The array of exams sorted by time.
      */
     public func getExams(semester: String) -> [Exam] {
-        return dataStore.objectsWithIdentifier("(\(semester))", entityName: "Exam") as! [Exam]
-    }
-    
-    /**
-     Get all scores of the given year and semester.
-     
-     - parameter year:     A string representing the year, e.g. 2015-2016.
-     - parameter semester: A member of `CalendarSemester`.
-     
-     - returns: The array of scores.
-     */
-    public func getScores(year: String, semester: CalendarSemester) -> [Score] {
-        return dataStore.getScores(year: year, semester: semester)
+        let exams = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Exam") as! [Exam]
+        return exams.sort { $1.startTime == nil || ($0.startTime != nil && $0.startTime! <= $1.startTime!) }
     }
     
     /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
