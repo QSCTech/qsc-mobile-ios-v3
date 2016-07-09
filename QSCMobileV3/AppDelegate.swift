@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Here 0 means Never
             groupDefaults.setInteger(0, forKey: EventNotificationKey)
         }
+        if groupDefaults.objectForKey(ShowAllCoursesKey) == nil {
+            groupDefaults.setBool(false, forKey: ShowAllCoursesKey)
+        }
                 
         return true
     }

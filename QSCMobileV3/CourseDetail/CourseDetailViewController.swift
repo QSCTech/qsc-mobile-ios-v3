@@ -28,8 +28,6 @@ class CourseDetailViewController: UITableViewController {
             (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
             courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
-        } else {
-            navigationController?.popViewControllerAnimated(true)
         }
     }
     

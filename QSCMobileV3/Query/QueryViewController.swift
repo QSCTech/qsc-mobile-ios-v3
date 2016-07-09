@@ -15,25 +15,21 @@ class QueryViewController: UITableViewController {
     private let accountManager = AccountManager.sharedInstance
     
     enum Tools: Int {
-        case Query = 0, Login, Website, Webpage
-        static let count = 4
+        case Score = 0, Query, Login, Website, Webpage
+        static let count = 5
     }
     
     private let queries: [[String: String]] = [
         [
-            "name": "\u{f02d}\t课程",
+            "name": "\u{f207}\t校车查询",
+        ],
+        [
+            "name": "\u{f02d}\t课程一览",
             "segue": "showCourses",
         ],
         [
-            "name": "\u{f040}\t考试",
+            "name": "\u{f040}\t考试一览",
             "segue": "showExams",
-        ],
-        [
-            "name": "\u{f0f6}\t成绩",
-            "segue": "showScores",
-        ],
-        [
-            "name": "\u{f207}\t校车",
         ],
     ]
     
@@ -108,6 +104,8 @@ class QueryViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case Tools.Score.rawValue:
+            return 1
         case Tools.Query.rawValue:
             return queries.count
         case Tools.Login.rawValue:
@@ -124,6 +122,8 @@ class QueryViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         switch indexPath.section {
+        case Tools.Score.rawValue:
+            cell.textLabel!.attributedText = "\u{f0f6}\t成绩".attributedWithFontAwesome
         case Tools.Query.rawValue:
             cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
         case Tools.Login.rawValue:
@@ -141,8 +141,10 @@ class QueryViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
+        case Tools.Score.rawValue:
+            performSegueWithIdentifier("showScores", sender: nil)
         case Tools.Query.rawValue:
-            if indexPath.row < 3 {
+            if indexPath.row > 0 {
                 if accountManager.currentAccountForJwbinfosys == nil {
                     let vc = JwbinfosysLoginViewController()
                     presentViewController(vc, animated: true, completion: nil)

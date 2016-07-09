@@ -40,10 +40,13 @@
                             <outlet property="delegate" destination="OOC-wZ-Hjc" id="T5W-1f-Taw"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Gnl-wt-Xr7" kind="show" identifier="showCourseDetail" id="cAM-oI-al7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ew1-Nz-2dX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="-3"/>
+            <point key="canvasLocation" x="1234" y="57"/>
         </scene>
         <!--Exam List View Controller-->
         <scene sceneID="Uzd-zm-7q1">
@@ -58,10 +61,24 @@
                             <outlet property="delegate" destination="hcT-9K-fWg" id="7S8-Dg-bZ9"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Gnl-wt-Xr7" kind="show" identifier="showCourseDetail" id="Qx8-s8-du0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67V-Za-XwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="711"/>
+            <point key="canvasLocation" x="1234" y="717"/>
+        </scene>
+        <!--CourseDetail-->
+        <scene sceneID="BhP-Tb-QyT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CourseDetail" id="Gnl-wt-Xr7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hYs-Zj-UmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852.5" y="371"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qx8-s8-du0"/>
+    </inferredMetricsTieBreakers>
 </document>

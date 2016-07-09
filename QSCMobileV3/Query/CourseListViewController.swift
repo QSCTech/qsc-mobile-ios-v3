@@ -12,6 +12,7 @@ import QSCMobileKit
 class CourseListViewController: UITableViewController {
     
     var semester: String!
+    var selectedCourse: Course!
     
     let mobileManager = MobileManager.sharedInstance
     
@@ -25,6 +26,18 @@ class CourseListViewController: UITableViewController {
         cell.textLabel!.text = course.name
         cell.detailTextLabel!.text = course.identifier
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        selectedCourse = mobileManager.getCourses(semester)[indexPath.row]
+        performSegueWithIdentifier("showCourseDetail", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as! CourseDetailViewController
+        vc.managedObject = selectedCourse
     }
     
 }
