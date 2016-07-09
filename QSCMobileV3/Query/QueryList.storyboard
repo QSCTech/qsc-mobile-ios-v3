@@ -18,10 +18,50 @@
                             <outlet property="delegate" destination="jGL-0R-hZD" id="HcC-xV-2Wb"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="OOC-wZ-Hjc" kind="show" identifier="showCourseList" id="XAD-uE-tl2"/>
+                        <segue destination="hcT-9K-fWg" kind="show" identifier="showExamList" id="1XJ-kI-8cw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ql3-1D-lBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="363" y="371"/>
+        </scene>
+        <!--Course List View Controller-->
+        <scene sceneID="fOf-DE-Qm1">
+            <objects>
+                <tableViewController id="OOC-wZ-Hjc" customClass="CourseListViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LzT-WA-shS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="OOC-wZ-Hjc" id="vbm-bZ-TNF"/>
+                            <outlet property="delegate" destination="OOC-wZ-Hjc" id="T5W-1f-Taw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ew1-Nz-2dX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="-3"/>
+        </scene>
+        <!--Exam List View Controller-->
+        <scene sceneID="Uzd-zm-7q1">
+            <objects>
+                <tableViewController id="hcT-9K-fWg" customClass="ExamListViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="u7E-Rk-9wr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="hcT-9K-fWg" id="Apf-CX-QvU"/>
+                            <outlet property="delegate" destination="hcT-9K-fWg" id="7S8-Dg-bZ9"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="67V-Za-XwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="711"/>
         </scene>
     </scenes>
 </document>

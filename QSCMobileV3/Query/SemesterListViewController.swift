@@ -12,6 +12,7 @@ import QSCMobileKit
 class SemesterListViewController: UITableViewController {
     
     var source: Event.Category!
+    var selectedSemester: String!
     
     let mobileManager = MobileManager.sharedInstance
     
@@ -39,6 +40,22 @@ class SemesterListViewController: UITableViewController {
             cell.textLabel!.text! += " 春夏"
         }
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        selectedSemester = mobileManager.allSemesters.reverse()[indexPath.row]
+        if source == .Course {
+            performSegueWithIdentifier("showCourseList", sender: nil)
+        } else {
+            performSegueWithIdentifier("showExamList", sender: nil)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController
+        vc.setValue(selectedSemester, forKey: "semester")
     }
     
 }
