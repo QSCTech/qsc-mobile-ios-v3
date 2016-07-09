@@ -47,6 +47,8 @@
 		9D7173641D2FF4BF0074043E /* ExamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7173631D2FF4BF0074043E /* ExamListViewController.swift */; };
 		9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173651D3141BE0074043E /* libMobClickLibrary.a */; };
 		9D7173681D3141C00074043E /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */; };
+		9D71736A1D3164CE0074043E /* SemesterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7173691D3164CE0074043E /* SemesterListCell.swift */; };
+		9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D71736B1D316BDB0074043E /* CourseListCell.swift */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -183,6 +185,8 @@
 		9D7173631D2FF4BF0074043E /* ExamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamListViewController.swift; sourceTree = "<group>"; };
 		9D7173651D3141BE0074043E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendor/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendor/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
+		9D7173691D3164CE0074043E /* SemesterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListCell.swift; sourceTree = "<group>"; };
+		9D71736B1D316BDB0074043E /* CourseListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListCell.swift; sourceTree = "<group>"; };
 		9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 			children = (
 				9D3139761CE789BF00CD7DAD /* QueryViewController.swift */,
 				9DC4756C1D2F894A00F4B3DF /* QueryList.storyboard */,
+				9D7173691D3164CE0074043E /* SemesterListCell.swift */,
+				9D71736B1D316BDB0074043E /* CourseListCell.swift */,
 				9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */,
 				9D7173611D2FF4AA0074043E /* CourseListViewController.swift */,
 				9D7173631D2FF4BF0074043E /* ExamListViewController.swift */,
@@ -803,6 +809,8 @@
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
+				9D71736A1D3164CE0074043E /* SemesterListCell.swift in Sources */,
+				9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,

@@ -21,10 +21,12 @@ class CourseListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Course") as! CourseListCell
         let course = mobileManager.getCourses(semester)[indexPath.row]
-        cell.textLabel!.text = course.name
-        cell.detailTextLabel!.text = course.identifier
+        cell.titleLabel.text = course.name
+        cell.identifierLabel.text = course.identifier
+        cell.creditLabel.text = "学分 " + course.credit!.stringValue
+        cell.categoryLabel.text = course.category
         return cell
     }
     

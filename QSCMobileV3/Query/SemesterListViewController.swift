@@ -31,13 +31,20 @@ class SemesterListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Semester") as! SemesterListCell
         let semester = mobileManager.allSemesters.reverse()[indexPath.row]
-        cell.textLabel!.text = semester.substringToIndex(semester.endIndex.advancedBy(-2))
+        cell.titleLabel.text = semester.substringToIndex(semester.endIndex.advancedBy(-2))
         if semester.hasSuffix("1") {
-            cell.textLabel!.text! += " 秋冬"
+            cell.titleLabel.text! += " 秋冬"
         } else {
-            cell.textLabel!.text! += " 春夏"
+            cell.titleLabel.text! += " 春夏"
+        }
+        let exams = mobileManager.getExams(semester)
+        cell.subtitleLabel.text = "\(exams.count) 门课程"
+        if source == .Course {
+            cell.subtitleLabel.text! += "，共 \(exams.reduce(0.0) { $0 + $1.credit!.floatValue }) 学分"
+        } else {
+            cell.subtitleLabel.text! += "，\(exams.filter({ $0.startTime != nil }).count) 场考试"
         }
         return cell
     }
