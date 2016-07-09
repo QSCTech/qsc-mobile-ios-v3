@@ -150,12 +150,18 @@ class APISession: NSObject {
                 return
             }
             let json = JSON(response.result.value!)
+            let printError = {
+                print("[Login request] \(json["status"].stringValue): \(json["error"].stringValue)")
+            }
             if json["status"].string == "ok" {
                 self.session = (json["sessionId"].string, json["sessionKey"].string)
                 callback(true, nil)
-            } else {
-                print("[Login request] \(json["status"].stringValue): \(json["error"].stringValue)")
+            } else if json["error"].stringValue.containsString("登录失败") {
+                printError()
                 callback(false, "用户名或密码错误")
+            } else {
+                printError()
+                callback(false, "登录失败，请重试")
             }
         }
     }
@@ -180,20 +186,24 @@ class APISession: NSObject {
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
                 print("[Resource request] Alamofire: \(response.result.error!.localizedDescription)")
+                print(NSString(data: response.data!, encoding: NSUTF8StringEncoding)!)
                 callback(nil, "网络连接失败")
                 return
             }
             let json = JSON(response.result.value!)
+            let printError = {
+                print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue)")
+            }
             if json["status"].string == "ok" {
                 if let responseList = json["responseList"].string {
                     let responseJSON = JSON(self.jsonObjectFromString(responseList))
                     callback(responseJSON[0]["data"], nil)
                 } else {
-                    print("[Resource request] Response list is null.")
+                    print("[Resource request] Response list is null")
                     callback(nil, "刷新失败，请重试")
                 }
             } else if json["status"].string == "sessionFail" {
-                print("[Resource request] sessionFail")
+                printError()
                 self.loginRequest { success, error in
                     if success {
                         self.resourceRequest(requestList, callback: callback)
@@ -201,8 +211,11 @@ class APISession: NSObject {
                         callback(nil, error)
                     }
                 }
+            } else if json["status"].string == "requestFail" {
+                printError()
+                callback(nil, "教务网通知，请查收")
             } else {
-                print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue))")
+                printError()
                 callback(nil, "刷新失败，请重试")
             }
         }
