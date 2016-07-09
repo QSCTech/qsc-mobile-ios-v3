@@ -93,7 +93,7 @@ class DataStore: NSObject {
                     }
                     let timePlace = TimePlace(context: managedObjectContext)
                     timePlace.course = course
-                    timePlace.place = json["place"].stringValue
+                    timePlace.place = json["place"].stringValue.chomp("#").chomp("*")
                     
                     timePlace.time = ""
                     if let dayOfWeek = Int(json["dayOfWeek"].stringValue, radix:10) {
@@ -136,7 +136,7 @@ class DataStore: NSObject {
                 exam.identifier = json["identifier"].stringValue
                 exam.isRelearning = json["isRelearning"].boolValue
                 exam.name = json["name"].stringValue
-                exam.place = json["place"].string ?? "暂无考场信息"
+                exam.place = (json["place"].string ?? "暂无考场信息").chomp("#").chomp("*")
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
                 exam.time = json["time"].stringValue.stringByReplacingOccurrencesOfString("(", withString: " ").stringByReplacingOccurrencesOfString(")", withString: "")

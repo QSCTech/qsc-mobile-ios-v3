@@ -173,6 +173,15 @@ extension String {
         }
     }
     
+    /// Same as `String#chomp` in Ruby.
+    func chomp(separator: String) -> String {
+        if hasSuffix(separator) {
+            return substringToIndex(endIndex.predecessor())
+        } else {
+            return self
+        }
+    }
+    
 }
 
 public func += (inout left: String!, right: String) {
