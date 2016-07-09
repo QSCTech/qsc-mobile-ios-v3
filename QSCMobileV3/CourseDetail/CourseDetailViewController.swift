@@ -13,7 +13,6 @@ import MessageUI
 import MBProgressHUD
 import QSCMobileKit
 
-// FIXME: Refresh in another tab will make courseObject nil.
 class CourseDetailViewController: UITableViewController {
     
     var managedObject: NSManagedObject!
@@ -36,7 +35,12 @@ class CourseDetailViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        
+        if managedObject.managedObjectContext == nil {
+            navigationController?.popViewControllerAnimated(true)
+        } else {
+            tableView.reloadData()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

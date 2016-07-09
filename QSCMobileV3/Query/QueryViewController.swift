@@ -155,10 +155,8 @@ class QueryViewController: UITableViewController {
             }
         case Tools.Login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
-                let alert = UIAlertController(title: "教务网", message: "您尚未添加教务网用户", preferredStyle: .Alert)
-                let action = UIAlertAction(title: "好", style: .Default, handler: nil)
-                alert.addAction(action)
-                presentViewController(alert, animated: true, completion: nil)
+                let vc = JwbinfosysLoginViewController()
+                presentViewController(vc, animated: true, completion: nil)
                 break
             }
             if 1 <= indexPath.row && indexPath.row <= 2 && accountManager.accountForZjuwlan == nil {
