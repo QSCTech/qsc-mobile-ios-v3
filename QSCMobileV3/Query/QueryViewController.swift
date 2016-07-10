@@ -21,7 +21,7 @@ class QueryViewController: UITableViewController {
     
     private let queries: [[String: String]] = [
         [
-            "name": "\u{f207}\t校车查询",
+            "name": "\u{f207}\t校车",
         ],
         [
             "name": "\u{f02d}\t课程一览",
@@ -153,7 +153,7 @@ class QueryViewController: UITableViewController {
                 }
             } else {
                 let vc = BusViewController()
-                showViewController(vc, sender: nil)
+                presentViewController(vc, animated: true, completion: nil)
             }
         case Tools.Login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
