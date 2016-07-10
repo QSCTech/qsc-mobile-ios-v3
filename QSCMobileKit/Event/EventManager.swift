@@ -48,6 +48,7 @@ public class EventManager: NSObject {
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
     }
     
+    // TODO: Handle repeatable events and notifications
     public func customEventsForDate(date: NSDate) -> [Event] {
         let request = NSFetchRequest(entityName: "CustomEvent")
         request.predicate = NSPredicate(format: "(start < %@) AND (end >= %@)", date.tomorrow, date.today)

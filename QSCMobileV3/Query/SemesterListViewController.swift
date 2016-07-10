@@ -43,8 +43,10 @@ class SemesterListViewController: UITableViewController {
         cell.subtitleLabel.text = "\(exams.count) 门课程"
         if source == .Course {
             cell.subtitleLabel.text! += "，共 \(exams.reduce(0.0) { $0 + $1.credit!.floatValue }) 学分"
+            cell.subtitleLabel.textColor = QSCColor.course
         } else {
             cell.subtitleLabel.text! += "，\(exams.filter({ $0.startTime != nil }).count) 场考试"
+            cell.subtitleLabel.textColor = QSCColor.exam
         }
         return cell
     }
