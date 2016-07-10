@@ -283,7 +283,7 @@ class DataStore: NSObject {
                 
                 busStop.campus = json["campus"].stringValue
                 busStop.time = json["time"].stringValue
-                busStop.location = json["time"].stringValue
+                busStop.location = json["location"].stringValue
                 busStop.index = Int(index, radix: 10)
             }
         }
@@ -468,6 +468,20 @@ class DataStore: NSObject {
         } else {
             return []
         }
+    }
+    
+    /**
+     Return all bus stops on the specific campus.
+     
+     - parameter campus: The name of the campus.
+     
+     - returns: An array of bus stops sorted by estimated time of arrival.
+     */
+    static func busStopsOnCampus(campus: String) -> [BusStop] {
+        let request = NSFetchRequest(entityName: "BusStop")
+        request.predicate = NSPredicate(format: "campus == %@", campus)
+        let stops = try! managedObjectContext.executeFetchRequest(request) as! [BusStop]
+        return stops.sort { $1.time == "*" || ($0.time != "*" && $0.time! <= $1.time!) }
     }
     
     static func entityForYear(date: NSDate) -> Year? {

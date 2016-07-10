@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreActionSheetPicker
+import QSCMobileKit
 
 class BusViewController: UIViewController {
     
@@ -35,10 +36,13 @@ class BusViewController: UIViewController {
     
     var fromIndex = 0
     var toIndex = 1
+    var schoolBus = SchoolBus(from: "紫金港", to: "玉泉", isWeekend: false)
     
     func campusDidChange() {
         fromButon.setTitle(campuses[fromIndex], forState: .Normal)
         toButton.setTitle(campuses[toIndex], forState: .Normal)
+        // FIXME: isWeekend?
+        schoolBus = SchoolBus(from: campuses[fromIndex], to: campuses[toIndex], isWeekend: false)
         tableView.reloadData()
     }
     
@@ -68,11 +72,14 @@ class BusViewController: UIViewController {
 extension BusViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return schoolBus.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: nil)
+        cell.textLabel!.text = schoolBus.busName(indexPath.row)
+        cell.detailTextLabel!.text = schoolBus.fromTime(indexPath.row) + " - " + schoolBus.toTime(indexPath.row)
+        return cell
     }
     
 }

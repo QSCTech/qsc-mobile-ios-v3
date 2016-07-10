@@ -10,11 +10,11 @@ import Foundation
 import CoreData
 
 
-class Bus: NSManagedObject {
+public class Bus: NSManagedObject {
 
-    @NSManaged var name: String?
-    @NSManaged var serviceDays: String?
-    @NSManaged var note: String?
-    @NSManaged var busStops: NSSet?
+    @NSManaged public var name: String?
+    @NSManaged public var serviceDays: String?
+    @NSManaged public var note: String?
+    @NSManaged public var busStops: NSSet?
 
 }

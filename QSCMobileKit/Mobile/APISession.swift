@@ -145,7 +145,6 @@ class APISession: NSObject {
         alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
                 print("[Login request] Alamofire: \(response.result.error!.localizedDescription)")
-                print(NSString(data: response.data!, encoding: NSUTF8StringEncoding)!)
                 callback(false, "网络连接失败")
                 return
             }
@@ -186,7 +185,6 @@ class APISession: NSObject {
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
                 print("[Resource request] Alamofire: \(response.result.error!.localizedDescription)")
-                print(NSString(data: response.data!, encoding: NSUTF8StringEncoding)!)
                 callback(nil, "网络连接失败")
                 return
             }
