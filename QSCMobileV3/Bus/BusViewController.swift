@@ -25,24 +25,28 @@ class BusViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.registerNib(UINib(nibName: "BusCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Bus")
+        campusDidChange()
+        weekendSwitch.on = isWeekend
     }
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var fromButon: UIButton!
     @IBOutlet weak var toButton: UIButton!
+    @IBOutlet weak var weekendSwitch: UISwitch!
     
     let campuses = ["紫金港", "玉泉", "西溪", "之江", "华家池"]
     
     var fromIndex = 0
     var toIndex = 1
-    var schoolBus = SchoolBus(from: "紫金港", to: "玉泉", isWeekend: false)
+    var isWeekend = NSCalendar.currentCalendar().isDateInWeekend(NSDate())
+    var schoolBus: SchoolBus!
     
     func campusDidChange() {
         fromButon.setTitle(campuses[fromIndex], forState: .Normal)
         toButton.setTitle(campuses[toIndex], forState: .Normal)
-        // FIXME: isWeekend?
-        schoolBus = SchoolBus(from: campuses[fromIndex], to: campuses[toIndex], isWeekend: false)
+        schoolBus = SchoolBus(from: campuses[fromIndex], to: campuses[toIndex], isWeekend: isWeekend)
         tableView.reloadData()
     }
     
@@ -63,6 +67,11 @@ class BusViewController: UIViewController {
         campusDidChange()
     }
     
+    @IBAction func weekendModeDidChange(sender: UISwitch) {
+        isWeekend = sender.on
+        campusDidChange()
+    }
+    
     @IBAction func close(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -76,10 +85,15 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: nil)
-        cell.textLabel!.text = schoolBus.busName(indexPath.row)
-        cell.detailTextLabel!.text = schoolBus.fromTime(indexPath.row) + " - " + schoolBus.toTime(indexPath.row)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Bus") as! BusCell
+        cell.nameLabel.text = schoolBus.busName(indexPath.row)
+        cell.timeLabel.text = schoolBus.fromTime(indexPath.row) + " - " + schoolBus.toTime(indexPath.row)
+        cell.noteLabel.text = schoolBus.busNote(indexPath.row)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return schoolBus.busNote(indexPath.row).isEmpty ? 37 : 80
     }
     
 }

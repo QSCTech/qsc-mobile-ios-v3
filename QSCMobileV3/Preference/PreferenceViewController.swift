@@ -98,9 +98,8 @@ class PreferenceViewController: UITableViewController {
                 cell.selectionStyle = .None
                 cell.textLabel!.attributedText = "\u{f021}\t启动时自动刷新".attributedWithFontAwesome
                 let switchView = UISwitch(frame: CGRect.zero)
+                switchView.on = groupDefaults.boolForKey(RefreshOnLaunchKey)
                 switchView.onTintColor = QSCColor.theme
-                let refreshOnLaunch = groupDefaults.boolForKey(RefreshOnLaunchKey)
-                switchView.setOn(refreshOnLaunch, animated: false)
                 switchView.addTarget(self, action: #selector(refreshSwitchChanged), forControlEvents: .ValueChanged)
                 cell.accessoryView = switchView
                 return cell
@@ -109,9 +108,8 @@ class PreferenceViewController: UITableViewController {
                 cell.selectionStyle = .None
                 cell.textLabel!.attributedText = "\u{f06e}\t在课程页面显示成绩".attributedWithFontAwesome
                 let switchView = UISwitch(frame: CGRect.zero)
+                switchView.on = groupDefaults.boolForKey(ShowScoreKey)
                 switchView.onTintColor = QSCColor.theme
-                let showScore = groupDefaults.boolForKey(ShowScoreKey)
-                switchView.setOn(showScore, animated: false)
                 switchView.addTarget(self, action: #selector(showScoreSwitchChanged), forControlEvents: .ValueChanged)
                 cell.accessoryView = switchView
                 return cell

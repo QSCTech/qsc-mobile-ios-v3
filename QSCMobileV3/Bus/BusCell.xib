@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="O3x-2E-IOS" customClass="BusCell" customModule="QSCMobileV3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O3x-2E-IOS" id="Ini-YY-2zX">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cu-kz-DWn">
+                        <rect key="frame" x="37" y="8" width="45" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="eK1-Wi-CDW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eK1-Wi-CDW"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jx-BG-iID">
+                        <rect key="frame" x="274" y="8" width="38" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLj-9z-gHT">
+                        <rect key="frame" x="37" y="29" width="275" height="46"/>
+                        <string key="text">紫金港校区内循环：9:10 9:25 9:38 10:00 10:20 10:40 11:00 11:20 11:35 11:50 12:05 12:25 12:40 （以上六趟次，校医院站点不停靠） 13:00 13:20 13:40 14:00 14:20 14:40 15:00 15:20 15:40 16:00 16:20 16:40 17:10 17:20 生活区→西教学区→化学楼→医药组团→生科院→东教学区→风雨操场西→校区医院→生活区</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineActivity" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-Qz-fr6">
+                        <rect key="frame" x="8" y="0.0" width="21" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="21" id="LKI-V5-jrE"/>
+                            <constraint firstAttribute="height" constant="80" id="sgp-xc-vh7"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7jx-BG-iID" firstAttribute="top" secondItem="9Cu-kz-DWn" secondAttribute="top" id="0m6-tP-R5C"/>
+                    <constraint firstItem="HLj-9z-gHT" firstAttribute="top" secondItem="9Cu-kz-DWn" secondAttribute="bottom" id="8st-dd-RSa"/>
+                    <constraint firstItem="7jx-BG-iID" firstAttribute="trailing" secondItem="Ini-YY-2zX" secondAttribute="trailingMargin" id="9Sa-L8-UGb"/>
+                    <constraint firstAttribute="bottom" secondItem="gAv-Qz-fr6" secondAttribute="bottom" id="Emy-KM-hd7"/>
+                    <constraint firstItem="HLj-9z-gHT" firstAttribute="leading" secondItem="9Cu-kz-DWn" secondAttribute="leading" id="FjY-TK-a1j"/>
+                    <constraint firstItem="9Cu-kz-DWn" firstAttribute="leading" secondItem="Ini-YY-2zX" secondAttribute="leadingMargin" constant="8" id="I2N-Qc-eGW"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="HLj-9z-gHT" secondAttribute="bottom" constant="44" id="RqG-bh-Ytw"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="HLj-9z-gHT" secondAttribute="bottom" constant="-4" id="SRS-PT-4ac"/>
+                    <constraint firstItem="HLj-9z-gHT" firstAttribute="trailing" secondItem="7jx-BG-iID" secondAttribute="trailing" id="VlI-vM-jqV"/>
+                    <constraint firstItem="gAv-Qz-fr6" firstAttribute="leading" secondItem="Ini-YY-2zX" secondAttribute="leadingMargin" id="gRy-mY-PX8"/>
+                    <constraint firstItem="9Cu-kz-DWn" firstAttribute="top" secondItem="Ini-YY-2zX" secondAttribute="topMargin" id="jEM-Qq-cpo"/>
+                    <constraint firstItem="7jx-BG-iID" firstAttribute="centerY" secondItem="9Cu-kz-DWn" secondAttribute="centerY" id="kNT-h4-HBv"/>
+                    <constraint firstItem="gAv-Qz-fr6" firstAttribute="top" secondItem="Ini-YY-2zX" secondAttribute="top" id="t0y-al-ZVk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="9Cu-kz-DWn" secondAttribute="bottom" constant="46" id="t9Z-e6-E8a"/>
+                    <constraint firstItem="9Cu-kz-DWn" firstAttribute="leading" secondItem="gAv-Qz-fr6" secondAttribute="trailing" constant="8" symbolic="YES" id="tHz-lv-WxV"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Emy-KM-hd7"/>
+                        <exclude reference="I2N-Qc-eGW"/>
+                        <exclude reference="t9Z-e6-E8a"/>
+                        <exclude reference="RqG-bh-Ytw"/>
+                        <exclude reference="0m6-tP-R5C"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9Cu-kz-DWn" secondAttribute="bottom" constant="51" id="aVQ-Mw-LuT"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="aVQ-Mw-LuT"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="nameLabel" destination="9Cu-kz-DWn" id="jdL-4x-ePm"/>
+                <outlet property="noteLabel" destination="HLj-9z-gHT" id="Qmg-rx-tSb"/>
+                <outlet property="timeLabel" destination="7jx-BG-iID" id="ktx-h5-hkW"/>
+            </connections>
+            <point key="canvasLocation" x="184" y="945"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="LineActivity" width="21" height="79"/>
+    </resources>
+</document>

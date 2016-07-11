@@ -58,6 +58,8 @@
 		9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
+		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
+		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
 		9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */; };
 		9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */; };
 		9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475661D2D075800F4B3DF /* CourseNameCell.swift */; };
@@ -199,6 +201,8 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
+		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
+		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
 		9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CourseDetail.storyboard; path = CourseDetail/CourseDetail.storyboard; sourceTree = "<group>"; };
 		9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = CourseDetail/CourseDetailViewController.swift; sourceTree = "<group>"; };
 		9DC475661D2D075800F4B3DF /* CourseNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseNameCell.swift; path = CourseDetail/CourseNameCell.swift; sourceTree = "<group>"; };
@@ -341,8 +345,8 @@
 			isa = PBXGroup;
 			children = (
 				9D31396D1CE789BF00CD7DAD /* WebViewController.swift */,
-				9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */,
 				9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */,
+				9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -351,8 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */,
-				9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */,
 				9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */,
+				9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -457,8 +461,10 @@
 		9D6B337A1CF0215E00C5372F /* Bus */ = {
 			isa = PBXGroup;
 			children = (
-				9D6B337B1CF025F500C5372F /* BusViewController.swift */,
 				9D6B337C1CF025F500C5372F /* BusViewController.xib */,
+				9D6B337B1CF025F500C5372F /* BusViewController.swift */,
+				9DBC53A81D32B00A006AA1BD /* BusCell.xib */,
+				9DBC53A41D32ACCC006AA1BD /* BusCell.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -526,10 +532,10 @@
 		9DE716021CE7A9E900282DCD /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */,
 				9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */,
-				9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */,
+				9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */,
 				9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */,
+				9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -739,6 +745,7 @@
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
 				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
 				9DC4756D1D2F894A00F4B3DF /* QueryList.storyboard in Resources */,
+				9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
 				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
@@ -793,6 +800,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */,
 				9DC4756F1D2F907600F4B3DF /* SemesterListViewController.swift in Sources */,
 				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,

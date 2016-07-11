@@ -71,7 +71,13 @@
                         <rect key="frame" x="8" y="0.0" width="21" height="79"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="21" id="WIB-iX-PRt"/>
+                            <constraint firstAttribute="height" constant="79" id="XpG-Lj-J7l"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XpG-Lj-J7l"/>
+                            </mask>
+                        </variation>
                     </imageView>
                 </subviews>
                 <constraints>
