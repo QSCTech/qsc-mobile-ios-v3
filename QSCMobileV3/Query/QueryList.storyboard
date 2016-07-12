@@ -13,7 +13,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="1" sectionFooterHeight="1" id="R9q-Rf-Nkf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Semester" rowHeight="60" id="8mn-GU-Wlf" customClass="SemesterListCell" customModule="QSCMobileV3" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="600" height="60"/>
@@ -151,11 +151,11 @@
                                         <mask key="constraints">
                                             <exclude reference="6Cy-ZA-4Fc"/>
                                             <exclude reference="kaO-Od-kgM"/>
-                                            <exclude reference="ug9-ae-2Zz"/>
                                             <exclude reference="HrJ-Jb-V9f"/>
                                             <exclude reference="YDY-KK-Je6"/>
                                             <exclude reference="Zo1-nh-cWv"/>
                                             <exclude reference="lfb-O0-crO"/>
+                                            <exclude reference="ug9-ae-2Zz"/>
                                             <exclude reference="AFL-wo-glY"/>
                                             <exclude reference="hQo-5B-ypW"/>
                                             <exclude reference="wQ1-pL-Mk5"/>

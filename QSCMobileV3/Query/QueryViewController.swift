@@ -119,6 +119,14 @@ class QueryViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == Tools.Login.rawValue {
+            return "校网链接"
+        } else {
+            return nil
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         switch indexPath.section {
@@ -211,7 +219,7 @@ class QueryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == Tools.Score.rawValue {
             return 77
         } else {
             return 44
