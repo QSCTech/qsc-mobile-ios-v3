@@ -216,6 +216,10 @@ public class MobileManager: NSObject {
         return exams.sort { $1.startTime == nil || ($0.startTime != nil && $0.startTime! <= $1.startTime!) }
     }
     
+    public var statistics: Statistics {
+        return dataStore.statistics
+    }
+    
     /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
     public var allSemesters: [String] {
         return dataStore.allSemesters

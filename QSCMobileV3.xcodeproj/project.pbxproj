@@ -60,6 +60,8 @@
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
+		9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */; };
+		9DBC53AF1D350FC8006AA1BD /* OverallScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53AD1D350FC8006AA1BD /* OverallScoreCell.xib */; };
 		9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */; };
 		9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */; };
 		9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475661D2D075800F4B3DF /* CourseNameCell.swift */; };
@@ -203,6 +205,8 @@
 		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
 		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
 		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
+		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
+		9DBC53AD1D350FC8006AA1BD /* OverallScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverallScoreCell.xib; path = Score/OverallScoreCell.xib; sourceTree = "<group>"; };
 		9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CourseDetail.storyboard; path = CourseDetail/CourseDetail.storyboard; sourceTree = "<group>"; };
 		9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = CourseDetail/CourseDetailViewController.swift; sourceTree = "<group>"; };
 		9DC475661D2D075800F4B3DF /* CourseNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseNameCell.swift; path = CourseDetail/CourseNameCell.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 				9DE716021CE7A9E900282DCD /* Login */,
 				9D6B336F1CED90CC00C5372F /* AddEvent */,
 				9DC475611D2CF9A200F4B3DF /* CourseDetail */,
+				9DBC53AB1D350F86006AA1BD /* Score */,
 				9D6B337A1CF0215E00C5372F /* Bus */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
 				9D3139831CE78C7500CD7DAD /* About */,
@@ -467,6 +472,15 @@
 				9DBC53A41D32ACCC006AA1BD /* BusCell.swift */,
 			);
 			name = Bus;
+			sourceTree = "<group>";
+		};
+		9DBC53AB1D350F86006AA1BD /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				9DBC53AD1D350FC8006AA1BD /* OverallScoreCell.xib */,
+				9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */,
+			);
+			name = Score;
 			sourceTree = "<group>";
 		};
 		9DC475611D2CF9A200F4B3DF /* CourseDetail */ = {
@@ -741,6 +755,7 @@
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
+				9DBC53AF1D350FC8006AA1BD /* OverallScoreCell.xib in Resources */,
 				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
 				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
@@ -808,6 +823,7 @@
 				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
+				9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
 				9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */,
 				9D7173641D2FF4BF0074043E /* ExamListViewController.swift in Sources */,

@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 
 
-class Statistics: NSManagedObject {
+public class Statistics: NSManagedObject {
 
-    @NSManaged var totalCredit: NSNumber?
-    @NSManaged var majorCredit: NSNumber?
-    @NSManaged var averageGrade: NSNumber?
-    @NSManaged var majorGrade: NSNumber?
-    @NSManaged var overseaGrade: NSNumber?
+    @NSManaged public var totalCredit: NSNumber?
+    @NSManaged public var majorCredit: NSNumber?
+    @NSManaged public var averageGrade: NSNumber?
+    @NSManaged public var majorGrade: NSNumber?
+    @NSManaged public var overseaGrade: NSNumber?
     @NSManaged var user: User?
 
 }

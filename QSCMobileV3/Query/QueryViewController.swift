@@ -120,10 +120,10 @@ class QueryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+        var cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         switch indexPath.section {
         case Tools.Score.rawValue:
-            cell.textLabel!.attributedText = "\u{f0f6}\t成绩".attributedWithFontAwesome
+            cell = tableView.dequeueReusableCellWithIdentifier("Score")!
         case Tools.Query.rawValue:
             cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
         case Tools.Login.rawValue:
@@ -210,11 +210,22 @@ class QueryViewController: UITableViewController {
         }
     }
     
-    // TODO: Forbid refreshing when not logged in
-    @IBAction func refresh(sender: UIRefreshControl) {
-        MobileManager.sharedInstance.refreshAll {
-            sender.endRefreshing()
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 77
+        } else {
+            return 44
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.registerNib(UINib(nibName: "OverallScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -227,6 +238,14 @@ class QueryViewController: UITableViewController {
             vc.source = .Exam
         default:
             break
+        }
+    }
+    
+    // TODO: Forbid refreshing when not logged in
+    @IBAction func refresh(sender: UIRefreshControl) {
+        MobileManager.sharedInstance.refreshAll {
+            sender.endRefreshing()
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
         }
     }
 
