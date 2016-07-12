@@ -68,8 +68,9 @@
                         </variation>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineCourse" translatesAutoresizingMaskIntoConstraints="NO" id="Qth-zk-puO">
-                        <rect key="frame" x="8" y="0.0" width="21" height="79"/>
+                        <rect key="frame" x="8" y="0.0" width="21" height="80"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="80" id="COh-NT-rdk"/>
                             <constraint firstAttribute="width" constant="21" id="WIB-iX-PRt"/>
                             <constraint firstAttribute="height" constant="79" id="XpG-Lj-J7l"/>
                         </constraints>
@@ -103,6 +104,7 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="J9S-nl-tJ7"/>
                         <exclude reference="UNd-KK-Rf2"/>
                         <exclude reference="Ukj-vK-URw"/>
                         <exclude reference="fga-nK-g3M"/>
@@ -122,6 +124,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="LineCourse" width="21" height="79"/>
+        <image name="LineCourse" width="21" height="80"/>
     </resources>
 </document>

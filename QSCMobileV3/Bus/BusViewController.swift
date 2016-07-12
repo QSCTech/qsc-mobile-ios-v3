@@ -25,7 +25,10 @@ class BusViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
         tableView.registerNib(UINib(nibName: "BusCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Bus")
+        
         campusDidChange()
         weekendSwitch.on = isWeekend
     }
@@ -90,10 +93,6 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
         cell.timeLabel.text = schoolBus.fromTime(indexPath.row) + " - " + schoolBus.toTime(indexPath.row)
         cell.noteLabel.text = schoolBus.busNote(indexPath.row)
         return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return schoolBus.busNote(indexPath.row).isEmpty ? 37 : 80
     }
     
 }
