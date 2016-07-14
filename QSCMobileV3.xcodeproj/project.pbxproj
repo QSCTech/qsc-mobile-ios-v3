@@ -201,8 +201,6 @@
 		9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9D8AB4481CD783B30098451A /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendors/libMobClickLibrary.a; sourceTree = "<group>"; };
-		9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.2.6.a; path = QSCMobileV3/Vendors/libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
 		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
 		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
 		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
@@ -585,18 +583,16 @@
 		9DF612801BAA8A03004B0A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */,
-				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
-				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
+				9D8AB4441CD7838B0098451A /* Alamofire.framework */,
+				9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */,
+				9D8AB4481CD783B30098451A /* KeychainAccess.framework */,
+				9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */,
 				9D6B336D1CECC0E200C5372F /* Kingfisher.framework */,
 				9D7851F11CE869F6008A7DBF /* MBProgressHUD.framework */,
-				9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */,
-				9D8AB44F1CD789B10098451A /* libUMessage_Sdk_1.2.6.a */,
-				9D8AB44D1CD789AE0098451A /* libMobClickLibrary.a */,
+				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
-				9D8AB4481CD783B30098451A /* KeychainAccess.framework */,
-				9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */,
-				9D8AB4441CD7838B0098451A /* Alamofire.framework */,
+				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
+				9D7173671D3141C00074043E /* libUMessage_Sdk_1.2.6.a */,
 				9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
