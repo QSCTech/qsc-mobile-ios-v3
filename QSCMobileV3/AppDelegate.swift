@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 import QSCMobileKit
 
 let UMengAppKey = "572381bf67e58e07a7005095"
@@ -42,7 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if groupDefaults.objectForKey(ShowAllCoursesKey) == nil {
             groupDefaults.setBool(false, forKey: ShowAllCoursesKey)
         }
-                
+        
+        SVProgressHUD.setDefaultStyle(.Dark)
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        
         return true
     }
     

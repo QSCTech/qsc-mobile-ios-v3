@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+import SVProgressHUD
 import QSCMobileKit
 
 class JwbinfosysLoginViewController: UIViewController {
@@ -33,23 +33,13 @@ class JwbinfosysLoginViewController: UIViewController {
     
     @IBAction func login(sender: AnyObject) {
         view.endEditing(true)
-        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        SVProgressHUD.showWithStatus("登录中")
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
-                hud.mode = .CustomView
-                hud.customView = UIImageView(image: UIImage(named: "Check"))
-                hud.labelText = "账号登录成功"
-                delay(1) {
-                    hud.hide(true)
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }
+                self.dismissViewControllerAnimated(true, completion: nil)
+                SVProgressHUD.showSuccessWithStatus("登陆成功")
             } else {
-                hud.mode = .CustomView
-                hud.customView = UIImageView(image: UIImage(named: "Cross"))
-                hud.labelText = error
-                delay(1) {
-                    hud.hide(true)
-                }
+                SVProgressHUD.showErrorWithStatus(error)
             }
         }
     }

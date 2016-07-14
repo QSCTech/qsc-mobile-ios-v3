@@ -115,7 +115,7 @@ public enum CalendarSemester: String {
     
 }
 
-public func delay(second: Double, block: dispatch_block_t) {
+public func delay(second: NSTimeInterval, block: dispatch_block_t) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(second * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), block)
 }
 

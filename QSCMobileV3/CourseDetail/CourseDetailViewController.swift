@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SafariServices
 import MessageUI
-import MBProgressHUD
+import SVProgressHUD
 import QSCMobileKit
 
 class CourseDetailViewController: UITableViewController {
@@ -242,12 +242,7 @@ class CourseDetailViewController: UITableViewController {
             default:
                 let pasteboard = UIPasteboard.generalPasteboard()
                 pasteboard.string = cell.detailTextLabel!.text
-                let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-                hud.mode = .Text
-                hud.labelText = "已拷贝到剪贴板"
-                delay(1) {
-                    hud.hide(true)
-                }
+                SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
             }
         default:
             break

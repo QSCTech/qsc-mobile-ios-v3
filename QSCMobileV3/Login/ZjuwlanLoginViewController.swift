@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MBProgressHUD
+import SVProgressHUD
 import QSCMobileKit
 
 class ZjuwlanLoginViewController: UIViewController {
-
+    
     init() {
         super.init(nibName: "ZjuwlanLoginViewController", bundle: NSBundle.mainBundle())
     }
@@ -39,28 +39,16 @@ class ZjuwlanLoginViewController: UIViewController {
         view.endEditing(true)
         accountManager.accountForZjuwlan = usernameField.text
         accountManager.passwordForZjuwlan = passwordField.text
-        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = .CustomView
-        hud.customView = UIImageView(image: UIImage(named: "Check"))
-        hud.labelText = "账号保存成功"
-        delay(1) {
-            hud.hide(true)
-            self.navigationController?.popViewControllerAnimated(true)
-        }
+        self.navigationController?.popViewControllerAnimated(true)
+        SVProgressHUD.showSuccessWithStatus("账号保存成功")
     }
     
     @IBAction func remove(sender: AnyObject) {
         usernameField.text = ""
         passwordField.text = ""
         accountManager.accountForZjuwlan = nil
-        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = .CustomView
-        hud.customView = UIImageView(image: UIImage(named: "Check"))
-        hud.labelText = "账号删除成功"
-        delay(1) {
-            hud.hide(true)
-            self.navigationController?.popViewControllerAnimated(true)
-        }
+        self.navigationController?.popViewControllerAnimated(true)
+        SVProgressHUD.showSuccessWithStatus("账号删除成功")
     }
     
     @IBAction func textFieldDidChange(sender: AnyObject) {
