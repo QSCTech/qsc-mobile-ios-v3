@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CryptoSwift
 
 /// A session of API used to send login and resource requests. This class is used by mobile manager.
 class APISession: NSObject {
@@ -34,75 +35,23 @@ class APISession: NSObject {
         }
     }
     
-    // MARK: - Hash Functions
+    // MARK: - Helpers
     
     /**
      Generate salt for API login request. Salt should be random data of 6 bytes.
      
      - returns: Raw data of salt.
      */
-    func generateSalt() -> NSData {
+    func generateSalt() -> [UInt8] {
         let bytesOfSalt = 6
         
-        let salt = NSMutableData(capacity: bytesOfSalt)!
+        var salt = [UInt8]()
         for _ in 0..<bytesOfSalt {
-            var byte = UInt8(arc4random_uniform(UInt32(UINT8_MAX)))
-            salt.appendBytes(&byte, length: 1)
+            let byte = UInt8(arc4random_uniform(UInt32(UINT8_MAX)))
+            salt.append(byte)
         }
         return salt
     }
-    
-    /**
-     Generate `appKeyHash` for API login request. It uses PBKDF2-HMAC-SHA1 algorithm which iterates 2048 times and derives a key of 6 bytes encoded with Base64.
-     
-     - parameter password: The password from which a derived key is generated. Here it should be the original `appKey`.
-     - parameter salt:     The cryptographic salt generated before.
-     
-     - returns: The derived key encoded with Base64, used for `appKeyHash`.
-     */
-    func pbkdf2HmacSha1(password password: String, salt: NSData) -> String {
-        let numberOfIterations = 2048
-        let bytesOfDerivedKey  = 6
-        
-        let password = password.dataUsingEncoding(NSUTF8StringEncoding)!
-        let derivedKey = NSMutableData(length: bytesOfDerivedKey)!
-        CCKeyDerivationPBKDF(
-            CCPBKDFAlgorithm(kCCPBKDF2),
-            UnsafePointer<Int8>(password.bytes), password.length,
-            UnsafePointer<UInt8>(salt.bytes), salt.length,
-            CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1),
-            UInt32(numberOfIterations),
-            UnsafeMutablePointer<UInt8>(derivedKey.mutableBytes), derivedKey.length
-        )
-        return derivedKey.base64EncodedStringWithOptions([])
-    }
-    
-    /**
-     Generate a signature for API resource request list. This signature uses HMAC-SHA1 algorithm and return the first 36 bits encoded with Base64.
-     
-     - parameter key:     The secret key used in HMAC. Here it should be `sessionKey`.
-     - parameter message: The message to be authenticated. Here it should be `requestList`.
-     
-     - returns: The signature encoded with Base64, used for `sessionVerify`.
-     */
-    func hmacSha1(key key: String, message: String) -> String {
-        let lengthOfSignature = 6
-        
-        let key = key.dataUsingEncoding(NSUTF8StringEncoding)!
-        let message = message.dataUsingEncoding(NSUTF8StringEncoding)!
-        let mac = NSMutableData(length: Int(CC_SHA1_DIGEST_LENGTH))!
-        CCHmac(
-            CCHmacAlgorithm(kCCHmacAlgSHA1),
-            key.bytes, key.length,
-            message.bytes, message.length,
-            mac.mutableBytes
-        )
-        let signature = mac.base64EncodedStringWithOptions([])
-        return signature.substringToIndex(signature.startIndex.advancedBy(lengthOfSignature))
-    }
-    
-    
-    // MARK: - JSON Conversions
     
     /**
      Create a UTF-8 encoded String from the given JSON object. Note it will CRASH if the JSON is invalid.
@@ -131,9 +80,10 @@ class APISession: NSObject {
      */
     func loginRequest(callback: (Bool, String?) -> Void) {
         let salt = generateSalt()
+        let hash = try! PKCS5.PBKDF2(password: AppKey.utf8.map({$0}), salt: salt, iterations: 2048, keyLength: 6, variant: .sha1).calculate()
         let postData: [String: AnyObject] = [
-            "appKeyHash": pbkdf2HmacSha1(password: AppKey, salt: salt),
-            "salt": salt.base64EncodedStringWithOptions([]),
+            "appKeyHash": hash.toBase64()!,
+            "salt": salt.toBase64()!,
             "login": [
                 "jwbinfosys": [
                     "userName": username,
@@ -176,10 +126,12 @@ class APISession: NSObject {
             // Delay processing until `sessionFail`
             session = ("", "")
         }
+        let request = stringFromJSONObject(requestList)
+        let verify = try! Authenticator.HMAC(key: session.key!.utf8.map({$0}), variant: .sha1).authenticate(request.utf8.map({$0}))
         let postData: [String: AnyObject] = [
             "sessionId": session.id!,
-            "sessionKey": session.key!,
-            "requestList": stringFromJSONObject(requestList),
+            "sessionVerify": verify.toBase64()!,
+            "requestList": request,
         ]
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
