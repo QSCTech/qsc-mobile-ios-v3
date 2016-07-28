@@ -59,6 +59,7 @@
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */; };
+		9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
 		9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */; };
@@ -202,6 +203,7 @@
 		9D8AB4481CD783B30098451A /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GaugeKit.framework; path = Carthage/Build/iOS/GaugeKit.framework; sourceTree = "<group>"; };
 		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
 		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
 		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */,
 				9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */,
 				9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */,
+				9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */,
 				9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
@@ -583,12 +586,13 @@
 		9DF612801BAA8A03004B0A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */,
 				9D8AB4441CD7838B0098451A /* Alamofire.framework */,
 				9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */,
 				9D8AB4481CD783B30098451A /* KeychainAccess.framework */,
 				9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */,
 				9D6B336D1CECC0E200C5372F /* Kingfisher.framework */,
+				9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */,
+				9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */,
 				9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
@@ -796,6 +800,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CoreActionSheetPicker.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GaugeKit.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
