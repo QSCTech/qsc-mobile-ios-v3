@@ -37,11 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             groupDefaults.setBool(false, forKey: ShowScoreKey)
         }
         if groupDefaults.objectForKey(EventNotificationKey) == nil {
-            // Here 0 means Never
+            // 0 means Never
             groupDefaults.setInteger(0, forKey: EventNotificationKey)
         }
         if groupDefaults.objectForKey(ShowAllCoursesKey) == nil {
             groupDefaults.setBool(false, forKey: ShowAllCoursesKey)
+        }
+        if groupDefaults.objectForKey(CampusFromIndexKey) == nil {
+            // 0 stands for 紫金港
+            groupDefaults.setInteger(0, forKey: CampusFromIndexKey)
+        }
+        if groupDefaults.objectForKey(CampusToIndexKey) == nil {
+            // 1 stands for 玉泉
+            groupDefaults.setInteger(1, forKey: CampusToIndexKey)
         }
         
         SVProgressHUD.setDefaultStyle(.Dark)

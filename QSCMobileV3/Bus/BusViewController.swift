@@ -10,6 +10,9 @@ import UIKit
 import CoreActionSheetPicker
 import QSCMobileKit
 
+let CampusFromIndexKey = "CampusFromIndex"
+let CampusToIndexKey = "CampusToIndex"
+
 class BusViewController: UIViewController {
     
     init() {
@@ -41,8 +44,8 @@ class BusViewController: UIViewController {
     
     let campuses = ["紫金港", "玉泉", "西溪", "之江", "华家池"]
     
-    var fromIndex = 0
-    var toIndex = 1
+    var fromIndex = groupDefaults.integerForKey(CampusFromIndexKey)
+    var toIndex = groupDefaults.integerForKey(CampusToIndexKey)
     var isWeekend = NSCalendar.currentCalendar().isDateInWeekend(NSDate())
     var schoolBus: SchoolBus!
     
@@ -51,6 +54,9 @@ class BusViewController: UIViewController {
         toButton.setTitle(campuses[toIndex], forState: .Normal)
         schoolBus = SchoolBus(from: campuses[fromIndex], to: campuses[toIndex], isWeekend: isWeekend)
         tableView.reloadData()
+        
+        groupDefaults.setInteger(fromIndex, forKey: CampusFromIndexKey)
+        groupDefaults.setInteger(toIndex, forKey: CampusToIndexKey)
     }
     
     @IBAction func selectCampuses(sender: UIButton) {
