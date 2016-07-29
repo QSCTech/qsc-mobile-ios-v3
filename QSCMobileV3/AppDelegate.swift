@@ -18,7 +18,7 @@ let groupDefaults = NSUserDefaults(suiteName: AppGroupIdentifier)!
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         MobClick.startWithAppkey(UMengAppKey)
         UMessage.startWithAppkey(UMengAppKey, launchOptions: launchOptions)
@@ -61,5 +61,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var notificationSettings: UIUserNotificationSettings {
         return UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: [])
     }
-
+    
 }

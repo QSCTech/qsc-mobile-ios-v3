@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -140,7 +140,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周末模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zev-2N-N4E">
                     <rect key="frame" x="16" y="161" width="68" height="44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YIh-uH-Gqb">
@@ -193,7 +193,7 @@
                 <constraint firstItem="fSE-pQ-qT7" firstAttribute="top" secondItem="GQv-oD-FmY" secondAttribute="bottom" constant="8" symbolic="YES" id="HcZ-g1-MXx"/>
                 <constraint firstItem="QnG-MD-2g9" firstAttribute="leading" secondItem="fSE-pQ-qT7" secondAttribute="leading" id="Huf-Zx-AGA"/>
                 <constraint firstItem="fSE-pQ-qT7" firstAttribute="top" secondItem="GQv-oD-FmY" secondAttribute="bottom" constant="8" symbolic="YES" id="J1x-Lb-LV7"/>
-                <constraint firstItem="QnG-MD-2g9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="KVt-Bm-kgn"/>
+                <constraint firstItem="QnG-MD-2g9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" symbolic="YES" id="KVt-Bm-kgn"/>
                 <constraint firstItem="VSn-pW-FOb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-9" id="LCD-ej-z0N"/>
                 <constraint firstItem="G0Z-gq-8rJ" firstAttribute="top" secondItem="VSn-pW-FOb" secondAttribute="bottom" id="LGH-YQ-eev"/>
                 <constraint firstItem="VSn-pW-FOb" firstAttribute="bottom" secondItem="Km6-nS-3Ca" secondAttribute="bottom" id="LZd-j9-1HM"/>

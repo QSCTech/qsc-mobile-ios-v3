@@ -97,6 +97,8 @@
 		9DD491271CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */; };
 		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
+		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
+		9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
 		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
@@ -243,6 +245,8 @@
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
 		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JwbinfosysLoginViewController.xib; path = Login/JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
+		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentPageViewController.swift; path = QSCMobileV3/Moment/MomentPageViewController.swift; sourceTree = SOURCE_ROOT; };
+		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentPageViewController.xib; path = QSCMobileV3/Moment/MomentPageViewController.xib; sourceTree = SOURCE_ROOT; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -403,6 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				9D6B336B1CEC77B500C5372F /* MomentViewController.swift */,
+				9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */,
+				9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */,
 			);
 			name = Moment;
 			path = Today;
@@ -755,6 +761,7 @@
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
+				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
 				9DBC53AF1D350FC8006AA1BD /* OverallScoreCell.xib in Resources */,
 				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
@@ -837,6 +844,7 @@
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
+				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
 				9D71736A1D3164CE0074043E /* SemesterListCell.swift in Sources */,
 				9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */,
