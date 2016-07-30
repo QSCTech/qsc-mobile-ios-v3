@@ -216,6 +216,18 @@ public class MobileManager: NSObject {
         return exams.sort { $1.startTime == nil || ($0.startTime != nil && $0.startTime! <= $1.startTime!) }
     }
     
+    /**
+     Get all scores of the given semester.
+     
+     - parameter semester: A string representing the semester, e.g. 2015-2016-2.
+     
+     - returns: The array of scores sorted by grade.
+     */
+    public func getScores(semester: String) -> [Score] {
+        let scores = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Score") as! [Score]
+        return scores.sort { $0.gradePoint! >= $1.gradePoint! }
+    }
+    
     public var statistics: Statistics {
         return dataStore.statistics
     }

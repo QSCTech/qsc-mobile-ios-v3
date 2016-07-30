@@ -8,6 +8,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScoreViewController" customModule="QSCMobileV3" customModuleProvider="target">
             <connections>
+                <outlet property="averageGradeLabel" destination="JEG-Ew-wQ1" id="RuV-oe-B4k"/>
+                <outlet property="scrollView" destination="zG2-gN-OJt" id="5Ew-DM-gq1"/>
+                <outlet property="semesterCreditLabel" destination="mKu-8s-lel" id="eZp-Qt-1t1"/>
+                <outlet property="semesterGradeLabel" destination="zwD-2f-PtA" id="pCp-Rl-h32"/>
+                <outlet property="tableView" destination="obk-3c-FXe" id="bh6-n0-I1J"/>
+                <outlet property="totalCreditLabel" destination="4v5-N3-4Ce" id="xPd-Ie-ktn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -263,7 +269,7 @@
                         <constraint firstAttribute="height" constant="48" id="Iv8-On-zvu"/>
                     </constraints>
                 </scrollView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obk-3c-FXe">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obk-3c-FXe">
                     <rect key="frame" x="8" y="157" width="584" height="395"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
