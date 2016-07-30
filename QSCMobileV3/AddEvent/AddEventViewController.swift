@@ -231,7 +231,7 @@ class AddEventViewController: UITableViewController {
                 event.duration = Event.Duration.PartialTime.rawValue
             }
             // TODO: Category / Tags not set
-            event.category = Event.Category.Todo.rawValue
+            event.category = Event.Category.Activity.rawValue
             event.tags = ""
             event.name = self.titleField.text
             event.place = self.placeField.text

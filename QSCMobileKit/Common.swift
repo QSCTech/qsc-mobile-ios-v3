@@ -26,8 +26,8 @@ public class QSCColor {
     
     public static let course = UIColor(red: 0.290, green: 0.565, blue: 0.886, alpha: 1.0) // #4A90E2
     public static let exam = UIColor(red: 0.878, green: 0.298, blue: 0.518, alpha: 1.0) // #E04C84
-    public static let homework = UIColor(red: 1.000, green: 0.820, blue: 0.000, alpha: 1.0) // #FFD100
-    public static let activity = UIColor(red: 0.494, green: 0.826, blue: 0.130, alpha: 1.0) // #7ED321
+    public static let homework = UIColor(red: 0.494, green: 0.826, blue: 0.130, alpha: 1.0) // #7ED321
+    public static let activity = UIColor(red: 1.000, green: 0.820, blue: 0.000, alpha: 1.0) // #FFD100
     public static let todo = UIColor(red: 0.627, green: 0.420, blue: 0.745, alpha: 1.0) // #A06BBE
     
     public static func event(category: Event.Category) -> UIColor {

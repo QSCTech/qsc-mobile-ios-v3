@@ -59,19 +59,12 @@ class MomentPageViewController: UIViewController {
                 color = QSCColor.exam
                 startColor = UIColor(red: 1.0, green: 0.0, blue: 0.431, alpha: 1.0)
                 endColor = UIColor(red: 0.902, green: 0.604, blue: 0.259, alpha: 1.0)
-                promptLabel.text = "距考试"
-            case .Activity:
-                color = QSCColor.activity
-                // FIXME:
-                startColor = UIColor(red: 1.0, green: 0.855, blue: 0.0, alpha: 1.0)
-                endColor = UIColor(red: 0.988, green: 1.0, blue: 0.533, alpha: 1.0)
-                promptLabel.text = "距活动"
+                promptLabel.text = "距考试开始"
             default:
-                color = QSCColor.todo
-                // FIXME:
+                color = UIColor(red: 0.722, green: 0.592, blue: 0.0, alpha: 1.0)
                 startColor = UIColor(red: 1.0, green: 0.855, blue: 0.0, alpha: 1.0)
                 endColor = UIColor(red: 0.988, green: 1.0, blue: 0.533, alpha: 1.0)
-                promptLabel.text = "距日程"
+                promptLabel.text = "距活动开始"
             }
             titleLabel.textColor = color
             timerLabel.textColor = color
@@ -109,8 +102,8 @@ class MomentPageViewController: UIViewController {
                 timerLabel.text = String(format: "%d:%02d", timer / 3600, timer / 60 % 60)
                 if event.category == .Course {
                     promptLabel.text = "距下课"
-                } else if !promptLabel.text!.hasSuffix("结束") {
-                    promptLabel.text! += "结束"
+                } else {
+                    promptLabel.text = promptLabel.text!.stringByReplacingOccurrencesOfString("开始", withString: "结束")
                 }
             } else {
                 gauge.rate = 0

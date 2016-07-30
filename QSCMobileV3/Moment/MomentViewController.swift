@@ -27,7 +27,7 @@ class MomentViewController: UIViewController {
         super.viewWillAppear(animated)
         
         scrollView.removeAllSubviews()
-        let events = mobileManager.eventsForDate(NSDate()).filter { $0.end >= NSDate() }
+        let events = mobileManager.eventsForDate(NSDate()).filter { $0.category != .Todo && $0.end >= NSDate() }
         pageControl.numberOfPages = events.count
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(events.count), height: scrollView.frame.height)
         for (index, event) in events.enumerate() {
