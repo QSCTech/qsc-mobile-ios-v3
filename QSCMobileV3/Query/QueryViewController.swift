@@ -150,7 +150,8 @@ class QueryViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
         case Tools.Score.rawValue:
-            performSegueWithIdentifier("showScores", sender: nil)
+            let vc = ScoreViewController()
+            presentViewController(vc, animated: true, completion: nil)
         case Tools.Query.rawValue:
             if indexPath.row > 0 {
                 if accountManager.currentAccountForJwbinfosys == nil {

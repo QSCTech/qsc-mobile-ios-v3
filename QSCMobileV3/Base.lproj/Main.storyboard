@@ -335,7 +335,6 @@
                     <connections>
                         <segue destination="5V3-Rq-8HP" kind="show" identifier="showCourses" id="9gb-iI-jMn"/>
                         <segue destination="Emk-wI-up8" kind="show" identifier="showExams" id="D31-3H-CGD"/>
-                        <segue destination="wEn-pi-wNY" kind="show" identifier="showScores" id="Vqk-oz-OZD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFB-TC-V6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +347,7 @@
                 <viewControllerPlaceholder storyboardName="QueryList" id="5V3-Rq-8HP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfq-AC-Rj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2030.5" y="1609"/>
+            <point key="canvasLocation" x="2073.5" y="1609"/>
         </scene>
         <!--日程提醒-->
         <scene sceneID="KM9-WE-Q82">
@@ -375,15 +374,7 @@
                 <viewControllerPlaceholder storyboardName="QueryList" id="Emk-wI-up8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQH-Ua-Nk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2172.5" y="1609"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="dC9-wE-uJJ">
-            <objects>
-                <viewControllerPlaceholder id="wEn-pi-wNY" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B0G-DS-sUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2350.5" y="1609"/>
+            <point key="canvasLocation" x="2270.5" y="1609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZrD-2v-zQf">
