@@ -468,58 +468,16 @@
                     <view key="view" contentMode="scaleToFill" id="cGs-no-uHb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-UI-CcN">
-                                <rect key="frame" x="20" y="72" width="560" height="471"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hlU-X0-tdd">
-                                <rect key="frame" x="520" y="483" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="95p-1h-KMp"/>
-                                    <constraint firstAttribute="height" constant="60" id="csm-EM-fIu"/>
-                                    <constraint firstAttribute="width" constant="240" id="u1s-cI-FTh"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="u1s-cI-FTh"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="YiO-UI-CcN" firstAttribute="top" secondItem="L4j-BR-56u" secondAttribute="bottom" constant="8" symbolic="YES" id="6CF-x7-NdF"/>
-                            <constraint firstItem="hlU-X0-tdd" firstAttribute="top" secondItem="L4j-BR-56u" secondAttribute="bottom" constant="395" id="6sI-pm-QhA"/>
-                            <constraint firstItem="YiO-UI-CcN" firstAttribute="leading" secondItem="cGs-no-uHb" secondAttribute="leadingMargin" id="F3c-cZ-h0a"/>
-                            <constraint firstItem="hlU-X0-tdd" firstAttribute="top" secondItem="YiO-UI-CcN" secondAttribute="bottom" constant="-128" id="MTn-Wh-vdq"/>
-                            <constraint firstItem="Df1-gi-Awh" firstAttribute="top" secondItem="hlU-X0-tdd" secondAttribute="bottom" constant="8" symbolic="YES" id="ZHW-ie-ffV"/>
-                            <constraint firstItem="hlU-X0-tdd" firstAttribute="bottom" secondItem="YiO-UI-CcN" secondAttribute="bottom" id="fPa-9Y-Cxh"/>
-                            <constraint firstItem="Df1-gi-Awh" firstAttribute="top" secondItem="YiO-UI-CcN" secondAttribute="bottom" constant="8" symbolic="YES" id="fxk-WT-DoI"/>
-                            <constraint firstItem="YiO-UI-CcN" firstAttribute="trailing" secondItem="cGs-no-uHb" secondAttribute="trailingMargin" id="gf0-ea-5S4"/>
-                            <constraint firstItem="hlU-X0-tdd" firstAttribute="trailing" secondItem="YiO-UI-CcN" secondAttribute="trailing" id="iiw-Kf-9jQ"/>
-                            <constraint firstItem="Df1-gi-Awh" firstAttribute="top" secondItem="YiO-UI-CcN" secondAttribute="bottom" constant="8" symbolic="YES" id="kyk-h6-kTO"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ZHW-ie-ffV"/>
-                                <exclude reference="kyk-h6-kTO"/>
-                                <exclude reference="6sI-pm-QhA"/>
-                                <exclude reference="MTn-Wh-vdq"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="Discover" id="yL4-N3-ia1">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="发现" id="BMB-JG-G0R"/>
-                    <connections>
-                        <outlet property="imageView" destination="hlU-X0-tdd" id="NUa-cP-Gyi"/>
-                        <outlet property="textView" destination="YiO-UI-CcN" id="Sli-IM-66g"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9G-XH-uKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="1144"/>
+            <point key="canvasLocation" x="1534" y="390"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -539,7 +497,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="ILo-Xc-hNT"/>
                         <segue destination="Tzo-ct-FnG" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="HbO-Yt-UeN" kind="relationship" relationship="viewControllers" id="Dfl-bC-UB8"/>
+                        <segue destination="Afn-hq-3wE" kind="relationship" relationship="viewControllers" id="8Jp-0e-5Sq"/>
                         <segue destination="XZf-SV-YIi" kind="relationship" relationship="viewControllers" id="yt4-2g-68H"/>
                         <segue destination="nWB-Rd-QKm" kind="relationship" relationship="viewControllers" id="U2Z-Dz-684"/>
                     </connections>
@@ -569,28 +527,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vld-M6-Qod" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="896" y="390"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3yc-At-uPM">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HbO-Yt-UeN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Discover" id="ELC-ks-08q">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bax-lW-qry">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Afn-hq-3wE" kind="relationship" relationship="rootViewController" id="LdN-ns-4Jy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0LM-dR-Mya" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1534" y="390"/>
         </scene>
     </scenes>
     <resources>
