@@ -115,6 +115,21 @@ public enum CalendarSemester: String {
     
 }
 
+/**
+ A safe way to get events for the given date.
+ 
+ - parameter date: The specific date.
+ 
+ - returns: Return all events when logged in, otherwise just return custom events.
+ */
+public func eventsForDate(date: NSDate) -> [Event] {
+    if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
+        return EventManager.sharedInstance.customEventsForDate(date)
+    } else {
+        return MobileManager.sharedInstance.eventsForDate(date)
+    }
+}
+
 public func delay(second: NSTimeInterval, block: dispatch_block_t) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(second * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), block)
 }

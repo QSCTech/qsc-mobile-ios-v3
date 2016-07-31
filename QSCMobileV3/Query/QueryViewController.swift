@@ -131,7 +131,11 @@ class QueryViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         switch indexPath.section {
         case Tools.Score.rawValue:
-            cell = tableView.dequeueReusableCellWithIdentifier("Score")!
+            if accountManager.currentAccountForJwbinfosys == nil {
+                cell.textLabel!.attributedText = "\u{f0f6}\t查询成绩请先登录".attributedWithFontAwesome
+            } else {
+                cell = tableView.dequeueReusableCellWithIdentifier("Score")!
+            }
         case Tools.Query.rawValue:
             cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
         case Tools.Login.rawValue:
@@ -150,7 +154,12 @@ class QueryViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
         case Tools.Score.rawValue:
-            let vc = ScoreViewController()
+            let vc: UIViewController
+            if accountManager.currentAccountForJwbinfosys == nil {
+                vc = JwbinfosysLoginViewController()
+            } else {
+                vc = ScoreViewController()
+            }
             presentViewController(vc, animated: true, completion: nil)
         case Tools.Query.rawValue:
             if indexPath.row > 0 {
@@ -250,8 +259,11 @@ class QueryViewController: UITableViewController {
         }
     }
     
-    // TODO: Forbid refreshing when not logged in
+    // TODO: Beautify the animation of refreshing
     @IBAction func refresh(sender: UIRefreshControl) {
+        if accountManager.currentAccountForJwbinfosys == nil {
+            return
+        }
         MobileManager.sharedInstance.refreshAll {
             sender.endRefreshing()
             self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)

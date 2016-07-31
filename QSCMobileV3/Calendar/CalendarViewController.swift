@@ -243,14 +243,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func eventsForDate(date: NSDate) -> [Event] {
-        if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
-            return EventManager.sharedInstance.customEventsForDate(date)
-        } else {
-            return mobileManager.eventsForDate(date)
-        }
-    }
-    
     func filteredEvents(section: Int) -> [Event] {
         let events = eventsForDate(selectedDate)
         switch section {
