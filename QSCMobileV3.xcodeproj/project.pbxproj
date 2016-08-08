@@ -13,6 +13,8 @@
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
 		9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */; };
 		9D129CBA1D32539F00A865DF /* SchoolBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D129CB91D32539F00A865DF /* SchoolBus.swift */; };
+		9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B768E1D58F6380088B96E /* ScoreCell.swift */; };
+		9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D1B768F1D58F6380088B96E /* ScoreCell.xib */; };
 		9D2132BA1D227C0A00996856 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2132B91D227C0A00996856 /* Logo.png */; };
 		9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */; };
 		9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */; };
@@ -159,6 +161,8 @@
 		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendor/FontAwesome.otf; sourceTree = "<group>"; };
 		9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		9D129CB91D32539F00A865DF /* SchoolBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolBus.swift; path = Mobile/SchoolBus.swift; sourceTree = "<group>"; };
+		9D1B768E1D58F6380088B96E /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = Score/ScoreCell.swift; sourceTree = "<group>"; };
+		9D1B768F1D58F6380088B96E /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreCell.xib; path = Score/ScoreCell.xib; sourceTree = "<group>"; };
 		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreViewController.swift; path = Score/ScoreViewController.swift; sourceTree = "<group>"; };
 		9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = Score/ScoreViewController.xib; sourceTree = "<group>"; };
@@ -493,6 +497,8 @@
 				9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */,
 				9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */,
 				9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */,
+				9D1B768F1D58F6380088B96E /* ScoreCell.xib */,
+				9D1B768E1D58F6380088B96E /* ScoreCell.swift */,
 			);
 			name = Score;
 			sourceTree = "<group>";
@@ -779,6 +785,7 @@
 				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
 				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
+				9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +845,7 @@
 				9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */,
 				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
+				9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */,
 				9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */,
 				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
 				9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */,

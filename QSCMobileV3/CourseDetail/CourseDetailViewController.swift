@@ -175,7 +175,7 @@ class CourseDetailViewController: UITableViewController {
                 cell.selectionStyle = .None
                 cell.textLabel!.text = "学分：" + courseObject!.credit!.stringValue
                 if let scoreObject = scoreObject {
-                    cell.detailTextLabel!.text =  "成绩：" + scoreObject.gradePoint!.stringValue + " / " + scoreObject.score!
+                    cell.detailTextLabel!.text =  String(format: "成绩：%.1f / %@", scoreObject.gradePoint!.floatValue, scoreObject.score!)
                 } else {
                     cell.detailTextLabel!.text = "暂无成绩信息"
                 }

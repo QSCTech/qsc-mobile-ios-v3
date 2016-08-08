@@ -225,7 +225,17 @@ public class MobileManager: NSObject {
      */
     public func getScores(semester: String) -> [Score] {
         let scores = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Score") as! [Score]
-        return scores.sort { $0.gradePoint! >= $1.gradePoint! }
+        return scores.sort {
+            if $0.gradePoint == $1.gradePoint {
+                if let left = Int($0.score!), right = Int($1.score!) {
+                    return left >= right
+                } else {
+                    return $0.score! >= $1.score!
+                }
+            } else {
+                return $0.gradePoint! > $1.gradePoint!
+            }
+        }
     }
     
     public var statistics: Statistics {

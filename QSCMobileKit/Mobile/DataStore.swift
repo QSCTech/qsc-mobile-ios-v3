@@ -481,7 +481,13 @@ class DataStore: NSObject {
         let request = NSFetchRequest(entityName: "BusStop")
         request.predicate = NSPredicate(format: "campus == %@", campus)
         let stops = try! managedObjectContext.executeFetchRequest(request) as! [BusStop]
-        return stops.sort { $1.time == "*" || ($0.time != "*" && $0.time! <= $1.time!) }
+        return stops.sort {
+            if $0.time == "*" || $1.time == "*" {
+                return $1.time == "*"
+            } else {
+                return $0.time! <= $1.time!
+            }
+        }
     }
     
     static func entityForYear(date: NSDate) -> Year? {

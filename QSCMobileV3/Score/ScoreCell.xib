@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="ScoreCell" customModule="QSCMobileV3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="程序设计基础" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-X7-41t">
+                        <rect key="frame" x="16" y="8" width="78" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="3 学分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb4-ng-FC7">
+                        <rect key="frame" x="102" y="8" width="147" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="5.0 / 98" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-81-sxQ">
+                        <rect key="frame" x="257" y="8" width="47" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhv-2m-41Y" customClass="Gauge" customModule="GaugeKit">
+                        <rect key="frame" x="8" y="28" width="304" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Uhv-2m-41Y" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="3Zc-ZL-XDN"/>
+                    <constraint firstItem="aIO-X7-41t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="4Vd-XF-VPK"/>
+                    <constraint firstItem="z6R-81-sxQ" firstAttribute="leading" secondItem="qb4-ng-FC7" secondAttribute="trailing" constant="8" symbolic="YES" id="8BB-ee-qPa"/>
+                    <constraint firstItem="aIO-X7-41t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9eu-0A-p85"/>
+                    <constraint firstAttribute="topMargin" secondItem="z6R-81-sxQ" secondAttribute="top" id="E5p-Lw-4jf"/>
+                    <constraint firstItem="Uhv-2m-41Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="HVd-jF-2Pv"/>
+                    <constraint firstItem="qb4-ng-FC7" firstAttribute="leading" secondItem="aIO-X7-41t" secondAttribute="trailing" constant="8" symbolic="YES" id="JbN-Qg-QBk"/>
+                    <constraint firstItem="Uhv-2m-41Y" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="OFL-9C-s5e"/>
+                    <constraint firstItem="z6R-81-sxQ" firstAttribute="trailing" secondItem="Uhv-2m-41Y" secondAttribute="trailing" id="RUb-5J-TFL"/>
+                    <constraint firstAttribute="topMargin" secondItem="qb4-ng-FC7" secondAttribute="top" id="hAF-pi-G3g"/>
+                    <constraint firstItem="z6R-81-sxQ" firstAttribute="leading" secondItem="aIO-X7-41t" secondAttribute="trailing" constant="8" symbolic="YES" id="ptq-vu-PPF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="z6R-81-sxQ" secondAttribute="trailing" constant="8" id="sUZ-mE-JN5"/>
+                    <constraint firstItem="Uhv-2m-41Y" firstAttribute="leading" secondItem="aIO-X7-41t" secondAttribute="leading" id="uyq-dv-OHm"/>
+                    <constraint firstItem="Uhv-2m-41Y" firstAttribute="top" secondItem="aIO-X7-41t" secondAttribute="bottom" constant="4" id="weN-8b-ZpA"/>
+                    <constraint firstItem="z6R-81-sxQ" firstAttribute="baseline" secondItem="aIO-X7-41t" secondAttribute="baseline" id="y4N-91-ivy"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="uyq-dv-OHm"/>
+                        <exclude reference="RUb-5J-TFL"/>
+                        <exclude reference="ptq-vu-PPF"/>
+                        <exclude reference="y4N-91-ivy"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.098039215690000001" green="0.12549019610000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="creditLabel" destination="qb4-ng-FC7" id="cuJ-tq-Xcs"/>
+                <outlet property="gauge" destination="Uhv-2m-41Y" id="G1B-UN-6zv"/>
+                <outlet property="nameLabel" destination="aIO-X7-41t" id="ey6-OY-LVx"/>
+                <outlet property="scoreLabel" destination="z6R-81-sxQ" id="Tme-er-64b"/>
+            </connections>
+            <point key="canvasLocation" x="595" y="380.5"/>
+        </tableViewCell>
+    </objects>
+</document>

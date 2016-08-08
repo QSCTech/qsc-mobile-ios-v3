@@ -19,9 +19,10 @@ class ScoreViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    let mobileManager = MobileManager.sharedInstance
+    private let buttonWidth = CGFloat(100)
+    private let mobileManager = MobileManager.sharedInstance
     
-    var selectedScores = [Score]()
+    private var selectedScores = [Score]()
     
     @IBOutlet weak var semesterGradeLabel: UILabel!
     @IBOutlet weak var semesterCreditLabel: UILabel!
@@ -31,11 +32,14 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let imageView = UIImageView(image: UIImage(named: "Triangle"))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.registerNib(UINib(nibName: "ScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
         
         averageGradeLabel.text = String(format: "%.2f", mobileManager.statistics.averageGrade!.floatValue)
         totalCreditLabel.text = mobileManager.statistics.totalCredit!.stringValue
@@ -43,7 +47,6 @@ class ScoreViewController: UIViewController {
         let semesters = mobileManager.allSemesters
         changeSemester(semesters.last ?? "")
         
-        let buttonWidth = CGFloat(100)
         scrollView.contentSize = CGSize(width: buttonWidth * CGFloat(semesters.count), height: scrollView.frame.height)
         for (index, semester) in semesters.enumerate() {
             let button = UIButton(frame: CGRect(x: buttonWidth * CGFloat(index), y: 0, width: buttonWidth, height: scrollView.frame.height))
@@ -56,6 +59,7 @@ class ScoreViewController: UIViewController {
         let offset = CGPoint(x: scrollView.contentSize.width, y: 0)
         scrollView.setContentOffset(offset, animated: false)
         scrollView.scrollsToTop = false
+        scrollView.addSubview(imageView)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -63,18 +67,22 @@ class ScoreViewController: UIViewController {
     }
     
     func changeSemester(semester: String) {
+        var semesterIndex = mobileManager.allSemesters.count - 1
         semesterGradeLabel.text = "0.00"
         semesterCreditLabel.text = "0"
         let semesterScores = mobileManager.semesterScores
-        for semesterScore in semesterScores {
+        for (index, semesterScore) in semesterScores.enumerate() {
             if semester.hasPrefix(semesterScore.year!) && ((semester.hasSuffix("1") && semesterScore.semester == "AW") || (semester.hasSuffix("2") && semesterScore.semester == "SS"))  {
                 semesterGradeLabel.text = String(format: "%.2f", semesterScore.averageGrade!.floatValue)
                 semesterCreditLabel.text = semesterScore.totalCredit!.stringValue
+                semesterIndex = index
                 break
             }
         }
         selectedScores = mobileManager.getScores(semester)
         tableView.reloadData()
+        
+        imageView.frame = CGRect(x: buttonWidth * CGFloat(semesterIndex) + 38, y: 0, width: 23, height: 12)
     }
     
     func semesterWasSelected(sender: UIButton) {
@@ -94,12 +102,18 @@ extension ScoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Score") as! ScoreCell
         let score = selectedScores[indexPath.row]
-        cell.textLabel!.text = score.name
-        cell.detailTextLabel!.text = score.gradePoint!.stringValue
+        cell.nameLabel.text = score.name!
+        cell.creditLabel.text = "\(score.credit!) 学分"
+        cell.scoreLabel.text = String(format: "%.1f / %@", score.gradePoint!.floatValue, score.score!)
+        cell.gauge.rate = CGFloat(score.gradePoint!)
         cell.backgroundColor = UIColor.clearColor()
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 66
     }
     
 }
