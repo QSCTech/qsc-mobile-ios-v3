@@ -103,6 +103,7 @@
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
 		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
 		9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */; };
+		9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174DD1D59A2B800836575 /* DeviceKit.framework */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
 		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
@@ -255,6 +256,7 @@
 		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JwbinfosysLoginViewController.xib; path = Login/JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
 		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentPageViewController.swift; path = QSCMobileV3/Moment/MomentPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentPageViewController.xib; path = QSCMobileV3/Moment/MomentPageViewController.xib; sourceTree = SOURCE_ROOT; };
+		9DF174DD1D59A2B800836575 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -275,6 +277,7 @@
 				9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */,
 				9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */,
 				9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */,
+				9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */,
 				9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
@@ -611,6 +614,7 @@
 				9D6B336D1CECC0E200C5372F /* Kingfisher.framework */,
 				9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */,
 				9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */,
+				9DF174DD1D59A2B800836575 /* DeviceKit.framework */,
 				9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
@@ -822,6 +826,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CoreActionSheetPicker.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GaugeKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DeviceKit.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
