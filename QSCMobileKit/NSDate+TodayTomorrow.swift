@@ -12,8 +12,7 @@ extension NSDate {
     
     var today: NSDate {
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Year, .Month, .Day], fromDate: self)
-        return calendar.dateFromComponents(components)!
+        return calendar.startOfDayForDate(self)
     }
     
     var tomorrow: NSDate {

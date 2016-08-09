@@ -48,14 +48,49 @@ public class EventManager: NSObject {
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
     }
     
-    // TODO: Handle repeatable events and notifications
+    // TODO: Support notifications
     public func customEventsForDate(date: NSDate) -> [Event] {
+        var actualDates = [CustomEvent: (start: NSDate, end: NSDate)]()
+        
         let request = NSFetchRequest(entityName: "CustomEvent")
         request.predicate = NSPredicate(format: "(start < %@) AND (end >= %@)", date.tomorrow, date.today)
-        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
-        let events = try! managedObjectContext.executeFetchRequest(request) as! [CustomEvent]
+        var events = try! managedObjectContext.executeFetchRequest(request) as! [CustomEvent]
+        for event in events {
+            actualDates[event] = (event.start!, event.end!)
+        }
         
-        return events.map { event in
+        request.predicate = NSPredicate(format: "(end < %@) AND (repeatType != \"永不\") AND (repeatEnd >= %@)", date.today, date.today)
+        let repeatable = try! managedObjectContext.executeFetchRequest(request) as! [CustomEvent]
+        let calendar = NSCalendar.currentCalendar()
+        for event in repeatable {
+            let startComponents: NSDateComponents
+            switch event.repeatType! {
+            case "每周", "每两周":
+                startComponents = calendar.components([.Weekday, .Hour, .Minute, .Second], fromDate: event.start!)
+            case "每月":
+                startComponents = calendar.components([.Day, .Hour, .Minute, .Second], fromDate: event.start!)
+            default:
+                startComponents = calendar.components([.Hour, .Minute, .Second], fromDate: event.start!)
+            }
+            let timeInterval = event.end!.timeIntervalSinceDate(event.start!)
+            var flag = false
+            calendar.enumerateDatesStartingAfterDate(event.start!, matchingComponents: startComponents, options: .MatchStrictly) { start, _, stop in
+                flag = !flag
+                if event.repeatType == "每两周" && flag {
+                    return
+                }
+                let end = start?.dateByAddingTimeInterval(timeInterval)
+                if start! < date.tomorrow && end! >= date.today {
+                    actualDates[event] = (start!, end!)
+                    events.append(event)
+                }
+                if start! >= date.tomorrow {
+                    stop.memory = true
+                }
+            }
+        }
+        
+        return events.sort({ actualDates[$0]!.start <= actualDates[$1]!.start }).map { event in
             let duration = Event.Duration(rawValue: event.duration!.integerValue)!
             let category = Event.Category(rawValue: event.category!.integerValue)!
             let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
@@ -63,14 +98,14 @@ public class EventManager: NSObject {
             let formatter = NSDateFormatter()
             formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy年MM月dd日"
-            var startTime = formatter.stringFromDate(event.start!)
-            var endTime = formatter.stringFromDate(event.end!)
+            var startTime = formatter.stringFromDate(actualDates[event]!.start)
+            var endTime = formatter.stringFromDate(actualDates[event]!.end)
             let time: String
             if startTime == endTime {
                 if event.duration! == Event.Duration.PartialTime.rawValue {
                     formatter.dateFormat = "HH:mm"
-                    startTime += " " + formatter.stringFromDate(event.start!)
-                    endTime = formatter.stringFromDate(event.end!)
+                    startTime += " " + formatter.stringFromDate(actualDates[event]!.start)
+                    endTime = formatter.stringFromDate(actualDates[event]!.end)
                     time = startTime + "-" + endTime
                 } else {
                     time = startTime
