@@ -27,12 +27,20 @@ class EventDetailViewController: UITableViewController {
     
     var customEvent: CustomEvent!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        hidesBottomBarWhenPushed = true
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = Event.Category(rawValue: customEvent.category!.integerValue)!.name
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
+        // To avoid dark shadow during transition
+        navigationController?.view.backgroundColor = UIColor.whiteColor()
+        navigationController?.setToolbarHidden(false, animated: animated)
+        toolbarItems?.first?.width = view.frame.width
         
+        navigationItem.title = Event.Category(rawValue: customEvent.category!.integerValue)!.name
         switch customEvent.category! {
         case Event.Category.Lesson.rawValue:
             dotView.backgroundColor = QSCColor.course
@@ -62,14 +70,15 @@ class EventDetailViewController: UITableViewController {
         notesTextView.text = customEvent.notes
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setToolbarHidden(true, animated: animated)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nc = segue.destinationViewController as! UINavigationController
         let vc = nc.topViewController as! EventEditViewController
         vc.customEvent = customEvent
-    }
-    
-    func edit(sender: AnyObject) {
-        performSegueWithIdentifier("Edit", sender: nil)
     }
     
     // MARK: - Table view delegate
@@ -80,6 +89,24 @@ class EventDetailViewController: UITableViewController {
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func edit(sender: AnyObject) {
+        performSegueWithIdentifier("Edit", sender: nil)
+    }
+    
+    @IBAction func remove(sender: AnyObject) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let remove = UIAlertAction(title: "删除日程", style: .Destructive) { _ in
+            EventManager.sharedInstance.removeCustomEvent(self.customEvent)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        alert.addAction(remove)
+        let cancel = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        alert.addAction(cancel)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     // MARK: - Date formatters

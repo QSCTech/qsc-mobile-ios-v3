@@ -118,7 +118,7 @@ public class EventManager: NSObject {
         }
     }
     
-    // MARK: - Creation
+    // MARK: - Modification
     
     /**
      Create an event entity for the course with the given identifier. If that entity exists, this method will do nothing.
@@ -134,18 +134,12 @@ public class EventManager: NSObject {
         }
     }
     
-    /**
-     Edit or create a custom event and accept a handler to modify it before saving.
-     
-     - parameter event:   The custom event to edit. If it is nil, a new event will be created.
-     - parameter handler: A handler which takes an custom event as argument.
-     */
-    public func editCustomEvent(event: CustomEvent?, handler: (CustomEvent) -> Void) {
-        if let event = event {
-            handler(event)
-        } else {
-            handler(CustomEvent(context: managedObjectContext))
-        }
+    public var newCustomEvent: CustomEvent {
+        return CustomEvent(context: managedObjectContext)
+    }
+    
+    public func removeCustomEvent(event: CustomEvent) {
+        managedObjectContext.deleteObject(event)
         try! managedObjectContext.save()
     }
     

@@ -223,24 +223,33 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        EventManager.sharedInstance.editCustomEvent(customEvent) { event in
-            if self.allDaySwitch.on {
-                event.duration = Event.Duration.AllDay.rawValue
-            } else {
-                event.duration = Event.Duration.PartialTime.rawValue
-            }
-            // TODO: Category / Tags not set
-            event.category = Event.Category.Activity.rawValue
-            event.tags = ""
-            event.name = self.titleField.text
-            event.place = self.placeField.text
-            event.start = self.startTimePicker.date
-            event.end = self.endTimePicker.date
-            event.repeatType = self.repeatTypeLabel.text
-            event.repeatEnd = self.repeatEndPicker.date
-            event.hasReminder = self.reminderSwitch.on
-            event.notes = self.notesTextView.text
+        let eventManager = EventManager.sharedInstance
+        
+        let event: CustomEvent
+        if customEvent == nil {
+            event = eventManager.newCustomEvent
+        } else {
+            event = customEvent!
         }
+        
+        // TODO: Category / Tags not set
+        event.category = Event.Category.Activity.rawValue
+        event.tags = ""
+        event.name = self.titleField.text
+        event.place = self.placeField.text
+        if self.allDaySwitch.on {
+            event.duration = Event.Duration.AllDay.rawValue
+        } else {
+            event.duration = Event.Duration.PartialTime.rawValue
+        }
+        event.start = self.startTimePicker.date
+        event.end = self.endTimePicker.date
+        event.repeatType = self.repeatTypeLabel.text
+        event.repeatEnd = self.repeatEndPicker.date
+        event.hasReminder = self.reminderSwitch.on
+        event.notes = self.notesTextView.text
+        eventManager.save()
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
