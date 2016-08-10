@@ -1,5 +1,5 @@
 //
-//  AddEventViewController.swift
+//  EventEditViewController.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2016-05-19.
@@ -9,7 +9,7 @@
 import UIKit
 import QSCMobileKit
 
-class AddEventViewController: UITableViewController {
+class EventEditViewController: UITableViewController {
     
     private let timeSection = 1
     private let notesSection = 2
@@ -55,29 +55,40 @@ class AddEventViewController: UITableViewController {
     
     // MARK: - View controller override
     
-    var selectedDate: NSDate!
+    var customEvent: CustomEvent?
+    var selectedDate: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startTimePicker.date = selectedDate
-        endTimePicker.date = selectedDate
-        repeatEndPicker.date = selectedDate
-        
-        startTimeLabel.text = datetimeFormatter.stringFromDate(startTimePicker.date)
-        endTimeLabel.text = datetimeFormatter.stringFromDate(endTimePicker.date)
-        repeatEndLabel.text = dateFormatter.stringFromDate(repeatEndPicker.date)
-        
-        endTimePicker.minimumDate = startTimePicker.date
-        repeatEndPicker.minimumDate = endTimePicker.date
+        if let event = customEvent {
+            // TODO: Category / Tags not set
+            titleField.text = event.name
+            titleDidChange(titleField)
+            placeField.text = event.place
+            allDaySwitch.on = (event.duration == Event.Duration.AllDay.rawValue)
+            allDaySwitchDidChange(allDaySwitch)
+            startTimePicker.date = event.start!
+            endTimePicker.date = event.end!
+            repeatTypeLabel.text = event.repeatType
+            changeRepeatType(event.repeatType!)
+            repeatEndPicker.date = event.repeatEnd!
+            reminderSwitch.on = event.hasReminder!.boolValue
+            notesTextView.text = event.notes
+        } else {
+            startTimePicker.date = selectedDate!
+            endTimePicker.date = selectedDate!
+            repeatEndPicker.date = selectedDate!
+        }
+        startTimeDidChange(startTimePicker)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let vc = segue.destinationViewController as! RepeatTypeViewController
-        vc.addEventViewController = self
+        vc.eventEditViewController = self
     }
     
-    // MARK: - Table view data delegate
+    // MARK: - Table view delegate
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
@@ -137,6 +148,8 @@ class AddEventViewController: UITableViewController {
         }
     }
     
+    // MARK: - Reload row
+    
     private func reloadRowFor(row: Time) {
         let indexPath = NSIndexPath(forRow: row.rawValue, inSection: timeSection)
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -167,35 +180,21 @@ class AddEventViewController: UITableViewController {
         if sender.on {
             startTimePicker.datePickerMode = .Date
             endTimePicker.datePickerMode = .Date
-            startTimeLabel.text = dateFormatter.stringFromDate(startTimePicker.date)
-            endTimeLabel.text = dateFormatter.stringFromDate(endTimePicker.date)
+            startTimeLabel.text = EventDetailViewController.stringFromDate(startTimePicker.date)
+            endTimeLabel.text = EventDetailViewController.stringFromDate(endTimePicker.date)
         } else {
             startTimePicker.datePickerMode = .DateAndTime
             endTimePicker.datePickerMode = .DateAndTime
-            startTimeLabel.text = datetimeFormatter.stringFromDate(startTimePicker.date)
-            endTimeLabel.text = datetimeFormatter.stringFromDate(endTimePicker.date)
+            startTimeLabel.text = EventDetailViewController.stringFromDatetime(startTimePicker.date)
+            endTimeLabel.text = EventDetailViewController.stringFromDatetime(endTimePicker.date)
         }
     }
     
-    private let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy年M月d日"
-        return formatter
-    }()
-    
-    private let datetimeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy年M月d日    HH:mm"
-        return formatter
-    }()
-    
     @IBAction func startTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
-            startTimeLabel.text = dateFormatter.stringFromDate(sender.date)
+            startTimeLabel.text = EventDetailViewController.stringFromDate(sender.date)
         } else {
-            startTimeLabel.text = datetimeFormatter.stringFromDate(sender.date)
+            startTimeLabel.text = EventDetailViewController.stringFromDatetime(sender.date)
         }
         endTimePicker.minimumDate = sender.date
         endTimeDidChange(endTimePicker)
@@ -203,16 +202,16 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func endTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
-            endTimeLabel.text = dateFormatter.stringFromDate(sender.date)
+            endTimeLabel.text = EventDetailViewController.stringFromDate(sender.date)
         } else {
-            endTimeLabel.text = datetimeFormatter.stringFromDate(sender.date)
+            endTimeLabel.text = EventDetailViewController.stringFromDatetime(sender.date)
         }
         repeatEndPicker.minimumDate = sender.date
         repeatEndDidChange(repeatEndPicker)
     }
     
     @IBAction func repeatEndDidChange(sender: UIDatePicker) {
-        repeatEndLabel.text = dateFormatter.stringFromDate(sender.date)
+        repeatEndLabel.text = EventDetailViewController.stringFromDate(sender.date)
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -224,7 +223,7 @@ class AddEventViewController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        EventManager.sharedInstance.createCustomEvent { event in
+        EventManager.sharedInstance.editCustomEvent(customEvent) { event in
             if self.allDaySwitch.on {
                 event.duration = Event.Duration.AllDay.rawValue
             } else {

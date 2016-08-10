@@ -55,6 +55,19 @@ public struct Event {
     }
     public enum Category: Int {
         case Course = 0, Exam, Lesson, Quiz, Activity, Todo
+        
+        public var name: String {
+            switch self {
+            case .Course, .Lesson:
+                return "课程"
+            case .Exam, .Quiz:
+                return "考试"
+            case .Activity:
+                return "活动"
+            default:
+                return "待办"
+            }
+        }
     }
     public let duration: Duration
     public let category: Category

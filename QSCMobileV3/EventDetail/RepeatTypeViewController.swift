@@ -10,7 +10,7 @@ import UIKit
 
 class RepeatTypeViewController: UITableViewController {
     
-    var addEventViewController: AddEventViewController?
+    var eventEditViewController: EventEditViewController?
     
     var selectedCell: UITableViewCell?
     
@@ -18,7 +18,7 @@ class RepeatTypeViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         for cell in tableView.visibleCells {
-            if cell.textLabel!.text == addEventViewController!.repeatTypeLabel!.text {
+            if cell.textLabel!.text == eventEditViewController!.repeatTypeLabel!.text {
                 selectedCell = cell
                 cell.accessoryType = .Checkmark
             }
@@ -33,8 +33,8 @@ class RepeatTypeViewController: UITableViewController {
         cell.accessoryType = .Checkmark
         
         let text = cell.textLabel!.text!
-        addEventViewController!.repeatTypeLabel!.text = text
-        addEventViewController!.changeRepeatType(text)
+        eventEditViewController!.repeatTypeLabel!.text = text
+        eventEditViewController!.changeRepeatType(text)
         
         navigationController?.popViewControllerAnimated(true)
     }

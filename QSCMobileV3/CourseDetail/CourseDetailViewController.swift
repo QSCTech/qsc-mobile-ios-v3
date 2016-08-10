@@ -35,7 +35,7 @@ class CourseDetailViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         if managedObject.managedObjectContext == nil {
-            navigationController?.popViewControllerAnimated(true)
+            navigationController?.popViewControllerAnimated(false)
         } else {
             tableView.reloadData()
         }

@@ -43,8 +43,8 @@
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B336D1CECC0E200C5372F /* Kingfisher.framework */; };
-		9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B33741CED9A3100C5372F /* AddEvent.storyboard */; };
-		9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */; };
+		9D6B33751CED9A3100C5372F /* EventEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B33741CED9A3100C5372F /* EventEdit.storyboard */; };
+		9D6B33771CEDEA7500C5372F /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33761CEDEA7500C5372F /* EventEditViewController.swift */; };
 		9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */; };
 		9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B337B1CF025F500C5372F /* BusViewController.swift */; };
 		9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B337C1CF025F500C5372F /* BusViewController.xib */; };
@@ -104,6 +104,8 @@
 		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
 		9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */; };
 		9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174DD1D59A2B800836575 /* DeviceKit.framework */; };
+		9DF174E01D5B8BA200836575 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF174DF1D5B8BA200836575 /* EventDetail.storyboard */; };
+		9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
 		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
@@ -194,9 +196,9 @@
 		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
 		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = QSCMobileV3/Moment/MomentViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		9D6B33741CED9A3100C5372F /* AddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEvent.storyboard; sourceTree = "<group>"; };
-		9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
-		9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatTypeViewController.swift; sourceTree = "<group>"; };
+		9D6B33741CED9A3100C5372F /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventEdit.storyboard; path = ../EventDetail/EventEdit.storyboard; sourceTree = "<group>"; };
+		9D6B33761CEDEA7500C5372F /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventEditViewController.swift; path = ../EventDetail/EventEditViewController.swift; sourceTree = "<group>"; };
+		9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatTypeViewController.swift; path = ../EventDetail/RepeatTypeViewController.swift; sourceTree = "<group>"; };
 		9D6B337B1CF025F500C5372F /* BusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusViewController.swift; path = Bus/BusViewController.swift; sourceTree = "<group>"; };
 		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusViewController.xib; path = Bus/BusViewController.xib; sourceTree = "<group>"; };
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
@@ -257,6 +259,8 @@
 		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentPageViewController.swift; path = QSCMobileV3/Moment/MomentPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentPageViewController.xib; path = QSCMobileV3/Moment/MomentPageViewController.xib; sourceTree = SOURCE_ROOT; };
 		9DF174DD1D59A2B800836575 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
+		9DF174DF1D5B8BA200836575 /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventDetail.storyboard; path = ../EventDetail/EventDetail.storyboard; sourceTree = "<group>"; };
+		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = QSCMobileV3/EventDetail/EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -339,7 +343,7 @@
 				9D3139751CE789BF00CD7DAD /* Query */,
 				9D3139721CE789BF00CD7DAD /* Preference */,
 				9DE716021CE7A9E900282DCD /* Login */,
-				9D6B336F1CED90CC00C5372F /* AddEvent */,
+				9D6B336F1CED90CC00C5372F /* EventDetail */,
 				9DC475611D2CF9A200F4B3DF /* CourseDetail */,
 				9DBC53AB1D350F86006AA1BD /* Score */,
 				9D6B337A1CF0215E00C5372F /* Bus */,
@@ -472,13 +476,16 @@
 			name = Notice;
 			sourceTree = "<group>";
 		};
-		9D6B336F1CED90CC00C5372F /* AddEvent */ = {
+		9D6B336F1CED90CC00C5372F /* EventDetail */ = {
 			isa = PBXGroup;
 			children = (
-				9D6B33741CED9A3100C5372F /* AddEvent.storyboard */,
-				9D6B33761CEDEA7500C5372F /* AddEventViewController.swift */,
+				9DF174DF1D5B8BA200836575 /* EventDetail.storyboard */,
+				9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */,
+				9D6B33741CED9A3100C5372F /* EventEdit.storyboard */,
+				9D6B33761CEDEA7500C5372F /* EventEditViewController.swift */,
 				9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */,
 			);
+			name = EventDetail;
 			path = AddEvent;
 			sourceTree = "<group>";
 		};
@@ -774,7 +781,7 @@
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
-				9D6B33751CED9A3100C5372F /* AddEvent.storyboard in Resources */,
+				9D6B33751CED9A3100C5372F /* EventEdit.storyboard in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
@@ -789,6 +796,7 @@
 				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
 				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
+				9DF174E01D5B8BA200836575 /* EventDetail.storyboard in Resources */,
 				9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,10 +857,11 @@
 				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
 				9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */,
 				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
+				9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */,
 				9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */,
-				9D6B33771CEDEA7500C5372F /* AddEventViewController.swift in Sources */,
+				9D6B33771CEDEA7500C5372F /* EventEditViewController.swift in Sources */,
 				9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
 				9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */,

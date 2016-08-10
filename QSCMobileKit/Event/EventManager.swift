@@ -135,13 +135,17 @@ public class EventManager: NSObject {
     }
     
     /**
-     Create a custom event and accept a handler to modify it before saving.
+     Edit or create a custom event and accept a handler to modify it before saving.
      
+     - parameter event:   The custom event to edit. If it is nil, a new event will be created.
      - parameter handler: A handler which takes an custom event as argument.
      */
-    public func createCustomEvent(handler: (CustomEvent) -> Void) {
-        let customEvent = CustomEvent(context: managedObjectContext)
-        handler(customEvent)
+    public func editCustomEvent(event: CustomEvent?, handler: (CustomEvent) -> Void) {
+        if let event = event {
+            handler(event)
+        } else {
+            handler(CustomEvent(context: managedObjectContext))
+        }
         try! managedObjectContext.save()
     }
     

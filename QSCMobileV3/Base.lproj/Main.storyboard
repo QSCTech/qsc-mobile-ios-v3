@@ -271,16 +271,17 @@
                         <outlet property="weekLabel" destination="Srw-bJ-IoV" id="f4P-5V-7wQ"/>
                         <outlet property="yearLabel" destination="CDZ-oE-nhG" id="9Yf-dG-ZG9"/>
                         <segue destination="PhR-Au-qVW" kind="show" identifier="showCourseDetail" id="8NY-eE-i0R"/>
+                        <segue destination="PEb-He-tBl" kind="show" identifier="showEventDetail" id="3vl-uD-nnX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="896" y="1144"/>
         </scene>
-        <!--AddEvent-->
+        <!--EventEdit-->
         <scene sceneID="h7q-IP-KL4">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddEvent" id="2xs-uO-Ddu" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EventEdit" id="2xs-uO-Ddu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiA-j3-RV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="871" y="1609"/>
@@ -291,7 +292,15 @@
                 <viewControllerPlaceholder storyboardName="CourseDetail" id="PhR-Au-qVW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6S-Ay-9Xw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028.5" y="1609"/>
+            <point key="canvasLocation" x="989.5" y="1609"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="Mw0-Q3-Cvv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="PEb-He-tBl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OwF-i4-CYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="1609"/>
         </scene>
         <!--查询-->
         <scene sceneID="ebA-ke-ivD">

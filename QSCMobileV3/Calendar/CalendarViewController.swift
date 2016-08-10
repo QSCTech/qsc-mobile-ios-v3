@@ -61,11 +61,14 @@ class CalendarViewController: UIViewController {
         switch segue.identifier! {
         case "addEvent":
             let nc = segue.destinationViewController as! UINavigationController
-            let vc = nc.topViewController as! AddEventViewController
+            let vc = nc.topViewController as! EventEditViewController
             vc.selectedDate = selectedDate
         case "showCourseDetail":
             let vc = segue.destinationViewController as! CourseDetailViewController
             vc.managedObject = selectedEvent.object
+        case "showEventDetail":
+            let vc = segue.destinationViewController as! EventDetailViewController
+            vc.customEvent = selectedEvent.object as! CustomEvent
         default:
             break
         }
@@ -240,6 +243,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         selectedEvent = filteredEvents(indexPath.section)[indexPath.row]
         if selectedEvent.category == .Course || selectedEvent.category == .Exam {
             performSegueWithIdentifier("showCourseDetail", sender: nil)
+        } else {
+            performSegueWithIdentifier("showEventDetail", sender: nil)
         }
     }
     
