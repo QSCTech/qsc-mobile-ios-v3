@@ -1,5 +1,6 @@
 github "skywinder/ActionSheetPicker-3.0" "2.2.0"
 github "Alamofire/Alamofire" "3.4.1"
+github "PhamBaTho/BTNavigationDropdownMenu" "0.4.1"
 github "Mozharovsky/CVCalendar" "1.2.9"
 github "krzyzanowskim/CryptoSwift" "0.5.2"
 github "dennisweissmann/DeviceKit" "0.3.2"

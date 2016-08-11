@@ -40,17 +40,9 @@ class EventDetailViewController: UITableViewController {
         navigationController?.setToolbarHidden(false, animated: animated)
         toolbarItems?.first?.width = view.frame.width
         
-        navigationItem.title = Event.Category(rawValue: customEvent.category!.integerValue)!.name
-        switch customEvent.category! {
-        case Event.Category.Lesson.rawValue:
-            dotView.backgroundColor = QSCColor.course
-        case Event.Category.Quiz.rawValue:
-            dotView.backgroundColor = QSCColor.exam
-        case Event.Category.Activity.rawValue:
-            dotView.backgroundColor = QSCColor.activity
-        default:
-            dotView.backgroundColor = QSCColor.todo
-        }
+        let category = Event.Category(rawValue: customEvent.category!.integerValue)!
+        navigationItem.title = category.name
+        dotView.backgroundColor = QSCColor.event(category)
         nameLabel.text = customEvent.name
         placeLabel.text = customEvent.place
         if customEvent.duration == Event.Duration.AllDay.rawValue {

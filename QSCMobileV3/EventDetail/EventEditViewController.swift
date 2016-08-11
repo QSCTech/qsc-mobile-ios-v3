@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BTNavigationDropdownMenu
 import QSCMobileKit
 
 class EventEditViewController: UITableViewController {
@@ -55,14 +56,19 @@ class EventEditViewController: UITableViewController {
     
     // MARK: - View controller override
     
+    let eventManager = EventManager.sharedInstance
+    
     var customEvent: CustomEvent?
     var selectedDate: NSDate?
+    
+    var eventCategory: Event.Category {
+        return Event.Category(rawValue: customEvent!.category!.integerValue)!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let event = customEvent {
-            // TODO: Category / Tags not set
             titleField.text = event.name
             titleDidChange(titleField)
             placeField.text = event.place
@@ -76,11 +82,30 @@ class EventEditViewController: UITableViewController {
             reminderSwitch.on = event.hasReminder!.boolValue
             notesTextView.text = event.notes
         } else {
+            customEvent = eventManager.newCustomEvent
+            customEvent!.category = Event.Category.Todo.rawValue
+            
             startTimePicker.date = selectedDate!
             endTimePicker.date = selectedDate!
             repeatEndPicker.date = selectedDate!
         }
         startTimeDidChange(startTimePicker)
+        
+        let items = [Event.Category.Lesson.name, Event.Category.Quiz.name, Event.Category.Activity.name, Event.Category.Todo.name]
+        let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
+        menuView.didSelectItemAtIndexHandler = { index in
+            self.customEvent!.category = index + 2
+            self.navigationController?.navigationBar.backgroundColor = QSCColor.event(self.eventCategory)
+        }
+        menuView.arrowTintColor = UIColor.blackColor()
+        menuView.cellBackgroundColor = UIColor.darkGrayColor()
+        menuView.cellSeparatorColor = UIColor.darkGrayColor()
+        menuView.cellTextLabelColor = UIColor.whiteColor()
+        menuView.cellTextLabelAlignment = .Center
+        menuView.cellHeight = 44
+        menuView.checkMarkImage = nil
+        navigationItem.titleView = menuView
+        navigationController?.navigationBar.backgroundColor = QSCColor.event(eventCategory)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -219,35 +244,26 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func save(sender: AnyObject) {
-        let eventManager = EventManager.sharedInstance
-        
-        let event: CustomEvent
-        if customEvent == nil {
-            event = eventManager.newCustomEvent
-        } else {
-            event = customEvent!
-        }
-        
-        // TODO: Category / Tags not set
-        event.category = Event.Category.Activity.rawValue
-        event.tags = ""
-        event.name = self.titleField.text
-        event.place = self.placeField.text
+        customEvent!.name = self.titleField.text
+        customEvent!.place = self.placeField.text
         if self.allDaySwitch.on {
-            event.duration = Event.Duration.AllDay.rawValue
+            customEvent!.duration = Event.Duration.AllDay.rawValue
         } else {
-            event.duration = Event.Duration.PartialTime.rawValue
+            customEvent!.duration = Event.Duration.PartialTime.rawValue
         }
-        event.start = self.startTimePicker.date
-        event.end = self.endTimePicker.date
-        event.repeatType = self.repeatTypeLabel.text
-        event.repeatEnd = self.repeatEndPicker.date
-        event.hasReminder = self.reminderSwitch.on
-        event.notes = self.notesTextView.text
+        customEvent!.start = self.startTimePicker.date
+        customEvent!.end = self.endTimePicker.date
+        customEvent!.repeatType = self.repeatTypeLabel.text
+        customEvent!.repeatEnd = self.repeatEndPicker.date
+        customEvent!.hasReminder = self.reminderSwitch.on
+        customEvent!.notes = self.notesTextView.text
+        // TODO: To implement tags
+        customEvent!.tags = ""
         eventManager.save()
         
         dismissViewControllerAnimated(true, completion: nil)
