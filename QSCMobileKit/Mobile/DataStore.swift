@@ -518,6 +518,9 @@ class DataStore: NSObject {
     
     // MARK: - SQLite Management
     
+    /**
+     Remove Mobile.sqlite & Mobile.sqlite-{wal,shm} from disk. Note this method is **DANGEROUS** because the managed object context will be invalid at once.
+     */
     static func dropSqlite() {
         let removeFile = { (path: String) -> Void in
             if NSFileManager.defaultManager().fileExistsAtPath(path) {

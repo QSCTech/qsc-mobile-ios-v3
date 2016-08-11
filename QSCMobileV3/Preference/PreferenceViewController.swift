@@ -60,7 +60,7 @@ class PreferenceViewController: UITableViewController {
         case Preference.Zjuwlan.rawValue:
             return 1
         case Preference.Setting.rawValue:
-            return 4
+            return 3
         case Preference.About.rawValue:
             return 3
         default:
@@ -120,11 +120,6 @@ class PreferenceViewController: UITableViewController {
                 cell.detailTextLabel!.text = EventNotificationViewController.status
                 cell.accessoryType = .DisclosureIndicator
                 return cell
-            case 3:
-                let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-                cell.textLabel!.attributedText = "\u{f071}\t清空缓存".attributedWithFontAwesome
-                cell.detailTextLabel!.text = mobileManager.sizeOfSqlite
-                return cell
             default:
                 return UITableViewCell()
             }
@@ -165,19 +160,6 @@ class PreferenceViewController: UITableViewController {
             switch indexPath.row {
             case 2:
                 performSegueWithIdentifier("showEventNotification", sender: nil)
-            case 3:
-                let alert = UIAlertController(title: "清空缓存", message: "包括所有教务网账号及其关联的教务信息、校历和校车数据，但不会删除您添加的日程和课程信息，确定要继续吗？", preferredStyle: .Alert)
-                let no = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-                alert.addAction(no)
-                let yes = UIAlertAction(title: "确定", style: .Destructive) { _ in
-                    while self.accountManager.currentAccountForJwbinfosys != nil {
-                        self.mobileManager.deleteUser(self.accountManager.currentAccountForJwbinfosys!)
-                    }
-                    self.mobileManager.dropSqlite()
-                    self.tableView.reloadData()
-                }
-                alert.addAction(yes)
-                presentViewController(alert, animated: true, completion: nil)
             default:
                 break
             }
