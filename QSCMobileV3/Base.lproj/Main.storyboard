@@ -29,22 +29,35 @@
                                     <action selector="pageDidChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="0W9-bg-Xp8"/>
                                 </connections>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl1-3R-dmW">
+                                <rect key="frame" x="259" y="473" width="83" height="30"/>
+                                <state key="normal" title=" 登录教务网 "/>
+                                <connections>
+                                    <action selector="login:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VBi-3a-vg6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2W4-Y2-PrN" secondAttribute="trailing" id="4Mr-sR-uPs"/>
                             <constraint firstItem="2W4-Y2-PrN" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="B7g-P5-L02"/>
                             <constraint firstItem="G7C-7c-jIr" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="I4T-bf-cVL"/>
+                            <constraint firstItem="vl1-3R-dmW" firstAttribute="centerY" secondItem="2W4-Y2-PrN" secondAttribute="centerY" id="Rfy-lc-2k2"/>
                             <constraint firstItem="2W4-Y2-PrN" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="ZbS-H7-2v7"/>
                             <constraint firstAttribute="bottom" secondItem="2W4-Y2-PrN" secondAttribute="bottom" id="bmb-yM-USS"/>
+                            <constraint firstItem="vl1-3R-dmW" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="jDi-fJ-fFs"/>
                             <constraint firstItem="2W4-Y2-PrN" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="knL-n6-hkT"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="G7C-7c-jIr" secondAttribute="bottom" constant="105" id="nz3-iX-Hcf"/>
+                            <constraint firstItem="vl1-3R-dmW" firstAttribute="centerX" secondItem="G7C-7c-jIr" secondAttribute="centerX" id="qpi-gJ-8ZI"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vl1-3R-dmW" secondAttribute="bottom" constant="48" id="sam-9y-Y1C"/>
                             <constraint firstItem="2W4-Y2-PrN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="wTF-DS-2BH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="ZbS-H7-2v7"/>
                                 <exclude reference="knL-n6-hkT"/>
+                                <exclude reference="Rfy-lc-2k2"/>
+                                <exclude reference="qpi-gJ-8ZI"/>
                             </mask>
                         </variation>
                     </view>
@@ -53,6 +66,7 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="Y3o-08-sGR"/>
                     <connections>
+                        <outlet property="loginButton" destination="vl1-3R-dmW" id="WeL-jc-s8l"/>
                         <outlet property="pageControl" destination="G7C-7c-jIr" id="BfG-6x-8Uc"/>
                         <outlet property="scrollView" destination="2W4-Y2-PrN" id="MZo-br-43X"/>
                     </connections>

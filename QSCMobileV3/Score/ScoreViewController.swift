@@ -41,8 +41,8 @@ class ScoreViewController: UIViewController {
         tableView.dataSource = self
         tableView.registerNib(UINib(nibName: "ScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
         
-        averageGradeLabel.text = String(format: "%.2f", mobileManager.statistics.averageGrade!.floatValue)
-        totalCreditLabel.text = mobileManager.statistics.totalCredit!.stringValue
+        averageGradeLabel.text = String(format: "%.2f", mobileManager.statistics!.averageGrade!.floatValue)
+        totalCreditLabel.text = mobileManager.statistics!.totalCredit!.stringValue
         
         let semesters = mobileManager.allSemesters
         changeSemester(semesters.last ?? "")

@@ -20,10 +20,10 @@ class OverallScoreCell: UITableViewCell {
         super.awakeFromNib()
         
         let statistics = MobileManager.sharedInstance.statistics
-        averageGradeLabel.text = String(format: "%.2f", statistics.averageGrade!.floatValue)
-        totalCreditLabel.text = statistics.totalCredit!.stringValue
-        majorGradeLabel.text = String(format: "%.2f", statistics.majorGrade!.floatValue)
-        majorCreditLabel.text = statistics.majorCredit!.stringValue
+        averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
+        totalCreditLabel.text = statistics!.totalCredit!.stringValue
+        majorGradeLabel.text = String(format: "%.2f", statistics!.majorGrade!.floatValue)
+        majorCreditLabel.text = statistics!.majorCredit!.stringValue
     }
     
 }

@@ -11,23 +11,28 @@ import QSCMobileKit
 
 class MomentViewController: UIViewController {
     
-    let mobileManager = MobileManager.sharedInstance
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.delegate = self
         scrollView.scrollsToTop = false
+        
+        loginButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        loginButton.layer.cornerRadius = 18
+        loginButton.layer.borderWidth = 1
+        loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).CGColor
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         scrollView.removeAllSubviews()
-        let events = eventsForDate(NSDate()).filter { $0.category != .Todo && $0.end >= NSDate() }
+        // TODO: Support all-day events and future exams
+        let events = eventsForDate(NSDate()).filter { $0.category != .Todo && $0.duration == .PartialTime && $0.end >= NSDate() }
         pageControl.numberOfPages = events.count
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(events.count), height: scrollView.frame.height)
         for (index, event) in events.enumerate() {
@@ -42,6 +47,12 @@ class MomentViewController: UIViewController {
             vc.view.frame = scrollView.frame
             scrollView.addSubview(vc.view)
         }
+        
+        if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil && events.isEmpty {
+            loginButton.hidden = false
+        } else {
+            loginButton.hidden = true
+        }
     }
     
     @IBAction func pageDidChange(sender: UIPageControl) {
@@ -50,6 +61,10 @@ class MomentViewController: UIViewController {
         scrollView.scrollRectToVisible(frame, animated: true)
     }
     
+    @IBAction func login(sender: AnyObject) {
+        let vc = JwbinfosysLoginViewController()
+        presentViewController(vc, animated: true, completion: nil)
+    }
 }
 
 extension MomentViewController: UIScrollViewDelegate {

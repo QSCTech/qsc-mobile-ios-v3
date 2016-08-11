@@ -446,8 +446,8 @@ class DataStore: NSObject {
         return currentUser.semesterScores!.sortedArrayUsingDescriptors(descriptors) as! [SemesterScore]
     }
     
-    var statistics: Statistics {
-        return currentUser.statistics!
+    var statistics: Statistics? {
+        return currentUser.statistics
     }
     
     /// All semesters in which the current user has studied.

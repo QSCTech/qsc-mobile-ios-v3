@@ -10,7 +10,6 @@ import UIKit
 import GaugeKit
 import QSCMobileKit
 
-// TODO: Hanle all-day events properly
 class MomentPageViewController: UIViewController {
     
     init(event: Event?) {

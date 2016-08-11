@@ -238,7 +238,7 @@ public class MobileManager: NSObject {
         }
     }
     
-    public var statistics: Statistics {
+    public var statistics: Statistics? {
         return dataStore.statistics
     }
     

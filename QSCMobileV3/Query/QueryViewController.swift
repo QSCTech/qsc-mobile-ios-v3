@@ -133,6 +133,8 @@ class QueryViewController: UITableViewController {
         case Tools.Score.rawValue:
             if accountManager.currentAccountForJwbinfosys == nil {
                 cell.textLabel!.attributedText = "\u{f0f6}\t查询成绩请先登录".attributedWithFontAwesome
+            } else if MobileManager.sharedInstance.statistics == nil {
+                cell.textLabel!.attributedText = "\u{f0f6}\t暂无成绩数据，请下拉刷新".attributedWithFontAwesome
             } else {
                 cell = tableView.dequeueReusableCellWithIdentifier("Score")!
             }
