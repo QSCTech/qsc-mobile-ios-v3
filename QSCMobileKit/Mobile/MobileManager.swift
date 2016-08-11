@@ -47,9 +47,9 @@ public class MobileManager: NSObject {
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
-                self.refreshAll {
+                self.refreshAll({ _ in }, callback: {
                     callback(success, error)
-                }
+                })
             } else {
                 callback(success, error)
             }
@@ -255,7 +255,8 @@ public class MobileManager: NSObject {
     
      - parameter callback: A closure to be executed once the request has finished.
      */
-    public func refreshAll(callback: () -> Void) {
+    public func refreshAll(errorBlock: (NSNotification) -> Void, callback: () -> Void) {
+        let observer = NSNotificationCenter.defaultCenter().addObserverForName("RefreshError", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: errorBlock)
         // First refresh calendar to prevent multiple sessionFail retries at the same time
         refreshCalendar { success, error in
             if success {
@@ -263,14 +264,25 @@ public class MobileManager: NSObject {
                 for _ in 0..<4 {
                     dispatch_group_enter(group)
                 }
-                self.refreshCourses { _ in dispatch_group_leave(group) }
-                self.refreshExams { _ in dispatch_group_leave(group) }
-                self.refreshScores { _ in dispatch_group_leave(group) }
-                self.refreshBuses { _ in dispatch_group_leave(group) }
-                dispatch_group_notify(group, dispatch_get_main_queue(), callback)
+                let closure = { (success: Bool, error: String?) in
+                    if !success {
+                        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
+                    }
+                    dispatch_group_leave(group)
+                }
+                self.refreshCourses(closure)
+                self.refreshExams(closure)
+                self.refreshScores(closure)
+                self.refreshBuses(closure)
+                dispatch_group_notify(group, dispatch_get_main_queue()) {
+                    callback()
+                    NSNotificationCenter.defaultCenter().removeObserver(observer)
+                }
+            } else {
+                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
+                NSNotificationCenter.defaultCenter().removeObserver(observer)
             }
         }
-        // TODO: Send notifications if failed.
     }
     
     /**

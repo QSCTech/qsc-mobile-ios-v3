@@ -164,16 +164,16 @@ class QueryViewController: UITableViewController {
             }
             presentViewController(vc, animated: true, completion: nil)
         case Tools.Query.rawValue:
-            if indexPath.row > 0 {
-                if accountManager.currentAccountForJwbinfosys == nil {
-                    let vc = JwbinfosysLoginViewController()
-                    presentViewController(vc, animated: true, completion: nil)
-                } else {
-                    performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
-                }
-            } else {
-                let vc = BusViewController()
+            if accountManager.currentAccountForJwbinfosys == nil {
+                let vc = JwbinfosysLoginViewController()
                 presentViewController(vc, animated: true, completion: nil)
+            } else {
+                if indexPath.row > 0 {
+                    performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
+                } else {
+                    let vc = BusViewController()
+                    presentViewController(vc, animated: true, completion: nil)
+                }
             }
         case Tools.Login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
@@ -238,14 +238,26 @@ class QueryViewController: UITableViewController {
         }
     }
     
+    let refreshCtl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.registerNib(UINib(nibName: "OverallScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
+        refreshCtl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        // Placeholder to prevent activity indicator from changing its position
+        refreshCtl.attributedTitle = NSAttributedString(string: " ")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        if accountManager.currentAccountForJwbinfosys == nil {
+            refreshControl = nil
+        } else {
+            refreshControl = refreshCtl
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -261,15 +273,19 @@ class QueryViewController: UITableViewController {
         }
     }
     
-    // TODO: Beautify the animation of refreshing
-    @IBAction func refresh(sender: UIRefreshControl) {
-        if accountManager.currentAccountForJwbinfosys == nil {
-            return
-        }
-        MobileManager.sharedInstance.refreshAll {
-            sender.endRefreshing()
+    func refresh(sender: UIRefreshControl) {
+        MobileManager.sharedInstance.refreshAll({ notification in
+            sender.attributedTitle = NSAttributedString(string: notification.userInfo!["error"] as! String)
+        }, callback: {
+            if sender.attributedTitle?.string == " " {
+                sender.attributedTitle = NSAttributedString(string: "刷新成功")
+            }
+            delay(1) {
+                sender.endRefreshing()
+                sender.attributedTitle = NSAttributedString(string: " ")
+            }
             self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
-        }
+        })
     }
-
+    
 }

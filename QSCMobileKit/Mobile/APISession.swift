@@ -95,7 +95,7 @@ class APISession: NSObject {
         alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
                 print("[Login request] Alamofire: \(response.result.error!.localizedDescription)")
-                callback(false, "网络连接失败")
+                callback(false, response.result.error!.localizedDescription.stringByReplacingOccurrencesOfString("。", withString: ""))
                 return
             }
             let json = JSON(response.result.value!)
@@ -121,7 +121,7 @@ class APISession: NSObject {
      - parameter requestList: A request list used in JSON.
      - parameter callback:    A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
      */
-    private func resourceRequest(requestList: [AnyObject], callback: (JSON?, String?) -> Void) {
+    private func resourceRequest(requestList: [[String: String]], callback: (JSON?, String?) -> Void) {
         if session.id == nil || session.key == nil {
             // Delay processing until `sessionFail`
             session = ("", "")
@@ -136,13 +136,13 @@ class APISession: NSObject {
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
-                print("[Resource request] Alamofire: \(response.result.error!.localizedDescription)")
-                callback(nil, "网络连接失败")
+                print("[Resource request] Alamofire: \(response.result.error!.localizedDescription) \(requestList[0]["data"]!)")
+                callback(nil, response.result.error!.localizedDescription.stringByReplacingOccurrencesOfString("。", withString: ""))
                 return
             }
             let json = JSON(response.result.value!)
             let printError = {
-                print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue)")
+                print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue)  \(requestList[0]["data"]!)")
             }
             if json["status"].string == "ok" {
                 if let responseList = json["responseList"].string {

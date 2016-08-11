@@ -349,12 +349,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="查询" id="zRP-2p-OTY"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="BgV-ij-vLb">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="refresh:" destination="dpq-qQ-P5a" eventType="valueChanged" id="qcR-hn-ng9"/>
-                        </connections>
-                    </refreshControl>
                     <connections>
                         <segue destination="5V3-Rq-8HP" kind="show" identifier="showCourses" id="9gb-iI-jMn"/>
                         <segue destination="Emk-wI-up8" kind="show" identifier="showExams" id="D31-3H-CGD"/>

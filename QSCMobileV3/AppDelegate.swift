@@ -28,10 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             groupDefaults.setBool(true, forKey: RefreshOnLaunchKey)
         }
         if groupDefaults.boolForKey(RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
-            MobileManager.sharedInstance.refreshAll {
+            MobileManager.sharedInstance.refreshAll({ _ in }, callback: {
                 // TODO: Post a notification to force views to refresh.
                 print("Refresh on launch completed")
-            }
+            })
         }
         if groupDefaults.objectForKey(ShowScoreKey) == nil {
             groupDefaults.setBool(false, forKey: ShowScoreKey)
