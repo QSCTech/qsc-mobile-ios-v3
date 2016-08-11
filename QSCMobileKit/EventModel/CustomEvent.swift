@@ -20,7 +20,7 @@ public class CustomEvent: NSManagedObject {
     @NSManaged public var end: NSDate?
     @NSManaged public var repeatType: String?
     @NSManaged public var repeatEnd: NSDate?
-    @NSManaged public var hasReminder: NSNumber?
+    @NSManaged public var notification: NSNumber?
     @NSManaged public var sponsor: String?
     @NSManaged public var notes: String?
 

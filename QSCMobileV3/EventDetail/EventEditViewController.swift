@@ -79,7 +79,7 @@ class EventEditViewController: UITableViewController {
             repeatTypeLabel.text = event.repeatType
             changeRepeatType(event.repeatType!)
             repeatEndPicker.date = event.repeatEnd!
-            reminderSwitch.on = event.hasReminder!.boolValue
+            reminderSwitch.on = (event.notification!.integerValue >= 0)
             notesTextView.text = event.notes
         } else {
             customEvent = eventManager.newCustomEvent
@@ -249,19 +249,23 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        customEvent!.name = self.titleField.text
-        customEvent!.place = self.placeField.text
-        if self.allDaySwitch.on {
+        customEvent!.name = titleField.text
+        customEvent!.place = placeField.text
+        if allDaySwitch.on {
             customEvent!.duration = Event.Duration.AllDay.rawValue
         } else {
             customEvent!.duration = Event.Duration.PartialTime.rawValue
         }
-        customEvent!.start = self.startTimePicker.date
-        customEvent!.end = self.endTimePicker.date
-        customEvent!.repeatType = self.repeatTypeLabel.text
-        customEvent!.repeatEnd = self.repeatEndPicker.date
-        customEvent!.hasReminder = self.reminderSwitch.on
-        customEvent!.notes = self.notesTextView.text
+        customEvent!.start = startTimePicker.date
+        customEvent!.end = endTimePicker.date
+        customEvent!.repeatType = repeatTypeLabel.text
+        customEvent!.repeatEnd = repeatEndPicker.date
+        if reminderSwitch.on {
+            customEvent!.notification = 0
+        } else {
+            customEvent!.notification = -1
+        }
+        customEvent!.notes = notesTextView.text
         // TODO: To implement tags
         customEvent!.tags = ""
         eventManager.save()

@@ -54,8 +54,8 @@ class EventDetailViewController: UITableViewController {
         }
         repeatTypeLabel.text = customEvent.repeatType
         repeatEndLabel.text = EventDetailViewController.stringFromDate(customEvent.repeatEnd!)
-        if customEvent.hasReminder!.boolValue {
-            reminderLabel.text = "已开启：" + EventNotificationViewController.status
+        if customEvent.notification!.integerValue >= 0 {
+            reminderLabel.text = "已开启：" + EventNotificationViewController.timeDescription
         } else {
             reminderLabel.text = "未开启"
         }

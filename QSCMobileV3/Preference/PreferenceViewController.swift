@@ -117,7 +117,7 @@ class PreferenceViewController: UITableViewController {
             case 2:
                 let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
                 cell.textLabel!.attributedText = "\u{f073}\t日程提醒".attributedWithFontAwesome
-                cell.detailTextLabel!.text = EventNotificationViewController.status
+                cell.detailTextLabel!.text = EventNotificationViewController.timeDescription
                 cell.accessoryType = .DisclosureIndicator
                 return cell
             default:

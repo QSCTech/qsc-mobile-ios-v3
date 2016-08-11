@@ -23,7 +23,26 @@ private let titlesForEventNotification = [
 
 class EventNotificationViewController: UITableViewController {
     
-    static var status: String {
+    static var time: NSTimeInterval {
+        switch groupDefaults.integerForKey(EventNotificationKey) {
+        case 1:
+            return 0
+        case 2:
+            return 300
+        case 3:
+            return 600
+        case 4:
+            return 900
+        case 5:
+            return 1800
+        case 6:
+            return 3600
+        default:
+            return -1
+        }
+    }
+    
+    static var timeDescription: String {
         return titlesForEventNotification[groupDefaults.integerForKey(EventNotificationKey)]
     }
     
