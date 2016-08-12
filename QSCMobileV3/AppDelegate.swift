@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         }
         if groupDefaults.objectForKey(ShowScoreKey) == nil {
-            groupDefaults.setBool(false, forKey: ShowScoreKey)
+            groupDefaults.setBool(true, forKey: ShowScoreKey)
         }
         if groupDefaults.objectForKey(EventNotificationKey) == nil {
             // 0 means Never

@@ -111,7 +111,7 @@ class APISession: NSObject {
                 callback(false, "用户名或密码错误")
             } else {
                 printError()
-                callback(false, "登录失败，请重试")
+                callback(false, "请求失败，请重试")
             }
         }
     }
@@ -165,7 +165,7 @@ class APISession: NSObject {
                 }
             } else if json["status"].string == "requestFail" {
                 printError()
-                callback(nil, "教务网通知，请查收")
+                callback(nil, "教务网通知，请登录网站查收")
             } else {
                 printError()
                 callback(nil, "刷新失败，请重试")

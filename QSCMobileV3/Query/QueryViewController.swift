@@ -128,7 +128,7 @@ class QueryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         switch indexPath.section {
         case Tools.Score.rawValue:
             if accountManager.currentAccountForJwbinfosys == nil {
@@ -136,7 +136,13 @@ class QueryViewController: UITableViewController {
             } else if MobileManager.sharedInstance.statistics == nil {
                 cell.textLabel!.attributedText = "\u{f0f6}\t暂无成绩数据，请下拉刷新".attributedWithFontAwesome
             } else {
-                cell = tableView.dequeueReusableCellWithIdentifier("Score")!
+                let cell = tableView.dequeueReusableCellWithIdentifier("Score") as! OverallScoreCell
+                let statistics = MobileManager.sharedInstance.statistics
+                cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
+                cell.totalCreditLabel.text = statistics!.totalCredit!.stringValue
+                cell.majorGradeLabel.text = String(format: "%.2f", statistics!.majorGrade!.floatValue)
+                cell.majorCreditLabel.text = statistics!.majorCredit!.stringValue
+                return cell
             }
         case Tools.Query.rawValue:
             cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome

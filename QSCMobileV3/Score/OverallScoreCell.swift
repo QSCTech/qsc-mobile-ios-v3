@@ -16,14 +16,4 @@ class OverallScoreCell: UITableViewCell {
     @IBOutlet weak var majorGradeLabel: UILabel!
     @IBOutlet weak var majorCreditLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        let statistics = MobileManager.sharedInstance.statistics
-        averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
-        totalCreditLabel.text = statistics!.totalCredit!.stringValue
-        majorGradeLabel.text = String(format: "%.2f", statistics!.majorGrade!.floatValue)
-        majorCreditLabel.text = statistics!.majorCredit!.stringValue
-    }
-    
 }

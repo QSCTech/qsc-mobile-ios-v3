@@ -280,6 +280,7 @@ public class MobileManager: NSObject {
                 }
             } else {
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
+                callback()
                 NSNotificationCenter.defaultCenter().removeObserver(observer)
             }
         }
@@ -380,10 +381,14 @@ public class MobileManager: NSObject {
     
     // MARK: - Manage SQLite
     
+    /**
+     Remove Mobile.sqlite & Mobile.sqlite-{wal,shm} from disk. Note this method is **DANGEROUS** because the managed object context will be invalid at once.
+     */
     public func dropSqlite() {
         DataStore.dropSqlite()
     }
     
+    /// Total size of Mobile.sqlite & Mobile.sqlite-{wal,shm}.
     public var sizeOfSqlite: String {
         return DataStore.sizeOfSqlite
     }
