@@ -16,8 +16,8 @@ let MobileAPIURL = "https://m.zjuqsc.com/v3api/"
 let NoticeURL    = "https://notice.zjuqsc.com"
 let BoxURL       = "https://box.zjuqsc.com"
 
-public let AppGroupIdentifier = "group.com.zjuqsc.QSCMobileV3"
-public let QSCMobileKitIdentifier = "com.zjuqsc.QSCMobileV3.QSCMobileKit"
+public let AppGroupIdentifier = "group.QSCMobile"
+public let QSCMobileKitIdentifier = "com.myqsc.iQSC.MobileKit"
 
 public class QSCColor {
     public static let theme = UIColor(red: 0.523, green: 0.825, blue: 0.896, alpha: 1.0) // #85D3E5

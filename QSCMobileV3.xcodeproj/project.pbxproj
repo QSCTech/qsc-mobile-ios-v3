@@ -1078,7 +1078,7 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30000;
+				CURRENT_PROJECT_VERSION = 30001;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1092,7 +1092,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1108,7 +1108,7 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30000;
+				CURRENT_PROJECT_VERSION = 30001;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1122,7 +1122,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1136,10 +1136,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30000;
+				CURRENT_PROJECT_VERSION = 30001;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 30000;
+				DYLIB_CURRENT_VERSION = 30001;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
@@ -1150,7 +1150,7 @@
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.QSCMobileKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1166,10 +1166,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30000;
+				CURRENT_PROJECT_VERSION = 30001;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 30000;
+				DYLIB_CURRENT_VERSION = 30001;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
@@ -1180,7 +1180,7 @@
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.QSCMobileKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1194,11 +1194,11 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30000;
+				CURRENT_PROJECT_VERSION = 30001;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1211,11 +1211,11 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30000;
+				CURRENT_PROJECT_VERSION = 30001;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjuqsc.QSCMobileV3.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
