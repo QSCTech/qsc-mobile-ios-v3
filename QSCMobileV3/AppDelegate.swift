@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         MobClick.startWithAppkey(UMengAppKey)
         UMessage.startWithAppkey(UMengAppKey, launchOptions: launchOptions)
-        UMessage.registerRemoteNotificationAndUserNotificationSettings(notificationSettings)
+        UMessage.registerForRemoteNotifications()
+        UMessage.setLogEnabled(true)
         
         if groupDefaults.objectForKey(RefreshOnLaunchKey) == nil {
             groupDefaults.setBool(true, forKey: RefreshOnLaunchKey)
@@ -59,16 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        UMessage.registerDeviceToken(deviceToken)
         print("[Device token] " + deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: ""))
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject]) {
         UMessage.didReceiveRemoteNotification(userInfo)
-    }
-    
-    var notificationSettings: UIUserNotificationSettings {
-        return UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: [])
     }
     
 }
