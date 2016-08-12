@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jGL-0R-hZD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jGL-0R-hZD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -29,14 +29,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUS-um-eDT">
-                                            <rect key="frame" x="16" y="38" width="36" height="17"/>
+                                            <rect key="frame" x="16" y="34" width="36" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="AUS-um-eDT" firstAttribute="top" secondItem="We5-pX-JTK" secondAttribute="bottom" constant="8" symbolic="YES" id="VeC-W1-lwy"/>
+                                        <constraint firstItem="AUS-um-eDT" firstAttribute="top" secondItem="We5-pX-JTK" secondAttribute="bottom" constant="4" id="VeC-W1-lwy"/>
                                         <constraint firstItem="We5-pX-JTK" firstAttribute="top" secondItem="ALl-uL-ev5" secondAttribute="topMargin" id="Ztp-dn-vV2"/>
                                         <constraint firstItem="We5-pX-JTK" firstAttribute="leading" secondItem="ALl-uL-ev5" secondAttribute="leadingMargin" constant="8" id="hwo-4M-QwL"/>
                                         <constraint firstItem="We5-pX-JTK" firstAttribute="leading" secondItem="AUS-um-eDT" secondAttribute="leading" id="uj6-ol-6Ad"/>

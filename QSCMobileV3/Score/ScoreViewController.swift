@@ -81,6 +81,7 @@ class ScoreViewController: UIViewController {
         }
         selectedScores = mobileManager.getScores(semester)
         tableView.reloadData()
+        tableView.setContentOffset(CGPoint.zero, animated: true)
         
         imageView.frame = CGRect(x: buttonWidth * CGFloat(semesterIndex) + 38, y: 0, width: 23, height: 12)
     }

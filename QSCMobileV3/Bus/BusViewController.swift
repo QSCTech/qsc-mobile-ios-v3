@@ -54,6 +54,7 @@ class BusViewController: UIViewController {
         toButton.setTitle(campuses[toIndex], forState: .Normal)
         schoolBus = SchoolBus(from: campuses[fromIndex], to: campuses[toIndex], isWeekend: isWeekend)
         tableView.reloadData()
+        tableView.setContentOffset(CGPoint.zero, animated: true)
         
         groupDefaults.setInteger(fromIndex, forKey: CampusFromIndexKey)
         groupDefaults.setInteger(toIndex, forKey: CampusToIndexKey)

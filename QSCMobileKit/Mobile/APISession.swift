@@ -94,8 +94,9 @@ class APISession: NSObject {
         let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")
         alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
-                print("[Login request] Alamofire: \(response.result.error!.localizedDescription)")
-                callback(false, response.result.error!.localizedDescription.stringByReplacingOccurrencesOfString("。", withString: ""))
+                let errorDescription = response.result.error!.localizedDescription.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "。"))
+                print("[Login request] Alamofire: \(errorDescription)")
+                callback(false, errorDescription)
                 return
             }
             let json = JSON(response.result.value!)
@@ -136,8 +137,9 @@ class APISession: NSObject {
         let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
-                print("[Resource request] Alamofire: \(response.result.error!.localizedDescription) \(requestList[0]["data"]!)")
-                callback(nil, response.result.error!.localizedDescription.stringByReplacingOccurrencesOfString("。", withString: ""))
+                let errorDescription = response.result.error!.localizedDescription.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "。"))
+                print("[Resource request] Alamofire: \(errorDescription) \(requestList[0]["data"]!)")
+                callback(nil, errorDescription)
                 return
             }
             let json = JSON(response.result.value!)

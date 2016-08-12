@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         UMessage.registerDeviceToken(deviceToken)
+        print("[Device token] " + deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: ""))
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject]) {
@@ -67,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     var notificationSettings: UIUserNotificationSettings {
-        return UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: [])
+        return UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: [])
     }
     
 }

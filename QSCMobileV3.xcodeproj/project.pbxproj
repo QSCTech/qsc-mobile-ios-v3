@@ -13,6 +13,10 @@
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
 		9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */; };
 		9D129CBA1D32539F00A865DF /* SchoolBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D129CB91D32539F00A865DF /* SchoolBus.swift */; };
+		9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387A1D5D937800782E93 /* EventDetail.storyboard */; };
+		9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387C1D5D939D00782E93 /* EventEdit.storyboard */; };
+		9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17387E1D5D93A500782E93 /* EventEditViewController.swift */; };
+		9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */; };
 		9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B768E1D58F6380088B96E /* ScoreCell.swift */; };
 		9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D1B768F1D58F6380088B96E /* ScoreCell.xib */; };
 		9D2132BA1D227C0A00996856 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2132B91D227C0A00996856 /* Logo.png */; };
@@ -43,9 +47,6 @@
 		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B336D1CECC0E200C5372F /* Kingfisher.framework */; };
-		9D6B33751CED9A3100C5372F /* EventEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B33741CED9A3100C5372F /* EventEdit.storyboard */; };
-		9D6B33771CEDEA7500C5372F /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33761CEDEA7500C5372F /* EventEditViewController.swift */; };
-		9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */; };
 		9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B337B1CF025F500C5372F /* BusViewController.swift */; };
 		9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B337C1CF025F500C5372F /* BusViewController.xib */; };
 		9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */; };
@@ -104,7 +105,6 @@
 		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
 		9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */; };
 		9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174DD1D59A2B800836575 /* DeviceKit.framework */; };
-		9DF174E01D5B8BA200836575 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF174DF1D5B8BA200836575 /* EventDetail.storyboard */; };
 		9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */; };
 		9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -165,6 +165,10 @@
 		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendor/FontAwesome.otf; sourceTree = "<group>"; };
 		9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		9D129CB91D32539F00A865DF /* SchoolBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolBus.swift; path = Mobile/SchoolBus.swift; sourceTree = "<group>"; };
+		9D17387A1D5D937800782E93 /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventDetail.storyboard; path = QSCMobileV3/EventDetail/EventDetail.storyboard; sourceTree = SOURCE_ROOT; };
+		9D17387C1D5D939D00782E93 /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventEdit.storyboard; path = QSCMobileV3/EventDetail/EventEdit.storyboard; sourceTree = SOURCE_ROOT; };
+		9D17387E1D5D93A500782E93 /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventEditViewController.swift; path = QSCMobileV3/EventDetail/EventEditViewController.swift; sourceTree = SOURCE_ROOT; };
+		9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatTypeViewController.swift; path = QSCMobileV3/EventDetail/RepeatTypeViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D1B768E1D58F6380088B96E /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = Score/ScoreCell.swift; sourceTree = "<group>"; };
 		9D1B768F1D58F6380088B96E /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreCell.xib; path = Score/ScoreCell.xib; sourceTree = "<group>"; };
 		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
@@ -197,9 +201,6 @@
 		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
 		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = QSCMobileV3/Moment/MomentViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		9D6B33741CED9A3100C5372F /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventEdit.storyboard; path = ../EventDetail/EventEdit.storyboard; sourceTree = "<group>"; };
-		9D6B33761CEDEA7500C5372F /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventEditViewController.swift; path = ../EventDetail/EventEditViewController.swift; sourceTree = "<group>"; };
-		9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatTypeViewController.swift; path = ../EventDetail/RepeatTypeViewController.swift; sourceTree = "<group>"; };
 		9D6B337B1CF025F500C5372F /* BusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusViewController.swift; path = Bus/BusViewController.swift; sourceTree = "<group>"; };
 		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusViewController.xib; path = Bus/BusViewController.xib; sourceTree = "<group>"; };
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
@@ -260,7 +261,6 @@
 		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentPageViewController.swift; path = QSCMobileV3/Moment/MomentPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentPageViewController.xib; path = QSCMobileV3/Moment/MomentPageViewController.xib; sourceTree = SOURCE_ROOT; };
 		9DF174DD1D59A2B800836575 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
-		9DF174DF1D5B8BA200836575 /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventDetail.storyboard; path = ../EventDetail/EventDetail.storyboard; sourceTree = "<group>"; };
 		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = QSCMobileV3/EventDetail/EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = Carthage/Build/iOS/BTNavigationDropdownMenu.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -482,11 +482,11 @@
 		9D6B336F1CED90CC00C5372F /* EventDetail */ = {
 			isa = PBXGroup;
 			children = (
-				9DF174DF1D5B8BA200836575 /* EventDetail.storyboard */,
+				9D17387A1D5D937800782E93 /* EventDetail.storyboard */,
 				9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */,
-				9D6B33741CED9A3100C5372F /* EventEdit.storyboard */,
-				9D6B33761CEDEA7500C5372F /* EventEditViewController.swift */,
-				9D6B33781CEF21F800C5372F /* RepeatTypeViewController.swift */,
+				9D17387C1D5D939D00782E93 /* EventEdit.storyboard */,
+				9D17387E1D5D93A500782E93 /* EventEditViewController.swift */,
+				9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */,
 			);
 			name = EventDetail;
 			path = AddEvent;
@@ -785,7 +785,6 @@
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
 				9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
-				9D6B33751CED9A3100C5372F /* EventEdit.storyboard in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
@@ -798,9 +797,10 @@
 				9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
+				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
+				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
 				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
-				9DF174E01D5B8BA200836575 /* EventDetail.storyboard in Resources */,
 				9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,7 +866,7 @@
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */,
 				9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */,
-				9D6B33771CEDEA7500C5372F /* EventEditViewController.swift in Sources */,
+				9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */,
 				9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */,
 				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
 				9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */,
@@ -875,13 +875,13 @@
 				9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */,
 				9D7173621D2FF4AA0074043E /* CourseListViewController.swift in Sources */,
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
-				9D6B33791CEF21F800C5372F /* RepeatTypeViewController.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
 				9D71736A1D3164CE0074043E /* SemesterListCell.swift in Sources */,
+				9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */,
 				9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
