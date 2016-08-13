@@ -43,7 +43,7 @@ class EventEditViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var placeField: UITextField!
-    @IBOutlet weak var allDaySwitch: UISwitch!
+    @IBOutlet weak var allDayCell: UITableViewCell!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimeLabel: UILabel!
@@ -51,8 +51,11 @@ class EventEditViewController: UITableViewController {
     @IBOutlet weak var repeatTypeLabel: UILabel!
     @IBOutlet weak var repeatEndLabel: UILabel!
     @IBOutlet weak var repeatEndPicker: UIDatePicker!
-    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var notificationCell: UITableViewCell!
     @IBOutlet weak var notesTextView: UITextView!
+    
+    var allDaySwitch: UISwitch!
+    var notificationSwitch: UISwitch!
     
     // MARK: - View controller override
     
@@ -68,6 +71,16 @@ class EventEditViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        allDaySwitch = UISwitch()
+        allDaySwitch.addTarget(self, action: #selector(allDaySwitchDidChange), forControlEvents: .ValueChanged)
+        allDaySwitch.on = false
+        allDaySwitch.onTintColor = QSCColor.theme
+        allDayCell.accessoryView = allDaySwitch
+        notificationSwitch = UISwitch()
+        notificationSwitch.on = true
+        notificationSwitch.onTintColor = QSCColor.theme
+        notificationCell.accessoryView = notificationSwitch
+        
         if let event = customEvent {
             titleField.text = event.name
             titleDidChange(titleField)
@@ -79,7 +92,7 @@ class EventEditViewController: UITableViewController {
             repeatTypeLabel.text = event.repeatType
             changeRepeatType(event.repeatType!)
             repeatEndPicker.date = event.repeatEnd!
-            reminderSwitch.on = (event.notification!.integerValue >= 0)
+            notificationSwitch.on = (event.notification!.integerValue >= 0)
             notesTextView.text = event.notes
         } else {
             customEvent = eventManager.newCustomEvent
@@ -201,20 +214,6 @@ class EventEditViewController: UITableViewController {
         }
     }
     
-    @IBAction func allDaySwitchDidChange(sender: UISwitch) {
-        if sender.on {
-            startTimePicker.datePickerMode = .Date
-            endTimePicker.datePickerMode = .Date
-            startTimeLabel.text = EventDetailViewController.stringFromDate(startTimePicker.date)
-            endTimeLabel.text = EventDetailViewController.stringFromDate(endTimePicker.date)
-        } else {
-            startTimePicker.datePickerMode = .DateAndTime
-            endTimePicker.datePickerMode = .DateAndTime
-            startTimeLabel.text = EventDetailViewController.stringFromDatetime(startTimePicker.date)
-            endTimeLabel.text = EventDetailViewController.stringFromDatetime(endTimePicker.date)
-        }
-    }
-    
     @IBAction func startTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
             startTimeLabel.text = EventDetailViewController.stringFromDate(sender.date)
@@ -260,7 +259,7 @@ class EventEditViewController: UITableViewController {
         customEvent!.end = endTimePicker.date
         customEvent!.repeatType = repeatTypeLabel.text
         customEvent!.repeatEnd = repeatEndPicker.date
-        if reminderSwitch.on {
+        if notificationSwitch.on {
             customEvent!.notification = 0
         } else {
             customEvent!.notification = -1
@@ -271,6 +270,20 @@ class EventEditViewController: UITableViewController {
         eventManager.save()
         
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func allDaySwitchDidChange(sender: UISwitch) {
+        if sender.on {
+            startTimePicker.datePickerMode = .Date
+            endTimePicker.datePickerMode = .Date
+            startTimeLabel.text = EventDetailViewController.stringFromDate(startTimePicker.date)
+            endTimeLabel.text = EventDetailViewController.stringFromDate(endTimePicker.date)
+        } else {
+            startTimePicker.datePickerMode = .DateAndTime
+            endTimePicker.datePickerMode = .DateAndTime
+            startTimeLabel.text = EventDetailViewController.stringFromDatetime(startTimePicker.date)
+            endTimeLabel.text = EventDetailViewController.stringFromDatetime(endTimePicker.date)
+        }
     }
     
 }

@@ -27,25 +27,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCe-b7-P4a" customClass="Gauge" customModule="GaugeKit">
-                    <rect key="frame" x="38" y="124" width="524" height="524"/>
+                    <rect key="frame" x="100" y="124" width="400" height="400"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FCe-b7-P4a" secondAttribute="height" multiplier="1:1" id="ppf-tm-KE2"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="vel-tG-VPN"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IG-LH-HmY">
-                    <rect key="frame" x="293" y="307" width="14" height="17"/>
+                    <rect key="frame" x="293" y="177" width="14" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFp-eD-Aof">
-                    <rect key="frame" x="231" y="354" width="138" height="65"/>
+                    <rect key="frame" x="231" y="292" width="138" height="65"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="55"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07-30 星期六" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwX-ap-ZWM">
-                    <rect key="frame" x="263" y="427" width="74" height="15"/>
+                    <rect key="frame" x="263" y="365" width="74" height="15"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -195,10 +197,11 @@
                 <constraint firstItem="m30-W8-aH3" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leading" constant="8" id="X8B-Jf-N4k"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="top" secondItem="ncl-Y5-yqU" secondAttribute="top" constant="60" id="av3-cv-QkY"/>
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="top" secondItem="3IG-LH-HmY" secondAttribute="bottom" constant="30" id="cdA-hU-nC3"/>
-                <constraint firstItem="FCe-b7-P4a" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leadingMargin" constant="30" id="fyy-7N-BdE"/>
+                <constraint firstItem="FCe-b7-P4a" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leadingMargin" priority="750" constant="30" id="fyy-7N-BdE"/>
                 <constraint firstAttribute="trailingMargin" secondItem="qHn-Te-FSi" secondAttribute="trailing" id="iJP-F1-CZ6"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="centerX" secondItem="ncl-Y5-yqU" secondAttribute="centerX" id="kUn-tk-1rN"/>
                 <constraint firstAttribute="trailing" secondItem="m30-W8-aH3" secondAttribute="trailing" constant="8" id="oPk-Qg-Rek"/>
+                <constraint firstItem="FCe-b7-P4a" firstAttribute="top" secondItem="3IG-LH-HmY" secondAttribute="bottom" constant="-70" id="uCK-kf-aWP"/>
                 <constraint firstItem="CwX-ap-ZWM" firstAttribute="centerX" secondItem="TFp-eD-Aof" secondAttribute="centerX" id="uaY-xu-dd7"/>
                 <constraint firstItem="3IG-LH-HmY" firstAttribute="centerX" secondItem="TFp-eD-Aof" secondAttribute="centerX" id="vDP-e8-i7L"/>
                 <constraint firstItem="m30-W8-aH3" firstAttribute="top" secondItem="ncl-Y5-yqU" secondAttribute="top" constant="20" symbolic="YES" id="wTZ-9e-Mfi"/>
@@ -209,6 +212,7 @@
                     <exclude reference="FiI-rM-l0V"/>
                     <exclude reference="av3-cv-QkY"/>
                     <exclude reference="xxX-Or-P8J"/>
+                    <exclude reference="cdA-hU-nC3"/>
                 </mask>
             </variation>
         </view>

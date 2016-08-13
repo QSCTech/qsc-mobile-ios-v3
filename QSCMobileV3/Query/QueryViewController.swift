@@ -162,13 +162,13 @@ class QueryViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
         case Tools.Score.rawValue:
-            let vc: UIViewController
             if accountManager.currentAccountForJwbinfosys == nil {
-                vc = JwbinfosysLoginViewController()
-            } else {
-                vc = ScoreViewController()
+                let vc = JwbinfosysLoginViewController()
+                presentViewController(vc, animated: true, completion: nil)
+            } else if MobileManager.sharedInstance.statistics != nil {
+                let vc = ScoreViewController()
+                presentViewController(vc, animated: true, completion: nil)
             }
-            presentViewController(vc, animated: true, completion: nil)
         case Tools.Query.rawValue:
             if accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
