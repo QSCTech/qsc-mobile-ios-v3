@@ -67,4 +67,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.didReceiveRemoteNotification(userInfo)
     }
     
+    @available(iOS 9.0, *)
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        let tabBarController = window!.rootViewController as! UITabBarController
+        if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
+            tabBarController.presentViewController(JwbinfosysLoginViewController(), animated: true, completion: nil)
+        } else {
+            tabBarController.selectedIndex = 3
+            switch shortcutItem.type {
+            case "Course", "Exam":
+                let storyboard = UIStoryboard(name: "QueryList", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController() as! SemesterListViewController
+                vc.source = shortcutItem.type == "Course" ? .Course : .Exam
+                (tabBarController.selectedViewController as! UINavigationController).showViewController(vc, sender: nil)
+            case "Score":
+                tabBarController.presentViewController(ScoreViewController(), animated: true, completion: nil)
+            case "Bus":
+                tabBarController.presentViewController(BusViewController(), animated: true, completion: nil)
+            default:
+                break
+            }
+        }
+        completionHandler(true)
+    }
+    
 }

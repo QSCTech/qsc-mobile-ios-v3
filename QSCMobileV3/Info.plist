@@ -41,7 +41,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>课程</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string></string>
+			<string>Course</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
@@ -49,7 +49,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>考试</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string></string>
+			<string>Exam</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
@@ -57,7 +57,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>成绩</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string></string>
+			<string>Score</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
@@ -65,7 +65,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>校车</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string></string>
+			<string>Bus</string>
 		</dict>
 	</array>
 	<key>UILaunchStoryboardName</key>
