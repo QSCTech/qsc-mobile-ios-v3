@@ -56,6 +56,7 @@ class EventEditViewController: UITableViewController {
     
     var allDaySwitch: UISwitch!
     var notificationSwitch: UISwitch!
+    var menuView: BTNavigationDropdownMenu!
     
     // MARK: - View controller override
     
@@ -105,7 +106,7 @@ class EventEditViewController: UITableViewController {
         startTimeDidChange(startTimePicker)
         
         let items = [Event.Category.Lesson.name, Event.Category.Quiz.name, Event.Category.Activity.name, Event.Category.Todo.name]
-        let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
+        menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
         menuView.didSelectItemAtIndexHandler = { index in
             self.customEvent!.category = index + 2
             self.navigationController?.navigationBar.backgroundColor = QSCColor.event(self.eventCategory)
@@ -243,7 +244,7 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        
+        menuView.hide()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -269,6 +270,7 @@ class EventEditViewController: UITableViewController {
         customEvent!.tags = ""
         eventManager.save()
         
+        menuView.hide()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
