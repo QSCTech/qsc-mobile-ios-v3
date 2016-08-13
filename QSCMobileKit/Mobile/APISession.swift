@@ -147,11 +147,11 @@ class APISession: NSObject {
                 print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue)  \(requestList[0]["data"]!)")
             }
             if json["status"].string == "ok" {
-                if let responseList = json["responseList"].string {
-                    let responseJSON = JSON(self.jsonObjectFromString(responseList))
-                    callback(responseJSON[0]["data"], nil)
+                let responseData = JSON(self.jsonObjectFromString(json["responseList"].stringValue))[0]["data"]
+                if responseData.isExists() {
+                    callback(responseData, nil)
                 } else {
-                    print("[Resource request] Response list is null")
+                    print("[Resource request] Response data is null")
                     callback(nil, "刷新失败，请重试")
                 }
             } else if json["status"].string == "sessionFail" {
