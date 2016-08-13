@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SVProgressHUD
 import DeviceKit
 import QSCMobileKit
 
@@ -58,7 +59,7 @@ class PreferenceViewController: UITableViewController {
         case Preference.Jwbinfosys.rawValue:
             return accountManager.allAccountsForJwbinfosys.count + 1
         case Preference.Zjuwlan.rawValue:
-            return 1
+            return accountManager.accountForZjuwlan == nil ? 1 : 2
         case Preference.Setting.rawValue:
             return 3
         case Preference.About.rawValue:
@@ -89,9 +90,15 @@ class PreferenceViewController: UITableViewController {
                 return cell
             }
         case Preference.Zjuwlan.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
-            cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+                cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
+                return cell
+            } else {
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+                cell.textLabel!.attributedText = "\u{f0ec}\t一键连接".attributedWithFontAwesome
+                return cell
+            }
         case Preference.Setting.rawValue:
             switch indexPath.row {
             case 0:
@@ -154,8 +161,18 @@ class PreferenceViewController: UITableViewController {
                 presentViewController(vc, animated: true, completion: nil)
             }
         case Preference.Zjuwlan.rawValue:
-            let vc = ZjuwlanLoginViewController()
-            showViewController(vc, sender: nil)
+            if indexPath.row == 0{
+                let vc = ZjuwlanLoginViewController()
+                showViewController(vc, sender: nil)
+            } else {
+                ZjuwlanConnection.link { success, error in
+                    if success {
+                        SVProgressHUD.showSuccessWithStatus("连接成功")
+                    } else {
+                        SVProgressHUD.showErrorWithStatus(error!)
+                    }
+                }
+            }
         case Preference.Setting.rawValue:
             switch indexPath.row {
             case 2:

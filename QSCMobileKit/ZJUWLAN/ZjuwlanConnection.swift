@@ -34,6 +34,7 @@ public class ZjuwlanConnection: NSObject {
     private static let ZjuwlanLoginURL  = "https://net.zju.edu.cn/include/auth_action.php"
     
     private static func login(username: String, _ password: String, callback: (Bool, String?) -> Void) {
+        let headers = ["Referer": "https://net.zju.edu.cn/srun_portal_phone.php?url=http://www.zju.edu.cn/&ac_id=3"]
         let postData = [
             "action": "login",
             "username": username,
@@ -45,7 +46,7 @@ public class ZjuwlanConnection: NSObject {
             "save_me": "0",
             "ajax": "1",
         ]
-        alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData).responseString { response in
+        alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData, headers: headers).responseString { response in
             if let string = response.result.value {
                 if string.containsString("login_ok") {
                     callback(true, nil)
