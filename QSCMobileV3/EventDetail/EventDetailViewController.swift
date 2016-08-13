@@ -38,7 +38,6 @@ class EventDetailViewController: UITableViewController {
         // To avoid dark shadow during transition
         navigationController?.view.backgroundColor = UIColor.whiteColor()
         navigationController?.setToolbarHidden(false, animated: animated)
-        toolbarItems?.first?.width = view.frame.width
         
         let category = Event.Category(rawValue: customEvent.category!.integerValue)!
         navigationItem.title = category.name
@@ -91,13 +90,14 @@ class EventDetailViewController: UITableViewController {
     
     @IBAction func remove(sender: AnyObject) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let remove = UIAlertAction(title: "删除日程", style: .Destructive) { _ in
+        let remove = UIAlertAction(title: "确认删除", style: .Destructive) { _ in
             EventManager.sharedInstance.removeCustomEvent(self.customEvent)
             self.navigationController?.popViewControllerAnimated(true)
         }
         alert.addAction(remove)
         let cancel = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         alert.addAction(cancel)
+        alert.popoverPresentationController?.barButtonItem = toolbarItems![1]
         presentViewController(alert, animated: true, completion: nil)
     }
     

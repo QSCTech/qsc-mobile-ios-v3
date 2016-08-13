@@ -100,7 +100,7 @@ class MomentPageViewController: UIViewController {
                 gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(event.start))
                 let timer = Int(gauge.maxValue - gauge.rate)
                 timerLabel.text = String(format: "%d:%02d", timer / 3600, timer / 60 % 60)
-                if event.category == .Course {
+                if event.category == .Course || event.category == .Lesson {
                     promptLabel.text = "距下课"
                 } else {
                     promptLabel.text = promptLabel.text!.stringByReplacingOccurrencesOfString("开始", withString: "结束")
