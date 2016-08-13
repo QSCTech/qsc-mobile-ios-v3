@@ -113,7 +113,7 @@ public class MobileManager: NSObject {
         let weekOrdinal = calendarManager.weekOrdinalForDate(date)
         let calendar = NSCalendar.currentCalendar()
         let weekday = calendar.component(.Weekday, fromDate: date)
-        let todayComponents = calendar.components([.Year, .Month, .Day], fromDate: NSDate())
+        let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
         
         let courses = dataStore.getCourses(year: year, semester: semester)
         var array = [Event]()
@@ -122,14 +122,14 @@ public class MobileManager: NSObject {
                 let timePlace = timePlace as! TimePlace
                 if timePlace.weekday == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
                     let startComponents = timePlace.periods!.startTimeForPeriods
-                    todayComponents.hour = startComponents.hour
-                    todayComponents.minute = startComponents.minute
-                    let start = calendar.dateFromComponents(todayComponents)!
+                    dateComponents.hour = startComponents.hour
+                    dateComponents.minute = startComponents.minute
+                    let start = calendar.dateFromComponents(dateComponents)!
                     
                     let endComponents = timePlace.periods!.endTimeForPeriods
-                    todayComponents.hour = endComponents.hour
-                    todayComponents.minute = endComponents.minute
-                    let end = calendar.dateFromComponents(todayComponents)!
+                    dateComponents.hour = endComponents.hour
+                    dateComponents.minute = endComponents.minute
+                    let end = calendar.dateFromComponents(dateComponents)!
                     
                     let courseEvent = eventManager.courseEventForIdentifier(course.identifier!)!
                     let tags = courseEvent.tags?.componentsSeparatedByString(",") ?? []
