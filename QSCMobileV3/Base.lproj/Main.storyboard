@@ -120,8 +120,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srw-bJ-IoV">
-                                <rect key="frame" x="20" y="72" width="32" height="98"/>
+                                <rect key="frame" x="20" y="64" width="32" height="106"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="七月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Of1-ck-8Vm">
@@ -210,6 +211,7 @@
                             <constraint firstItem="JtD-0b-lP7" firstAttribute="top" secondItem="1Vd-PL-nXs" secondAttribute="bottom" id="OXu-vY-Vkk"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nYx-Yb-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="QVQ-Hf-BOh"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="60" id="RRD-dK-8aA"/>
+                            <constraint firstItem="Srw-bJ-IoV" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="TAY-zs-Aek"/>
                             <constraint firstItem="QTL-3E-9No" firstAttribute="top" secondItem="1Vd-PL-nXs" secondAttribute="bottom" constant="30" id="TDi-po-JyM"/>
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="WbF-E8-qyZ"/>
                             <constraint firstItem="JtD-0b-lP7" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="XyT-Qa-nJn"/>
@@ -237,6 +239,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="8BT-k8-tfc"/>
                                 <exclude reference="7rb-Vg-NGn"/>
                                 <exclude reference="xAS-ZR-X7h"/>
                                 <exclude reference="4qv-mS-ISB"/>

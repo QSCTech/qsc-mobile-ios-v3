@@ -33,13 +33,14 @@ class CalendarViewController: UIViewController {
         
         menuView.menuViewDelegate = self
         calendarView.calendarDelegate = self
+        calendarView.calendarAppearanceDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerNib(UINib(nibName: "EventCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Event")
         
         let rightBorder = CALayer()
         rightBorder.borderColor = QSCColor.dark.CGColor
-        rightBorder.borderWidth = 1
+        rightBorder.borderWidth = 0.5
         rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
         weekLabel.layer.addSublayer(rightBorder)
     }
@@ -150,6 +151,22 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
             colors.insert(QSCColor.event(event.category))
         }
         return Array(colors)
+    }
+    
+}
+
+extension CalendarViewController: CVCalendarViewAppearanceDelegate {
+    
+    func dayLabelPresentWeekdayTextColor() -> UIColor {
+        return UIColor.blackColor()
+    }
+    
+    func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
+        return QSCColor.dark
+    }
+    
+    func dayLabelPresentWeekdaySelectedBackgroundColor() -> UIColor {
+        return UIColor.blackColor()
     }
     
 }

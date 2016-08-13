@@ -21,7 +21,7 @@ public let QSCMobileKitIdentifier = "com.myqsc.iQSC.MobileKit"
 
 public class QSCColor {
     public static let theme = UIColor(red: 0.523, green: 0.825, blue: 0.896, alpha: 1.0) // #85D3E5
-    public static let dark = UIColor(red: 0.467, green: 0.467, blue: 0.467, alpha: 1.0) // #777777
+    public static let dark = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0) // #4A4A4A
     public static let detailText = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1.0) // #8E8E93
     
     public static let course = UIColor(red: 0.290, green: 0.565, blue: 0.886, alpha: 1.0) // #4A90E2
