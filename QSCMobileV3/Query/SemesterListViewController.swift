@@ -33,12 +33,7 @@ class SemesterListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Semester") as! SemesterListCell
         let semester = mobileManager.allSemesters.reverse()[indexPath.row]
-        cell.titleLabel.text = semester.substringToIndex(semester.endIndex.advancedBy(-2))
-        if semester.hasSuffix("1") {
-            cell.titleLabel.text! += " 秋冬"
-        } else {
-            cell.titleLabel.text! += " 春夏"
-        }
+        cell.titleLabel.text = semester.substringToIndex(semester.endIndex.advancedBy(-2)) + (semester.hasSuffix("1") ? " 秋冬" : " 春夏")
         let exams = mobileManager.getExams(semester)
         cell.subtitleLabel.text = "\(exams.count) 门课程"
         if source == .Course {

@@ -150,6 +150,10 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
         for event in events {
             colors.insert(QSCColor.event(event.category))
         }
+        // Workaround to display dots in one line
+        while colors.count > 3 {
+            colors.removeFirst()
+        }
         return Array(colors)
     }
     

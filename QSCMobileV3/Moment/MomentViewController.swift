@@ -32,7 +32,7 @@ class MomentViewController: UIViewController {
         
         scrollView.removeAllSubviews()
         // TODO: Support all-day events and future exams
-        let events = eventsForDate(NSDate()).filter { $0.category != .Todo && $0.duration == .PartialTime && $0.end >= NSDate() }
+        let events = eventsForDate(NSDate()).filter { $0.duration == .PartialTime && $0.end >= NSDate() }
         pageControl.numberOfPages = events.count
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(events.count), height: scrollView.frame.height)
         for (index, event) in events.enumerate() {
