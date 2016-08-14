@@ -18,9 +18,7 @@ class CourseListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let title = semester.substringToIndex(semester.endIndex.advancedBy(-2)) + (semester.hasSuffix("1") ? " 秋冬" : " 春夏")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
+        navigationItem.title = semester.substringToIndex(semester.endIndex.advancedBy(-2)) + (semester.hasSuffix("1") ? " 秋冬" : " 春夏")
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
