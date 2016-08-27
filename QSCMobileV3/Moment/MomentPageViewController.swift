@@ -8,6 +8,7 @@
 
 import UIKit
 import GaugeKit
+import DeviceKit
 import QSCMobileKit
 
 class MomentPageViewController: UIViewController {
@@ -25,30 +26,20 @@ class MomentPageViewController: UIViewController {
     
     private let mobileManager = MobileManager.sharedInstance
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var gauge: Gauge!
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var stackView: UIView!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var placeLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let event = event {
-            titleLabel.text = event.name
             dateLabel.hidden = true
-            stackView.hidden = false
-            timeLabel.text = event.time
-            placeLabel.text = event.place
             
             let color: UIColor
             let startColor: UIColor
-            let endColor: UIColor
+            let endColor: UIColor // Waiting for GaugeKit upgrade to make endColor work
             switch event.category {
             case .Course, .Lesson:
                 color = QSCColor.course
@@ -61,7 +52,7 @@ class MomentPageViewController: UIViewController {
                 endColor = UIColor(red: 0.902, green: 0.604, blue: 0.259, alpha: 1.0)
                 promptLabel.text = "距考试开始"
             case .Activity:
-                color = UIColor(red: 0.722, green: 0.592, blue: 0.0, alpha: 1.0)
+                color = QSCColor.actividad
                 startColor = UIColor(red: 1.0, green: 0.855, blue: 0.0, alpha: 1.0)
                 endColor = UIColor(red: 0.988, green: 1.0, blue: 0.533, alpha: 1.0)
                 promptLabel.text = "距活动开始"
@@ -71,21 +62,21 @@ class MomentPageViewController: UIViewController {
                 endColor = QSCColor.todo
                 promptLabel.text = "距日程开始"
             }
-            titleLabel.textColor = color
             timerLabel.textColor = color
-            timeLabel.textColor = color
-            placeLabel.textColor = color
             gauge.startColor = startColor
             gauge.endColor = endColor
             gauge.bgColor = UIColor.whiteColor()
+            gauge.bgAlpha = 0.9
         } else {
-            titleLabel.text = "今日无事"
+            if Device().isPad {
+                dateLabel.hidden = true
+            }
             promptLabel.text = ""
-            stackView.hidden = true
             gauge.rate = 0
             
             timerLabel.textColor = UIColor.blackColor()
             gauge.bgColor = UIColor.whiteColor()
+            gauge.bgAlpha = 0.9
         }
         
         refresh()
@@ -99,12 +90,12 @@ class MomentPageViewController: UIViewController {
                 gauge.maxValue = CGFloat(event.start.timeIntervalSinceDate(today))
                 gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(today))
                 let timer = Int(gauge.maxValue - gauge.rate)
-                timerLabel.text = String(format: "%d:%02d", timer / 3600, timer / 60 % 60)
+                timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60 + 1)
             } else if NSDate() <= event.end {
                 gauge.maxValue = CGFloat(event.end.timeIntervalSinceDate(event.start))
                 gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(event.start))
                 let timer = Int(gauge.maxValue - gauge.rate)
-                timerLabel.text = String(format: "%d:%02d", timer / 3600, timer / 60 % 60)
+                timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60 + 1)
                 if event.category == .Course || event.category == .Lesson {
                     promptLabel.text = "距下课"
                 } else {
