@@ -39,8 +39,8 @@ class CalendarViewController: UIViewController {
         tableView.registerNib(UINib(nibName: "EventCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Event")
         
         let rightBorder = CALayer()
-        rightBorder.borderColor = QSCColor.dark.CGColor
-        rightBorder.borderWidth = 0.5
+        rightBorder.borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.34).CGColor
+        rightBorder.borderWidth = 1
         rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
         weekLabel.layer.addSublayer(rightBorder)
     }
@@ -124,6 +124,10 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
         return .Monday
     }
     
+    func weekdaySymbolType() -> WeekdaySymbolType {
+        return .VeryShort
+    }
+    
     func shouldShowWeekdaysOut() -> Bool {
         return false
     }
@@ -161,12 +165,12 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
 
 extension CalendarViewController: CVCalendarViewAppearanceDelegate {
     
-    func dayLabelPresentWeekdayTextColor() -> UIColor {
-        return UIColor.blackColor()
-    }
-    
     func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
         return QSCColor.dark
+    }
+    
+    func dayLabelPresentWeekdayTextColor() -> UIColor {
+        return UIColor.blackColor()
     }
     
     func dayLabelPresentWeekdaySelectedBackgroundColor() -> UIColor {
@@ -199,9 +203,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let events = filteredEvents(section)
         if section == 0 {
-            let semester = calendarManager.semesterForDate(selectedDate)
-            let holidays: [CalendarSemester] = [.WinterMini, .SummerMini, .SummerTime]
-            return Int(calendarManager.holidayForDate(selectedDate) != nil || calendarManager.adjustmentForDate(selectedDate) != nil || holidays.contains(semester) || events.count == 0)
+            return 1
         } else {
             return events.count
         }
@@ -219,7 +221,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
             let semester = calendarManager.semesterForDate(selectedDate)
-            let holidays: [CalendarSemester] = [.WinterMini, .SummerMini, .SummerTime]
             if let holiday = calendarManager.holidayForDate(selectedDate) {
                 cell.textLabel!.text = holiday
             } else if let adjustment = calendarManager.adjustmentForDate(selectedDate) {
@@ -227,14 +228,17 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                 formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
                 formatter.dateFormat = "yyyy年MM月dd日"
                 cell.textLabel!.text = "\(adjustment.name)调休（\(formatter.stringFromDate(adjustment.fromDate))）"
-            } else if holidays.contains(semester) {
-                if semester == .SummerTime {
-                    cell.textLabel!.text = "暑期短学期"
-                } else {
-                    cell.textLabel!.text = semester.name
-                }
             } else {
-                cell.textLabel!.text = "本日无事"
+                switch semester {
+                case .Autumn, .Winter, .Spring, .Summer:
+                    cell.textLabel!.text = "\(semester.name)学期第\(calendarManager.weekOrdinalForDate(selectedDate).chinese)周"
+                case .WinterMini, .SummerMini:
+                    cell.textLabel!.text = semester.name
+                case .SummerTime:
+                    cell.textLabel!.text = "暑期短学期"
+                default:
+                    cell.textLabel!.text = ""
+                }
             }
             return cell
         }
@@ -260,6 +264,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            return
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedEvent = filteredEvents(indexPath.section)[indexPath.row]
         if selectedEvent.category == .Course || selectedEvent.category == .Exam {

@@ -16,7 +16,7 @@ extension Int {
     public var chinese: String {
         switch self {
         case 0:
-            return "〇"
+            return "零"
         case 1:
             return "一"
         case 2:
