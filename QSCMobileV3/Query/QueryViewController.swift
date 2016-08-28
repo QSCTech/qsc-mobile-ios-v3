@@ -13,25 +13,12 @@ import QSCMobileKit
 class QueryViewController: UITableViewController {
     
     private let accountManager = AccountManager.sharedInstance
+    private let collectionViewDelegate = QueryCollectionViewDelegate()
     
     enum Tools: Int {
         case Score = 0, Query, Login, Website, Webpage
         static let count = 5
     }
-    
-    private let queries: [[String: String]] = [
-        [
-            "name": "\u{f207}\t校车",
-        ],
-        [
-            "name": "\u{f02d}\t课程一览",
-            "segue": "showCourses",
-        ],
-        [
-            "name": "\u{f040}\t考试一览",
-            "segue": "showExams",
-        ],
-    ]
     
     private let login: [[String: String]] = [
         [
@@ -56,10 +43,6 @@ class QueryViewController: UITableViewController {
         [
             "name": "图书馆",
             "url": "http://webpac.zju.edu.cn",
-        ],
-        [
-            "name": "信息共享空间",
-            "url": "http://ic.zju.edu.cn/ClientWeb/xcus/zd/index.aspx",
         ],
         [
             "name": "体质健康测试",
@@ -107,7 +90,7 @@ class QueryViewController: UITableViewController {
         case Tools.Score.rawValue:
             return 1
         case Tools.Query.rawValue:
-            return queries.count
+            return 1
         case Tools.Login.rawValue:
             return login.count
         case Tools.Website.rawValue:
@@ -145,7 +128,12 @@ class QueryViewController: UITableViewController {
                 return cell
             }
         case Tools.Query.rawValue:
-            cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
+            let cell = tableView.dequeueReusableCellWithIdentifier("Collection") as! QueryTableViewCell
+            cell.collectionView.registerNib(UINib(nibName: "QueryCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
+            cell.collectionView.delegate = collectionViewDelegate
+            cell.collectionView.dataSource = collectionViewDelegate
+            cell.selectionStyle = .None
+            return cell
         case Tools.Login.rawValue:
             cell.textLabel!.text = login[indexPath.row]["name"]
         case Tools.Website.rawValue:
@@ -168,18 +156,6 @@ class QueryViewController: UITableViewController {
             } else if MobileManager.sharedInstance.statistics != nil {
                 let vc = ScoreViewController()
                 presentViewController(vc, animated: true, completion: nil)
-            }
-        case Tools.Query.rawValue:
-            if accountManager.currentAccountForJwbinfosys == nil {
-                let vc = JwbinfosysLoginViewController()
-                presentViewController(vc, animated: true, completion: nil)
-            } else {
-                if indexPath.row > 0 {
-                    performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
-                } else {
-                    let vc = BusViewController()
-                    presentViewController(vc, animated: true, completion: nil)
-                }
             }
         case Tools.Login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
@@ -239,6 +215,8 @@ class QueryViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == Tools.Score.rawValue {
             return 77
+        } else if indexPath.section == Tools.Query.rawValue {
+            return 81
         } else {
             return 44
         }
@@ -249,7 +227,9 @@ class QueryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionViewDelegate.viewController = self
         tableView.registerNib(UINib(nibName: "OverallScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
+        tableView.registerClass(QueryTableViewCell.self, forCellReuseIdentifier: "Collection")
         refreshCtl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
         // Placeholder to prevent activity indicator from changing its position
         refreshCtl.attributedTitle = NSAttributedString(string: " ")
@@ -263,19 +243,6 @@ class QueryViewController: UITableViewController {
             refreshControl = nil
         } else {
             refreshControl = refreshCtl
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "showCourses":
-            let vc = segue.destinationViewController as! SemesterListViewController
-            vc.source = .Course
-        case "showExams":
-            let vc = segue.destinationViewController as! SemesterListViewController
-            vc.source = .Exam
-        default:
-            break
         }
     }
     

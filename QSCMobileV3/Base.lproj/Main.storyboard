@@ -114,8 +114,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="Y7p-q6-nVp"/>
                                                         <exclude reference="P58-s8-Cb2"/>
+                                                        <exclude reference="Y7p-q6-nVp"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -158,15 +158,12 @@
                                     <constraint firstItem="h0v-Rl-cxP" firstAttribute="leading" secondItem="7ee-CT-1WH" secondAttribute="leading" id="oKM-ek-hat"/>
                                     <constraint firstItem="qbw-yh-sDk" firstAttribute="trailing" secondItem="7ee-CT-1WH" secondAttribute="trailing" id="tZz-qn-5ZN"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="joc-xf-8LE"/>
-                                        <exclude reference="iJ2-bD-Ba1"/>
                                         <exclude reference="K13-KP-RAc"/>
+                                        <exclude reference="iJ2-bD-Ba1"/>
                                         <exclude reference="j1h-fw-eFF"/>
+                                        <exclude reference="joc-xf-8LE"/>
                                         <exclude reference="Syg-ue-cvg"/>
                                         <exclude reference="8Rm-Eg-6eO"/>
                                         <exclude reference="chG-Kg-GrB"/>
@@ -256,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYx-Yb-xsq" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="60" y="92" width="520" height="55"/>
+                                <rect key="frame" x="60" y="100" width="520" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="8dy-7J-pTt"/>
@@ -276,7 +273,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="秋四" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srw-bJ-IoV">
-                                <rect key="frame" x="20" y="64" width="32" height="83"/>
+                                <rect key="frame" x="20" y="64" width="32" height="91"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="nAF-qc-pyO"/>
                                 </constraints>
@@ -285,7 +282,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="七月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Of1-ck-8Vm">
-                                <rect key="frame" x="20" y="247" width="48" height="15"/>
+                                <rect key="frame" x="20" y="255" width="48" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A6h-7U-iNd"/>
                                 </constraints>
@@ -299,7 +296,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDZ-oE-nhG">
-                                <rect key="frame" x="20" y="262" width="48" height="16"/>
+                                <rect key="frame" x="20" y="270" width="48" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Iup-av-5FH"/>
                                 </constraints>
@@ -313,7 +310,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-3E-9No">
-                                <rect key="frame" x="20" y="203" width="48" height="36"/>
+                                <rect key="frame" x="20" y="211" width="48" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="tbn-M3-2Wj"/>
                                 </constraints>
@@ -322,7 +319,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="JtD-0b-lP7">
-                                <rect key="frame" x="76" y="171" width="524" height="380"/>
+                                <rect key="frame" x="76" y="179" width="524" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Basic" textLabel="y8N-wF-cRc" rowHeight="44" style="IBUITableViewCellStyleDefault" id="m9p-hF-ohV">
@@ -345,7 +342,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-PL-nXs">
-                                <rect key="frame" x="0.0" y="147" width="600" height="24"/>
+                                <rect key="frame" x="0.0" y="155" width="600" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="85l-sl-ezN"/>
                                 </constraints>
@@ -388,7 +385,7 @@
                             <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="60" id="RRD-dK-8aA"/>
                             <constraint firstItem="Srw-bJ-IoV" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="TAY-zs-Aek"/>
                             <constraint firstItem="QTL-3E-9No" firstAttribute="top" secondItem="1Vd-PL-nXs" secondAttribute="bottom" constant="32" id="TDi-po-JyM"/>
-                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" id="WbF-E8-qyZ"/>
+                            <constraint firstItem="nYx-Yb-xsq" firstAttribute="top" secondItem="faw-wO-Hlh" secondAttribute="bottom" constant="8" symbolic="YES" id="WbF-E8-qyZ"/>
                             <constraint firstItem="JtD-0b-lP7" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="XyT-Qa-nJn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JtD-0b-lP7" secondAttribute="trailing" id="YYO-XJ-l4V"/>
                             <constraint firstItem="Of1-ck-8Vm" firstAttribute="top" secondItem="QTL-3E-9No" secondAttribute="bottom" constant="8" symbolic="YES" id="Yhx-kS-WoI"/>
@@ -532,22 +529,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="查询" id="zRP-2p-OTY"/>
-                    <connections>
-                        <segue destination="5V3-Rq-8HP" kind="show" identifier="showCourses" id="9gb-iI-jMn"/>
-                        <segue destination="Emk-wI-up8" kind="show" identifier="showExams" id="D31-3H-CGD"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFB-TC-V6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2172" y="1144"/>
-        </scene>
-        <!--QueryList-->
-        <scene sceneID="pqP-C9-WgW">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QueryList" id="5V3-Rq-8HP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tfq-AC-Rj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2073.5" y="1609"/>
         </scene>
         <!--日程提醒-->
         <scene sceneID="KM9-WE-Q82">
@@ -566,15 +551,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mG-sS-SSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3624" y="1923"/>
-        </scene>
-        <!--QueryList-->
-        <scene sceneID="PKf-fI-Jpz">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QueryList" id="Emk-wI-up8" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fQH-Ua-Nk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2270.5" y="1609"/>
+            <point key="canvasLocation" x="2812" y="1923"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZrD-2v-zQf">
