@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreActionSheetPicker
+import SVProgressHUD
 import QSCMobileKit
 
 let CampusFromIndexKey = "CampusFromIndex"
@@ -99,7 +100,78 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = schoolBus.busName(indexPath.row)
         cell.timeLabel.text = schoolBus.fromTime(indexPath.row) + " - " + schoolBus.toTime(indexPath.row)
         cell.noteLabel.text = schoolBus.busNote(indexPath.row)
+        cell.noteIcon.hidden = cell.noteLabel.text!.isEmpty
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.whiteColor()
+            cell.plusButton.setImage(UIImage(named: "PlusGray"), forState: .Normal)
+        } else {
+            cell.backgroundColor = UIColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 1.0)
+            cell.plusButton.setImage(UIImage(named: "PlusWhite"), forState: .Normal)
+        }
+        cell.plusButton.setTitle(String(indexPath.row), forState: .Normal)
+        cell.plusButton.addTarget(self, action: #selector(addEvent), forControlEvents: .TouchUpInside)
         return cell
+    }
+    
+    func addEvent(sender: UIButton) {
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "HH:mm"
+        let index = Int(sender.currentTitle!)!
+        let from = schoolBus.fromTime(index) != "*" ? schoolBus.fromTime(index) : schoolBus.toTime(index)
+        let to = schoolBus.toTime(index) != "*" ? schoolBus.toTime(index) : schoolBus.fromTime(index)
+        var fromDate: NSDate?
+        var toDate: NSDate?
+        if let from = formatter.dateFromString(from), to = formatter.dateFromString(to) {
+            let calendar = NSCalendar.currentCalendar()
+            let dateComps = calendar.components([.Year, .Month, .Day], fromDate: NSDate())
+            
+            let fromComps = calendar.components([.Hour, .Minute], fromDate: from)
+            dateComps.hour = fromComps.hour
+            dateComps.minute = fromComps.minute
+            fromDate = calendar.dateFromComponents(dateComps)
+            
+            let toComps = calendar.components([.Hour, .Minute], fromDate: to)
+            dateComps.hour = toComps.hour
+            dateComps.minute = toComps.minute
+            toDate = calendar.dateFromComponents(dateComps)
+        }
+        
+        let eventManager = EventManager.sharedInstance
+        let event = eventManager.newCustomEvent
+        event.category = Event.Category.Activity.rawValue
+        event.name = "乘坐" + schoolBus.busName(index)
+        event.notes = schoolBus.busNote(index)
+        event.repeatType = "永不"
+        event.repeatEnd = NSDate()
+        event.notification = 0
+        event.sponsor = "浙江大学"
+        event.tags = ""
+        if let fromDate = fromDate, toDate = toDate {
+            event.duration = Event.Duration.PartialTime.rawValue
+            event.start = fromDate
+            event.end = toDate
+        } else {
+            event.duration = Event.Duration.AllDay.rawValue
+            event.start = NSDate()
+            event.end = NSDate()
+        }
+        switch fromIndex {
+        case 0:
+            event.place = "紫金港校区"
+        case 1:
+            event.place = "玉泉校区教二南侧"
+        case 2:
+            event.place = "西溪校区南大门"
+        case 3:
+            event.place = "之江校区大门口"
+        case 4:
+            event.place = "华家池校区体育馆、新大门"
+        default:
+            event.place = ""
+        }
+        eventManager.save()
+        SVProgressHUD.showSuccessWithStatus("已添加到今日日程")
     }
     
 }

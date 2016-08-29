@@ -13,5 +13,7 @@ class BusCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var noteIcon: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
     
 }
