@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         let tabBarController = window!.rootViewController as! UITabBarController
+        tabBarController.presentedViewController?.dismissViewControllerAnimated(false, completion: nil)
         if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
             tabBarController.presentViewController(JwbinfosysLoginViewController(), animated: true, completion: nil)
         } else {

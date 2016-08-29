@@ -56,7 +56,6 @@ class EventEditViewController: UITableViewController {
     
     var allDaySwitch: UISwitch!
     var notificationSwitch: UISwitch!
-    var menuView: BTNavigationDropdownMenu!
     
     // MARK: - View controller override
     
@@ -106,19 +105,23 @@ class EventEditViewController: UITableViewController {
         startTimeDidChange(startTimePicker)
         
         let items = [Event.Category.Lesson.name, Event.Category.Quiz.name, Event.Category.Activity.name, Event.Category.Todo.name]
-        menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
-        menuView.didSelectItemAtIndexHandler = { index in
-            self.customEvent!.category = index + 2
-            self.navigationController?.navigationBar.backgroundColor = QSCColor.event(self.eventCategory)
+        if eventCategory.rawValue - 2 < items.count {
+            let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
+            menuView.didSelectItemAtIndexHandler = { index in
+                self.customEvent!.category = index + 2
+                self.navigationController?.navigationBar.backgroundColor = QSCColor.event(self.eventCategory)
+            }
+            menuView.arrowTintColor = UIColor.blackColor()
+            menuView.cellBackgroundColor = UIColor.darkGrayColor()
+            menuView.cellSeparatorColor = UIColor.darkGrayColor()
+            menuView.cellTextLabelColor = UIColor.whiteColor()
+            menuView.cellTextLabelAlignment = .Center
+            menuView.cellHeight = 44
+            menuView.checkMarkImage = nil
+            navigationItem.titleView = menuView
+        } else {
+            navigationItem.title = eventCategory.name
         }
-        menuView.arrowTintColor = UIColor.blackColor()
-        menuView.cellBackgroundColor = UIColor.darkGrayColor()
-        menuView.cellSeparatorColor = UIColor.darkGrayColor()
-        menuView.cellTextLabelColor = UIColor.whiteColor()
-        menuView.cellTextLabelAlignment = .Center
-        menuView.cellHeight = 44
-        menuView.checkMarkImage = nil
-        navigationItem.titleView = menuView
         navigationController?.navigationBar.backgroundColor = QSCColor.event(eventCategory)
     }
     
@@ -244,7 +247,7 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        menuView.hide()
+        (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -270,7 +273,7 @@ class EventEditViewController: UITableViewController {
         customEvent!.tags = ""
         eventManager.save()
         
-        menuView.hide()
+        (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
