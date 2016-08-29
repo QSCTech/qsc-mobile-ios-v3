@@ -48,7 +48,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineBus" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-Qz-fr6">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineBusLong" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-Qz-fr6">
                         <rect key="frame" x="8" y="0.0" width="21" height="200"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="21" id="LKI-V5-jrE"/>
@@ -152,7 +152,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="LineBus" width="21" height="200"/>
+        <image name="LineBusLong" width="21" height="200"/>
         <image name="PlusGray" width="25" height="25"/>
     </resources>
 </document>

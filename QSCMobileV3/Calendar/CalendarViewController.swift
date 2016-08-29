@@ -256,6 +256,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             imageName += "Exam"
         case .Activity:
             imageName += "Activity"
+        case .Bus:
+            imageName += "Bus"
         default:
             imageName += "Todo"
         }

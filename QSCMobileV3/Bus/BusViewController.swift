@@ -139,7 +139,7 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
         
         let eventManager = EventManager.sharedInstance
         let event = eventManager.newCustomEvent
-        event.category = Event.Category.Activity.rawValue
+        event.category = Event.Category.Bus.rawValue
         event.name = "乘坐" + schoolBus.busName(index)
         event.notes = schoolBus.busNote(index)
         event.repeatType = "永不"

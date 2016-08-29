@@ -30,6 +30,7 @@ public class QSCColor {
     public static let activity = UIColor(red: 1.000, green: 0.820, blue: 0.000, alpha: 1.0) // #FFD100
     public static let actividad = UIColor(red: 0.722, green: 0.592, blue: 0.0, alpha: 1.0) // #B89700
     public static let todo = UIColor(red: 0.627, green: 0.420, blue: 0.745, alpha: 1.0) // #A06BBE
+    public static let bus = UIColor(red: 0.451, green: 0.804, blue: 0.122, alpha: 1.0) // #73CD1F
     
     public static func event(category: Event.Category) -> UIColor {
         switch category {
@@ -39,6 +40,8 @@ public class QSCColor {
             return exam
         case .Activity:
             return activity
+        case .Bus:
+            return bus
         default:
             return todo
         }
@@ -55,7 +58,7 @@ public struct Event {
         case AllDay = 0, PartialTime
     }
     public enum Category: Int {
-        case Course = 0, Exam, Lesson, Quiz, Activity, Todo
+        case Course = 0, Exam, Lesson, Quiz, Activity, Todo, Bus
         
         public var name: String {
             switch self {
@@ -65,6 +68,8 @@ public struct Event {
                 return "考试"
             case .Activity:
                 return "活动"
+            case .Bus:
+                return "校车"
             default:
                 return "待办"
             }
