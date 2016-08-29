@@ -109,7 +109,7 @@ class EventEditViewController: UITableViewController {
             let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
             menuView.didSelectItemAtIndexHandler = { index in
                 self.customEvent!.category = index + 2
-                self.navigationController?.navigationBar.backgroundColor = QSCColor.event(self.eventCategory)
+                self.navigationController?.navigationBar.backgroundColor = QSCColor.category(self.eventCategory)
             }
             menuView.arrowTintColor = UIColor.blackColor()
             menuView.cellBackgroundColor = UIColor.darkGrayColor()
@@ -122,7 +122,7 @@ class EventEditViewController: UITableViewController {
         } else {
             navigationItem.title = eventCategory.name
         }
-        navigationController?.navigationBar.backgroundColor = QSCColor.event(eventCategory)
+        navigationController?.navigationBar.backgroundColor = QSCColor.category(eventCategory)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

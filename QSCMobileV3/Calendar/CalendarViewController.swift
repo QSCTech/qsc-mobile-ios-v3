@@ -152,7 +152,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
         let events = eventsForDate(date)
         var colors = Set<UIColor>()
         for event in events {
-            colors.insert(QSCColor.event(event.category))
+            colors.insert(QSCColor.category(event.category))
         }
         // Workaround to display dots in one line
         while colors.count > 3 {

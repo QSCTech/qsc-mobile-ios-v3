@@ -78,7 +78,7 @@ class MomentViewController: UIViewController {
         timeLabel.text = event.time
         placeLabel.text = event.place
         
-        let color = event.category == .Activity ? QSCColor.actividad : QSCColor.event(event.category)
+        let color = QSCColor.categoría(event.category)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: color]
         timeLabel.textColor = color
         placeLabel.textColor = color

@@ -41,7 +41,7 @@ class EventDetailViewController: UITableViewController {
         
         let category = Event.Category(rawValue: customEvent.category!.integerValue)!
         navigationItem.title = category.name
-        dotView.backgroundColor = QSCColor.event(category)
+        dotView.backgroundColor = QSCColor.category(category)
         nameLabel.text = customEvent.name
         placeLabel.text = customEvent.place
         if customEvent.duration == Event.Duration.AllDay.rawValue {

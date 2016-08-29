@@ -37,27 +37,27 @@ class MomentPageViewController: UIViewController {
         if let event = event {
             dateLabel.hidden = true
             
-            let color: UIColor
+            let color = QSCColor.categoría(event.category)
             let startColor: UIColor
             let endColor: UIColor // Waiting for GaugeKit upgrade to make endColor work
             switch event.category {
             case .Course, .Lesson:
-                color = QSCColor.course
                 startColor = UIColor(red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0)
                 endColor = UIColor(red: 0.157, green: 0.533, blue: 0.588, alpha: 1.0)
                 promptLabel.text = "距上课"
             case .Exam, .Quiz:
-                color = QSCColor.exam
                 startColor = UIColor(red: 1.0, green: 0.0, blue: 0.431, alpha: 1.0)
                 endColor = UIColor(red: 0.902, green: 0.604, blue: 0.259, alpha: 1.0)
                 promptLabel.text = "距考试开始"
             case .Activity:
-                color = QSCColor.actividad
                 startColor = UIColor(red: 1.0, green: 0.855, blue: 0.0, alpha: 1.0)
                 endColor = UIColor(red: 0.988, green: 1.0, blue: 0.533, alpha: 1.0)
                 promptLabel.text = "距活动开始"
+            case .Bus:
+                startColor = UIColor(red: 0.106, green: 0.616, blue: 0.161, alpha: 1.0)
+                endColor = UIColor(red: 0.776, green: 0.918, blue: 0.392, alpha: 1.0)
+                promptLabel.text = "距校车出发"
             default:
-                color = QSCColor.todo
                 startColor = QSCColor.todo
                 endColor = QSCColor.todo
                 promptLabel.text = "距日程开始"
@@ -98,6 +98,8 @@ class MomentPageViewController: UIViewController {
                 timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60 + 1)
                 if event.category == .Course || event.category == .Lesson {
                     promptLabel.text = "距下课"
+                } else if event.category == .Bus {
+                    promptLabel.text = "距校车到达"
                 } else {
                     promptLabel.text = promptLabel.text!.stringByReplacingOccurrencesOfString("开始", withString: "结束")
                 }

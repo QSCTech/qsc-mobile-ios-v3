@@ -31,9 +31,10 @@ public class QSCColor {
     public static let actividad = UIColor(red: 0.722, green: 0.592, blue: 0.0, alpha: 1.0) // #B89700
     public static let todo = UIColor(red: 0.627, green: 0.420, blue: 0.745, alpha: 1.0) // #A06BBE
     public static let bus = UIColor(red: 0.451, green: 0.804, blue: 0.122, alpha: 1.0) // #73CD1F
+    public static let autobús = UIColor(red: 0.039, green: 0.733, blue: 0.27, alpha: 1.0) // #0ABB07
     
-    public static func event(category: Event.Category) -> UIColor {
-        switch category {
+    public static func category(cat: Event.Category) -> UIColor {
+        switch cat {
         case .Course, .Lesson:
             return course
         case .Exam, .Quiz:
@@ -46,6 +47,18 @@ public class QSCColor {
             return todo
         }
     }
+    
+    public static func categoría(cat: Event.Category) -> UIColor {
+        switch cat {
+        case .Activity:
+            return actividad
+        case .Bus:
+            return autobús
+        default:
+            return category(cat)
+        }
+    }
+    
 }
 
 public let QSCVersion: String = {
