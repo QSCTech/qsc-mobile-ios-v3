@@ -20,6 +20,7 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var placeLabel: UILabel!
     
     var events = [Event]()
+    var pageControllers = [MomentPageViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,28 +35,22 @@ class MomentViewController: UIViewController {
         loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).CGColor
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         // TODO: Support all-day events and future exams
         events = eventsForDate(NSDate()).filter { $0.duration == .PartialTime && $0.end >= NSDate() }
         pageControl.numberOfPages = events.count
         
-        scrollView.removeAllSubviews()
-        let width = scrollView.frame.width
-        let height = scrollView.frame.height
-        scrollView.contentSize = CGSize(width: width * CGFloat(events.count), height: height)
-        for (index, event) in events.enumerate() {
+        pageControllers.removeAll()
+        for event in events {
             let vc = MomentPageViewController(event: event)
-            vc.view.frame = CGRect(x: width * CGFloat(index), y: 0, width: width, height: height)
-            scrollView.addSubview(vc.view)
+            vc.momentViewController = self
+            pageControllers.append(vc)
         }
-        
         if events.isEmpty {
-            scrollView.contentSize.width = scrollView.frame.width
             let vc = MomentPageViewController(event: nil)
-            vc.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            scrollView.addSubview(vc.view)
+            pageControllers.append(vc)
             
             stackView.hidden = true
             navigationItem.title = "今日无事"
@@ -69,6 +64,19 @@ class MomentViewController: UIViewController {
             loginButton.hidden = false
         } else {
             loginButton.hidden = true
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollView.removeAllSubviews()
+        let width = scrollView.frame.width
+        let height = scrollView.frame.height
+        scrollView.contentSize = CGSize(width: width * CGFloat(pageControllers.count), height: height)
+        for (index, vc) in pageControllers.enumerate() {
+            vc.view.frame = CGRect(x: width * CGFloat(index), y: 0, width: width, height: height)
+            scrollView.addSubview(vc.view)
         }
     }
     
@@ -98,7 +106,7 @@ class MomentViewController: UIViewController {
 
 extension MomentViewController: UIScrollViewDelegate {
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         let width = scrollView.frame.width
         pageControl.currentPage = Int((scrollView.contentOffset.x + width / 2) / width)
         updateCurrentEvent()

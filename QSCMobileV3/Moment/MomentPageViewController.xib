@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MomentPageViewController" customModule="QSCMobileV3" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="CwX-ap-ZWM" id="5jw-t1-1ao"/>
+                <outlet property="detailButton" destination="Xnw-cf-G57" id="Z1K-AH-yDs"/>
                 <outlet property="gauge" destination="FCe-b7-P4a" id="dIN-Rx-GbF"/>
                 <outlet property="promptLabel" destination="3IG-LH-HmY" id="3zw-JM-Wyq"/>
                 <outlet property="timerLabel" destination="TFp-eD-Aof" id="Lr1-lX-kBA"/>
@@ -53,6 +54,14 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnw-cf-G57">
+                    <rect key="frame" x="272" y="491" width="56" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="日程详情"/>
+                    <connections>
+                        <action selector="showDetail:" destination="-1" eventType="touchUpInside" id="ORc-ex-N4e"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -61,6 +70,7 @@
                 <constraint firstAttribute="trailing" secondItem="FCe-b7-P4a" secondAttribute="trailing" constant="32" id="2oh-I6-zns"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leading" priority="750" constant="40" id="3Sj-UG-9nq"/>
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leading" constant="80" id="8LY-A9-J1Z"/>
+                <constraint firstItem="Xnw-cf-G57" firstAttribute="centerX" secondItem="TFp-eD-Aof" secondAttribute="centerX" id="8v9-hl-VDh"/>
                 <constraint firstItem="3IG-LH-HmY" firstAttribute="top" secondItem="FCe-b7-P4a" secondAttribute="top" constant="48" id="981-z3-Szd"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="centerY" secondItem="ncl-Y5-yqU" secondAttribute="centerY" id="FiI-rM-l0V"/>
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="centerY" secondItem="FCe-b7-P4a" secondAttribute="centerY" id="Fji-jW-ieB"/>
@@ -75,6 +85,7 @@
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="top" secondItem="3IG-LH-HmY" secondAttribute="bottom" constant="30" id="cdA-hU-nC3"/>
                 <constraint firstItem="3IG-LH-HmY" firstAttribute="leading" secondItem="FCe-b7-P4a" secondAttribute="leading" constant="35" id="dsr-Dz-f2N"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leadingMargin" priority="750" constant="30" id="fyy-7N-BdE"/>
+                <constraint firstItem="Xnw-cf-G57" firstAttribute="bottom" secondItem="FCe-b7-P4a" secondAttribute="bottom" constant="-40" id="ies-D6-jfE"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="centerX" secondItem="ncl-Y5-yqU" secondAttribute="centerX" id="kUn-tk-1rN"/>
                 <constraint firstItem="CwX-ap-ZWM" firstAttribute="baseline" secondItem="TFp-eD-Aof" secondAttribute="baseline" id="m9D-kH-qcl"/>
                 <constraint firstItem="CwX-ap-ZWM" firstAttribute="width" secondItem="TFp-eD-Aof" secondAttribute="height" multiplier="1:2" id="sDn-sm-O28"/>

@@ -41,6 +41,7 @@ class EventDetailViewController: UITableViewController {
         
         let category = Event.Category(rawValue: customEvent.category!.integerValue)!
         navigationItem.title = category.name
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
         dotView.backgroundColor = QSCColor.category(category)
         nameLabel.text = customEvent.name
         placeLabel.text = customEvent.place

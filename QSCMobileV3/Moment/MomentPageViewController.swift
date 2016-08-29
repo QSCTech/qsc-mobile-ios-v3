@@ -25,17 +25,22 @@ class MomentPageViewController: UIViewController {
     var event: Event?
     
     private let mobileManager = MobileManager.sharedInstance
+    var momentViewController: MomentViewController!
     
     @IBOutlet weak var gauge: Gauge!
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var detailButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let event = event {
             dateLabel.hidden = true
+            detailButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+            detailButton.layer.cornerRadius = 15
+            detailButton.layer.borderWidth = 1
             
             let color = QSCColor.categoría(event.category)
             let startColor: UIColor
@@ -67,12 +72,15 @@ class MomentPageViewController: UIViewController {
             gauge.endColor = endColor
             gauge.bgColor = UIColor.whiteColor()
             gauge.bgAlpha = 0.9
+            detailButton.setTitleColor(color, forState: .Normal)
+            detailButton.layer.borderColor = color.CGColor
         } else {
             if Device().isPad {
                 dateLabel.hidden = true
             }
             promptLabel.text = ""
             gauge.rate = 0
+            detailButton.hidden = true
             
             timerLabel.textColor = UIColor.blackColor()
             gauge.bgColor = UIColor.whiteColor()
@@ -115,6 +123,20 @@ class MomentPageViewController: UIViewController {
             timerLabel.text = formatter.stringFromDate(NSDate())
             formatter.dateFormat = "MM-dd EEE"
             dateLabel.text = formatter.stringFromDate(NSDate())
+        }
+    }
+    
+    @IBAction func showDetail(sender: AnyObject) {
+        if event!.category == .Course || event!.category == .Exam {
+            let storyboard = UIStoryboard(name: "CourseDetail", bundle: NSBundle.mainBundle())
+            let vc = storyboard.instantiateInitialViewController() as! CourseDetailViewController
+            vc.managedObject = event!.object
+            momentViewController.showViewController(vc, sender: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "EventDetail", bundle: NSBundle.mainBundle())
+            let vc = storyboard.instantiateInitialViewController() as! EventDetailViewController
+            vc.customEvent = event!.object as! CustomEvent
+            momentViewController.showViewController(vc, sender: nil)
         }
     }
     
