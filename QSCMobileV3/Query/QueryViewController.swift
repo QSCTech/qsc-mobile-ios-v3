@@ -58,10 +58,6 @@ class QueryViewController: UITableViewController {
             "url": "http://webpac.zju.edu.cn",
         ],
         [
-            "name": "信息共享空间",
-            "url": "http://ic.zju.edu.cn/ClientWeb/xcus/zd/index.aspx",
-        ],
-        [
             "name": "体质健康测试",
             "url": "http://www.tyys.zju.edu.cn:8080/tzjk/",
         ],

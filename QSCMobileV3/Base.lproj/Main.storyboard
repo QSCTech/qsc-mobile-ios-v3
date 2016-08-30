@@ -114,8 +114,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="Y7p-q6-nVp"/>
                                                         <exclude reference="P58-s8-Cb2"/>
+                                                        <exclude reference="Y7p-q6-nVp"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -158,15 +158,12 @@
                                     <constraint firstItem="h0v-Rl-cxP" firstAttribute="leading" secondItem="7ee-CT-1WH" secondAttribute="leading" id="oKM-ek-hat"/>
                                     <constraint firstItem="qbw-yh-sDk" firstAttribute="trailing" secondItem="7ee-CT-1WH" secondAttribute="trailing" id="tZz-qn-5ZN"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="joc-xf-8LE"/>
-                                        <exclude reference="iJ2-bD-Ba1"/>
                                         <exclude reference="K13-KP-RAc"/>
+                                        <exclude reference="iJ2-bD-Ba1"/>
                                         <exclude reference="j1h-fw-eFF"/>
+                                        <exclude reference="joc-xf-8LE"/>
                                         <exclude reference="Syg-ue-cvg"/>
                                         <exclude reference="8Rm-Eg-6eO"/>
                                         <exclude reference="chG-Kg-GrB"/>
