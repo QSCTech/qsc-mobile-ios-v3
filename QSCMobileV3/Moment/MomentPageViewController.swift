@@ -70,8 +70,6 @@ class MomentPageViewController: UIViewController {
             timerLabel.textColor = color
             gauge.startColor = startColor
             gauge.endColor = endColor
-            gauge.bgColor = UIColor.whiteColor()
-            gauge.bgAlpha = 0.9
             detailButton.setTitleColor(color, forState: .Normal)
             detailButton.layer.borderColor = color.CGColor
         } else {
@@ -83,12 +81,12 @@ class MomentPageViewController: UIViewController {
             detailButton.hidden = true
             
             timerLabel.textColor = UIColor.blackColor()
-            gauge.bgColor = UIColor.whiteColor()
-            gauge.bgAlpha = 0.9
         }
+        gauge.bgColor = UIColor.whiteColor()
+        gauge.bgAlpha = 0.9
         
         refresh()
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
     }
     
     func refresh() {
@@ -113,8 +111,8 @@ class MomentPageViewController: UIViewController {
                 }
             } else {
                 gauge.rate = 0
-                timerLabel.text = "已结束"
-                promptLabel.text = ""
+                promptLabel.text = "日程"
+                timerLabel.text = "结束"
             }
         } else {
             let formatter = NSDateFormatter()

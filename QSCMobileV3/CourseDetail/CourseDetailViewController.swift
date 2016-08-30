@@ -27,6 +27,7 @@ class CourseDetailViewController: UITableViewController {
         if let identifier = managedObject.valueForKey("identifier") as? String {
             (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
             courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
+            navigationItem.title = courseObject!.name
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
         }
     }

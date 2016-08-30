@@ -63,7 +63,11 @@ class EventEditViewController: UITableViewController {
     private let currentCalendar = NSCalendar.currentCalendar()
     
     var customEvent: CustomEvent?
-    var selectedDate: NSDate?
+    var selectedDate: NSDate? {
+        didSet {
+            selectedDate = NSCalendar.currentCalendar().startOfDayForDate(selectedDate!)
+        }
+    }
     
     var eventCategory: Event.Category {
         return Event.Category(rawValue: customEvent!.category!.integerValue)!
