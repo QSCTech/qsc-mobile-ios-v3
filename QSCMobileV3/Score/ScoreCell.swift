@@ -23,6 +23,7 @@ class ScoreCell: UITableViewCell {
         gauge.startColor = UIColor.whiteColor()
         gauge.endColor = UIColor.whiteColor()
         gauge.maxValue = 5.0
+        gauge.shadowRadius = 1
     }
     
 }

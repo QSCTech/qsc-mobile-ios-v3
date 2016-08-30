@@ -59,7 +59,8 @@ class EventEditViewController: UITableViewController {
     
     // MARK: - View controller override
     
-    let eventManager = EventManager.sharedInstance
+    private let eventManager = EventManager.sharedInstance
+    private let currentCalendar = NSCalendar.currentCalendar()
     
     var customEvent: CustomEvent?
     var selectedDate: NSDate?
@@ -125,6 +126,14 @@ class EventEditViewController: UITableViewController {
         navigationController?.navigationBar.backgroundColor = QSCColor.category(eventCategory)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        hideStartPicker()
+        hideEndPicker()
+        hideRepeatPicker()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let vc = segue.destinationViewController as! RepeatTypeViewController
         vc.eventEditViewController = self
@@ -163,24 +172,30 @@ class EventEditViewController: UITableViewController {
         switch indexPath.row {
         case Time.StartTime.rawValue:
             startPickerHeight = pickerHeight - startPickerHeight
+            reloadRowFor(Time.StartPicker)
             if startPickerHeight > 0 {
                 startTimeLabel.textColor = QSCColor.theme
+                hideEndPicker()
+                hideRepeatPicker()
             } else {
                 startTimeLabel.textColor = QSCColor.detailText
             }
-            reloadRowFor(Time.StartPicker)
         case Time.EndTime.rawValue:
             endPickerHeight = pickerHeight - endPickerHeight
+            reloadRowFor(Time.EndPicker)
             if endPickerHeight > 0 {
                 endTimeLabel.textColor = QSCColor.theme
+                hideStartPicker()
+                hideRepeatPicker()
             } else {
                 endTimeLabel.textColor = QSCColor.detailText
             }
-            reloadRowFor(Time.EndPicker)
         case Time.RepeatEnd.rawValue:
             repeatPickerHeight = pickerHeight - repeatPickerHeight
             if repeatPickerHeight > 0 {
                 repeatEndLabel.textColor = QSCColor.theme
+                hideStartPicker()
+                hideEndPicker()
             } else {
                 repeatEndLabel.textColor = QSCColor.detailText
             }
@@ -208,7 +223,37 @@ class EventEditViewController: UITableViewController {
         }
     }
     
+    func hideStartPicker() {
+        if startPickerHeight > 0 {
+            startPickerHeight = 0
+            startTimeLabel.textColor = QSCColor.detailText
+            reloadRowFor(Time.StartPicker)
+        }
+    }
+    
+    func hideEndPicker() {
+        if endPickerHeight > 0 {
+            endPickerHeight = 0
+            endTimeLabel.textColor = QSCColor.detailText
+            reloadRowFor(Time.EndPicker)
+        }
+    }
+    
+    func hideRepeatPicker() {
+        if repeatPickerHeight > 0 {
+            repeatPickerHeight = 0
+            repeatEndLabel.textColor = QSCColor.detailText
+            reloadRowFor(Time.RepeatPicker)
+        }
+    }
+    
     // MARK: - IBActions
+    
+    @IBAction func editingDidBegin(sender: AnyObject) {
+        hideStartPicker()
+        hideEndPicker()
+        hideRepeatPicker()
+    }
     
     @IBAction func titleDidChange(sender: UITextField) {
         if sender.text!.isEmpty {
@@ -231,6 +276,8 @@ class EventEditViewController: UITableViewController {
     @IBAction func endTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
             endTimeLabel.text = EventDetailViewController.stringFromDate(sender.date)
+        } else if currentCalendar.isDate(startTimePicker.date, inSameDayAsDate: endTimePicker.date) {
+            endTimeLabel.text = EventDetailViewController.stringFromTime(sender.date)
         } else {
             endTimeLabel.text = EventDetailViewController.stringFromDatetime(sender.date)
         }
@@ -287,7 +334,11 @@ class EventEditViewController: UITableViewController {
             startTimePicker.datePickerMode = .DateAndTime
             endTimePicker.datePickerMode = .DateAndTime
             startTimeLabel.text = EventDetailViewController.stringFromDatetime(startTimePicker.date)
-            endTimeLabel.text = EventDetailViewController.stringFromDatetime(endTimePicker.date)
+            if currentCalendar.isDate(startTimePicker.date, inSameDayAsDate: endTimePicker.date) {
+                endTimeLabel.text = EventDetailViewController.stringFromTime(endTimePicker.date)
+            } else {
+                endTimeLabel.text = EventDetailViewController.stringFromDatetime(endTimePicker.date)
+            }
         }
     }
     

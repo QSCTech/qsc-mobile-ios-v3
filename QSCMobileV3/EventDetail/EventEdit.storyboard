@@ -29,6 +29,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
+                                                        <action selector="editingDidBegin:" destination="73V-NT-iNm" eventType="editingDidBegin" id="rt4-QF-nI5"/>
                                                         <action selector="titleDidChange:" destination="73V-NT-iNm" eventType="editingChanged" id="2Aj-G8-ksM"/>
                                                     </connections>
                                                 </textField>
@@ -60,6 +61,9 @@
                                                             <exclude reference="Z4m-jl-TI4"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="editingDidBegin:" destination="73V-NT-iNm" eventType="editingDidBegin" id="4uX-E2-rWq"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -106,9 +110,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2016年5月19日    18:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SJ4-n2-ala">
-                                                    <rect key="frame" x="416" y="12" width="169" height="19"/>
+                                                    <rect key="frame" x="416" y="12" width="169" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -165,9 +169,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2016年5月20日    12:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JTH-i9-8D0">
-                                                    <rect key="frame" x="416" y="12" width="169" height="19"/>
+                                                    <rect key="frame" x="414" y="12" width="171" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -251,9 +255,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2016年7月31日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3fc-us-09R">
-                                                    <rect key="frame" x="474" y="12" width="111" height="19"/>
+                                                    <rect key="frame" x="475" y="12" width="110" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

@@ -50,7 +50,11 @@ class EventDetailViewController: UITableViewController {
             endLabel.text = EventDetailViewController.stringFromDate(customEvent.end!)
         } else {
             startLabel.text = EventDetailViewController.stringFromDatetime(customEvent.start!)
-            endLabel.text = EventDetailViewController.stringFromDatetime(customEvent.end!)
+            if NSCalendar.currentCalendar().isDate(customEvent.start!, inSameDayAsDate: customEvent.end!) {
+                endLabel.text = EventDetailViewController.stringFromTime(customEvent.end!)
+            } else {
+                endLabel.text = EventDetailViewController.stringFromDatetime(customEvent.end!)
+            }
         }
         repeatTypeLabel.text = customEvent.repeatType
         repeatEndLabel.text = EventDetailViewController.stringFromDate(customEvent.repeatEnd!)
@@ -60,6 +64,8 @@ class EventDetailViewController: UITableViewController {
             reminderLabel.text = "未开启"
         }
         notesTextView.text = customEvent.notes
+        
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -104,17 +110,6 @@ class EventDetailViewController: UITableViewController {
     
     // MARK: - Date formatters
     
-    private static let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy年M月d日"
-        return formatter
-    }()
-    
-    static func stringFromDate(date: NSDate) -> String {
-        return dateFormatter.stringFromDate(date)
-    }
-    
     private static let datetimeFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
@@ -124,6 +119,14 @@ class EventDetailViewController: UITableViewController {
     
     static func stringFromDatetime(datetime: NSDate) -> String {
         return datetimeFormatter.stringFromDate(datetime)
+    }
+    
+    static func stringFromDate(date: NSDate) -> String {
+        return stringFromDatetime(date).componentsSeparatedByString("    ").first!
+    }
+    
+    static func stringFromTime(time: NSDate) -> String {
+        return stringFromDatetime(time).componentsSeparatedByString("    ").last!
     }
     
 }
