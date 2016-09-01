@@ -27,12 +27,12 @@ class JwbinfosysLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        passwordField.delegate = self
         navigationItem.title = "教务网账号"
         loginButton.layer.cornerRadius = 5
     }
     
     @IBAction func login(sender: AnyObject) {
-        view.endEditing(true)
         SVProgressHUD.showWithStatus("登录中")
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
@@ -61,6 +61,15 @@ class JwbinfosysLoginViewController: UIViewController {
     
     @IBAction func close(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+}
+
+extension JwbinfosysLoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        login(textField)
+        return false
     }
     
 }
