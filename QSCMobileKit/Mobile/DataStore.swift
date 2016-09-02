@@ -88,9 +88,10 @@ class DataStore: NSObject {
                 EventManager.sharedInstance.createCourseEvent(course.identifier!, teacher: course.teacher!)
                 
                 for (_, json) in json["timePlace"] {
-                    if json["course"].array == nil {
+                    if json["course"].arrayValue.isEmpty {
                         continue
                     }
+                    
                     let timePlace = TimePlace(context: managedObjectContext)
                     timePlace.course = course
                     timePlace.place = json["place"].stringValue.chomp("#").chomp("*")
@@ -106,10 +107,11 @@ class DataStore: NSObject {
                     }
                     
                     timePlace.periods = ""
-                    for (_, period) in json["course"] {
+                    let periods = json["course"].arrayValue
+                    for period in periods {
                         timePlace.periods! += String(Int(period.stringValue, radix: 10)!, radix: 16)
                     }
-                    timePlace.time! += " \(json["course"].arrayValue.map({ $0.string! }).joinWithSeparator("/")) 节"
+                    timePlace.time! += " \(periods.first!.stringValue)\(periods.count == 1 ? "" : "-" + periods.last!.stringValue) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
                     timePlace.time! += String(format: " (%02d:%02d-%02d:%02d)", startTime.hour, startTime.minute, endTime.hour, endTime.minute)

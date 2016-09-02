@@ -97,7 +97,7 @@ public class EventManager: NSObject {
             
             let formatter = NSDateFormatter()
             formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            formatter.dateFormat = "yyyy年MM月dd日"
+            formatter.dateFormat = "yyyy年M月d日"
             var startTime = formatter.stringFromDate(actualDates[event]!.start)
             var endTime = formatter.stringFromDate(actualDates[event]!.end)
             let time: String

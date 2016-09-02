@@ -56,8 +56,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnw-cf-G57">
-                    <rect key="frame" x="272" y="491" width="56" height="29"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <rect key="frame" x="274" y="492" width="52" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="日程详情"/>
                     <connections>
                         <action selector="showDetail:" destination="-1" eventType="touchUpInside" id="ORc-ex-N4e"/>

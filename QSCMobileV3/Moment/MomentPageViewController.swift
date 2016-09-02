@@ -38,8 +38,8 @@ class MomentPageViewController: UIViewController {
         
         if let event = event {
             dateLabel.hidden = true
-            detailButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
-            detailButton.layer.cornerRadius = 15
+            detailButton.contentEdgeInsets = UIEdgeInsets(top: 7, left: 10, bottom: 7, right: 10)
+            detailButton.layer.cornerRadius = 14
             detailButton.layer.borderWidth = 1
             
             let color = QSCColor.categoría(event.category)

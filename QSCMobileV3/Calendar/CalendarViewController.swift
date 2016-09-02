@@ -220,13 +220,14 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+            cell.textLabel!.adjustsFontSizeToFitWidth = true
             let semester = calendarManager.semesterForDate(selectedDate)
             if let holiday = calendarManager.holidayForDate(selectedDate) {
                 cell.textLabel!.text = holiday
             } else if let adjustment = calendarManager.adjustmentForDate(selectedDate) {
                 let formatter = NSDateFormatter()
                 formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-                formatter.dateFormat = "yyyy年MM月dd日"
+                formatter.dateFormat = "yyyy年M月d日"
                 cell.textLabel!.text = "\(adjustment.name)调休（\(formatter.stringFromDate(adjustment.fromDate))）"
             } else {
                 switch semester {
