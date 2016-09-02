@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2W4-Y2-PrN">
-                                <rect key="frame" x="0.0" y="64" width="600" height="345"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="353"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2W4-Y2-PrN" secondAttribute="height" multiplier="1:1" priority="750" id="QJV-XZ-RWU"/>
                                     <constraint firstAttribute="height" constant="100" id="ek8-bg-tLJ"/>
@@ -33,7 +33,7 @@
                                 </variation>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="G7C-7c-jIr">
-                                <rect key="frame" x="281" y="409" width="39" height="37"/>
+                                <rect key="frame" x="281" y="417" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -41,26 +41,26 @@
                                 </connections>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl1-3R-dmW">
-                                <rect key="frame" x="259" y="478" width="83" height="30"/>
+                                <rect key="frame" x="259" y="482" width="83" height="30"/>
                                 <state key="normal" title=" 登录教务网 "/>
                                 <connections>
                                     <action selector="login:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VBi-3a-vg6"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQP-ld-Sws">
-                                <rect key="frame" x="20" y="454" width="560" height="77"/>
+                                <rect key="frame" x="20" y="462" width="560" height="69"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ee-CT-1WH">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="26"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcZ-sW-NXt">
-                                                <rect key="frame" x="8" y="7" width="28" height="17"/>
+                                                <rect key="frame" x="8" y="5" width="28" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年07月30日 18:48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="mqy-CG-upe">
-                                                <rect key="frame" x="52" y="7" width="149" height="17"/>
+                                                <rect key="frame" x="52" y="5" width="149" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                                             <constraint firstItem="mqy-CG-upe" firstAttribute="leading" secondItem="IcZ-sW-NXt" secondAttribute="trailing" constant="16" id="ZrF-8a-ptA"/>
                                             <constraint firstItem="IcZ-sW-NXt" firstAttribute="leading" secondItem="7ee-CT-1WH" secondAttribute="leadingMargin" id="bzg-FW-4RE"/>
                                             <constraint firstItem="mqy-CG-upe" firstAttribute="baseline" secondItem="IcZ-sW-NXt" secondAttribute="baseline" id="d8G-Wn-MhQ"/>
-                                            <constraint firstAttribute="height" constant="30" id="loI-K2-9aj"/>
+                                            <constraint firstAttribute="height" constant="26" id="loI-K2-9aj"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -82,7 +82,7 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbw-yh-sDk">
-                                        <rect key="frame" x="0.0" y="38" width="560" height="1"/>
+                                        <rect key="frame" x="0.0" y="34" width="560" height="1"/>
                                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ytM-sa-qCF">
@@ -95,16 +95,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0v-Rl-cxP">
-                                        <rect key="frame" x="0.0" y="47" width="560" height="30"/>
+                                        <rect key="frame" x="0.0" y="43" width="560" height="26"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIX-ap-Rg6">
-                                                <rect key="frame" x="8" y="7" width="28" height="17"/>
+                                                <rect key="frame" x="8" y="5" width="28" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海梅赛德斯奔驰文化中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="5J1-5A-9GQ">
-                                                <rect key="frame" x="52" y="7" width="168" height="17"/>
+                                                <rect key="frame" x="52" y="5" width="168" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="42" id="P58-s8-Cb2"/>
                                                     <constraint firstAttribute="height" constant="21" id="Y7p-q6-nVp"/>
