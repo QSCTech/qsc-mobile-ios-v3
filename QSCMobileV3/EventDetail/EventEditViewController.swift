@@ -51,11 +51,10 @@ class EventEditViewController: UITableViewController {
     @IBOutlet weak var repeatTypeLabel: UILabel!
     @IBOutlet weak var repeatEndLabel: UILabel!
     @IBOutlet weak var repeatEndPicker: UIDatePicker!
-    @IBOutlet weak var notificationCell: UITableViewCell!
+    @IBOutlet weak var notificationTypeLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
     var allDaySwitch: UISwitch!
-    var notificationSwitch: UISwitch!
     
     // MARK: - View controller override
     
@@ -81,10 +80,6 @@ class EventEditViewController: UITableViewController {
         allDaySwitch.on = false
         allDaySwitch.onTintColor = QSCColor.theme
         allDayCell.accessoryView = allDaySwitch
-        notificationSwitch = UISwitch()
-        notificationSwitch.on = true
-        notificationSwitch.onTintColor = QSCColor.theme
-        notificationCell.accessoryView = notificationSwitch
         
         if let event = customEvent {
             titleField.text = event.name
@@ -97,7 +92,7 @@ class EventEditViewController: UITableViewController {
             repeatTypeLabel.text = event.repeatType
             changeRepeatType(event.repeatType!)
             repeatEndPicker.date = event.repeatEnd!
-            notificationSwitch.on = (event.notification!.integerValue >= 0)
+            notificationTypeLabel.text = event.notification!.stringFromNotificationType
             notesTextView.text = event.notes
         } else {
             customEvent = eventManager.newCustomEvent
@@ -139,8 +134,11 @@ class EventEditViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! RepeatTypeViewController
-        vc.eventEditViewController = self
+        if let vc = segue.destinationViewController as? RepeatTypeViewController {
+            vc.eventEditViewController = self
+        } else if let vc = segue.destinationViewController as? NotificationTypeViewController {
+            vc.eventEditViewController = self
+        }
     }
     
     // MARK: - Table view delegate
@@ -314,11 +312,7 @@ class EventEditViewController: UITableViewController {
         customEvent!.end = endTimePicker.date
         customEvent!.repeatType = repeatTypeLabel.text
         customEvent!.repeatEnd = repeatEndPicker.date
-        if notificationSwitch.on {
-            customEvent!.notification = 0
-        } else {
-            customEvent!.notification = -1
-        }
+        customEvent!.notification = notificationTypeLabel.text!.numberFromNotificationType
         customEvent!.notes = notesTextView.text
         // TODO: To implement tags
         customEvent!.tags = ""

@@ -20,7 +20,7 @@ class EventDetailViewController: UITableViewController {
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var repeatTypeLabel: UILabel!
     @IBOutlet weak var repeatEndLabel: UILabel!
-    @IBOutlet weak var reminderLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
     // MARK: - View controller override
@@ -58,11 +58,7 @@ class EventDetailViewController: UITableViewController {
         }
         repeatTypeLabel.text = customEvent.repeatType
         repeatEndLabel.text = EventDetailViewController.stringFromDate(customEvent.repeatEnd!)
-        if customEvent.notification!.integerValue >= 0 {
-            reminderLabel.text = "已开启"
-        } else {
-            reminderLabel.text = "未开启"
-        }
+        notificationLabel.text = customEvent.notification!.stringFromNotificationType
         notesTextView.text = customEvent.notes
         
         tableView.reloadData()

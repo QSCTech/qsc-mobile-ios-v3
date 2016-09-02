@@ -64,6 +64,7 @@
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */; };
 		9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */; };
+		9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
 		9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */; };
@@ -217,6 +218,7 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GaugeKit.framework; path = Carthage/Build/iOS/GaugeKit.framework; sourceTree = "<group>"; };
+		9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTypeViewController.swift; path = QSCMobileV3/EventDetail/NotificationTypeViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
 		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
 		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				9D17387C1D5D939D00782E93 /* EventEdit.storyboard */,
 				9D17387E1D5D93A500782E93 /* EventEditViewController.swift */,
 				9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */,
+				9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */,
 			);
 			name = EventDetail;
 			path = AddEvent;
@@ -882,6 +885,7 @@
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
+				9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

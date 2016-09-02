@@ -10,15 +10,14 @@ import UIKit
 
 class RepeatTypeViewController: UITableViewController {
     
-    var eventEditViewController: EventEditViewController?
-    
-    var selectedCell: UITableViewCell?
+    var eventEditViewController: EventEditViewController!
+    var selectedCell: UITableViewCell!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         for cell in tableView.visibleCells {
-            if cell.textLabel!.text == eventEditViewController!.repeatTypeLabel!.text {
+            if cell.textLabel!.text == eventEditViewController.repeatTypeLabel.text {
                 selectedCell = cell
                 cell.accessoryType = .Checkmark
             }
@@ -28,13 +27,13 @@ class RepeatTypeViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        selectedCell!.accessoryType = .None
+        selectedCell.accessoryType = .None
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
         cell.accessoryType = .Checkmark
         
         let text = cell.textLabel!.text!
-        eventEditViewController!.repeatTypeLabel!.text = text
-        eventEditViewController!.changeRepeatType(text)
+        eventEditViewController.repeatTypeLabel.text = text
+        eventEditViewController.changeRepeatType(text)
         
         navigationController?.popViewControllerAnimated(true)
     }

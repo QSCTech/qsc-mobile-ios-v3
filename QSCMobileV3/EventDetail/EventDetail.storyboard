@@ -294,8 +294,8 @@
                         <outlet property="endLabel" destination="J2v-Cb-kSF" id="SR9-Pp-Phk"/>
                         <outlet property="nameLabel" destination="rnB-0o-tcE" id="LTS-2E-77F"/>
                         <outlet property="notesTextView" destination="8wL-MV-bGC" id="kh5-VY-biv"/>
+                        <outlet property="notificationLabel" destination="da7-dR-N0c" id="2HL-SL-3Sm"/>
                         <outlet property="placeLabel" destination="zbf-jq-BOb" id="X6N-qs-hRE"/>
-                        <outlet property="reminderLabel" destination="da7-dR-N0c" id="xUj-jy-NBl"/>
                         <outlet property="repeatEndLabel" destination="akY-nY-HcV" id="lOt-Pt-oVj"/>
                         <outlet property="repeatTypeLabel" destination="QGA-wA-WuF" id="spd-T1-Un6"/>
                         <outlet property="startLabel" destination="MyA-wa-va5" id="cNB-TW-PGV"/>
