@@ -61,7 +61,7 @@ class PreferenceViewController: UITableViewController {
         case Preference.Zjuwlan.rawValue:
             return accountManager.accountForZjuwlan == nil ? 1 : 2
         case Preference.Setting.rawValue:
-            return 3
+            return 2
         case Preference.About.rawValue:
             return 3
         default:
@@ -121,12 +121,6 @@ class PreferenceViewController: UITableViewController {
                 switchView.addTarget(self, action: #selector(showScoreSwitchChanged), forControlEvents: .ValueChanged)
                 cell.accessoryView = switchView
                 return cell
-            case 2:
-                let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-                cell.textLabel!.attributedText = "\u{f073}\t日程提醒".attributedWithFontAwesome
-                cell.detailTextLabel!.text = EventNotificationViewController.timeDescription
-                cell.accessoryType = .DisclosureIndicator
-                return cell
             default:
                 return UITableViewCell()
             }
@@ -172,13 +166,6 @@ class PreferenceViewController: UITableViewController {
                         SVProgressHUD.showErrorWithStatus(error!)
                     }
                 }
-            }
-        case Preference.Setting.rawValue:
-            switch indexPath.row {
-            case 2:
-                performSegueWithIdentifier("showEventNotification", sender: nil)
-            default:
-                break
             }
         case Preference.About.rawValue:
             switch indexPath.row {

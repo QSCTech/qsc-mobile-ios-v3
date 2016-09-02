@@ -33,7 +33,6 @@
 		9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396D1CE789BF00CD7DAD /* WebViewController.swift */; };
 		9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */; };
 		9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */; };
-		9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */; };
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
 		9D3139861CE78C7500CD7DAD /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* About.html */; };
@@ -185,7 +184,6 @@
 		9D31396D1CE789BF00CD7DAD /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationViewController.swift; sourceTree = "<group>"; };
 		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
 		9D3139841CE78C7500CD7DAD /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
@@ -402,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */,
-				9D3139731CE789BF00CD7DAD /* EventNotificationViewController.swift */,
 			);
 			path = Preference;
 			sourceTree = "<group>";
@@ -859,7 +856,6 @@
 				9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */,
 				9DC4756F1D2F907600F4B3DF /* SemesterListViewController.swift in Sources */,
 				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
-				9D31397E1CE789BF00CD7DAD /* EventNotificationViewController.swift in Sources */,
 				9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */,
 				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
 				9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */,
