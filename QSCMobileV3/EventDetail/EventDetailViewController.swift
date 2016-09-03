@@ -94,6 +94,9 @@ class EventDetailViewController: UITableViewController {
     @IBAction func remove(sender: AnyObject) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         let remove = UIAlertAction(title: "确认删除", style: .Destructive) { _ in
+            for notif in UIApplication.sharedApplication().scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == self.customEvent.objectID.URIRepresentation().URLString }) {
+                UIApplication.sharedApplication().cancelLocalNotification(notif)
+            }
             EventManager.sharedInstance.removeCustomEvent(self.customEvent)
             self.navigationController?.popViewControllerAnimated(true)
         }

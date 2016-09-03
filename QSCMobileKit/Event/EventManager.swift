@@ -75,6 +75,10 @@ public class EventManager: NSObject {
             let timeInterval = event.end!.timeIntervalSinceDate(event.start!)
             var flag = false
             calendar.enumerateDatesStartingAfterDate(event.start!, matchingComponents: startComponents, options: .MatchStrictly) { start, _, stop in
+                if start! >= date.tomorrow {
+                    stop.memory = true
+                    return
+                }
                 flag = !flag
                 if event.repeatType == "每两周" && flag {
                     return
@@ -83,9 +87,6 @@ public class EventManager: NSObject {
                 if start! < date.tomorrow && end! >= date.today {
                     actualDates[event] = (start!, end!)
                     events.append(event)
-                }
-                if start! >= date.tomorrow {
-                    stop.memory = true
                 }
             }
         }

@@ -24,19 +24,19 @@ class EventEditViewController: UITableViewController {
         case RepeatType
         case RepeatEnd
         case RepeatPicker
-        case Reminder
+        case Notification
     }
     
     // MARK: - Cell heights
     
-    private let basicHeight: CGFloat = 44
-    private let pickerHeight: CGFloat = 200
-    private let notesHeight: CGFloat = 150
+    private let basicHeight = CGFloat(44)
+    private let pickerHeight = CGFloat(200)
+    private let notesHeight = CGFloat(150)
     
-    private var startPickerHeight: CGFloat = 0
-    private var endPickerHeight: CGFloat = 0
-    private var repeatEndHeight: CGFloat = 0
-    private var repeatPickerHeight: CGFloat = 0
+    private var startPickerHeight = CGFloat(0)
+    private var endPickerHeight = CGFloat(0)
+    private var repeatEndHeight = CGFloat(0)
+    private var repeatPickerHeight = CGFloat(0)
     
     // MARK: - IBOutlets
     
@@ -60,6 +60,7 @@ class EventEditViewController: UITableViewController {
     
     private let eventManager = EventManager.sharedInstance
     private let currentCalendar = NSCalendar.currentCalendar()
+    private let sharedApplication = UIApplication.sharedApplication()
     
     var customEvent: CustomEvent?
     var selectedDate: NSDate? {
@@ -94,6 +95,10 @@ class EventEditViewController: UITableViewController {
             repeatEndPicker.date = event.repeatEnd!
             notificationTypeLabel.text = event.notification!.stringFromNotificationType
             notesTextView.text = event.notes
+            
+            for notif in sharedApplication.scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == event.objectID.URIRepresentation().URLString }) {
+                sharedApplication.cancelLocalNotification(notif)
+            }
         } else {
             customEvent = eventManager.newCustomEvent
             customEvent!.category = Event.Category.Todo.rawValue
@@ -317,6 +322,43 @@ class EventEditViewController: UITableViewController {
         // TODO: To implement tags
         customEvent!.tags = ""
         eventManager.save()
+        
+        if customEvent!.notification >= 0 {
+            let notif = UILocalNotification()
+            notif.alertBody = customEvent!.name
+            notif.fireDate = customEvent!.start!.dateByAddingTimeInterval(-customEvent!.notification!.doubleValue)
+            notif.soundName = UILocalNotificationDefaultSoundName
+            notif.userInfo = ["objectID": customEvent!.objectID.URIRepresentation().URLString]
+            if customEvent!.start >= NSDate() {
+                sharedApplication.scheduleLocalNotification(notif)
+            }
+            
+            if customEvent!.repeatType != "永不" {
+                let components: NSDateComponents
+                switch customEvent!.repeatType! {
+                case "每周", "每两周":
+                    components = currentCalendar.components([.Weekday, .Hour, .Minute, .Second], fromDate: customEvent!.start!)
+                case "每月":
+                    components = currentCalendar.components([.Day, .Hour, .Minute, .Second], fromDate: customEvent!.start!)
+                default:
+                    components = currentCalendar.components([.Hour, .Minute, .Second], fromDate: customEvent!.start!)
+                }
+                var flag = false
+                currentCalendar.enumerateDatesStartingAfterDate(customEvent!.start!, matchingComponents: components, options: .MatchStrictly) { start, _, stop in
+                    if NSCalendar.currentCalendar().startOfDayForDate(start!) > self.customEvent!.repeatEnd {
+                        stop.memory = true
+                        return
+                    }
+                    flag = !flag
+                    if self.customEvent!.repeatType == "每两周" && flag || start < NSDate() {
+                        return
+                    }
+                    let notif = notif.copy() as! UILocalNotification
+                    notif.fireDate = start
+                    UIApplication.sharedApplication().scheduleLocalNotification(notif)
+                }
+            }
+        }
         
         (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
         dismissViewControllerAnimated(true, completion: nil)
