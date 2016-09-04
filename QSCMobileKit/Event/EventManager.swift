@@ -96,17 +96,13 @@ public class EventManager: NSObject {
             let category = Event.Category(rawValue: event.category!.integerValue)!
             let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
             
-            let formatter = NSDateFormatter()
-            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            formatter.dateFormat = "yyyy年M月d日"
-            var startTime = formatter.stringFromDate(actualDates[event]!.start)
-            var endTime = formatter.stringFromDate(actualDates[event]!.end)
+            var startTime = actualDates[event]!.start.stringOfDate
+            var endTime = actualDates[event]!.end.stringOfDate
             let time: String
             if startTime == endTime {
                 if event.duration! == Event.Duration.PartialTime.rawValue {
-                    formatter.dateFormat = "HH:mm"
-                    startTime += " " + formatter.stringFromDate(actualDates[event]!.start)
-                    endTime = formatter.stringFromDate(actualDates[event]!.end)
+                    startTime += " " + actualDates[event]!.start.stringOfTime
+                    endTime = actualDates[event]!.end.stringOfTime
                     time = startTime + "-" + endTime
                 } else {
                     time = startTime

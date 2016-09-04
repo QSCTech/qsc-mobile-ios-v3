@@ -46,18 +46,18 @@ class EventDetailViewController: UITableViewController {
         nameLabel.text = customEvent.name
         placeLabel.text = customEvent.place
         if customEvent.duration == Event.Duration.AllDay.rawValue {
-            startLabel.text = EventDetailViewController.stringFromDate(customEvent.start!)
-            endLabel.text = EventDetailViewController.stringFromDate(customEvent.end!)
+            startLabel.text = customEvent.start!.stringOfDate
+            endLabel.text = customEvent.end!.stringOfDate
         } else {
-            startLabel.text = EventDetailViewController.stringFromDatetime(customEvent.start!)
+            startLabel.text = customEvent.start!.stringOfDatetime
             if NSCalendar.currentCalendar().isDate(customEvent.start!, inSameDayAsDate: customEvent.end!) {
-                endLabel.text = EventDetailViewController.stringFromTime(customEvent.end!)
+                endLabel.text = customEvent.end!.stringOfTime
             } else {
-                endLabel.text = EventDetailViewController.stringFromDatetime(customEvent.end!)
+                endLabel.text = customEvent.end!.stringOfDatetime
             }
         }
         repeatTypeLabel.text = customEvent.repeatType
-        repeatEndLabel.text = EventDetailViewController.stringFromDate(customEvent.repeatEnd!)
+        repeatEndLabel.text = customEvent.repeatEnd!.stringOfDate
         notificationLabel.text = customEvent.notification!.stringFromNotificationType
         notesTextView.text = customEvent.notes
         
@@ -105,27 +105,6 @@ class EventDetailViewController: UITableViewController {
         alert.addAction(cancel)
         alert.popoverPresentationController?.barButtonItem = toolbarItems![1]
         presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    // MARK: - Date formatters
-    
-    private static let datetimeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy年M月d日    HH:mm"
-        return formatter
-    }()
-    
-    static func stringFromDatetime(datetime: NSDate) -> String {
-        return datetimeFormatter.stringFromDate(datetime)
-    }
-    
-    static func stringFromDate(date: NSDate) -> String {
-        return stringFromDatetime(date).componentsSeparatedByString("    ").first!
-    }
-    
-    static func stringFromTime(time: NSDate) -> String {
-        return stringFromDatetime(time).componentsSeparatedByString("    ").last!
     }
     
 }

@@ -65,7 +65,7 @@ class EventEditViewController: UITableViewController {
     var customEvent: CustomEvent?
     var selectedDate: NSDate? {
         didSet {
-            selectedDate = NSCalendar.currentCalendar().startOfDayForDate(selectedDate!)
+            selectedDate = selectedDate!.today
         }
     }
     
@@ -272,9 +272,9 @@ class EventEditViewController: UITableViewController {
     
     @IBAction func startTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
-            startTimeLabel.text = EventDetailViewController.stringFromDate(sender.date)
+            startTimeLabel.text = sender.date.stringOfDate
         } else {
-            startTimeLabel.text = EventDetailViewController.stringFromDatetime(sender.date)
+            startTimeLabel.text = sender.date.stringOfDatetime
         }
         endTimePicker.minimumDate = sender.date
         endTimeDidChange(endTimePicker)
@@ -282,18 +282,18 @@ class EventEditViewController: UITableViewController {
     
     @IBAction func endTimeDidChange(sender: UIDatePicker) {
         if allDaySwitch.on {
-            endTimeLabel.text = EventDetailViewController.stringFromDate(sender.date)
+            endTimeLabel.text = sender.date.stringOfDate
         } else if currentCalendar.isDate(startTimePicker.date, inSameDayAsDate: endTimePicker.date) {
-            endTimeLabel.text = EventDetailViewController.stringFromTime(sender.date)
+            endTimeLabel.text = sender.date.stringOfTime
         } else {
-            endTimeLabel.text = EventDetailViewController.stringFromDatetime(sender.date)
+            endTimeLabel.text = sender.date.stringOfDatetime
         }
         repeatEndPicker.minimumDate = sender.date
         repeatEndDidChange(repeatEndPicker)
     }
     
     @IBAction func repeatEndDidChange(sender: UIDatePicker) {
-        repeatEndLabel.text = EventDetailViewController.stringFromDate(sender.date)
+        repeatEndLabel.text = sender.date.stringOfDate
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -345,7 +345,7 @@ class EventEditViewController: UITableViewController {
                 }
                 var flag = false
                 currentCalendar.enumerateDatesStartingAfterDate(customEvent!.start!, matchingComponents: components, options: .MatchStrictly) { start, _, stop in
-                    if NSCalendar.currentCalendar().startOfDayForDate(start!) > self.customEvent!.repeatEnd {
+                    if start!.today > self.customEvent!.repeatEnd {
                         stop.memory = true
                         return
                     }
@@ -368,16 +368,16 @@ class EventEditViewController: UITableViewController {
         if sender.on {
             startTimePicker.datePickerMode = .Date
             endTimePicker.datePickerMode = .Date
-            startTimeLabel.text = EventDetailViewController.stringFromDate(startTimePicker.date)
-            endTimeLabel.text = EventDetailViewController.stringFromDate(endTimePicker.date)
+            startTimeLabel.text = startTimePicker.date.stringOfDate
+            endTimeLabel.text = endTimePicker.date.stringOfDate
         } else {
             startTimePicker.datePickerMode = .DateAndTime
             endTimePicker.datePickerMode = .DateAndTime
-            startTimeLabel.text = EventDetailViewController.stringFromDatetime(startTimePicker.date)
+            startTimeLabel.text = startTimePicker.date.stringOfDatetime
             if currentCalendar.isDate(startTimePicker.date, inSameDayAsDate: endTimePicker.date) {
-                endTimeLabel.text = EventDetailViewController.stringFromTime(endTimePicker.date)
+                endTimeLabel.text = endTimePicker.date.stringOfTime
             } else {
-                endTimeLabel.text = EventDetailViewController.stringFromDatetime(endTimePicker.date)
+                endTimeLabel.text = endTimePicker.date.stringOfDatetime
             }
         }
     }

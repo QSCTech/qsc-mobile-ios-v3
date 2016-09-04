@@ -92,9 +92,8 @@ class MomentPageViewController: UIViewController {
     func refresh() {
         if let event = event {
             if NSDate() < event.start {
-                let today = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
-                gauge.maxValue = CGFloat(event.start.timeIntervalSinceDate(today))
-                gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(today))
+                gauge.maxValue = CGFloat(event.start.timeIntervalSinceDate(NSDate().today))
+                gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(NSDate().today))
                 let timer = Int(gauge.maxValue - gauge.rate) + 60
                 timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60)
             } else if NSDate() <= event.end {

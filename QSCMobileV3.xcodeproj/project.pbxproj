@@ -24,7 +24,7 @@
 		9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */; };
 		9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */; };
 		9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */; };
-		9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */; };
+		9D3139631CE7849800CD7DAD /* String+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */; };
 		9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */; };
 		9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */; };
 		9D3139691CE7869400CD7DAD /* NSDate+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */; };
@@ -99,7 +99,7 @@
 		9DD491211CEAE68A009F70FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910F1CEAE68A009F70FA /* User.swift */; };
 		9DD491221CEAE68A009F70FA /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491101CEAE68A009F70FA /* Year.swift */; };
 		9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491241CEAFA81009F70FA /* EventManager.swift */; };
-		9DD491271CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */; };
+		9DD491271CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491261CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift */; };
 		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
 		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
@@ -176,7 +176,7 @@
 		9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreViewController.swift; path = Score/ScoreViewController.swift; sourceTree = "<group>"; };
 		9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = Score/ScoreViewController.xib; sourceTree = "<group>"; };
 		9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Init.swift"; path = "Extension/NSManagedObject+Init.swift"; sourceTree = "<group>"; };
-		9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileV3.swift"; path = "Extension/String+QSCMobileV3.swift"; sourceTree = "<group>"; };
+		9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileKit.swift"; path = "Extension/String+QSCMobileKit.swift"; sourceTree = "<group>"; };
 		9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Chinese.swift"; path = "Extension/Int+Chinese.swift"; sourceTree = "<group>"; };
 		9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+Comparable.swift"; path = "Extension/NSNumber+Comparable.swift"; sourceTree = "<group>"; };
 		9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Comparable.swift"; path = "Extension/NSDate+Comparable.swift"; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 		9DD4910F1CEAE68A009F70FA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9DD491101CEAE68A009F70FA /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		9DD491241CEAFA81009F70FA /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
-		9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+TodayTomorrow.swift"; sourceTree = "<group>"; };
+		9DD491261CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
@@ -360,11 +360,11 @@
 		9D31395F1CE7844C00CD7DAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9D3139621CE7849800CD7DAD /* String+QSCMobileV3.swift */,
+				9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */,
 				9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */,
-				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
+				9DD491261CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift */,
 				9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */,
-				9DD491261CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift */,
+				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
 				9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */,
 			);
 			name = Extension;
@@ -904,7 +904,7 @@
 				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
-				9DD491271CEC4E4F009F70FA /* NSDate+TodayTomorrow.swift in Sources */,
+				9DD491271CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift in Sources */,
 				9DD4911C1CEAE68A009F70FA /* Score.swift in Sources */,
 				9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */,
 				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
@@ -917,7 +917,7 @@
 				9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */,
 				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
 				9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */,
-				9D3139631CE7849800CD7DAD /* String+QSCMobileV3.swift in Sources */,
+				9D3139631CE7849800CD7DAD /* String+QSCMobileKit.swift in Sources */,
 				9DD491221CEAE68A009F70FA /* Year.swift in Sources */,
 				9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */,
 				9DD491171CEAE68A009F70FA /* BusStop.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  String+QSCMobileV3.swift
+//  String+QSCMobileKit.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2016-05-15.
