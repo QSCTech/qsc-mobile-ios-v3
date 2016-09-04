@@ -494,7 +494,7 @@ class DataStore: NSObject {
     
     static func entityForYear(date: NSDate) -> Year? {
         let fetchRequest = NSFetchRequest(entityName: "Year")
-        fetchRequest.predicate = NSPredicate(format: "%@ BETWEEN { start, end }", date)
+        fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
         return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
     }
     
