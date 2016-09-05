@@ -301,6 +301,10 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        if customEvent!.name == nil {
+            eventManager.removeCustomEvent(customEvent!)
+        }
+        
         (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
         dismissViewControllerAnimated(true, completion: nil)
     }
