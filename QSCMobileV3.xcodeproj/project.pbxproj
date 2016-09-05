@@ -76,10 +76,13 @@
 		9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */; };
 		9DC4756D1D2F894A00F4B3DF /* QueryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC4756C1D2F894A00F4B3DF /* QueryList.storyboard */; };
 		9DC4756F1D2F907600F4B3DF /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */; };
+		9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */; };
+		9DC536111D7C5197008FFED7 /* CourseHomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
 		9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */; };
+		9DD437D51D7C336000BDA816 /* CourseHomeworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD437D41D7C336000BDA816 /* CourseHomeworkCell.swift */; };
 		9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */; };
 		9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */; };
 		9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */; };
@@ -99,7 +102,6 @@
 		9DD491211CEAE68A009F70FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4910F1CEAE68A009F70FA /* User.swift */; };
 		9DD491221CEAE68A009F70FA /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491101CEAE68A009F70FA /* Year.swift */; };
 		9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491241CEAFA81009F70FA /* EventManager.swift */; };
-		9DD491271CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491261CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift */; };
 		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
 		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
@@ -230,10 +232,13 @@
 		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseEditViewController.swift; path = CourseDetail/CourseEditViewController.swift; sourceTree = "<group>"; };
 		9DC4756C1D2F894A00F4B3DF /* QueryList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QueryList.storyboard; sourceTree = "<group>"; };
 		9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
+		9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+QSCMobileKit.swift"; path = "Extension/NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
+		9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseHomeworkViewController.swift; path = CourseDetail/CourseHomeworkViewController.swift; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		9DD437D41D7C336000BDA816 /* CourseHomeworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseHomeworkCell.swift; path = CourseDetail/CourseHomeworkCell.swift; sourceTree = "<group>"; };
 		9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEvent.swift; sourceTree = "<group>"; };
 		9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEvent.swift; sourceTree = "<group>"; };
 		9DD490FF1CEAE68A009F70FA /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
@@ -253,7 +258,6 @@
 		9DD4910F1CEAE68A009F70FA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9DD491101CEAE68A009F70FA /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		9DD491241CEAFA81009F70FA /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
-		9DD491261CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
@@ -362,7 +366,7 @@
 			children = (
 				9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */,
 				9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */,
-				9DD491261CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift */,
+				9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */,
 				9D3139681CE7869400CD7DAD /* NSDate+Comparable.swift */,
 				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
 				9D3139601CE7846800CD7DAD /* NSManagedObject+Init.swift */,
@@ -522,8 +526,10 @@
 				9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */,
 				9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */,
 				9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */,
+				9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */,
 				9DC475661D2D075800F4B3DF /* CourseNameCell.swift */,
 				9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */,
+				9DD437D41D7C336000BDA816 /* CourseHomeworkCell.swift */,
 			);
 			name = CourseDetail;
 			sourceTree = "<group>";
@@ -876,6 +882,7 @@
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
+				9DD437D51D7C336000BDA816 /* CourseHomeworkCell.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
@@ -884,6 +891,7 @@
 				9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
+				9DC536111D7C5197008FFED7 /* CourseHomeworkViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
 				9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */,
 			);
@@ -904,7 +912,6 @@
 				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
-				9DD491271CEC4E4F009F70FA /* NSDate+QSCMobileKit.swift in Sources */,
 				9DD4911C1CEAE68A009F70FA /* Score.swift in Sources */,
 				9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */,
 				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
@@ -917,6 +924,7 @@
 				9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */,
 				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
 				9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */,
+				9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */,
 				9D3139631CE7849800CD7DAD /* String+QSCMobileKit.swift in Sources */,
 				9DD491221CEAE68A009F70FA /* Year.swift in Sources */,
 				9D3139611CE7846800CD7DAD /* NSManagedObject+Init.swift in Sources */,

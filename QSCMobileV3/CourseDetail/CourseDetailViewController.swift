@@ -21,6 +21,9 @@ class CourseDetailViewController: UITableViewController {
     var scoreObject: Score?
     var courseEvent: CourseEvent!
     
+    var homeworks = [Homework]()
+    var selectedHomework: Homework!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,13 +41,27 @@ class CourseDetailViewController: UITableViewController {
         if managedObject.managedObjectContext == nil {
             navigationController?.popViewControllerAnimated(false)
         } else {
-            tableView.reloadData()
+            reloadData()
         }
     }
     
+    func reloadData() {
+        homeworks = courseEvent.homeworks!.sortedArrayUsingDescriptors([NSSortDescriptor(key: "deadline", ascending: true)]) as! [Homework]
+        tableView.reloadData()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = (segue.destinationViewController as! UINavigationController).topViewController as! CourseEditViewController
-        vc.courseEvent = courseEvent
+        let nc = segue.destinationViewController as! UINavigationController
+        switch segue.identifier! {
+        case "Edit":
+            let vc = nc.topViewController as! CourseEditViewController
+            vc.courseEvent = courseEvent
+        case "Homework":
+            let vc = nc.topViewController as! CourseHomeworkViewController
+            vc.homework = selectedHomework
+        default:
+            break
+        }
     }
     
     private enum Detail: Int {
@@ -104,7 +121,7 @@ class CourseDetailViewController: UITableViewController {
             }
             return count
         case Detail.Homework.rawValue:
-            return courseEvent.homeworks!.count
+            return courseEvent.homeworks!.count + 1
         default:
             return 0
         }
@@ -121,6 +138,12 @@ class CourseDetailViewController: UITableViewController {
             }
         case Detail.Exam.rawValue:
             if indexPath.row == 1 && examObject?.startTime != nil {
+                return 60
+            } else {
+                return 44
+            }
+        case Detail.Homework.rawValue:
+            if indexPath.row < homeworks.count {
                 return 60
             } else {
                 return 44
@@ -198,6 +221,18 @@ class CourseDetailViewController: UITableViewController {
             cell.textLabel!.text = values[indexPath.row].0
             cell.detailTextLabel!.text = values[indexPath.row].1
             return cell
+        case Detail.Homework.rawValue:
+            if indexPath.row < homeworks.count {
+                let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! CourseHomeworkCell
+                cell.nameLabel.text = homeworks[indexPath.row].name
+                cell.timeLabel.text = homeworks[indexPath.row].deadline?.stringOfDatetime
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+                cell.textLabel!.text = "添加新的作业…"
+                cell.detailTextLabel!.text = ""
+                return cell
+            }
         default:
             return UITableViewCell()
         }
@@ -245,9 +280,38 @@ class CourseDetailViewController: UITableViewController {
                 pasteboard.string = cell.detailTextLabel!.text
                 SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
             }
+        case Detail.Homework.rawValue:
+            if indexPath.row < homeworks.count {
+                let string = homeworks[indexPath.row].notes!
+                SVProgressHUD.showInfoWithStatus(string.isEmpty ? "无作业详情" : string)
+            } else {
+                selectedHomework = EventManager.sharedInstance.newHomework
+                selectedHomework.courseEvent = courseEvent
+                performSegueWithIdentifier("Homework", sender: nil)
+            }
         default:
             break
         }
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == Detail.Homework.rawValue && indexPath.row < homeworks.count {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .Destructive, title: "删除") { action, indexPath in
+            EventManager.sharedInstance.removeHomework(self.homeworks[indexPath.row])
+            self.reloadData()
+        }
+        let modify = UITableViewRowAction(style: .Normal, title: "修改") { action, indexPath in
+            self.selectedHomework = self.homeworks[indexPath.row]
+            self.performSegueWithIdentifier("Homework", sender: nil)
+        }
+        return [delete, modify]
     }
     
     func edit(sender: AnyObject) {

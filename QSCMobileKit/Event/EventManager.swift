@@ -115,7 +115,7 @@ public class EventManager: NSObject {
         }
     }
     
-    // MARK: - Modification
+    // MARK: - Creation & Deletion
     
     /**
      Create an event entity for the course with the given identifier. If that entity exists, this method will do nothing.
@@ -137,6 +137,15 @@ public class EventManager: NSObject {
     
     public func removeCustomEvent(event: CustomEvent) {
         managedObjectContext.deleteObject(event)
+        try! managedObjectContext.save()
+    }
+    
+    public var newHomework: Homework {
+        return Homework(context: managedObjectContext)
+    }
+    
+    public func removeHomework(hw: Homework) {
+        managedObjectContext.deleteObject(hw)
         try! managedObjectContext.save()
     }
     
