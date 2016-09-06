@@ -282,13 +282,12 @@ class CourseDetailViewController: UITableViewController {
             }
         case Detail.Homework.rawValue:
             if indexPath.row < homeworks.count {
-                let string = homeworks[indexPath.row].notes!
-                SVProgressHUD.showInfoWithStatus(string.isEmpty ? "无作业详情" : string)
+                selectedHomework = homeworks[indexPath.row]
             } else {
                 selectedHomework = EventManager.sharedInstance.newHomework
                 selectedHomework.courseEvent = courseEvent
-                performSegueWithIdentifier("Homework", sender: nil)
             }
+            performSegueWithIdentifier("Homework", sender: nil)
         default:
             break
         }
@@ -307,11 +306,7 @@ class CourseDetailViewController: UITableViewController {
             EventManager.sharedInstance.removeHomework(self.homeworks[indexPath.row])
             self.reloadData()
         }
-        let modify = UITableViewRowAction(style: .Normal, title: "修改") { action, indexPath in
-            self.selectedHomework = self.homeworks[indexPath.row]
-            self.performSegueWithIdentifier("Homework", sender: nil)
-        }
-        return [delete, modify]
+        return [delete]
     }
     
     func edit(sender: AnyObject) {
