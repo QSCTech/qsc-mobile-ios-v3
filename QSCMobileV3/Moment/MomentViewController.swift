@@ -33,6 +33,9 @@ class MomentViewController: UIViewController {
         loginButton.layer.cornerRadius = 18
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).CGColor
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewWillAppear), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewDidAppear), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,6 +81,10 @@ class MomentViewController: UIViewController {
             vc.view.frame = CGRect(x: width * CGFloat(index), y: 0, width: width, height: height)
             scrollView.addSubview(vc.view)
         }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     func updateCurrentEvent() {
