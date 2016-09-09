@@ -110,10 +110,6 @@
 		9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */; };
 		9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */; };
-		9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF612841BAA8A03004B0A8A /* TodayViewController.swift */; };
-		9DF612881BAA8A03004B0A8A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF612861BAA8A03004B0A8A /* MainInterface.storyboard */; };
-		9DF6128C1BAA8A03004B0A8A /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,13 +119,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9DF6125C1BAA89CC004B0A8A;
 			remoteInfo = QSCMobileKit;
-		};
-		9DF6128A1BAA8A03004B0A8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9DF6127E1BAA8A03004B0A8A;
-			remoteInfo = TodayExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -151,7 +140,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				9DF6128C1BAA8A03004B0A8A /* TodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +187,6 @@
 		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
 		9D6A89611C0B11BB008EC60B /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarManager.swift; path = Mobile/CalendarManager.swift; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
-		9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
 		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = QSCMobileV3/Moment/MomentViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -268,11 +255,7 @@
 		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = QSCMobileV3/EventDetail/EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = Carthage/Build/iOS/BTNavigationDropdownMenu.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		9DF612841BAA8A03004B0A8A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		9DF612871BAA8A03004B0A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		9DF612891BAA8A03004B0A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,14 +287,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DF6127C1BAA8A03004B0A8A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9DF612821BAA8A03004B0A8A /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -320,7 +295,6 @@
 			children = (
 				04C331C71BA2F2E600EF959F /* QSCMobileV3 */,
 				9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */,
-				9DF612831BAA8A03004B0A8A /* TodayExtension */,
 				9DF612801BAA8A03004B0A8A /* Frameworks */,
 				04C331C61BA2F2E600EF959F /* Products */,
 			);
@@ -331,7 +305,6 @@
 			children = (
 				04C331C51BA2F2E600EF959F /* QSCMobileV3.app */,
 				9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */,
-				9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -642,17 +615,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9DF612831BAA8A03004B0A8A /* TodayExtension */ = {
-			isa = PBXGroup;
-			children = (
-				9D6A89641C0C30E9008EC60B /* TodayExtension.entitlements */,
-				9DF612841BAA8A03004B0A8A /* TodayViewController.swift */,
-				9DF612861BAA8A03004B0A8A /* MainInterface.storyboard */,
-				9DF612891BAA8A03004B0A8A /* Info.plist */,
-			);
-			path = TodayExtension;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -681,7 +643,6 @@
 			);
 			dependencies = (
 				9DF612711BAA89CC004B0A8A /* PBXTargetDependency */,
-				9DF6128B1BAA8A03004B0A8A /* PBXTargetDependency */,
 			);
 			name = QSCMobileV3;
 			productName = QSCMobileV3;
@@ -705,23 +666,6 @@
 			productName = QSCMobileKit;
 			productReference = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		9DF6127E1BAA8A03004B0A8A /* TodayExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9DF6128D1BAA8A03004B0A8A /* Build configuration list for PBXNativeTarget "TodayExtension" */;
-			buildPhases = (
-				9DF6127B1BAA8A03004B0A8A /* Sources */,
-				9DF6127C1BAA8A03004B0A8A /* Frameworks */,
-				9DF6127D1BAA8A03004B0A8A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TodayExtension;
-			productName = TodayExtension;
-			productReference = 9DF6127F1BAA8A03004B0A8A /* TodayExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -752,15 +696,6 @@
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = RURVDL9XJS;
 					};
-					9DF6127E1BAA8A03004B0A8A = {
-						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = RURVDL9XJS;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
 				};
 			};
 			buildConfigurationList = 04C331C01BA2F2E600EF959F /* Build configuration list for PBXProject "QSCMobileV3" */;
@@ -778,7 +713,6 @@
 			targets = (
 				04C331C41BA2F2E600EF959F /* QSCMobileV3 */,
 				9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */,
-				9DF6127E1BAA8A03004B0A8A /* TodayExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -815,14 +749,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9DF6127D1BAA8A03004B0A8A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9DF612881BAA8A03004B0A8A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,14 +866,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DF6127B1BAA8A03004B0A8A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9DF612851BAA8A03004B0A8A /* TodayViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -955,11 +873,6 @@
 			isa = PBXTargetDependency;
 			target = 9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */;
 			targetProxy = 9DF612701BAA89CC004B0A8A /* PBXContainerItemProxy */;
-		};
-		9DF6128B1BAA8A03004B0A8A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9DF6127E1BAA8A03004B0A8A /* TodayExtension */;
-			targetProxy = 9DF6128A1BAA8A03004B0A8A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -978,14 +891,6 @@
 				9D4179AB1CE4678E00955729 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		9DF612861BAA8A03004B0A8A /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9DF612871BAA8A03004B0A8A /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1196,40 +1101,6 @@
 			};
 			name = Release;
 		};
-		9DF6128E1BAA8A03004B0A8A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30006;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = TodayExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		9DF6128F1BAA8A03004B0A8A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30006;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = TodayExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1256,15 +1127,6 @@
 			buildConfigurations = (
 				9DF612741BAA89CC004B0A8A /* Debug */,
 				9DF612751BAA89CC004B0A8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9DF6128D1BAA8A03004B0A8A /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9DF6128E1BAA8A03004B0A8A /* Debug */,
-				9DF6128F1BAA8A03004B0A8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
