@@ -88,6 +88,10 @@ class MomentViewController: UIViewController {
     }
     
     func updateCurrentEvent() {
+        if events.isEmpty {
+            return
+        }
+        
         let event = events[pageControl.currentPage]
         navigationItem.title = event.name
         timeLabel.text = event.time
