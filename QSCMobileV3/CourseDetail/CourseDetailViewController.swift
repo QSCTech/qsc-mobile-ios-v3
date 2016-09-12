@@ -15,24 +15,29 @@ import QSCMobileKit
 
 class CourseDetailViewController: UITableViewController {
     
-    var managedObject: NSManagedObject!
+    var managedObject: NSManagedObject! {
+        didSet {
+            if let identifier = managedObject.valueForKey("identifier") as? String {
+                (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
+                courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
+            }
+        }
+    }
+    
     var courseObject: Course?
     var examObject: Exam?
     var scoreObject: Score?
     var courseEvent: CourseEvent!
     
     var homeworks = [Homework]()
-    var selectedHomework: Homework!
+    var selectedHomework: Homework?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let identifier = managedObject.valueForKey("identifier") as? String {
-            (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
-            courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
-            navigationItem.title = courseObject!.name
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
-        }
+        navigationItem.title = courseObject!.name
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,7 +63,11 @@ class CourseDetailViewController: UITableViewController {
             vc.courseEvent = courseEvent
         case "Homework":
             let vc = nc.topViewController as! CourseHomeworkViewController
-            vc.homework = selectedHomework
+            if let hw = selectedHomework {
+                vc.homework = hw
+            } else {
+                vc.homework = EventManager.sharedInstance.newHomeworkOfCourseEvent(courseEvent)
+            }
         default:
             break
         }
@@ -121,7 +130,7 @@ class CourseDetailViewController: UITableViewController {
             }
             return count
         case Detail.Homework.rawValue:
-            return courseEvent.homeworks!.count + 1
+            return homeworks.count + 1
         default:
             return 0
         }
@@ -284,8 +293,7 @@ class CourseDetailViewController: UITableViewController {
             if indexPath.row < homeworks.count {
                 selectedHomework = homeworks[indexPath.row]
             } else {
-                selectedHomework = EventManager.sharedInstance.newHomework
-                selectedHomework.courseEvent = courseEvent
+                selectedHomework = nil
             }
             performSegueWithIdentifier("Homework", sender: nil)
         default:

@@ -140,8 +140,10 @@ public class EventManager: NSObject {
         try! managedObjectContext.save()
     }
     
-    public var newHomework: Homework {
-        return Homework(context: managedObjectContext)
+    public func newHomeworkOfCourseEvent(courseEvent: CourseEvent) -> Homework {
+        let hw = Homework(context: managedObjectContext)
+        hw.courseEvent = courseEvent
+        return hw
     }
     
     public func removeHomework(hw: Homework) {

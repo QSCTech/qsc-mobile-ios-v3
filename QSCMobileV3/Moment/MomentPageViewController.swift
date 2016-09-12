@@ -38,6 +38,9 @@ class MomentPageViewController: UIViewController {
         
         if let event = event {
             dateLabel.hidden = true
+            if event.category == .Course {
+                detailButton.setTitle("+ 添加作业", forState: .Normal)
+            }
             detailButton.contentEdgeInsets = UIEdgeInsets(top: 7, left: 10, bottom: 7, right: 10)
             detailButton.layer.cornerRadius = 14
             detailButton.layer.borderWidth = 1
@@ -58,14 +61,14 @@ class MomentPageViewController: UIViewController {
                 startColor = UIColor(red: 1.0, green: 0.855, blue: 0.0, alpha: 1.0)
                 endColor = UIColor(red: 0.988, green: 1.0, blue: 0.533, alpha: 1.0)
                 promptLabel.text = "距活动开始"
+            case .Todo:
+                startColor = QSCColor.todo
+                endColor = QSCColor.todo
+                promptLabel.text = "距日程开始"
             case .Bus:
                 startColor = UIColor(red: 0.106, green: 0.616, blue: 0.161, alpha: 1.0)
                 endColor = UIColor(red: 0.776, green: 0.918, blue: 0.392, alpha: 1.0)
                 promptLabel.text = "距校车出发"
-            default:
-                startColor = QSCColor.todo
-                endColor = QSCColor.todo
-                promptLabel.text = "距日程开始"
             }
             timerLabel.textColor = color
             gauge.startColor = startColor
@@ -129,6 +132,9 @@ class MomentPageViewController: UIViewController {
             let vc = storyboard.instantiateInitialViewController() as! CourseDetailViewController
             vc.managedObject = event!.object
             momentViewController.showViewController(vc, sender: nil)
+            if event!.category == .Course {
+                vc.performSegueWithIdentifier("Homework", sender: nil)
+            }
         } else {
             let storyboard = UIStoryboard(name: "EventDetail", bundle: NSBundle.mainBundle())
             let vc = storyboard.instantiateInitialViewController() as! EventDetailViewController

@@ -329,7 +329,8 @@ class EventEditViewController: UITableViewController {
         
         if customEvent!.notification >= 0 {
             let notif = UILocalNotification()
-            notif.alertBody = customEvent!.name
+            let time = customEvent!.notification == 0 ? "现在" : "将于 " + customEvent!.notification!.stringFromNotificationType.stringByReplacingOccurrencesOfString("前", withString: "后")
+            notif.alertBody = "「\(customEvent!.name!)」\(time)开始"
             notif.fireDate = customEvent!.start!.dateByAddingTimeInterval(-customEvent!.notification!.doubleValue)
             notif.soundName = UILocalNotificationDefaultSoundName
             notif.userInfo = ["objectID": customEvent!.objectID.URIRepresentation().URLString]

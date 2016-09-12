@@ -41,10 +41,10 @@ public class QSCColor {
             return exam
         case .Activity:
             return activity
+        case .Todo:
+            return todo
         case .Bus:
             return bus
-        default:
-            return todo
         }
     }
     
@@ -81,10 +81,10 @@ public struct Event {
                 return "考试"
             case .Activity:
                 return "活动"
+            case .Todo:
+                return "待办"
             case .Bus:
                 return "校车"
-            default:
-                return "待办"
             }
         }
     }

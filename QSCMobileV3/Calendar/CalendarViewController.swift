@@ -254,10 +254,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             imageName += "Exam"
         case .Activity:
             imageName += "Activity"
+        case .Todo:
+            imageName += "Todo"
         case .Bus:
             imageName += "Bus"
-        default:
-            imageName += "Todo"
         }
         cell.lineView.image = UIImage(named: imageName)
         return cell
