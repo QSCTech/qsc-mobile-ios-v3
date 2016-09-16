@@ -265,7 +265,7 @@ public class MobileManager: NSObject {
                     dispatch_group_enter(group)
                 }
                 let closure = { (success: Bool, error: String?) in
-                    if !success {
+                    if !success && !error!.isEmpty {
                         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
                     }
                     dispatch_group_leave(group)

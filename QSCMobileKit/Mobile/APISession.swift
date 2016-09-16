@@ -221,7 +221,18 @@ class APISession: NSObject {
                 "version": "",
             ]
         ]
-        resourceRequest(requestList, callback: callback)
+        resourceRequest(requestList) { json, error in
+            if let json = json {
+                if json["scoreObject"].dictionaryValue.isEmpty {
+                    print("[Score request] Score object is empty")
+                    callback(nil, "")
+                } else {
+                    callback(json, nil)
+                }
+            } else {
+                callback(nil, error)
+            }
+        }
     }
     
     /**
