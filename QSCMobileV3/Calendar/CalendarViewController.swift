@@ -225,7 +225,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             if let holiday = calendarManager.holidayForDate(selectedDate) {
                 cell.textLabel!.text = holiday
             } else if let adjustment = calendarManager.adjustmentForDate(selectedDate) {
-                cell.textLabel!.text = "\(adjustment.name)调休（\(adjustment.fromDate.stringOfDate))）"
+                cell.textLabel!.text = "\(adjustment.name)调休（\(adjustment.fromDate.stringOfDate)）"
             } else {
                 switch semester {
                 case .Autumn, .Winter, .Spring, .Summer:
