@@ -101,6 +101,9 @@ public class MobileManager: NSObject {
      - returns: An array of type `Event` sorted by starting time.
      */
     public func coursesForDate(date: NSDate) -> [Event] {
+        let calendar = NSCalendar.currentCalendar()
+        let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
+        
         if calendarManager.holidayForDate(date) != nil {
             return []
         }
@@ -111,9 +114,7 @@ public class MobileManager: NSObject {
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
         let weekOrdinal = calendarManager.weekOrdinalForDate(date)
-        let calendar = NSCalendar.currentCalendar()
         let weekday = calendar.component(.Weekday, fromDate: date)
-        let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
         
         let courses = dataStore.getCourses(year: year, semester: semester)
         var array = [Event]()
