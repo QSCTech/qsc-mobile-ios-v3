@@ -116,9 +116,14 @@ class QueryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == Tools.Login.rawValue {
+        switch section {
+        case Tools.Login.rawValue:
+            return "一键登录"
+        case Tools.Website.rawValue:
             return "校网链接"
-        } else {
+        case Tools.Webpage.rawValue:
+            return "实用查询"
+        default:
             return nil
         }
     }
