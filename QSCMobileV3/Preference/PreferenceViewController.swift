@@ -14,6 +14,7 @@ import QSCMobileKit
 
 let RefreshOnLaunchKey = "RefreshOnLaunch"
 let ShowScoreKey = "ShowScore"
+let DeviceTokenKey = "DeviceToken"
 
 class PreferenceViewController: UITableViewController {
     
@@ -178,7 +179,11 @@ class PreferenceViewController: UITableViewController {
                     mcvc.mailComposeDelegate = self
                     mcvc.setToRecipients(["mobile@zjuqsc.com"])
                     mcvc.setSubject("[QSCMobileV3] Feedback")
-                    mcvc.setMessageBody("版本信息：\nQSCMobile Version \(QSCVersion)\n\(Device()) \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\n反馈（可附截屏）：\n\u{200b}", isHTML: false)
+                    var deviceInfo = ""
+                    if let deviceToken = groupDefaults.stringForKey(DeviceTokenKey) {
+                        deviceInfo = "Device Token: \(deviceToken)\n"
+                    }
+                    mcvc.setMessageBody("版本信息：\nQSCMobile Version \(QSCVersion)\n\(Device()) \(NSProcessInfo.processInfo().operatingSystemVersionString)\n\(deviceInfo)\n反馈（可附截屏）：\n\u{200b}", isHTML: false)
                     presentViewController(mcvc, animated: true, completion: nil)
                 } else {
                     let alert = UIAlertController(title: "用户反馈", message: "您尚未设置系统邮件账户，请先行设置或直接发送邮件至 mobile@zjuqsc.com", preferredStyle: .Alert)

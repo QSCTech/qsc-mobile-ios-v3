@@ -29,7 +29,7 @@ class ZjuwlanLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "ZJUWLAN 账号"
+        navigationItem.title = "ZJUWLAN"
         saveButton.layer.cornerRadius = 5
         usernameField.text = accountManager.accountForZjuwlan
         passwordField.text = accountManager.passwordForZjuwlan
