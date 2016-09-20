@@ -44,7 +44,12 @@ class ScoreViewController: UIViewController {
         averageGradeLabel.text = String(format: "%.2f", mobileManager.statistics!.averageGrade!.floatValue)
         totalCreditLabel.text = mobileManager.statistics!.totalCredit!.stringValue
         
-        let semesters = mobileManager.allSemesters
+        var semesters = mobileManager.allSemesters
+        if let lastSemester = semesters.last {
+            if mobileManager.getScores(lastSemester).isEmpty {
+                semesters.popLast()
+            }
+        }
         changeSemester(semesters.last ?? "")
         
         scrollView.contentSize = CGSize(width: buttonWidth * CGFloat(semesters.count), height: scrollView.frame.height)
