@@ -138,11 +138,15 @@ class QueryViewController: UITableViewController {
                 cell.textLabel!.attributedText = "\u{f0f6}\t暂无成绩数据，请下拉刷新".attributedWithFontAwesome
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Score") as! OverallScoreCell
-                let statistics = MobileManager.sharedInstance.statistics
-                cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
-                cell.totalCreditLabel.text = statistics!.totalCredit!.stringValue
-                cell.majorGradeLabel.text = String(format: "%.2f", statistics!.majorGrade!.floatValue)
-                cell.majorCreditLabel.text = statistics!.majorCredit!.stringValue
+                if groupDefaults.boolForKey(ShowScoreKey) {
+                    let statistics = MobileManager.sharedInstance.statistics
+                    cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
+                    cell.totalCreditLabel.text = statistics!.totalCredit!.stringValue
+                    cell.majorGradeLabel.text = String(format: "%.2f", statistics!.majorGrade!.floatValue)
+                    cell.majorCreditLabel.text = statistics!.majorCredit!.stringValue
+                } else {
+                    cell.hideAll()
+                }
                 return cell
             }
         case Tools.Query.rawValue:
@@ -259,7 +263,7 @@ class QueryViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        tableView.reloadSections(NSIndexSet(index: Tools.Score.rawValue), withRowAnimation: .Automatic)
         if accountManager.currentAccountForJwbinfosys == nil {
             refreshControl = nil
         } else {
@@ -291,7 +295,7 @@ class QueryViewController: UITableViewController {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")
             }
-            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+            self.tableView.reloadSections(NSIndexSet(index: Tools.Score.rawValue), withRowAnimation: .Automatic)
         })
     }
     

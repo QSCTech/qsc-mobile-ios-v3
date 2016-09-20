@@ -16,4 +16,11 @@ class OverallScoreCell: UITableViewCell {
     @IBOutlet weak var majorGradeLabel: UILabel!
     @IBOutlet weak var majorCreditLabel: UILabel!
     
+    func hideAll() {
+        averageGradeLabel.text = "-"
+        totalCreditLabel.text = "-"
+        majorGradeLabel.text = "-"
+        majorCreditLabel.text = "-"
+    }
+    
 }
