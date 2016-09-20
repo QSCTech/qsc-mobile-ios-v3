@@ -46,22 +46,19 @@ public class ZjuwlanConnection: NSObject {
             "save_me": "0",
             "ajax": "1",
         ]
-        alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData, headers: headers).responseString { response in
-            if let string = response.result.value {
+        alamofire.request(.POST, ZjuwlanLoginURL, parameters: postData, headers: headers).responseData { response in
+            if let result = response.result.value {
+                let string = (String(data: result, encoding: NSUTF8StringEncoding) ?? "未知错误").stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "()"))
                 if string.containsString("login_ok") {
                     callback(true, nil)
-                } else if string.containsString("E2532") {
-                    callback(false, "登录间隔小于十秒")
-                } else if string.containsString("E2833") {
-                    callback(false, "您未连接 ZJUWLAN")
-                } else if string.containsString("E2901") {
-                    callback(false, "用户名或密码错误")
+                } else if string.containsString("IP地址异常") {
+                    callback(false, "您未连接到 ZJUWLAN")
                 } else {
-                    print("[ZJUWLAN] \(string)")
-                    callback(false, "未知错误")
+                    callback(false, string)
                 }
             } else {
-                callback(false, "网络连接失败")
+                let errorDescription = response.result.error!.localizedDescription.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "。"))
+                callback(false, errorDescription)
             }
         }
     }

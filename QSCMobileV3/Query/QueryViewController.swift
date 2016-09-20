@@ -211,7 +211,7 @@ class QueryViewController: UITableViewController {
             case 2:
                 let username = accountManager.accountForZjuwlan!.percentEncoded
                 let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.HTTPBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action:login=".dataUsingEncoding(NSASCIIStringEncoding)
+                request.HTTPBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action%3Alogin=".dataUsingEncoding(NSASCIIStringEncoding)
             default:
                 break
             }
