@@ -38,9 +38,6 @@ class MomentPageViewController: UIViewController {
         
         if let event = event {
             dateLabel.hidden = true
-            if event.category == .Course {
-                detailButton.setTitle("+ 添加作业", forState: .Normal)
-            }
             detailButton.contentEdgeInsets = UIEdgeInsets(top: 7, left: 10, bottom: 7, right: 10)
             detailButton.layer.cornerRadius = 14
             detailButton.layer.borderWidth = 1
@@ -132,9 +129,6 @@ class MomentPageViewController: UIViewController {
             let vc = storyboard.instantiateInitialViewController() as! CourseDetailViewController
             vc.managedObject = event!.object
             momentViewController.showViewController(vc, sender: nil)
-            if event!.category == .Course {
-                vc.performSegueWithIdentifier("Homework", sender: nil)
-            }
         } else {
             let storyboard = UIStoryboard(name: "EventDetail", bundle: NSBundle.mainBundle())
             let vc = storyboard.instantiateInitialViewController() as! EventDetailViewController
