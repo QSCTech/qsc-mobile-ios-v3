@@ -111,8 +111,11 @@ class CurriculaViewController: UIViewController {
                 let startPeriod = Int(timePlace.periods!.substringToIndex(timePlace.periods!.startIndex.successor()), radix: 16)!
                 let endPeriod = Int(timePlace.periods!.substringFromIndex(timePlace.periods!.endIndex.predecessor()), radix: 16)!
                 let bgColor = bgColors[index % bgColors.count]
-                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.whiteColor(), bgColor: bgColor) { curriculum in
-                    return
+                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.whiteColor(), bgColor: bgColor, identifier: course.identifier!) { curriculum in
+                    let sb = UIStoryboard(name: "CourseDetail", bundle: NSBundle.mainBundle())
+                    let vc = sb.instantiateInitialViewController() as! CourseDetailViewController
+                    vc.managedObject = self.mobileManager.objectTripleWithIdentifier(curriculum.identifier).0
+                    self.showViewController(vc, sender: nil)
                 }
                 curricula.append(curriculum)
             }
