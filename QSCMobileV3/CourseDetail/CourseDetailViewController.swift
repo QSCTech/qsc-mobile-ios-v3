@@ -260,10 +260,16 @@ class CourseDetailViewController: UITableViewController {
                     presentViewController(svc, animated: true, completion: nil)
                 }
             case infos[1]["title"]!:
-                let mcvc = MFMailComposeViewController()
-                mcvc.mailComposeDelegate = self
-                mcvc.setToRecipients([courseEvent.email!])
-                presentViewController(mcvc, animated: true, completion: nil)
+                if MFMailComposeViewController.canSendMail() {
+                    let mcvc = MFMailComposeViewController()
+                    mcvc.mailComposeDelegate = self
+                    mcvc.setToRecipients([courseEvent.email!])
+                    presentViewController(mcvc, animated: true, completion: nil)
+                } else {
+                    let pasteboard = UIPasteboard.generalPasteboard()
+                    pasteboard.string = cell.detailTextLabel!.text
+                    SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
+                }
             case infos[2]["title"]!:
                 UIApplication.sharedApplication().openURL(NSURL(string: "telprompt:" + courseEvent.phone!)!)
             case infos[3]["title"]!:
