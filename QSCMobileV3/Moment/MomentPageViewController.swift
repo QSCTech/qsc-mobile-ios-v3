@@ -128,11 +128,13 @@ class MomentPageViewController: UIViewController {
             let storyboard = UIStoryboard(name: "CourseDetail", bundle: NSBundle.mainBundle())
             let vc = storyboard.instantiateInitialViewController() as! CourseDetailViewController
             vc.managedObject = event!.object
+            vc.hidesBottomBarWhenPushed = true
             momentViewController.showViewController(vc, sender: nil)
         } else {
             let storyboard = UIStoryboard(name: "EventDetail", bundle: NSBundle.mainBundle())
             let vc = storyboard.instantiateInitialViewController() as! EventDetailViewController
             vc.customEvent = event!.object as! CustomEvent
+            vc.hidesBottomBarWhenPushed = true
             momentViewController.showViewController(vc, sender: nil)
         }
     }

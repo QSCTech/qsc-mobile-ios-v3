@@ -25,12 +25,10 @@ class CurriculaViewController: UIViewController {
     
     init() {
         super.init(nibName: "CurriculaViewController", bundle: NSBundle.mainBundle())
-        hidesBottomBarWhenPushed = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        hidesBottomBarWhenPushed = true
     }
     
     @IBOutlet weak var titleLabel: UILabel!

@@ -64,9 +64,11 @@ class CalendarViewController: UIViewController {
             let nc = segue.destinationViewController as! UINavigationController
             let vc = nc.topViewController as! EventEditViewController
             vc.selectedDate = selectedDate
+            vc.hidesBottomBarWhenPushed = true
         case "showCourseDetail":
             let vc = segue.destinationViewController as! CourseDetailViewController
             vc.managedObject = selectedEvent.object
+            vc.hidesBottomBarWhenPushed = true
         case "showEventDetail":
             let vc = segue.destinationViewController as! EventDetailViewController
             vc.customEvent = selectedEvent.object as! CustomEvent

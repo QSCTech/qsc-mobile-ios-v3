@@ -178,6 +178,7 @@ class QueryViewController: UITableViewController {
                     presentViewController(vc, animated: true, completion: nil)
                 case 1:
                     let vc = CurriculaViewController()
+                    vc.hidesBottomBarWhenPushed = true
                     showViewController(vc, sender: nil)
                 case 2:
                     performSegueWithIdentifier("showCourses", sender: nil)
@@ -273,12 +274,12 @@ class QueryViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as! SemesterListViewController
+        vc.hidesBottomBarWhenPushed = true
         switch segue.identifier! {
         case "showCourses":
-            let vc = segue.destinationViewController as! SemesterListViewController
             vc.source = .Course
         case "showExams":
-            let vc = segue.destinationViewController as! SemesterListViewController
             vc.source = .Exam
         default:
             break
