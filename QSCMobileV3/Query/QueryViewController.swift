@@ -19,18 +19,11 @@ class QueryViewController: UITableViewController {
         static let count = 5
     }
     
-    private let queries: [[String: String]] = [
-        [
-            "name": "\u{f207}\t校车",
-        ],
-        [
-            "name": "\u{f02d}\t课程一览",
-            "segue": "showCourses",
-        ],
-        [
-            "name": "\u{f040}\t考试一览",
-            "segue": "showExams",
-        ],
+    private let queries = [
+        "\u{f207}\t校车查询",
+        "\u{f073}\t一周课表",
+        "\u{f02d}\t课程一览",
+        "\u{f040}\t考试一览",
     ]
     
     private let login: [[String: String]] = [
@@ -150,7 +143,7 @@ class QueryViewController: UITableViewController {
                 return cell
             }
         case Tools.Query.rawValue:
-            cell.textLabel!.attributedText = queries[indexPath.row]["name"]!.attributedWithFontAwesome
+            cell.textLabel!.attributedText = queries[indexPath.row].attributedWithFontAwesome
         case Tools.Login.rawValue:
             cell.textLabel!.text = login[indexPath.row]["name"]
         case Tools.Website.rawValue:
@@ -179,11 +172,19 @@ class QueryViewController: UITableViewController {
                 let vc = JwbinfosysLoginViewController()
                 presentViewController(vc, animated: true, completion: nil)
             } else {
-                if indexPath.row > 0 {
-                    performSegueWithIdentifier(queries[indexPath.row]["segue"]!, sender: nil)
-                } else {
+                switch indexPath.row {
+                case 0:
                     let vc = BusViewController()
                     presentViewController(vc, animated: true, completion: nil)
+                case 1:
+                    let vc = CurriculaViewController()
+                    showViewController(vc, sender: nil)
+                case 2:
+                    performSegueWithIdentifier("showCourses", sender: nil)
+                case 3:
+                    performSegueWithIdentifier("showExams", sender: nil)
+                default:
+                    break
                 }
             }
         case Tools.Login.rawValue:

@@ -16,11 +16,6 @@ class CourseListViewController: UITableViewController {
     
     let mobileManager = MobileManager.sharedInstance
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = semester.substringToIndex(semester.endIndex.advancedBy(-2)) + (semester.hasSuffix("1") ? " 秋冬" : " 春夏")
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mobileManager.getCourses(semester).count
     }

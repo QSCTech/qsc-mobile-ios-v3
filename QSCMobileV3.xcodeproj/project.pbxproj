@@ -65,6 +65,7 @@
 		9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */; };
 		9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */; };
 		9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */; };
+		9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
 		9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */; };
@@ -78,6 +79,8 @@
 		9DC4756F1D2F907600F4B3DF /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */; };
 		9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */; };
 		9DC536111D7C5197008FFED7 /* CourseHomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */; };
+		9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */; };
+		9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
@@ -208,6 +211,7 @@
 		9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GaugeKit.framework; path = Carthage/Build/iOS/GaugeKit.framework; sourceTree = "<group>"; };
 		9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTypeViewController.swift; path = QSCMobileV3/EventDetail/NotificationTypeViewController.swift; sourceTree = SOURCE_ROOT; };
+		9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CurriculaTable.framework; path = Carthage/Build/iOS/CurriculaTable.framework; sourceTree = "<group>"; };
 		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
 		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
 		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 		9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
 		9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+QSCMobileKit.swift"; path = "Extension/NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
 		9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseHomeworkViewController.swift; path = CourseDetail/CourseHomeworkViewController.swift; sourceTree = "<group>"; };
+		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurriculaViewController.swift; path = Curricula/CurriculaViewController.swift; sourceTree = "<group>"; };
+		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurriculaViewController.xib; path = Curricula/CurriculaViewController.xib; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -272,6 +278,7 @@
 				9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */,
 				9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */,
 				9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */,
+				9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */,
 				9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
@@ -323,6 +330,7 @@
 				9D6B336F1CED90CC00C5372F /* EventDetail */,
 				9D3139701CE789BF00CD7DAD /* Discover */,
 				9D3139751CE789BF00CD7DAD /* Query */,
+				9DCC2F771D89A627002740D1 /* Curricula */,
 				9DBC53AB1D350F86006AA1BD /* Score */,
 				9D6B337A1CF0215E00C5372F /* Bus */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
@@ -507,6 +515,15 @@
 			name = CourseDetail;
 			sourceTree = "<group>";
 		};
+		9DCC2F771D89A627002740D1 /* Curricula */ = {
+			isa = PBXGroup;
+			children = (
+				9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */,
+				9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */,
+			);
+			name = Curricula;
+			sourceTree = "<group>";
+		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +622,7 @@
 				9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */,
 				9DF174DD1D59A2B800836575 /* DeviceKit.framework */,
 				9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */,
+				9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */,
 				9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
@@ -729,6 +747,7 @@
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
 				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
+				9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */,
 				9DBC53AF1D350FC8006AA1BD /* OverallScoreCell.xib in Resources */,
 				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
@@ -772,6 +791,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/GaugeKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DeviceKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BTNavigationDropdownMenu.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CurriculaTable.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -814,6 +834,7 @@
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
 				9D71736A1D3164CE0074043E /* SemesterListCell.swift in Sources */,
 				9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */,
+				9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */,
 				9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,

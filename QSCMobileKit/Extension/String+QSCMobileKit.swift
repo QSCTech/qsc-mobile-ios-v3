@@ -138,7 +138,7 @@ extension String {
      
      - returns: Whether it includes.
      */
-    func includesSemester(semester: CalendarSemester) -> Bool {
+    public func includesSemester(semester: CalendarSemester) -> Bool {
         switch semester {
         case .Autumn:
             return containsString("秋")
@@ -171,6 +171,11 @@ extension String {
         default:
             return false
         }
+    }
+    
+    /// For example, "2016-2017-1" -> "2016-2017 秋冬".
+    public var fullNameForSemester: String {
+        return substringToIndex(endIndex.advancedBy(-2)) + (hasSuffix("1") ? " 秋冬" : " 春夏")
     }
     
     /// Same as `String#chomp` in Ruby.

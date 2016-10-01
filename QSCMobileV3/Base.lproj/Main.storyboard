@@ -17,11 +17,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2W4-Y2-PrN">
-                                <rect key="frame" x="0.0" y="64" width="600" height="353"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="353"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2W4-Y2-PrN" secondAttribute="height" multiplier="1:1" priority="750" id="QJV-XZ-RWU"/>
                                     <constraint firstAttribute="height" constant="100" id="ek8-bg-tLJ"/>
@@ -33,7 +33,7 @@
                                 </variation>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="G7C-7c-jIr">
-                                <rect key="frame" x="281" y="417" width="39" height="37"/>
+                                <rect key="frame" x="281" y="353" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -41,14 +41,14 @@
                                 </connections>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl1-3R-dmW">
-                                <rect key="frame" x="259" y="482" width="83" height="30"/>
+                                <rect key="frame" x="259" y="418" width="83" height="30"/>
                                 <state key="normal" title=" 登录教务网 "/>
                                 <connections>
                                     <action selector="login:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VBi-3a-vg6"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQP-ld-Sws">
-                                <rect key="frame" x="20" y="462" width="560" height="69"/>
+                                <rect key="frame" x="20" y="398" width="560" height="69"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ee-CT-1WH">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="26"/>
@@ -249,11 +249,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYx-Yb-xsq" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="60" y="92" width="520" height="55"/>
+                                <rect key="frame" x="60" y="28" width="520" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="8dy-7J-pTt"/>
@@ -266,14 +266,14 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faw-wO-Hlh" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="60" y="72" width="520" height="20"/>
+                                <rect key="frame" x="60" y="8" width="520" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="1pl-Le-SGe"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="秋四" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srw-bJ-IoV">
-                                <rect key="frame" x="20" y="64" width="32" height="83"/>
+                                <rect key="frame" x="20" y="0.0" width="32" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="nAF-qc-pyO"/>
                                 </constraints>
@@ -282,7 +282,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="七月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Of1-ck-8Vm">
-                                <rect key="frame" x="20" y="247" width="40" height="15"/>
+                                <rect key="frame" x="20" y="183" width="40" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A6h-7U-iNd"/>
                                 </constraints>
@@ -296,7 +296,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDZ-oE-nhG">
-                                <rect key="frame" x="20" y="262" width="40" height="16"/>
+                                <rect key="frame" x="20" y="198" width="40" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Iup-av-5FH"/>
                                 </constraints>
@@ -310,7 +310,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-3E-9No">
-                                <rect key="frame" x="20" y="203" width="40" height="36"/>
+                                <rect key="frame" x="20" y="139" width="40" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="tbn-M3-2Wj"/>
                                 </constraints>
@@ -319,7 +319,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="JtD-0b-lP7">
-                                <rect key="frame" x="68" y="171" width="532" height="380"/>
+                                <rect key="frame" x="68" y="107" width="532" height="380"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Basic" textLabel="y8N-wF-cRc" rowHeight="44" style="IBUITableViewCellStyleDefault" id="m9p-hF-ohV">
@@ -342,7 +342,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-PL-nXs">
-                                <rect key="frame" x="0.0" y="147" width="600" height="24"/>
+                                <rect key="frame" x="0.0" y="83" width="600" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="85l-sl-ezN"/>
                                 </constraints>
@@ -501,12 +501,12 @@
             <objects>
                 <tableViewController id="dpq-qQ-P5a" customClass="QueryViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fV4-Nr-IKy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Basic" textLabel="HJW-Qx-lSs" style="IBUITableViewCellStyleDefault" id="39w-ZI-lJY">
-                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="39w-ZI-lJY" id="puv-Cd-arM">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -561,7 +561,7 @@
                     <tabBarItem key="tabBarItem" title="" image="Query" id="Iys-tw-le7">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6B-iD-COS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="g6B-iD-COS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -579,12 +579,12 @@
             <objects>
                 <tableViewController id="Jfx-gw-o0r" customClass="PreferenceViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pk1-d6-UCg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Basic" textLabel="hYc-vn-lve" style="IBUITableViewCellStyleDefault" id="4Dc-bE-QIr">
-                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Dc-bE-QIr" id="sxb-6O-CHx">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -619,7 +619,7 @@
                     <tabBarItem key="tabBarItem" title="" image="Preference" id="AEf-u5-uMk">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RG9-6b-56D">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RG9-6b-56D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -689,7 +689,7 @@
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cWw-OK-yzr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cWw-OK-yzr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941176470589" green="0.22352941176470589" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
@@ -711,7 +711,7 @@
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wnD-Dn-giv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="wnD-Dn-giv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941176470589" green="0.22352941176470589" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
