@@ -96,8 +96,10 @@ public class EventManager: NSObject {
             let category = Event.Category(rawValue: event.category!.integerValue)!
             let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
             
-            var startTime = actualDates[event]!.start.stringOfDate
-            var endTime = actualDates[event]!.end.stringOfDate
+            let actualStart = actualDates[event]!.start
+            let actualEnd = actualDates[event]!.end
+            var startTime = actualStart.stringOfDate
+            var endTime = actualEnd.stringOfDate
             let time: String
             if startTime == endTime {
                 if event.duration! == Event.Duration.PartialTime.rawValue {
@@ -111,7 +113,7 @@ public class EventManager: NSObject {
                 time = startTime + " - " + endTime
             }
             
-            return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: event.start!, end: event.end!, object: event)
+            return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: actualStart, end: actualEnd, object: event)
         }
     }
     
