@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import SVProgressHUD
 import QSCMobileKit
 
 class QueryViewController: UITableViewController {
@@ -30,14 +31,17 @@ class QueryViewController: UITableViewController {
         [
             "name": "教务网",
             "url": "http://jwbinfosys.zju.edu.cn/default2.aspx",
-        ],
-        [
-            "name": "网络中心",
-            "url": "http://myvpn.zju.edu.cn/j_security_check",
+            "campus": "off",
         ],
         [
             "name": "浙大邮箱",
             "url": "https://mail.zju.edu.cn/coremail/login.jsp",
+            "campus": "off",
+        ],
+        [
+            "name": "网络中心",
+            "url": "http://myvpn.zju.edu.cn/j_security_check",
+            "campus": "on",
         ],
     ]
     
@@ -45,26 +49,32 @@ class QueryViewController: UITableViewController {
         [
             "name": "院系网站",
             "url": "https://info.zjuqsc.com/zju-websites/",
+            "campus": "off",
         ],
         [
             "name": "图书馆",
             "url": "http://webpac.zju.edu.cn",
+            "campus": "off",
         ],
         [
             "name": "体质健康测试",
             "url": "http://www.tyys.zju.edu.cn:8080/tzjk/",
+            "campus": "on",
         ],
         [
             "name": "健康之友",
             "url": "http://www.tyys.zju.edu.cn:8080/hyz/",
+            "campus": "on",
         ],
         [
             "name": "第二课堂",
             "url": "http://www.qzlake.zju.edu.cn",
+            "campus": "on",
         ],
         [
             "name": "综合数据服务平台",
             "url": "http://zuds.zju.edu.cn/zfsjzx/jspdspp/zjuindex/index.jsp",
+            "campus": "on",
         ],
     ]
     
@@ -72,18 +82,22 @@ class QueryViewController: UITableViewController {
         [
             "name": "学年校历",
             "url": "https://info.zjuqsc.com/academic-calendar/",
+            "campus": "off",
         ],
         [
             "name": "体育锻炼制度",
             "url": "https://info.zjuqsc.com/exercise-regulations/",
+            "campus": "off",
         ],
         [
             "name": "校园地图",
             "url": "http://m.zju.edu.cn:8080/m/maps/zjg.html",
+            "campus": "on",
         ],
         [
             "name": "教室占用查询",
             "url": "http://jxzygl.zju.edu.cn/jxzwsyqk/jszycx.aspx",
+            "campus": "on",
         ],
     ]
     
@@ -195,10 +209,7 @@ class QueryViewController: UITableViewController {
                 break
             }
             if 1 <= indexPath.row && indexPath.row <= 2 && accountManager.accountForZjuwlan == nil {
-                let alert = UIAlertController(title: "ZJUWLAN", message: "您尚未设置 ZJUWLAN 账号", preferredStyle: .Alert)
-                let action = UIAlertAction(title: "好", style: .Default, handler: nil)
-                alert.addAction(action)
-                presentViewController(alert, animated: true, completion: nil)
+                SVProgressHUD.showErrorWithStatus("尚未设置 ZJUWLAN 账号")
                 break
             }
             // TODO: Handle login errors
