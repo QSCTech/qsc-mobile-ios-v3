@@ -38,6 +38,7 @@ class CourseDetailViewController: UITableViewController {
         navigationItem.title = courseObject!.name
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
+        tableView.registerNib(UINib(nibName: "HomeworkCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Homework")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,7 +63,7 @@ class CourseDetailViewController: UITableViewController {
             let vc = nc.topViewController as! CourseEditViewController
             vc.courseEvent = courseEvent
         case "Homework":
-            let vc = nc.topViewController as! CourseHomeworkViewController
+            let vc = nc.topViewController as! HomeworkViewController
             if let hw = selectedHomework {
                 vc.homework = hw
             } else {
@@ -232,7 +233,7 @@ class CourseDetailViewController: UITableViewController {
             return cell
         case Detail.Homework.rawValue:
             if indexPath.row < homeworks.count {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! CourseHomeworkCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
                 cell.nameLabel.text = homeworks[indexPath.row].name
                 cell.timeLabel.text = homeworks[indexPath.row].deadline?.stringOfDatetime
                 return cell

@@ -1,5 +1,5 @@
 //
-//  CourseHomeworkViewController.swift
+//  HomeworkViewController.swift
 //  QSCMobileV3
 //
 //  Created by 孙耀珠 on 2016-09-04.
@@ -9,7 +9,7 @@
 import UIKit
 import QSCMobileKit
 
-class CourseHomeworkViewController: UITableViewController {
+class HomeworkViewController: UITableViewController {
     
     var homework: Homework!
     
@@ -25,8 +25,13 @@ class CourseHomeworkViewController: UITableViewController {
         detailView.text = homework.notes
         datePicker.date = homework.deadline ?? NSDate()
         
+        nameDidChange(nameField)
         detailView.delegate = self
         textViewDidChange(detailView)
+    }
+    
+    @IBAction func nameDidChange(sender: UITextField) {
+        navigationItem.rightBarButtonItem?.enabled = !sender.text!.isEmpty
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -54,7 +59,7 @@ class CourseHomeworkViewController: UITableViewController {
     
 }
 
-extension CourseHomeworkViewController: UITextViewDelegate {
+extension HomeworkViewController: UITextViewDelegate {
     
     func textViewDidChange(textView: UITextView) {
         placeholderLabel.hidden = !textView.text.isEmpty

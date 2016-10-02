@@ -117,6 +117,12 @@ public class EventManager: NSObject {
         }
     }
     
+    public var allHomeworks: [Homework] {
+        let request = NSFetchRequest(entityName: "Homework")
+        let homeworks = try! managedObjectContext.executeFetchRequest(request) as! [Homework]
+        return homeworks.sort { $0.deadline <= $1.deadline }
+    }
+    
     // MARK: - Creation & Deletion
     
     /**

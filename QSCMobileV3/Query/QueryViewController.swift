@@ -25,6 +25,7 @@ class QueryViewController: UITableViewController {
         "\u{f073}\t一周课表",
         "\u{f02d}\t课程一览",
         "\u{f040}\t考试一览",
+//        "\u{f0c5}\t作业一览",
     ]
     
     private let login: [[String: String]] = [
@@ -198,6 +199,10 @@ class QueryViewController: UITableViewController {
                     performSegueWithIdentifier("showCourses", sender: nil)
                 case 3:
                     performSegueWithIdentifier("showExams", sender: nil)
+//                case 4:
+//                    let vc = HomeworkListViewController()
+//                    vc.hidesBottomBarWhenPushed = true
+//                    showViewController(vc, sender: nil)
                 default:
                     break
                 }

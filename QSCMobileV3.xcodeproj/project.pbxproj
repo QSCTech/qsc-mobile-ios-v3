@@ -40,6 +40,11 @@
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4179AC1CE4678E00955729 /* LaunchScreen.xib */; };
 		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
+		9D5A01391DA0D43500CF5469 /* HomeworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */; };
+		9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */; };
+		9D5A013E1DA0D99E00CF5469 /* Homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A013D1DA0D99E00CF5469 /* Homework.storyboard */; };
+		9D5A01431DA0DDD700CF5469 /* HomeworkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A01411DA0DDD700CF5469 /* HomeworkListViewController.swift */; };
+		9D5A01441DA0DDD700CF5469 /* HomeworkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A01421DA0DDD700CF5469 /* HomeworkListViewController.xib */; };
 		9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */; };
 		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
@@ -78,14 +83,13 @@
 		9DC4756D1D2F894A00F4B3DF /* QueryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC4756C1D2F894A00F4B3DF /* QueryList.storyboard */; };
 		9DC4756F1D2F907600F4B3DF /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */; };
 		9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */; };
-		9DC536111D7C5197008FFED7 /* CourseHomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */; };
+		9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */; };
 		9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */; };
 		9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
 		9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */; };
-		9DD437D51D7C336000BDA816 /* CourseHomeworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD437D41D7C336000BDA816 /* CourseHomeworkCell.swift */; };
 		9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */; };
 		9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */; };
 		9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */; };
@@ -185,6 +189,11 @@
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
+		9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkCell.swift; path = Homework/HomeworkCell.swift; sourceTree = "<group>"; };
+		9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeworkCell.xib; path = Homework/HomeworkCell.xib; sourceTree = "<group>"; };
+		9D5A013D1DA0D99E00CF5469 /* Homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Homework.storyboard; path = Homework/Homework.storyboard; sourceTree = "<group>"; };
+		9D5A01411DA0DDD700CF5469 /* HomeworkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkListViewController.swift; path = Homework/HomeworkListViewController.swift; sourceTree = "<group>"; };
+		9D5A01421DA0DDD700CF5469 /* HomeworkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeworkListViewController.xib; path = Homework/HomeworkListViewController.xib; sourceTree = "<group>"; };
 		9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeAPI.swift; path = Notice/NoticeAPI.swift; sourceTree = "<group>"; };
 		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
 		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
@@ -224,14 +233,13 @@
 		9DC4756C1D2F894A00F4B3DF /* QueryList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QueryList.storyboard; sourceTree = "<group>"; };
 		9DC4756E1D2F907600F4B3DF /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
 		9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+QSCMobileKit.swift"; path = "Extension/NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
-		9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseHomeworkViewController.swift; path = CourseDetail/CourseHomeworkViewController.swift; sourceTree = "<group>"; };
+		9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkViewController.swift; path = Homework/HomeworkViewController.swift; sourceTree = "<group>"; };
 		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurriculaViewController.swift; path = Curricula/CurriculaViewController.swift; sourceTree = "<group>"; };
 		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurriculaViewController.xib; path = Curricula/CurriculaViewController.xib; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		9DD437D41D7C336000BDA816 /* CourseHomeworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseHomeworkCell.swift; path = CourseDetail/CourseHomeworkCell.swift; sourceTree = "<group>"; };
 		9DD490FC1CEAE68A009F70FA /* CourseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEvent.swift; sourceTree = "<group>"; };
 		9DD490FD1CEAE68A009F70FA /* CustomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEvent.swift; sourceTree = "<group>"; };
 		9DD490FF1CEAE68A009F70FA /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
@@ -330,8 +338,9 @@
 				9D6B336F1CED90CC00C5372F /* EventDetail */,
 				9D3139701CE789BF00CD7DAD /* Discover */,
 				9D3139751CE789BF00CD7DAD /* Query */,
-				9DCC2F771D89A627002740D1 /* Curricula */,
 				9DBC53AB1D350F86006AA1BD /* Score */,
+				9DCC2F771D89A627002740D1 /* Curricula */,
+				9D5A01341DA0D39200CF5469 /* Homework */,
 				9D6B337A1CF0215E00C5372F /* Bus */,
 				9D31396A1CE789BF00CD7DAD /* Browser */,
 				9D3139721CE789BF00CD7DAD /* Preference */,
@@ -453,6 +462,19 @@
 			name = ZJUWLAN;
 			sourceTree = "<group>";
 		};
+		9D5A01341DA0D39200CF5469 /* Homework */ = {
+			isa = PBXGroup;
+			children = (
+				9D5A013D1DA0D99E00CF5469 /* Homework.storyboard */,
+				9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */,
+				9D5A01421DA0DDD700CF5469 /* HomeworkListViewController.xib */,
+				9D5A01411DA0DDD700CF5469 /* HomeworkListViewController.swift */,
+				9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */,
+				9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */,
+			);
+			name = Homework;
+			sourceTree = "<group>";
+		};
 		9D6413311C19AD5200EC5D95 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,10 +529,8 @@
 				9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */,
 				9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */,
 				9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */,
-				9DC536101D7C5197008FFED7 /* CourseHomeworkViewController.swift */,
 				9DC475661D2D075800F4B3DF /* CourseNameCell.swift */,
 				9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */,
-				9DD437D41D7C336000BDA816 /* CourseHomeworkCell.swift */,
 			);
 			name = CourseDetail;
 			sourceTree = "<group>";
@@ -741,6 +761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
+				9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */,
 				9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
@@ -753,10 +774,12 @@
 				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
 				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
 				9DC4756D1D2F894A00F4B3DF /* QueryList.storyboard in Resources */,
+				9D5A01441DA0DDD700CF5469 /* HomeworkListViewController.xib in Resources */,
 				9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
 				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
+				9D5A013E1DA0D99E00CF5469 /* Homework.storyboard in Resources */,
 				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
 				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
@@ -828,7 +851,7 @@
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
-				9DD437D51D7C336000BDA816 /* CourseHomeworkCell.swift in Sources */,
+				9D5A01431DA0DDD700CF5469 /* HomeworkListViewController.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
@@ -837,8 +860,9 @@
 				9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */,
 				9D71736C1D316BDB0074043E /* CourseListCell.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
+				9D5A01391DA0D43500CF5469 /* HomeworkCell.swift in Sources */,
 				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
-				9DC536111D7C5197008FFED7 /* CourseHomeworkViewController.swift in Sources */,
+				9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */,
 				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
 				9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */,
 			);
