@@ -14,19 +14,12 @@ import QSCMobileKit
 class QueryViewController: UITableViewController {
     
     private let accountManager = AccountManager.sharedInstance
+    private let collectionViewDelegate = QueryCollectionViewDelegate()
     
     enum Tools: Int {
         case Score = 0, Query, Login, Website, Webpage
         static let count = 5
     }
-    
-    private let queries = [
-        "\u{f207}\t校车查询",
-        "\u{f073}\t一周课表",
-        "\u{f02d}\t课程一览",
-        "\u{f040}\t考试一览",
-//        "\u{f0c5}\t作业一览",
-    ]
     
     private let login: [[String: String]] = [
         [
@@ -111,7 +104,7 @@ class QueryViewController: UITableViewController {
         case Tools.Score.rawValue:
             return 1
         case Tools.Query.rawValue:
-            return queries.count
+            return 1
         case Tools.Login.rawValue:
             return login.count
         case Tools.Website.rawValue:
@@ -158,7 +151,12 @@ class QueryViewController: UITableViewController {
                 return cell
             }
         case Tools.Query.rawValue:
-            cell.textLabel!.attributedText = queries[indexPath.row].attributedWithFontAwesome
+            let cell = tableView.dequeueReusableCellWithIdentifier("Collection") as! QueryTableViewCell
+            cell.collectionView.registerNib(UINib(nibName: "QueryCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
+            cell.collectionView.delegate = collectionViewDelegate
+            cell.collectionView.dataSource = collectionViewDelegate
+            cell.selectionStyle = .None
+            return cell
         case Tools.Login.rawValue:
             cell.textLabel!.text = login[indexPath.row]["name"]
         case Tools.Website.rawValue:
@@ -181,31 +179,6 @@ class QueryViewController: UITableViewController {
             } else if MobileManager.sharedInstance.statistics != nil {
                 let vc = ScoreViewController()
                 presentViewController(vc, animated: true, completion: nil)
-            }
-        case Tools.Query.rawValue:
-            if accountManager.currentAccountForJwbinfosys == nil {
-                let vc = JwbinfosysLoginViewController()
-                presentViewController(vc, animated: true, completion: nil)
-            } else {
-                switch indexPath.row {
-                case 0:
-                    let vc = BusViewController()
-                    presentViewController(vc, animated: true, completion: nil)
-                case 1:
-                    let vc = CurriculaViewController()
-                    vc.hidesBottomBarWhenPushed = true
-                    showViewController(vc, sender: nil)
-                case 2:
-                    performSegueWithIdentifier("showCourses", sender: nil)
-                case 3:
-                    performSegueWithIdentifier("showExams", sender: nil)
-//                case 4:
-//                    let vc = HomeworkListViewController()
-//                    vc.hidesBottomBarWhenPushed = true
-//                    showViewController(vc, sender: nil)
-                default:
-                    break
-                }
             }
         case Tools.Login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
@@ -262,6 +235,8 @@ class QueryViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == Tools.Score.rawValue {
             return 77
+        } else if indexPath.section == Tools.Query.rawValue {
+            return 81
         } else {
             return 44
         }
@@ -272,7 +247,9 @@ class QueryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionViewDelegate.viewController = self
         tableView.registerNib(UINib(nibName: "OverallScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
+        tableView.registerClass(QueryTableViewCell.self, forCellReuseIdentifier: "Collection")
         refreshCtl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
         // Placeholder to prevent activity indicator from changing its position
         refreshCtl.attributedTitle = NSAttributedString(string: " ")
@@ -286,19 +263,6 @@ class QueryViewController: UITableViewController {
             refreshControl = nil
         } else {
             refreshControl = refreshCtl
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! SemesterListViewController
-        vc.hidesBottomBarWhenPushed = true
-        switch segue.identifier! {
-        case "showCourses":
-            vc.source = .Course
-        case "showExams":
-            vc.source = .Exam
-        default:
-            break
         }
     }
     
