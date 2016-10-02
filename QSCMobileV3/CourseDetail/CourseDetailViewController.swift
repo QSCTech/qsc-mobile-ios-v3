@@ -182,7 +182,7 @@ class CourseDetailViewController: UITableViewController {
                 let sortDescriptors = [NSSortDescriptor(key: "weekday", ascending: true), NSSortDescriptor(key: "periods", ascending: true)]
                 let timePlace = courseObject!.timePlaces!.sortedArrayUsingDescriptors(sortDescriptors)[indexPath.row - 1] as! TimePlace
                 cell.placeLabel!.text = timePlace.place!
-                cell.timeLabel!.text = timePlace.time!
+                cell.timeLabel!.text = courseObject!.semester! + "学期 " + timePlace.time!
                 return cell
             }
         case Detail.Exam.rawValue:
