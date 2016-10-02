@@ -107,10 +107,31 @@ class CalendarViewController: UIViewController {
     }
     
     func updateForSelectedDate() {
+        calculatedColorsForDate(selectedDate)
         tableView.reloadData()
         calendarView.contentController.refreshPresentedMonth()
         weekLabel.text = weekName
         updateDateLabel()
+    }
+    
+    
+    var cache = [NSDate: Set<UIColor>]()
+    
+    func cachedColorsForDate(date: NSDate) -> Set<UIColor> {
+        if let colors = cache[date] {
+            return colors
+        }
+        return calculatedColorsForDate(date)
+    }
+    
+    func calculatedColorsForDate(date: NSDate) -> Set<UIColor> {
+        let events = eventsForDate(date)
+        var colors = Set<UIColor>()
+        for event in events {
+            colors.insert(QSCColor.category(event.category))
+        }
+        cache[date] = colors
+        return colors
     }
     
 }
@@ -141,21 +162,13 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
         let date = dayView.date.convertedDate()!
-        let events = eventsForDate(date)
-        if events.isEmpty {
-            return false
-        } else {
-            return true
-        }
+        let colors = cachedColorsForDate(date)
+        return !colors.isEmpty
     }
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
         let date = dayView.date.convertedDate()!
-        let events = eventsForDate(date)
-        var colors = Set<UIColor>()
-        for event in events {
-            colors.insert(QSCColor.category(event.category))
-        }
+        var colors = cachedColorsForDate(date)
         // Workaround to display dots in one line
         while colors.count > 3 {
             colors.removeFirst()
