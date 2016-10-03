@@ -78,8 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let vc = storyboard.instantiateInitialViewController() as! SemesterListViewController
                 vc.source = shortcutItem.type == "Course" ? .Course : .Exam
                 (tabBarController.selectedViewController as! UINavigationController).showViewController(vc, sender: nil)
-            case "Score":
-                tabBarController.presentViewController(ScoreViewController(), animated: true, completion: nil)
             case "Bus":
                 tabBarController.presentViewController(BusViewController(), animated: true, completion: nil)
             default:

@@ -53,14 +53,6 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
-			<string>Score</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>成绩</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>Score</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Bus</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>校车</string>
