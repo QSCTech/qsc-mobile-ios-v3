@@ -115,7 +115,7 @@ class PreferenceViewController: UITableViewController {
             case 1:
                 let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
                 cell.selectionStyle = .None
-                cell.textLabel!.attributedText = "\u{f06e}\t在课程和查询页面显示成绩".attributedWithFontAwesome
+                cell.textLabel!.attributedText = "\u{f06e}\t在课程和工具页面显示成绩".attributedWithFontAwesome
                 let switchView = UISwitch()
                 switchView.on = groupDefaults.boolForKey(ShowScoreKey)
                 switchView.onTintColor = QSCColor.theme
