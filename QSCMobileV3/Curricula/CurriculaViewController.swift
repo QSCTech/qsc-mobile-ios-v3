@@ -10,17 +10,6 @@ import UIKit
 import CurriculaTable
 import QSCMobileKit
 
-private let bgColors = [
-    UIColor(red: 1.0, green: 0.73, blue: 0.0, alpha: 1.0),
-    UIColor(red: 0.0, green: 0.83, blue: 0.62, alpha: 1.0),
-    UIColor(red: 0.78, green: 0.49, blue: 0.87, alpha: 1.0),
-    UIColor(red: 1.0, green: 0.52, blue: 0.11, alpha: 1.0),
-    UIColor(red: 0.42, green: 0.60, blue: 0.98, alpha: 1.0),
-    UIColor(red: 1.0, green: 0.43, blue: 0.51, alpha: 1.0),
-    UIColor(red: 0.0, green: 0.69, blue: 0.95, alpha: 1.0),
-    UIColor(red: 0.46, green: 0.82, blue: 0.0, alpha: 1.0),
-]
-
 class CurriculaViewController: UIViewController {
     
     init() {
@@ -48,7 +37,7 @@ class CurriculaViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "一周课表"
-        titleLabel.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        titleLabel.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
         previousButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
         nextButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
         currentIndex = maxIndex - 1
@@ -101,15 +90,14 @@ class CurriculaViewController: UIViewController {
             titleLabel.text = semester.fullNameForSemester.stringByReplacingOccurrencesOfString("秋", withString: "").stringByReplacingOccurrencesOfString("春", withString: "") + "学期"
         }
         var curricula = [CurriculaTableItem]()
-        for (index, course) in courses.enumerate() {
+        for course in courses {
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
                 let name = "\(course.name!)（\(timePlace.week!)）".stringByReplacingOccurrencesOfString("（每周）", withString: "")
                 let weekday = CurriculaTableWeekday(rawValue: timePlace.weekday!.integerValue)!
                 let startPeriod = Int(timePlace.periods!.substringToIndex(timePlace.periods!.startIndex.successor()), radix: 16)!
                 let endPeriod = Int(timePlace.periods!.substringFromIndex(timePlace.periods!.endIndex.predecessor()), radix: 16)!
-                let bgColor = bgColors[index % bgColors.count]
-                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.whiteColor(), bgColor: bgColor, identifier: course.identifier!) { curriculum in
+                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.whiteColor(), bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
                     let sb = UIStoryboard(name: "CourseDetail", bundle: NSBundle.mainBundle())
                     let vc = sb.instantiateInitialViewController() as! CourseDetailViewController
                     vc.managedObject = self.mobileManager.objectTripleWithIdentifier(curriculum.identifier).0
@@ -119,11 +107,12 @@ class CurriculaViewController: UIViewController {
             }
         }
         curriculaTable.curricula = curricula
-        curriculaTable.textEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        curriculaTable.bgColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        curriculaTable.bgColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
         curriculaTable.borderWidth = 0.5
         curriculaTable.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.9)
-        curriculaTable.cornerRadius = 5
+        curriculaTable.cornerRadius = 2
+        curriculaTable.rectEdgeInsets = UIEdgeInsets(top: 0.5, left: 0.5, bottom: 0.5, right: 0.5)
+        curriculaTable.textEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
     }
     
 }
