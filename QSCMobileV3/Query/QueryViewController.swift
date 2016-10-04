@@ -29,7 +29,7 @@ class QueryViewController: UITableViewController {
         ],
         [
             "name": "浙大邮箱",
-            "url": "https://mail.zju.edu.cn/coremail/login.jsp",
+            "url": "http://mail.zju.edu.cn/coremail/login.jsp",
             "campus": "off",
         ],
         [
