@@ -18,21 +18,21 @@ class QueryCollectionViewDelegate: NSObject {
         "课表",
         "课程",
         "考试",
-//        "作业",
+        "作业",
     ]
     private let icons = [
         "\u{f207}",
         "\u{f073}",
         "\u{f02d}",
         "\u{f040}",
-//        "\u{f0c5}",
+        "\u{f0c5}",
     ]
     private let colors = [
         UIColor(red: 0.498, green: 0.831, blue: 0.745, alpha: 1.0),
         QSCColor.theme,
         QSCColor.course,
         QSCColor.exam,
-//        QSCColor.theme,
+        QSCColor.theme,
     ]
     
 }
@@ -64,10 +64,10 @@ extension QueryCollectionViewDelegate: UICollectionViewDelegate, UICollectionVie
                 let vc = CurriculaViewController()
                 vc.hidesBottomBarWhenPushed = true
                 viewController.showViewController(vc, sender: nil)
-//            case 4:
-//                let vc = HomeworkListViewController()
-//                vc.hidesBottomBarWhenPushed = true
-//                viewController.showViewController(vc, sender: nil)
+            case 4:
+                let vc = HomeworkListViewController()
+                vc.hidesBottomBarWhenPushed = true
+                viewController.showViewController(vc, sender: nil)
             default:
                 let storyboard = UIStoryboard(name: "QueryList", bundle: nil)
                 let vc = storyboard.instantiateInitialViewController() as! SemesterListViewController

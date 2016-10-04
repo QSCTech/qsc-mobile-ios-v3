@@ -187,6 +187,11 @@ public class MobileManager: NSObject {
         )
     }
     
+    public func courseNameWithIdentifier(identifier: String) -> String {
+        let course = objectTripleWithIdentifier(identifier).0
+        return course?.name ?? ""
+    }
+    
     public var semesterScores: [SemesterScore] {
         return dataStore.semesterScores
     }

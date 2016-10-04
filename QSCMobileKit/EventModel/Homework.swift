@@ -17,5 +17,5 @@ public class Homework: NSManagedObject {
     @NSManaged public var deadline: NSDate?
     @NSManaged public var isFinished: NSNumber?
     @NSManaged public var courseEvent: CourseEvent?
-
+    
 }

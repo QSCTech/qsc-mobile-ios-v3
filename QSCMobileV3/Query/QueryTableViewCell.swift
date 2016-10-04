@@ -10,6 +10,9 @@ import UIKit
 
 class QueryTableViewCell: UITableViewCell {
     
+    private let contentSize = CGSize(width: 375, height: 80)
+    
+    var scrollView: UIScrollView!
     var collectionView: UICollectionView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -18,9 +21,15 @@ class QueryTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 60, height: 80)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clearColor()
-        contentView.addSubview(collectionView)
+        
+        scrollView = UIScrollView()
+        scrollView.contentSize = contentSize
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.addSubview(collectionView)
+        contentView.addSubview(scrollView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +38,7 @@ class QueryTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        collectionView.frame = contentView.bounds
+        scrollView.frame = contentView.bounds
     }
     
 }
