@@ -187,7 +187,7 @@ class QueryViewController: UITableViewController {
                 break
             }
             if 1 <= indexPath.row && indexPath.row <= 2 && accountManager.accountForZjuwlan == nil {
-                SVProgressHUD.showErrorWithStatus("尚未设置 ZJUWLAN 账号")
+                SVProgressHUD.showErrorWithStatus("您未设置 ZJUWLAN 账号")
                 break
             }
             // TODO: Handle login errors
