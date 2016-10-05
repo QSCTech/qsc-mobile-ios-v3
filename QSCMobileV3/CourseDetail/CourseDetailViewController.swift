@@ -75,8 +75,8 @@ class CourseDetailViewController: UITableViewController {
     }
     
     private enum Detail: Int {
-        case Basic = 0, Exam, Info, Homework
-        static let count = 4
+        case Basic = 0, Exam, Info, Notes, Homework
+        static let count = 5
     }
     
     private let infos = [
@@ -91,6 +91,18 @@ class CourseDetailViewController: UITableViewController {
         [
             "title": "联系电话",
             "key": "phone",
+        ],
+        [
+            "title": "助教",
+            "key": "ta",
+        ],
+        [
+            "title": "助教邮箱",
+            "key": "taEmail",
+        ],
+        [
+            "title": "助教电话",
+            "key": "taPhone",
         ],
         [
             "title": "课程网站",
@@ -130,6 +142,8 @@ class CourseDetailViewController: UITableViewController {
                 }
             }
             return count
+        case Detail.Notes.rawValue:
+            return 1
         case Detail.Homework.rawValue:
             return homeworks.count + 1
         default:
@@ -152,6 +166,8 @@ class CourseDetailViewController: UITableViewController {
             } else {
                 return 44
             }
+        case Detail.Notes.rawValue:
+            return 150
         case Detail.Homework.rawValue:
             if indexPath.row < homeworks.count {
                 return 60
@@ -160,6 +176,14 @@ class CourseDetailViewController: UITableViewController {
             }
         default:
             return 44
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == Detail.Notes.rawValue {
+            return "备注"
+        } else {
+            return nil
         }
     }
     
@@ -231,6 +255,10 @@ class CourseDetailViewController: UITableViewController {
             cell.textLabel!.text = values[indexPath.row].0
             cell.detailTextLabel!.text = values[indexPath.row].1
             return cell
+        case Detail.Notes.rawValue:
+            let cell = tableView.dequeueReusableCellWithIdentifier("Notes") as! CourseNotesCell
+            cell.notesTextView.text = courseEvent.notes
+            return cell
         case Detail.Homework.rawValue:
             if indexPath.row < homeworks.count {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
@@ -254,33 +282,33 @@ class CourseDetailViewController: UITableViewController {
         case Detail.Info.rawValue:
             let cell = tableView.cellForRowAtIndexPath(indexPath)!
             switch cell.textLabel!.text! {
-            case infos[0]["title"]!:
-                let url = NSURL(string: "http://chalaoshi.cn/search?q=" + courseEvent.teacher!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
+            case "教师":
+                let url = NSURL(string: "http://chalaoshi.cn/search?q=" + cell.detailTextLabel!.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
                 if #available(iOS 9.0, *) {
                     let svc = SFSafariViewController(URL: url)
                     presentViewController(svc, animated: true, completion: nil)
                 }
-            case infos[1]["title"]!:
+            case "电子邮箱", "助教邮箱":
                 if MFMailComposeViewController.canSendMail() {
                     let mcvc = MFMailComposeViewController()
                     mcvc.mailComposeDelegate = self
-                    mcvc.setToRecipients([courseEvent.email!])
+                    mcvc.setToRecipients([cell.detailTextLabel!.text!])
                     presentViewController(mcvc, animated: true, completion: nil)
                 } else {
                     let pasteboard = UIPasteboard.generalPasteboard()
                     pasteboard.string = cell.detailTextLabel!.text
                     SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
                 }
-            case infos[2]["title"]!:
-                UIApplication.sharedApplication().openURL(NSURL(string: "telprompt:" + courseEvent.phone!)!)
-            case infos[3]["title"]!:
+            case "联系电话", "助教电话":
+                UIApplication.sharedApplication().openURL(NSURL(string: "telprompt:" + cell.detailTextLabel!.text!)!)
+            case "课程网站":
                 var prefix = ""
-                if !courseEvent.website!.containsString("://") {
+                if !cell.detailTextLabel!.text!.containsString("://") {
                     prefix = "http://"
-                } else if !courseEvent.website!.hasPrefix("http") {
+                } else if !cell.detailTextLabel!.text!.hasPrefix("http") {
                     prefix = "不支持 "
                 }
-                if let url = NSURL(string: prefix + courseEvent.website!) {
+                if let url = NSURL(string: prefix + cell.detailTextLabel!.text!) {
                     if #available(iOS 9.0, *) {
                         let svc = SFSafariViewController(URL: url)
                         presentViewController(svc, animated: true, completion: nil)

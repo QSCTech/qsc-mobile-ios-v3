@@ -18,6 +18,9 @@ public class CourseEvent: NSManagedObject {
     @NSManaged public var teacher: String?
     @NSManaged public var email: String?
     @NSManaged public var phone: String?
+    @NSManaged public var ta: String?
+    @NSManaged public var taEmail: String?
+    @NSManaged public var taPhone: String?
     @NSManaged public var website: String?
     @NSManaged public var qqGroup: String?
     @NSManaged public var publicEmail: String?
