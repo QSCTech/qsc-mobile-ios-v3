@@ -61,8 +61,8 @@ class HomeworkListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
         let hw = homeworks[indexPath.row]
-        let courseName = MobileManager.sharedInstance.courseNameWithIdentifier(hw.courseEvent!.identifier!)
-        cell.nameLabel.text = "\(hw.name!)（\(courseName)）"
+        cell.nameLabel.text = hw.name
+        cell.courseLabel.text = MobileManager.sharedInstance.courseNameWithIdentifier(hw.courseEvent!.identifier!)
         cell.timeLabel.text = hw.deadline!.stringOfDatetime
         return cell
     }

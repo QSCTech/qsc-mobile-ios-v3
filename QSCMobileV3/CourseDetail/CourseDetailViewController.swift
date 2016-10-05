@@ -264,6 +264,7 @@ class CourseDetailViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
                 cell.nameLabel.text = homeworks[indexPath.row].name
                 cell.timeLabel.text = homeworks[indexPath.row].deadline?.stringOfDatetime
+                cell.courseLabel.removeFromSuperview()
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!

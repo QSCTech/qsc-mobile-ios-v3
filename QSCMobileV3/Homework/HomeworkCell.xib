@@ -29,7 +29,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Homework" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTJ-Wg-DBh">
-                        <rect key="frame" x="24" y="8" width="288" height="20"/>
+                        <rect key="frame" x="24" y="8" width="160" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="560" id="gwG-pY-nxg"/>
                         </constraints>
@@ -58,18 +58,39 @@
                             </mask>
                         </variation>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Course" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgL-8V-net">
+                        <rect key="frame" x="192" y="8" width="120" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="w02-Gs-Ila"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.22352941176470589" green="0.22352941176470589" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="G6c-6M-yZg" firstAttribute="centerY" secondItem="HTJ-Wg-DBh" secondAttribute="centerY" id="0YI-8H-T2A"/>
                     <constraint firstAttribute="trailingMargin" secondItem="HTJ-Wg-DBh" secondAttribute="trailing" id="G7l-lf-B0F"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="HTJ-Wg-DBh" secondAttribute="trailing" id="OIj-mT-cMI"/>
                     <constraint firstItem="HTJ-Wg-DBh" firstAttribute="leading" secondItem="G6c-6M-yZg" secondAttribute="trailing" constant="8" symbolic="YES" id="Osm-4I-FDE"/>
                     <constraint firstItem="HTJ-Wg-DBh" firstAttribute="leading" secondItem="dH1-xx-yjN" secondAttribute="leading" id="Q1A-qa-uKS"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="SgL-8V-net" secondAttribute="trailing" id="Q1y-Jc-av7"/>
                     <constraint firstItem="G6c-6M-yZg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="TJF-Na-h45"/>
                     <constraint firstItem="HTJ-Wg-DBh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="aT3-jS-wWk"/>
+                    <constraint firstItem="SgL-8V-net" firstAttribute="baseline" secondItem="HTJ-Wg-DBh" secondAttribute="baseline" id="eGH-NQ-kil"/>
                     <constraint firstItem="dH1-xx-yjN" firstAttribute="top" secondItem="HTJ-Wg-DBh" secondAttribute="bottom" constant="4" id="nx5-cP-zwu"/>
+                    <constraint firstItem="SgL-8V-net" firstAttribute="leading" secondItem="HTJ-Wg-DBh" secondAttribute="trailing" constant="8" symbolic="YES" id="yxT-Z9-CCv"/>
+                    <constraint firstItem="SgL-8V-net" firstAttribute="trailing" secondItem="HTJ-Wg-DBh" secondAttribute="trailing" id="zhi-z5-8Id"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="G7l-lf-B0F"/>
+                        <exclude reference="zhi-z5-8Id"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="courseLabel" destination="SgL-8V-net" id="4kA-Qc-od4"/>
                 <outlet property="nameLabel" destination="HTJ-Wg-DBh" id="PdM-CA-0cA"/>
                 <outlet property="timeLabel" destination="dH1-xx-yjN" id="kTz-ae-aKm"/>
             </connections>
