@@ -248,6 +248,10 @@ public class MobileManager: NSObject {
         return dataStore.statistics
     }
     
+    public var overseaScore: OverseaScore? {
+        return dataStore.overseaScore
+    }
+    
     /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
     public var allSemesters: [String] {
         return dataStore.allSemesters
@@ -336,7 +340,7 @@ public class MobileManager: NSObject {
         apiSession.scoreRequest { json, error in
             if let json = json {
                 self.dataStore.deleteScores()
-                self.dataStore.createSemesterScores(json)
+                self.dataStore.createScores(json)
                 self.apiSession.statisticsRequest { json, error in
                     if let json = json {
                         self.dataStore.deleteStatistics()

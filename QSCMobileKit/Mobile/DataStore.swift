@@ -25,7 +25,8 @@ class DataStore: NSObject {
         let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("Mobile", withExtension: "momd")!
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
+        try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
         let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         moc.persistentStoreCoordinator = psc
         return moc
@@ -156,32 +157,15 @@ class DataStore: NSObject {
     }
     
     /**
-     Create a single score in managed object context. Note this is a private helper for `createSemesterScores()`.
-     
-     - parameter json:     JSON of a single score.
-     - parameter year:     A string representing the academic year.
-     - parameter semester: A string representing the semester.
-     */
-    private func createScore(json: JSON, year: String, semester: String) {
-        let score = Score(context: managedObjectContext)
-        score.user = currentUser
-        
-        score.credit = json["credit"].floatValue
-        score.identifier = json["identifier"].stringValue
-        score.makeup = json["makeup"].stringValue
-        score.name = json["name"].stringValue
-        score.gradePoint = Float(json["gradePoint"].stringValue)
-        score.score = json["score"].stringValue
-        score.year = year
-        score.semester = semester
-    }
-    
-    /**
      Create all scores including semester scores in managed object context.
      
      - parameter json: JSON of scores.
      */
-    func createSemesterScores(json: JSON) {
+    func createScores(json: JSON) {
+        var creditSum = Float(0)
+        var fourPointSum = Float(0)
+        var hundredPointSum = Float(0)
+        
         for (semester, json) in json["scoreObject"] {
             let semesterScore = SemesterScore(context: managedObjectContext)
             semesterScore.user = currentUser
@@ -191,10 +175,36 @@ class DataStore: NSObject {
             semesterScore.totalCredit = json["totalCredit"].floatValue
             semesterScore.averageGrade = json["averageScore"].floatValue
             
-            for (_, score) in json["scoreList"] {
-                createScore(score, year: semesterScore.year!, semester: semesterScore.semester!)
+            for (_, json) in json["scoreList"] {
+                let score = Score(context: managedObjectContext)
+                score.user = currentUser
+                
+                let credit = json["credit"].floatValue
+                let gradePoint = Float(json["gradePoint"].stringValue)!
+                score.credit = credit
+                score.identifier = json["identifier"].stringValue
+                score.makeup = json["makeup"].stringValue
+                score.name = json["name"].stringValue
+                score.gradePoint = gradePoint
+                score.score = json["score"].stringValue
+                score.year = semesterScore.year!
+                score.semester = semesterScore.semester!
+                
+                creditSum += credit
+                fourPointSum += (gradePoint > 4 ? 4 : gradePoint) * credit
+                if let score = Float(score.score!) {
+                    hundredPointSum += score * credit
+                } else {
+                    hundredPointSum += (gradePoint == 0 ? 0 : gradePoint * 10 + 45) * credit
+                }
             }
         }
+        
+        let overseaScore = OverseaScore(context: managedObjectContext)
+        overseaScore.user = currentUser
+        overseaScore.fourPoint = fourPointSum / creditSum
+        overseaScore.hundredPoint = hundredPointSum / creditSum
+        
         try! managedObjectContext.save()
     }
     
@@ -376,6 +386,9 @@ class DataStore: NSObject {
      Delete all scores of current user.
      */
     func deleteScores() {
+        if let overseaScore = currentUser.overseaScore {
+            managedObjectContext.deleteObject(overseaScore)
+        }
         for semesterScore in currentUser.semesterScores! {
             let semesterScore = semesterScore as! SemesterScore
             managedObjectContext.deleteObject(semesterScore)
@@ -450,6 +463,10 @@ class DataStore: NSObject {
     
     var statistics: Statistics? {
         return currentUser.statistics
+    }
+    
+    var overseaScore: OverseaScore? {
+        return currentUser.overseaScore
     }
     
     /// All semesters in which the current user has studied.

@@ -141,10 +141,15 @@ class QueryViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Score") as! OverallScoreCell
                 if groupDefaults.boolForKey(ShowScoreKey) {
                     let statistics = MobileManager.sharedInstance.statistics
-                    cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
                     cell.totalCreditLabel.text = statistics!.totalCredit!.stringValue
-                    cell.majorGradeLabel.text = String(format: "%.2f", statistics!.majorGrade!.floatValue)
-                    cell.majorCreditLabel.text = statistics!.majorCredit!.stringValue
+                    cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
+                    if let overseaScore = MobileManager.sharedInstance.overseaScore {
+                        cell.fourPointLabel.text = String(format: "%.2f", overseaScore.fourPoint!.floatValue)
+                        cell.hundredPointLabel.text = String(format: "%.1f", overseaScore.hundredPoint!.floatValue)
+                    } else {
+                        cell.fourPointLabel.text = "-"
+                        cell.hundredPointLabel.text = "-"
+                    }
                 } else {
                     cell.hideAll()
                 }

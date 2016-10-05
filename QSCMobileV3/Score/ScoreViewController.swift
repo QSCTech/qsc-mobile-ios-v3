@@ -24,10 +24,10 @@ class ScoreViewController: UIViewController {
     
     private var selectedScores = [Score]()
     
-    @IBOutlet weak var semesterGradeLabel: UILabel!
     @IBOutlet weak var semesterCreditLabel: UILabel!
-    @IBOutlet weak var averageGradeLabel: UILabel!
+    @IBOutlet weak var semesterGradeLabel: UILabel!
     @IBOutlet weak var totalCreditLabel: UILabel!
+    @IBOutlet weak var averageGradeLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!

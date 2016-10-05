@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,12 +8,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScoreViewController" customModule="QSCMobileV3" customModuleProvider="target">
             <connections>
-                <outlet property="averageGradeLabel" destination="JEG-Ew-wQ1" id="RuV-oe-B4k"/>
+                <outlet property="averageGradeLabel" destination="4v5-N3-4Ce" id="29A-Or-60g"/>
                 <outlet property="scrollView" destination="zG2-gN-OJt" id="5Ew-DM-gq1"/>
-                <outlet property="semesterCreditLabel" destination="mKu-8s-lel" id="eZp-Qt-1t1"/>
-                <outlet property="semesterGradeLabel" destination="zwD-2f-PtA" id="pCp-Rl-h32"/>
+                <outlet property="semesterCreditLabel" destination="zwD-2f-PtA" id="EyU-UT-MDq"/>
+                <outlet property="semesterGradeLabel" destination="mKu-8s-lel" id="IyK-TJ-9IJ"/>
                 <outlet property="tableView" destination="obk-3c-FXe" id="bh6-n0-I1J"/>
-                <outlet property="totalCreditLabel" destination="4v5-N3-4Ce" id="xPd-Ie-ktn"/>
+                <outlet property="totalCreditLabel" destination="JEG-Ew-wQ1" id="rJi-1y-Zq2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -57,8 +57,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAW-Vm-xGR">
                             <rect key="frame" x="8" y="0.0" width="133" height="69"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwD-2f-PtA">
-                                    <rect key="frame" x="8" y="24" width="47" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwD-2f-PtA">
+                                    <rect key="frame" x="8" y="24" width="27" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="xIl-Di-qSq"/>
                                     </constraints>
@@ -71,7 +71,7 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="学期均绩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMX-uV-PNh">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="学期学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMX-uV-PNh">
                                     <rect key="frame" x="8" y="12" width="40" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -99,8 +99,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvZ-Ie-Mwf">
                             <rect key="frame" x="149" y="0.0" width="133" height="69"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKu-8s-lel">
-                                    <rect key="frame" x="8" y="24" width="27" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKu-8s-lel">
+                                    <rect key="frame" x="8" y="24" width="47" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="TGA-TD-wCv"/>
                                     </constraints>
@@ -113,7 +113,7 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="学期学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eo-Vs-800">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="学期均绩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eo-Vs-800">
                                     <rect key="frame" x="8" y="12" width="40" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -141,8 +141,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-2q-YjL">
                             <rect key="frame" x="290" y="0.0" width="133" height="69"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEG-Ew-wQ1">
-                                    <rect key="frame" x="8" y="24" width="47" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEG-Ew-wQ1">
+                                    <rect key="frame" x="8" y="24" width="38" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="tRd-bQ-5VX"/>
                                     </constraints>
@@ -155,7 +155,7 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总均绩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUn-E6-jmU">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUn-E6-jmU">
                                     <rect key="frame" x="8" y="12" width="30" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -183,8 +183,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xa8-De-bTm">
                             <rect key="frame" x="431" y="0.0" width="133" height="69"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4v5-N3-4Ce">
-                                    <rect key="frame" x="8" y="24" width="38" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4v5-N3-4Ce">
+                                    <rect key="frame" x="8" y="24" width="47" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="JX9-ic-X6M"/>
                                     </constraints>
@@ -197,7 +197,7 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nP-4f-J5V">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总均绩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nP-4f-J5V">
                                     <rect key="frame" x="8" y="12" width="30" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>

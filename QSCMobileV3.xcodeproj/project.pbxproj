@@ -16,6 +16,7 @@
 		9D08CF611D732B4A008C1D14 /* QueryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D08CF5F1D732B4A008C1D14 /* QueryCollectionViewCell.xib */; };
 		9D08CF651D7330CC008C1D14 /* QueryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08CF641D7330CC008C1D14 /* QueryCollectionViewDelegate.swift */; };
 		9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */; };
+		9D113F8C1DA53ED1005E607C /* OverseaScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D113F8A1DA53ED1005E607C /* OverseaScore.swift */; };
 		9D129CBA1D32539F00A865DF /* SchoolBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D129CB91D32539F00A865DF /* SchoolBus.swift */; };
 		9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387A1D5D937800782E93 /* EventDetail.storyboard */; };
 		9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387C1D5D939D00782E93 /* EventEdit.storyboard */; };
@@ -169,6 +170,7 @@
 		9D08CF5F1D732B4A008C1D14 /* QueryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D08CF641D7330CC008C1D14 /* QueryCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		9D113F8A1DA53ED1005E607C /* OverseaScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverseaScore.swift; sourceTree = "<group>"; };
 		9D129CB91D32539F00A865DF /* SchoolBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolBus.swift; path = Mobile/SchoolBus.swift; sourceTree = "<group>"; };
 		9D17387A1D5D937800782E93 /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventDetail.storyboard; path = QSCMobileV3/EventDetail/EventDetail.storyboard; sourceTree = SOURCE_ROOT; };
 		9D17387C1D5D939D00782E93 /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventEdit.storyboard; path = QSCMobileV3/EventDetail/EventEdit.storyboard; sourceTree = SOURCE_ROOT; };
@@ -589,6 +591,7 @@
 				9DD491081CEAE68A009F70FA /* Mobile.xcdatamodeld */,
 				9DD4910F1CEAE68A009F70FA /* User.swift */,
 				9DD4910D1CEAE68A009F70FA /* Statistics.swift */,
+				9D113F8A1DA53ED1005E607C /* OverseaScore.swift */,
 				9DD491051CEAE68A009F70FA /* Course.swift */,
 				9DD4910E1CEAE68A009F70FA /* TimePlace.swift */,
 				9DD491061CEAE68A009F70FA /* Exam.swift */,
@@ -929,6 +932,7 @@
 				9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */,
 				9DD4911A1CEAE68A009F70FA /* Holiday.swift in Sources */,
 				9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */,
+				9D113F8C1DA53ED1005E607C /* OverseaScore.swift in Sources */,
 				9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */,
 				9DD4911F1CEAE68A009F70FA /* Statistics.swift in Sources */,
 				9DD491181CEAE68A009F70FA /* Course.swift in Sources */,

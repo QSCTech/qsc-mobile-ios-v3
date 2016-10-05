@@ -16,7 +16,6 @@ public class Statistics: NSManagedObject {
     @NSManaged public var majorCredit: NSNumber?
     @NSManaged public var averageGrade: NSNumber?
     @NSManaged public var majorGrade: NSNumber?
-    @NSManaged public var overseaGrade: NSNumber?
     @NSManaged var user: User?
 
 }

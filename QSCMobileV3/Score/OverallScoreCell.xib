@@ -32,8 +32,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="平均绩点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-pv-Uv0">
-                                <rect key="frame" x="8" y="12" width="40" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-pv-Uv0">
+                                <rect key="frame" x="8" y="12" width="30" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -75,8 +75,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-76-3Fd">
-                                <rect key="frame" x="8" y="12" width="30" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="平均绩点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-76-3Fd">
+                                <rect key="frame" x="8" y="12" width="40" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -118,8 +118,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="主修绩点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-pL-wsY">
-                                <rect key="frame" x="8" y="12" width="40" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="四分制" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-pL-wsY">
+                                <rect key="frame" x="8" y="12" width="30" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -161,8 +161,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="主修学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov5-m6-0Sg">
-                                <rect key="frame" x="8" y="12" width="40" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="百分制" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov5-m6-0Sg">
+                                <rect key="frame" x="8" y="12" width="30" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -208,10 +208,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="averageGradeLabel" destination="yax-3K-Acg" id="d3V-4b-x4O"/>
-                <outlet property="majorCreditLabel" destination="9cR-1g-IwU" id="hcD-Ls-DiB"/>
-                <outlet property="majorGradeLabel" destination="SUh-bS-QjI" id="LE5-oA-d5j"/>
-                <outlet property="totalCreditLabel" destination="Qym-l6-jfw" id="I5E-p8-xy9"/>
+                <outlet property="averageGradeLabel" destination="Qym-l6-jfw" id="M5L-dN-OdB"/>
+                <outlet property="fourPointLabel" destination="SUh-bS-QjI" id="4vi-Ln-Gmh"/>
+                <outlet property="hundredPointLabel" destination="9cR-1g-IwU" id="q9k-nO-gbu"/>
+                <outlet property="totalCreditLabel" destination="yax-3K-Acg" id="EsH-SQ-3Gj"/>
             </connections>
             <point key="canvasLocation" x="649" y="478.5"/>
         </tableViewCell>

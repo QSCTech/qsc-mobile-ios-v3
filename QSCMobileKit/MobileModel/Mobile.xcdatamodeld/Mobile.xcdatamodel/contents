@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Xcode 7.0">
     <entity name="Adjustment" representedClassName=".Adjustment" syncable="YES">
         <attribute name="fromEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fromStart" optional="YES" attributeType="Date" syncable="YES"/>
@@ -57,6 +57,11 @@
         <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="holidays" inverseEntity="Year" syncable="YES"/>
     </entity>
+    <entity name="OverseaScore" representedClassName=".OverseaScore" syncable="YES">
+        <attribute name="fourPoint" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hundredPoint" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="overseaScore" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Score" representedClassName=".Score" syncable="YES">
         <attribute name="credit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradePoint" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -86,7 +91,6 @@
         <attribute name="averageGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="majorCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="majorGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="overseaGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="totalCredit" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statistics" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -104,6 +108,7 @@
         <attribute name="startSemester" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="user" inverseEntity="Course" syncable="YES"/>
         <relationship name="exams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exam" inverseName="user" inverseEntity="Exam" syncable="YES"/>
+        <relationship name="overseaScore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OverseaScore" inverseName="user" inverseEntity="OverseaScore" syncable="YES"/>
         <relationship name="scores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Score" inverseName="user" inverseEntity="Score" syncable="YES"/>
         <relationship name="semesterScores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SemesterScore" inverseName="user" inverseEntity="SemesterScore" syncable="YES"/>
         <relationship name="statistics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Statistics" inverseName="user" inverseEntity="Statistics" syncable="YES"/>
@@ -126,9 +131,10 @@
         <element name="Score" positionX="-27" positionY="18" width="128" height="180"/>
         <element name="Semester" positionX="18" positionY="153" width="128" height="120"/>
         <element name="SemesterScore" positionX="9" positionY="126" width="128" height="120"/>
-        <element name="Statistics" positionX="-9" positionY="135" width="128" height="135"/>
+        <element name="Statistics" positionX="-9" positionY="135" width="128" height="120"/>
         <element name="TimePlace" positionX="-9" positionY="108" width="128" height="135"/>
-        <element name="User" positionX="27" positionY="153" width="128" height="165"/>
+        <element name="User" positionX="27" positionY="153" width="128" height="180"/>
         <element name="Year" positionX="9" positionY="144" width="128" height="135"/>
+        <element name="OverseaScore" positionX="-9" positionY="135" width="128" height="90"/>
     </elements>
 </model>

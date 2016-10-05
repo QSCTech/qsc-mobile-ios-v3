@@ -11,16 +11,16 @@ import QSCMobileKit
 
 class OverallScoreCell: UITableViewCell {
     
-    @IBOutlet weak var averageGradeLabel: UILabel!
     @IBOutlet weak var totalCreditLabel: UILabel!
-    @IBOutlet weak var majorGradeLabel: UILabel!
-    @IBOutlet weak var majorCreditLabel: UILabel!
+    @IBOutlet weak var averageGradeLabel: UILabel!
+    @IBOutlet weak var fourPointLabel: UILabel!
+    @IBOutlet weak var hundredPointLabel: UILabel!
     
     func hideAll() {
         averageGradeLabel.text = "-"
         totalCreditLabel.text = "-"
-        majorGradeLabel.text = "-"
-        majorCreditLabel.text = "-"
+        fourPointLabel.text = "-"
+        hundredPointLabel.text = "-"
     }
     
 }

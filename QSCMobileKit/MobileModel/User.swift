@@ -20,5 +20,6 @@ class User: NSManagedObject {
     @NSManaged var scores: NSSet?
     @NSManaged var semesterScores: NSSet?
     @NSManaged var statistics: Statistics?
+    @NSManaged var overseaScore: OverseaScore?
 
 }

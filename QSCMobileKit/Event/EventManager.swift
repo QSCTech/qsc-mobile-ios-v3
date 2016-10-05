@@ -26,7 +26,8 @@ public class EventManager: NSObject {
         
         let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
+        try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
         let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         moc.persistentStoreCoordinator = psc
         return moc
