@@ -52,8 +52,7 @@ class ZjuwlanLoginViewController: UIViewController {
     }
     
     @IBAction func textFieldDidChange(sender: AnyObject) {
-        let isValid = usernameField.text!.isValidSid && !passwordField.text!.isEmpty
-        if isValid {
+        if !usernameField.text!.isEmpty && !passwordField.text!.isEmpty {
             saveButton.enabled = true
             saveButton.alpha = 1
         } else {
