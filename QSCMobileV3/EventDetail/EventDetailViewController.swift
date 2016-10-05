@@ -97,6 +97,7 @@ class EventDetailViewController: UITableViewController {
             for notif in UIApplication.sharedApplication().scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == self.customEvent.objectID.URIRepresentation().URLString }) {
                 UIApplication.sharedApplication().cancelLocalNotification(notif)
             }
+            NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": self.customEvent.start!, "end": self.customEvent.end!])
             EventManager.sharedInstance.removeCustomEvent(self.customEvent)
             self.navigationController?.popViewControllerAnimated(true)
         }

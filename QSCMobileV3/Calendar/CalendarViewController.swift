@@ -43,11 +43,23 @@ class CalendarViewController: UIViewController {
         rightBorder.borderWidth = 1
         rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
         weekLabel.layer.addSublayer(rightBorder)
+        
+        NSNotificationCenter.defaultCenter().addObserverForName("ClearCache", object: nil, queue: NSOperationQueue.mainQueue()) { notification in
+            if let start = notification.userInfo?["start"] as? NSDate, end = notification.userInfo?["end"] as? NSDate {
+                var date = NSCalendar.currentCalendar().startOfDayForDate(start)
+                while date <= end {
+                    self.cache.removeValueForKey(date)
+                    date = date.dateByAddingTimeInterval(86400)
+                }
+            } else {
+                self.cache.removeAll()
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         updateForSelectedDate()
     }
     

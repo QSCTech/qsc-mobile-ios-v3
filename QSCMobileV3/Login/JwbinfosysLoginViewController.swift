@@ -37,6 +37,7 @@ class JwbinfosysLoginViewController: UIViewController {
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
                 self.dismissViewControllerAnimated(true, completion: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil)
                 SVProgressHUD.showSuccessWithStatus("登录成功")
             } else {
                 SVProgressHUD.showErrorWithStatus(error)

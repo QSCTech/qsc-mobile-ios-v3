@@ -257,9 +257,10 @@ public class MobileManager: NSObject {
     // MARK: - Refresh data
     
     /**
-     Try to refresh data of calendar, courses, exams, scores and buses. This method would succeed or fail both silently.
-    
-     - parameter callback: A closure to be executed once the request has finished.
+     Try to refresh data of calendar, courses, exams, scores and buses.
+     
+     - parameter errorBlock: A closure to be executed if there is any error.
+     - parameter callback:   A closure to be executed once the request has finished.
      */
     public func refreshAll(errorBlock: (NSNotification) -> Void, callback: () -> Void) {
         let observer = NSNotificationCenter.defaultCenter().addObserverForName("RefreshError", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: errorBlock)

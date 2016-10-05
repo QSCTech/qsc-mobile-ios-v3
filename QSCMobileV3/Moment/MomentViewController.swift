@@ -83,10 +83,6 @@ class MomentViewController: UIViewController {
         }
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillEnterForegroundNotification, object: nil)
-    }
-    
     func updateCurrentEvent() {
         if events.isEmpty {
             return

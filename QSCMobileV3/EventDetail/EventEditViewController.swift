@@ -310,6 +310,10 @@ class EventEditViewController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
+        let started = customEvent!.start
+        let ended = customEvent!.end
+        let repeated = (customEvent!.notification ?? -1) >= 0
+        
         customEvent!.name = titleField.text
         customEvent!.place = placeField.text
         if allDaySwitch.on {
@@ -326,6 +330,15 @@ class EventEditViewController: UITableViewController {
         // TODO: To implement tags
         customEvent!.tags = ""
         eventManager.save()
+        
+        if repeated || customEvent!.notification >= 0 {
+            NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil)
+        } else {
+            if let started = started, ended = ended {
+                NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": started, "end": ended])
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": customEvent!.start!, "end": customEvent!.end!])
+        }
         
         if customEvent!.notification >= 0 {
             let notif = UILocalNotification()
