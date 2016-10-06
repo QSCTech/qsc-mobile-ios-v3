@@ -148,7 +148,7 @@ class APISession: NSObject {
             }
             if json["status"].string == "ok" {
                 let responseData = JSON(self.jsonObjectFromString(json["responseList"].stringValue))[0]["data"]
-                if responseData.isExists() {
+                if responseData.exists() {
                     callback(responseData, nil)
                 } else {
                     print("[Resource request] Response data is null")
