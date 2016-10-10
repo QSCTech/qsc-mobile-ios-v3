@@ -744,6 +744,7 @@
 					04C331C41BA2F2E600EF959F = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = RURVDL9XJS;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -759,6 +760,7 @@
 					9DF6125C1BAA89CC004B0A8A = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = RURVDL9XJS;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -1086,6 +1088,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1115,6 +1118,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1144,6 +1148,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1173,6 +1178,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

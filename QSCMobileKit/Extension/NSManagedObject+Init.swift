@@ -18,7 +18,7 @@ extension NSManagedObject {
      
      - returns: A entity of the specified class.
      */
-    convenience init(context: NSManagedObjectContext) {
+    convenience init(in context: NSManagedObjectContext) {
         let entityDescription = NSEntityDescription.entityForName(String(self.dynamicType), inManagedObjectContext: context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }

@@ -133,7 +133,7 @@ public class EventManager: NSObject {
      */
     func createCourseEvent(identifier: String, teacher: String) {
         if courseEventForIdentifier(identifier) == nil {
-            let courseEvent = CourseEvent(context: managedObjectContext)
+            let courseEvent = CourseEvent(in: managedObjectContext)
             courseEvent.identifier = identifier
             courseEvent.teacher = teacher
             try! managedObjectContext.save()
@@ -141,7 +141,7 @@ public class EventManager: NSObject {
     }
     
     public var newCustomEvent: CustomEvent {
-        return CustomEvent(context: managedObjectContext)
+        return CustomEvent(in: managedObjectContext)
     }
     
     public func removeCustomEvent(event: CustomEvent) {
@@ -150,7 +150,7 @@ public class EventManager: NSObject {
     }
     
     public func newHomeworkOfCourseEvent(courseEvent: CourseEvent) -> Homework {
-        let hw = Homework(context: managedObjectContext)
+        let hw = Homework(in: managedObjectContext)
         hw.courseEvent = courseEvent
         return hw
     }

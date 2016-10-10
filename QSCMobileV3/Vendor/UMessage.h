@@ -86,16 +86,16 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
 */
 + (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories;
 
-/** 注册RemoteNotification的类型
- @brief 分别针对iOS8以前版本及iOS8及以后开启推送消息推送。
- 默认的时候是sound，badge ,alert三个功能全部打开。
- @param categories 交互式推送行为分类。可以具体查看demo。
- @param types7 iOS7及以下版本的推送类型。默认types7 = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
- @param types8 iOS8及以上版本的推送类型。默认types8 = UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge;
-*/
-+ (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories
-                     withTypesForIos7:(UIRemoteNotificationType)types7
-                     withTypesForIos8:(UIUserNotificationType)types8;
+///** 注册RemoteNotification的类型
+// @brief 分别针对iOS8以前版本及iOS8及以后开启推送消息推送。
+// 默认的时候是sound，badge ,alert三个功能全部打开。
+// @param categories 交互式推送行为分类。可以具体查看demo。
+// @param types7 iOS7及以下版本的推送类型。默认types7 = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+// @param types8 iOS8及以上版本的推送类型。默认types8 = UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge;
+//*/
+//+ (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories
+//                     withTypesForIos7:(UIRemoteNotificationType)types7
+//                     withTypesForIos8:(UIUserNotificationType)types8;
 
 
 

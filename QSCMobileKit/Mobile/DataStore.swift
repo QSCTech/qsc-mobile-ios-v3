@@ -19,7 +19,7 @@ class DataStore: NSObject {
         super.init()
     }
     
-    private static let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("Mobile.sqlite")
+    private static let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("Mobile.sqlite")!
     
     private static let managedObjectContext: NSManagedObjectContext = {
         let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("Mobile", withExtension: "momd")!
@@ -47,7 +47,7 @@ class DataStore: NSObject {
         for (_, json) in json {
             for (_, json) in json {
                 
-                let course = Course(context: managedObjectContext)
+                let course = Course(in: managedObjectContext)
                 course.user = currentUser
                 
                 course.code = json["code"].stringValue
@@ -93,7 +93,7 @@ class DataStore: NSObject {
                         continue
                     }
                     
-                    let timePlace = TimePlace(context: managedObjectContext)
+                    let timePlace = TimePlace(in: managedObjectContext)
                     timePlace.course = course
                     timePlace.place = json["place"].stringValue.chomp("#").chomp("*")
                     
@@ -132,7 +132,7 @@ class DataStore: NSObject {
         for (semester, json) in json {
             for (_, json) in json {
                 
-                let exam = Exam(context: managedObjectContext)
+                let exam = Exam(in: managedObjectContext)
                 exam.user = currentUser
                 
                 exam.credit = json["credit"].floatValue
@@ -167,7 +167,7 @@ class DataStore: NSObject {
         var hundredPointSum = Float(0)
         
         for (semester, json) in json["scoreObject"] {
-            let semesterScore = SemesterScore(context: managedObjectContext)
+            let semesterScore = SemesterScore(in: managedObjectContext)
             semesterScore.user = currentUser
             
             semesterScore.year = semester.substringToIndex(semester.startIndex.advancedBy(9))
@@ -176,7 +176,7 @@ class DataStore: NSObject {
             semesterScore.averageGrade = json["averageScore"].floatValue
             
             for (_, json) in json["scoreList"] {
-                let score = Score(context: managedObjectContext)
+                let score = Score(in: managedObjectContext)
                 score.user = currentUser
                 
                 let credit = json["credit"].floatValue
@@ -200,7 +200,7 @@ class DataStore: NSObject {
             }
         }
         
-        let overseaScore = OverseaScore(context: managedObjectContext)
+        let overseaScore = OverseaScore(in: managedObjectContext)
         overseaScore.user = currentUser
         overseaScore.fourPoint = fourPointSum / creditSum
         overseaScore.hundredPoint = hundredPointSum / creditSum
@@ -214,7 +214,7 @@ class DataStore: NSObject {
      - parameter json: JSON of statistics.
      */
     func createStatistics(json: JSON) {
-        let statistics = Statistics(context: managedObjectContext)
+        let statistics = Statistics(in: managedObjectContext)
         statistics.user = currentUser
         
         statistics.totalCredit = json["totalCredit"].floatValue
@@ -237,7 +237,7 @@ class DataStore: NSObject {
         formatter.dateFormat = "yyyy-MM-dd"
         
         for (key, json) in json {
-            let year = Year(context: managedObjectContext)
+            let year = Year(in: managedObjectContext)
             year.name = key
             year.start = formatter.dateFromString(json["start"].stringValue)
             year.end = formatter.dateFromString(json["end"].stringValue)
@@ -247,7 +247,7 @@ class DataStore: NSObject {
                     continue
                 }
                 
-                let semester = Semester(context: managedObjectContext)
+                let semester = Semester(in: managedObjectContext)
                 semester.year = year
                 
                 semester.name = key
@@ -256,7 +256,7 @@ class DataStore: NSObject {
                 semester.startsWithWeekZero = json["startsWithWeekZero"].boolValue
             }
             for (_, json) in json["holidays"] {
-                let holiday = Holiday(context: managedObjectContext)
+                let holiday = Holiday(in: managedObjectContext)
                 holiday.year = year
                 
                 holiday.name = json["name"].stringValue
@@ -264,7 +264,7 @@ class DataStore: NSObject {
                 holiday.end = formatter.dateFromString(json["end"].stringValue)
             }
             for (_, json) in json["adjustments"] {
-                let adjustment = Adjustment(context: managedObjectContext)
+                let adjustment = Adjustment(in: managedObjectContext)
                 adjustment.year = year
                 
                 adjustment.name = json["name"].stringValue
@@ -284,13 +284,13 @@ class DataStore: NSObject {
      */
     func createBuses(json: JSON) {
         for (_, json) in json {
-            let bus = Bus(context: managedObjectContext)
+            let bus = Bus(in: managedObjectContext)
             bus.name = json["name"].stringValue
             bus.serviceDays = json["serviceDays"].stringValue
             bus.note = json["note"].stringValue
             
             for (index, json) in json["stops"] {
-                let busStop = BusStop(context: managedObjectContext)
+                let busStop = BusStop(in: managedObjectContext)
                 busStop.bus = bus
                 
                 busStop.campus = json["campus"].stringValue
@@ -311,7 +311,7 @@ class DataStore: NSObject {
         if DataStore.entityForUser(username) != nil {
             return
         }
-        let user = User(context: managedObjectContext)
+        let user = User(in: managedObjectContext)
         user.sid = username
         try! managedObjectContext.save()
     }

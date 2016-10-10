@@ -91,7 +91,7 @@ class APISession: NSObject {
                 ]
             ]
         ]
-        let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")
+        let loginURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("login")!
         alamofire.request(.POST, loginURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
                 let errorDescription = response.result.error!.localizedDescription.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "。"))
@@ -134,7 +134,7 @@ class APISession: NSObject {
             "sessionVerify": verify.toBase64()!,
             "requestList": request,
         ]
-        let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")
+        let resourcesURL = NSURL(string: MobileAPIURL)!.URLByAppendingPathComponent("getResources")!
         alamofire.request(.POST, resourcesURL, parameters: postData, encoding: .JSON).responseJSON { response in
             if response.result.isFailure {
                 let errorDescription = response.result.error!.localizedDescription.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "。"))
