@@ -23,46 +23,46 @@ class HomeworkViewController: UITableViewController {
         
         nameField.text = homework.name
         detailView.text = homework.notes
-        datePicker.date = homework.deadline ?? NSDate()
+        datePicker.date = homework.deadline ?? Date()
         
         nameDidChange(nameField)
         detailView.delegate = self
         textViewDidChange(detailView)
     }
     
-    @IBAction func nameDidChange(sender: UITextField) {
-        navigationItem.rightBarButtonItem?.enabled = !sender.text!.isEmpty
+    @IBAction func nameDidChange(_ sender: UITextField) {
+        navigationItem.rightBarButtonItem?.isEnabled = !sender.text!.isEmpty
     }
     
-    @IBAction func dismissKeyboard(sender: AnyObject) {
+    @IBAction func dismissKeyboard(_ sender: AnyObject) {
         view.endEditing(true)
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         if homework.addTime == nil {
             EventManager.sharedInstance.removeHomework(homework)
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(_ sender: AnyObject) {
         homework.name = nameField.text
         homework.notes = detailView.text
-        homework.addTime = homework.addTime ?? NSDate()
+        homework.addTime = homework.addTime ?? Date()
         homework.deadline = datePicker.date
         homework.isFinished = false
         EventManager.sharedInstance.save()
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension HomeworkViewController: UITextViewDelegate {
     
-    func textViewDidChange(textView: UITextView) {
-        placeholderLabel.hidden = !textView.text.isEmpty
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
     }
     
 }

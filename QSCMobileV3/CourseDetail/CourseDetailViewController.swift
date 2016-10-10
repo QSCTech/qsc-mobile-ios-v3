@@ -17,7 +17,7 @@ class CourseDetailViewController: UITableViewController {
     
     var managedObject: NSManagedObject! {
         didSet {
-            if let identifier = managedObject.valueForKey("identifier") as? String {
+            if let identifier = managedObject.value(forKey: "identifier") as? String {
                 (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
                 courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
             }
@@ -36,28 +36,28 @@ class CourseDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = courseObject!.name
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
-        tableView.registerNib(UINib(nibName: "HomeworkCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Homework")
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
+        tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if managedObject.managedObjectContext == nil {
-            navigationController?.popViewControllerAnimated(false)
+            _ = navigationController?.popViewController(animated: false)
         } else {
             reloadData()
         }
     }
     
     func reloadData() {
-        homeworks = courseEvent.homeworks!.sortedArrayUsingDescriptors([NSSortDescriptor(key: "deadline", ascending: true)]) as! [Homework]
+        homeworks = courseEvent.homeworks!.sortedArray(using: [NSSortDescriptor(key: "deadline", ascending: true)]) as! [Homework]
         tableView.reloadData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nc = segue.destinationViewController as! UINavigationController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nc = segue.destination as! UINavigationController
         switch segue.identifier! {
         case "Edit":
             let vc = nc.topViewController as! CourseEditViewController
@@ -74,12 +74,12 @@ class CourseDetailViewController: UITableViewController {
         }
     }
     
-    private enum Detail: Int {
-        case Basic = 0, Exam, Info, Notes, Homework
+    enum Detail: Int {
+        case basic = 0, exam, info, notes, homework
         static let count = 5
     }
     
-    private let infos = [
+    let infos = [
         [
             "title": "教师",
             "key": "teacher",
@@ -122,53 +122,53 @@ class CourseDetailViewController: UITableViewController {
         ],
     ]
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return Detail.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case Detail.Basic.rawValue:
+        case Detail.basic.rawValue:
             return courseObject!.timePlaces!.count + 1
-        case Detail.Exam.rawValue:
+        case Detail.exam.rawValue:
             return 2
-        case Detail.Info.rawValue:
+        case Detail.info.rawValue:
             var count = 0
             for info in infos {
-                if let value = courseEvent.valueForKey(info["key"]!) as? String {
+                if let value = courseEvent.value(forKey: info["key"]!) as? String {
                     if !value.isEmpty {
                         count += 1
                     }
                 }
             }
             return count
-        case Detail.Notes.rawValue:
+        case Detail.notes.rawValue:
             return 1
-        case Detail.Homework.rawValue:
+        case Detail.homework.rawValue:
             return homeworks.count + 1
         default:
             return 0
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case Detail.Basic.rawValue:
+        case Detail.basic.rawValue:
             switch indexPath.row {
             case 0:
                 return 66
             default:
                 return 60
             }
-        case Detail.Exam.rawValue:
+        case Detail.exam.rawValue:
             if indexPath.row == 1 && examObject?.startTime != nil {
                 return 60
             } else {
                 return 44
             }
-        case Detail.Notes.rawValue:
+        case Detail.notes.rawValue:
             return 150
-        case Detail.Homework.rawValue:
+        case Detail.homework.rawValue:
             if indexPath.row < homeworks.count {
                 return 60
             } else {
@@ -179,20 +179,20 @@ class CourseDetailViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == Detail.Notes.rawValue {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == Detail.notes.rawValue {
             return "备注"
         } else {
             return nil
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case Detail.Basic.rawValue:
+        case Detail.basic.rawValue:
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier("Name") as! CourseNameCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Name") as! CourseNameCell
                 cell.nameLabel.text = courseObject!.name
                 cell.identifierLabel!.text = courseObject!.identifier
                 cell.categoryLabel!.text = courseObject!.category
@@ -203,18 +203,18 @@ class CourseDetailViewController: UITableViewController {
                 }
                 return cell
             default:
-                let cell = tableView.dequeueReusableCellWithIdentifier("TimePlace") as! CourseTimePlaceCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TimePlace") as! CourseTimePlaceCell
                 let sortDescriptors = [NSSortDescriptor(key: "weekday", ascending: true), NSSortDescriptor(key: "periods", ascending: true)]
-                let timePlace = courseObject!.timePlaces!.sortedArrayUsingDescriptors(sortDescriptors)[indexPath.row - 1] as! TimePlace
+                let timePlace = courseObject!.timePlaces!.sortedArray(using: sortDescriptors)[indexPath.row - 1] as! TimePlace
                 cell.placeLabel!.text = timePlace.place!
                 cell.timeLabel!.text = courseObject!.semester! + "学期 " + timePlace.time!
                 return cell
             }
-        case Detail.Exam.rawValue:
+        case Detail.exam.rawValue:
             switch indexPath.row {
             case 1:
-                if let examObject = examObject, _ = examObject.startTime {
-                    let cell = tableView.dequeueReusableCellWithIdentifier("TimePlace") as! CourseTimePlaceCell
+                if let examObject = examObject, let _ = examObject.startTime {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "TimePlace") as! CourseTimePlaceCell
                     cell.placeLabel!.text = examObject.place
                     if !examObject.seat!.isEmpty {
                         cell.placeLabel!.text! += " #" + examObject.seat!
@@ -222,31 +222,31 @@ class CourseDetailViewController: UITableViewController {
                     cell.timeLabel!.text = examObject.time
                     return cell
                 } else {
-                    let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
-                    cell.selectionStyle = .None
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
+                    cell.selectionStyle = .none
                     cell.textLabel!.text = "无考试信息"
                     cell.detailTextLabel!.text = ""
                     return cell
                 }
             default:
-                let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
-                cell.selectionStyle = .None
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
+                cell.selectionStyle = .none
                 cell.textLabel!.text = "学分：" + courseObject!.credit!.stringValue
                 if let scoreObject = scoreObject {
                     cell.detailTextLabel!.text =  String(format: "成绩：%.1f / %@", scoreObject.gradePoint!.floatValue, scoreObject.score!)
                 } else {
                     cell.detailTextLabel!.text = "暂无成绩信息"
                 }
-                if !groupDefaults.boolForKey(ShowScoreKey) {
+                if !groupDefaults.bool(forKey: ShowScoreKey) {
                     cell.detailTextLabel!.text = ""
                 }
                 return cell
             }
-        case Detail.Info.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+        case Detail.info.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
             var values = [(String, String)]()
             for info in infos {
-                if let value = courseEvent.valueForKey(info["key"]!) as? String {
+                if let value = courseEvent.value(forKey: info["key"]!) as? String {
                     if !value.isEmpty {
                         values.append((info["title"]!, value))
                     }
@@ -255,19 +255,19 @@ class CourseDetailViewController: UITableViewController {
             cell.textLabel!.text = values[indexPath.row].0
             cell.detailTextLabel!.text = values[indexPath.row].1
             return cell
-        case Detail.Notes.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Notes") as! CourseNotesCell
+        case Detail.notes.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Notes") as! CourseNotesCell
             cell.notesTextView.text = courseEvent.notes
             return cell
-        case Detail.Homework.rawValue:
+        case Detail.homework.rawValue:
             if indexPath.row < homeworks.count {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
                 cell.nameLabel.text = homeworks[indexPath.row].name
                 cell.timeLabel.text = homeworks[indexPath.row].deadline?.stringOfDatetime
                 cell.courseLabel.removeFromSuperview()
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
                 cell.textLabel!.text = "添加新的作业…"
                 cell.detailTextLabel!.text = ""
                 return cell
@@ -277,92 +277,86 @@ class CourseDetailViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
-        case Detail.Info.rawValue:
-            let cell = tableView.cellForRowAtIndexPath(indexPath)!
+        case Detail.info.rawValue:
+            let cell = tableView.cellForRow(at: indexPath)!
             switch cell.textLabel!.text! {
             case "教师":
-                let url = NSURL(string: "http://chalaoshi.cn/search?q=" + cell.detailTextLabel!.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
-                if #available(iOS 9.0, *) {
-                    let svc = SFSafariViewController(URL: url)
-                    presentViewController(svc, animated: true, completion: nil)
-                }
+                let url = URL(string: "http://chalaoshi.cn/search?q=" + cell.detailTextLabel!.text!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+                let svc = SFSafariViewController(url: url)
+                present(svc, animated: true, completion: nil)
             case "电子邮箱", "助教邮箱":
                 if MFMailComposeViewController.canSendMail() {
                     let mcvc = MFMailComposeViewController()
                     mcvc.mailComposeDelegate = self
                     mcvc.setToRecipients([cell.detailTextLabel!.text!])
-                    presentViewController(mcvc, animated: true, completion: nil)
+                    present(mcvc, animated: true, completion: nil)
                 } else {
-                    let pasteboard = UIPasteboard.generalPasteboard()
-                    pasteboard.string = cell.detailTextLabel!.text
-                    SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
+                    UIPasteboard.general.string = cell.detailTextLabel!.text
+                    SVProgressHUD.showSuccess(withStatus: "已拷贝到剪贴板")
                 }
             case "联系电话", "助教电话":
-                UIApplication.sharedApplication().openURL(NSURL(string: "telprompt:" + cell.detailTextLabel!.text!)!)
+                UIApplication.shared.openURL(URL(string: "telprompt:" + cell.detailTextLabel!.text!)!)
             case "课程网站":
                 var prefix = ""
-                if !cell.detailTextLabel!.text!.containsString("://") {
+                if !cell.detailTextLabel!.text!.contains("://") {
                     prefix = "http://"
                 } else if !cell.detailTextLabel!.text!.hasPrefix("http") {
                     prefix = "不支持 "
                 }
-                if let url = NSURL(string: prefix + cell.detailTextLabel!.text!) {
-                    if #available(iOS 9.0, *) {
-                        let svc = SFSafariViewController(URL: url)
-                        presentViewController(svc, animated: true, completion: nil)
-                    }
+                if let url = URL(string: prefix + cell.detailTextLabel!.text!) {
+                    let svc = SFSafariViewController(url: url)
+                    present(svc, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController(title: "课程网站", message: "浏览器无法打开链接", preferredStyle: .Alert)
-                    let action = UIAlertAction(title: "好", style: .Default, handler: nil)
+                    let alert = UIAlertController(title: "课程网站", message: "浏览器无法打开链接", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "好", style: .default, handler: nil)
                     alert.addAction(action)
-                    presentViewController(alert, animated: true, completion: nil)
+                    present(alert, animated: true, completion: nil)
                 }
             default:
-                let pasteboard = UIPasteboard.generalPasteboard()
-                pasteboard.string = cell.detailTextLabel!.text
-                SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
+                UIPasteboard.general.string = cell.detailTextLabel!.text
+                SVProgressHUD.showSuccess(withStatus: "已拷贝到剪贴板")
             }
-        case Detail.Homework.rawValue:
+        case Detail.homework.rawValue:
             if indexPath.row < homeworks.count {
                 selectedHomework = homeworks[indexPath.row]
             } else {
                 selectedHomework = nil
             }
-            performSegueWithIdentifier("Homework", sender: nil)
+            performSegue(withIdentifier: "Homework", sender: nil)
         default:
             break
         }
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.section == Detail.Homework.rawValue && indexPath.row < homeworks.count {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == Detail.homework.rawValue && indexPath.row < homeworks.count {
             return true
         } else {
             return false
         }
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .Destructive, title: "删除") { action, indexPath in
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "删除") { action, indexPath in
             EventManager.sharedInstance.removeHomework(self.homeworks[indexPath.row])
             self.reloadData()
         }
         return [delete]
     }
     
-    func edit(sender: AnyObject) {
-        performSegueWithIdentifier("Edit", sender: nil)
+    func edit(_ sender: AnyObject) {
+        performSegue(withIdentifier: "Edit", sender: nil)
     }
     
 }
 
 extension CourseDetailViewController: MFMailComposeViewControllerDelegate {
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }

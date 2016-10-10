@@ -20,7 +20,7 @@ class DiscoverViewController: UIViewController {
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.showsVerticalScrollIndicator = false
         webView.scrollView.showsHorizontalScrollIndicator = false
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: DiscoverURL)!))
+        webView.load(URLRequest(url: URL(string: DiscoverURL)!))
         view.addSubview(webView)
     }
     

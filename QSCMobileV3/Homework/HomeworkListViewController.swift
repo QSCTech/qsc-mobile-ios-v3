@@ -12,14 +12,14 @@ import QSCMobileKit
 class HomeworkListViewController: UITableViewController {
     
     init() {
-        super.init(nibName: "HomeworkListViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "HomeworkListViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    private var homeworks = [Homework]()
+    var homeworks = [Homework]()
     
     func reloadData() {
         homeworks = EventManager.sharedInstance.allHomeworks
@@ -30,36 +30,36 @@ class HomeworkListViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "作业一览"
-        tableView.registerNib(UINib(nibName: "HomeworkCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Homework")
+        tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         var flag = true
-        for (index, hw) in homeworks.enumerate() {
-            if hw.deadline >= NSDate() {
-                tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0), atScrollPosition: .Top, animated: true)
+        for (index, hw) in homeworks.enumerated() {
+            if hw.deadline! >= Date() {
+                tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
                 flag = false
                 break
             }
         }
         if flag && homeworks.count > 0 {
-            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: homeworks.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+            tableView.scrollToRow(at: IndexPath(row: homeworks.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return homeworks.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
         let hw = homeworks[indexPath.row]
         cell.nameLabel.text = hw.name
         cell.courseLabel.text = MobileManager.sharedInstance.courseNameWithIdentifier(hw.courseEvent!.identifier!)
@@ -67,16 +67,16 @@ class HomeworkListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let sb = UIStoryboard(name: "Homework", bundle: NSBundle.mainBundle())
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let sb = UIStoryboard(name: "Homework", bundle: Bundle.main)
         let nc = sb.instantiateInitialViewController() as! UINavigationController
         (nc.topViewController as! HomeworkViewController).homework = homeworks[indexPath.row]
-        presentViewController(nc, animated: true, completion: nil)
+        present(nc, animated: true, completion: nil)
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .Destructive, title: "删除") { action, indexPath in
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "删除") { action, indexPath in
             EventManager.sharedInstance.removeHomework(self.homeworks[indexPath.row])
             self.reloadData()
         }

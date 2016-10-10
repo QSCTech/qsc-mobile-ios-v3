@@ -16,10 +16,10 @@ class NoticeAPI: NSObject {
     
     private let alamofire = alamofireManager(timeoutInterval: 10)
     
-    private func noticeRequest(url: NSURL, callback: (JSON?, String?) -> Void) {
+    private func noticeRequest(_ url: URL, callback: @escaping (JSON?, String?) -> Void) {
         let headers = ["X-Requested-With": "XMLHttpRequest"]
         
-        alamofire.request(.GET, url, headers: headers).responseJSON { response in
+        alamofire.request(url, headers: headers).responseJSON { response in
             if response.result.isFailure {
                 print("[Notice request] \(response.result.error!.localizedDescription)")
                 callback(nil, "网络连接失败")
@@ -35,13 +35,13 @@ class NoticeAPI: NSObject {
         }
     }
     
-    func getAllEventsWithPage(page: Int, callback: (JSON?, String?) -> Void) {
-        let url = NSURL(string: "\(NoticeURL)/events?page=\(page)")!
+    func getAllEventsWithPage(_ page: Int, callback: @escaping (JSON?, String?) -> Void) {
+        let url = URL(string: "\(NoticeURL)/events?page=\(page)")!
         noticeRequest(url, callback: callback)
     }
     
-    func getEventDetailWithId(id: String, callback: (JSON?, String?) -> Void) {
-        let url = NSURL(string: "\(NoticeURL)/events/\(id)")!
+    func getEventDetailWithId(_ id: String, callback: @escaping (JSON?, String?) -> Void) {
+        let url = URL(string: "\(NoticeURL)/events/\(id)")!
         noticeRequest(url, callback: callback)
     }
     

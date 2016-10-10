@@ -12,7 +12,7 @@ class EventCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        accessoryType = .DisclosureIndicator
+        accessoryType = .disclosureIndicator
     }
 
     @IBOutlet weak var nameLabel: UILabel!

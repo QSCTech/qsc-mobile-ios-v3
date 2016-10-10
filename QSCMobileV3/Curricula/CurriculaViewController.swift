@@ -13,7 +13,7 @@ import QSCMobileKit
 class CurriculaViewController: UIViewController {
     
     init() {
-        super.init(nibName: "CurriculaViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "CurriculaViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,11 +25,11 @@ class CurriculaViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var curriculaTable: CurriculaTable!
     
-    private let mobileManager = MobileManager.sharedInstance
-    private let calendarManager = CalendarManager.sharedInstance
+    let mobileManager = MobileManager.sharedInstance
+    let calendarManager = CalendarManager.sharedInstance
     
-    private var currentIndex = -1
-    private var maxIndex: Int {
+    var currentIndex = -1
+    var maxIndex: Int {
         return mobileManager.allSemesters.count * 2 - 1
     }
     
@@ -38,24 +38,24 @@ class CurriculaViewController: UIViewController {
         
         navigationItem.title = "一周课表"
         titleLabel.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
-        previousButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
-        nextButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+        previousButton.setTitleColor(UIColor.lightGray, for: .disabled)
+        nextButton.setTitleColor(UIColor.lightGray, for: .disabled)
         currentIndex = maxIndex - 1
-        let semester = calendarManager.semesterForDate(NSDate())
+        let semester = calendarManager.semesterForDate(Date())
         if semester == .Winter || semester == .Summer {
             currentIndex += 1
         }
         updateIndex()
     }
     
-    @IBAction func goToPrevious(sender: AnyObject) {
+    @IBAction func goToPrevious(_ sender: AnyObject) {
         if currentIndex > 0 {
             currentIndex -= 1
             updateIndex()
         }
     }
     
-    @IBAction func goToNext(sender: AnyObject) {
+    @IBAction func goToNext(_ sender: AnyObject) {
         if currentIndex < maxIndex {
             currentIndex += 1
             updateIndex()
@@ -64,14 +64,14 @@ class CurriculaViewController: UIViewController {
     
     func checkBounds() {
         if currentIndex == 0 {
-            previousButton.enabled = false
+            previousButton.isEnabled = false
         } else {
-            previousButton.enabled = true
+            previousButton.isEnabled = true
         }
         if currentIndex == maxIndex {
-            nextButton.enabled = false
+            nextButton.isEnabled = false
         } else {
-            nextButton.enabled = true
+            nextButton.isEnabled = true
         }
     }
     
@@ -84,24 +84,24 @@ class CurriculaViewController: UIViewController {
         let courses: [Course]
         if currentIndex % 2 == 0 {
             courses = mobileManager.getCourses(semester).filter { $0.semester!.includesSemester(.Autumn) || $0.semester!.includesSemester(.Spring) }
-            titleLabel.text = semester.fullNameForSemester.stringByReplacingOccurrencesOfString("冬", withString: "").stringByReplacingOccurrencesOfString("夏", withString: "") + "学期"
+            titleLabel.text = semester.fullNameForSemester.replacingOccurrences(of: "冬", with: "").replacingOccurrences(of: "夏", with: "") + "学期"
         } else {
             courses = mobileManager.getCourses(semester).filter { $0.semester!.includesSemester(.Winter) || $0.semester!.includesSemester(.Summer) }
-            titleLabel.text = semester.fullNameForSemester.stringByReplacingOccurrencesOfString("秋", withString: "").stringByReplacingOccurrencesOfString("春", withString: "") + "学期"
+            titleLabel.text = semester.fullNameForSemester.replacingOccurrences(of: "秋", with: "").replacingOccurrences(of: "春", with: "") + "学期"
         }
         var curricula = [CurriculaTableItem]()
         for course in courses {
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
-                let name = "\(course.name!)（\(timePlace.week!)）".stringByReplacingOccurrencesOfString("（每周）", withString: "")
-                let weekday = CurriculaTableWeekday(rawValue: timePlace.weekday!.integerValue)!
-                let startPeriod = Int(timePlace.periods!.substringToIndex(timePlace.periods!.startIndex.successor()), radix: 16)!
-                let endPeriod = Int(timePlace.periods!.substringFromIndex(timePlace.periods!.endIndex.predecessor()), radix: 16)!
-                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.whiteColor(), bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
-                    let sb = UIStoryboard(name: "CourseDetail", bundle: NSBundle.mainBundle())
+                let name = "\(course.name!)（\(timePlace.week!)）".replacingOccurrences(of: "（每周）", with: "")
+                let weekday = CurriculaTableWeekday(rawValue: timePlace.weekday!.intValue)!
+                let startPeriod = Int(timePlace.periods!.substring(to: timePlace.periods!.index(after: timePlace.periods!.startIndex)), radix: 16)!
+                let endPeriod = Int(timePlace.periods!.substring(from: timePlace.periods!.index(before: timePlace.periods!.endIndex)), radix: 16)!
+                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.white, bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
+                    let sb = UIStoryboard(name: "CourseDetail", bundle: Bundle.main)
                     let vc = sb.instantiateInitialViewController() as! CourseDetailViewController
                     vc.managedObject = self.mobileManager.objectTripleWithIdentifier(curriculum.identifier).0
-                    self.showViewController(vc, sender: nil)
+                    self.show(vc, sender: nil)
                 }
                 curricula.append(curriculum)
             }

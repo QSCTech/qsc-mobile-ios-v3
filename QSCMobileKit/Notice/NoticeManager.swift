@@ -15,10 +15,10 @@ public class NoticeManager: NSObject {
     
     private let noticeAPI = NoticeAPI.sharedInstance
     
-    private func eventFromJSON(json: JSON) -> NoticeEvent {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 28800)
+    private func eventFromJSON(_ json: JSON) -> NoticeEvent {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 28800)
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
         return NoticeEvent(
@@ -26,20 +26,20 @@ public class NoticeManager: NSObject {
             name: json["event"]["name"].stringValue,
             place: json["event"]["place"].stringValue,
             summary: json["event"]["summary"].stringValue,
-            start: formatter.dateFromString(json["event"]["start_time"].stringValue)!,
-            end: formatter.dateFromString(json["event"]["end_time"].stringValue)!,
+            start: formatter.date(from: json["event"]["start_time"].stringValue)!,
+            end: formatter.date(from: json["event"]["end_time"].stringValue)!,
             categoryId: json["category"]["id"].stringValue,
             categoryName: json["category"]["name"].stringValue,
             sponsorId: json["category"]["id"].stringValue,
             sponsorName: json["sponsor"]["showname"].stringValue,
-            sponsorLogoURL: NSURL(string: json["sponsor"]["logo"].stringValue)!,
+            sponsorLogoURL: URL(string: json["sponsor"]["logo"].stringValue)!,
             bonus: nil,
             content: nil,
             posterURL: nil
         )
     }
     
-    public func allEventsWithPage(page: Int, callback: ([NoticeEvent]?, String?) -> Void) {
+    public func allEventsWithPage(_ page: Int, callback: @escaping ([NoticeEvent]?, String?) -> Void) {
         noticeAPI.getAllEventsWithPage(page) { json, error in
             guard let json = json else {
                 callback(nil, error)
@@ -53,7 +53,7 @@ public class NoticeManager: NSObject {
         }
     }
     
-    public func updateDetailWithEvent(event: NoticeEvent, callback: (NoticeEvent?, String?) -> Void) {
+    public func updateDetailWithEvent(_ event: NoticeEvent, callback: @escaping (NoticeEvent?, String?) -> Void) {
         noticeAPI.getEventDetailWithId(event.id) { json, error in
             guard let json = json else {
                 callback(nil, error)
@@ -70,7 +70,7 @@ public class NoticeManager: NSObject {
             event.bonus = bonus
             event.content = json["event"]["description"].stringValue
             let url = json["cover"]["filename"].stringValue
-            event.posterURL = NSURL(string: url)
+            event.posterURL = URL(string: url)
             callback(event, nil)
         }
     }

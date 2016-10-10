@@ -13,7 +13,7 @@ import QSCMobileKit
 class JwbinfosysLoginViewController: UIViewController {
 
     init() {
-        super.init(nibName: "JwbinfosysLoginViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "JwbinfosysLoginViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,43 +32,43 @@ class JwbinfosysLoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 5
     }
     
-    @IBAction func login(sender: AnyObject) {
-        SVProgressHUD.showWithStatus("登录中")
+    @IBAction func login(_ sender: AnyObject) {
+        SVProgressHUD.show(withStatus: "登录中")
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
-                self.dismissViewControllerAnimated(true, completion: nil)
-                NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil)
-                SVProgressHUD.showSuccessWithStatus("登录成功")
+                self.dismiss(animated: true, completion: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil)
+                SVProgressHUD.showSuccess(withStatus: "登录成功")
             } else {
-                SVProgressHUD.showErrorWithStatus(error)
+                SVProgressHUD.showError(withStatus: error)
             }
         }
     }
     
-    @IBAction func textFieldDidChange(sender: AnyObject) {
+    @IBAction func textFieldDidChange(_ sender: AnyObject) {
         let isValid = usernameField.text!.isValidSid && !passwordField.text!.isEmpty
         if isValid {
-            loginButton.enabled = true
+            loginButton.isEnabled = true
             loginButton.alpha = 1
         } else {
-            loginButton.enabled = false
+            loginButton.isEnabled = false
             loginButton.alpha = 0.5
         }
     }
     
-    @IBAction func dismissKeyboard(sender: AnyObject) {
+    @IBAction func dismissKeyboard(_ sender: AnyObject) {
         view.endEditing(true)
     }
     
-    @IBAction func close(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func close(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension JwbinfosysLoginViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         login(textField)
         return false
     }

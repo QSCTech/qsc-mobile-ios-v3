@@ -17,7 +17,7 @@ let CampusToIndexKey = "CampusToIndex"
 class BusViewController: UIViewController {
     
     init() {
-        super.init(nibName: "BusViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "BusViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,10 +31,10 @@ class BusViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.registerNib(UINib(nibName: "BusCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Bus")
+        tableView.register(UINib(nibName: "BusCell", bundle: Bundle.main), forCellReuseIdentifier: "Bus")
         
         campusDidChange()
-        weekendSwitch.on = isWeekend
+        weekendSwitch.isOn = isWeekend
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -45,116 +45,115 @@ class BusViewController: UIViewController {
     
     let campuses = ["紫金港", "玉泉", "西溪", "之江", "华家池"]
     
-    var fromIndex = groupDefaults.integerForKey(CampusFromIndexKey)
-    var toIndex = groupDefaults.integerForKey(CampusToIndexKey)
-    var isWeekend = NSCalendar.currentCalendar().isDateInWeekend(NSDate())
+    var fromIndex = groupDefaults.integer(forKey: CampusFromIndexKey)
+    var toIndex = groupDefaults.integer(forKey: CampusToIndexKey)
+    var isWeekend = Calendar.current.isDateInWeekend(Date())
     var schoolBus: SchoolBus!
     
     func campusDidChange() {
-        fromButon.setTitle(campuses[fromIndex], forState: .Normal)
-        toButton.setTitle(campuses[toIndex], forState: .Normal)
+        fromButon.setTitle(campuses[fromIndex], for: .normal)
+        toButton.setTitle(campuses[toIndex], for: .normal)
         schoolBus = SchoolBus(from: campuses[fromIndex], to: campuses[toIndex], isWeekend: isWeekend)
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: true)
         
-        groupDefaults.setInteger(fromIndex, forKey: CampusFromIndexKey)
-        groupDefaults.setInteger(toIndex, forKey: CampusToIndexKey)
+        groupDefaults.set(fromIndex, forKey: CampusFromIndexKey)
+        groupDefaults.set(toIndex, forKey: CampusToIndexKey)
     }
     
-    @IBAction func selectCampuses(sender: UIButton) {
+    @IBAction func selectCampuses(_ sender: UIButton) {
         let picker = ActionSheetMultipleStringPicker(title: "选择校区", rows: [campuses, campuses], initialSelection: [fromIndex, toIndex], doneBlock: { picker, indexes, values in
             if let indexes = indexes as? [Int] {
                 self.fromIndex = indexes[0]
                 self.toIndex = indexes[1]
                 self.campusDidChange()
             }
-        }, cancelBlock: nil, origin: sender)
+        }, cancel: nil, origin: sender)!
         picker.hideCancel = true
-        picker.showActionSheetPicker()
+        picker.show()
     }
     
-    @IBAction func exchangeCampuses(sender: UIButton) {
+    @IBAction func exchangeCampuses(_ sender: UIButton) {
         swap(&fromIndex, &toIndex)
         campusDidChange()
     }
     
-    @IBAction func weekendModeDidChange(sender: UISwitch) {
-        isWeekend = sender.on
+    @IBAction func weekendModeDidChange(_ sender: UISwitch) {
+        isWeekend = sender.isOn
         campusDidChange()
     }
     
-    @IBAction func close(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func close(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension BusViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schoolBus.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Bus") as! BusCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Bus") as! BusCell
         cell.nameLabel.text = schoolBus.busName(indexPath.row)
         cell.timeLabel.text = schoolBus.fromTime(indexPath.row) + " - " + schoolBus.toTime(indexPath.row)
         cell.noteLabel.text = schoolBus.busNote(indexPath.row)
-        cell.noteIcon.hidden = cell.noteLabel.text!.isEmpty
+        cell.noteIcon.isHidden = cell.noteLabel.text!.isEmpty
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.whiteColor()
-            cell.plusButton.setImage(UIImage(named: "PlusGray"), forState: .Normal)
+            cell.backgroundColor = UIColor.white
+            cell.plusButton.setImage(UIImage(named: "PlusGray"), for: .normal)
         } else {
             cell.backgroundColor = UIColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 1.0)
-            cell.plusButton.setImage(UIImage(named: "PlusWhite"), forState: .Normal)
+            cell.plusButton.setImage(UIImage(named: "PlusWhite"), for: .normal)
         }
-        cell.plusButton.setTitle(String(indexPath.row), forState: .Normal)
-        cell.plusButton.addTarget(self, action: #selector(addEvent), forControlEvents: .TouchUpInside)
+        cell.plusButton.setTitle(String(indexPath.row), for: .normal)
+        cell.plusButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
         return cell
     }
     
-    func addEvent(sender: UIButton) {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    func addEvent(_ sender: UIButton) {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "HH:mm"
         let index = Int(sender.currentTitle!)!
         let from = schoolBus.fromTime(index) != "*" ? schoolBus.fromTime(index) : schoolBus.toTime(index)
         let to = schoolBus.toTime(index) != "*" ? schoolBus.toTime(index) : schoolBus.fromTime(index)
-        var fromDate: NSDate?
-        var toDate: NSDate?
-        if let from = formatter.dateFromString(from), to = formatter.dateFromString(to) {
-            let calendar = NSCalendar.currentCalendar()
-            let dateComps = calendar.components([.Year, .Month, .Day], fromDate: NSDate())
+        var fromDate: Date?
+        var toDate: Date?
+        if let from = formatter.date(from: from), let to = formatter.date(from: to) {
+            var dateComps = Calendar.current.dateComponents([.year, .month, .day], from: Date())
             
-            let fromComps = calendar.components([.Hour, .Minute], fromDate: from)
+            var fromComps = Calendar.current.dateComponents([.hour, .minute], from: from)
             dateComps.hour = fromComps.hour
             dateComps.minute = fromComps.minute
-            fromDate = calendar.dateFromComponents(dateComps)
+            fromDate = Calendar.current.date(from: dateComps)
             
-            let toComps = calendar.components([.Hour, .Minute], fromDate: to)
+            let toComps = Calendar.current.dateComponents([.hour, .minute], from: to)
             dateComps.hour = toComps.hour
             dateComps.minute = toComps.minute
-            toDate = calendar.dateFromComponents(dateComps)
+            toDate = Calendar.current.date(from: dateComps)
         }
         
         let eventManager = EventManager.sharedInstance
         let event = eventManager.newCustomEvent
-        event.category = Event.Category.Bus.rawValue
+        event.category = Event.Category.bus.rawValue as NSNumber
         event.name = "乘坐" + schoolBus.busName(index)
         event.notes = schoolBus.busNote(index)
         event.repeatType = "永不"
-        event.repeatEnd = NSDate()
+        event.repeatEnd = Date()
         event.notification = 0
         event.sponsor = "浙江大学"
         event.tags = ""
-        if let fromDate = fromDate, toDate = toDate {
-            event.duration = Event.Duration.PartialTime.rawValue
+        if let fromDate = fromDate, let toDate = toDate {
+            event.duration = Event.Duration.partialTime.rawValue as NSNumber
             event.start = fromDate
             event.end = toDate
         } else {
-            event.duration = Event.Duration.AllDay.rawValue
-            event.start = NSDate()
-            event.end = NSDate()
+            event.duration = Event.Duration.allDay.rawValue as NSNumber
+            event.start = Date()
+            event.end = Date()
         }
         switch fromIndex {
         case 0:
@@ -171,7 +170,7 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
             event.place = ""
         }
         eventManager.save()
-        SVProgressHUD.showSuccessWithStatus("已添加到今日日程")
+        SVProgressHUD.showSuccess(withStatus: "已添加到今日日程")
     }
     
 }

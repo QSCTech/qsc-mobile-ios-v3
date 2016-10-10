@@ -69,5 +69,5 @@ extension Int {
 }
 
 enum Weekday: Int {
-    case Sunday = 1, Monday, Tuesday, Thursday, Friday, Saturday
+    case sunday = 1, monday, tuesday, thursday, friday, saturday
 }

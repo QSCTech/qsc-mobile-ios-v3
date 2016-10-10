@@ -8,35 +8,34 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
     
-    public var today: NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        return calendar.startOfDayForDate(self)
+    public var today: Date {
+        return Calendar.current.startOfDay(for: self)
     }
     
-    public var tomorrow: NSDate {
-        let dayTimeInterval = NSTimeInterval(86400)
-        return today.dateByAddingTimeInterval(dayTimeInterval)
+    public var tomorrow: Date {
+        let dayTimeInterval = TimeInterval(86400)
+        return today.addingTimeInterval(dayTimeInterval)
     }
     
-    private var datetimeFormatter: NSDateFormatter {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    private var datetimeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy年M月d日    HH:mm"
         return formatter
     }
     
     public var stringOfDatetime: String {
-        return datetimeFormatter.stringFromDate(self)
+        return datetimeFormatter.string(from: self)
     }
     
     public var stringOfDate: String {
-        return stringOfDatetime.componentsSeparatedByString("    ").first!
+        return stringOfDatetime.components(separatedBy: "    ").first!
     }
     
     public var stringOfTime: String {
-        return stringOfDatetime.componentsSeparatedByString("    ").last!
+        return stringOfDatetime.components(separatedBy: "    ").last!
     }
     
 }

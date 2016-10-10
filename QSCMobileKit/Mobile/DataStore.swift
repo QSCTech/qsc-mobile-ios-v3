@@ -19,15 +19,15 @@ class DataStore: NSObject {
         super.init()
     }
     
-    private static let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("Mobile.sqlite")
+    private static let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroupIdentifier)!.appendingPathComponent("Mobile.sqlite")
     
     private static let managedObjectContext: NSManagedObjectContext = {
-        let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("Mobile", withExtension: "momd")!
-        let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = Bundle(identifier: QSCMobileKitIdentifier)!.url(forResource: "Mobile", withExtension: "momd")!
+        let mom = NSManagedObjectModel(contentsOf: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
-        try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
-        let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        try! psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: options)
+        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = psc
         return moc
     }()
@@ -43,18 +43,17 @@ class DataStore: NSObject {
      
      - parameter json: JSON of courses.
      */
-    func createCourses(json: JSON) {
+    func createCourses(_ json: JSON) {
         for (_, json) in json {
             for (_, json) in json {
-                
-                let course = Course(context: managedObjectContext)
+                let course = NSEntityDescription.insertNewObject(forEntityName: "Course", into: managedObjectContext) as! Course
                 course.user = currentUser
                 
                 course.code = json["code"].stringValue
                 course.name = json["name"].stringValue
                 course.teacher = json["teacher"].stringValue
                 course.semester = json["semester"].stringValue
-                course.isDetermined = json["determined"].boolValue
+                course.isDetermined = json["determined"].numberValue
                 course.year = json["year"].stringValue
                 
                 if course.semester!.includesSemester(.Spring) || course.semester!.includesSemester(.Summer) {
@@ -73,13 +72,13 @@ class DataStore: NSObject {
                 course.identifier = "(\(course.identifier!))-\(course.code!)"
                 
                 let basicInfo = json["basicInfo"]
-                course.credit = basicInfo["Credit"].floatValue
+                course.credit = basicInfo["Credit"].numberValue
                 course.englishName = basicInfo["EnglishName"].stringValue
                 course.faculty = basicInfo["Faculty"].stringValue
                 course.prerequisite = basicInfo["Prerequisite"].stringValue
                 
                 course.category = basicInfo["Category"].stringValue
-                course.category = course.category!.stringByReplacingOccurrencesOfString("\\", withString: "/")
+                course.category = course.category!.replacingOccurrences(of: "\\", with: "/")
                 if course.code!.hasPrefix("401") {
                     course.category = "体育课"
                 } else if Int(course.code!) != nil {
@@ -93,14 +92,14 @@ class DataStore: NSObject {
                         continue
                     }
                     
-                    let timePlace = TimePlace(context: managedObjectContext)
+                    let timePlace = NSEntityDescription.insertNewObject(forEntityName: "TimePlace", into: managedObjectContext) as! TimePlace
                     timePlace.course = course
                     timePlace.place = json["place"].stringValue.chomp("#").chomp("*")
                     
                     timePlace.time = ""
                     if let dayOfWeek = Int(json["dayOfWeek"].stringValue, radix:10) {
-                        timePlace.weekday = dayOfWeek % 7 + 1
-                        timePlace.time! += timePlace.weekday!.integerValue.stringForWeekday
+                        timePlace.weekday = (dayOfWeek % 7 + 1) as NSNumber
+                        timePlace.time! += timePlace.weekday!.intValue.stringForWeekday
                     }
                     timePlace.week = json["week"].stringValue
                     if timePlace.week != "每周" {
@@ -115,7 +114,7 @@ class DataStore: NSObject {
                     timePlace.time! += " \(periods.first!.stringValue)\(periods.count == 1 ? "" : "-" + periods.last!.stringValue) 节"
                     let startTime = timePlace.periods!.startTimeForPeriods
                     let endTime = timePlace.periods!.endTimeForPeriods
-                    timePlace.time! += String(format: " (%02d:%02d-%02d:%02d)", startTime.hour, startTime.minute, endTime.hour, endTime.minute)
+                    timePlace.time! += String(format: " (%02d:%02d-%02d:%02d)", startTime.hour!, startTime.minute!, endTime.hour!, endTime.minute!)
                 }
                 
             }
@@ -128,28 +127,28 @@ class DataStore: NSObject {
      
      - parameter json: JSON of exams.
      */
-    func createExams(json: JSON) {
+    func createExams(_ json: JSON) {
         for (semester, json) in json {
             for (_, json) in json {
                 
-                let exam = Exam(context: managedObjectContext)
+                let exam = NSEntityDescription.insertNewObject(forEntityName: "Exam", into: managedObjectContext) as! Exam
                 exam.user = currentUser
                 
-                exam.credit = json["credit"].floatValue
+                exam.credit = json["credit"].numberValue
                 exam.identifier = json["identifier"].stringValue
-                exam.isRelearning = json["isRelearning"].boolValue
+                exam.isRelearning = json["isRelearning"].numberValue
                 exam.name = json["name"].stringValue
                 exam.place = (json["place"].string ?? "暂无考场信息").chomp("#").chomp("*")
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
-                exam.time = json["time"].stringValue.stringByReplacingOccurrencesOfString("(", withString: " ").stringByReplacingOccurrencesOfString(")", withString: "")
-                exam.year = semester.substringToIndex(semester.startIndex.advancedBy(9))
+                exam.time = json["time"].stringValue.replacingOccurrences(of: "(", with: " ").replacingOccurrences(of: ")", with: "")
+                exam.year = semester.substring(to: semester.characters.index(semester.startIndex, offsetBy: 9))
                 
-                let formatter = NSDateFormatter()
-                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                exam.startTime = formatter.dateFromString(json["timeStart"].stringValue)
-                exam.endTime = formatter.dateFromString(json["timeEnd"].stringValue)
+                exam.startTime = formatter.date(from: json["timeStart"].stringValue)
+                exam.endTime = formatter.date(from: json["timeEnd"].stringValue)
                 
             }
         }
@@ -161,31 +160,31 @@ class DataStore: NSObject {
      
      - parameter json: JSON of scores.
      */
-    func createScores(json: JSON) {
+    func createScores(_ json: JSON) {
         var creditSum = Float(0)
         var fourPointSum = Float(0)
         var hundredPointSum = Float(0)
         
         for (semester, json) in json["scoreObject"] {
-            let semesterScore = SemesterScore(context: managedObjectContext)
+            let semesterScore = NSEntityDescription.insertNewObject(forEntityName: "SemesterScore", into: managedObjectContext) as! SemesterScore
             semesterScore.user = currentUser
             
-            semesterScore.year = semester.substringToIndex(semester.startIndex.advancedBy(9))
-            semesterScore.semester = semester.substringFromIndex(semester.endIndex.advancedBy(-2))
-            semesterScore.totalCredit = json["totalCredit"].floatValue
-            semesterScore.averageGrade = json["averageScore"].floatValue
+            semesterScore.year = semester.substring(to: semester.characters.index(semester.startIndex, offsetBy: 9))
+            semesterScore.semester = semester.substring(from: semester.characters.index(semester.endIndex, offsetBy: -2))
+            semesterScore.totalCredit = json["totalCredit"].numberValue
+            semesterScore.averageGrade = json["averageScore"].numberValue
             
             for (_, json) in json["scoreList"] {
-                let score = Score(context: managedObjectContext)
+                let score = NSEntityDescription.insertNewObject(forEntityName: "Score", into: managedObjectContext) as! Score
                 score.user = currentUser
                 
                 let credit = json["credit"].floatValue
                 let gradePoint = Float(json["gradePoint"].stringValue)!
-                score.credit = credit
+                score.credit = credit as NSNumber
                 score.identifier = json["identifier"].stringValue
                 score.makeup = json["makeup"].stringValue
                 score.name = json["name"].stringValue
-                score.gradePoint = gradePoint
+                score.gradePoint = gradePoint as NSNumber
                 score.score = json["score"].stringValue
                 score.year = semesterScore.year!
                 score.semester = semesterScore.semester!
@@ -200,10 +199,10 @@ class DataStore: NSObject {
             }
         }
         
-        let overseaScore = OverseaScore(context: managedObjectContext)
+        let overseaScore = NSEntityDescription.insertNewObject(forEntityName: "OverseaScore", into: managedObjectContext) as! OverseaScore
         overseaScore.user = currentUser
-        overseaScore.fourPoint = fourPointSum / creditSum
-        overseaScore.hundredPoint = hundredPointSum / creditSum
+        overseaScore.fourPoint = (fourPointSum / creditSum) as NSNumber
+        overseaScore.hundredPoint = (hundredPointSum / creditSum) as NSNumber
         
         try! managedObjectContext.save()
     }
@@ -213,14 +212,14 @@ class DataStore: NSObject {
      
      - parameter json: JSON of statistics.
      */
-    func createStatistics(json: JSON) {
-        let statistics = Statistics(context: managedObjectContext)
+    func createStatistics(_ json: JSON) {
+        let statistics = NSEntityDescription.insertNewObject(forEntityName: "Statistics", into: managedObjectContext) as! Statistics
         statistics.user = currentUser
         
-        statistics.totalCredit = json["totalCredit"].floatValue
-        statistics.averageGrade = json["averageGradePoint"].floatValue
-        statistics.majorCredit = json["totalCreditMajor"].floatValue
-        statistics.majorGrade = json["averageGradePointMajor"].floatValue
+        statistics.totalCredit = json["totalCredit"].numberValue
+        statistics.averageGrade = json["averageGradePoint"].numberValue
+        statistics.majorCredit = json["totalCreditMajor"].numberValue
+        statistics.majorGrade = json["averageGradePointMajor"].numberValue
         
         try! managedObjectContext.save()
     }
@@ -230,48 +229,48 @@ class DataStore: NSObject {
      
      - parameter json: JSON of calendar.
      */
-    func createCalendar(json: JSON) {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 28800) // APIv3
+    func createCalendar(_ json: JSON) {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 28800) // APIv3
         formatter.dateFormat = "yyyy-MM-dd"
         
         for (key, json) in json {
-            let year = Year(context: managedObjectContext)
+            let year = NSEntityDescription.insertNewObject(forEntityName: "Year", into: managedObjectContext) as! Year
             year.name = key
-            year.start = formatter.dateFromString(json["start"].stringValue)
-            year.end = formatter.dateFromString(json["end"].stringValue)
+            year.start = formatter.date(from: json["start"].stringValue)
+            year.end = formatter.date(from: json["end"].stringValue)
             
             for (key, json) in json["semesters"] {
                 if CalendarSemester(rawValue: key) == nil {
                     continue
                 }
                 
-                let semester = Semester(context: managedObjectContext)
+                let semester = NSEntityDescription.insertNewObject(forEntityName: "Semester", into: managedObjectContext) as! Semester
                 semester.year = year
                 
                 semester.name = key
-                semester.start = formatter.dateFromString(json["start"].stringValue)
-                semester.end = formatter.dateFromString(json["end"].stringValue)
-                semester.startsWithWeekZero = json["startsWithWeekZero"].boolValue
+                semester.start = formatter.date(from: json["start"].stringValue)
+                semester.end = formatter.date(from: json["end"].stringValue)
+                semester.startsWithWeekZero = json["startsWithWeekZero"].numberValue
             }
             for (_, json) in json["holidays"] {
-                let holiday = Holiday(context: managedObjectContext)
+                let holiday = NSEntityDescription.insertNewObject(forEntityName: "Holiday", into: managedObjectContext) as! Holiday
                 holiday.year = year
                 
                 holiday.name = json["name"].stringValue
-                holiday.start = formatter.dateFromString(json["start"].stringValue)
-                holiday.end = formatter.dateFromString(json["end"].stringValue)
+                holiday.start = formatter.date(from: json["start"].stringValue)
+                holiday.end = formatter.date(from: json["end"].stringValue)
             }
             for (_, json) in json["adjustments"] {
-                let adjustment = Adjustment(context: managedObjectContext)
+                let adjustment = NSEntityDescription.insertNewObject(forEntityName: "Adjustment", into: managedObjectContext) as! Adjustment
                 adjustment.year = year
                 
                 adjustment.name = json["name"].stringValue
-                adjustment.fromStart = formatter.dateFromString(json["fromStart"].stringValue)
-                adjustment.fromEnd = formatter.dateFromString(json["fromEnd"].stringValue)
-                adjustment.toStart = formatter.dateFromString(json["toStart"].stringValue)
-                adjustment.toEnd = formatter.dateFromString(json["toEnd"].stringValue)
+                adjustment.fromStart = formatter.date(from: json["fromStart"].stringValue)
+                adjustment.fromEnd = formatter.date(from: json["fromEnd"].stringValue)
+                adjustment.toStart = formatter.date(from: json["toStart"].stringValue)
+                adjustment.toEnd = formatter.date(from: json["toEnd"].stringValue)
             }
         }
         try! managedObjectContext.save()
@@ -282,21 +281,21 @@ class DataStore: NSObject {
      
      - parameter json: JSON of buses.
      */
-    func createBuses(json: JSON) {
+    func createBuses(_ json: JSON) {
         for (_, json) in json {
-            let bus = Bus(context: managedObjectContext)
+            let bus = NSEntityDescription.insertNewObject(forEntityName: "Bus", into: managedObjectContext) as! Bus
             bus.name = json["name"].stringValue
             bus.serviceDays = json["serviceDays"].stringValue
             bus.note = json["note"].stringValue
             
             for (index, json) in json["stops"] {
-                let busStop = BusStop(context: managedObjectContext)
+                let busStop = NSEntityDescription.insertNewObject(forEntityName: "BusStop", into: managedObjectContext) as! BusStop
                 busStop.bus = bus
                 
                 busStop.campus = json["campus"].stringValue
                 busStop.time = json["time"].stringValue
                 busStop.location = json["location"].stringValue
-                busStop.index = Int(index, radix: 10)
+                busStop.index = Int(index, radix: 10)! as NSNumber
             }
         }
         try! managedObjectContext.save()
@@ -307,11 +306,11 @@ class DataStore: NSObject {
      
      - parameter username: Username of the user.
      */
-    static func createUser(username: String) {
+    static func createUser(_ username: String) {
         if DataStore.entityForUser(username) != nil {
             return
         }
-        let user = User(context: managedObjectContext)
+        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: managedObjectContext) as! User
         user.sid = username
         try! managedObjectContext.save()
     }
@@ -323,19 +322,10 @@ class DataStore: NSObject {
      
      - parameter entityName: The name of entities.
      */
-    private static func deleteEntities(entityName: String) {
-        let fetchRequest = NSFetchRequest(entityName: entityName)
-        if #available(iOSApplicationExtension 9.0, *) {
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            try! managedObjectContext.persistentStoreCoordinator!.executeRequest(deleteRequest, withContext: managedObjectContext)
-        } else {
-            fetchRequest.includesPropertyValues = false
-            let entities = try! managedObjectContext.executeFetchRequest(fetchRequest)
-            for entity in entities {
-                managedObjectContext.deleteObject(entity as! NSManagedObject)
-            }
-            try! managedObjectContext.save()
-        }
+    private static func deleteEntities(_ entityName: String) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try! managedObjectContext.persistentStoreCoordinator!.execute(deleteRequest, with: managedObjectContext)
     }
     
     /**
@@ -364,9 +354,9 @@ class DataStore: NSObject {
             let course = course as! Course
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
-                managedObjectContext.deleteObject(timePlace)
+                managedObjectContext.delete(timePlace)
             }
-            managedObjectContext.deleteObject(course)
+            managedObjectContext.delete(course)
         }
         try! managedObjectContext.save()
     }
@@ -377,7 +367,7 @@ class DataStore: NSObject {
     func deleteExams() {
         for exam in currentUser.exams! {
             let exam = exam as! Exam
-            managedObjectContext.deleteObject(exam)
+            managedObjectContext.delete(exam)
         }
         try! managedObjectContext.save()
     }
@@ -387,15 +377,15 @@ class DataStore: NSObject {
      */
     func deleteScores() {
         if let overseaScore = currentUser.overseaScore {
-            managedObjectContext.deleteObject(overseaScore)
+            managedObjectContext.delete(overseaScore)
         }
         for semesterScore in currentUser.semesterScores! {
             let semesterScore = semesterScore as! SemesterScore
-            managedObjectContext.deleteObject(semesterScore)
+            managedObjectContext.delete(semesterScore)
         }
         for score in currentUser.scores! {
             let score = score as! Score
-            managedObjectContext.deleteObject(score)
+            managedObjectContext.delete(score)
         }
         try! managedObjectContext.save()
     }
@@ -405,7 +395,7 @@ class DataStore: NSObject {
      */
     func deleteStatistics() {
         if let statistics = currentUser.statistics {
-            managedObjectContext.deleteObject(statistics)
+            managedObjectContext.delete(statistics)
             try! managedObjectContext.save()
         }
     }
@@ -414,7 +404,7 @@ class DataStore: NSObject {
      Delete current user entity, after which you should release DataStore instance ASAP.
      */
     func deleteUser() {
-        managedObjectContext.deleteObject(currentUser)
+        managedObjectContext.delete(currentUser)
         try! managedObjectContext.save()
     }
     
@@ -425,7 +415,7 @@ class DataStore: NSObject {
     
      - returns: An unsorted array of courses.
     */
-    func getCourses(year year: String, semester: CalendarSemester) -> [Course] {
+    func getCourses(year: String, semester: CalendarSemester) -> [Course] {
         return currentUser.courses!.filter {
             let course = $0 as! Course
             return course.isDetermined!.boolValue && course.year == year && course.semester!.includesSemester(semester)
@@ -437,7 +427,7 @@ class DataStore: NSObject {
      
      - returns: An unsorted array of exams.
      */
-    func getExams(year year: String, semester: CalendarSemester) -> [Exam] {
+    func getExams(year: String, semester: CalendarSemester) -> [Exam] {
         return currentUser.exams!.filter {
             let exam = $0 as! Exam
             return exam.year == year && exam.semester!.includesSemester(semester)
@@ -449,7 +439,7 @@ class DataStore: NSObject {
      
      - returns: An unsorted array of scores.
      */
-    func getScores(year year: String, semester: CalendarSemester) -> [Score] {
+    func getScores(year: String, semester: CalendarSemester) -> [Score] {
         return currentUser.scores!.filter {
             let score = $0 as! Score
             return score.year == year && score.semester!.includesSemester(semester)
@@ -458,7 +448,7 @@ class DataStore: NSObject {
     
     var semesterScores: [SemesterScore] {
         let descriptors = [NSSortDescriptor(key: "year", ascending: true), NSSortDescriptor(key: "semester", ascending: true)]
-        return currentUser.semesterScores!.sortedArrayUsingDescriptors(descriptors) as! [SemesterScore]
+        return currentUser.semesterScores!.sortedArray(using: descriptors) as! [SemesterScore]
     }
     
     var statistics: Statistics? {
@@ -471,14 +461,14 @@ class DataStore: NSObject {
     
     /// All semesters in which the current user has studied.
     var allSemesters: [String] {
-        if let start = currentUser.startSemester, end = currentUser.endSemester {
+        if let start = currentUser.startSemester, let end = currentUser.endSemester {
             var semesters = [start]
             while semesters.last != end {
                 var current = semesters.last!
                 if current.hasSuffix("1") {
-                    current = current.substringToIndex(current.endIndex.predecessor()) + "2"
+                    current = current.substring(to: current.index(before: current.endIndex)) + "2"
                 } else {
-                    let year = Int(current.substringToIndex(current.startIndex.advancedBy(4)))!
+                    let year = Int(current.substring(to: current.index(current.startIndex, offsetBy: 4)))!
                     current = "\(year + 1)-\(year + 2)-1"
                 }
                 semesters.append(current)
@@ -496,11 +486,11 @@ class DataStore: NSObject {
      
      - returns: An array of bus stops sorted by estimated time of arrival.
      */
-    static func busStopsOnCampus(campus: String) -> [BusStop] {
-        let request = NSFetchRequest(entityName: "BusStop")
+    static func busStopsOnCampus(_ campus: String) -> [BusStop] {
+        let request: NSFetchRequest<BusStop> = NSFetchRequest(entityName: "BusStop")
         request.predicate = NSPredicate(format: "campus == %@", campus)
-        let stops = try! managedObjectContext.executeFetchRequest(request) as! [BusStop]
-        return stops.sort {
+        let stops = try! managedObjectContext.fetch(request)
+        return stops.sorted {
             if $0.time == "*" || $1.time == "*" {
                 return $1.time == "*"
             } else {
@@ -509,16 +499,16 @@ class DataStore: NSObject {
         }
     }
     
-    static func entityForYear(date: NSDate) -> Year? {
-        let fetchRequest = NSFetchRequest(entityName: "Year")
-        fetchRequest.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date, date)
-        return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? Year
+    static func entityForYear(_ date: Date) -> Year? {
+        let request: NSFetchRequest<Year> = NSFetchRequest(entityName: "Year")
+        request.predicate = NSPredicate(format: "(start <= %@) AND (%@ < end)", date as NSDate, date as NSDate)
+        return try! managedObjectContext.fetch(request).first
     }
     
-    static func entityForUser(username: String) -> User? {
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "sid == %@", username)
-        return try! managedObjectContext.executeFetchRequest(fetchRequest).first as? User
+    static func entityForUser(_ username: String) -> User? {
+        let request: NSFetchRequest<User> = NSFetchRequest(entityName: "User")
+        request.predicate = NSPredicate(format: "sid == %@", username)
+        return try! managedObjectContext.fetch(request).first
     }
     
     /**
@@ -529,35 +519,35 @@ class DataStore: NSObject {
      
      - returns: The unsorted array of managed objects.
      */
-    func objectsWithIdentifier(identifier: String, entityName: String) -> [NSManagedObject] {
-        let request = NSFetchRequest(entityName: entityName)
+    func objectsWithIdentifier(_ identifier: String, entityName: String) -> [NSManagedObject] {
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
         request.predicate = NSPredicate(format: "user.sid == %@ AND identifier LIKE %@", currentUser.sid!, identifier + "*")
-        return try! managedObjectContext.executeFetchRequest(request) as! [NSManagedObject]
+        return try! managedObjectContext.fetch(request) as! [NSManagedObject]
     }
     
     // MARK: - SQLite Management
     
     static func dropSqlite() {
         let removeFile = { (path: String) -> Void in
-            if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                try! NSFileManager.defaultManager().removeItemAtPath(path)
+            if FileManager.default.fileExists(atPath: path) {
+                try! FileManager.default.removeItem(atPath: path)
             }
         }
-        removeFile(storeURL.path!)
-        removeFile(storeURL.path! + "-wal")
-        removeFile(storeURL.path! + "-shm")
+        removeFile(storeURL.path)
+        removeFile(storeURL.path + "-wal")
+        removeFile(storeURL.path + "-shm")
     }
     
     static var sizeOfSqlite: String {
         let sizeOfFile = { (path: String) -> Int64 in
-            if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                return Int64((try! NSFileManager.defaultManager().attributesOfItemAtPath(path) as NSDictionary).fileSize())
+            if FileManager.default.fileExists(atPath: path) {
+                return Int64((try! FileManager.default.attributesOfItem(atPath: path) as NSDictionary).fileSize())
             } else {
                 return 0
             }
         }
-        let size = sizeOfFile(storeURL.path!) + sizeOfFile(storeURL.path! + "-wal") + sizeOfFile(storeURL.path! + "-shm")
-        return NSByteCountFormatter.stringFromByteCount(size, countStyle: .File)
+        let size = sizeOfFile(storeURL.path) + sizeOfFile(storeURL.path + "-wal") + sizeOfFile(storeURL.path + "-shm")
+        return ByteCountFormatter.string(fromByteCount: size, countStyle: .file)
     }
     
 }

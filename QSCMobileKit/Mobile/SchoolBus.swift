@@ -17,8 +17,8 @@ public class SchoolBus: NSObject {
             for stop in fromStop.bus!.busStops! {
                 let stop = stop as! BusStop
                 if stop.index! > fromStop.index! && stop.campus == to {
-                    if (isWeekend && fromStop.bus!.serviceDays!.containsString("周一")) ||
-                       (!isWeekend && fromStop.bus!.serviceDays!.containsString("周六")) {
+                    if (isWeekend && fromStop.bus!.serviceDays!.contains("周一")) ||
+                       (!isWeekend && fromStop.bus!.serviceDays!.contains("周六")) {
                         continue
                     }
                     stops.append((fromStop, stop))
@@ -33,19 +33,19 @@ public class SchoolBus: NSObject {
     
     public let count: Int
     
-    public func fromTime(index: Int) -> String {
+    public func fromTime(_ index: Int) -> String {
         return busStops[index].from.time!
     }
     
-    public func toTime(index: Int) -> String {
+    public func toTime(_ index: Int) -> String {
         return busStops[index].to.time!
     }
     
-    public func busName(index: Int) -> String {
+    public func busName(_ index: Int) -> String {
         return busStops[index].from.bus!.name!
     }
     
-    public func busNote(index: Int) -> String {
+    public func busNote(_ index: Int) -> String {
         return busStops[index].from.bus!.note!
     }
     

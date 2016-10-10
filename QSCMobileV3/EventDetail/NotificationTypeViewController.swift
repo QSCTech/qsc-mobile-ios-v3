@@ -13,25 +13,25 @@ class NotificationTypeViewController: UITableViewController {
     var eventEditViewController: EventEditViewController!
     var selectedCell: UITableViewCell!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         for cell in tableView.visibleCells {
             if cell.textLabel!.text == eventEditViewController.notificationTypeLabel.text {
                 selectedCell = cell
-                cell.accessoryType = .Checkmark
+                cell.accessoryType = .checkmark
             }
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        selectedCell.accessoryType = .None
-        let cell = tableView.cellForRowAtIndexPath(indexPath)!
-        cell.accessoryType = .Checkmark
+        selectedCell.accessoryType = .none
+        let cell = tableView.cellForRow(at: indexPath)!
+        cell.accessoryType = .checkmark
         eventEditViewController.notificationTypeLabel.text = cell.textLabel!.text
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
 }
@@ -52,7 +52,7 @@ extension NSNumber {
     
     var stringFromNotificationType: String {
         for (number, string) in notificationTypes {
-            if self == number {
+            if intValue == number {
                 return string
             }
         }

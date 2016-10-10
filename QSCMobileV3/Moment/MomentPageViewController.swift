@@ -15,7 +15,7 @@ class MomentPageViewController: UIViewController {
     
     init(event: Event?) {
         self.event = event
-        super.init(nibName: "MomentPageViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "MomentPageViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,7 +24,7 @@ class MomentPageViewController: UIViewController {
     
     var event: Event?
     
-    private let mobileManager = MobileManager.sharedInstance
+    let mobileManager = MobileManager.sharedInstance
     var momentViewController: MomentViewController!
     
     @IBOutlet weak var gauge: Gauge!
@@ -37,7 +37,7 @@ class MomentPageViewController: UIViewController {
         super.viewDidLoad()
         
         if let event = event {
-            dateLabel.hidden = true
+            dateLabel.isHidden = true
             detailButton.contentEdgeInsets = UIEdgeInsets(top: 7, left: 10, bottom: 7, right: 10)
             detailButton.layer.cornerRadius = 14
             detailButton.layer.borderWidth = 1
@@ -46,23 +46,23 @@ class MomentPageViewController: UIViewController {
             let startColor: UIColor
             let endColor: UIColor // Waiting for GaugeKit upgrade to make endColor work
             switch event.category {
-            case .Course, .Lesson:
+            case .course, .lesson:
                 startColor = UIColor(red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0)
                 endColor = UIColor(red: 0.157, green: 0.533, blue: 0.588, alpha: 1.0)
                 promptLabel.text = "距上课"
-            case .Exam, .Quiz:
+            case .exam, .quiz:
                 startColor = UIColor(red: 1.0, green: 0.0, blue: 0.431, alpha: 1.0)
                 endColor = UIColor(red: 0.902, green: 0.604, blue: 0.259, alpha: 1.0)
                 promptLabel.text = "距考试开始"
-            case .Activity:
+            case .activity:
                 startColor = UIColor(red: 1.0, green: 0.855, blue: 0.0, alpha: 1.0)
                 endColor = UIColor(red: 0.988, green: 1.0, blue: 0.533, alpha: 1.0)
                 promptLabel.text = "距活动开始"
-            case .Todo:
+            case .todo:
                 startColor = QSCColor.todo
                 endColor = QSCColor.todo
                 promptLabel.text = "距日程开始"
-            case .Bus:
+            case .bus:
                 startColor = UIColor(red: 0.106, green: 0.616, blue: 0.161, alpha: 1.0)
                 endColor = UIColor(red: 0.776, green: 0.918, blue: 0.392, alpha: 1.0)
                 promptLabel.text = "距校车出发"
@@ -70,43 +70,43 @@ class MomentPageViewController: UIViewController {
             timerLabel.textColor = color
             gauge.startColor = startColor
             gauge.endColor = endColor
-            detailButton.setTitleColor(color, forState: .Normal)
-            detailButton.layer.borderColor = color.CGColor
+            detailButton.setTitleColor(color, for: .normal)
+            detailButton.layer.borderColor = color.cgColor
         } else {
             if Device().isPad {
-                dateLabel.hidden = true
+                dateLabel.isHidden = true
             }
             promptLabel.text = ""
             gauge.rate = 0
-            detailButton.hidden = true
+            detailButton.isHidden = true
             
-            timerLabel.textColor = UIColor.blackColor()
+            timerLabel.textColor = UIColor.black
         }
-        gauge.bgColor = UIColor.whiteColor()
+        gauge.bgColor = UIColor.white
         gauge.bgAlpha = 0.9
         
         refresh()
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
     }
     
     func refresh() {
         if let event = event {
-            if NSDate() < event.start {
-                gauge.maxValue = CGFloat(event.start.timeIntervalSinceDate(NSDate().today))
-                gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(NSDate().today))
+            if Date() < event.start {
+                gauge.maxValue = CGFloat(event.start.timeIntervalSince(Date().today))
+                gauge.rate = CGFloat(Date().timeIntervalSince(Date().today))
                 let timer = Int(gauge.maxValue - gauge.rate) + 60
                 timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60)
-            } else if NSDate() <= event.end {
-                gauge.maxValue = CGFloat(event.end.timeIntervalSinceDate(event.start))
-                gauge.rate = CGFloat(NSDate().timeIntervalSinceDate(event.start))
+            } else if Date() <= event.end {
+                gauge.maxValue = CGFloat(event.end.timeIntervalSince(event.start))
+                gauge.rate = CGFloat(Date().timeIntervalSince(event.start))
                 let timer = Int(gauge.maxValue - gauge.rate) + 60
                 timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60)
-                if event.category == .Course || event.category == .Lesson {
+                if event.category == .course || event.category == .lesson {
                     promptLabel.text = "距下课"
-                } else if event.category == .Bus {
+                } else if event.category == .bus {
                     promptLabel.text = "距校车到达"
                 } else {
-                    promptLabel.text = promptLabel.text!.stringByReplacingOccurrencesOfString("开始", withString: "结束")
+                    promptLabel.text = promptLabel.text!.replacingOccurrences(of: "开始", with: "结束")
                 }
             } else {
                 gauge.rate = 0
@@ -114,28 +114,28 @@ class MomentPageViewController: UIViewController {
                 timerLabel.text = "结束"
             }
         } else {
-            let formatter = NSDateFormatter()
-            formatter.locale = NSLocale(localeIdentifier: "zh_CN")
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "zh_CN")
             formatter.dateFormat = "HH:mm"
-            timerLabel.text = formatter.stringFromDate(NSDate())
+            timerLabel.text = formatter.string(from: Date())
             formatter.dateFormat = "MM-dd EEE"
-            dateLabel.text = formatter.stringFromDate(NSDate())
+            dateLabel.text = formatter.string(from: Date())
         }
     }
     
-    @IBAction func showDetail(sender: AnyObject) {
-        if event!.category == .Course || event!.category == .Exam {
-            let storyboard = UIStoryboard(name: "CourseDetail", bundle: NSBundle.mainBundle())
+    @IBAction func showDetail(_ sender: AnyObject) {
+        if event!.category == .course || event!.category == .exam {
+            let storyboard = UIStoryboard(name: "CourseDetail", bundle: Bundle.main)
             let vc = storyboard.instantiateInitialViewController() as! CourseDetailViewController
             vc.managedObject = event!.object
             vc.hidesBottomBarWhenPushed = true
-            momentViewController.showViewController(vc, sender: nil)
+            momentViewController.show(vc, sender: nil)
         } else {
-            let storyboard = UIStoryboard(name: "EventDetail", bundle: NSBundle.mainBundle())
+            let storyboard = UIStoryboard(name: "EventDetail", bundle: Bundle.main)
             let vc = storyboard.instantiateInitialViewController() as! EventDetailViewController
             vc.customEvent = event!.object as! CustomEvent
             vc.hidesBottomBarWhenPushed = true
-            momentViewController.showViewController(vc, sender: nil)
+            momentViewController.show(vc, sender: nil)
         }
     }
     

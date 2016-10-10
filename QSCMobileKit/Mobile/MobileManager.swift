@@ -39,7 +39,7 @@ public class MobileManager: NSObject {
      - parameter password: Password of the account.
      - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
      */
-    public func loginValidate(username: String, _ password: String, callback: (Bool, String?) -> Void) {
+    public func loginValidate(_ username: String, _ password: String, callback: @escaping (Bool, String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { success, error in
             if success {
@@ -61,7 +61,7 @@ public class MobileManager: NSObject {
      
      - parameter username: Username of the account.
      */
-    public func changeUser(username: String) {
+    public func changeUser(_ username: String) {
         accountManager.currentAccountForJwbinfosys = username
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
         apiSession.loginRequest { _ in }
@@ -73,7 +73,7 @@ public class MobileManager: NSObject {
      
      - parameter username: Username of the account
      */
-    public func deleteUser(username: String) {
+    public func deleteUser(_ username: String) {
         accountManager.removeAccountFromJwbinfosys(username)
         let anotherDataSource = DataStore(username: username)
         anotherDataSource.deleteCourses()
@@ -91,8 +91,8 @@ public class MobileManager: NSObject {
     
     // MARK: - Retrieve events
     
-    public func eventsForDate(date: NSDate) -> [Event] {
-        return (coursesForDate(date) + examsForDate(date) + eventManager.customEventsForDate(date)).sort { $0.start <= $1.start }
+    public func eventsForDate(_ date: Date) -> [Event] {
+        return (coursesForDate(date) + examsForDate(date) + eventManager.customEventsForDate(date)).sorted { $0.start <= $1.start }
     }
     
     /**
@@ -100,9 +100,8 @@ public class MobileManager: NSObject {
     
      - returns: An array of type `Event` sorted by starting time.
      */
-    public func coursesForDate(date: NSDate) -> [Event] {
-        let calendar = NSCalendar.currentCalendar()
-        let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
+    public func coursesForDate(_ date: Date) -> [Event] {
+        var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         
         if calendarManager.holidayForDate(date) != nil {
             return []
@@ -114,33 +113,33 @@ public class MobileManager: NSObject {
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
         let weekOrdinal = calendarManager.weekOrdinalForDate(date)
-        let weekday = calendar.component(.Weekday, fromDate: date)
+        let weekday = Calendar.current.component(.weekday, from: date)
         
         let courses = dataStore.getCourses(year: year, semester: semester)
         var array = [Event]()
         for course in courses {
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
-                if timePlace.weekday == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
+                if timePlace.weekday!.intValue == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
                     let startComponents = timePlace.periods!.startTimeForPeriods
                     dateComponents.hour = startComponents.hour
                     dateComponents.minute = startComponents.minute
-                    let start = calendar.dateFromComponents(dateComponents)!
+                    let start = Calendar.current.date(from: dateComponents)!
                     
                     let endComponents = timePlace.periods!.endTimeForPeriods
                     dateComponents.hour = endComponents.hour
                     dateComponents.minute = endComponents.minute
-                    let end = calendar.dateFromComponents(dateComponents)!
+                    let end = Calendar.current.date(from: dateComponents)!
                     
                     let courseEvent = eventManager.courseEventForIdentifier(course.identifier!)!
-                    let tags = courseEvent.tags?.componentsSeparatedByString(",") ?? []
+                    let tags = courseEvent.tags?.components(separatedBy: ",") ?? []
                     
-                    let event = Event(duration: .PartialTime, category: .Course, tags: tags, name: course.name!, time: timePlace.time!, place: timePlace.place!, start: start, end: end, object: course)
+                    let event = Event(duration: .partialTime, category: .course, tags: tags, name: course.name!, time: timePlace.time!, place: timePlace.place!, start: start, end: end, object: course)
                     array.append(event)
                 }
             }
         }
-        return array.sort { $0.start <= $1.start }
+        return array.sorted { $0.start <= $1.start }
     }
     
     /**
@@ -148,25 +147,25 @@ public class MobileManager: NSObject {
      
      - returns: An array of type `Event` sorted by starting time.
      */
-    public func examsForDate(date: NSDate) -> [Event] {
+    public func examsForDate(_ date: Date) -> [Event] {
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
         
         let exams = dataStore.getExams(year: year, semester: semester)
         var array = [Event]()
         for exam in exams {
-            if let startTime = exam.startTime, endTime = exam.endTime {
+            if let startTime = exam.startTime, let endTime = exam.endTime {
                 if exam.startTime! < date.tomorrow && exam.endTime! >= date.today  {
                     var place = exam.place!
                     if !exam.seat!.isEmpty {
                         place += " #" + exam.seat!
                     }
-                    let event = Event(duration: .PartialTime, category: .Exam, tags: [], name: exam.name!, time: exam.time!, place: place, start: startTime, end: endTime, object: exam)
+                    let event = Event(duration: .partialTime, category: .exam, tags: [], name: exam.name!, time: exam.time!, place: place, start: startTime, end: endTime, object: exam)
                     array.append(event)
                 }
             }
         }
-        return array.sort { $0.start <= $1.start }
+        return array.sorted { $0.start <= $1.start }
     }
     
     
@@ -179,15 +178,15 @@ public class MobileManager: NSObject {
      
      - returns: The triple of course, exam and score.
      */
-    public func objectTripleWithIdentifier(identifier: String) -> (Course?, Exam?, Score?) {
-        let id = identifier.substringToIndex(identifier.startIndex.advancedBy(22))
+    public func objectTripleWithIdentifier(_ identifier: String) -> (Course?, Exam?, Score?) {
+        let id = identifier.substring(to: identifier.index(identifier.startIndex, offsetBy: 22))
         return (dataStore.objectsWithIdentifier(id, entityName: "Course").first as? Course,
                 dataStore.objectsWithIdentifier(id, entityName: "Exam").first as? Exam,
                 dataStore.objectsWithIdentifier(id, entityName: "Score").first as? Score
         )
     }
     
-    public func courseNameWithIdentifier(identifier: String) -> String {
+    public func courseNameWithIdentifier(_ identifier: String) -> String {
         let course = objectTripleWithIdentifier(identifier).0
         return course?.name ?? ""
     }
@@ -203,9 +202,9 @@ public class MobileManager: NSObject {
      
      - returns: The array of courses sorted by identifier.
      */
-    public func getCourses(semester: String) -> [Course] {
+    public func getCourses(_ semester: String) -> [Course] {
         let courses = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Course") as! [Course]
-        return courses.sort { $0.identifier! <= $1.identifier! }
+        return courses.sorted { $0.identifier! <= $1.identifier! }
     }
     
     /**
@@ -215,11 +214,11 @@ public class MobileManager: NSObject {
      
      - returns: The array of exams sorted by time.
      */
-    public func getExams(semester: String) -> [Exam] {
+    public func getExams(_ semester: String) -> [Exam] {
         var exams = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Exam") as! [Exam]
         // Workaround to summer course problem in API 2.5
-        exams = exams.filter { !$0.name!.containsString("课程综合实践") }
-        return exams.sort { $1.startTime == nil || ($0.startTime != nil && $0.startTime! <= $1.startTime!) }
+        exams = exams.filter { !$0.name!.contains("课程综合实践") }
+        return exams.sorted { $1.startTime == nil || ($0.startTime != nil && $0.startTime! <= $1.startTime!) }
     }
     
     /**
@@ -229,11 +228,11 @@ public class MobileManager: NSObject {
      
      - returns: The array of scores sorted by grade.
      */
-    public func getScores(semester: String) -> [Score] {
+    public func getScores(_ semester: String) -> [Score] {
         let scores = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Score") as! [Score]
-        return scores.sort {
+        return scores.sorted {
             if $0.gradePoint == $1.gradePoint {
-                if let left = Int($0.score!), right = Int($1.score!) {
+                if let left = Int($0.score!), let right = Int($1.score!) {
                     return left >= right
                 } else {
                     return $0.score! >= $1.score!
@@ -266,33 +265,33 @@ public class MobileManager: NSObject {
      - parameter errorBlock: A closure to be executed if there is any error.
      - parameter callback:   A closure to be executed once the request has finished.
      */
-    public func refreshAll(errorBlock: (NSNotification) -> Void, callback: () -> Void) {
-        let observer = NSNotificationCenter.defaultCenter().addObserverForName("RefreshError", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: errorBlock)
+    public func refreshAll(_ errorBlock: @escaping (Notification) -> Void, callback: @escaping () -> Void) {
+        let observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "RefreshError"), object: nil, queue: OperationQueue.main, using: errorBlock)
         // First refresh calendar to prevent multiple sessionFail retries at the same time
         refreshCalendar { success, error in
             if success {
-                let group = dispatch_group_create()
+                let group = DispatchGroup()
                 for _ in 0..<4 {
-                    dispatch_group_enter(group)
+                    group.enter()
                 }
                 let closure = { (success: Bool, error: String?) in
                     if !success && !error!.isEmpty {
-                        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
+                        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "RefreshError"), object: nil, userInfo: ["error": error!]))
                     }
-                    dispatch_group_leave(group)
+                    group.leave()
                 }
                 self.refreshCourses(closure)
                 self.refreshExams(closure)
                 self.refreshScores(closure)
                 self.refreshBuses(closure)
-                dispatch_group_notify(group, dispatch_get_main_queue()) {
+                group.notify(queue: DispatchQueue.main) {
                     callback()
-                    NSNotificationCenter.defaultCenter().removeObserver(observer)
+                    NotificationCenter.default.removeObserver(observer)
                 }
             } else {
-                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
+                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "RefreshError"), object: nil, userInfo: ["error": error!]))
                 callback()
-                NSNotificationCenter.defaultCenter().removeObserver(observer)
+                NotificationCenter.default.removeObserver(observer)
             }
         }
     }
@@ -302,7 +301,7 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshCourses(callback: (Bool, String?) -> Void) {
+    public func refreshCourses(_ callback: @escaping (Bool, String?) -> Void) {
         apiSession.courseRequest { json, error in
             if let json = json {
                 self.dataStore.deleteCourses()
@@ -319,7 +318,7 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshExams(callback: (Bool, String?) -> Void) {
+    public func refreshExams(_ callback: @escaping (Bool, String?) -> Void) {
         apiSession.examRequest { json, error in
             if let json = json {
                 self.dataStore.deleteExams()
@@ -336,7 +335,7 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshScores(callback: (Bool, String?) -> Void) {
+    public func refreshScores(_ callback: @escaping (Bool, String?) -> Void) {
         apiSession.scoreRequest { json, error in
             if let json = json {
                 self.dataStore.deleteScores()
@@ -361,7 +360,7 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshCalendar(callback: (Bool, String?) -> Void) {
+    public func refreshCalendar(_ callback: @escaping (Bool, String?) -> Void) {
         apiSession.calendarRequest { json, error in
             if let json = json {
                 self.dataStore.deleteCalendar()
@@ -378,7 +377,7 @@ public class MobileManager: NSObject {
      
      - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
      */
-    public func refreshBuses(callback: (Bool, String?) -> Void) {
+    public func refreshBuses(_ callback: @escaping (Bool, String?) -> Void) {
         apiSession.busRequest { json, error in
             if let json = json {
                 self.dataStore.deleteBuses()

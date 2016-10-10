@@ -13,15 +13,15 @@ import QSCMobileKit
 
 class QueryViewController: UITableViewController {
     
-    private let accountManager = AccountManager.sharedInstance
-    private let collectionViewDelegate = QueryCollectionViewDelegate()
+    let accountManager = AccountManager.sharedInstance
+    let collectionViewDelegate = QueryCollectionViewDelegate()
     
     enum Tools: Int {
-        case Score = 0, Query, Login, Website, Webpage
+        case score = 0, query, login, website, webpage
         static let count = 5
     }
     
-    private let login: [[String: String]] = [
+    let login: [[String: String]] = [
         [
             "name": "教务网",
             "url": "http://jwbinfosys.zju.edu.cn/default2.aspx",
@@ -39,7 +39,7 @@ class QueryViewController: UITableViewController {
         ],
     ]
     
-    private let websites: [[String: String]] = [
+    let websites: [[String: String]] = [
         [
             "name": "院系网站",
             "url": "https://info.zjuqsc.com/zju-websites/",
@@ -72,7 +72,7 @@ class QueryViewController: UITableViewController {
         ],
     ]
     
-    private let webpages: [[String: String]] = [
+    let webpages: [[String: String]] = [
         [
             "name": "学年校历",
             "url": "https://info.zjuqsc.com/academic-calendar/",
@@ -95,51 +95,51 @@ class QueryViewController: UITableViewController {
         ],
     ]
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return Tools.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case Tools.Score.rawValue:
+        case Tools.score.rawValue:
             return 1
-        case Tools.Query.rawValue:
+        case Tools.query.rawValue:
             return 1
-        case Tools.Login.rawValue:
+        case Tools.login.rawValue:
             return login.count
-        case Tools.Website.rawValue:
+        case Tools.website.rawValue:
             return websites.count
-        case Tools.Webpage.rawValue:
+        case Tools.webpage.rawValue:
             return webpages.count
         default:
             return 0
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case Tools.Login.rawValue:
+        case Tools.login.rawValue:
             return "一键登录"
-        case Tools.Website.rawValue:
+        case Tools.website.rawValue:
             return "校网链接"
-        case Tools.Webpage.rawValue:
+        case Tools.webpage.rawValue:
             return "实用查询"
         default:
             return nil
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
         switch indexPath.section {
-        case Tools.Score.rawValue:
+        case Tools.score.rawValue:
             if accountManager.currentAccountForJwbinfosys == nil {
                 cell.textLabel!.attributedText = "\u{f0f6}\t查询成绩请先登录".attributedWithFontAwesome
             } else if MobileManager.sharedInstance.statistics == nil {
                 cell.textLabel!.attributedText = "\u{f0f6}\t暂无成绩数据，请下拉刷新".attributedWithFontAwesome
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Score") as! OverallScoreCell
-                if groupDefaults.boolForKey(ShowScoreKey) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Score") as! OverallScoreCell
+                if groupDefaults.bool(forKey: ShowScoreKey) {
                     let statistics = MobileManager.sharedInstance.statistics
                     cell.totalCreditLabel.text = statistics!.totalCredit!.stringValue
                     cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
@@ -155,18 +155,18 @@ class QueryViewController: UITableViewController {
                 }
                 return cell
             }
-        case Tools.Query.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Collection") as! QueryTableViewCell
-            cell.collectionView.registerNib(UINib(nibName: "QueryCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
+        case Tools.query.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Collection") as! QueryTableViewCell
+            cell.collectionView.register(UINib(nibName: "QueryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
             cell.collectionView.delegate = collectionViewDelegate
             cell.collectionView.dataSource = collectionViewDelegate
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
             return cell
-        case Tools.Login.rawValue:
+        case Tools.login.rawValue:
             cell.textLabel!.text = login[indexPath.row]["name"]
-        case Tools.Website.rawValue:
+        case Tools.website.rawValue:
             cell.textLabel!.text = websites[indexPath.row]["name"]
-        case Tools.Webpage.rawValue:
+        case Tools.webpage.rawValue:
             cell.textLabel!.text = webpages[indexPath.row]["name"]
         default:
             break
@@ -174,73 +174,67 @@ class QueryViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
-        case Tools.Score.rawValue:
+        case Tools.score.rawValue:
             if accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
-                presentViewController(vc, animated: true, completion: nil)
+                present(vc, animated: true, completion: nil)
             } else if MobileManager.sharedInstance.statistics != nil {
                 let vc = ScoreViewController()
-                presentViewController(vc, animated: true, completion: nil)
+                present(vc, animated: true, completion: nil)
             }
-        case Tools.Login.rawValue:
+        case Tools.login.rawValue:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
-                presentViewController(vc, animated: true, completion: nil)
+                present(vc, animated: true, completion: nil)
                 break
             }
             if 1 <= indexPath.row && indexPath.row <= 2 && accountManager.accountForZjuwlan == nil {
-                SVProgressHUD.showErrorWithStatus("您未设置 ZJUWLAN 账号")
+                SVProgressHUD.showError(withStatus: "您未设置 ZJUWLAN 账号")
                 break
             }
             // TODO: Handle login errors
-            let url = NSURL(string: login[indexPath.row]["url"]!)!
-            let request = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "POST"
+            let url = URL(string: login[indexPath.row]["url"]!)!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
             switch indexPath.row {
             case 0:
                 let username = accountManager.currentAccountForJwbinfosys!.percentEncoded
                 let password = accountManager.passwordForJwbinfosys(username)!.percentEncoded
-                request.HTTPBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2BRGE82%2BDpWCQpVjFtEpHZ1UJYg8w%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".dataUsingEncoding(NSASCIIStringEncoding)
+                request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2BRGE82%2BDpWCQpVjFtEpHZ1UJYg8w%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
             case 1:
                 let username = accountManager.accountForZjuwlan!.percentEncoded
                 let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.HTTPBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action%3Alogin=".dataUsingEncoding(NSASCIIStringEncoding)
+                request.httpBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action%3Alogin=".data(using: String.Encoding.ascii)
             case 2:
                 let username = accountManager.accountForZjuwlan!.percentEncoded
                 let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.HTTPBody = "j_username=\(username)&j_password=\(password)".dataUsingEncoding(NSASCIIStringEncoding)
+                request.httpBody = "j_username=\(username)&j_password=\(password)".data(using: String.Encoding.ascii)
             default:
                 break
             }
             let bvc = BrowserViewController(request: request)
-            presentViewController(bvc, animated: true, completion: nil)
-        case Tools.Website.rawValue:
-            let url = NSURL(string: websites[indexPath.row]["url"]!)!
-            if #available(iOS 9.0, *) {
-                let svc = SFSafariViewController(URL: url)
-                presentViewController(svc, animated: true, completion: nil)
-            } else {
-                let request = NSURLRequest(URL: url)
-                let bvc = BrowserViewController(request: request)
-                presentViewController(bvc, animated: true, completion: nil)
-            }
-        case Tools.Webpage.rawValue:
+            present(bvc, animated: true, completion: nil)
+        case Tools.website.rawValue:
+            let url = URL(string: websites[indexPath.row]["url"]!)!
+            let svc = SFSafariViewController(url: url)
+            present(svc, animated: true, completion: nil)
+        case Tools.webpage.rawValue:
             let url = webpages[indexPath.row]["url"]!
             let title = webpages[indexPath.row]["name"]!
             let wvc = WebViewController(url: url, title: title)
-            showViewController(wvc, sender: nil)
+            show(wvc, sender: nil)
         default:
             break
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == Tools.Score.rawValue {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == Tools.score.rawValue {
             return 77
-        } else if indexPath.section == Tools.Query.rawValue {
+        } else if indexPath.section == Tools.query.rawValue {
             return 81
         } else {
             return 44
@@ -253,17 +247,17 @@ class QueryViewController: UITableViewController {
         super.viewDidLoad()
         
         collectionViewDelegate.viewController = self
-        tableView.registerNib(UINib(nibName: "OverallScoreCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Score")
-        tableView.registerClass(QueryTableViewCell.self, forCellReuseIdentifier: "Collection")
-        refreshCtl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        tableView.register(UINib(nibName: "OverallScoreCell", bundle: Bundle.main), forCellReuseIdentifier: "Score")
+        tableView.register(QueryTableViewCell.self, forCellReuseIdentifier: "Collection")
+        refreshCtl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         // Placeholder to prevent activity indicator from changing its position
         refreshCtl.attributedTitle = NSAttributedString(string: " ")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadSections(NSIndexSet(index: Tools.Score.rawValue), withRowAnimation: .Automatic)
+        tableView.reloadSections(IndexSet(integer: Tools.score.rawValue), with: .automatic)
         if accountManager.currentAccountForJwbinfosys == nil {
             refreshControl = nil
         } else {
@@ -271,9 +265,9 @@ class QueryViewController: UITableViewController {
         }
     }
     
-    func refresh(sender: UIRefreshControl) {
+    func refresh(_ sender: UIRefreshControl) {
         MobileManager.sharedInstance.refreshAll({ notification in
-            sender.attributedTitle = NSAttributedString(string: notification.userInfo!["error"] as! String)
+            sender.attributedTitle = NSAttributedString(string: notification.userInfo?["error"] as? String ?? "")
         }, callback: {
             if sender.attributedTitle?.string == " " {
                 sender.attributedTitle = NSAttributedString(string: "刷新成功")
@@ -282,7 +276,7 @@ class QueryViewController: UITableViewController {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")
             }
-            self.tableView.reloadSections(NSIndexSet(index: Tools.Score.rawValue), withRowAnimation: .Automatic)
+            self.tableView.reloadSections(IndexSet(integer: Tools.score.rawValue), with: .automatic)
         })
     }
     

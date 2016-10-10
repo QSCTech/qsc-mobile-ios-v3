@@ -14,15 +14,15 @@ public struct NoticeEvent {
     public let name: String
     public let place: String
     public let summary: String
-    public let start: NSDate
-    public let end: NSDate
+    public let start: Date
+    public let end: Date
     public let categoryId: String
     public let categoryName: String
     public let sponsorId: String
     public let sponsorName: String
-    public let sponsorLogoURL: NSURL
+    public let sponsorLogoURL: URL
     public var bonus: String!
     public var content: String!
-    public var posterURL: NSURL!
+    public var posterURL: URL!
     
 }

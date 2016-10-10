@@ -16,12 +16,12 @@ class CourseListViewController: UITableViewController {
     
     let mobileManager = MobileManager.sharedInstance
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mobileManager.getCourses(semester).count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Course") as! CourseListCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Course") as! CourseListCell
         let course = mobileManager.getCourses(semester)[indexPath.row]
         cell.titleLabel.text = course.name
         cell.identifierLabel.text = course.identifier
@@ -30,15 +30,15 @@ class CourseListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         selectedCourse = mobileManager.getCourses(semester)[indexPath.row]
-        performSegueWithIdentifier("showCourseDetail", sender: nil)
+        performSegue(withIdentifier: "showCourseDetail", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! CourseDetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! CourseDetailViewController
         vc.managedObject = selectedCourse
     }
     

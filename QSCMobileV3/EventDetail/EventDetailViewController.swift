@@ -32,25 +32,25 @@ class EventDetailViewController: UITableViewController {
         hidesBottomBarWhenPushed = true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // To avoid dark shadow during transition
-        navigationController?.view.backgroundColor = UIColor.whiteColor()
+        navigationController?.view.backgroundColor = UIColor.white
         navigationController?.setToolbarHidden(false, animated: animated)
         
-        let category = Event.Category(rawValue: customEvent.category!.integerValue)!
+        let category = Event.Category(rawValue: customEvent.category!.intValue)!
         navigationItem.title = category.name
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         dotView.backgroundColor = QSCColor.category(category)
         nameLabel.text = customEvent.name
         placeLabel.text = customEvent.place
-        if customEvent.duration == Event.Duration.AllDay.rawValue {
+        if customEvent.duration!.intValue == Event.Duration.allDay.rawValue {
             startLabel.text = customEvent.start!.stringOfDate
             endLabel.text = customEvent.end!.stringOfDate
         } else {
             startLabel.text = customEvent.start!.stringOfDatetime
-            if NSCalendar.currentCalendar().isDate(customEvent.start!, inSameDayAsDate: customEvent.end!) {
+            if Calendar.current.isDate(customEvent.start!, inSameDayAs: customEvent.end!) {
                 endLabel.text = customEvent.end!.stringOfTime
             } else {
                 endLabel.text = customEvent.end!.stringOfDatetime
@@ -64,48 +64,48 @@ class EventDetailViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: animated)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nc = segue.destinationViewController as! UINavigationController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nc = segue.destination as! UINavigationController
         let vc = nc.topViewController as! EventEditViewController
         vc.customEvent = customEvent
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && indexPath.row == 3 {
             return repeatTypeLabel.text == "永不" ? 0 : 44
         } else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
     // MARK: - IBActions
     
-    @IBAction func edit(sender: AnyObject) {
-        performSegueWithIdentifier("Edit", sender: nil)
+    @IBAction func edit(_ sender: AnyObject) {
+        performSegue(withIdentifier: "Edit", sender: nil)
     }
     
-    @IBAction func remove(sender: AnyObject) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let remove = UIAlertAction(title: "确认删除", style: .Destructive) { _ in
-            for notif in UIApplication.sharedApplication().scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == self.customEvent.objectID.URIRepresentation().URLString }) {
-                UIApplication.sharedApplication().cancelLocalNotification(notif)
+    @IBAction func remove(_ sender: AnyObject) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let remove = UIAlertAction(title: "确认删除", style: .destructive) { _ in
+            for notif in UIApplication.shared.scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == self.customEvent.objectID.uriRepresentation().absoluteString }) {
+                UIApplication.shared.cancelLocalNotification(notif)
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": self.customEvent.start!, "end": self.customEvent.end!])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil, userInfo: ["start": self.customEvent.start!, "end": self.customEvent.end!])
             EventManager.sharedInstance.removeCustomEvent(self.customEvent)
-            self.navigationController?.popViewControllerAnimated(true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(remove)
-        let cancel = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         alert.addAction(cancel)
         alert.popoverPresentationController?.barButtonItem = toolbarItems![1]
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
 }

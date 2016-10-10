@@ -20,7 +20,7 @@ public class CalendarManager: NSObject {
     
     public static let sharedInstance = CalendarManager()
     
-    private func entityForSemester(date: NSDate) -> Semester? {
+    private func entityForSemester(_ date: Date) -> Semester? {
         if let year = DataStore.entityForYear(date) {
             for semester in year.semesters! {
                 let semester = semester as! Semester
@@ -41,7 +41,7 @@ public class CalendarManager: NSObject {
      
      - returns: A description like "2015-2016" or "" if failed.
      */
-    public func yearForDate(date: NSDate) -> String {
+    public func yearForDate(_ date: Date) -> String {
         return DataStore.entityForYear(date)?.name ?? ""
     }
     
@@ -52,7 +52,7 @@ public class CalendarManager: NSObject {
      
      - returns: Corresponding `CalendarSemester` or `.Unknown` if failed.
      */
-    public func semesterForDate(date: NSDate) -> CalendarSemester {
+    public func semesterForDate(_ date: Date) -> CalendarSemester {
         if let semester = entityForSemester(date) {
             return CalendarSemester(rawValue: semester.name!) ?? .Unknown
         } else {
@@ -67,7 +67,7 @@ public class CalendarManager: NSObject {
      
      - returns: The name of a holiday or nil.
      */
-    public func holidayForDate(date: NSDate) -> String? {
+    public func holidayForDate(_ date: Date) -> String? {
         if let year = DataStore.entityForYear(date) {
             for holiday in year.holidays! {
                 let holiday = holiday as! Holiday
@@ -88,12 +88,12 @@ public class CalendarManager: NSObject {
      
      - returns: A tuple containing the name and the source date of an adjustment or nil.
      */
-    public func adjustmentForDate(date: NSDate) -> (name: String, fromDate: NSDate)? {
+    public func adjustmentForDate(_ date: Date) -> (name: String, fromDate: Date)? {
         if let year = DataStore.entityForYear(date) {
             for adjustment in year.adjustments! {
                 let adjustment = adjustment as! Adjustment
                 if adjustment.toStart! <= date && date < adjustment.toEnd! {
-                    let fromDate = adjustment.fromStart!.dateByAddingTimeInterval(date.timeIntervalSinceDate(adjustment.toStart!))
+                    let fromDate = adjustment.fromStart!.addingTimeInterval(date.timeIntervalSince(adjustment.toStart!))
                     return (adjustment.name!, fromDate)
                 }
             }
@@ -110,22 +110,21 @@ public class CalendarManager: NSObject {
      
      - returns: An integer representing the week ordinal or -1 if failed.
      */
-    public func weekOrdinalForDate(date: NSDate) -> Int {
+    public func weekOrdinalForDate(_ date: Date) -> Int {
         if let semester = entityForSemester(date) {
-            let weekTimeInterval = NSTimeInterval(604800)
-            let dayTimeInterval = NSTimeInterval(86400)
-            let calendar = NSCalendar.currentCalendar()
+            let weekTimeInterval = TimeInterval(604800)
+            let dayTimeInterval = TimeInterval(86400)
             
             var zeroMonday = semester.start!
             if semester.startsWithWeekZero == false {
-                zeroMonday = zeroMonday.dateByAddingTimeInterval(-weekTimeInterval)
+                zeroMonday = zeroMonday.addingTimeInterval(-weekTimeInterval)
             }
-            while calendar.component([.Weekday], fromDate: zeroMonday) != Weekday.Monday.rawValue {
-                zeroMonday = zeroMonday.dateByAddingTimeInterval(-dayTimeInterval)
+            while Calendar.current.component(.weekday, from: zeroMonday) != Weekday.monday.rawValue {
+                zeroMonday = zeroMonday.addingTimeInterval(-dayTimeInterval)
             }
             
-            let components = calendar.components([.WeekdayOrdinal], fromDate: zeroMonday, toDate: date, options: [])
-            return components.weekdayOrdinal
+            let components = Calendar.current.dateComponents([.weekdayOrdinal], from: zeroMonday, to: date)
+            return components.weekdayOrdinal!
         } else {
             return -1
         }

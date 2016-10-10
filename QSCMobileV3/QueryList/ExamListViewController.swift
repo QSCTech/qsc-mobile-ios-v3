@@ -19,16 +19,16 @@ class ExamListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerNib(UINib(nibName: "EventCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Event")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: groupDefaults.boolForKey(ShowAllCoursesKey) ? "隐藏无考试的课程" : "显示无考试的课程", style: .Plain, target: self, action: #selector(changeCoursesShowMode))
+        tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: groupDefaults.bool(forKey: ShowAllCoursesKey) ? "隐藏无考试的课程" : "显示无考试的课程", style: .plain, target: self, action: #selector(changeCoursesShowMode))
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredExams.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Event") as! EventCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Event") as! EventCell
         cell.lineView.image = UIImage(named: "LineExam")
         let exam = filteredExams[indexPath.row]
         cell.nameLabel.text = exam.name
@@ -45,26 +45,26 @@ class ExamListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         selectedExam = filteredExams[indexPath.row]
-        performSegueWithIdentifier("showCourseDetail", sender: nil)
+        performSegue(withIdentifier: "showCourseDetail", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! CourseDetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! CourseDetailViewController
         vc.managedObject = selectedExam
     }
     
-    func changeCoursesShowMode(sender: AnyObject) {
-        groupDefaults.setBool(!groupDefaults.boolForKey(ShowAllCoursesKey), forKey: ShowAllCoursesKey)
-        navigationItem.rightBarButtonItem!.title = groupDefaults.boolForKey(ShowAllCoursesKey) ? "隐藏无考试的课程" : "显示无考试的课程"
+    func changeCoursesShowMode(_ sender: AnyObject) {
+        groupDefaults.set(!groupDefaults.bool(forKey: ShowAllCoursesKey), forKey: ShowAllCoursesKey)
+        navigationItem.rightBarButtonItem!.title = groupDefaults.bool(forKey: ShowAllCoursesKey) ? "隐藏无考试的课程" : "显示无考试的课程"
         tableView.reloadData()
     }
     
     var filteredExams: [Exam] {
         return MobileManager.sharedInstance.getExams(semester).filter {
-            groupDefaults.boolForKey(ShowAllCoursesKey) || $0.startTime != nil
+            groupDefaults.bool(forKey: ShowAllCoursesKey) || $0.startTime != nil
         }
     }
     

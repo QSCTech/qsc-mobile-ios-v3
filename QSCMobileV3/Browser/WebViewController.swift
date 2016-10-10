@@ -14,7 +14,7 @@ class WebViewController: UIViewController {
     
     init(url: String?, title: String?) {
         if let url = url {
-            request = NSURLRequest(URL: NSURL(string: url)!)
+            request = URLRequest(url: URL(string: url)!)
         }
         name = title
         super.init(nibName: nil, bundle: nil)
@@ -24,7 +24,7 @@ class WebViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    var request: NSURLRequest?
+    var request: URLRequest?
     var name: String?
     
     var webView: WKWebView!
@@ -33,20 +33,20 @@ class WebViewController: UIViewController {
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
-        webView.backgroundColor = UIColor.whiteColor()
+        webView.backgroundColor = UIColor.white
         view = webView
         
         navigationItem.title = name
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         
         if let request = request {
-            webView.loadRequest(request)
+            webView.load(request)
         } else {
-            let htmlFile = NSBundle.mainBundle().pathForResource("About", ofType: "html")!
-            let htmlString = try! String(contentsOfFile: htmlFile, encoding: NSUTF8StringEncoding).stringByReplacingOccurrencesOfString("<%= version %>", withString: "\(QSCVersion)")
-            webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
+            let htmlFile = Bundle.main.path(forResource: "About", ofType: "html")!
+            let htmlString = try! String(contentsOfFile: htmlFile, encoding: String.Encoding.utf8).replacingOccurrences(of: "<%= version %>", with: "\(QSCVersion)")
+            webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
         }
     }
 
@@ -54,12 +54,12 @@ class WebViewController: UIViewController {
 
 extension WebViewController: WKNavigationDelegate {
     
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        activityIndicator.hidden = false
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.isHidden = false
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        activityIndicator.hidden = true
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.isHidden = true
     }
     
 }

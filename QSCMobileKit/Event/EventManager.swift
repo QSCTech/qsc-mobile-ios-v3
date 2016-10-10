@@ -21,14 +21,14 @@ public class EventManager: NSObject {
     public static let sharedInstance = EventManager()
     
     private let managedObjectContext: NSManagedObjectContext = {
-        let modelURL = NSBundle(identifier: QSCMobileKitIdentifier)!.URLForResource("Event", withExtension: "momd")!
-        let storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(AppGroupIdentifier)!.URLByAppendingPathComponent("Event.sqlite")
+        let modelURL = Bundle(identifier: QSCMobileKitIdentifier)!.url(forResource: "Event", withExtension: "momd")!
+        let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroupIdentifier)!.appendingPathComponent("Event.sqlite")
         
-        let mom = NSManagedObjectModel(contentsOfURL: modelURL)!
+        let mom = NSManagedObjectModel(contentsOf: modelURL)!
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
-        try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
-        let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        try! psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: options)
+        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = psc
         return moc
     }()
@@ -42,49 +42,52 @@ public class EventManager: NSObject {
      
      - returns: The object of `CourseEvent`.
      */
-    public func courseEventForIdentifier(identifier: String) -> CourseEvent? {
-        let identifier = identifier.substringToIndex(identifier.startIndex.advancedBy(22))
-        let request = NSFetchRequest(entityName: "CourseEvent")
+    public func courseEventForIdentifier(_ identifier: String) -> CourseEvent? {
+        let identifier = identifier.substring(to: identifier.index(identifier.startIndex, offsetBy: 22))
+        
+//        if #available(iOSApplicationExtension 10.0, *) {
+//            let request: NSFetchRequest<CourseEvent> = CourseEvent.fetchRequest()
+//        }
+        let request: NSFetchRequest<CourseEvent> = NSFetchRequest(entityName: "CourseEvent")
         request.predicate = NSPredicate(format: "identifier CONTAINS %@", identifier)
-        return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
+        return try! managedObjectContext.fetch(request).first
     }
     
     // TODO: Support notifications
-    public func customEventsForDate(date: NSDate) -> [Event] {
-        var actualDates = [CustomEvent: (start: NSDate, end: NSDate)]()
+    public func customEventsForDate(_ date: Date) -> [Event] {
+        var actualDates = [CustomEvent: (start: Date, end: Date)]()
         
-        let request = NSFetchRequest(entityName: "CustomEvent")
-        request.predicate = NSPredicate(format: "(start < %@) AND (end >= %@)", date.tomorrow, date.today)
-        var events = try! managedObjectContext.executeFetchRequest(request) as! [CustomEvent]
+        let request: NSFetchRequest<CustomEvent> = NSFetchRequest(entityName: "CustomEvent")
+        request.predicate = NSPredicate(format: "(start < %@) AND (end >= %@)", date.tomorrow as NSDate, date.today as NSDate)
+        var events = try! managedObjectContext.fetch(request)
         for event in events {
             actualDates[event] = (event.start!, event.end!)
         }
         
-        request.predicate = NSPredicate(format: "(end < %@) AND (repeatType != \"永不\") AND (repeatEnd >= %@)", date.today, date.today)
-        let repeatable = try! managedObjectContext.executeFetchRequest(request) as! [CustomEvent]
-        let calendar = NSCalendar.currentCalendar()
+        request.predicate = NSPredicate(format: "(end < %@) AND (repeatType != \"永不\") AND (repeatEnd >= %@)", date.today as NSDate, date.today as NSDate)
+        let repeatable = try! managedObjectContext.fetch(request)
         for event in repeatable {
-            let startComponents: NSDateComponents
+            let startComponents: DateComponents
             switch event.repeatType! {
             case "每周", "每两周":
-                startComponents = calendar.components([.Weekday, .Hour, .Minute, .Second], fromDate: event.start!)
+                startComponents = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: event.start!)
             case "每月":
-                startComponents = calendar.components([.Day, .Hour, .Minute, .Second], fromDate: event.start!)
+                startComponents = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: event.start!)
             default:
-                startComponents = calendar.components([.Hour, .Minute, .Second], fromDate: event.start!)
+                startComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: event.start!)
             }
-            let timeInterval = event.end!.timeIntervalSinceDate(event.start!)
+            let timeInterval = event.end!.timeIntervalSince(event.start!)
             var flag = false
-            calendar.enumerateDatesStartingAfterDate(event.start!, matchingComponents: startComponents, options: .MatchStrictly) { start, _, stop in
+            Calendar.current.enumerateDates(startingAfter: event.start!, matching: startComponents, matchingPolicy: .strict) { start, _, stop in
                 if start! >= date.tomorrow {
-                    stop.memory = true
+                    stop = true
                     return
                 }
                 flag = !flag
                 if event.repeatType == "每两周" && flag {
                     return
                 }
-                let end = start?.dateByAddingTimeInterval(timeInterval)
+                let end = start?.addingTimeInterval(timeInterval)
                 if start! < date.tomorrow && end! >= date.today {
                     actualDates[event] = (start!, end!)
                     events.append(event)
@@ -92,10 +95,10 @@ public class EventManager: NSObject {
             }
         }
         
-        return events.sort({ actualDates[$0]!.start <= actualDates[$1]!.start }).map { event in
-            let duration = Event.Duration(rawValue: event.duration!.integerValue)!
-            let category = Event.Category(rawValue: event.category!.integerValue)!
-            let tags = event.tags!.isEmpty ? [] : event.tags!.componentsSeparatedByString(",")
+        return events.sorted(by: { actualDates[$0]!.start <= actualDates[$1]!.start }).map { event in
+            let duration = Event.Duration(rawValue: event.duration!.intValue)!
+            let category = Event.Category(rawValue: event.category!.intValue)!
+            let tags = event.tags!.isEmpty ? [] : event.tags!.components(separatedBy: ",")
             
             let actualStart = actualDates[event]!.start
             let actualEnd = actualDates[event]!.end
@@ -103,7 +106,7 @@ public class EventManager: NSObject {
             var endTime = actualEnd.stringOfDate
             let time: String
             if startTime == endTime {
-                if event.duration! == Event.Duration.PartialTime.rawValue {
+                if event.duration!.intValue == Event.Duration.partialTime.rawValue {
                     startTime += " " + actualDates[event]!.start.stringOfTime
                     endTime = actualDates[event]!.end.stringOfTime
                     time = startTime + "-" + endTime
@@ -119,9 +122,9 @@ public class EventManager: NSObject {
     }
     
     public var allHomeworks: [Homework] {
-        let request = NSFetchRequest(entityName: "Homework")
-        let homeworks = try! managedObjectContext.executeFetchRequest(request) as! [Homework]
-        return homeworks.sort { $0.deadline <= $1.deadline }
+        let request: NSFetchRequest<Homework> = NSFetchRequest(entityName: "Homework")
+        let homeworks = try! managedObjectContext.fetch(request)
+        return homeworks.sorted { $0.deadline! <= $1.deadline! }
     }
     
     // MARK: - Creation & Deletion
@@ -131,9 +134,12 @@ public class EventManager: NSObject {
      
      - parameter identifier: Identifier of the course, e.g. "(2015-2016-2)-051F0090".
      */
-    func createCourseEvent(identifier: String, teacher: String) {
+    func createCourseEvent(_ identifier: String, teacher: String) {
         if courseEventForIdentifier(identifier) == nil {
-            let courseEvent = CourseEvent(context: managedObjectContext)
+//            if #available(iOSApplicationExtension 10.0, *) {
+//                let courseEvent = CourseEvent(context: managedObjectContext)
+//            }
+            let courseEvent = NSEntityDescription.insertNewObject(forEntityName: "CourseEvent", into: managedObjectContext) as! CourseEvent
             courseEvent.identifier = identifier
             courseEvent.teacher = teacher
             try! managedObjectContext.save()
@@ -141,22 +147,22 @@ public class EventManager: NSObject {
     }
     
     public var newCustomEvent: CustomEvent {
-        return CustomEvent(context: managedObjectContext)
+        return NSEntityDescription.insertNewObject(forEntityName: "CustomEvent", into: managedObjectContext) as! CustomEvent
     }
     
-    public func removeCustomEvent(event: CustomEvent) {
-        managedObjectContext.deleteObject(event)
+    public func removeCustomEvent(_ event: CustomEvent) {
+        managedObjectContext.delete(event)
         try! managedObjectContext.save()
     }
     
-    public func newHomeworkOfCourseEvent(courseEvent: CourseEvent) -> Homework {
-        let hw = Homework(context: managedObjectContext)
+    public func newHomeworkOfCourseEvent(_ courseEvent: CourseEvent) -> Homework {
+        let hw = NSEntityDescription.insertNewObject(forEntityName: "Homework", into: managedObjectContext) as! Homework
         hw.courseEvent = courseEvent
         return hw
     }
     
-    public func removeHomework(hw: Homework) {
-        managedObjectContext.deleteObject(hw)
+    public func removeHomework(_ hw: Homework) {
+        managedObjectContext.delete(hw)
         try! managedObjectContext.save()
     }
     

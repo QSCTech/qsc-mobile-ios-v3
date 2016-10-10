@@ -13,10 +13,10 @@ import CoreData
 class Adjustment: NSManagedObject {
 
     @NSManaged var name: String?
-    @NSManaged var fromStart: NSDate?
-    @NSManaged var fromEnd: NSDate?
-    @NSManaged var toStart: NSDate?
-    @NSManaged var toEnd: NSDate?
+    @NSManaged var fromStart: Date?
+    @NSManaged var fromEnd: Date?
+    @NSManaged var toStart: Date?
+    @NSManaged var toEnd: Date?
     @NSManaged var year: Year?
 
 }

@@ -12,7 +12,7 @@ extension String {
     
     /// Return a new string made by replacing all characters not allowed in a query URL component with percent encoded characters.
     public var percentEncoded: String {
-        return stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        return addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
     }
     
     /// Return an attributed string with FontAwesome 16.0
@@ -29,8 +29,8 @@ extension String {
         return characters.count == 10 || characters.count == 8
     }
     
-    var startTimeForPeriods: NSDateComponents {
-        let time = NSDateComponents()
+    var startTimeForPeriods: DateComponents {
+        var time = DateComponents()
         if self.characters.count == 0 {
             return time
         }
@@ -80,8 +80,8 @@ extension String {
         return time
     }
     
-    var endTimeForPeriods: NSDateComponents {
-        let time = NSDateComponents()
+    var endTimeForPeriods: DateComponents {
+        var time = DateComponents()
         if characters.count == 0 {
             return time
         }
@@ -138,16 +138,16 @@ extension String {
      
      - returns: Whether it includes.
      */
-    public func includesSemester(semester: CalendarSemester) -> Bool {
+    public func includesSemester(_ semester: CalendarSemester) -> Bool {
         switch semester {
         case .Autumn:
-            return containsString("秋")
+            return contains("秋")
         case .Winter:
-            return containsString("冬")
+            return contains("冬")
         case .Spring:
-            return containsString("春")
+            return contains("春")
         case .Summer:
-            return containsString("夏")
+            return contains("夏")
         default:
             return false
         }
@@ -160,7 +160,7 @@ extension String {
      
      - returns: Whether it matches.
      */
-    func matchesWeekOrdinal(weekOrdinal: Int) -> Bool {
+    func matchesWeekOrdinal(_ weekOrdinal: Int) -> Bool {
         switch self {
         case "每周":
             return true
@@ -175,13 +175,13 @@ extension String {
     
     /// For example, "2016-2017-1" -> "2016-2017 秋冬".
     public var fullNameForSemester: String {
-        return substringToIndex(endIndex.advancedBy(-2)) + (hasSuffix("1") ? " 秋冬" : " 春夏")
+        return substring(to: index(endIndex, offsetBy: -2)) + (hasSuffix("1") ? " 秋冬" : " 春夏")
     }
     
     /// Same as `String#chomp` in Ruby.
-    func chomp(separator: String) -> String {
+    func chomp(_ separator: String) -> String {
         if hasSuffix(separator) {
-            return substringToIndex(endIndex.predecessor())
+            return substring(to: index(before: endIndex))
         } else {
             return self
         }
@@ -189,6 +189,6 @@ extension String {
     
 }
 
-public func += (inout left: String!, right: String) {
+public func += (left: inout String!, right: String) {
     left = (left ?? "") + right
 }

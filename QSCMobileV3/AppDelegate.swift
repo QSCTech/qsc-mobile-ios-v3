@@ -12,74 +12,73 @@ import QSCMobileKit
 
 let UMengAppKey = "572381bf67e58e07a7005095"
 
-let groupDefaults = NSUserDefaults(suiteName: AppGroupIdentifier)!
+let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        MobClick.startWithAppkey(UMengAppKey)
-        UMessage.startWithAppkey(UMengAppKey, launchOptions: launchOptions)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        MobClick.start(withAppkey: UMengAppKey)
+        UMessage.start(withAppkey: UMengAppKey, launchOptions: launchOptions)
         UMessage.registerForRemoteNotifications()
         UMessage.setLogEnabled(true)
         
-        if groupDefaults.objectForKey(RefreshOnLaunchKey) == nil {
-            groupDefaults.setBool(true, forKey: RefreshOnLaunchKey)
+        if groupDefaults.object(forKey: RefreshOnLaunchKey) == nil {
+            groupDefaults.set(true, forKey: RefreshOnLaunchKey)
         }
-        if groupDefaults.boolForKey(RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
+        if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
             MobileManager.sharedInstance.refreshAll({ _ in }, callback: {
                 // TODO: Post a notification to force views to refresh.
                 print("Refresh on launch completed")
             })
         }
-        if groupDefaults.objectForKey(ShowScoreKey) == nil {
-            groupDefaults.setBool(true, forKey: ShowScoreKey)
+        if groupDefaults.object(forKey: ShowScoreKey) == nil {
+            groupDefaults.set(true, forKey: ShowScoreKey)
         }
-        if groupDefaults.objectForKey(ShowAllCoursesKey) == nil {
-            groupDefaults.setBool(false, forKey: ShowAllCoursesKey)
+        if groupDefaults.object(forKey: ShowAllCoursesKey) == nil {
+            groupDefaults.set(false, forKey: ShowAllCoursesKey)
         }
-        if groupDefaults.objectForKey(CampusFromIndexKey) == nil {
+        if groupDefaults.object(forKey: CampusFromIndexKey) == nil {
             // 0 stands for 紫金港
-            groupDefaults.setInteger(0, forKey: CampusFromIndexKey)
+            groupDefaults.set(0, forKey: CampusFromIndexKey)
         }
-        if groupDefaults.objectForKey(CampusToIndexKey) == nil {
+        if groupDefaults.object(forKey: CampusToIndexKey) == nil {
             // 1 stands for 玉泉
-            groupDefaults.setInteger(1, forKey: CampusToIndexKey)
+            groupDefaults.set(1, forKey: CampusToIndexKey)
         }
         
-        SVProgressHUD.setDefaultStyle(.Dark)
+        SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         
         return true
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let deviceToken = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
-        groupDefaults.setObject(deviceToken, forKey: DeviceTokenKey)
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceToken = deviceToken.description.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
+        groupDefaults.set(deviceToken, forKey: DeviceTokenKey)
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject]) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         UMessage.didReceiveRemoteNotification(userInfo)
     }
     
-    @available(iOS 9.0, *)
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         let tabBarController = window!.rootViewController as! UITabBarController
-        tabBarController.presentedViewController?.dismissViewControllerAnimated(false, completion: nil)
+        tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
         if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
-            tabBarController.presentViewController(JwbinfosysLoginViewController(), animated: true, completion: nil)
+            tabBarController.present(JwbinfosysLoginViewController(), animated: true, completion: nil)
         } else {
             tabBarController.selectedIndex = 3
             switch shortcutItem.type {
             case "Course", "Exam":
                 let storyboard = UIStoryboard(name: "QueryList", bundle: nil)
                 let vc = storyboard.instantiateInitialViewController() as! SemesterListViewController
-                vc.source = shortcutItem.type == "Course" ? .Course : .Exam
-                (tabBarController.selectedViewController as! UINavigationController).showViewController(vc, sender: nil)
+                vc.source = shortcutItem.type == "Course" ? .course : .exam
+                (tabBarController.selectedViewController as! UINavigationController).show(vc, sender: nil)
             case "Bus":
-                tabBarController.presentViewController(BusViewController(), animated: true, completion: nil)
+                tabBarController.present(BusViewController(), animated: true, completion: nil)
             default:
                 break
             }

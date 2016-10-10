@@ -26,10 +26,10 @@ public class AccountManager: NSObject {
     
     public static let sharedInstance = AccountManager()
     
-    let groupDefaults = NSUserDefaults(suiteName: AppGroupIdentifier)!
+    let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
         
     // MARK: - JWBInfoSys
-    private let jwbinfosysKeychain = Keychain(server: "http://jwbinfosys.zju.edu.cn", protocolType: .HTTP)
+    private let jwbinfosysKeychain = Keychain(server: "http://jwbinfosys.zju.edu.cn", protocolType: .http)
     private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
     private let JwbinfosysSessionId = "JwbinfosysSessionId"
     private let JwbinfosysSessionKey = "JwbinfosysSessionKey"
@@ -37,7 +37,7 @@ public class AccountManager: NSObject {
     /**
      Add an account to JWBInfoSys and set it to current account.
      */
-    func addAccountToJwbinfosys(username: String, _ password: String) {
+    func addAccountToJwbinfosys(_ username: String, _ password: String) {
         jwbinfosysKeychain[username] = password
         currentAccountForJwbinfosys = username
     }
@@ -45,7 +45,7 @@ public class AccountManager: NSObject {
     /**
      Remove an account from JWBInfoSys. If current account is just the removed one, it will be changed to the first of remaining accounts (or nil).
      */
-    func removeAccountFromJwbinfosys(username: String) {
+    func removeAccountFromJwbinfosys(_ username: String) {
         jwbinfosysKeychain[username] = nil
         if currentAccountForJwbinfosys == username {
             currentAccountForJwbinfosys = allAccountsForJwbinfosys.first
@@ -60,10 +60,10 @@ public class AccountManager: NSObject {
     /// Get or set current account of JWBInfosys. If so far there is no account, you will get nil. If you want to change current account from UI, you should call `MobileManager.changeUser()`.
     public var currentAccountForJwbinfosys: String? {
         get {
-            return groupDefaults.stringForKey(JwbinfosysCurrentAccountKey)
+            return groupDefaults.string(forKey: JwbinfosysCurrentAccountKey)
         }
         set {
-            groupDefaults.setObject(newValue, forKey: JwbinfosysCurrentAccountKey)
+            groupDefaults.set(newValue, forKey: JwbinfosysCurrentAccountKey)
             groupDefaults.synchronize()
         }
     }
@@ -71,11 +71,11 @@ public class AccountManager: NSObject {
     /// Get or set session id and key of JWBInfoSys. This property is represented as a tuple, either of which can be nil.
     var sessionForCurrentAccount: (id: String?, key: String?) {
         get {
-            return (groupDefaults.stringForKey(JwbinfosysSessionId), groupDefaults.stringForKey(JwbinfosysSessionKey))
+            return (groupDefaults.string(forKey: JwbinfosysSessionId), groupDefaults.string(forKey: JwbinfosysSessionKey))
         }
         set {
-            groupDefaults.setObject(newValue.id, forKey: JwbinfosysSessionId)
-            groupDefaults.setObject(newValue.key, forKey: JwbinfosysSessionKey)
+            groupDefaults.set(newValue.id, forKey: JwbinfosysSessionId)
+            groupDefaults.set(newValue.key, forKey: JwbinfosysSessionKey)
             groupDefaults.synchronize()
         }
     }
@@ -87,24 +87,24 @@ public class AccountManager: NSObject {
      
      - returns: Password of the account or nil if username is not found.
      */
-    public func passwordForJwbinfosys(username: String) -> String? {
+    public func passwordForJwbinfosys(_ username: String) -> String? {
         return jwbinfosysKeychain[username]
     }
     
     // MARK: - ZJUWLAN
     private let ZjuwlanAccountKey = "ZjuwlanAccount"
-    private let zjuwlanKeychain = Keychain(server: "https://net.zju.edu.cn", protocolType: .HTTPS)
+    private let zjuwlanKeychain = Keychain(server: "https://net.zju.edu.cn", protocolType: .https)
     
     /// Get or set username of ZJUWLAN. If so far there is no account, you will get nil.
     public var accountForZjuwlan: String? {
         get {
-            return groupDefaults.stringForKey(ZjuwlanAccountKey)
+            return groupDefaults.string(forKey: ZjuwlanAccountKey)
         }
         set {
             if let account = accountForZjuwlan {
                 zjuwlanKeychain[account] = nil
             }
-            groupDefaults.setObject(newValue, forKey: ZjuwlanAccountKey)
+            groupDefaults.set(newValue, forKey: ZjuwlanAccountKey)
             groupDefaults.synchronize()
         }
     }

@@ -19,9 +19,9 @@ class ScoreCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        gauge.type = .Line
-        gauge.startColor = UIColor.whiteColor()
-        gauge.endColor = UIColor.whiteColor()
+        gauge.type = .line
+        gauge.startColor = UIColor.white
+        gauge.endColor = UIColor.white
         gauge.maxValue = 5.0
         gauge.shadowRadius = 1
     }

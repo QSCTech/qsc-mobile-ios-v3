@@ -13,8 +13,8 @@ import CoreData
 class Year: NSManagedObject {
 
     @NSManaged var name: String?
-    @NSManaged var start: NSDate?
-    @NSManaged var end: NSDate?
+    @NSManaged var start: Date?
+    @NSManaged var end: Date?
     @NSManaged var semesters: NSSet?
     @NSManaged var holidays: NSSet?
     @NSManaged var adjustments: NSSet?

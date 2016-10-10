@@ -11,8 +11,8 @@ import Foundation
 extension NSNumber: Comparable {}
 
 public func == (left: NSNumber, right: NSNumber) -> Bool {
-    return left.compare(right) == .OrderedSame
+    return left.compare(right) == .orderedSame
 }
 public func < (left: NSNumber, right: NSNumber) -> Bool {
-    return left.compare(right) == .OrderedAscending
+    return left.compare(right) == .orderedAscending
 }

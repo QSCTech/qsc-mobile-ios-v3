@@ -32,17 +32,17 @@ class MomentViewController: UIViewController {
         loginButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         loginButton.layer.cornerRadius = 18
         loginButton.layer.borderWidth = 1
-        loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).CGColor
+        loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).cgColor
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewWillAppear), name: UIApplicationWillEnterForegroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewDidAppear), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidAppear), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // TODO: Support all-day events and future exams
-        events = eventsForDate(NSDate()).filter { $0.duration == .PartialTime && $0.end >= NSDate() }
+        events = eventsForDate(Date()).filter { $0.duration == .partialTime && $0.end >= Date() }
         pageControl.numberOfPages = events.count
         
         pageControllers.removeAll()
@@ -55,29 +55,29 @@ class MomentViewController: UIViewController {
             let vc = MomentPageViewController(event: nil)
             pageControllers.append(vc)
             
-            stackView.hidden = true
+            stackView.isHidden = true
             navigationItem.title = "今日无事"
-            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         } else {
-            stackView.hidden = false
+            stackView.isHidden = false
             updateCurrentEvent()
         }
         
         if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil && events.isEmpty {
-            loginButton.hidden = false
+            loginButton.isHidden = false
         } else {
-            loginButton.hidden = true
+            loginButton.isHidden = true
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         scrollView.removeAllSubviews()
         let width = scrollView.frame.width
         let height = scrollView.frame.height
         scrollView.contentSize = CGSize(width: width * CGFloat(pageControllers.count), height: height)
-        for (index, vc) in pageControllers.enumerate() {
+        for (index, vc) in pageControllers.enumerated() {
             vc.view.frame = CGRect(x: width * CGFloat(index), y: 0, width: width, height: height)
             scrollView.addSubview(vc.view)
         }
@@ -99,21 +99,21 @@ class MomentViewController: UIViewController {
         placeLabel.textColor = color
     }
     
-    @IBAction func pageDidChange(sender: UIPageControl) {
+    @IBAction func pageDidChange(_ sender: UIPageControl) {
         let x = scrollView.frame.width * CGFloat(sender.currentPage)
         scrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
         updateCurrentEvent()
     }
     
-    @IBAction func login(sender: AnyObject) {
+    @IBAction func login(_ sender: AnyObject) {
         let vc = JwbinfosysLoginViewController()
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 }
 
 extension MomentViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         pageControl.currentPage = Int((scrollView.contentOffset.x + width / 2) / width)
         updateCurrentEvent()

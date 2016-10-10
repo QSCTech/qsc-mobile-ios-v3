@@ -11,16 +11,16 @@ import UIKit
 // TODO: Change UIWebView to WKWebView
 class BrowserViewController: UIViewController {
     
-    init(request: NSURLRequest) {
+    init(request: URLRequest) {
         urlRequest = request
-        super.init(nibName: "BrowserViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "BrowserViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    var urlRequest: NSURLRequest!
+    var urlRequest: URLRequest!
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
@@ -34,27 +34,27 @@ class BrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], forState: .Normal)
-        forwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], forState: .Normal)
+        backwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], for: .normal)
+        forwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], for: .normal)
         navBar.delegate = self
         webView.delegate = self
         webView.loadRequest(urlRequest)
         activityIndicator.startAnimating()
     }
     
-    @IBAction func dismiss(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismiss(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func backward(sender: AnyObject) {
+    @IBAction func backward(_ sender: AnyObject) {
         webView.goBack()
     }
     
-    @IBAction func forward(sender: AnyObject) {
+    @IBAction func forward(_ sender: AnyObject) {
         webView.goForward()
     }
     
-    @IBAction func refresh(sender: AnyObject) {
+    @IBAction func refresh(_ sender: AnyObject) {
         webView.reload()
     }
     
@@ -62,23 +62,23 @@ class BrowserViewController: UIViewController {
 
 extension BrowserViewController: UINavigationBarDelegate {
     
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
     
 }
 
 extension BrowserViewController: UIWebViewDelegate {
     
-    func webViewDidStartLoad(webView: UIWebView) {
-        activityIndicator.hidden = false
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        activityIndicator.isHidden = false
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        activityIndicator.hidden = true
-        navItem.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
-        backwardButton.enabled = webView.canGoBack
-        forwardButton.enabled = webView.canGoForward
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        activityIndicator.isHidden = true
+        navItem.title = webView.stringByEvaluatingJavaScript(from: "document.title")
+        backwardButton.isEnabled = webView.canGoBack
+        forwardButton.isEnabled = webView.canGoForward
     }
     
 }

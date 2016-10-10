@@ -16,7 +16,7 @@ class CalendarViewController: UIViewController {
     let mobileManager = MobileManager.sharedInstance
     let calendarManager = CalendarManager.sharedInstance
     
-    var selectedDate = NSDate()
+    var selectedDate = Date()
     var selectedEvent: Event!
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -36,20 +36,20 @@ class CalendarViewController: UIViewController {
         calendarView.calendarAppearanceDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerNib(UINib(nibName: "EventCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "Event")
+        tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
         
         let rightBorder = CALayer()
-        rightBorder.borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.34).CGColor
+        rightBorder.borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.34).cgColor
         rightBorder.borderWidth = 1
         rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
         weekLabel.layer.addSublayer(rightBorder)
         
-        NSNotificationCenter.defaultCenter().addObserverForName("ClearCache", object: nil, queue: NSOperationQueue.mainQueue()) { notification in
-            if let start = notification.userInfo?["start"] as? NSDate, end = notification.userInfo?["end"] as? NSDate {
-                var date = NSCalendar.currentCalendar().startOfDayForDate(start)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ClearCache"), object: nil, queue: OperationQueue.main) { notification in
+            if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
+                var date = Calendar.current.startOfDay(for: start)
                 while date <= end {
-                    self.cache.removeValueForKey(date)
-                    date = date.dateByAddingTimeInterval(86400)
+                    self.cache.removeValue(forKey: date)
+                    date = date.addingTimeInterval(86400)
                 }
             } else {
                 self.cache.removeAll()
@@ -57,7 +57,7 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         updateForSelectedDate()
@@ -70,36 +70,36 @@ class CalendarViewController: UIViewController {
         calendarView.commitCalendarViewUpdate()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "addEvent":
-            let nc = segue.destinationViewController as! UINavigationController
+            let nc = segue.destination as! UINavigationController
             let vc = nc.topViewController as! EventEditViewController
             vc.selectedDate = selectedDate
             vc.hidesBottomBarWhenPushed = true
         case "showCourseDetail":
-            let vc = segue.destinationViewController as! CourseDetailViewController
+            let vc = segue.destination as! CourseDetailViewController
             vc.managedObject = selectedEvent.object
             vc.hidesBottomBarWhenPushed = true
         case "showEventDetail":
-            let vc = segue.destinationViewController as! EventDetailViewController
+            let vc = segue.destination as! EventDetailViewController
             vc.customEvent = selectedEvent.object as! CustomEvent
         default:
             break
         }
     }
     
-    @IBAction func changeMode(sender: AnyObject) {
-        if calendarView.calendarMode == .WeekView {
-            calendarView.changeMode(.MonthView)
-            weekLabel.hidden = true
+    @IBAction func changeMode(_ sender: AnyObject) {
+        if calendarView.calendarMode == .weekView {
+            calendarView.changeMode(.monthView)
+            weekLabel.isHidden = true
         } else {
-            calendarView.changeMode(.WeekView)
-            weekLabel.hidden = false
+            calendarView.changeMode(.weekView)
+            weekLabel.isHidden = false
         }
     }
     
-    @IBAction func toggleToday(sender: AnyObject) {
+    @IBAction func toggleToday(_ sender: AnyObject) {
         calendarView.toggleCurrentDayView()
     }
     
@@ -112,14 +112,13 @@ class CalendarViewController: UIViewController {
     }
     
     func updateDateLabel() {
-        let calendar = NSCalendar.currentCalendar()
-        dayLabel.text = String(calendar.component(.Day, fromDate: selectedDate))
-        monthLabel.text = calendar.component(.Month, fromDate: selectedDate).stringForMonth
-        yearLabel.text = String(calendar.component(.Year, fromDate: selectedDate))
+        dayLabel.text = String(Calendar.current.component(.day, from: selectedDate))
+        monthLabel.text = Calendar.current.component(.month, from: selectedDate).stringForMonth
+        yearLabel.text = String(Calendar.current.component(.year, from: selectedDate))
     }
     
     func updateForSelectedDate() {
-        calculatedColorsForDate(selectedDate)
+        _ = calculatedColorsForDate(selectedDate)
         tableView.reloadData()
         calendarView.contentController.refreshPresentedMonth()
         weekLabel.text = weekName
@@ -127,16 +126,16 @@ class CalendarViewController: UIViewController {
     }
     
     
-    var cache = [NSDate: Set<UIColor>]()
+    var cache = [Date: Set<UIColor>]()
     
-    func cachedColorsForDate(date: NSDate) -> Set<UIColor> {
+    func cachedColorsForDate(_ date: Date) -> Set<UIColor> {
         if let colors = cache[date] {
             return colors
         }
         return calculatedColorsForDate(date)
     }
     
-    func calculatedColorsForDate(date: NSDate) -> Set<UIColor> {
+    func calculatedColorsForDate(_ date: Date) -> Set<UIColor> {
         let events = eventsForDate(date)
         var colors = Set<UIColor>()
         for event in events {
@@ -152,22 +151,22 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     func presentationMode() -> CalendarMode {
-        return .WeekView
+        return .weekView
     }
     
     func firstWeekday() -> Weekday {
-        return .Monday
+        return .monday
     }
     
     func weekdaySymbolType() -> WeekdaySymbolType {
-        return .VeryShort
+        return .veryShort
     }
     
     func shouldShowWeekdaysOut() -> Bool {
         return false
     }
     
-    func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
+    func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
         selectedDate = dayView.date.convertedDate()!
         updateForSelectedDate()
     }
@@ -197,11 +196,11 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
     }
     
     func dayLabelPresentWeekdayTextColor() -> UIColor {
-        return UIColor.blackColor()
+        return UIColor.black
     }
     
     func dayLabelPresentWeekdaySelectedBackgroundColor() -> UIColor {
-        return UIColor.blackColor()
+        return UIColor.black
     }
     
 }
@@ -211,11 +210,11 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
 // MARK: - UITableView{Delegate,DataSource}
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if filteredEvents(section).isEmpty {
             return nil
         } else if section == 1 {
@@ -227,7 +226,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let events = filteredEvents(section)
         if section == 0 {
             return 1
@@ -236,7 +235,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 30
         } else {
@@ -244,9 +243,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
             cell.textLabel!.adjustsFontSizeToFitWidth = true
             let semester = calendarManager.semesterForDate(selectedDate)
             if let holiday = calendarManager.holidayForDate(selectedDate) {
@@ -269,47 +268,47 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let event = filteredEvents(indexPath.section)[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("Event") as! EventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Event") as! EventCell
         cell.nameLabel.text = event.name
         cell.placeLabel.text = event.place
         cell.timeLabel.text = event.time
         var imageName = "Line"
         switch event.category {
-        case .Course, .Lesson:
+        case .course, .lesson:
             imageName += "Course"
-        case .Exam, .Quiz:
+        case .exam, .quiz:
             imageName += "Exam"
-        case .Activity:
+        case .activity:
             imageName += "Activity"
-        case .Todo:
+        case .todo:
             imageName += "Todo"
-        case .Bus:
+        case .bus:
             imageName += "Bus"
         }
         cell.lineView.image = UIImage(named: imageName)
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             return
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         selectedEvent = filteredEvents(indexPath.section)[indexPath.row]
-        if selectedEvent.category == .Course || selectedEvent.category == .Exam {
-            performSegueWithIdentifier("showCourseDetail", sender: nil)
+        if selectedEvent.category == .course || selectedEvent.category == .exam {
+            performSegue(withIdentifier: "showCourseDetail", sender: nil)
         } else {
-            performSegueWithIdentifier("showEventDetail", sender: nil)
+            performSegue(withIdentifier: "showEventDetail", sender: nil)
         }
     }
     
-    func filteredEvents(section: Int) -> [Event] {
+    func filteredEvents(_ section: Int) -> [Event] {
         let events = eventsForDate(selectedDate)
         switch section {
         case 1:
-            return events.filter { $0.duration == .AllDay }
+            return events.filter { $0.duration == .allDay }
         case 2:
-            return events.filter { $0.duration == .PartialTime }
+            return events.filter { $0.duration == .partialTime }
         default:
             return events
         }

@@ -13,7 +13,7 @@ import QSCMobileKit
 class ZjuwlanLoginViewController: UIViewController {
     
     init() {
-        super.init(nibName: "ZjuwlanLoginViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ZjuwlanLoginViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,33 +35,33 @@ class ZjuwlanLoginViewController: UIViewController {
         passwordField.text = accountManager.passwordForZjuwlan
     }
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(_ sender: AnyObject) {
         view.endEditing(true)
         accountManager.accountForZjuwlan = usernameField.text
         accountManager.passwordForZjuwlan = passwordField.text
-        self.navigationController?.popViewControllerAnimated(true)
-        SVProgressHUD.showSuccessWithStatus("账号保存成功")
+        _ = self.navigationController?.popViewController(animated: true)
+        SVProgressHUD.showSuccess(withStatus: "账号保存成功")
     }
     
-    @IBAction func remove(sender: AnyObject) {
+    @IBAction func remove(_ sender: AnyObject) {
         usernameField.text = ""
         passwordField.text = ""
         accountManager.accountForZjuwlan = nil
-        self.navigationController?.popViewControllerAnimated(true)
-        SVProgressHUD.showSuccessWithStatus("账号删除成功")
+        _ = self.navigationController?.popViewController(animated: true)
+        SVProgressHUD.showSuccess(withStatus: "账号删除成功")
     }
     
-    @IBAction func textFieldDidChange(sender: AnyObject) {
+    @IBAction func textFieldDidChange(_ sender: AnyObject) {
         if !usernameField.text!.isEmpty && !passwordField.text!.isEmpty {
-            saveButton.enabled = true
+            saveButton.isEnabled = true
             saveButton.alpha = 1
         } else {
-            saveButton.enabled = false
+            saveButton.isEnabled = false
             saveButton.alpha = 0.5
         }
     }
     
-    @IBAction func dismissKeyboard(sender: AnyObject) {
+    @IBAction func dismissKeyboard(_ sender: AnyObject) {
         view.endEditing(true)
     }
     

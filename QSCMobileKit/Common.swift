@@ -33,26 +33,26 @@ public class QSCColor {
     public static let bus = UIColor(red: 0.451, green: 0.804, blue: 0.122, alpha: 1.0) // #73CD1F
     public static let autobús = UIColor(red: 0.039, green: 0.733, blue: 0.27, alpha: 1.0) // #0ABB07
     
-    public static func category(cat: Event.Category) -> UIColor {
+    public static func category(_ cat: Event.Category) -> UIColor {
         switch cat {
-        case .Course, .Lesson:
+        case .course, .lesson:
             return course
-        case .Exam, .Quiz:
+        case .exam, .quiz:
             return exam
-        case .Activity:
+        case .activity:
             return activity
-        case .Todo:
+        case .todo:
             return todo
-        case .Bus:
+        case .bus:
             return bus
         }
     }
     
-    public static func categoría(cat: Event.Category) -> UIColor {
+    public static func categoría(_ cat: Event.Category) -> UIColor {
         switch cat {
-        case .Activity:
+        case .activity:
             return actividad
-        case .Bus:
+        case .bus:
             return autobús
         default:
             return category(cat)
@@ -62,28 +62,28 @@ public class QSCColor {
 }
 
 public let QSCVersion: String = {
-    let info = NSBundle.mainBundle().infoDictionary!
+    let info = Bundle.main.infoDictionary!
     return "\(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"
 }()
 
 public struct Event {
     public enum Duration: Int {
-        case AllDay = 0, PartialTime
+        case allDay = 0, partialTime
     }
     public enum Category: Int {
-        case Course = 0, Exam, Lesson, Quiz, Activity, Todo, Bus
+        case course = 0, exam, lesson, quiz, activity, todo, bus
         
         public var name: String {
             switch self {
-            case .Course, .Lesson:
+            case .course, .lesson:
                 return "课程"
-            case .Exam, .Quiz:
+            case .exam, .quiz:
                 return "考试"
-            case .Activity:
+            case .activity:
                 return "活动"
-            case .Todo:
+            case .todo:
                 return "待办"
-            case .Bus:
+            case .bus:
                 return "校车"
             }
         }
@@ -94,8 +94,8 @@ public struct Event {
     public let name: String
     public let time: String
     public let place: String
-    public let start: NSDate
-    public let end: NSDate
+    public let start: Date
+    public let end: Date
     public let object: NSManagedObject
 }
 
@@ -154,7 +154,7 @@ public enum CalendarSemester: String {
  
  - returns: Return all events when logged in, otherwise just return custom events.
  */
-public func eventsForDate(date: NSDate) -> [Event] {
+public func eventsForDate(_ date: Date) -> [Event] {
     if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
         return EventManager.sharedInstance.customEventsForDate(date)
     } else {
@@ -162,8 +162,8 @@ public func eventsForDate(date: NSDate) -> [Event] {
     }
 }
 
-public func delay(second: NSTimeInterval, block: dispatch_block_t) {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(second * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), block)
+public func delay(_ sec: Double, block: @escaping ()->()) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sec, execute: block)
 }
 
 /**
@@ -173,8 +173,8 @@ public func delay(second: NSTimeInterval, block: dispatch_block_t) {
  
  - returns: The Alamofire manager.
  */
-func alamofireManager(timeoutInterval timeoutInterval: Double) -> Alamofire.Manager {
-    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+func alamofireManager(timeoutInterval: Double) -> Alamofire.SessionManager {
+    let configuration = URLSessionConfiguration.default
     configuration.timeoutIntervalForResource = timeoutInterval
-    return Alamofire.Manager(configuration: configuration)
+    return Alamofire.SessionManager(configuration: configuration)
 }

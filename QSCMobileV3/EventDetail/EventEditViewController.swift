@@ -12,31 +12,31 @@ import QSCMobileKit
 
 class EventEditViewController: UITableViewController {
     
-    private let timeSection = 1
-    private let notesSection = 2
+    let timeSection = 1
+    let notesSection = 2
     
-    private enum Time: Int {
-        case AllDay = 0
-        case StartTime
-        case StartPicker
-        case EndTime
-        case EndPicker
-        case RepeatType
-        case RepeatEnd
-        case RepeatPicker
-        case Notification
+    enum Time: Int {
+        case allDay = 0
+        case startTime
+        case startPicker
+        case endTime
+        case endPicker
+        case repeatType
+        case repeatEnd
+        case repeatPicker
+        case notification
     }
     
     // MARK: - Cell heights
     
-    private let basicHeight = CGFloat(44)
-    private let pickerHeight = CGFloat(200)
-    private let notesHeight = CGFloat(150)
+    let basicHeight = CGFloat(44)
+    let pickerHeight = CGFloat(200)
+    let notesHeight = CGFloat(150)
     
-    private var startPickerHeight = CGFloat(0)
-    private var endPickerHeight = CGFloat(0)
-    private var repeatEndHeight = CGFloat(0)
-    private var repeatPickerHeight = CGFloat(0)
+    var startPickerHeight = CGFloat(0)
+    var endPickerHeight = CGFloat(0)
+    var repeatEndHeight = CGFloat(0)
+    var repeatPickerHeight = CGFloat(0)
     
     // MARK: - IBOutlets
     
@@ -58,27 +58,25 @@ class EventEditViewController: UITableViewController {
     
     // MARK: - View controller override
     
-    private let eventManager = EventManager.sharedInstance
-    private let currentCalendar = NSCalendar.currentCalendar()
-    private let sharedApplication = UIApplication.sharedApplication()
+    let eventManager = EventManager.sharedInstance
     
     var customEvent: CustomEvent?
-    var selectedDate: NSDate? {
+    var selectedDate: Date? {
         didSet {
             selectedDate = selectedDate!.today
         }
     }
     
     var eventCategory: Event.Category {
-        return Event.Category(rawValue: customEvent!.category!.integerValue)!
+        return Event.Category(rawValue: customEvent!.category!.intValue)!
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         allDaySwitch = UISwitch()
-        allDaySwitch.addTarget(self, action: #selector(allDaySwitchDidChange), forControlEvents: .ValueChanged)
-        allDaySwitch.on = false
+        allDaySwitch.addTarget(self, action: #selector(allDaySwitchDidChange), for: .valueChanged)
+        allDaySwitch.isOn = false
         allDaySwitch.onTintColor = QSCColor.theme
         allDayCell.accessoryView = allDaySwitch
         
@@ -86,7 +84,7 @@ class EventEditViewController: UITableViewController {
             titleField.text = event.name
             titleDidChange(titleField)
             placeField.text = event.place
-            allDaySwitch.on = (event.duration == Event.Duration.AllDay.rawValue)
+            allDaySwitch.isOn = (event.duration!.intValue == Event.Duration.allDay.rawValue)
             allDaySwitchDidChange(allDaySwitch)
             startTimePicker.date = event.start!
             endTimePicker.date = event.end!
@@ -96,12 +94,12 @@ class EventEditViewController: UITableViewController {
             notificationTypeLabel.text = event.notification!.stringFromNotificationType
             notesTextView.text = event.notes
             
-            for notif in sharedApplication.scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == event.objectID.URIRepresentation().URLString }) {
-                sharedApplication.cancelLocalNotification(notif)
+            for notif in UIApplication.shared.scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == event.objectID.uriRepresentation().absoluteString }) {
+                UIApplication.shared.cancelLocalNotification(notif)
             }
         } else {
             customEvent = eventManager.newCustomEvent
-            customEvent!.category = Event.Category.Todo.rawValue
+            customEvent!.category = Event.Category.todo.rawValue as NSNumber
             
             startTimePicker.date = selectedDate!
             endTimePicker.date = selectedDate!
@@ -109,18 +107,18 @@ class EventEditViewController: UITableViewController {
         }
         startTimeDidChange(startTimePicker)
         
-        let items = [Event.Category.Lesson.name, Event.Category.Quiz.name, Event.Category.Activity.name, Event.Category.Todo.name]
+        let items = [Event.Category.lesson.name, Event.Category.quiz.name, Event.Category.activity.name, Event.Category.todo.name]
         if eventCategory.rawValue - 2 < items.count {
-            let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items)
+            let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items as [NSString])
             menuView.didSelectItemAtIndexHandler = { index in
-                self.customEvent!.category = index + 2
+                self.customEvent!.category = (index + 2) as NSNumber
                 self.navigationController?.navigationBar.backgroundColor = QSCColor.category(self.eventCategory)
             }
-            menuView.arrowTintColor = UIColor.blackColor()
-            menuView.cellBackgroundColor = UIColor.darkGrayColor()
-            menuView.cellSeparatorColor = UIColor.darkGrayColor()
-            menuView.cellTextLabelColor = UIColor.whiteColor()
-            menuView.cellTextLabelAlignment = .Center
+            menuView.arrowTintColor = UIColor.black
+            menuView.cellBackgroundColor = UIColor.darkGray
+            menuView.cellSeparatorColor = UIColor.darkGray
+            menuView.cellTextLabelColor = UIColor.white
+            menuView.cellTextLabelAlignment = .center
             menuView.cellHeight = 44
             menuView.checkMarkImage = nil
             navigationItem.titleView = menuView
@@ -130,7 +128,7 @@ class EventEditViewController: UITableViewController {
         navigationController?.navigationBar.backgroundColor = QSCColor.category(eventCategory)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         hideStartPicker()
@@ -138,27 +136,27 @@ class EventEditViewController: UITableViewController {
         hideRepeatPicker()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? RepeatTypeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? RepeatTypeViewController {
             vc.eventEditViewController = self
-        } else if let vc = segue.destinationViewController as? NotificationTypeViewController {
+        } else if let vc = segue.destination as? NotificationTypeViewController {
             vc.eventEditViewController = self
         }
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case timeSection:
             switch indexPath.row {
-            case Time.StartPicker.rawValue:
+            case Time.startPicker.rawValue:
                 return startPickerHeight
-            case Time.EndPicker.rawValue:
+            case Time.endPicker.rawValue:
                 return endPickerHeight
-            case Time.RepeatEnd.rawValue:
+            case Time.repeatEnd.rawValue:
                 return repeatEndHeight
-            case Time.RepeatPicker.rawValue:
+            case Time.repeatPicker.rawValue:
                 return repeatPickerHeight
             default:
                 return basicHeight
@@ -170,16 +168,16 @@ class EventEditViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section != timeSection {
             return
         }
         switch indexPath.row {
-        case Time.StartTime.rawValue:
+        case Time.startTime.rawValue:
             startPickerHeight = pickerHeight - startPickerHeight
-            reloadRowFor(Time.StartPicker)
+            reloadRowFor(Time.startPicker)
             if startPickerHeight > 0 {
                 startTimeLabel.textColor = QSCColor.theme
                 hideEndPicker()
@@ -187,9 +185,9 @@ class EventEditViewController: UITableViewController {
             } else {
                 startTimeLabel.textColor = QSCColor.detailText
             }
-        case Time.EndTime.rawValue:
+        case Time.endTime.rawValue:
             endPickerHeight = pickerHeight - endPickerHeight
-            reloadRowFor(Time.EndPicker)
+            reloadRowFor(Time.endPicker)
             if endPickerHeight > 0 {
                 endTimeLabel.textColor = QSCColor.theme
                 hideStartPicker()
@@ -197,7 +195,7 @@ class EventEditViewController: UITableViewController {
             } else {
                 endTimeLabel.textColor = QSCColor.detailText
             }
-        case Time.RepeatEnd.rawValue:
+        case Time.repeatEnd.rawValue:
             repeatPickerHeight = pickerHeight - repeatPickerHeight
             if repeatPickerHeight > 0 {
                 repeatEndLabel.textColor = QSCColor.theme
@@ -206,7 +204,7 @@ class EventEditViewController: UITableViewController {
             } else {
                 repeatEndLabel.textColor = QSCColor.detailText
             }
-            reloadRowFor(Time.RepeatPicker)
+            reloadRowFor(Time.repeatPicker)
         default:
             break
         }
@@ -214,19 +212,19 @@ class EventEditViewController: UITableViewController {
     
     // MARK: - Reload row
     
-    private func reloadRowFor(row: Time) {
-        let indexPath = NSIndexPath(forRow: row.rawValue, inSection: timeSection)
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    func reloadRowFor(_ row: Time) {
+        let indexPath = IndexPath(row: row.rawValue, section: timeSection)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
         tableView.reloadData()
     }
     
-    func changeRepeatType(type: String) {
+    func changeRepeatType(_ type: String) {
         if type == "永不" {
             repeatEndHeight = 0
-            reloadRowFor(Time.RepeatEnd)
+            reloadRowFor(Time.repeatEnd)
         } else {
             repeatEndHeight = basicHeight
-            reloadRowFor(Time.RepeatEnd)
+            reloadRowFor(Time.repeatEnd)
         }
     }
     
@@ -234,7 +232,7 @@ class EventEditViewController: UITableViewController {
         if startPickerHeight > 0 {
             startPickerHeight = 0
             startTimeLabel.textColor = QSCColor.detailText
-            reloadRowFor(Time.StartPicker)
+            reloadRowFor(Time.startPicker)
         }
     }
     
@@ -242,7 +240,7 @@ class EventEditViewController: UITableViewController {
         if endPickerHeight > 0 {
             endPickerHeight = 0
             endTimeLabel.textColor = QSCColor.detailText
-            reloadRowFor(Time.EndPicker)
+            reloadRowFor(Time.endPicker)
         }
     }
     
@@ -250,28 +248,28 @@ class EventEditViewController: UITableViewController {
         if repeatPickerHeight > 0 {
             repeatPickerHeight = 0
             repeatEndLabel.textColor = QSCColor.detailText
-            reloadRowFor(Time.RepeatPicker)
+            reloadRowFor(Time.repeatPicker)
         }
     }
     
     // MARK: - IBActions
     
-    @IBAction func editingDidBegin(sender: AnyObject) {
+    @IBAction func editingDidBegin(_ sender: AnyObject) {
         hideStartPicker()
         hideEndPicker()
         hideRepeatPicker()
     }
     
-    @IBAction func titleDidChange(sender: UITextField) {
+    @IBAction func titleDidChange(_ sender: UITextField) {
         if sender.text!.isEmpty {
-            saveButton.enabled = false
+            saveButton.isEnabled = false
         } else {
-            saveButton.enabled = true
+            saveButton.isEnabled = true
         }
     }
     
-    @IBAction func startTimeDidChange(sender: UIDatePicker) {
-        if allDaySwitch.on {
+    @IBAction func startTimeDidChange(_ sender: UIDatePicker) {
+        if allDaySwitch.isOn {
             startTimeLabel.text = sender.date.stringOfDate
         } else {
             startTimeLabel.text = sender.date.stringOfDatetime
@@ -280,10 +278,10 @@ class EventEditViewController: UITableViewController {
         endTimeDidChange(endTimePicker)
     }
     
-    @IBAction func endTimeDidChange(sender: UIDatePicker) {
-        if allDaySwitch.on {
+    @IBAction func endTimeDidChange(_ sender: UIDatePicker) {
+        if allDaySwitch.isOn {
             endTimeLabel.text = sender.date.stringOfDate
-        } else if currentCalendar.isDate(startTimePicker.date, inSameDayAsDate: endTimePicker.date) {
+        } else if Calendar.current.isDate(startTimePicker.date, inSameDayAs: endTimePicker.date) {
             endTimeLabel.text = sender.date.stringOfTime
         } else {
             endTimeLabel.text = sender.date.stringOfDatetime
@@ -292,108 +290,108 @@ class EventEditViewController: UITableViewController {
         repeatEndDidChange(repeatEndPicker)
     }
     
-    @IBAction func repeatEndDidChange(sender: UIDatePicker) {
+    @IBAction func repeatEndDidChange(_ sender: UIDatePicker) {
         repeatEndLabel.text = sender.date.stringOfDate
     }
     
-    @IBAction func dismissKeyboard(sender: AnyObject) {
+    @IBAction func dismissKeyboard(_ sender: AnyObject) {
         view.endEditing(true)
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         if customEvent!.name == nil {
             eventManager.removeCustomEvent(customEvent!)
         }
         
         (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(_ sender: AnyObject) {
         let started = customEvent!.start
         let ended = customEvent!.end
         let repeated = (customEvent!.notification ?? -1) >= 0
         
         customEvent!.name = titleField.text
         customEvent!.place = placeField.text
-        if allDaySwitch.on {
-            customEvent!.duration = Event.Duration.AllDay.rawValue
+        if allDaySwitch.isOn {
+            customEvent!.duration = Event.Duration.allDay.rawValue as NSNumber
         } else {
-            customEvent!.duration = Event.Duration.PartialTime.rawValue
+            customEvent!.duration = Event.Duration.partialTime.rawValue as NSNumber
         }
         customEvent!.start = startTimePicker.date
         customEvent!.end = endTimePicker.date
         customEvent!.repeatType = repeatTypeLabel.text
         customEvent!.repeatEnd = repeatEndPicker.date
-        customEvent!.notification = notificationTypeLabel.text!.numberFromNotificationType
+        customEvent!.notification = notificationTypeLabel.text!.numberFromNotificationType as NSNumber
         customEvent!.notes = notesTextView.text
         // TODO: To implement tags
         customEvent!.tags = ""
         eventManager.save()
         
-        if repeated || customEvent!.notification >= 0 {
-            NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil)
+        if repeated || customEvent!.notification!.intValue >= 0 {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil)
         } else {
-            if let started = started, ended = ended {
-                NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": started, "end": ended])
+            if let started = started, let ended = ended {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil, userInfo: ["start": started, "end": ended])
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": customEvent!.start!, "end": customEvent!.end!])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil, userInfo: ["start": customEvent!.start!, "end": customEvent!.end!])
         }
         
-        if customEvent!.notification >= 0 {
+        if customEvent!.notification!.intValue >= 0 {
             let notif = UILocalNotification()
-            let time = customEvent!.notification == 0 ? "马上" : "将于 " + customEvent!.notification!.stringFromNotificationType.stringByReplacingOccurrencesOfString("前", withString: "后")
+            let time = customEvent!.notification == 0 ? "马上" : "将于 " + customEvent!.notification!.stringFromNotificationType.replacingOccurrences(of: "前", with: "后")
             let place = customEvent!.place == "" ? "" : "在 " + customEvent!.place! + " "
             notif.alertBody = "「\(customEvent!.name!)」\(time)\(place)开始"
-            notif.fireDate = customEvent!.start!.dateByAddingTimeInterval(-customEvent!.notification!.doubleValue)
+            notif.fireDate = customEvent!.start!.addingTimeInterval(-customEvent!.notification!.doubleValue)
             notif.soundName = UILocalNotificationDefaultSoundName
-            notif.userInfo = ["objectID": customEvent!.objectID.URIRepresentation().URLString]
-            if customEvent!.start >= NSDate() {
-                sharedApplication.scheduleLocalNotification(notif)
+            notif.userInfo = ["objectID": customEvent!.objectID.uriRepresentation().absoluteString]
+            if customEvent!.start! >= Date() {
+                UIApplication.shared.scheduleLocalNotification(notif)
             }
             
             if customEvent!.repeatType != "永不" {
-                let components: NSDateComponents
+                let components: DateComponents
                 switch customEvent!.repeatType! {
                 case "每周", "每两周":
-                    components = currentCalendar.components([.Weekday, .Hour, .Minute, .Second], fromDate: customEvent!.start!)
+                    components = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: customEvent!.start!)
                 case "每月":
-                    components = currentCalendar.components([.Day, .Hour, .Minute, .Second], fromDate: customEvent!.start!)
+                    components = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: customEvent!.start!)
                 default:
-                    components = currentCalendar.components([.Hour, .Minute, .Second], fromDate: customEvent!.start!)
+                    components = Calendar.current.dateComponents([.hour, .minute, .second], from: customEvent!.start!)
                 }
                 var flag = false
-                currentCalendar.enumerateDatesStartingAfterDate(customEvent!.start!, matchingComponents: components, options: .MatchStrictly) { start, _, stop in
-                    if start!.today > self.customEvent!.repeatEnd {
-                        stop.memory = true
+                Calendar.current.enumerateDates(startingAfter: customEvent!.start!, matching: components, matchingPolicy: .strict) { start, _, stop in
+                    if start!.today > self.customEvent!.repeatEnd! {
+                        stop = true
                         return
                     }
                     flag = !flag
-                    if self.customEvent!.repeatType == "每两周" && flag || start < NSDate() {
+                    if self.customEvent!.repeatType! == "每两周" && flag || start! < Date() {
                         return
                     }
                     let notif = notif.copy() as! UILocalNotification
                     notif.fireDate = start
-                    UIApplication.sharedApplication().scheduleLocalNotification(notif)
+                    UIApplication.shared.scheduleLocalNotification(notif)
                 }
             }
         }
         
         (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func allDaySwitchDidChange(sender: UISwitch) {
-        if sender.on {
-            startTimePicker.datePickerMode = .Date
-            endTimePicker.datePickerMode = .Date
+    func allDaySwitchDidChange(_ sender: UISwitch) {
+        if sender.isOn {
+            startTimePicker.datePickerMode = .date
+            endTimePicker.datePickerMode = .date
             startTimeLabel.text = startTimePicker.date.stringOfDate
             endTimeLabel.text = endTimePicker.date.stringOfDate
         } else {
-            startTimePicker.datePickerMode = .DateAndTime
-            endTimePicker.datePickerMode = .DateAndTime
+            startTimePicker.datePickerMode = .dateAndTime
+            endTimePicker.datePickerMode = .dateAndTime
             startTimeLabel.text = startTimePicker.date.stringOfDatetime
-            if currentCalendar.isDate(startTimePicker.date, inSameDayAsDate: endTimePicker.date) {
+            if Calendar.current.isDate(startTimePicker.date, inSameDayAs: endTimePicker.date) {
                 endTimeLabel.text = endTimePicker.date.stringOfTime
             } else {
                 endTimeLabel.text = endTimePicker.date.stringOfDatetime
