@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+#import <UserNotifications/UserNotifications.h>
 
 
 /** String type for alias
@@ -73,6 +73,13 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
  */
 + (void)startWithAppkey:(NSString * __nonnull)appKey launchOptions:(NSDictionary * __nullable)launchOptions;
 
+/** 绑定App的appKey和启动参数，启动消息参数用于处理用户通过消息打开应用相关信息
+ @param appKey      主站生成appKey
+ @param launchOptions 启动参数
+ @param value     开启友盟内部协议使用https的开关,默认是关闭
+ */
++ (void)startWithAppkey:(NSString * __nonnull)appKey launchOptions:(NSDictionary * __nullable)launchOptions httpsenable:(BOOL)value;
+
 /** 注册RemoteNotification的类型
  @brief 分别针对iOS8以前版本及iOS8及以后开启推送消息推送。
  默认的时候是sound，badge ,alert三个功能全部打开, 没有开启交互式推送行为分类。
@@ -83,19 +90,19 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
  @brief 分别针对iOS8以下版本及iOS8及以上开启推送消息推送。
  默认的时候是sound，badge ,alert三个功能全部打开。
  @param categories 交互式推送行为分类。可以具体查看demo。
-*/
-+ (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories;
+ */
++ (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories8;
 
-/** 注册RemoteNotification的类型
- @brief 分别针对iOS8以前版本及iOS8及以后开启推送消息推送。
- 默认的时候是sound，badge ,alert三个功能全部打开。
- @param categories 交互式推送行为分类。可以具体查看demo。
- @param types7 iOS7及以下版本的推送类型。默认types7 = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
- @param types8 iOS8及以上版本的推送类型。默认types8 = UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge;
-*/
-+ (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories
-                     withTypesForIos7:(UIRemoteNotificationType)types7
-                     withTypesForIos8:(UIUserNotificationType)types8;
+///** 注册RemoteNotification的类型
+// @brief 分别针对iOS8以前版本及iOS8及以后开启推送消息推送。
+// 默认的时候是sound，badge ,alert三个功能全部打开。
+// @param categories8 交互式推送行为分类。可以具体查看demo。
+// @param types7 iOS7及以下版本的推送类型。默认types7 = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+// @param types8 iOS8及以上，iOS10以下版本的推送类型。默认types8 = UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge;
+//  */
+//+ (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories8
+//                      withTypesForIos7:(UIRemoteNotificationType)types7
+//                      withTypesForIos8:(UIUserNotificationType)types8;
 
 
 
@@ -217,4 +224,5 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
  @param handle block返回数据，error为获取失败时的信息，responseObject为成功返回的数据
  */
 + (void)removeAlias:(NSString * __nonnull)name type:(NSString * __nonnull)type response:(nullable void (^)(id __nonnull responseObject, NSError *__nonnull error))handle;
+
 @end

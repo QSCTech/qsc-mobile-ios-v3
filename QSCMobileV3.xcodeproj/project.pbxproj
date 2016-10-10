@@ -23,7 +23,6 @@
 		9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387C1D5D939D00782E93 /* EventEdit.storyboard */; };
 		9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17387E1D5D93A500782E93 /* EventEditViewController.swift */; };
 		9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */; };
-		9D1738831D5D9DC100782E93 /* libUMessage_Sdk_1.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1738821D5D9DC100782E93 /* libUMessage_Sdk_1.3.0.a */; };
 		9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B768E1D58F6380088B96E /* ScoreCell.swift */; };
 		9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D1B768F1D58F6380088B96E /* ScoreCell.xib */; };
 		9D2132BA1D227C0A00996856 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2132B91D227C0A00996856 /* Logo.png */; };
@@ -115,6 +114,7 @@
 		9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD491241CEAFA81009F70FA /* EventManager.swift */; };
 		9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */; };
 		9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */; };
+		9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */; };
 		9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */; };
 		9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */; };
 		9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174DD1D59A2B800836575 /* DeviceKit.framework */; };
@@ -176,7 +176,6 @@
 		9D17387C1D5D939D00782E93 /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventEdit.storyboard; path = QSCMobileV3/EventDetail/EventEdit.storyboard; sourceTree = SOURCE_ROOT; };
 		9D17387E1D5D93A500782E93 /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventEditViewController.swift; path = QSCMobileV3/EventDetail/EventEditViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatTypeViewController.swift; path = QSCMobileV3/EventDetail/RepeatTypeViewController.swift; sourceTree = SOURCE_ROOT; };
-		9D1738821D5D9DC100782E93 /* libUMessage_Sdk_1.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.3.0.a; path = QSCMobileV3/Vendor/libUMessage_Sdk_1.3.0.a; sourceTree = "<group>"; };
 		9D1B768E1D58F6380088B96E /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = Score/ScoreCell.swift; sourceTree = "<group>"; };
 		9D1B768F1D58F6380088B96E /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreCell.xib; path = Score/ScoreCell.xib; sourceTree = "<group>"; };
 		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
@@ -271,13 +270,13 @@
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
 		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JwbinfosysLoginViewController.xib; path = Login/JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
+		9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.4.0.a; path = QSCMobileV3/Vendor/libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentPageViewController.swift; path = QSCMobileV3/Moment/MomentPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentPageViewController.xib; path = QSCMobileV3/Moment/MomentPageViewController.xib; sourceTree = SOURCE_ROOT; };
 		9DF174DD1D59A2B800836575 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = QSCMobileV3/EventDetail/EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = Carthage/Build/iOS/BTNavigationDropdownMenu.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,7 +298,7 @@
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
-				9D1738831D5D9DC100782E93 /* libUMessage_Sdk_1.3.0.a in Frameworks */,
+				9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,8 +666,7 @@
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
-				9D1738821D5D9DC100782E93 /* libUMessage_Sdk_1.3.0.a */,
-				9DF612811BAA8A03004B0A8A /* NotificationCenter.framework */,
+				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
