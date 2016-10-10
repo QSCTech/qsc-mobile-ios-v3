@@ -112,7 +112,8 @@ class CurriculaViewController: UIViewController {
         curriculaTable.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.9)
         curriculaTable.cornerRadius = 2
         curriculaTable.rectEdgeInsets = UIEdgeInsets(top: 0.5, left: 0.5, bottom: 0.5, right: 0.5)
-        curriculaTable.textEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        curriculaTable.textEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        curriculaTable.textAlignment = .Center
     }
     
 }
