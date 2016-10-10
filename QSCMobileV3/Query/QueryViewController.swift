@@ -52,12 +52,12 @@ class QueryViewController: UITableViewController {
         ],
         [
             "name": "体质健康测试",
-            "url": "http://www.tyys.zju.edu.cn:8080/tzjk/",
+            "url": "http://www.tyys.zju.edu.cn/tzjk/indexphone.jsp",
             "campus": "on",
         ],
         [
             "name": "健康之友",
-            "url": "http://www.tyys.zju.edu.cn:8080/hyz/",
+            "url": "http://www.tyys.zju.edu.cn/hyz/indexphone.jsp",
             "campus": "on",
         ],
         [
@@ -82,11 +82,6 @@ class QueryViewController: UITableViewController {
             "name": "体育锻炼制度",
             "url": "https://info.zjuqsc.com/exercise-regulations/",
             "campus": "off",
-        ],
-        [
-            "name": "校园地图",
-            "url": "http://m.zju.edu.cn:8080/m/maps/zjg.html",
-            "campus": "on",
         ],
         [
             "name": "教室占用查询",
