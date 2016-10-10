@@ -171,6 +171,19 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
             event.place = ""
         }
         eventManager.save()
+        
+        if event.start >= NSDate() {
+            let notif = UILocalNotification()
+            let time = event.notification == 0 ? "马上" : "将于 " + event.notification!.stringFromNotificationType.stringByReplacingOccurrencesOfString("前", withString: "后")
+            let place = event.place == "" ? "" : "在 " + event.place! + " "
+            notif.alertBody = "「\(event.name!)」\(time)\(place)开始"
+            notif.fireDate = event.start!.dateByAddingTimeInterval(-event.notification!.doubleValue)
+            notif.soundName = UILocalNotificationDefaultSoundName
+            notif.userInfo = ["objectID": event.objectID.URIRepresentation().URLString]
+            UIApplication.sharedApplication().scheduleLocalNotification(notif)
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": event.start!, "end": event.end!])
         SVProgressHUD.showSuccessWithStatus("已添加到今日日程")
     }
     
