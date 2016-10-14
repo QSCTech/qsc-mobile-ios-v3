@@ -151,14 +151,14 @@ class EventEditViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
         case timeSection:
-            switch indexPath.row {
-            case Time.StartPicker.rawValue:
+            switch Time(rawValue: indexPath.row)! {
+            case .StartPicker:
                 return startPickerHeight
-            case Time.EndPicker.rawValue:
+            case .EndPicker:
                 return endPickerHeight
-            case Time.RepeatEnd.rawValue:
+            case .RepeatEnd:
                 return repeatEndHeight
-            case Time.RepeatPicker.rawValue:
+            case .RepeatPicker:
                 return repeatPickerHeight
             default:
                 return basicHeight
@@ -176,8 +176,8 @@ class EventEditViewController: UITableViewController {
         if indexPath.section != timeSection {
             return
         }
-        switch indexPath.row {
-        case Time.StartTime.rawValue:
+        switch Time(rawValue: indexPath.row)! {
+        case .StartTime:
             startPickerHeight = pickerHeight - startPickerHeight
             reloadRowFor(Time.StartPicker)
             if startPickerHeight > 0 {
@@ -187,7 +187,7 @@ class EventEditViewController: UITableViewController {
             } else {
                 startTimeLabel.textColor = QSCColor.detailText
             }
-        case Time.EndTime.rawValue:
+        case .EndTime:
             endPickerHeight = pickerHeight - endPickerHeight
             reloadRowFor(Time.EndPicker)
             if endPickerHeight > 0 {
@@ -197,7 +197,7 @@ class EventEditViewController: UITableViewController {
             } else {
                 endTimeLabel.textColor = QSCColor.detailText
             }
-        case Time.RepeatEnd.rawValue:
+        case .RepeatEnd:
             repeatPickerHeight = pickerHeight - repeatPickerHeight
             if repeatPickerHeight > 0 {
                 repeatEndLabel.textColor = QSCColor.theme

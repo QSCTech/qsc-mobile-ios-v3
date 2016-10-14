@@ -95,29 +95,27 @@ class QueryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case Tools.Score.rawValue:
+        switch Tools(rawValue: section)! {
+        case .Score:
             return 1
-        case Tools.Query.rawValue:
+        case .Query:
             return 1
-        case Tools.Login.rawValue:
+        case .Login:
             return login.count
-        case Tools.Website.rawValue:
+        case .Website:
             return websites.count
-        case Tools.Webpage.rawValue:
+        case .Webpage:
             return webpages.count
-        default:
-            return 0
         }
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case Tools.Login.rawValue:
+        switch Tools(rawValue: section)! {
+        case .Login:
             return "一键登录"
-        case Tools.Website.rawValue:
+        case .Website:
             return "校网链接"
-        case Tools.Webpage.rawValue:
+        case .Webpage:
             return "实用查询"
         default:
             return nil
@@ -126,8 +124,8 @@ class QueryViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
-        switch indexPath.section {
-        case Tools.Score.rawValue:
+        switch Tools(rawValue: indexPath.section)! {
+        case .Score:
             if accountManager.currentAccountForJwbinfosys == nil {
                 cell.textLabel!.attributedText = "\u{f0f6}\t查询成绩请先登录".attributedWithFontAwesome
             } else if MobileManager.sharedInstance.statistics == nil {
@@ -150,29 +148,27 @@ class QueryViewController: UITableViewController {
                 }
                 return cell
             }
-        case Tools.Query.rawValue:
+        case .Query:
             let cell = tableView.dequeueReusableCellWithIdentifier("Collection") as! QueryTableViewCell
             cell.collectionView.registerNib(UINib(nibName: "QueryCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
             cell.collectionView.delegate = collectionViewDelegate
             cell.collectionView.dataSource = collectionViewDelegate
             cell.selectionStyle = .None
             return cell
-        case Tools.Login.rawValue:
+        case .Login:
             cell.textLabel!.text = login[indexPath.row]["name"]
-        case Tools.Website.rawValue:
+        case .Website:
             cell.textLabel!.text = websites[indexPath.row]["name"]
-        case Tools.Webpage.rawValue:
+        case .Webpage:
             cell.textLabel!.text = webpages[indexPath.row]["name"]
-        default:
-            break
         }
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.section {
-        case Tools.Score.rawValue:
+        switch Tools(rawValue: indexPath.section)! {
+        case .Score:
             if accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
                 presentViewController(vc, animated: true, completion: nil)
@@ -180,7 +176,7 @@ class QueryViewController: UITableViewController {
                 let vc = ScoreViewController()
                 presentViewController(vc, animated: true, completion: nil)
             }
-        case Tools.Login.rawValue:
+        case .Login:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
                 presentViewController(vc, animated: true, completion: nil)
@@ -212,7 +208,7 @@ class QueryViewController: UITableViewController {
             }
             let bvc = BrowserViewController(request: request)
             presentViewController(bvc, animated: true, completion: nil)
-        case Tools.Website.rawValue:
+        case .Website:
             let url = NSURL(string: websites[indexPath.row]["url"]!)!
             if #available(iOS 9.0, *) {
                 let svc = SFSafariViewController(URL: url)
@@ -222,7 +218,7 @@ class QueryViewController: UITableViewController {
                 let bvc = BrowserViewController(request: request)
                 presentViewController(bvc, animated: true, completion: nil)
             }
-        case Tools.Webpage.rawValue:
+        case .Webpage:
             let url = webpages[indexPath.row]["url"]!
             let title = webpages[indexPath.row]["name"]!
             let wvc = WebViewController(url: url, title: title)
