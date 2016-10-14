@@ -127,12 +127,12 @@ class CourseDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case Detail.basic.rawValue:
+        switch Detail(rawValue: section)! {
+        case .basic:
             return courseObject!.timePlaces!.count + 1
-        case Detail.exam.rawValue:
+        case .exam:
             return 2
-        case Detail.info.rawValue:
+        case .info:
             var count = 0
             for info in infos {
                 if let value = courseEvent.value(forKey: info["key"]!) as? String {
@@ -142,33 +142,31 @@ class CourseDetailViewController: UITableViewController {
                 }
             }
             return count
-        case Detail.notes.rawValue:
+        case .notes:
             return 1
-        case Detail.homework.rawValue:
+        case .homework:
             return homeworks.count + 1
-        default:
-            return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case Detail.basic.rawValue:
+        switch Detail(rawValue: indexPath.section)! {
+        case .basic:
             switch indexPath.row {
             case 0:
                 return 66
             default:
                 return 60
             }
-        case Detail.exam.rawValue:
+        case .exam:
             if indexPath.row == 1 && examObject?.startTime != nil {
                 return 60
             } else {
                 return 44
             }
-        case Detail.notes.rawValue:
+        case .notes:
             return 150
-        case Detail.homework.rawValue:
+        case .homework:
             if indexPath.row < homeworks.count {
                 return 60
             } else {
@@ -188,8 +186,8 @@ class CourseDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case Detail.basic.rawValue:
+        switch Detail(rawValue: indexPath.section)! {
+        case .basic:
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Name") as! CourseNameCell
@@ -210,10 +208,10 @@ class CourseDetailViewController: UITableViewController {
                 cell.timeLabel!.text = courseObject!.semester! + "学期 " + timePlace.time!
                 return cell
             }
-        case Detail.exam.rawValue:
+        case .exam:
             switch indexPath.row {
             case 1:
-                if let examObject = examObject, let _ = examObject.startTime {
+                if let examObject = examObject, examObject.startTime != nil {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TimePlace") as! CourseTimePlaceCell
                     cell.placeLabel!.text = examObject.place
                     if !examObject.seat!.isEmpty {
@@ -242,7 +240,7 @@ class CourseDetailViewController: UITableViewController {
                 }
                 return cell
             }
-        case Detail.info.rawValue:
+        case .info:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
             var values = [(String, String)]()
             for info in infos {
@@ -255,11 +253,11 @@ class CourseDetailViewController: UITableViewController {
             cell.textLabel!.text = values[indexPath.row].0
             cell.detailTextLabel!.text = values[indexPath.row].1
             return cell
-        case Detail.notes.rawValue:
+        case .notes:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Notes") as! CourseNotesCell
             cell.notesTextView.text = courseEvent.notes
             return cell
-        case Detail.homework.rawValue:
+        case .homework:
             if indexPath.row < homeworks.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
                 cell.nameLabel.text = homeworks[indexPath.row].name
@@ -272,15 +270,13 @@ class CourseDetailViewController: UITableViewController {
                 cell.detailTextLabel!.text = ""
                 return cell
             }
-        default:
-            return UITableViewCell()
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch indexPath.section {
-        case Detail.info.rawValue:
+        switch Detail(rawValue: indexPath.section)! {
+        case .info:
             let cell = tableView.cellForRow(at: indexPath)!
             switch cell.textLabel!.text! {
             case "教师":
@@ -319,7 +315,7 @@ class CourseDetailViewController: UITableViewController {
                 UIPasteboard.general.string = cell.detailTextLabel!.text
                 SVProgressHUD.showSuccess(withStatus: "已拷贝到剪贴板")
             }
-        case Detail.homework.rawValue:
+        case .homework:
             if indexPath.row < homeworks.count {
                 selectedHomework = homeworks[indexPath.row]
             } else {

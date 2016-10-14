@@ -36,10 +36,10 @@ class PreferenceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case Preference.jwbinfosys.rawValue:
+        switch Preference(rawValue: section)! {
+        case .jwbinfosys:
             return "教务网"
-        case Preference.zjuwlan.rawValue:
+        case .zjuwlan:
             return "ZJUWLAN"
         default:
             return nil
@@ -47,8 +47,8 @@ class PreferenceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case Preference.about.rawValue:
+        switch Preference(rawValue: section)! {
+        case .about:
             return "Copyright © 2016 QSC Tech."
         default:
             return nil
@@ -56,23 +56,21 @@ class PreferenceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case Preference.jwbinfosys.rawValue:
+        switch Preference(rawValue: section)! {
+        case .jwbinfosys:
             return accountManager.allAccountsForJwbinfosys.count + 1
-        case Preference.zjuwlan.rawValue:
+        case .zjuwlan:
             return accountManager.accountForZjuwlan == nil ? 1 : 2
-        case Preference.setting.rawValue:
+        case .setting:
             return 2
-        case Preference.about.rawValue:
+        case .about:
             return 3
-        default:
-            return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case Preference.jwbinfosys.rawValue:
+        switch Preference(rawValue: indexPath.section)! {
+        case .jwbinfosys:
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -90,7 +88,7 @@ class PreferenceViewController: UITableViewController {
                 cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
                 return cell
             }
-        case Preference.zjuwlan.rawValue:
+        case .zjuwlan:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
                 cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
@@ -100,7 +98,7 @@ class PreferenceViewController: UITableViewController {
                 cell.textLabel!.attributedText = "\u{f0ec}\t一键连接".attributedWithFontAwesome
                 return cell
             }
-        case Preference.setting.rawValue:
+        case .setting:
             switch indexPath.row {
             case 0:
                 let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -125,7 +123,7 @@ class PreferenceViewController: UITableViewController {
             default:
                 return UITableViewCell()
             }
-        case Preference.about.rawValue:
+        case .about:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
             switch indexPath.row {
             case 0:
@@ -138,15 +136,13 @@ class PreferenceViewController: UITableViewController {
                 return UITableViewCell()
             }
             return cell
-        default:
-            return UITableViewCell()
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch indexPath.section {
-        case Preference.jwbinfosys.rawValue:
+        switch Preference(rawValue: indexPath.section)! {
+        case .jwbinfosys:
             let accounts = accountManager.allAccountsForJwbinfosys
             if indexPath.row < accounts.count {
                 mobileManager.changeUser(accounts[indexPath.row])
@@ -156,7 +152,7 @@ class PreferenceViewController: UITableViewController {
                 let vc = JwbinfosysLoginViewController()
                 present(vc, animated: true, completion: nil)
             }
-        case Preference.zjuwlan.rawValue:
+        case .zjuwlan:
             if indexPath.row == 0{
                 let vc = ZjuwlanLoginViewController()
                 show(vc, sender: nil)
@@ -169,7 +165,7 @@ class PreferenceViewController: UITableViewController {
                     }
                 }
             }
-        case Preference.about.rawValue:
+        case .about:
             switch indexPath.row {
             case 0:
                 let wvc = WebViewController(url: nil, title: "关于我们")
