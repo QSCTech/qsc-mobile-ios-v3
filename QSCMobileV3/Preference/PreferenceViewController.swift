@@ -157,6 +157,7 @@ class PreferenceViewController: UITableViewController {
                 let vc = ZjuwlanLoginViewController()
                 showViewController(vc, sender: nil)
             } else {
+                SVProgressHUD.showWithStatus("连接中")
                 ZjuwlanConnection.link { success, error in
                     if success {
                         SVProgressHUD.showSuccessWithStatus("连接成功")

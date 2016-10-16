@@ -234,7 +234,7 @@ class DataStore: NSObject {
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         formatter.timeZone = NSTimeZone(forSecondsFromGMT: 28800) // APIv3
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mmZ"
         
         for (key, json) in json {
             let year = Year(in: managedObjectContext)
