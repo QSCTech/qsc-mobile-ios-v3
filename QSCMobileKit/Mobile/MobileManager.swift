@@ -215,9 +215,7 @@ public class MobileManager: NSObject {
      - returns: The array of exams sorted by time.
      */
     public func getExams(_ semester: String) -> [Exam] {
-        var exams = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Exam") as! [Exam]
-        // Workaround to summer course problem in API 2.5
-        exams = exams.filter { !$0.name!.contains("课程综合实践") }
+        let exams = dataStore.objectsWithIdentifier("(\(semester))", entityName: "Exam") as! [Exam]
         return exams.sorted { $1.startTime == nil || ($0.startTime != nil && $0.startTime! <= $1.startTime!) }
     }
     
