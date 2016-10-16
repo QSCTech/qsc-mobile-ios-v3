@@ -38,22 +38,6 @@ class HomeworkListViewController: UITableViewController {
         reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        var flag = true
-        for (index, hw) in homeworks.enumerated() {
-            if hw.deadline! >= Date() {
-                tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
-                flag = false
-                break
-            }
-        }
-        if flag && homeworks.count > 0 {
-            tableView.scrollToRow(at: IndexPath(row: homeworks.count - 1, section: 0), at: .bottom, animated: true)
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return homeworks.count
     }
