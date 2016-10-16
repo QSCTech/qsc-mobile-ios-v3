@@ -52,7 +52,7 @@ class CourseDetailViewController: UITableViewController {
     }
     
     func reloadData() {
-        homeworks = courseEvent.homeworks!.sortedArrayUsingDescriptors([NSSortDescriptor(key: "deadline", ascending: true)]) as! [Homework]
+        homeworks = courseEvent.homeworks!.sortedArrayUsingDescriptors([NSSortDescriptor(key: "deadline", ascending: false)]) as! [Homework]
         tableView.reloadData()
     }
     
@@ -75,7 +75,7 @@ class CourseDetailViewController: UITableViewController {
     }
     
     private enum Detail: Int {
-        case Basic = 0, Exam, Info, Notes, Homework
+        case Basic = 0, Exam, Info, Homework, Notes
         static let count = 5
     }
     
@@ -142,10 +142,10 @@ class CourseDetailViewController: UITableViewController {
                 }
             }
             return count
-        case .Notes:
-            return 1
         case .Homework:
             return homeworks.count + 1
+        case .Notes:
+            return 1
         }
     }
     
@@ -164,14 +164,14 @@ class CourseDetailViewController: UITableViewController {
             } else {
                 return 44
             }
+        case .Homework:
+            if indexPath.row == 0 {
+                return 44
+            } else {
+                return 60
+            }
         case .Notes:
             return 150
-        case .Homework:
-            if indexPath.row < homeworks.count {
-                return 60
-            } else {
-                return 44
-            }
         default:
             return 44
         }
@@ -253,23 +253,24 @@ class CourseDetailViewController: UITableViewController {
             cell.textLabel!.text = values[indexPath.row].0
             cell.detailTextLabel!.text = values[indexPath.row].1
             return cell
-        case .Notes:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Notes") as! CourseNotesCell
-            cell.notesTextView.text = courseEvent.notes
-            return cell
         case .Homework:
-            if indexPath.row < homeworks.count {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
-                cell.nameLabel.text = homeworks[indexPath.row].name
-                cell.timeLabel.text = homeworks[indexPath.row].deadline?.stringOfDatetime
-                cell.courseLabel.removeFromSuperview()
-                return cell
-            } else {
+            if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Detail")!
                 cell.textLabel!.text = "添加新的作业…"
                 cell.detailTextLabel!.text = ""
                 return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("Homework") as! HomeworkCell
+                let hw = homeworks[indexPath.row - 1]
+                cell.nameLabel.text = hw.name
+                cell.timeLabel.text = hw.deadline?.stringOfDatetime
+                cell.courseLabel.removeFromSuperview()
+                return cell
             }
+        case .Notes:
+            let cell = tableView.dequeueReusableCellWithIdentifier("Notes") as! CourseNotesCell
+            cell.notesTextView.text = courseEvent.notes
+            return cell
         }
     }
     
@@ -322,10 +323,10 @@ class CourseDetailViewController: UITableViewController {
                 SVProgressHUD.showSuccessWithStatus("已拷贝到剪贴板")
             }
         case .Homework:
-            if indexPath.row < homeworks.count {
-                selectedHomework = homeworks[indexPath.row]
-            } else {
+            if indexPath.row == 0 {
                 selectedHomework = nil
+            } else {
+                selectedHomework = homeworks[indexPath.row - 1]
             }
             performSegueWithIdentifier("Homework", sender: nil)
         default:
