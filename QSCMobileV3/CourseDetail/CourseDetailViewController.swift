@@ -281,10 +281,30 @@ class CourseDetailViewController: UITableViewController {
             let cell = tableView.cellForRowAtIndexPath(indexPath)!
             switch cell.textLabel!.text! {
             case "教师":
-                let url = NSURL(string: "http://chalaoshi.cn/search?q=" + cell.detailTextLabel!.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
-                if #available(iOS 9.0, *) {
-                    let svc = SFSafariViewController(URL: url)
-                    presentViewController(svc, animated: true, completion: nil)
+                let urlString = "http://chalaoshi.cn/search?q="
+                let handler = { (action: UIAlertAction) in
+                    let url = NSURL(string: urlString + action.title!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
+                    if #available(iOS 9.0, *) {
+                        let svc = SFSafariViewController(URL: url)
+                        self.presentViewController(svc, animated: true, completion: nil)
+                    } else {
+                        let urlRequest = NSURLRequest(URL: url)
+                        let vc = BrowserViewController(request: urlRequest)
+                        self.presentViewController(vc, animated: true, completion: nil)
+                    }
+                }
+                let teachers = cell.detailTextLabel!.text!.componentsSeparatedByString(" ")
+                if teachers.count > 1 {
+                    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+                    for teacher in teachers {
+                        let action = UIAlertAction(title: teacher, style: .Default, handler: handler)
+                        alert.addAction(action)
+                    }
+                    alert.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: nil))
+                    presentViewController(alert, animated: true, completion: nil)
+                } else if teachers.count == 1 {
+                    let action = UIAlertAction(title: teachers.first, style: .Default, handler: handler)
+                    handler(action)
                 }
             case "电子邮箱", "助教邮箱":
                 if MFMailComposeViewController.canSendMail() {
