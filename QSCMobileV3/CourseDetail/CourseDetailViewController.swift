@@ -281,9 +281,25 @@ class CourseDetailViewController: UITableViewController {
             let cell = tableView.cellForRow(at: indexPath)!
             switch cell.textLabel!.text! {
             case "教师":
-                let url = URL(string: "http://chalaoshi.cn/search?q=" + cell.detailTextLabel!.text!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
-                let svc = SFSafariViewController(url: url)
-                present(svc, animated: true, completion: nil)
+                let urlString = "http://chalaoshi.cn/search?q="
+                let handler = { (action: UIAlertAction) in
+                    let url = URL(string: urlString + action.title!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+                    let svc = SFSafariViewController(url: url)
+                    self.present(svc, animated: true, completion: nil)
+                }
+                let teachers = cell.detailTextLabel!.text!.components(separatedBy: " ")
+                if teachers.count > 1 {
+                    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                    for teacher in teachers {
+                        let action = UIAlertAction(title: teacher, style: .default, handler: handler)
+                        alert.addAction(action)
+                    }
+                    alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                } else if teachers.count == 1 {
+                    let action = UIAlertAction(title: teachers.first, style: .default, handler: handler)
+                    handler(action)
+                }
             case "电子邮箱", "助教邮箱":
                 if MFMailComposeViewController.canSendMail() {
                     let mcvc = MFMailComposeViewController()
