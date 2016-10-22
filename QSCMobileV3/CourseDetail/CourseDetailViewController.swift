@@ -15,15 +15,7 @@ import QSCMobileKit
 
 class CourseDetailViewController: UITableViewController {
     
-    var managedObject: NSManagedObject! {
-        didSet {
-            if let identifier = managedObject.value(forKey: "identifier") as? String {
-                (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
-                courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
-            }
-        }
-    }
-    
+    var managedObject: NSManagedObject!
     var courseObject: Course?
     var examObject: Exam?
     var scoreObject: Score?
@@ -35,6 +27,9 @@ class CourseDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let identifier = managedObject.value(forKey: "identifier") as! String
+        (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
+        courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
         navigationItem.title = courseObject!.name
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
