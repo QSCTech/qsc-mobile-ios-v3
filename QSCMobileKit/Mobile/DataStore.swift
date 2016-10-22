@@ -180,7 +180,7 @@ class DataStore: NSObject {
                 score.user = currentUser
                 
                 let credit = json["credit"].floatValue
-                let gradePoint = Float(json["gradePoint"].stringValue)!
+                let gradePoint = Float(json["gradePoint"].stringValue) ?? 0
                 score.credit = credit
                 score.identifier = json["identifier"].stringValue
                 score.makeup = json["makeup"].stringValue
