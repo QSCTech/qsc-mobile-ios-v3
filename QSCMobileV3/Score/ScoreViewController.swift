@@ -22,6 +22,7 @@ class ScoreViewController: UIViewController {
     private let buttonWidth = CGFloat(100)
     private let mobileManager = MobileManager.sharedInstance
     
+    private var semesterScores = [SemesterScore]()
     private var selectedScores = [Score]()
     
     @IBOutlet weak var semesterCreditLabel: UILabel!
@@ -43,21 +44,18 @@ class ScoreViewController: UIViewController {
         
         averageGradeLabel.text = String(format: "%.2f", mobileManager.statistics!.averageGrade!.floatValue)
         totalCreditLabel.text = mobileManager.statistics!.totalCredit!.stringValue
+        semesterGradeLabel.text = "0.00"
+        semesterCreditLabel.text = "0"
         
-        var semesters = mobileManager.allSemesters
-        if let lastSemester = semesters.last {
-            if mobileManager.getScores(lastSemester).isEmpty {
-                semesters.popLast()
-            }
-        }
-        changeSemester(semesters.last ?? "")
-        
-        scrollView.contentSize = CGSize(width: buttonWidth * CGFloat(semesters.count), height: scrollView.frame.height)
-        for (index, semester) in semesters.enumerate() {
+        semesterScores = mobileManager.semesterScores
+        scrollView.contentSize = CGSize(width: buttonWidth * CGFloat(semesterScores.count), height: scrollView.frame.height)
+        for (index, semesterScore) in semesterScores.enumerate() {
             let button = UIButton(frame: CGRect(x: buttonWidth * CGFloat(index), y: 0, width: buttonWidth, height: scrollView.frame.height))
+            let title = semesterScore.year! + (semesterScore.semester == "AW" ? "-1" : "-2")
+            button.setTitle(title, forState: .Normal)
             button.tintColor = UIColor.whiteColor()
-            button.setTitle(semester, forState: .Normal)
             button.titleLabel!.font = UIFont.systemFontOfSize(14)
+            button.tag = index
             button.addTarget(self, action: #selector(semesterWasSelected), forControlEvents: .TouchUpInside)
             scrollView.addSubview(button)
         }
@@ -65,34 +63,31 @@ class ScoreViewController: UIViewController {
         scrollView.setContentOffset(offset, animated: false)
         scrollView.scrollsToTop = false
         scrollView.addSubview(imageView)
+        
+        changeSemester(semesterScores.count - 1)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
     
-    func changeSemester(semester: String) {
-        var semesterIndex = mobileManager.allSemesters.count - 1
-        semesterGradeLabel.text = "0.00"
-        semesterCreditLabel.text = "0"
-        let semesterScores = mobileManager.semesterScores
-        for (index, semesterScore) in semesterScores.enumerate() {
-            if semester.hasPrefix(semesterScore.year!) && ((semester.hasSuffix("1") && semesterScore.semester == "AW") || (semester.hasSuffix("2") && semesterScore.semester == "SS"))  {
-                semesterGradeLabel.text = String(format: "%.2f", semesterScore.averageGrade!.floatValue)
-                semesterCreditLabel.text = semesterScore.totalCredit!.stringValue
-                semesterIndex = index
-                break
-            }
+    func changeSemester(index: Int) {
+        if index < 0 {
+            return
         }
+        let semesterScore = semesterScores[index]
+        semesterGradeLabel.text = String(format: "%.2f", semesterScore.averageGrade!.floatValue)
+        semesterCreditLabel.text = semesterScore.totalCredit!.stringValue
+        let semester = semesterScore.year! + (semesterScore.semester == "AW" ? "-1" : "-2")
         selectedScores = mobileManager.getScores(semester)
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: true)
         
-        imageView.frame = CGRect(x: buttonWidth * CGFloat(semesterIndex) + 38, y: 0, width: 23, height: 12)
+        imageView.frame = CGRect(x: buttonWidth * CGFloat(index) + 38, y: 0, width: 23, height: 12)
     }
     
     func semesterWasSelected(sender: UIButton) {
-        changeSemester(sender.currentTitle!)
+        changeSemester(sender.tag)
     }
     
     @IBAction func close(sender: AnyObject) {
