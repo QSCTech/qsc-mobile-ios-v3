@@ -286,6 +286,7 @@ public class MobileManager: NSObject {
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
                     callback()
                     NSNotificationCenter.defaultCenter().removeObserver(observer)
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshAll", object: nil)
                 }
             } else {
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))

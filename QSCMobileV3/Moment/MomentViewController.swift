@@ -36,6 +36,10 @@ class MomentViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewWillAppear), name: UIApplicationWillEnterForegroundNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewDidAppear), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserverForName("RefreshAll", object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            self.viewWillAppear(false)
+            self.viewDidAppear(false)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

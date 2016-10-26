@@ -55,6 +55,9 @@ class CalendarViewController: UIViewController {
                 self.cache.removeAll()
             }
         }
+        NSNotificationCenter.defaultCenter().addObserverForName("RefreshAll", object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

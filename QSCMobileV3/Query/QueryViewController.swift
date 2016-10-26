@@ -249,6 +249,10 @@ class QueryViewController: UITableViewController {
         refreshCtl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
         // Placeholder to prevent activity indicator from changing its position
         refreshCtl.attributedTitle = NSAttributedString(string: " ")
+        
+        NSNotificationCenter.defaultCenter().addObserverForName("RefreshAll", object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            self.tableView.reloadSections(NSIndexSet(index: Tools.Score.rawValue), withRowAnimation: .Automatic)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -273,7 +277,6 @@ class QueryViewController: UITableViewController {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")
             }
-            self.tableView.reloadSections(NSIndexSet(index: Tools.Score.rawValue), withRowAnimation: .Automatic)
         })
     }
     
