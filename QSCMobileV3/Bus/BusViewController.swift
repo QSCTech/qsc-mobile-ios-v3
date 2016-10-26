@@ -182,7 +182,7 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
             UIApplication.shared.scheduleLocalNotification(notif)
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ClearCache"), object: nil, userInfo: ["start": event.start!, "end": event.end!])
+        NotificationCenter.default.post(name: .eventsModified, object: nil, userInfo: ["start": event.start!, "end": event.end!])
         SVProgressHUD.showSuccess(withStatus: "已添加到今日日程")
     }
     

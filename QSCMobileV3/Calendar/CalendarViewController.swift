@@ -44,7 +44,7 @@ class CalendarViewController: UIViewController {
         rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
         weekLabel.layer.addSublayer(rightBorder)
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ClearCache"), object: nil, queue: OperationQueue.main) { notification in
+        NotificationCenter.default.addObserver(forName: .eventsModified, object: nil, queue: .main) { notification in
             if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
                 var date = Calendar.current.startOfDay(for: start)
                 while date <= end {
@@ -54,6 +54,9 @@ class CalendarViewController: UIViewController {
             } else {
                 self.cache.removeAll()
             }
+        }
+        NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main) { _ in
+            self.tableView.reloadData()
         }
     }
     

@@ -34,8 +34,12 @@ class MomentViewController: UIViewController {
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).cgColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(viewDidAppear), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidAppear), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main) { _ in
+            self.viewWillAppear(false)
+            self.viewDidAppear(false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

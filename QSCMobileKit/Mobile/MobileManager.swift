@@ -264,7 +264,7 @@ public class MobileManager: NSObject {
      - parameter callback:   A closure to be executed once the request has finished.
      */
     public func refreshAll(_ errorBlock: @escaping (Notification) -> Void, callback: @escaping () -> Void) {
-        let observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "RefreshError"), object: nil, queue: OperationQueue.main, using: errorBlock)
+        let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main, using: errorBlock)
         // First refresh calendar to prevent multiple sessionFail retries at the same time
         refreshCalendar { success, error in
             if success {
@@ -274,7 +274,7 @@ public class MobileManager: NSObject {
                 }
                 let closure = { (success: Bool, error: String?) in
                     if !success && !error!.isEmpty {
-                        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "RefreshError"), object: nil, userInfo: ["error": error!]))
+                        NotificationCenter.default.post(Notification(name: .refreshError, object: nil, userInfo: ["error": error!]))
                     }
                     group.leave()
                 }
@@ -285,9 +285,10 @@ public class MobileManager: NSObject {
                 group.notify(queue: DispatchQueue.main) {
                     callback()
                     NotificationCenter.default.removeObserver(observer)
+                    NotificationCenter.default.post(name: .refreshCompleted, object: nil)
                 }
             } else {
-                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "RefreshError"), object: nil, userInfo: ["error": error!]))
+                NotificationCenter.default.post(Notification(name: .refreshError, object: nil, userInfo: ["error": error!]))
                 callback()
                 NotificationCenter.default.removeObserver(observer)
             }

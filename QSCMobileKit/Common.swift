@@ -178,3 +178,10 @@ func alamofireManager(timeoutInterval: Double) -> Alamofire.SessionManager {
     configuration.timeoutIntervalForResource = timeoutInterval
     return Alamofire.SessionManager(configuration: configuration)
 }
+
+extension Notification.Name {
+    
+    public static let refreshCompleted = Notification.Name("RefreshCompleted")
+    public static let refreshError     = Notification.Name("RefreshError")
+    
+}

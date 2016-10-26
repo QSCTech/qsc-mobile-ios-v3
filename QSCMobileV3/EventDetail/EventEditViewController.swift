@@ -330,12 +330,12 @@ class EventEditViewController: UITableViewController {
         eventManager.save()
         
         if repeated || customEvent!.notification!.intValue >= 0 {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil)
+            NotificationCenter.default.post(name: .eventsModified, object: nil)
         } else {
             if let started = started, let ended = ended {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil, userInfo: ["start": started, "end": ended])
+                NotificationCenter.default.post(name: .eventsModified, object: nil, userInfo: ["start": started, "end": ended])
             }
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "ClearCache"), object: nil, userInfo: ["start": customEvent!.start!, "end": customEvent!.end!])
+            NotificationCenter.default.post(name: .eventsModified, object: nil, userInfo: ["start": customEvent!.start!, "end": customEvent!.end!])
         }
         
         if customEvent!.notification!.intValue >= 0 {
