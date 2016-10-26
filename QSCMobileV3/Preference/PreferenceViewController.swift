@@ -247,7 +247,7 @@ extension PreferenceViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
         if result == .sent {
-            let alert = UIAlertController(title: "用户反馈", message: "感谢您的反馈！\n我们将在一周内回复您的邮件", preferredStyle: .alert)
+            let alert = UIAlertController(title: "用户反馈", message: "感谢您的反馈！\n我们将尽快回复您的邮件", preferredStyle: .alert)
             let action = UIAlertAction(title: "好", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
