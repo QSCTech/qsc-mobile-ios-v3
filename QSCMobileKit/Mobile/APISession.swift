@@ -53,21 +53,15 @@ class APISession: NSObject {
         return salt
     }
     
-    /**
-     Create a UTF-8 encoded String from the given JSON object. Note it will CRASH if the JSON is invalid.
-     
-     - parameter object: A valid JSON object.
-     
-     - returns: A UTF-8 encoded String.
-     */
-    func stringFromJSONObject(_ object: AnyObject) -> String {
-        let jsonData = try! JSONSerialization.data(withJSONObject: object, options: [])
+    
+    func stringFromJSONObject(_ object: Any) -> String {
+        let jsonData = try! JSONSerialization.data(withJSONObject: object)
         return String(data: jsonData, encoding: String.Encoding.utf8)!
     }
     
-    func jsonObjectFromString(_ string: String) -> AnyObject {
+    func jsonObjectFromString(_ string: String) -> Any {
         let jsonData = string.data(using: String.Encoding.utf8)!
-        return try! JSONSerialization.jsonObject(with: jsonData, options: []) as AnyObject
+        return try! JSONSerialization.jsonObject(with: jsonData)
     }
     
     
@@ -127,7 +121,7 @@ class APISession: NSObject {
             // Delay processing until `sessionFail`
             session = ("", "")
         }
-        let request = stringFromJSONObject(requestList as AnyObject)
+        let request = stringFromJSONObject(requestList)
         let verify = try! HMAC(key: session.key!.utf8.map({$0}), variant: .sha1).authenticate(request.utf8.map({$0}))
         let postData: [String: Any] = [
             "sessionId": session.id!,
