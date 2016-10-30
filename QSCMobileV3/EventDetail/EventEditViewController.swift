@@ -339,16 +339,7 @@ class EventEditViewController: UITableViewController {
         }
         
         if customEvent!.notification!.intValue >= 0 {
-            let notif = UILocalNotification()
-            let time = customEvent!.notification == 0 ? "马上" : "将于 " + customEvent!.notification!.stringFromNotificationType.replacingOccurrences(of: "前", with: "后")
-            let place = customEvent!.place == "" ? "" : "在 " + customEvent!.place! + " "
-            notif.alertBody = "「\(customEvent!.name!)」\(time)\(place)开始"
-            notif.fireDate = customEvent!.start!.addingTimeInterval(-customEvent!.notification!.doubleValue)
-            notif.soundName = UILocalNotificationDefaultSoundName
-            notif.userInfo = ["objectID": customEvent!.objectID.uriRepresentation().absoluteString]
-            if customEvent!.start! >= Date() {
-                UIApplication.shared.scheduleLocalNotification(notif)
-            }
+            let notif = EventEditViewController.addLocalNotification(customEvent!)
             
             if customEvent!.repeatType != "永不" {
                 let components: DateComponents
@@ -397,6 +388,20 @@ class EventEditViewController: UITableViewController {
                 endTimeLabel.text = endTimePicker.date.stringOfDatetime
             }
         }
+    }
+    
+    @discardableResult static func addLocalNotification(_ event: CustomEvent) -> UILocalNotification {
+        let notif = UILocalNotification()
+        let time = event.notification == 0 ? "已" : "将于 " + event.notification!.stringFromNotificationType.replacingOccurrences(of: "前", with: "后")
+        let place = event.place == "" ? "" : "在 " + event.place! + " "
+        notif.alertBody = "「\(event.name!)」\(time)\(place)开始"
+        notif.fireDate = event.start!.addingTimeInterval(-event.notification!.doubleValue)
+        notif.soundName = UILocalNotificationDefaultSoundName
+        notif.userInfo = ["objectID": event.objectID.uriRepresentation().absoluteString]
+        if notif.fireDate! >= Date() {
+            UIApplication.shared.scheduleLocalNotification(notif)
+        }
+        return notif
     }
     
 }
