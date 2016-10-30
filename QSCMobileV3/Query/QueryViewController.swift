@@ -261,7 +261,7 @@ class QueryViewController: UITableViewController {
     }
     
     func refresh(_ sender: UIRefreshControl) {
-        MobileManager.sharedInstance.refreshAll({ notification in
+        MobileManager.sharedInstance.refreshAll(errorBlock: { notification in
             sender.attributedTitle = NSAttributedString(string: notification.userInfo?["error"] as? String ?? "")
         }, callback: {
             if sender.attributedTitle?.string == " " {

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             groupDefaults.set(true, forKey: RefreshOnLaunchKey)
         }
         if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
-            MobileManager.sharedInstance.refreshAll({ _ in }, callback: {
+            MobileManager.sharedInstance.refreshAll(errorBlock: { _ in }, callback: {
                 print("Refresh on launch completed")
             })
         }

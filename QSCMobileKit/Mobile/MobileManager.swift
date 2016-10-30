@@ -39,7 +39,7 @@ public class MobileManager: NSObject {
      - parameter password: Password of the account.
      - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
      */
-    public func loginValidate(_ username: String, _ password: String, callback: @escaping (Bool, String?) -> Void) {
+    public func loginValidate(_ username: String, _ password: String, errorBlock: @escaping (Notification) -> Void, callback: @escaping (Bool, String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { success, error in
             if success {
@@ -47,7 +47,7 @@ public class MobileManager: NSObject {
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
-                self.refreshAll({ _ in }, callback: {
+                self.refreshAll(errorBlock: errorBlock, callback: {
                     callback(success, error)
                 })
             } else {
@@ -265,7 +265,7 @@ public class MobileManager: NSObject {
      - parameter errorBlock: A closure to be executed if there is any error.
      - parameter callback:   A closure to be executed once the request has finished.
      */
-    public func refreshAll(_ errorBlock: @escaping (Notification) -> Void, callback: @escaping () -> Void) {
+    public func refreshAll(errorBlock: @escaping (Notification) -> Void, callback: @escaping () -> Void) {
         let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main, using: errorBlock)
         // First refresh calendar to prevent multiple sessionFail retries at the same time
         refreshCalendar { success, error in
