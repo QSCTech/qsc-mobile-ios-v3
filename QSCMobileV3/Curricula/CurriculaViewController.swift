@@ -100,7 +100,7 @@ class CurriculaViewController: UIViewController {
                 let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.white, bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
                     let sb = UIStoryboard(name: "CourseDetail", bundle: Bundle.main)
                     let vc = sb.instantiateInitialViewController() as! CourseDetailViewController
-                    vc.managedObject = self.mobileManager.objectTripleWithIdentifier(curriculum.identifier).0
+                    vc.managedObject = self.mobileManager.courseObjectsWithIdentifier(curriculum.identifier).first!
                     self.show(vc, sender: nil)
                 }
                 curricula.append(curriculum)

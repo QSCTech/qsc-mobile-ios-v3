@@ -172,24 +172,25 @@ public class MobileManager: NSObject {
     
     // MARK: - Retrieve managed objects
     
-    /**
-     Get the managed object triple of course, exam and score with the identifier.
-     
-     - parameter identifier: Whose first 22 characters are taken as the identifier prefix.
-     
-     - returns: The triple of course, exam and score.
-     */
-    public func objectTripleWithIdentifier(_ identifier: String) -> (Course?, Exam?, Score?) {
-        let id = identifier.substring(to: identifier.index(identifier.startIndex, offsetBy: 22))
-        return (dataStore.objectsWithIdentifier(id, entityName: "Course").first as? Course,
-                dataStore.objectsWithIdentifier(id, entityName: "Exam").first as? Exam,
-                dataStore.objectsWithIdentifier(id, entityName: "Score").first as? Score
-        )
+    public func prefixForIdentifier(_ identifier: String) -> String {
+        return identifier.substring(to: identifier.index(identifier.startIndex, offsetBy: 22))
+    }
+    
+    public func courseObjectsWithIdentifier(_ identifier: String) -> [Course] {
+        return dataStore.objectsWithIdentifier(prefixForIdentifier(identifier), entityName: "Course") as! [Course]
     }
     
     public func courseNameWithIdentifier(_ identifier: String) -> String {
-        let course = objectTripleWithIdentifier(identifier).0
+        let course = courseObjectsWithIdentifier(identifier).first
         return course?.name ?? ""
+    }
+    
+    public func examObjectsWithIdentifier(_ identifier: String) -> [Exam] {
+        return dataStore.objectsWithIdentifier(prefixForIdentifier(identifier), entityName: "Exam") as! [Exam]
+    }
+    
+    public func scoreObjectsWithIdentifier(_ identifier: String) -> [Score] {
+        return dataStore.objectsWithIdentifier(prefixForIdentifier(identifier), entityName: "Score") as! [Score]
     }
     
     public var semesterScores: [SemesterScore] {

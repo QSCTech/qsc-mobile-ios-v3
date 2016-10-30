@@ -28,9 +28,12 @@ class CourseDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         let identifier = managedObject.value(forKey: "identifier") as! String
-        (courseObject, examObject, scoreObject) = MobileManager.sharedInstance.objectTripleWithIdentifier(identifier)
+        let mobileManager = MobileManager.sharedInstance
+        courseObject = mobileManager.courseObjectsWithIdentifier(identifier).first
+        examObject = mobileManager.examObjectsWithIdentifier(identifier).filter({ !$0.name!.contains("补考") && !$0.name!.contains("期中") }).first
+        scoreObject = mobileManager.scoreObjectsWithIdentifier(identifier).filter({ !$0.name!.contains("补考") }).first
         courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
-        navigationItem.title = courseObject!.name
+        navigationItem.title = courseObject?.name ?? ""
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
         tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
@@ -39,8 +42,8 @@ class CourseDetailViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if managedObject.managedObjectContext == nil {
-            _ = navigationController?.popViewController(animated: false)
+        if managedObject.managedObjectContext == nil || courseObject == nil {
+            _ = navigationController?.popViewController(animated: true)
         } else {
             reloadData()
         }
@@ -122,9 +125,13 @@ class CourseDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let courseObject = courseObject else {
+            return 0
+        }
+        
         switch Detail(rawValue: section)! {
         case .basic:
-            return courseObject!.timePlaces!.count + 1
+            return courseObject.timePlaces!.count + 1
         case .exam:
             return 2
         case .info:
@@ -173,7 +180,7 @@ class CourseDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == Detail.notes.rawValue {
+        if section == Detail.notes.rawValue && courseObject != nil {
             return "备注"
         } else {
             return nil
@@ -181,14 +188,18 @@ class CourseDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let courseObject = courseObject else {
+            return UITableViewCell()
+        }
+        
         switch Detail(rawValue: indexPath.section)! {
         case .basic:
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Name") as! CourseNameCell
-                cell.nameLabel.text = courseObject!.name
-                cell.identifierLabel!.text = courseObject!.identifier
-                cell.categoryLabel!.text = courseObject!.category
+                cell.nameLabel.text = courseObject.name
+                cell.identifierLabel!.text = courseObject.identifier
+                cell.categoryLabel!.text = courseObject.category
                 if managedObject as? Course != nil {
                     cell.dotView.backgroundColor = QSCColor.course
                 } else if managedObject as? Exam != nil {
@@ -198,9 +209,9 @@ class CourseDetailViewController: UITableViewController {
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TimePlace") as! CourseTimePlaceCell
                 let sortDescriptors = [NSSortDescriptor(key: "weekday", ascending: true), NSSortDescriptor(key: "periods", ascending: true)]
-                let timePlace = courseObject!.timePlaces!.sortedArray(using: sortDescriptors)[indexPath.row - 1] as! TimePlace
+                let timePlace = courseObject.timePlaces!.sortedArray(using: sortDescriptors)[indexPath.row - 1] as! TimePlace
                 cell.placeLabel!.text = timePlace.place!
-                cell.timeLabel!.text = courseObject!.semester! + "学期 " + timePlace.time!
+                cell.timeLabel!.text = courseObject.semester! + "学期 " + timePlace.time!
                 return cell
             }
         case .exam:
@@ -224,7 +235,7 @@ class CourseDetailViewController: UITableViewController {
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
                 cell.selectionStyle = .none
-                cell.textLabel!.text = "学分：" + courseObject!.credit!.stringValue
+                cell.textLabel!.text = "学分：" + courseObject.credit!.stringValue
                 if let scoreObject = scoreObject {
                     cell.detailTextLabel!.text =  String(format: "成绩：%.1f / %@", scoreObject.gradePoint!.floatValue, scoreObject.score!)
                 } else {
