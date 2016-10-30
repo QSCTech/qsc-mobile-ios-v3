@@ -340,17 +340,8 @@ class EventEditViewController: UITableViewController {
             NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil, userInfo: ["start": customEvent!.start!, "end": customEvent!.end!])
         }
         
-        if customEvent!.notification >= 0 {
-            let notif = UILocalNotification()
-            let time = customEvent!.notification == 0 ? "马上" : "将于 " + customEvent!.notification!.stringFromNotificationType.stringByReplacingOccurrencesOfString("前", withString: "后")
-            let place = customEvent!.place == "" ? "" : "在 " + customEvent!.place! + " "
-            notif.alertBody = "「\(customEvent!.name!)」\(time)\(place)开始"
-            notif.fireDate = customEvent!.start!.dateByAddingTimeInterval(-customEvent!.notification!.doubleValue)
-            notif.soundName = UILocalNotificationDefaultSoundName
-            notif.userInfo = ["objectID": customEvent!.objectID.URIRepresentation().URLString]
-            if customEvent!.start >= NSDate() {
-                sharedApplication.scheduleLocalNotification(notif)
-            }
+        if customEvent!.notification!.intValue >= 0 {
+            let notif = EventEditViewController.addLocalNotification(customEvent!)
             
             if customEvent!.repeatType != "永不" {
                 let components: NSDateComponents
@@ -399,6 +390,20 @@ class EventEditViewController: UITableViewController {
                 endTimeLabel.text = endTimePicker.date.stringOfDatetime
             }
         }
+    }
+    
+    static func addLocalNotification(event: CustomEvent) -> UILocalNotification {
+        let notif = UILocalNotification()
+        let time = event.notification == 0 ? "已" : "将于 " + event.notification!.stringFromNotificationType.stringByReplacingOccurrencesOfString("前", withString: "后")
+        let place = event.place == "" ? "" : "在 " + event.place! + " "
+        notif.alertBody = "「\(event.name!)」\(time)\(place)开始"
+        notif.fireDate = event.start!.dateByAddingTimeInterval(-event.notification!.doubleValue)
+        notif.soundName = UILocalNotificationDefaultSoundName
+        notif.userInfo = ["objectID": event.objectID.URIRepresentation().URLString]
+        if notif.fireDate! >= NSDate() {
+            UIApplication.sharedApplication().scheduleLocalNotification(notif)
+        }
+        return notif
     }
     
 }
