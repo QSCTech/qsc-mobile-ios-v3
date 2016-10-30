@@ -36,9 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if groupDefaults.object(forKey: ShowScoreKey) == nil {
             groupDefaults.set(true, forKey: ShowScoreKey)
         }
-        if groupDefaults.object(forKey: ShowAllCoursesKey) == nil {
-            groupDefaults.set(false, forKey: ShowAllCoursesKey)
-        }
         if groupDefaults.object(forKey: CampusFromIndexKey) == nil {
             // 0 stands for 紫金港
             groupDefaults.set(0, forKey: CampusFromIndexKey)

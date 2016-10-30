@@ -37,7 +37,6 @@ class JwbinfosysLoginViewController: UIViewController {
         MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
             if success {
                 self.dismiss(animated: true, completion: nil)
-                NotificationCenter.default.post(name: .eventsModified, object: nil)
                 SVProgressHUD.showSuccess(withStatus: "登录成功")
             } else {
                 SVProgressHUD.showError(withStatus: error)

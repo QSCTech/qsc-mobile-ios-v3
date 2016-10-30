@@ -9,8 +9,6 @@
 import UIKit
 import QSCMobileKit
 
-let ShowAllCoursesKey = "ShowAllCourses"
-
 class ExamListViewController: UITableViewController {
     
     var semester: String!
@@ -19,8 +17,8 @@ class ExamListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = semester.fullNameForSemester
         tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: groupDefaults.bool(forKey: ShowAllCoursesKey) ? "隐藏无考试的课程" : "显示无考试的课程", style: .plain, target: self, action: #selector(changeCoursesShowMode))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,16 +54,8 @@ class ExamListViewController: UITableViewController {
         vc.managedObject = selectedExam
     }
     
-    func changeCoursesShowMode(_ sender: AnyObject) {
-        groupDefaults.set(!groupDefaults.bool(forKey: ShowAllCoursesKey), forKey: ShowAllCoursesKey)
-        navigationItem.rightBarButtonItem!.title = groupDefaults.bool(forKey: ShowAllCoursesKey) ? "隐藏无考试的课程" : "显示无考试的课程"
-        tableView.reloadData()
-    }
-    
     var filteredExams: [Exam] {
-        return MobileManager.sharedInstance.getExams(semester).filter {
-            groupDefaults.bool(forKey: ShowAllCoursesKey) || $0.startTime != nil
-        }
+        return MobileManager.sharedInstance.getExams(semester).filter { $0.startTime != nil }
     }
     
 }

@@ -34,10 +34,11 @@ class SemesterListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Semester") as! SemesterListCell
         let semester = mobileManager.allSemesters.reversed()[indexPath.row]
         cell.titleLabel.text = semester.fullNameForSemester
+        let courses = mobileManager.getCourses(semester)
         let exams = mobileManager.getExams(semester)
-        cell.subtitleLabel.text = "\(exams.count) 门课程"
+        cell.subtitleLabel.text = "\(courses.count) 门课程"
         if source == .course {
-            cell.subtitleLabel.text! += "，共 \(exams.reduce(0.0) { $0 + $1.credit!.floatValue }) 学分"
+            cell.subtitleLabel.text! += "，共 \(courses.reduce(0.0) { $0 + $1.credit!.floatValue }) 学分"
             cell.subtitleLabel.textColor = QSCColor.course
         } else {
             cell.subtitleLabel.text! += "，\(exams.filter({ $0.startTime != nil }).count) 场考试"
