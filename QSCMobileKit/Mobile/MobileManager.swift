@@ -66,6 +66,7 @@ public class MobileManager: NSObject {
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
         apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
+        NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil)
     }
     
     /**
@@ -287,6 +288,7 @@ public class MobileManager: NSObject {
                     callback()
                     NSNotificationCenter.defaultCenter().removeObserver(observer)
                     NSNotificationCenter.defaultCenter().postNotificationName("RefreshAll", object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName("ClearCache", object: nil)
                 }
             } else {
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "RefreshError", object: nil, userInfo: ["error": error!]))
