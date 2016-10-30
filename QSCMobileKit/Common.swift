@@ -183,5 +183,6 @@ extension Notification.Name {
     
     public static let refreshCompleted = Notification.Name("RefreshCompleted")
     public static let refreshError     = Notification.Name("RefreshError")
+    public static let eventsModified   = Notification.Name("EventsModified")
     
 }

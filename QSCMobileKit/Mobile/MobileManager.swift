@@ -66,6 +66,7 @@ public class MobileManager: NSObject {
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
         apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
+        NotificationCenter.default.post(name: .eventsModified, object: nil)
     }
     
     /**
@@ -286,6 +287,7 @@ public class MobileManager: NSObject {
                     callback()
                     NotificationCenter.default.removeObserver(observer)
                     NotificationCenter.default.post(name: .refreshCompleted, object: nil)
+                    NotificationCenter.default.post(name: .eventsModified, object: nil)
                 }
             } else {
                 NotificationCenter.default.post(Notification(name: .refreshError, object: nil, userInfo: ["error": error!]))

@@ -147,7 +147,6 @@ class PreferenceViewController: UITableViewController {
             if indexPath.row < accounts.count {
                 mobileManager.changeUser(accounts[indexPath.row])
                 reloadRowsOfJwbinfosys()
-                NotificationCenter.default.post(name: .eventsModified, object: nil)
             } else {
                 let vc = JwbinfosysLoginViewController()
                 present(vc, animated: true, completion: nil)
@@ -214,7 +213,6 @@ class PreferenceViewController: UITableViewController {
             self.mobileManager.deleteUser(account)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.reloadRowsOfJwbinfosys()
-            NotificationCenter.default.post(name: .eventsModified, object: nil)
         }
         return [delete]
     }

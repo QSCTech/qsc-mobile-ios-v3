@@ -86,9 +86,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
-
-extension Notification.Name {
-    
-    static let eventsModified   = Notification.Name("EventsModified")
-    
-}
