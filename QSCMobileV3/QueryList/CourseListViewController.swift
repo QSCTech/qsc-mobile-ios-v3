@@ -16,6 +16,12 @@ class CourseListViewController: UITableViewController {
     
     let mobileManager = MobileManager.sharedInstance
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = semester.fullNameForSemester
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mobileManager.getCourses(semester).count
     }

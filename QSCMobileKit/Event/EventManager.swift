@@ -49,7 +49,6 @@ public class EventManager: NSObject {
         return try! managedObjectContext.executeFetchRequest(request).first as? CourseEvent
     }
     
-    // TODO: Support notifications
     public func customEventsForDate(date: NSDate) -> [Event] {
         var actualDates = [CustomEvent: (start: NSDate, end: NSDate)]()
         
