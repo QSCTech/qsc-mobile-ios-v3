@@ -63,7 +63,7 @@ public class QSCColor {
 
 public let QSCVersion: String = {
     let info = Bundle.main.infoDictionary!
-    return "\(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"
+    return "Version \(info["CFBundleShortVersionString"]!) (Build \(info["CFBundleVersion"]!))"
 }()
 
 public struct Event {

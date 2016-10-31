@@ -25,7 +25,8 @@
 		9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */; };
 		9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B768E1D58F6380088B96E /* ScoreCell.swift */; };
 		9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D1B768F1D58F6380088B96E /* ScoreCell.xib */; };
-		9D2132BA1D227C0A00996856 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2132B91D227C0A00996856 /* Logo.png */; };
+		9D1CC3791DC73768004DA58E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CC3771DC73768004DA58E /* AboutViewController.swift */; };
+		9D1CC37A1DC73768004DA58E /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D1CC3781DC73768004DA58E /* AboutViewController.xib */; };
 		9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */; };
 		9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */; };
 		9D3139631CE7849800CD7DAD /* String+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */; };
@@ -38,7 +39,7 @@
 		9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */; };
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
-		9D3139861CE78C7500CD7DAD /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* About.html */; };
+		9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* Copyright.html */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4179AC1CE4678E00955729 /* LaunchScreen.xib */; };
@@ -178,7 +179,8 @@
 		9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatTypeViewController.swift; path = QSCMobileV3/EventDetail/RepeatTypeViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D1B768E1D58F6380088B96E /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = Score/ScoreCell.swift; sourceTree = "<group>"; };
 		9D1B768F1D58F6380088B96E /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreCell.xib; path = Score/ScoreCell.xib; sourceTree = "<group>"; };
-		9D2132B91D227C0A00996856 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		9D1CC3771DC73768004DA58E /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9D1CC3781DC73768004DA58E /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreViewController.swift; path = Score/ScoreViewController.swift; sourceTree = "<group>"; };
 		9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = Score/ScoreViewController.xib; sourceTree = "<group>"; };
 		9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileKit.swift"; path = "Extension/String+QSCMobileKit.swift"; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 		9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
-		9D3139841CE78C7500CD7DAD /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
+		9D3139841CE78C7500CD7DAD /* Copyright.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Copyright.html; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
 		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -432,8 +434,9 @@
 		9D3139831CE78C7500CD7DAD /* About */ = {
 			isa = PBXGroup;
 			children = (
-				9D3139841CE78C7500CD7DAD /* About.html */,
-				9D2132B91D227C0A00996856 /* Logo.png */,
+				9D1CC3781DC73768004DA58E /* AboutViewController.xib */,
+				9D1CC3771DC73768004DA58E /* AboutViewController.swift */,
+				9D3139841CE78C7500CD7DAD /* Copyright.html */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */,
 				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
+				9D1CC37A1DC73768004DA58E /* AboutViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
 				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
@@ -798,11 +802,10 @@
 				9D5A01441DA0DDD700CF5469 /* HomeworkListViewController.xib in Resources */,
 				9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */,
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
-				9D3139861CE78C7500CD7DAD /* About.html in Resources */,
+				9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */,
 				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
 				9D5A013E1DA0D99E00CF5469 /* Homework.storyboard in Resources */,
 				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
-				9D2132BA1D227C0A00996856 /* Logo.png in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 				9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */,
 			);
@@ -876,6 +879,7 @@
 				9D08CF601D732B4A008C1D14 /* QueryCollectionViewCell.swift in Sources */,
 				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
 				9D5A01431DA0DDD700CF5469 /* HomeworkListViewController.swift in Sources */,
+				9D1CC3791DC73768004DA58E /* AboutViewController.swift in Sources */,
 				9D113F8E1DA54B8F005E607C /* CourseNotesCell.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
