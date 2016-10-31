@@ -168,8 +168,9 @@ class PreferenceViewController: UITableViewController {
         case .About:
             switch indexPath.row {
             case 0:
-                let wvc = WebViewController(url: nil, title: "关于我们")
-                showViewController(wvc, sender: nil)
+                let vc = AboutViewController()
+                vc.hidesBottomBarWhenPushed = true
+                showViewController(vc, sender: nil)
             case 1:
                 if MFMailComposeViewController.canSendMail() {
                     let mcvc = MFMailComposeViewController()

@@ -44,8 +44,8 @@ class WebViewController: UIViewController {
         if let request = request {
             webView.loadRequest(request)
         } else {
-            let htmlFile = NSBundle.mainBundle().pathForResource("About", ofType: "html")!
-            let htmlString = try! String(contentsOfFile: htmlFile, encoding: NSUTF8StringEncoding).stringByReplacingOccurrencesOfString("<%= version %>", withString: "\(QSCVersion)")
+            let htmlFile = NSBundle.mainBundle().pathForResource("Copyright", ofType: "html")!
+            let htmlString = try! String(contentsOfFile: htmlFile, encoding: NSUTF8StringEncoding)
             webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
         }
     }
