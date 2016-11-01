@@ -9,19 +9,23 @@
 import UIKit
 import WebKit
 
-let DiscoverURL = "https://discover.zjuqsc.com"
+let DiscoverURL = "https://notice.zjuqsc.com/ios/"
 
 class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let webView = WKWebView(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 69))
+        let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 49))
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.showsVerticalScrollIndicator = false
         webView.scrollView.showsHorizontalScrollIndicator = false
         webView.loadRequest(NSURLRequest(URL: NSURL(string: DiscoverURL)!))
         view.addSubview(webView)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
 }
