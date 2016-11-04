@@ -190,7 +190,7 @@ class PreferenceViewController: UITableViewController {
                     present(alert, animated: true, completion: nil)
                 }
             case 2:
-                let appLink = "https://itunes.apple.com/cn/app/qiu-shi-chao-mobile/id583334920"
+                let appLink = "https://itunes.apple.com/cn/app/id583334920"
                 UIApplication.shared.openURL(URL(string: appLink)!)
             default:
                 break
