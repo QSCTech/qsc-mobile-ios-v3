@@ -45,8 +45,10 @@ class MomentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: Support all-day events and future exams
-        events = eventsForDate(Date()).filter { $0.duration == .partialTime && $0.end >= Date() }
+        events = eventsForDate(Date()).filter { $0.end >= Date() }
+        if AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
+            events += MobileManager.sharedInstance.comingExams
+        }
         pageControl.numberOfPages = events.count
         
         pageControllers.removeAll()
