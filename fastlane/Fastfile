@@ -18,31 +18,32 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
     # carthage
-  end
 
-  desc "Runs all the tests"
-  lane :test do
-    scan
+    increment_build_number
+    type = prompt(text: "Bump type: (patch/minor/major)")
+    increment_version_number(bump_type: type)
+    ver = get_version_number
+
+    git_commit(path: ".", message: "Version bump to #{ver}")
+    msg = File.read("./metadata/zh-Hans/release_notes.txt")
+    add_git_tag(tag: ver, message: msg)
+    push_to_git_remote
+
+    # match(type: "appstore") # more information: https://codesigning.guide
+    gym(scheme: "QSCMobileV3") # Build your app - more options available
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
-  desc "This will also make sure the profile is up to date"
   lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "QSCMobileV3") # Build your app - more options available
     pilot
-
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   desc "Deploy a new version to the App Store"
   lane :release do
-    # match(type: "appstore")
     # snapshot
-    gym(scheme: "QSCMobileV3") # Build your app - more options available
     deliver(force: true)
     # frameit
   end
