@@ -16,36 +16,31 @@ fastlane_version "1.105.1"
 default_platform :ios
 
 platform :ios do
-  before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    # carthage
-
+  desc "Bump version and push commits to GitLab"
+  lane :prepare do
     increment_build_number
-    type = prompt(text: "Bump type: (patch/minor/major)")
-    increment_version_number(bump_type: type)
-    ver = get_version_number
+    increment_version_number(bump_type: prompt(text: "Bump type: (patch/minor/major)"))
 
-    git_commit(path: ".", message: "Version bump to #{ver}")
-    msg = File.read("./metadata/zh-Hans/release_notes.txt")
-    add_git_tag(tag: ver, message: msg)
+    git_commit(path: ".", message: "Version bump to #{lane_context[:VERSION_NUMBER]}")
+    lane_context[:CHANGE_LOG] = File.read("./metadata/zh-Hans/release_notes.txt")
+    add_git_tag(tag: lane_context[:VERSION_NUMBER], message: lane_context[:CHANGE_LOG])
     push_to_git_remote
 
     # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "QSCMobileV3") # Build your app - more options available
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
-    pilot
+    gym(scheme: "QSCMobileV3")
+    pilot(changelog: lane_context[:CHANGE_LOG], distribute_external: true)
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   desc "Deploy a new version to the App Store"
   lane :release do
-    # snapshot
-    deliver(force: true)
-    # frameit
+    gym(scheme: "QSCMobileV3")
+    deliver(force: true, skip_screenshots: true, submit_for_review: true)
   end
 
   # You can define as many lanes as you want

@@ -28,7 +28,6 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-*.app.dSYM.zip
 
 ## Playgrounds
 timeline.xctimeline
@@ -63,4 +62,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
-
+*.app.dSYM.zip
+Preview.html
