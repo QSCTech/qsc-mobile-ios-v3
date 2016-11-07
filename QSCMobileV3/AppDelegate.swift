@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         MobClick.start(withAppkey: UMengAppKey)
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { _ in }
+        }
         UMessage.start(withAppkey: UMengAppKey, launchOptions: launchOptions)
         UMessage.registerForRemoteNotifications()
         UMessage.setLogEnabled(true)
@@ -80,6 +85,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         completionHandler(true)
+    }
+    
+}
+
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        if notification.request.trigger is UNPushNotificationTrigger {
+            UMessage.didReceiveRemoteNotification(notification.request.content.userInfo)
+        }
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.notification.request.trigger is UNPushNotificationTrigger {
+            UMessage.didReceiveRemoteNotification(response.notification.request.content.userInfo)
+        }
+        completionHandler()
     }
     
 }
