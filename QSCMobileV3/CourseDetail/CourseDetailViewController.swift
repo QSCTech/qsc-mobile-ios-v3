@@ -34,9 +34,10 @@ class CourseDetailViewController: UITableViewController {
         scoreObject = mobileManager.scoreObjectsWithIdentifier(identifier).filter({ !$0.name!.contains("补考") }).first
         courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
         navigationItem.title = courseObject?.name ?? ""
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
         tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .refreshCompleted, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
