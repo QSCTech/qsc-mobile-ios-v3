@@ -122,6 +122,11 @@
 		9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */; };
 		9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE31A5321DC8217700A2CB33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */; };
+		AE31A5351DC8217700A2CB33 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31A5341DC8217700A2CB33 /* TodayViewController.swift */; };
+		AE31A5381DC8217700A2CB33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */; };
+		AE31A53C1DC8217700A2CB33 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AE31A5301DC8217700A2CB33 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AE31A5401DC857C600A2CB33 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +136,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9DF6125C1BAA89CC004B0A8A;
 			remoteInfo = QSCMobileKit;
+		};
+		AE31A53A1DC8217700A2CB33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE31A52F1DC8217700A2CB33;
+			remoteInfo = TodayWidget;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -152,6 +164,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				AE31A53C1DC8217700A2CB33 /* TodayWidget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +292,12 @@
 		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = QSCMobileV3/EventDetail/EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = Carthage/Build/iOS/BTNavigationDropdownMenu.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE31A5301DC8217700A2CB33 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		AE31A5341DC8217700A2CB33 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		AE31A5371DC8217700A2CB33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		AE31A5391DC8217700A2CB33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE4AD1821DCE2B4E00054D15 /* TodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayWidget.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +330,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AE31A52D1DC8217700A2CB33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE31A5401DC857C600A2CB33 /* QSCMobileKit.framework in Frameworks */,
+				AE31A5321DC8217700A2CB33 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -319,6 +347,7 @@
 			children = (
 				04C331C71BA2F2E600EF959F /* QSCMobileV3 */,
 				9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */,
+				AE31A5331DC8217700A2CB33 /* TodayWidget */,
 				9DF612801BAA8A03004B0A8A /* Frameworks */,
 				04C331C61BA2F2E600EF959F /* Products */,
 			);
@@ -329,6 +358,7 @@
 			children = (
 				04C331C51BA2F2E600EF959F /* QSCMobileV3.app */,
 				9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */,
+				AE31A5301DC8217700A2CB33 /* TodayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -670,8 +700,20 @@
 				9D8AB44B1CD787810098451A /* libz.tbd */,
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
+				AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE31A5331DC8217700A2CB33 /* TodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AE4AD1821DCE2B4E00054D15 /* TodayWidget.entitlements */,
+				AE31A5341DC8217700A2CB33 /* TodayViewController.swift */,
+				AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */,
+				AE31A5391DC8217700A2CB33 /* Info.plist */,
+			);
+			path = TodayWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -702,6 +744,7 @@
 			);
 			dependencies = (
 				9DF612711BAA89CC004B0A8A /* PBXTargetDependency */,
+				AE31A53B1DC8217700A2CB33 /* PBXTargetDependency */,
 			);
 			name = QSCMobileV3;
 			productName = QSCMobileV3;
@@ -726,13 +769,30 @@
 			productReference = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		AE31A52F1DC8217700A2CB33 /* TodayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE31A53F1DC8217700A2CB33 /* Build configuration list for PBXNativeTarget "TodayWidget" */;
+			buildPhases = (
+				AE31A52C1DC8217700A2CB33 /* Sources */,
+				AE31A52D1DC8217700A2CB33 /* Frameworks */,
+				AE31A52E1DC8217700A2CB33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayWidget;
+			productName = TodayWidget;
+			productReference = AE31A5301DC8217700A2CB33 /* TodayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		04C331BD1BA2F2E600EF959F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "QSC Tech";
 				TargetAttributes = {
@@ -757,6 +817,16 @@
 						DevelopmentTeam = RURVDL9XJS;
 						LastSwiftMigration = 0800;
 					};
+					AE31A52F1DC8217700A2CB33 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = RURVDL9XJS;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 04C331C01BA2F2E600EF959F /* Build configuration list for PBXProject "QSCMobileV3" */;
@@ -774,6 +844,7 @@
 			targets = (
 				04C331C41BA2F2E600EF959F /* QSCMobileV3 */,
 				9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */,
+				AE31A52F1DC8217700A2CB33 /* TodayWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -815,6 +886,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE31A52E1DC8217700A2CB33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE31A5381DC8217700A2CB33 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +1018,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AE31A52C1DC8217700A2CB33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE31A5351DC8217700A2CB33 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -946,6 +1033,11 @@
 			isa = PBXTargetDependency;
 			target = 9DF6125C1BAA89CC004B0A8A /* QSCMobileKit */;
 			targetProxy = 9DF612701BAA89CC004B0A8A /* PBXContainerItemProxy */;
+		};
+		AE31A53B1DC8217700A2CB33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE31A52F1DC8217700A2CB33 /* TodayWidget */;
+			targetProxy = AE31A53A1DC8217700A2CB33 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -964,6 +1056,14 @@
 				9D4179AB1CE4678E00955729 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE31A5371DC8217700A2CB33 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1071,6 +1171,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 30014;
+				DEVELOPMENT_TEAM = RURVDL9XJS;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1103,6 +1204,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 30014;
+				DEVELOPMENT_TEAM = RURVDL9XJS;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1185,6 +1287,45 @@
 			};
 			name = Release;
 		};
+		AE31A53D1DC8217700A2CB33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
+				DEVELOPMENT_TEAM = RURVDL9XJS;
+				INFOPLIST_FILE = TodayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AE31A53E1DC8217700A2CB33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
+				DEVELOPMENT_TEAM = RURVDL9XJS;
+				INFOPLIST_FILE = TodayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1211,6 +1352,15 @@
 			buildConfigurations = (
 				9DF612741BAA89CC004B0A8A /* Debug */,
 				9DF612751BAA89CC004B0A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE31A53F1DC8217700A2CB33 /* Build configuration list for PBXNativeTarget "TodayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE31A53D1DC8217700A2CB33 /* Debug */,
+				AE31A53E1DC8217700A2CB33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
