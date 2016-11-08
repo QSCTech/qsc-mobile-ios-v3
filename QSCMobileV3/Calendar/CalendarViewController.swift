@@ -38,12 +38,6 @@ class CalendarViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
         
-        let rightBorder = CALayer()
-        rightBorder.borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.34).cgColor
-        rightBorder.borderWidth = 1
-        rightBorder.frame = CGRect(x: weekLabel.frame.width, y: 0, width: 1, height: weekLabel.frame.height)
-        weekLabel.layer.addSublayer(rightBorder)
-        
         NotificationCenter.default.addObserver(forName: .eventsModified, object: nil, queue: .main) { notification in
             if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
                 var date = Calendar.current.startOfDay(for: start)
