@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationCenter
+import KeychainAccess
 import QSCMobileKit
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
@@ -16,21 +17,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     let events = eventsForDate(Date())
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         if #available(iOSApplicationExtension 10, *) { // Only in iOS 10
             self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
         }
-        super.viewDidLoad()
         
         tableView.reloadData()
         // Do any additional setup after loading the view from its nib.
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let event = events[indexPath.row]
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Event")
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Event")
         // Temporary
         cell.textLabel?.text = event.name
         cell.detailTextLabel?.text = event.place + ", " + event.time
