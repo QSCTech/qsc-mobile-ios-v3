@@ -45,7 +45,13 @@ class HomeworkListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
         let hw = homeworks[indexPath.row]
-        cell.nameLabel.text = hw.name
+        if hw.isFinished!.boolValue {
+            cell.dotView.isHidden = true
+            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+        } else {
+            cell.dotView.isHidden = false
+            cell.nameLabel.text = hw.name
+        }
         cell.courseLabel.text = MobileManager.sharedInstance.courseNameWithIdentifier(hw.courseEvent!.identifier!)
         cell.timeLabel.text = hw.deadline!.stringOfDatetime
         return cell

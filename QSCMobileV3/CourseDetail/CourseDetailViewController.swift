@@ -269,7 +269,13 @@ class CourseDetailViewController: UITableViewController {
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
                 let hw = homeworks[indexPath.row - 1]
-                cell.nameLabel.text = hw.name
+                if hw.isFinished!.boolValue {
+                    cell.dotView.isHidden = true
+                    cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+                } else {
+                    cell.dotView.isHidden = false
+                    cell.nameLabel.text = hw.name
+                }
                 cell.timeLabel.text = hw.deadline?.stringOfDatetime
                 cell.courseLabel.removeFromSuperview()
                 return cell

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Erb-Rs-QC3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Erb-Rs-QC3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -11,18 +11,46 @@
             <objects>
                 <tableViewController id="HTG-Of-6UV" customClass="HomeworkViewController" customModule="QSCMobileV3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="q23-Gj-AKx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <sections>
+                            <tableViewSection id="ngp-Bt-FnC">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="1Tj-dQ-ea0">
+                                        <rect key="frame" x="0.0" y="99" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Tj-dQ-ea0" id="wPk-ew-vgk">
+                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否完成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhK-F9-pDo">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mwn-U3-XJi">
+                                                    <color key="onTintColor" red="0.52156862749999999" green="0.82745098039999998" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yhK-F9-pDo" firstAttribute="leading" secondItem="wPk-ew-vgk" secondAttribute="leadingMargin" constant="8" id="MJC-oc-nSO"/>
+                                                <constraint firstItem="yhK-F9-pDo" firstAttribute="centerY" secondItem="wPk-ew-vgk" secondAttribute="centerY" id="hRd-CQ-KVG"/>
+                                                <constraint firstItem="mwn-U3-XJi" firstAttribute="centerY" secondItem="yhK-F9-pDo" secondAttribute="centerY" id="huo-ME-TNx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mwn-U3-XJi" secondAttribute="trailing" constant="8" id="nwW-8E-bNt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="6ik-3I-DY5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="SvN-Jy-oO9">
-                                        <rect key="frame" x="0.0" y="99" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="179" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SvN-Jy-oO9" id="tyf-JB-I4H">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="作业" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-K8-uBC">
@@ -48,10 +76,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="150" id="FLP-SX-d2Y">
-                                        <rect key="frame" x="0.0" y="143" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="223" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLP-SX-d2Y" id="A32-Za-vk4">
-                                            <frame key="frameInset" width="375" height="149.5"/>
+                                            <frame key="frameInset" width="414" height="149.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lSh-c4-5mM">
@@ -100,10 +128,10 @@
                             <tableViewSection headerTitle="Deadline" id="jnn-5f-f8q">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="NBt-hi-PM1">
-                                        <rect key="frame" x="0.0" y="349" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="429" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NBt-hi-PM1" id="5GZ-sx-QQq">
-                                            <frame key="frameInset" width="375" height="199.5"/>
+                                            <frame key="frameInset" width="414" height="199.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="UrC-zL-TeA">
@@ -144,6 +172,7 @@
                     <connections>
                         <outlet property="datePicker" destination="UrC-zL-TeA" id="T4g-qz-Wk1"/>
                         <outlet property="detailView" destination="lSh-c4-5mM" id="ZcV-JO-yCn"/>
+                        <outlet property="finishSwitch" destination="mwn-U3-XJi" id="sJs-zb-FKt"/>
                         <outlet property="nameField" destination="kYr-K8-uBC" id="wbY-QI-LtW"/>
                         <outlet property="placeholderLabel" destination="H0c-dn-2IW" id="5Tv-Jp-ZdE"/>
                     </connections>
@@ -155,7 +184,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2124" y="631"/>
+            <point key="canvasLocation" x="2123.1884057971015" y="630.97826086956525"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DfC-8h-IVW">
