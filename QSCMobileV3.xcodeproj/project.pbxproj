@@ -131,6 +131,8 @@
 		AE563C171DDA683E00C05CA2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		AE563C181DDA683E00C05CA2 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */; };
 		AE563C191DDA683E00C05CA2 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
+		AECE06101DDDF8F300D05B17 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE060E1DDDF8F300D05B17 /* TableViewCell.swift */; };
+		AECE06111DDDF8F300D05B17 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AECE060F1DDDF8F300D05B17 /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +304,8 @@
 		AE31A5371DC8217700A2CB33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		AE31A5391DC8217700A2CB33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE4AD1821DCE2B4E00054D15 /* TodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayWidget.entitlements; sourceTree = "<group>"; };
+		AECE060E1DDDF8F300D05B17 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		AECE060F1DDDF8F300D05B17 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -720,6 +724,8 @@
 				AE31A5341DC8217700A2CB33 /* TodayViewController.swift */,
 				AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */,
 				AE31A5391DC8217700A2CB33 /* Info.plist */,
+				AECE060E1DDDF8F300D05B17 /* TableViewCell.swift */,
+				AECE060F1DDDF8F300D05B17 /* TableViewCell.xib */,
 			);
 			path = TodayWidget;
 			sourceTree = "<group>";
@@ -813,7 +819,7 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -831,6 +837,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -902,6 +911,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE31A5381DC8217700A2CB33 /* MainInterface.storyboard in Resources */,
+				AECE06111DDDF8F300D05B17 /* TableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,6 +1041,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE31A5351DC8217700A2CB33 /* TodayViewController.swift in Sources */,
+				AECE06101DDDF8F300D05B17 /* TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

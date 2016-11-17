@@ -15,27 +15,37 @@
             <objects>
                 <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="TodayWidget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
-                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                        <viewControllerLayoutGuide type="top" id="pdQ-iv-g3v"/>
+                        <viewControllerLayoutGuide type="bottom" id="YCb-ZD-fyK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZY-yb-qD8">
+                                <rect key="frame" x="16" y="0.0" width="288" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="9Ut-Ct-phI"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WrD-qC-e0c">
-                                <rect key="frame" x="40" y="36" width="240" height="128"/>
+                                <rect key="frame" x="16" y="150" width="288" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="S3S-Oj-5AN" id="NSi-zl-2LH"/>
-                                    <outlet property="delegate" destination="S3S-Oj-5AN" id="hh6-dx-Lic"/>
+                                    <outlet property="dataSource" destination="M4Y-Lb-cyx" id="FGJ-z2-n6d"/>
+                                    <outlet property="delegate" destination="M4Y-Lb-cyx" id="s2i-3D-ZtV"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="WrD-qC-e0c" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="36" id="730-Nm-5Nj"/>
-                            <constraint firstItem="WrD-qC-e0c" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="24" id="GRW-8q-2xd"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="36" id="fja-hX-s3q"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WrD-qC-e0c" secondAttribute="trailing" constant="24" id="k1R-ge-pOt"/>
+                            <constraint firstItem="WrD-qC-e0c" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="6RP-X1-G6v"/>
+                            <constraint firstItem="pZY-yb-qD8" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Efs-Rc-MEk"/>
+                            <constraint firstItem="pZY-yb-qD8" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Qqv-gh-24I"/>
+                            <constraint firstItem="WrD-qC-e0c" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="eRH-aw-MHH"/>
+                            <constraint firstItem="YCb-ZD-fyK" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" id="gWa-XH-TYh"/>
+                            <constraint firstItem="pZY-yb-qD8" firstAttribute="top" secondItem="pdQ-iv-g3v" secondAttribute="bottom" id="hi6-6O-Qp7"/>
+                            <constraint firstItem="WrD-qC-e0c" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="bottom" id="wtI-Gz-wI1"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -43,13 +53,14 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="200"/>
+                    <size key="freeformSize" width="320" height="550"/>
                     <connections>
-                        <outlet property="tableView" destination="WrD-qC-e0c" id="0AF-jH-ob8"/>
+                        <outlet property="tskList" destination="WrD-qC-e0c" id="CLs-dW-XTo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.600000000000001" y="70.164917541229386"/>
         </scene>
     </scenes>
 </document>
