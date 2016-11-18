@@ -22,7 +22,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
         tskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
-        tskList.rowHeight = 60.0
+        tskList.rowHeight = 54
         self.preferredContentSize.height = CGFloat(self.events.count) * tskList.rowHeight
         tskList.reloadData()
         // Do any additional setup after loading the view from its nib.
@@ -39,6 +39,30 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         cell.eventName.text = event.name
         cell.eventPlace.text = event.place
         
+        let Now = Date()
+        
+        if event.end < Now {
+            cell.eventTime.text = "已结束"
+        } else {
+            let hourNow = Now.stringOfTime.components(separatedBy: ":").first!
+            let minuteNow = Now.stringOfTime.components(separatedBy: ":").last!
+            let hourStart = event.start.stringOfTime.components(separatedBy: ":").first!
+            let minuteStart = event.start.stringOfTime.components(separatedBy: ":").last!
+            let hourEnd = event.end.stringOfTime.components(separatedBy: ":").first!
+            let minuteEnd = event.end.stringOfTime.components(separatedBy: ":").last!
+            let timeStart = Int(hourStart)! * 60 + Int(minuteStart)!
+            let timeEnd = Int(hourEnd)! * 60 + Int(minuteEnd)!
+            let timeNow = Int(hourNow)! * 60 + Int(minuteNow)!
+            if event.start < Now {
+                let remainTimeEnd = timeEnd - timeNow
+                cell.eventTime.text = "距结束 \(remainTimeEnd / 60) 时 \(remainTimeEnd % 60) 分"
+            } else {
+                let remainTimeStart = timeStart - timeNow
+                cell.eventTime.text = "\(remainTimeStart / 60) 时 \(remainTimeStart % 60) 分后"
+            }
+        }
+        
+        cell.eventType.backgroundColor = QSCColor.category(event.category)
         // cell.textLabel?.text = event.name
         //cell.detailTextLabel?.text = event.place + ", " + event.time
         return cell
@@ -46,10 +70,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if (activeDisplayMode == .compact) {
-            self.preferredContentSize.height = 150
+            self.preferredContentSize.height = 110
         } else {
             // max Event count = 9
-            self.preferredContentSize.height = 150 + CGFloat(events.count) * tskList.rowHeight
+            self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight
         }
     }
 
