@@ -28,14 +28,14 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHS-JF-9Lh">
-                        <rect key="frame" x="31" y="7" width="36" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="32.5" y="7" width="34.5" height="16.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiY-fR-2xE">
-                        <rect key="frame" x="36" y="30" width="31" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="37.5" y="31" width="29.5" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -57,23 +57,34 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全天" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h53-TG-VAF">
+                        <rect key="frame" x="34" y="16" width="33" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Lwc-PR-cKG" firstAttribute="leading" secondItem="mMU-AD-Kvl" secondAttribute="trailing" constant="8" id="4rA-YP-iql"/>
+                    <constraint firstItem="h53-TG-VAF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="686-2M-QbI"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="eiY-fR-2xE" secondAttribute="trailing" constant="8" id="APT-nU-Tvn"/>
                     <constraint firstItem="Fa3-9y-Pv9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kjn-qA-t8X"/>
                     <constraint firstItem="Fa3-9y-Pv9" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="NsA-A6-abl"/>
+                    <constraint firstItem="h53-TG-VAF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="U61-b7-tgB"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Wku-9f-u1Y"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="bHS-JF-9Lh" secondAttribute="trailing" constant="8" id="YIF-Cz-XOa"/>
+                    <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="h53-TG-VAF" secondAttribute="trailing" constant="8" id="Ywh-mx-HXy"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="bottom" secondItem="eiY-fR-2xE" secondAttribute="bottom" id="aff-hu-bG6"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="75" id="dtA-uv-1q5"/>
                     <constraint firstItem="A3Z-L2-WTp" firstAttribute="leading" secondItem="mMU-AD-Kvl" secondAttribute="trailing" constant="8" id="kXz-GY-zSY"/>
                     <constraint firstItem="A3Z-L2-WTp" firstAttribute="top" secondItem="mMU-AD-Kvl" secondAttribute="top" id="kiR-Bn-1cB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="h53-TG-VAF" secondAttribute="bottom" constant="8" id="kzW-Vm-uf3"/>
                     <constraint firstItem="bHS-JF-9Lh" firstAttribute="top" secondItem="mMU-AD-Kvl" secondAttribute="top" id="nLF-kr-2Ln"/>
                     <constraint firstItem="Lwc-PR-cKG" firstAttribute="bottom" secondItem="mMU-AD-Kvl" secondAttribute="bottom" id="tXI-e5-6VA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="allDayEvent" destination="h53-TG-VAF" id="M1y-jU-8it"/>
                 <outlet property="endTime" destination="eiY-fR-2xE" id="WNs-PX-TZn"/>
                 <outlet property="eventName" destination="A3Z-L2-WTp" id="fYR-zi-n4Q"/>
                 <outlet property="eventPlace" destination="Lwc-PR-cKG" id="qax-ET-Jda"/>

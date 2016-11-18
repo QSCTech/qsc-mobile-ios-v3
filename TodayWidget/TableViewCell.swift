@@ -26,5 +26,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet var eventPlace: UILabel!
     @IBOutlet var eventTime: UILabel!
     @IBOutlet var eventType: UIView!
+    @IBOutlet var allDayEvent: UILabel!
     
 }

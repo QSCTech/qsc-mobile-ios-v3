@@ -14,6 +14,11 @@ import QSCMobileKit
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tskList: UITableView!
+    @IBOutlet var firstEventName: UILabel!
+    @IBOutlet var firstEventPlace: UILabel!
+    @IBOutlet var firstEventTime: UILabel!
+    @IBOutlet var firstEventTimeType: UILabel!
+    @IBOutlet var firstEventTimeRemain: UILabel!
     let events = eventsForDate(Date())
     
     override func viewDidLoad() {
@@ -21,10 +26,54 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         if #available(iOSApplicationExtension 10, *) { // Only in iOS 10
             self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
+        self.preferredContentSize.height = 110
+        firstEventTimeRemain.text = nil
+        let firstEvents = events.filter { $0.duration == .partialTime && $0.end >= Date() }
+        if firstEvents.isEmpty {
+            // 今日无事
+        } else {
+            let firstEvent = firstEvents[0]
+            firstEventName.text = firstEvent.name
+            firstEventPlace.text = firstEvent.place
+            firstEventTime.text = firstEvent.time
+            let Now = Date()
+            let hourNow = Now.stringOfTime.components(separatedBy: ":").first!
+            let minuteNow = Now.stringOfTime.components(separatedBy: ":").last!
+            let hourStart = firstEvent.start.stringOfTime.components(separatedBy: ":").first!
+            let minuteStart = firstEvent.start.stringOfTime.components(separatedBy: ":").last!
+            let hourEnd = firstEvent.end.stringOfTime.components(separatedBy: ":").first!
+            let minuteEnd = firstEvent.end.stringOfTime.components(separatedBy: ":").last!
+            let timeStart = Int(hourStart)! * 60 + Int(minuteStart)!
+            let timeEnd = Int(hourEnd)! * 60 + Int(minuteEnd)!
+            let timeNow = Int(hourNow)! * 60 + Int(minuteNow)!
+            if timeNow >= timeStart {
+                firstEventTimeType.text = "距结束还有"
+                let remainTimeEnd = timeEnd - timeNow
+                let tempString = "\(remainTimeEnd / 60)时 \(remainTimeEnd % 60)分"
+                let tempAttributedString = NSMutableAttributedString(string: tempString)
+                let fisrtLength = tempString.components(separatedBy: " ").first!.characters.count
+                let stringLength = tempString.characters.count
+                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: fisrtLength - 1, length: 2))
+                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: stringLength - 1, length: 1))
+                firstEventTimeRemain.attributedText = tempAttributedString
+            } else {
+                firstEventTimeType.text = "距开始还有"
+                let remainTimeStart = timeStart - timeNow
+                let tempString = "\(remainTimeStart / 60)时 \(remainTimeStart % 60)分"
+                let tempAttributedString = NSMutableAttributedString(string: tempString)
+                let fisrtLength = tempString.components(separatedBy: " ").first!.characters.count
+                let stringLength = tempString.characters.count
+                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: fisrtLength - 1, length: 2))
+                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: stringLength - 1, length: 1))
+                firstEventTimeRemain.attributedText = tempAttributedString
+            }
+        }
+        
+        
         tskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
         tskList.rowHeight = 54
-        self.preferredContentSize.height = CGFloat(self.events.count) * tskList.rowHeight
-        tskList.reloadData()
+        // self.preferredContentSize.height = CGFloat(self.events.count) * tskList.rowHeight
+        // tskList.reloadData()
         // Do any additional setup after loading the view from its nib.
     }
     
@@ -41,27 +90,35 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         
         let Now = Date()
         
-        if event.end < Now {
-            cell.eventTime.text = "已结束"
-        } else {
-            let hourNow = Now.stringOfTime.components(separatedBy: ":").first!
-            let minuteNow = Now.stringOfTime.components(separatedBy: ":").last!
-            let hourStart = event.start.stringOfTime.components(separatedBy: ":").first!
-            let minuteStart = event.start.stringOfTime.components(separatedBy: ":").last!
-            let hourEnd = event.end.stringOfTime.components(separatedBy: ":").first!
-            let minuteEnd = event.end.stringOfTime.components(separatedBy: ":").last!
-            let timeStart = Int(hourStart)! * 60 + Int(minuteStart)!
-            let timeEnd = Int(hourEnd)! * 60 + Int(minuteEnd)!
-            let timeNow = Int(hourNow)! * 60 + Int(minuteNow)!
-            if event.start < Now {
-                let remainTimeEnd = timeEnd - timeNow
-                cell.eventTime.text = "距结束 \(remainTimeEnd / 60) 时 \(remainTimeEnd % 60) 分"
+        if event.duration == .partialTime {
+            if event.end < Now {
+                cell.eventTime.text = "已结束"
             } else {
-                let remainTimeStart = timeStart - timeNow
-                cell.eventTime.text = "\(remainTimeStart / 60) 时 \(remainTimeStart % 60) 分后"
+                let hourNow = Now.stringOfTime.components(separatedBy: ":").first!
+                let minuteNow = Now.stringOfTime.components(separatedBy: ":").last!
+                let hourStart = event.start.stringOfTime.components(separatedBy: ":").first!
+                let minuteStart = event.start.stringOfTime.components(separatedBy: ":").last!
+                let hourEnd = event.end.stringOfTime.components(separatedBy: ":").first!
+                let minuteEnd = event.end.stringOfTime.components(separatedBy: ":").last!
+                let timeStart = Int(hourStart)! * 60 + Int(minuteStart)!
+                let timeEnd = Int(hourEnd)! * 60 + Int(minuteEnd)!
+                let timeNow = Int(hourNow)! * 60 + Int(minuteNow)!
+                if event.start < Now {
+                    let remainTimeEnd = timeEnd - timeNow
+                    cell.eventTime.text = "距结束 \(remainTimeEnd / 60) 时 \(remainTimeEnd % 60) 分"
+                } else {
+                    let remainTimeStart = timeStart - timeNow
+                    cell.eventTime.text = "\(remainTimeStart / 60) 时 \(remainTimeStart % 60) 分后"
+                }
             }
+        } else {
+            cell.allDayEvent.isHidden = false
+            cell.startTime.isHidden = true
+            cell.endTime.isHidden = true
+            cell.eventName.text = event.name
+            cell.eventPlace.text = event.place
+            cell.eventTime.text = "今天"
         }
-        
         cell.eventType.backgroundColor = QSCColor.category(event.category)
         // cell.textLabel?.text = event.name
         //cell.detailTextLabel?.text = event.place + ", " + event.time
@@ -73,6 +130,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             self.preferredContentSize.height = 110
         } else {
             // max Event count = 9
+            tskList.reloadData()
             self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight
         }
     }
@@ -93,7 +151,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        tskList.rowHeight = 44.0
+        tskList.rowHeight = 54.0
         //self.preferredContentSize.height = CGFloat(self.events.count + 1) * 44.0
         tskList.reloadData()
         completionHandler(NCUpdateResult.newData)
