@@ -141,9 +141,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if (activeDisplayMode == .compact) {
-            self.preferredContentSize.height = 110
+            tskList.isHidden = true
+            self.preferredContentSize = maxSize
         } else {
             // max Event count = 9
+            tskList.isHidden = false
             tskList.reloadData()
             self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight
         }
