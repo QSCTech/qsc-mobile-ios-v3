@@ -19,6 +19,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @IBOutlet var firstEventTime: UILabel!
     @IBOutlet var firstEventTimeType: UILabel!
     @IBOutlet var firstEventTimeRemain: UILabel!
+    @IBOutlet var nothingToDo: UILabel!
+    @IBOutlet var line: UIView!
+    @IBOutlet var placeIcon: UILabel!
+    @IBOutlet var timeIcon: UILabel!
+    
     let events = eventsForDate(Date())
     
     override func viewDidLoad() {
@@ -31,6 +36,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         let firstEvents = events.filter { $0.duration == .partialTime && $0.end >= Date() }
         if firstEvents.isEmpty {
             // 今日无事
+            nothingToDo.isHidden = false
+            line.isHidden = true
+            firstEventName.isHidden = true
+            firstEventTime.isHidden = true
+            firstEventPlace.isHidden = true
+            firstEventTimeType.isHidden = true
+            firstEventTimeRemain.isHidden = true
+            placeIcon.isHidden = true
+            timeIcon.isHidden = true
         } else {
             let firstEvent = firstEvents[0]
             firstEventName.text = firstEvent.name

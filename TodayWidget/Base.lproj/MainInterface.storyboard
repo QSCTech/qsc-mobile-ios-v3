@@ -86,6 +86,12 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日无事" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uW-lH-TQl">
+                                        <rect key="frame" x="83.5" y="37" width="121.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Jd3-hg-48E" firstAttribute="leading" secondItem="sWx-l7-Xq1" secondAttribute="trailing" constant="20" id="1fi-j8-gwV"/>
@@ -95,12 +101,14 @@
                                     <constraint firstItem="ZIm-Kp-qeb" firstAttribute="leading" secondItem="pZY-yb-qD8" secondAttribute="leading" constant="35" id="Bkw-hu-Ht1"/>
                                     <constraint firstItem="PVM-7t-VX5" firstAttribute="centerY" secondItem="q0q-Ev-5yF" secondAttribute="centerY" id="CKl-i0-59f"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="top" secondItem="q0q-Ev-5yF" secondAttribute="bottom" constant="4" id="J2x-fc-JJy"/>
+                                    <constraint firstItem="8uW-lH-TQl" firstAttribute="centerY" secondItem="pZY-yb-qD8" secondAttribute="centerY" id="Knm-oj-Y2I"/>
                                     <constraint firstItem="XbO-35-qck" firstAttribute="leading" secondItem="sWx-l7-Xq1" secondAttribute="trailing" constant="20" id="MGq-Lc-7ix"/>
                                     <constraint firstItem="q0q-Ev-5yF" firstAttribute="top" secondItem="ZIm-Kp-qeb" secondAttribute="bottom" constant="4" id="SUz-0E-RSY"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="centerX" secondItem="q0q-Ev-5yF" secondAttribute="centerX" id="SpE-U0-y5q"/>
                                     <constraint firstItem="PVM-7t-VX5" firstAttribute="leading" secondItem="q0q-Ev-5yF" secondAttribute="trailing" constant="8" id="X9W-JC-gce"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="leading" secondItem="ZIm-Kp-qeb" secondAttribute="leading" id="drU-XA-gWv"/>
                                     <constraint firstItem="Jd3-hg-48E" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="20" id="gat-dt-84o"/>
+                                    <constraint firstItem="8uW-lH-TQl" firstAttribute="centerX" secondItem="pZY-yb-qD8" secondAttribute="centerX" id="ii7-Wt-kJY"/>
                                     <constraint firstItem="xZC-gk-JBd" firstAttribute="leading" secondItem="PVM-7t-VX5" secondAttribute="leading" id="kzt-AV-bKG"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="sWx-l7-Xq1" secondAttribute="trailing" constant="104" id="o4m-zb-3xU"/>
                                     <constraint firstItem="ZIm-Kp-qeb" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="20" id="vYA-RC-5xk"/>
@@ -138,6 +146,10 @@
                         <outlet property="firstEventTime" destination="xZC-gk-JBd" id="iIP-fh-OCP"/>
                         <outlet property="firstEventTimeRemain" destination="XbO-35-qck" id="F9T-ix-XUi"/>
                         <outlet property="firstEventTimeType" destination="Jd3-hg-48E" id="iQ8-5j-pe5"/>
+                        <outlet property="line" destination="sWx-l7-Xq1" id="bIU-yL-eSs"/>
+                        <outlet property="nothingToDo" destination="8uW-lH-TQl" id="b3c-8C-hfu"/>
+                        <outlet property="placeIcon" destination="q0q-Ev-5yF" id="6mr-ac-X6Z"/>
+                        <outlet property="timeIcon" destination="Bry-BV-D5G" id="rge-hp-mv2"/>
                         <outlet property="tskList" destination="WrD-qC-e0c" id="CLs-dW-XTo"/>
                     </connections>
                 </viewController>
