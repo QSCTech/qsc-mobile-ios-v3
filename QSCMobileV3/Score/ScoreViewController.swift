@@ -25,6 +25,7 @@ class ScoreViewController: UIViewController {
     let buttonHeight = CGFloat(48)
     
     var semesterScores = [SemesterScore]()
+    var selectedIndex = 0
     var selectedScores = [Score]()
     
     @IBOutlet weak var semesterCreditLabel: UILabel!
@@ -66,18 +67,24 @@ class ScoreViewController: UIViewController {
         scrollView.scrollsToTop = false
         scrollView.addSubview(imageView)
         
-        changeSemester(index: semesterScores.count - 1)
+        selectedIndex = semesterScores.count - 1
+        refreshScores()
+        
+        NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main) { notification in
+            self.semesterScores = self.mobileManager.semesterScores
+            self.refreshScores()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    func changeSemester(index: Int) {
-        if index < 0 {
+    func refreshScores() {
+        if selectedIndex < 0 {
             return
         }
-        let semesterScore = semesterScores[index]
+        let semesterScore = semesterScores[selectedIndex]
         semesterGradeLabel.text = String(format: "%.2f", semesterScore.averageGrade!.floatValue)
         semesterCreditLabel.text = semesterScore.totalCredit!.stringValue
         let semester = semesterScore.year! + (semesterScore.semester == "AW" ? "-1" : "-2")
@@ -85,11 +92,12 @@ class ScoreViewController: UIViewController {
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: true)
         
-        imageView.frame = CGRect(x: buttonWidth * CGFloat(index) + 38, y: 0, width: 23, height: 12)
+        imageView.frame = CGRect(x: buttonWidth * CGFloat(selectedIndex) + 38, y: 0, width: 23, height: 12)
     }
     
     func semesterWasSelected(sender: UIButton) {
-        changeSemester(index: sender.tag)
+        selectedIndex = sender.tag
+        refreshScores()
     }
     
     @IBAction func close(_ sender: AnyObject) {
