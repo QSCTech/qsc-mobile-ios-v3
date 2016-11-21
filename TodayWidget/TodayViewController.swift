@@ -23,6 +23,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @IBOutlet var line: UIView!
     @IBOutlet var placeIcon: UILabel!
     @IBOutlet var timeIcon: UILabel!
+    @IBOutlet var wlanSwitch: UIButton!
     
     let events = eventsForDate(Date())
     
@@ -91,6 +92,20 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // Do any additional setup after loading the view from its nib.
     }
     
+    @IBAction func connectWlan() {
+        ZjuwlanConnection.link { success, error in
+            if success {
+                self.wlanSwitch.setTitleColor(UIColor.blue, for: .normal)
+            } else {
+                self.wlanSwitch.setTitleColor(UIColor.red, for: .normal)
+                delay(1, block: {
+                    self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
+                })
+                self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let event = events[indexPath.row]
@@ -147,7 +162,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             // max Event count = 9
             tskList.isHidden = false
             tskList.reloadData()
-            self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight
+            // self.preferredContentSize = maxSize
+            self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight + 50
         }
     }
 
