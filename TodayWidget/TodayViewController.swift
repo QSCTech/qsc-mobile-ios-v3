@@ -157,10 +157,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if (activeDisplayMode == .compact) {
             tskList.isHidden = true
+            wlanSwitch.isHidden = true
             self.preferredContentSize = maxSize
         } else {
             // max Event count = 9
             tskList.isHidden = false
+            wlanSwitch.isHidden = false
             tskList.reloadData()
             // self.preferredContentSize = maxSize
             self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight + 50
