@@ -95,13 +95,17 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @IBAction func connectWlan() {
         ZjuwlanConnection.link { success, error in
             if success {
-                self.wlanSwitch.setTitleColor(UIColor.blue, for: .normal)
+                self.wlanSwitch.backgroundColor = UIColor.blue
+                // self.wlanSwitch.setTitleColor(UIColor.blue, for: .normal)
             } else {
-                self.wlanSwitch.setTitleColor(UIColor.red, for: .normal)
-                delay(1, block: {
-                    self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
+                self.wlanSwitch.backgroundColor = UIColor.red
+                // self.wlanSwitch.setTitleColor(UIColor.red, for: .normal)
+                delay(2, block: {
+                    //self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
+                    self.wlanSwitch.backgroundColor = UIColor.clear
                 })
-                self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
+                // self.wlanSwitch.backgroundColor = UIColor.clear
+                // self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
             }
         }
     }
