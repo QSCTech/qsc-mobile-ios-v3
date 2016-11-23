@@ -90,7 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabBarController = window!.rootViewController as! UITabBarController
             tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
             tabBarController.selectedIndex = 1
-            let vc = tabBarController.selectedViewController!
+            let nc = tabBarController.selectedViewController as! UINavigationController
+            let vc = nc.topViewController!
             vc.performSegue(withIdentifier: "addEvent", sender: vc)
             return true
         }
