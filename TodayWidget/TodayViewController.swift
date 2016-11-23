@@ -92,6 +92,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // Do any additional setup after loading the view from its nib.
     }
     
+    @IBAction func addEvents() {
+        self.extensionContext?.open(URL(string: "Widget://action=add")!, completionHandler: nil)
+    }
+    
+    @IBAction func gotoCalendar() {
+        self.extensionContext?.open(URL(string: "Widget://action=calendar")!, completionHandler: nil)
+    }
+    
     @IBAction func connectWlan() {
         ZjuwlanConnection.link { success, error in
             if success {

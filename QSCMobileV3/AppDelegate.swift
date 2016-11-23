@@ -82,4 +82,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(true)
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let addString = "Widget://action=add"
+        let calendarString = "Widget://action=calendar"
+        if url.absoluteString.contains(addString) {
+            // Goto add
+            let tabBarController = window!.rootViewController as! UITabBarController
+            tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+            tabBarController.selectedIndex = 1
+            let vc = tabBarController.selectedViewController!
+            vc.performSegue(withIdentifier: "addEvent", sender: vc)
+            return true
+        }
+        if url.absoluteString.contains(calendarString) {
+            // Goto calendar
+            let tabBarController = window!.rootViewController as! UITabBarController
+            tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+            tabBarController.selectedIndex = 1
+            return true
+        }
+        return false
+    }
+    
 }
