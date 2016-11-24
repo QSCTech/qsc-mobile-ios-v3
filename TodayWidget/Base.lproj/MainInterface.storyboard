@@ -45,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIm-Kp-qeb">
-                                        <rect key="frame" x="8" y="19" width="59" height="29"/>
+                                        <rect key="frame" x="8" y="19" width="150" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -57,13 +57,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVM-7t-VX5">
-                                        <rect key="frame" x="27" y="53.5" width="27" height="12"/>
+                                        <rect key="frame" x="27" y="54" width="131" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZC-gk-JBd">
-                                        <rect key="frame" x="27" y="74.5" width="27" height="12"/>
+                                        <rect key="frame" x="27" y="74" width="27" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -75,13 +75,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jd3-hg-48E">
-                                        <rect key="frame" x="192" y="20" width="31" height="14.5"/>
+                                        <rect key="frame" x="192" y="20" width="31" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbO-35-qck">
-                                        <rect key="frame" x="192" y="49.5" width="75" height="37"/>
+                                        <rect key="frame" x="192" y="49" width="75" height="37"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
                                                 <attributes>
@@ -103,6 +103,7 @@
                                     <constraint firstItem="sWx-l7-Xq1" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="8" id="HAH-iV-rnG"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="top" secondItem="q0q-Ev-5yF" secondAttribute="bottom" constant="4" id="J2x-fc-JJy"/>
                                     <constraint firstItem="8uW-lH-TQl" firstAttribute="centerY" secondItem="pZY-yb-qD8" secondAttribute="centerY" id="Knm-oj-Y2I"/>
+                                    <constraint firstItem="sWx-l7-Xq1" firstAttribute="leading" secondItem="PVM-7t-VX5" secondAttribute="trailing" constant="17" id="N5I-12-pdK"/>
                                     <constraint firstItem="q0q-Ev-5yF" firstAttribute="top" secondItem="ZIm-Kp-qeb" secondAttribute="bottom" constant="4" id="SUz-0E-RSY"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="centerX" secondItem="q0q-Ev-5yF" secondAttribute="centerX" id="SpE-U0-y5q"/>
                                     <constraint firstItem="PVM-7t-VX5" firstAttribute="leading" secondItem="q0q-Ev-5yF" secondAttribute="trailing" constant="8" id="X9W-JC-gce"/>
@@ -113,6 +114,7 @@
                                     <constraint firstItem="Jd3-hg-48E" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="20" id="gat-dt-84o"/>
                                     <constraint firstItem="8uW-lH-TQl" firstAttribute="centerX" secondItem="pZY-yb-qD8" secondAttribute="centerX" id="ii7-Wt-kJY"/>
                                     <constraint firstItem="xZC-gk-JBd" firstAttribute="leading" secondItem="PVM-7t-VX5" secondAttribute="leading" id="kzt-AV-bKG"/>
+                                    <constraint firstItem="sWx-l7-Xq1" firstAttribute="leading" secondItem="ZIm-Kp-qeb" secondAttribute="trailing" constant="17" id="n63-kJ-7Z9"/>
                                     <constraint firstItem="ZIm-Kp-qeb" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="19" id="vYA-RC-5xk"/>
                                 </constraints>
                             </view>
@@ -124,9 +126,9 @@
                                     <outlet property="delegate" destination="M4Y-Lb-cyx" id="s2i-3D-ZtV"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krm-qu-jDi">
-                                <rect key="frame" x="16" y="468" width="44" height="30"/>
-                                <state key="normal" title="WLAN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krm-qu-jDi">
+                                <rect key="frame" x="16" y="468" width="60" height="22"/>
+                                <state key="normal" title="WiFi" image="WiFi">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -134,15 +136,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-BR-A3E">
-                                <rect key="frame" x="145" y="468" width="30" height="30"/>
-                                <state key="normal" title="Add"/>
+                                <rect key="frame" x="136" y="468" width="48" height="21"/>
+                                <state key="normal" title="Add" image="Add"/>
                                 <connections>
                                     <action selector="addEvents" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="zS1-SW-15z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S44-sx-s6J">
-                                <rect key="frame" x="242" y="468" width="62" height="30"/>
-                                <state key="normal" title="Calendar"/>
+                                <rect key="frame" x="225" y="468" width="79" height="21"/>
+                                <state key="normal" title="Courses" image="Calen"/>
                                 <connections>
                                     <action selector="gotoCalendar" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="xf5-YU-wqj"/>
                                 </connections>
@@ -171,6 +173,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="510"/>
                     <connections>
+                        <outlet property="addButton" destination="xSb-BR-A3E" id="8xQ-qN-IED"/>
+                        <outlet property="calendarButton" destination="S44-sx-s6J" id="VNV-lb-Iaa"/>
                         <outlet property="firstEventName" destination="ZIm-Kp-qeb" id="dur-Ah-AJG"/>
                         <outlet property="firstEventPlace" destination="PVM-7t-VX5" id="cX8-Tl-cNE"/>
                         <outlet property="firstEventTime" destination="xZC-gk-JBd" id="iIP-fh-OCP"/>
@@ -189,4 +193,9 @@
             <point key="canvasLocation" x="33.600000000000001" y="70.164917541229386"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Add" width="20" height="21"/>
+        <image name="Calen" width="22" height="21"/>
+        <image name="WiFi" width="25" height="18"/>
+    </resources>
 </document>

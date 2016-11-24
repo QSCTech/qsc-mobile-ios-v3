@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-AD-Kvl">
-                        <rect key="frame" x="58" y="7" width="4" height="38"/>
+                        <rect key="frame" x="51" y="7" width="4" height="38"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="38" id="jrv-Ns-hyo"/>
@@ -34,31 +34,37 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHS-JF-9Lh">
-                        <rect key="frame" x="15" y="7" width="34.5" height="16.5"/>
+                        <rect key="frame" x="8" y="7" width="34.5" height="16.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiY-fR-2xE">
-                        <rect key="frame" x="18" y="29" width="32" height="15.5"/>
+                        <rect key="frame" x="11" y="29" width="32" height="15.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3Z-L2-WTp">
-                        <rect key="frame" x="70" y="7" width="36" height="17"/>
+                        <rect key="frame" x="63" y="7" width="140" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="hv5-EW-3BK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwc-PR-cKG">
-                        <rect key="frame" x="70" y="30" width="31" height="15"/>
+                        <rect key="frame" x="63" y="30" width="140" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="Cej-6Z-qlr"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全天" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h53-TG-VAF">
-                        <rect key="frame" x="17" y="16" width="33" height="21"/>
+                        <rect key="frame" x="10" y="16" width="33" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -75,7 +81,7 @@
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="bHS-JF-9Lh" secondAttribute="trailing" constant="8" id="YIF-Cz-XOa"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="h53-TG-VAF" secondAttribute="trailing" constant="8" id="Ywh-mx-HXy"/>
                     <constraint firstItem="mMU-AD-Kvl" firstAttribute="bottom" secondItem="eiY-fR-2xE" secondAttribute="bottom" id="aff-hu-bG6"/>
-                    <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="58" id="dtA-uv-1q5"/>
+                    <constraint firstItem="mMU-AD-Kvl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="51" id="dtA-uv-1q5"/>
                     <constraint firstItem="A3Z-L2-WTp" firstAttribute="leading" secondItem="mMU-AD-Kvl" secondAttribute="trailing" constant="8" id="kXz-GY-zSY"/>
                     <constraint firstItem="A3Z-L2-WTp" firstAttribute="top" secondItem="mMU-AD-Kvl" secondAttribute="top" id="kiR-Bn-1cB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="h53-TG-VAF" secondAttribute="bottom" constant="8" id="kzW-Vm-uf3"/>

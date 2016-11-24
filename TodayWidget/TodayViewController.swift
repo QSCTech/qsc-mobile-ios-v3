@@ -13,7 +13,7 @@ import QSCMobileKit
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tskList: UITableView!
+    @IBOutlet var tskList: UITableView!
     @IBOutlet var firstEventName: UILabel!
     @IBOutlet var firstEventPlace: UILabel!
     @IBOutlet var firstEventTime: UILabel!
@@ -24,6 +24,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @IBOutlet var placeIcon: UILabel!
     @IBOutlet var timeIcon: UILabel!
     @IBOutlet var wlanSwitch: UIButton!
+    @IBOutlet var addButton: UIButton!
+    @IBOutlet var calendarButton: UIButton!
     
     let events = eventsForDate(Date())
     
@@ -32,7 +34,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         if #available(iOSApplicationExtension 10, *) { // Only in iOS 10
             self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
-        self.preferredContentSize.height = 110
+        // self.preferredContentSize.height = 110
         firstEventTimeRemain.text = nil
         let firstEvents = events.filter { $0.duration == .partialTime && $0.end >= Date() }
         if firstEvents.isEmpty {
@@ -170,11 +172,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         if (activeDisplayMode == .compact) {
             tskList.isHidden = true
             wlanSwitch.isHidden = true
+            addButton.isHidden = true
+            calendarButton.isHidden = true
             self.preferredContentSize = maxSize
         } else {
             // max Event count = 9
             tskList.isHidden = false
             wlanSwitch.isHidden = false
+            addButton.isHidden = false
+            calendarButton.isHidden = false
             tskList.reloadData()
             // self.preferredContentSize = maxSize
             self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight + 50

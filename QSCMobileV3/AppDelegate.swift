@@ -99,7 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Goto calendar
             let tabBarController = window!.rootViewController as! UITabBarController
             tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
-            tabBarController.selectedIndex = 1
+            tabBarController.selectedIndex = 3
+            let nc = tabBarController.selectedViewController as! UINavigationController
+            let vc = nc.topViewController!
+            let cc = CurriculaViewController()
+            vc.show(cc, sender: vc)
             return true
         }
         return false
