@@ -167,9 +167,9 @@
                                         <exclude reference="iJ2-bD-Ba1"/>
                                         <exclude reference="j1h-fw-eFF"/>
                                         <exclude reference="joc-xf-8LE"/>
+                                        <exclude reference="Syg-ue-cvg"/>
                                         <exclude reference="8Rm-Eg-6eO"/>
                                         <exclude reference="chG-Kg-GrB"/>
-                                        <exclude reference="Syg-ue-cvg"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -326,7 +326,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Basic" textLabel="y8N-wF-cRc" rowHeight="44" style="IBUITableViewCellStyleDefault" id="m9p-hF-ohV">
-                                        <rect key="frame" x="0.0" y="56" width="311" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="311" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m9p-hF-ohV" id="SEb-SF-S3P">
                                             <rect key="frame" x="0.0" y="0.0" width="311" height="44"/>
@@ -415,6 +415,18 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="8BT-k8-tfc"/>
+                                <exclude reference="1pK-M7-zbf"/>
+                                <exclude reference="7rb-Vg-NGn"/>
+                                <exclude reference="D8y-iM-rnY"/>
+                                <exclude reference="tTq-oK-Vnt"/>
+                                <exclude reference="xAS-ZR-X7h"/>
+                                <exclude reference="4qv-mS-ISB"/>
+                                <exclude reference="RRD-dK-8aA"/>
+                                <exclude reference="cEU-So-pPB"/>
+                                <exclude reference="kcT-W9-4GZ"/>
+                                <exclude reference="pIY-Cp-SYl"/>
+                                <exclude reference="qxd-JC-oTZ"/>
                                 <exclude reference="BV1-2s-HzI"/>
                                 <exclude reference="CiD-YE-YC4"/>
                                 <exclude reference="FSI-lQ-yL8"/>
@@ -429,18 +441,6 @@
                                 <exclude reference="lHD-t6-VC5"/>
                                 <exclude reference="s85-vZ-PEc"/>
                                 <exclude reference="uzr-0d-wN0"/>
-                                <exclude reference="8BT-k8-tfc"/>
-                                <exclude reference="1pK-M7-zbf"/>
-                                <exclude reference="7rb-Vg-NGn"/>
-                                <exclude reference="D8y-iM-rnY"/>
-                                <exclude reference="tTq-oK-Vnt"/>
-                                <exclude reference="xAS-ZR-X7h"/>
-                                <exclude reference="4qv-mS-ISB"/>
-                                <exclude reference="RRD-dK-8aA"/>
-                                <exclude reference="cEU-So-pPB"/>
-                                <exclude reference="kcT-W9-4GZ"/>
-                                <exclude reference="pIY-Cp-SYl"/>
-                                <exclude reference="qxd-JC-oTZ"/>
                                 <exclude reference="JEK-wO-YR3"/>
                                 <exclude reference="QVQ-Hf-BOh"/>
                                 <exclude reference="kca-5x-bwq"/>
@@ -509,14 +509,14 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Basic" textLabel="HJW-Qx-lSs" style="IBUITableViewCellStyleDefault" id="39w-ZI-lJY">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="39w-ZI-lJY" id="puv-Cd-arM">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HJW-Qx-lSs">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -567,14 +567,14 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Basic" textLabel="hYc-vn-lve" style="IBUITableViewCellStyleDefault" id="4Dc-bE-QIr">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Dc-bE-QIr" id="sxb-6O-CHx">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hYc-vn-lve">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

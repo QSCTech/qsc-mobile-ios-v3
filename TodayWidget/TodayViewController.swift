@@ -120,6 +120,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRow = indexPath.row
+        self.extensionContext?.open(URL(string: "Widget://action=detail&row=\(selectedRow)")!, completionHandler: nil)
+        tskList.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let event = events[indexPath.row]

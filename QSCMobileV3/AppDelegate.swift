@@ -85,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let addString = "Widget://action=add"
         let calendarString = "Widget://action=calendar"
+        let detailPrefix = "Widget://action=detail&row="
         if url.absoluteString.contains(addString) {
             // Goto add
             let tabBarController = window!.rootViewController as! UITabBarController
@@ -104,6 +105,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = nc.topViewController!
             let cc = CurriculaViewController()
             vc.show(cc, sender: vc)
+            return true
+        }
+        if url.absoluteString.hasPrefix(detailPrefix) {
+            let selectedRow = url.absoluteString.substring(from: detailPrefix.characters.endIndex)
+            let events = eventsForDate(Date())
+            let selectedEvent = events[Int(selectedRow)!]
+            let tabBarController = window!.rootViewController as! UITabBarController
+            tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+            tabBarController.selectedIndex = 1
+            let nc = tabBarController.selectedViewController as! UINavigationController
+            let vc = nc.topViewController as! CalendarViewController
+            vc.selectedEvent = selectedEvent
+            if selectedEvent.category == .course || selectedEvent.category == .exam {
+                vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
+            } else {
+                vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
+            }
             return true
         }
         return false
