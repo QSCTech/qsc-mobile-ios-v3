@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         case "timetable":
             tabBarController.selectedIndex = 3
-            tabBarController.present(CurriculaViewController(), animated: true, completion: nil)
+            (tabBarController.selectedViewController as! UINavigationController).topViewController!.show(CurriculaViewController(), sender: nil)
             return true
         case "detail":
             let recievedEvent = events[Int(path[2])!]
