@@ -57,13 +57,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVM-7t-VX5">
-                                        <rect key="frame" x="27" y="54" width="131" height="12"/>
+                                        <rect key="frame" x="27" y="53.5" width="131" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZC-gk-JBd">
-                                        <rect key="frame" x="27" y="74" width="27" height="12"/>
+                                        <rect key="frame" x="27" y="74.5" width="27" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbO-35-qck">
-                                        <rect key="frame" x="192" y="49" width="75" height="37"/>
+                                        <rect key="frame" x="192" y="49.5" width="75" height="37"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
                                                 <attributes>
@@ -146,7 +146,7 @@
                                 <rect key="frame" x="225" y="468" width="79" height="21"/>
                                 <state key="normal" title="Courses" image="Calen"/>
                                 <connections>
-                                    <action selector="gotoCalendar" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="xf5-YU-wqj"/>
+                                    <action selector="gotoTimetable" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="VtT-gu-PVa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -174,7 +174,6 @@
                     <size key="freeformSize" width="320" height="510"/>
                     <connections>
                         <outlet property="addButton" destination="xSb-BR-A3E" id="8xQ-qN-IED"/>
-                        <outlet property="calendarButton" destination="S44-sx-s6J" id="VNV-lb-Iaa"/>
                         <outlet property="firstEventName" destination="ZIm-Kp-qeb" id="dur-Ah-AJG"/>
                         <outlet property="firstEventPlace" destination="PVM-7t-VX5" id="cX8-Tl-cNE"/>
                         <outlet property="firstEventTime" destination="xZC-gk-JBd" id="iIP-fh-OCP"/>
@@ -184,6 +183,7 @@
                         <outlet property="nothingToDo" destination="8uW-lH-TQl" id="b3c-8C-hfu"/>
                         <outlet property="placeIcon" destination="q0q-Ev-5yF" id="6mr-ac-X6Z"/>
                         <outlet property="timeIcon" destination="Bry-BV-D5G" id="rge-hp-mv2"/>
+                        <outlet property="timetableButton" destination="S44-sx-s6J" id="SWI-Tf-NaG"/>
                         <outlet property="tskList" destination="WrD-qC-e0c" id="CLs-dW-XTo"/>
                         <outlet property="wlanSwitch" destination="Krm-qu-jDi" id="hY6-Rh-Wt3"/>
                     </connections>

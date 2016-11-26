@@ -25,7 +25,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @IBOutlet var timeIcon: UILabel!
     @IBOutlet var wlanSwitch: UIButton!
     @IBOutlet var addButton: UIButton!
-    @IBOutlet var calendarButton: UIButton!
+    @IBOutlet var timetableButton: UIButton!
     
     let events = eventsForDate(Date())
     
@@ -95,11 +95,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @IBAction func addEvents() {
-        self.extensionContext?.open(URL(string: "Widget://action=add")!, completionHandler: nil)
+        self.extensionContext?.open(URL(string: "QSCMobile://tw/add")!, completionHandler: nil)
     }
     
-    @IBAction func gotoCalendar() {
-        self.extensionContext?.open(URL(string: "Widget://action=calendar")!, completionHandler: nil)
+    @IBAction func gotoTimetable() {
+        self.extensionContext?.open(URL(string: "QSCMobile://tw/timetable")!, completionHandler: nil)
     }
     
     @IBAction func connectWlan() {
@@ -122,7 +122,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedRow = indexPath.row
-        self.extensionContext?.open(URL(string: "Widget://action=detail&row=\(selectedRow)")!, completionHandler: nil)
+        self.extensionContext?.open(URL(string: "QSCMobile://tw/detail/\(selectedRow)")!, completionHandler: nil)
         tskList.deselectRow(at: indexPath, animated: true)
     }
     
@@ -179,14 +179,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             tskList.isHidden = true
             wlanSwitch.isHidden = true
             addButton.isHidden = true
-            calendarButton.isHidden = true
+            timetableButton.isHidden = true
             self.preferredContentSize = maxSize
         } else {
             // max Event count = 9
             tskList.isHidden = false
             wlanSwitch.isHidden = false
             addButton.isHidden = false
-            calendarButton.isHidden = false
+            timetableButton.isHidden = false
             tskList.reloadData()
             // self.preferredContentSize = maxSize
             self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight + 50

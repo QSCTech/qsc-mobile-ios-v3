@@ -83,48 +83,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let addString = "Widget://action=add"
-        let calendarString = "Widget://action=calendar"
-        let detailPrefix = "Widget://action=detail&row="
-        if url.absoluteString.contains(addString) {
-            // Goto add
-            let tabBarController = window!.rootViewController as! UITabBarController
-            tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+        let path = url.pathComponents
+        let tabBarController = window!.rootViewController as! UITabBarController
+        tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+        let events = eventsForDate(Date())
+        switch path[1] {
+        case "add":
             tabBarController.selectedIndex = 1
-            let nc = tabBarController.selectedViewController as! UINavigationController
-            let vc = nc.topViewController!
+            let vc = (tabBarController.selectedViewController as! UINavigationController).topViewController!
             vc.performSegue(withIdentifier: "addEvent", sender: vc)
             return true
-        }
-        if url.absoluteString.contains(calendarString) {
-            // Goto calendar
-            let tabBarController = window!.rootViewController as! UITabBarController
-            tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+        case "timetable":
             tabBarController.selectedIndex = 3
-            let nc = tabBarController.selectedViewController as! UINavigationController
-            let vc = nc.topViewController!
-            let cc = CurriculaViewController()
-            vc.show(cc, sender: vc)
+            tabBarController.present(CurriculaViewController(), animated: true, completion: nil)
             return true
-        }
-        if url.absoluteString.hasPrefix(detailPrefix) {
-            let selectedRow = url.absoluteString.substring(from: detailPrefix.characters.endIndex)
-            let events = eventsForDate(Date())
-            let selectedEvent = events[Int(selectedRow)!]
-            let tabBarController = window!.rootViewController as! UITabBarController
-            tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+        case "detail":
+            let recievedEvent = events[Int(path[2])!]
             tabBarController.selectedIndex = 1
-            let nc = tabBarController.selectedViewController as! UINavigationController
-            let vc = nc.topViewController as! CalendarViewController
-            vc.selectedEvent = selectedEvent
-            if selectedEvent.category == .course || selectedEvent.category == .exam {
-                vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
+            let vc = (tabBarController.selectedViewController as! UINavigationController).topViewController as! CalendarViewController
+            vc.selectedEvent = recievedEvent
+            vc.selectedDate = Date()
+            if vc.selectedEvent.category == .course || vc.selectedEvent.category == .exam {
+                vc.performSegue(withIdentifier: "showCourseDetail", sender: vc)
             } else {
-                vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
+                vc.performSegue(withIdentifier: "showEventDetail", sender: vc)
             }
             return true
+        default:
+            return false
         }
-        return false
     }
     
 }
