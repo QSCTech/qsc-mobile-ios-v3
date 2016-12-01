@@ -127,40 +127,40 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krm-qu-jDi">
-                                <rect key="frame" x="16" y="468" width="60" height="22"/>
-                                <state key="normal" title="WiFi" image="WiFi">
+                                <rect key="frame" x="75" y="468" width="25" height="22"/>
+                                <state key="normal" image="WiFi">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWlan" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="oHM-A3-FSE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-BR-A3E">
-                                <rect key="frame" x="136" y="468" width="48" height="21"/>
-                                <state key="normal" title="Add" image="Add"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-BR-A3E">
+                                <rect key="frame" x="150" y="468" width="20" height="22"/>
+                                <state key="normal" image="Add"/>
                                 <connections>
                                     <action selector="addEvents" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="zS1-SW-15z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S44-sx-s6J">
-                                <rect key="frame" x="225" y="468" width="79" height="21"/>
-                                <state key="normal" title="Courses" image="Calen"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S44-sx-s6J">
+                                <rect key="frame" x="220" y="468" width="22" height="22"/>
+                                <state key="normal" image="Calen"/>
                                 <connections>
                                     <action selector="gotoTimetable" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="VtT-gu-PVa"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="xSb-BR-A3E" firstAttribute="leading" secondItem="Krm-qu-jDi" secondAttribute="trailing" constant="50" id="4Qh-RS-3Ue"/>
                             <constraint firstItem="WrD-qC-e0c" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="6RP-X1-G6v"/>
-                            <constraint firstItem="Krm-qu-jDi" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="E0I-PZ-uG8"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Efs-Rc-MEk"/>
                             <constraint firstItem="xSb-BR-A3E" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="H6j-bK-GCW"/>
                             <constraint firstItem="S44-sx-s6J" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="8" id="HkY-Le-gX3"/>
+                            <constraint firstItem="S44-sx-s6J" firstAttribute="leading" secondItem="xSb-BR-A3E" secondAttribute="trailing" constant="50" id="MHy-XS-JXy"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Qqv-gh-24I"/>
                             <constraint firstItem="Krm-qu-jDi" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="8" id="YLb-9m-0Vy"/>
                             <constraint firstItem="WrD-qC-e0c" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="eRH-aw-MHH"/>
                             <constraint firstItem="YCb-ZD-fyK" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="50" id="gWa-XH-TYh"/>
-                            <constraint firstItem="S44-sx-s6J" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="gdQ-S0-BFO"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="top" secondItem="pdQ-iv-g3v" secondAttribute="bottom" id="hi6-6O-Qp7"/>
                             <constraint firstItem="xSb-BR-A3E" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="8" id="rOw-og-nvU"/>
                             <constraint firstItem="WrD-qC-e0c" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="bottom" id="wtI-Gz-wI1"/>

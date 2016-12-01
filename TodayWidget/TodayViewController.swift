@@ -90,7 +90,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         tskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
         tskList.rowHeight = 54
         // self.preferredContentSize.height = CGFloat(self.events.count) * tskList.rowHeight
-        // tskList.reloadData()
+        tskList.reloadData()
         // Do any additional setup after loading the view from its nib.
     }
     
@@ -103,16 +103,20 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @IBAction func connectWlan() {
+        self.wlanSwitch.setImage(UIImage.init(named: "WiFiConnecting"), for: .normal)
         ZjuwlanConnection.link { success, error in
             if success {
-                self.wlanSwitch.backgroundColor = UIColor.blue
+                self.wlanSwitch.setImage(UIImage.init(named: "WiFiSuccess"), for: .normal)
+                // self.wlanSwitch.backgroundColor = UIColor.blue
                 // self.wlanSwitch.setTitleColor(UIColor.blue, for: .normal)
             } else {
-                self.wlanSwitch.backgroundColor = UIColor.red
+                self.wlanSwitch.setImage(UIImage.init(named: "WiFiFailed"), for: .normal)
+                // self.wlanSwitch.backgroundColor = UIColor.red
                 // self.wlanSwitch.setTitleColor(UIColor.red, for: .normal)
-                delay(2, block: {
+                delay(1, block: {
+                    self.wlanSwitch.setImage(UIImage.init(named: "WiFi"), for: .normal)
                     //self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
-                    self.wlanSwitch.backgroundColor = UIColor.clear
+                    // self.wlanSwitch.backgroundColor = UIColor.clear
                 })
                 // self.wlanSwitch.backgroundColor = UIColor.clear
                 // self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
