@@ -94,13 +94,11 @@ class MomentPageViewController: UIViewController {
             if Date() < event.start {
                 gauge.maxValue = CGFloat(event.start.timeIntervalSince(Date().today))
                 gauge.rate = CGFloat(Date().timeIntervalSince(Date().today))
-                let timer = Int(gauge.maxValue - gauge.rate) + 60
-                timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60)
+                timerLabel.text = event.start.timeIntervalSince(Date()).timeDescription
             } else if Date() <= event.end {
                 gauge.maxValue = CGFloat(event.end.timeIntervalSince(event.start))
                 gauge.rate = CGFloat(Date().timeIntervalSince(event.start))
-                let timer = Int(gauge.maxValue - gauge.rate) + 60
-                timerLabel.text = String(format: "%02d:%02d", timer / 3600, timer / 60 % 60)
+                timerLabel.text = event.end.timeIntervalSince(Date()).timeDescription
                 if event.category == .course || event.category == .lesson {
                     promptLabel.text = "距下课"
                 } else if event.category == .bus {

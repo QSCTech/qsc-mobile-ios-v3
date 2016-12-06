@@ -77,6 +77,7 @@
 		9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */; };
 		9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */; };
 		9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */; };
+		9DA74C051DF6C82600691A06 /* TimeInterval+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA74C041DF6C82600691A06 /* TimeInterval+Description.swift */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
 		9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */; };
@@ -253,6 +254,7 @@
 		9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GaugeKit.framework; path = Carthage/Build/iOS/GaugeKit.framework; sourceTree = "<group>"; };
 		9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTypeViewController.swift; path = QSCMobileV3/EventDetail/NotificationTypeViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CurriculaTable.framework; path = Carthage/Build/iOS/CurriculaTable.framework; sourceTree = "<group>"; };
+		9DA74C041DF6C82600691A06 /* TimeInterval+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeInterval+Description.swift"; path = "Extension/TimeInterval+Description.swift"; sourceTree = "<group>"; };
 		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
 		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
 		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */,
 				9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */,
 				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
+				9DA74C041DF6C82600691A06 /* TimeInterval+Description.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -722,12 +725,12 @@
 		AE31A5331DC8217700A2CB33 /* TodayWidget */ = {
 			isa = PBXGroup;
 			children = (
-				AE4AD1821DCE2B4E00054D15 /* TodayWidget.entitlements */,
-				AE31A5341DC8217700A2CB33 /* TodayViewController.swift */,
 				AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */,
-				AE31A5391DC8217700A2CB33 /* Info.plist */,
+				AE31A5341DC8217700A2CB33 /* TodayViewController.swift */,
 				AECE060E1DDDF8F300D05B17 /* TableViewCell.swift */,
 				AECE060F1DDDF8F300D05B17 /* TableViewCell.xib */,
+				AE31A5391DC8217700A2CB33 /* Info.plist */,
+				AE4AD1821DCE2B4E00054D15 /* TodayWidget.entitlements */,
 			);
 			path = TodayWidget;
 			sourceTree = "<group>";
@@ -1030,6 +1033,7 @@
 				9DD491221CEAE68A009F70FA /* Year.swift in Sources */,
 				9DD491171CEAE68A009F70FA /* BusStop.swift in Sources */,
 				9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */,
+				9DA74C051DF6C82600691A06 /* TimeInterval+Description.swift in Sources */,
 				9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */,
 				9DD4911A1CEAE68A009F70FA /* Holiday.swift in Sources */,
 				9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */,

@@ -43,7 +43,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bry-BV-D5G">
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -58,7 +58,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0q-Ev-5yF">
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -81,7 +81,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XbO-35-qck" firstAttribute="leading" secondItem="Jd3-hg-48E" secondAttribute="leading" id="4Y3-Nj-vFY"/>
-                                    <constraint firstItem="xZC-gk-JBd" firstAttribute="centerY" secondItem="Bry-BV-D5G" secondAttribute="centerY" constant="1.25" id="5lO-QM-Qxn"/>
+                                    <constraint firstItem="xZC-gk-JBd" firstAttribute="centerY" secondItem="Bry-BV-D5G" secondAttribute="centerY" id="5lO-QM-Qxn"/>
                                     <constraint firstAttribute="height" constant="110" id="9Ut-Ct-phI"/>
                                     <constraint firstItem="ZIm-Kp-qeb" firstAttribute="leading" secondItem="pZY-yb-qD8" secondAttribute="leading" constant="8" id="Bkw-hu-Ht1"/>
                                     <constraint firstItem="PVM-7t-VX5" firstAttribute="centerY" secondItem="q0q-Ev-5yF" secondAttribute="centerY" id="CKl-i0-59f"/>
@@ -90,7 +90,7 @@
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="top" secondItem="q0q-Ev-5yF" secondAttribute="bottom" constant="4" id="J2x-fc-JJy"/>
                                     <constraint firstItem="8uW-lH-TQl" firstAttribute="centerY" secondItem="pZY-yb-qD8" secondAttribute="centerY" id="Knm-oj-Y2I"/>
                                     <constraint firstItem="sWx-l7-Xq1" firstAttribute="leading" secondItem="PVM-7t-VX5" secondAttribute="trailing" constant="17" id="N5I-12-pdK"/>
-                                    <constraint firstItem="q0q-Ev-5yF" firstAttribute="top" secondItem="ZIm-Kp-qeb" secondAttribute="bottom" constant="4" id="SUz-0E-RSY"/>
+                                    <constraint firstItem="q0q-Ev-5yF" firstAttribute="top" secondItem="ZIm-Kp-qeb" secondAttribute="bottom" constant="8" symbolic="YES" id="SUz-0E-RSY"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="centerX" secondItem="q0q-Ev-5yF" secondAttribute="centerX" id="SpE-U0-y5q"/>
                                     <constraint firstItem="PVM-7t-VX5" firstAttribute="leading" secondItem="q0q-Ev-5yF" secondAttribute="trailing" constant="8" id="X9W-JC-gce"/>
                                     <constraint firstItem="XbO-35-qck" firstAttribute="bottom" secondItem="xZC-gk-JBd" secondAttribute="bottom" id="XPN-st-waM"/>
@@ -104,7 +104,7 @@
                                     <constraint firstItem="ZIm-Kp-qeb" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="19" id="vYA-RC-5xk"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WrD-qC-e0c">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WrD-qC-e0c">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="M4Y-Lb-cyx" id="FGJ-z2-n6d"/>
@@ -137,14 +137,14 @@
                             <constraint firstItem="WrD-qC-e0c" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="6RP-X1-G6v"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Efs-Rc-MEk"/>
                             <constraint firstItem="xSb-BR-A3E" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="H6j-bK-GCW"/>
-                            <constraint firstItem="S44-sx-s6J" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="8" id="HkY-Le-gX3"/>
                             <constraint firstItem="S44-sx-s6J" firstAttribute="leading" secondItem="xSb-BR-A3E" secondAttribute="trailing" constant="50" id="MHy-XS-JXy"/>
+                            <constraint firstItem="S44-sx-s6J" firstAttribute="centerY" secondItem="xSb-BR-A3E" secondAttribute="centerY" id="NWc-ge-vgY"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Qqv-gh-24I"/>
-                            <constraint firstItem="Krm-qu-jDi" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="8" id="YLb-9m-0Vy"/>
                             <constraint firstItem="WrD-qC-e0c" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="eRH-aw-MHH"/>
                             <constraint firstItem="YCb-ZD-fyK" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="50" id="gWa-XH-TYh"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="top" secondItem="pdQ-iv-g3v" secondAttribute="bottom" id="hi6-6O-Qp7"/>
-                            <constraint firstItem="xSb-BR-A3E" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="8" id="rOw-og-nvU"/>
+                            <constraint firstItem="xSb-BR-A3E" firstAttribute="top" secondItem="WrD-qC-e0c" secondAttribute="bottom" constant="12" id="rOw-og-nvU"/>
+                            <constraint firstItem="Krm-qu-jDi" firstAttribute="centerY" secondItem="xSb-BR-A3E" secondAttribute="centerY" id="tM8-hh-AKx"/>
                             <constraint firstItem="WrD-qC-e0c" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="bottom" id="wtI-Gz-wI1"/>
                         </constraints>
                     </view>
@@ -164,9 +164,9 @@
                         <outlet property="line" destination="sWx-l7-Xq1" id="bIU-yL-eSs"/>
                         <outlet property="nothingToDo" destination="8uW-lH-TQl" id="b3c-8C-hfu"/>
                         <outlet property="placeIcon" destination="q0q-Ev-5yF" id="6mr-ac-X6Z"/>
+                        <outlet property="taskList" destination="WrD-qC-e0c" id="TmC-sY-SER"/>
                         <outlet property="timeIcon" destination="Bry-BV-D5G" id="rge-hp-mv2"/>
                         <outlet property="timetableButton" destination="S44-sx-s6J" id="SWI-Tf-NaG"/>
-                        <outlet property="tskList" destination="WrD-qC-e0c" id="CLs-dW-XTo"/>
                         <outlet property="wlanSwitch" destination="Krm-qu-jDi" id="hY6-Rh-Wt3"/>
                     </connections>
                 </viewController>

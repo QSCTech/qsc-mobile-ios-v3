@@ -11,9 +11,9 @@ import NotificationCenter
 import KeychainAccess
 import QSCMobileKit
 
-class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
+class TodayViewController: UIViewController {
     
-    @IBOutlet var tskList: UITableView!
+    @IBOutlet var taskList: UITableView!
     @IBOutlet var firstEventName: UILabel!
     @IBOutlet var firstEventPlace: UILabel!
     @IBOutlet var firstEventTime: UILabel!
@@ -27,18 +27,58 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @IBOutlet var addButton: UIButton!
     @IBOutlet var timetableButton: UIButton!
     
-    let events = eventsForDate(Date())
+    // TODO: Support multi-day events and refresh when one day passed
+    let events = eventsForDate(Date()).filter { Calendar.current.isDate($0.start, inSameDayAs: $0.end) }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOSApplicationExtension 10, *) { // Only in iOS 10
+        
+        if #available(iOSApplicationExtension 10, *) {
             self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
-        // self.preferredContentSize.height = 110
-        firstEventTimeRemain.text = nil
-        let firstEvents = events.filter { $0.duration == .partialTime && $0.end >= Date() }
-        if firstEvents.isEmpty {
-            // 今日无事
+        taskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
+    }
+    
+    @IBAction func addEvents() {
+        extensionContext?.open(URL(string: "QSCMobile://tw/add")!, completionHandler: nil)
+    }
+    
+    @IBAction func gotoTimetable() {
+        extensionContext?.open(URL(string: "QSCMobile://tw/timetable")!, completionHandler: nil)
+    }
+    
+    @IBAction func connectWlan() {
+        wlanSwitch.setImage(UIImage.init(named: "WiFiConnecting"), for: .normal)
+        ZjuwlanConnection.link { success, error in
+            if success {
+                self.wlanSwitch.setImage(UIImage.init(named: "WiFiSuccess"), for: .normal)
+            } else {
+                self.wlanSwitch.setImage(UIImage.init(named: "WiFiFailed"), for: .normal)
+                delay(1) {
+                    self.wlanSwitch.setImage(UIImage.init(named: "WiFi"), for: .normal)
+                }
+            }
+        }
+    }
+    
+}
+
+extension TodayViewController: NCWidgetProviding {
+    
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() }
+        if let firstEvent = firstEvent {
+            firstEventName.text = firstEvent.name
+            firstEventPlace.text = firstEvent.place
+            firstEventTime.text = firstEvent.time
+            if Date() < firstEvent.start {
+                firstEventTimeType.text = "距开始还有"
+                firstEventTimeRemain.text = firstEvent.start.timeIntervalSince(Date()).timeDescription
+            } else {
+                firstEventTimeType.text = "距结束还有"
+                firstEventTimeRemain.text = firstEvent.end.timeIntervalSince(Date()).timeDescription
+            }
+        } else {
             nothingToDo.isHidden = false
             line.isHidden = true
             firstEventName.isHidden = true
@@ -48,121 +88,59 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             firstEventTimeRemain.isHidden = true
             placeIcon.isHidden = true
             timeIcon.isHidden = true
+        }
+        taskList.reloadData()
+        completionHandler(NCUpdateResult.newData)
+    }
+    
+    @available(iOSApplicationExtension 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if (activeDisplayMode == .compact) {
+            taskList.isHidden = true
+            wlanSwitch.isHidden = true
+            addButton.isHidden = true
+            timetableButton.isHidden = true
+            self.preferredContentSize = maxSize
         } else {
-            let firstEvent = firstEvents[0]
-            firstEventName.text = firstEvent.name
-            firstEventPlace.text = firstEvent.place
-            firstEventTime.text = firstEvent.time
-            let Now = Date()
-            let hourNow = Now.stringOfTime.components(separatedBy: ":").first!
-            let minuteNow = Now.stringOfTime.components(separatedBy: ":").last!
-            let hourStart = firstEvent.start.stringOfTime.components(separatedBy: ":").first!
-            let minuteStart = firstEvent.start.stringOfTime.components(separatedBy: ":").last!
-            let hourEnd = firstEvent.end.stringOfTime.components(separatedBy: ":").first!
-            let minuteEnd = firstEvent.end.stringOfTime.components(separatedBy: ":").last!
-            let timeStart = Int(hourStart)! * 60 + Int(minuteStart)!
-            let timeEnd = Int(hourEnd)! * 60 + Int(minuteEnd)!
-            let timeNow = Int(hourNow)! * 60 + Int(minuteNow)!
-            if timeNow >= timeStart {
-                firstEventTimeType.text = "距结束还有"
-                let remainTimeEnd = timeEnd - timeNow
-                let tempString = "\(remainTimeEnd / 60)时 \(remainTimeEnd % 60)分"
-                let tempAttributedString = NSMutableAttributedString(string: tempString)
-                let fisrtLength = tempString.components(separatedBy: " ").first!.characters.count
-                let stringLength = tempString.characters.count
-                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: fisrtLength - 1, length: 2))
-                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: stringLength - 1, length: 1))
-                firstEventTimeRemain.attributedText = tempAttributedString
-            } else {
-                firstEventTimeType.text = "距开始还有"
-                let remainTimeStart = timeStart - timeNow
-                let tempString = "\(remainTimeStart / 60)时 \(remainTimeStart % 60)分"
-                let tempAttributedString = NSMutableAttributedString(string: tempString)
-                let fisrtLength = tempString.components(separatedBy: " ").first!.characters.count
-                let stringLength = tempString.characters.count
-                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: fisrtLength - 1, length: 2))
-                tempAttributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 10.0), range: NSRange.init(location: stringLength - 1, length: 1))
-                firstEventTimeRemain.attributedText = tempAttributedString
-            }
+            // max event count = 9
+            taskList.isHidden = false
+            wlanSwitch.isHidden = false
+            addButton.isHidden = false
+            timetableButton.isHidden = false
+            self.preferredContentSize.height = 110 + CGFloat(events.count) * taskList.rowHeight + 50
         }
-        
-        
-        tskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
-        tskList.rowHeight = 54
-        // self.preferredContentSize.height = CGFloat(self.events.count) * tskList.rowHeight
-        tskList.reloadData()
-        // Do any additional setup after loading the view from its nib.
     }
     
-    @IBAction func addEvents() {
-        self.extensionContext?.open(URL(string: "QSCMobile://tw/add")!, completionHandler: nil)
-    }
+}
+
+extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     
-    @IBAction func gotoTimetable() {
-        self.extensionContext?.open(URL(string: "QSCMobile://tw/timetable")!, completionHandler: nil)
-    }
-    
-    @IBAction func connectWlan() {
-        self.wlanSwitch.setImage(UIImage.init(named: "WiFiConnecting"), for: .normal)
-        ZjuwlanConnection.link { success, error in
-            if success {
-                self.wlanSwitch.setImage(UIImage.init(named: "WiFiSuccess"), for: .normal)
-                // self.wlanSwitch.backgroundColor = UIColor.blue
-                // self.wlanSwitch.setTitleColor(UIColor.blue, for: .normal)
-            } else {
-                self.wlanSwitch.setImage(UIImage.init(named: "WiFiFailed"), for: .normal)
-                // self.wlanSwitch.backgroundColor = UIColor.red
-                // self.wlanSwitch.setTitleColor(UIColor.red, for: .normal)
-                delay(1, block: {
-                    self.wlanSwitch.setImage(UIImage.init(named: "WiFi"), for: .normal)
-                    //self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
-                    // self.wlanSwitch.backgroundColor = UIColor.clear
-                })
-                // self.wlanSwitch.backgroundColor = UIColor.clear
-                // self.wlanSwitch.setTitleColor(UIColor.darkGray, for: .normal)
-            }
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedRow = indexPath.row
         self.extensionContext?.open(URL(string: "QSCMobile://tw/detail/\(selectedRow)")!, completionHandler: nil)
-        tskList.deselectRow(at: indexPath, animated: true)
+        taskList.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let event = events[indexPath.row]
-        // let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Event")
-        // Temporary
-        let cell = tskList.dequeueReusableCell(withIdentifier: "Event") as! TableViewCell
-        cell.startTime.text = event.start.stringOfTime
-        cell.endTime.text = event.end.stringOfTime
-        cell.eventName.text = event.name
-        cell.eventPlace.text = event.place
         
-        let Now = Date()
+        let cell = taskList.dequeueReusableCell(withIdentifier: "Event") as! TableViewCell
         
         if event.duration == .partialTime {
-            if event.end < Now {
-                cell.eventTime.text = "已结束"
+            cell.startTime.text = event.start.stringOfTime
+            cell.endTime.text = event.end.stringOfTime
+            cell.eventName.text = event.name
+            cell.eventPlace.text = event.place
+            if Date() < event.start {
+                cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
+            } else if Date() <= event.end {
+                cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
             } else {
-                let hourNow = Now.stringOfTime.components(separatedBy: ":").first!
-                let minuteNow = Now.stringOfTime.components(separatedBy: ":").last!
-                let hourStart = event.start.stringOfTime.components(separatedBy: ":").first!
-                let minuteStart = event.start.stringOfTime.components(separatedBy: ":").last!
-                let hourEnd = event.end.stringOfTime.components(separatedBy: ":").first!
-                let minuteEnd = event.end.stringOfTime.components(separatedBy: ":").last!
-                let timeStart = Int(hourStart)! * 60 + Int(minuteStart)!
-                let timeEnd = Int(hourEnd)! * 60 + Int(minuteEnd)!
-                let timeNow = Int(hourNow)! * 60 + Int(minuteNow)!
-                if event.start < Now {
-                    let remainTimeEnd = timeEnd - timeNow
-                    cell.eventTime.text = "距结束 \(remainTimeEnd / 60) 时 \(remainTimeEnd % 60) 分"
-                } else {
-                    let remainTimeStart = timeStart - timeNow
-                    cell.eventTime.text = "\(remainTimeStart / 60) 时 \(remainTimeStart % 60) 分后"
-                }
+                cell.eventTime.text = "已结束"
             }
         } else {
             cell.allDayEvent.isHidden = false
@@ -170,54 +148,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             cell.endTime.isHidden = true
             cell.eventName.text = event.name
             cell.eventPlace.text = event.place
-            cell.eventTime.text = "今天"
+            cell.eventTime.text = "全天"
         }
         cell.eventType.backgroundColor = QSCColor.category(event.category)
-        // cell.textLabel?.text = event.name
-        //cell.detailTextLabel?.text = event.place + ", " + event.time
         return cell
-    }
-    
-    @available(iOSApplicationExtension 10.0, *)
-    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-        if (activeDisplayMode == .compact) {
-            tskList.isHidden = true
-            wlanSwitch.isHidden = true
-            addButton.isHidden = true
-            timetableButton.isHidden = true
-            self.preferredContentSize = maxSize
-        } else {
-            // max Event count = 9
-            tskList.isHidden = false
-            wlanSwitch.isHidden = false
-            addButton.isHidden = false
-            timetableButton.isHidden = false
-            tskList.reloadData()
-            // self.preferredContentSize = maxSize
-            self.preferredContentSize.height = 110 + CGFloat(events.count) * tskList.rowHeight + 50
-        }
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
-        tskList.rowHeight = 54.0
-        //self.preferredContentSize.height = CGFloat(self.events.count + 1) * 44.0
-        tskList.reloadData()
-        completionHandler(NCUpdateResult.newData)
     }
     
 }
