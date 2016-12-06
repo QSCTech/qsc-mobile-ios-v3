@@ -1,4 +1,3 @@
-.DS_Store
 # Created by https://www.gitignore.io/api/swift
 
 ### Swift ###
@@ -64,3 +63,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
+# macOS
+
+.DS_Store
