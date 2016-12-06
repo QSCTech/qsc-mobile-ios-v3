@@ -34,19 +34,21 @@ class MomentViewController: UIViewController {
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).cgColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(viewDidAppear), name: .UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main) { _ in
+        let viewAppear = { (_: Notification) in
             self.viewWillAppear(false)
             self.viewDidAppear(false)
         }
+        NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: .main, using: viewAppear)
+        NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main, using: viewAppear)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: Support all-day events and future exams
-        events = eventsForDate(Date()).filter { $0.duration == .partialTime && $0.end >= Date() }
+        events = eventsForDate(Date()).filter { $0.end >= Date() }
+        if AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
+            events += MobileManager.sharedInstance.comingExams
+        }
         pageControl.numberOfPages = events.count
         
         pageControllers.removeAll()
@@ -85,6 +87,12 @@ class MomentViewController: UIViewController {
             vc.view.frame = CGRect(x: width * CGFloat(index), y: 0, width: width, height: height)
             scrollView.addSubview(vc.view)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationItem.title = nil
     }
     
     func updateCurrentEvent() {

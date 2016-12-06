@@ -96,11 +96,6 @@ public class MobileManager: NSObject {
         return (coursesForDate(date) + examsForDate(date) + eventManager.customEventsForDate(date)).sorted { $0.start <= $1.start }
     }
     
-    /**
-     Retrieve an array of courses on the specified date. Holidays and adjustments have been considered already. Note that holidays is prior to adjustments.
-    
-     - returns: An array of type `Event` sorted by starting time.
-     */
     public func coursesForDate(_ date: Date) -> [Event] {
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         
@@ -143,30 +138,38 @@ public class MobileManager: NSObject {
         return array.sorted { $0.start <= $1.start }
     }
     
-    /**
-     Retrieve an array of exams on the specified date.
-     
-     - returns: An array of type `Event` sorted by starting time.
-     */
-    public func examsForDate(_ date: Date) -> [Event] {
+    func filteredExams(_ date: Date, type: Int) -> [Event] {
         let year = calendarManager.yearForDate(date)
         let semester = calendarManager.semesterForDate(date)
+        
+        let upperBound: Date
+        let lowerBound: Date
+        if type == 0 {
+            upperBound = date.tomorrow
+            lowerBound = date.today
+        } else {
+            upperBound = date.tomorrow.addingTimeInterval(2592000) // 30 days
+            lowerBound = date.tomorrow
+        }
         
         let exams = dataStore.getExams(year: year, semester: semester)
         var array = [Event]()
         for exam in exams {
-            if let startTime = exam.startTime, let endTime = exam.endTime {
-                if exam.startTime! < date.tomorrow && exam.endTime! >= date.today  {
-                    var place = exam.place!
-                    if !exam.seat!.isEmpty {
-                        place += " #" + exam.seat!
-                    }
-                    let event = Event(duration: .partialTime, category: .exam, tags: [], name: exam.name!, time: exam.time!, place: place, start: startTime, end: endTime, object: exam)
-                    array.append(event)
-                }
+            if let startTime = exam.startTime, let endTime = exam.endTime, exam.startTime! < upperBound && exam.endTime! >= lowerBound  {
+                let place = exam.place! + (exam.seat!.isEmpty ? "" : " #" + exam.seat!)
+                let event = Event(duration: .partialTime, category: .exam, tags: [], name: exam.name!, time: exam.time!, place: place, start: startTime, end: endTime, object: exam)
+                array.append(event)
             }
         }
         return array.sorted { $0.start <= $1.start }
+    }
+    
+    public func examsForDate(_ date: Date) -> [Event] {
+        return filteredExams(date, type: 0)
+    }
+    
+    public var comingExams: [Event] {
+        return filteredExams(Date(), type: 1)
     }
     
     

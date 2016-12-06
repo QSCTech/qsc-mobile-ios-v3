@@ -34,9 +34,10 @@ class CourseDetailViewController: UITableViewController {
         scoreObject = mobileManager.scoreObjectsWithIdentifier(identifier).filter({ !$0.name!.contains("补考") }).first
         courseEvent = EventManager.sharedInstance.courseEventForIdentifier(identifier)
         navigationItem.title = courseObject?.name ?? ""
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
         tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .refreshCompleted, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -268,7 +269,13 @@ class CourseDetailViewController: UITableViewController {
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
                 let hw = homeworks[indexPath.row - 1]
-                cell.nameLabel.text = hw.name
+                if hw.isFinished!.boolValue {
+                    cell.dotView.isHidden = true
+                    cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+                } else {
+                    cell.dotView.isHidden = false
+                    cell.nameLabel.text = hw.name
+                }
                 cell.timeLabel.text = hw.deadline?.stringOfDatetime
                 cell.courseLabel.removeFromSuperview()
                 return cell

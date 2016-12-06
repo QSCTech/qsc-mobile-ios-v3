@@ -6,18 +6,16 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
-### ios test
+### ios prepare
 ```
-fastlane ios test
+fastlane ios prepare
 ```
-Runs all the tests
+Bump version and push commits to GitLab
 ### ios beta
 ```
 fastlane ios beta
 ```
 Submit a new Beta Build to Apple TestFlight
-
-This will also make sure the profile is up to date
 ### ios release
 ```
 fastlane ios release

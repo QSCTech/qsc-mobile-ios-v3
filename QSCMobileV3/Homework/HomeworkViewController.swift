@@ -17,6 +17,7 @@ class HomeworkViewController: UITableViewController {
     @IBOutlet weak var detailView: UITextView!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var finishSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class HomeworkViewController: UITableViewController {
         nameField.text = homework.name
         detailView.text = homework.notes
         datePicker.date = homework.deadline ?? Date()
+        finishSwitch.isOn = homework.isFinished!.boolValue
         
         nameDidChange(nameField)
         detailView.delegate = self
@@ -51,7 +53,7 @@ class HomeworkViewController: UITableViewController {
         homework.notes = detailView.text
         homework.addTime = homework.addTime ?? Date()
         homework.deadline = datePicker.date
-        homework.isFinished = false
+        homework.isFinished = finishSwitch.isOn as NSNumber
         EventManager.sharedInstance.save()
         
         dismiss(animated: true, completion: nil)

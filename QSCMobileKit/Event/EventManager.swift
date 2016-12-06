@@ -100,7 +100,7 @@ public class EventManager: NSObject {
             let tags = event.tags!.isEmpty ? [] : event.tags!.components(separatedBy: ",")
             
             let actualStart = actualDates[event]!.start
-            let actualEnd = actualDates[event]!.end
+            var actualEnd = actualDates[event]!.end
             var startTime = actualStart.stringOfDate
             var endTime = actualEnd.stringOfDate
             let time: String
@@ -114,6 +114,10 @@ public class EventManager: NSObject {
                 }
             } else {
                 time = startTime + " - " + endTime
+            }
+            
+            if event.duration!.intValue == Event.Duration.allDay.rawValue {
+                actualEnd = actualEnd.tomorrow
             }
             
             return Event(duration: duration, category: category, tags: tags, name: event.name!, time: time, place: event.place!, start: actualStart, end: actualEnd, object: event)

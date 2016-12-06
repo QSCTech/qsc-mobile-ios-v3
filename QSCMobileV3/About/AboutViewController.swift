@@ -24,6 +24,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView3: UIImageView!
+    @IBOutlet weak var imageView4: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +35,17 @@ class AboutViewController: UIViewController {
         imageView1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         imageView2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         imageView3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
+        imageView4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
     }
     
     let url = [
-        "http://yzyzsun.me",
-        "http://alej.wang",
+        "http://blog.yzyzsun.me",
         "http://iynix.lofter.com",
+        "http://fantasy-ark.net/ltc/",
+        "http://alej.wang",
     ]
     
     func tapHandler(_ sender: UITapGestureRecognizer) {
-        print("tapped")
         let svc = SFSafariViewController(url: URL(string: url[sender.view!.tag])!)
         present(svc, animated: true, completion: nil)
     }
