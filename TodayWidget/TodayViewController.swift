@@ -178,6 +178,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         return cell
     }
     
+    @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if (activeDisplayMode == .compact) {
             tskList.isHidden = true
