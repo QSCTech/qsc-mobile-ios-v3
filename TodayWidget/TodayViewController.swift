@@ -26,9 +26,11 @@ class TodayViewController: UIViewController {
     @IBOutlet var wlanSwitch: UIButton!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var timetableButton: UIButton!
+    @IBOutlet var expandView: UIView!
     
     // TODO: Support multi-day events and refresh when one day passed
-    let events = eventsForDate(Date()).filter { Calendar.current.isDate($0.start, inSameDayAs: $0.end) }
+    // let events = eventsForDate(Date()).filter { Calendar.current.isDate($0.start, inSameDayAs: $0.end) }
+    let events = eventsForDate(Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +68,7 @@ class TodayViewController: UIViewController {
 extension TodayViewController: NCWidgetProviding {
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() }
+        let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() && Calendar.current.isDate($0.start, inSameDayAs: $0.end) }
         if let firstEvent = firstEvent {
             firstEventName.text = firstEvent.name
             firstEventPlace.text = firstEvent.place
@@ -96,18 +98,11 @@ extension TodayViewController: NCWidgetProviding {
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if (activeDisplayMode == .compact) {
-            taskList.isHidden = true
-            wlanSwitch.isHidden = true
-            addButton.isHidden = true
-            timetableButton.isHidden = true
-            self.preferredContentSize = maxSize
+            self.preferredContentSize.height = 110
+            expandView.isHidden = true
         } else {
-            // max event count = 9
-            taskList.isHidden = false
-            wlanSwitch.isHidden = false
-            addButton.isHidden = false
-            timetableButton.isHidden = false
-            self.preferredContentSize.height = 110 + CGFloat(events.count) * taskList.rowHeight + 50
+            self.preferredContentSize.height = 110 + CGFloat(events.count > 8 ? 8 : events.count) * taskList.rowHeight + 40
+            expandView.isHidden = false
         }
     }
     
@@ -116,7 +111,7 @@ extension TodayViewController: NCWidgetProviding {
 extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return events.count > 8 ? 8 : events.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -131,16 +126,24 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = taskList.dequeueReusableCell(withIdentifier: "Event") as! TableViewCell
         
         if event.duration == .partialTime {
-            cell.startTime.text = event.start.stringOfTime
-            cell.endTime.text = event.end.stringOfTime
-            cell.eventName.text = event.name
-            cell.eventPlace.text = event.place
-            if Date() < event.start {
-                cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
-            } else if Date() <= event.end {
-                cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
+            if Calendar.current.isDate(event.start, inSameDayAs: event.end) {
+                cell.startTime.text = event.start.stringOfTime
+                cell.endTime.text = event.end.stringOfTime
+                cell.eventName.text = event.name
+                cell.eventPlace.text = event.place
+                if Date() < event.start {
+                    cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
+                } else if Date() <= event.end {
+                    cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
+                } else {
+                    cell.eventTime.text = "已结束"
+                }
             } else {
-                cell.eventTime.text = "已结束"
+                cell.startTime.text = event.start.stringOfDate.components(separatedBy: "年").last!.replacingOccurrences(of: "月", with: "/").replacingOccurrences(of: "日", with: "")
+                cell.endTime.text = event.end.stringOfDate.components(separatedBy: "年").last!.replacingOccurrences(of: "月", with: "/").replacingOccurrences(of: "日", with: "")
+                cell.eventName.text = event.name
+                cell.eventPlace.text = event.place
+                cell.eventTime.text = "今天"
             }
         } else {
             cell.allDayEvent.isHidden = false
@@ -148,7 +151,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
             cell.endTime.isHidden = true
             cell.eventName.text = event.name
             cell.eventPlace.text = event.place
-            cell.eventTime.text = "全天"
+            cell.eventTime.text = "今天"
         }
         cell.eventType.backgroundColor = QSCColor.category(event.category)
         return cell
