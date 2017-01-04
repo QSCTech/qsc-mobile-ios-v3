@@ -25,7 +25,7 @@ class HomeworkViewController: UITableViewController {
         nameField.text = homework.name
         detailView.text = homework.notes
         datePicker.date = homework.deadline ?? Date()
-        finishSwitch.isOn = homework.isFinished!.boolValue
+        finishSwitch.isOn = homework.isFinished?.boolValue ?? false
         
         nameDidChange(nameField)
         detailView.delegate = self

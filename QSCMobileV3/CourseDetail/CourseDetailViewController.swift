@@ -358,7 +358,7 @@ class CourseDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == Detail.homework.rawValue && indexPath.row < homeworks.count {
+        if indexPath.section == Detail.homework.rawValue && indexPath.row > 0 {
             return true
         } else {
             return false
@@ -367,7 +367,7 @@ class CourseDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "删除") { action, indexPath in
-            EventManager.sharedInstance.removeHomework(self.homeworks[indexPath.row])
+            EventManager.sharedInstance.removeHomework(self.homeworks[indexPath.row - 1])
             self.reloadData()
         }
         return [delete]
