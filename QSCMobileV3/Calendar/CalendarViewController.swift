@@ -164,18 +164,18 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     }
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
-        selectedDate = dayView.date.convertedDate()!
+        selectedDate = dayView.date.convertedDate(calendar: Calendar.current)!
         updateForSelectedDate()
     }
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
-        let date = dayView.date.convertedDate()!
+        let date = dayView.date.convertedDate(calendar: Calendar.current)!
         let colors = cachedColorsForDate(date)
         return !colors.isEmpty
     }
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
-        let date = dayView.date.convertedDate()!
+        let date = dayView.date.convertedDate(calendar: Calendar.current)!
         var colors = cachedColorsForDate(date)
         // Workaround to display dots in one line
         while colors.count > 3 {
