@@ -74,6 +74,9 @@ extension String {
         case "d":
             time.hour = 20
             time.minute = 10
+        case "e":
+            time.hour = 21
+            time.minute = 00
         default:
             break
         }
@@ -125,6 +128,9 @@ extension String {
         case "d":
             time.hour = 20
             time.minute = 55
+        case "e":
+            time.hour = 21
+            time.minute = 45
         default:
             break
         }

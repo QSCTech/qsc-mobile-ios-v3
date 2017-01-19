@@ -49,9 +49,9 @@ class DataStore: NSObject {
                 let course = NSEntityDescription.insertNewObject(forEntityName: "Course", into: managedObjectContext) as! Course
                 course.user = currentUser
                 
-                course.code = json["code"].stringValue
-                course.name = json["name"].stringValue
-                course.teacher = json["teacher"].stringValue
+                course.code = json["code"].stringValue.replacingOccurrences(of: "&#039;&#039;", with: " ")
+                course.name = json["name"].stringValue.replacingOccurrences(of: "&#039;&#039;", with: "")
+                course.teacher = json["teacher"].stringValue.replacingOccurrences(of: "&#039;&#039;", with: "")
                 course.semester = json["semester"].stringValue
                 course.isDetermined = json["determined"].numberValue
                 course.year = json["year"].stringValue
