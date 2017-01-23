@@ -102,7 +102,7 @@ class APISession: NSObject {
                 callback(true, nil)
             } else if json["error"].stringValue.contains("登录失败") {
                 printError()
-                callback(false, "用户名或密码错误")
+                callback(false, json["error"].stringValue.replacingOccurrences(of: "登录失败：", with: ""))
             } else {
                 printError()
                 callback(false, "请求失败，请重试")
@@ -157,7 +157,7 @@ class APISession: NSObject {
                         callback(nil, error)
                     }
                 }
-            } else if json["status"].string == "requestFail" {
+            } else if json["error"].stringValue.contains("教务网通知") {
                 printError()
                 callback(nil, "教务网通知，请登录网站查收")
             } else {
