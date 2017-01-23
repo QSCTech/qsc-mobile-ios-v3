@@ -81,7 +81,7 @@ class ScoreViewController: UIViewController {
     }
     
     func refreshScores() {
-        if selectedIndex < 0 {
+        if selectedIndex < 0 || selectedIndex >= semesterScores.count {
             return
         }
         let semesterScore = semesterScores[selectedIndex]

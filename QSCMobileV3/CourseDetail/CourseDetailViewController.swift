@@ -27,7 +27,7 @@ class CourseDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let identifier = managedObject.value(forKey: "identifier") as! String
+        guard let identifier = managedObject.value(forKey: "identifier") as? String else { return }
         let mobileManager = MobileManager.sharedInstance
         courseObject = mobileManager.courseObjectsWithIdentifier(identifier).first
         examObject = mobileManager.examObjectsWithIdentifier(identifier).filter({ !$0.name!.contains("补考") && !$0.name!.contains("期中") }).first
