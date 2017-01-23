@@ -103,7 +103,7 @@ class EventEditViewController: UITableViewController {
             
             startTimePicker.date = selectedDate!
             endTimePicker.date = selectedDate!
-            repeatEndPicker.date = selectedDate!
+            repeatEndPicker.date = selectedDate!.addingTimeInterval(31536000)
         }
         startTimeDidChange(startTimePicker)
         
