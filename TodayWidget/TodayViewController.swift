@@ -11,42 +11,38 @@ import NotificationCenter
 import KeychainAccess
 import QSCMobileKit
 
+let TodayWidgetSchemeURL = "QSCMobile://todaywidget/"
+
 class TodayViewController: UIViewController {
     
-    @IBOutlet var taskList: UITableView!
-    @IBOutlet var firstEventName: UILabel!
-    @IBOutlet var firstEventPlace: UILabel!
-    @IBOutlet var firstEventTime: UILabel!
-    @IBOutlet var firstEventTimeType: UILabel!
-    @IBOutlet var firstEventTimeRemain: UILabel!
-    @IBOutlet var nothingToDo: UILabel!
-    @IBOutlet var line: UIView!
-    @IBOutlet var placeIcon: UILabel!
-    @IBOutlet var timeIcon: UILabel!
-    @IBOutlet var wlanSwitch: UIButton!
-    @IBOutlet var addButton: UIButton!
-    @IBOutlet var timetableButton: UIButton!
-    @IBOutlet var expandView: UIView!
+    @IBOutlet weak var taskList: UITableView!
+    @IBOutlet weak var firstEventName: UILabel!
+    @IBOutlet weak var firstEventPlace: UILabel!
+    @IBOutlet weak var firstEventTime: UILabel!
+    @IBOutlet weak var firstEventTimePrompt: UILabel!
+    @IBOutlet weak var firstEventTimeRemain: UILabel!
+    @IBOutlet weak var nothingToDo: UILabel!
+    @IBOutlet weak var wlanSwitch: UIButton!
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var expandView: UIView!
     
-    // TODO: Support multi-day events and refresh when one day passed
-    // let events = eventsForDate(Date()).filter { Calendar.current.isDate($0.start, inSameDayAs: $0.end) }
     let events = eventsForDate(Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOSApplicationExtension 10, *) {
-            self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+            extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
         taskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
     }
     
     @IBAction func addEvents() {
-        extensionContext?.open(URL(string: "QSCMobile://tw/add")!, completionHandler: nil)
+        extensionContext?.open(URL(string: TodayWidgetSchemeURL + "add")!)
     }
     
     @IBAction func gotoTimetable() {
-        extensionContext?.open(URL(string: "QSCMobile://tw/timetable")!, completionHandler: nil)
+        extensionContext?.open(URL(string: TodayWidgetSchemeURL + "timetable")!)
     }
     
     @IBAction func connectWlan() {
@@ -68,28 +64,21 @@ class TodayViewController: UIViewController {
 extension TodayViewController: NCWidgetProviding {
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() && Calendar.current.isDate($0.start, inSameDayAs: $0.end) }
+        let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() }
         if let firstEvent = firstEvent {
             firstEventName.text = firstEvent.name
             firstEventPlace.text = firstEvent.place
             firstEventTime.text = firstEvent.time
             if Date() < firstEvent.start {
-                firstEventTimeType.text = "距开始还有"
+                firstEventTimePrompt.text = "距开始还有"
                 firstEventTimeRemain.text = firstEvent.start.timeIntervalSince(Date()).timeDescription
             } else {
-                firstEventTimeType.text = "距结束还有"
+                firstEventTimePrompt.text = "距结束还有"
                 firstEventTimeRemain.text = firstEvent.end.timeIntervalSince(Date()).timeDescription
             }
         } else {
             nothingToDo.isHidden = false
-            line.isHidden = true
-            firstEventName.isHidden = true
-            firstEventTime.isHidden = true
-            firstEventPlace.isHidden = true
-            firstEventTimeType.isHidden = true
-            firstEventTimeRemain.isHidden = true
-            placeIcon.isHidden = true
-            timeIcon.isHidden = true
+            firstView.isHidden = true
         }
         taskList.reloadData()
         completionHandler(NCUpdateResult.newData)
@@ -98,7 +87,7 @@ extension TodayViewController: NCWidgetProviding {
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if (activeDisplayMode == .compact) {
-            self.preferredContentSize.height = 110
+            preferredContentSize.height = 110
             expandView.isHidden = true
         } else {
             self.preferredContentSize.height = 110 + CGFloat(events.count > 8 ? 8 : events.count) * taskList.rowHeight + 40
@@ -116,7 +105,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedRow = indexPath.row
-        self.extensionContext?.open(URL(string: "QSCMobile://tw/detail/\(selectedRow)")!, completionHandler: nil)
+        extensionContext?.open(URL(string: "\(TodayWidgetSchemeURL)detail/\(selectedRow)")!)
         taskList.deselectRow(at: indexPath, animated: true)
     }
     
@@ -129,29 +118,22 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
             if Calendar.current.isDate(event.start, inSameDayAs: event.end) {
                 cell.startTime.text = event.start.stringOfTime
                 cell.endTime.text = event.end.stringOfTime
-                cell.eventName.text = event.name
-                cell.eventPlace.text = event.place
-                if Date() < event.start {
-                    cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
-                } else if Date() <= event.end {
-                    cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
-                } else {
-                    cell.eventTime.text = "已结束"
-                }
             } else {
-                cell.startTime.text = event.start.stringOfDate.components(separatedBy: "年").last!.replacingOccurrences(of: "月", with: "/").replacingOccurrences(of: "日", with: "")
-                cell.endTime.text = event.end.stringOfDate.components(separatedBy: "年").last!.replacingOccurrences(of: "月", with: "/").replacingOccurrences(of: "日", with: "")
-                cell.eventName.text = event.name
-                cell.eventPlace.text = event.place
-                cell.eventTime.text = "今天"
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.dateFormat = "MM-dd"
+                cell.startTime.text = formatter.string(from: event.start)
+                cell.endTime.text = formatter.string(from: event.end)
             }
-        } else {
-            cell.allDayEvent.isHidden = false
-            cell.startTime.isHidden = true
-            cell.endTime.isHidden = true
             cell.eventName.text = event.name
             cell.eventPlace.text = event.place
-            cell.eventTime.text = "今天"
+            if Date() < event.start {
+                cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
+            } else if Date() <= event.end {
+                cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
+            } else {
+                cell.eventTime.text = "已结束"
+            }
         }
         cell.eventType.backgroundColor = QSCColor.category(event.category)
         return cell

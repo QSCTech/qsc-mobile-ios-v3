@@ -26,6 +26,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="510"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日无事" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uW-lH-TQl">
+                                <rect key="frame" x="99" y="37" width="122" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZY-yb-qD8">
                                 <rect key="frame" x="16" y="0.0" width="288" height="110"/>
                                 <subviews>
@@ -44,21 +50,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0q-Ev-5yF">
+                                        <rect key="frame" x="10" y="54" width="8" height="14"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZC-gk-JBd">
+                                        <rect key="frame" x="26" y="55" width="129" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bry-BV-D5G">
                                         <rect key="frame" x="8" y="76" width="12" height="14"/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZC-gk-JBd">
-                                        <rect key="frame" x="26" y="55.5" width="129" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVM-7t-VX5">
+                                        <rect key="frame" x="26" y="77" width="129" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0q-Ev-5yF">
-                                        <rect key="frame" x="10" y="54" width="8" height="14"/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -80,18 +92,6 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVM-7t-VX5">
-                                        <rect key="frame" x="26" y="77.5" width="129" height="12"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日无事" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uW-lH-TQl">
-                                        <rect key="frame" x="83" y="37" width="122" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="sWx-l7-Xq1" secondAttribute="trailing" constant="112" id="1YT-Mv-Vrb"/>
@@ -109,11 +109,9 @@
                                     <constraint firstItem="PVM-7t-VX5" firstAttribute="leading" secondItem="Bry-BV-D5G" secondAttribute="trailing" constant="6" id="Yxp-sa-J3Z"/>
                                     <constraint firstAttribute="height" constant="110" id="Zga-hB-2jb"/>
                                     <constraint firstItem="XbO-35-qck" firstAttribute="leading" secondItem="Jd3-hg-48E" secondAttribute="leading" id="baB-a6-C0O"/>
-                                    <constraint firstItem="8uW-lH-TQl" firstAttribute="centerX" secondItem="pZY-yb-qD8" secondAttribute="centerX" id="bwj-cg-0zD"/>
                                     <constraint firstAttribute="bottom" secondItem="Bry-BV-D5G" secondAttribute="bottom" constant="20" id="gV8-Ws-0nr"/>
                                     <constraint firstItem="sWx-l7-Xq1" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="8" id="hcn-fd-UdX"/>
                                     <constraint firstItem="ZIm-Kp-qeb" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="15" id="hsj-Be-BY7"/>
-                                    <constraint firstItem="8uW-lH-TQl" firstAttribute="centerY" secondItem="pZY-yb-qD8" secondAttribute="centerY" id="mfN-ga-I0j"/>
                                     <constraint firstItem="Bry-BV-D5G" firstAttribute="top" secondItem="q0q-Ev-5yF" secondAttribute="bottom" constant="8" id="rNf-u8-hY9"/>
                                     <constraint firstItem="q0q-Ev-5yF" firstAttribute="leading" secondItem="pZY-yb-qD8" secondAttribute="leading" constant="10" id="ung-yO-KTR"/>
                                     <constraint firstItem="Jd3-hg-48E" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="top" constant="15" id="ylM-BL-ft6"/>
@@ -123,20 +121,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xw7-sp-yoZ">
                                 <rect key="frame" x="16" y="110" width="288" height="400"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S44-sx-s6J">
-                                        <rect key="frame" x="204" y="368" width="22" height="22"/>
-                                        <state key="normal" image="Cal"/>
-                                        <connections>
-                                            <action selector="gotoTimetable" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="VtT-gu-PVa"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-BR-A3E">
-                                        <rect key="frame" x="134" y="368" width="20" height="22"/>
-                                        <state key="normal" image="Add"/>
-                                        <connections>
-                                            <action selector="addEvents" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="zS1-SW-15z"/>
-                                        </connections>
-                                    </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WrD-qC-e0c">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="360"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -152,6 +136,20 @@
                                         </state>
                                         <connections>
                                             <action selector="connectWlan" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="oHM-A3-FSE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-BR-A3E">
+                                        <rect key="frame" x="134" y="368" width="20" height="22"/>
+                                        <state key="normal" image="Add"/>
+                                        <connections>
+                                            <action selector="addEvents" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="zS1-SW-15z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S44-sx-s6J">
+                                        <rect key="frame" x="204" y="368" width="22" height="22"/>
+                                        <state key="normal" image="Cal"/>
+                                        <connections>
+                                            <action selector="gotoTimetable" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="VtT-gu-PVa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -175,8 +173,10 @@
                             <constraint firstItem="Xw7-sp-yoZ" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="LBA-DT-Gkj"/>
                             <constraint firstItem="Xw7-sp-yoZ" firstAttribute="top" secondItem="pZY-yb-qD8" secondAttribute="bottom" id="OG3-gS-iEY"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="VnZ-jd-HLY"/>
+                            <constraint firstItem="8uW-lH-TQl" firstAttribute="centerX" secondItem="pZY-yb-qD8" secondAttribute="centerX" id="mz7-L7-6h2"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="o2S-yu-L1J"/>
                             <constraint firstItem="pZY-yb-qD8" firstAttribute="top" secondItem="pdQ-iv-g3v" secondAttribute="bottom" id="uQm-jZ-S5w"/>
+                            <constraint firstItem="8uW-lH-TQl" firstAttribute="centerY" secondItem="pZY-yb-qD8" secondAttribute="centerY" id="xME-nU-stq"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -186,19 +186,15 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="510"/>
                     <connections>
-                        <outlet property="addButton" destination="xSb-BR-A3E" id="8xQ-qN-IED"/>
                         <outlet property="expandView" destination="Xw7-sp-yoZ" id="GnA-4J-t5I"/>
                         <outlet property="firstEventName" destination="ZIm-Kp-qeb" id="dur-Ah-AJG"/>
                         <outlet property="firstEventPlace" destination="PVM-7t-VX5" id="cX8-Tl-cNE"/>
                         <outlet property="firstEventTime" destination="xZC-gk-JBd" id="iIP-fh-OCP"/>
+                        <outlet property="firstEventTimePrompt" destination="Jd3-hg-48E" id="hci-qr-xXM"/>
                         <outlet property="firstEventTimeRemain" destination="XbO-35-qck" id="F9T-ix-XUi"/>
-                        <outlet property="firstEventTimeType" destination="Jd3-hg-48E" id="iQ8-5j-pe5"/>
-                        <outlet property="line" destination="sWx-l7-Xq1" id="bIU-yL-eSs"/>
+                        <outlet property="firstView" destination="pZY-yb-qD8" id="k1d-GO-dQ2"/>
                         <outlet property="nothingToDo" destination="8uW-lH-TQl" id="b3c-8C-hfu"/>
-                        <outlet property="placeIcon" destination="q0q-Ev-5yF" id="6mr-ac-X6Z"/>
                         <outlet property="taskList" destination="WrD-qC-e0c" id="TmC-sY-SER"/>
-                        <outlet property="timeIcon" destination="Bry-BV-D5G" id="rge-hp-mv2"/>
-                        <outlet property="timetableButton" destination="S44-sx-s6J" id="SWI-Tf-NaG"/>
                         <outlet property="wlanSwitch" destination="Krm-qu-jDi" id="hY6-Rh-Wt3"/>
                     </connections>
                 </viewController>
