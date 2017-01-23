@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setMinimumSize(CGSize(width: 100, height: 100))
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         
         return true
