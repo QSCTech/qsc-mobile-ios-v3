@@ -10,11 +10,23 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-    @IBOutlet var startTime: UILabel!
-    @IBOutlet var endTime: UILabel!
-    @IBOutlet var eventName: UILabel!
-    @IBOutlet var eventPlace: UILabel!
-    @IBOutlet var eventTime: UILabel!
-    @IBOutlet var eventType: UIView!
+    @IBOutlet weak var startTime: UILabel!
+    @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventPlace: UILabel!
+    @IBOutlet weak var eventTime: UILabel!
+    @IBOutlet weak var eventType: UIView!
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        let bgColor = eventType.backgroundColor
+        super.setHighlighted(highlighted, animated: animated)
+        eventType.backgroundColor = bgColor
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        let bgColor = eventType.backgroundColor
+        super.setSelected(selected, animated: animated)
+        eventType.backgroundColor = bgColor
+    }
     
 }
