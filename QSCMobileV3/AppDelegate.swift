@@ -74,9 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         let tabBarController = window!.rootViewController as! UITabBarController
-        tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
+        tabBarController.presentedViewController?.dismiss(animated: false)
         if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
-            tabBarController.present(JwbinfosysLoginViewController(), animated: true, completion: nil)
+            tabBarController.present(JwbinfosysLoginViewController(), animated: true)
         } else {
             tabBarController.selectedIndex = 3
             switch shortcutItem.type {
@@ -84,9 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let storyboard = UIStoryboard(name: "QueryList", bundle: nil)
                 let vc = storyboard.instantiateInitialViewController() as! SemesterListViewController
                 vc.source = shortcutItem.type == "Course" ? .course : .exam
-                (tabBarController.selectedViewController as! UINavigationController).show(vc, sender: nil)
+                tabBarController.selectedViewController?.show(vc, sender: nil)
             case "Bus":
-                tabBarController.present(BusViewController(), animated: true, completion: nil)
+                tabBarController.present(BusViewController(), animated: true)
             default:
                 break
             }
@@ -95,30 +95,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let path = url.pathComponents
+        let paths = url.pathComponents
         let tabBarController = window!.rootViewController as! UITabBarController
-        tabBarController.presentedViewController?.dismiss(animated: false, completion: nil)
-        let events = eventsForDate(Date())
-        switch path[1] {
+        tabBarController.presentedViewController?.dismiss(animated: false)
+        switch paths[1] {
         case "add":
             tabBarController.selectedIndex = 1
-            let vc = (tabBarController.selectedViewController as! UINavigationController).topViewController!
-            vc.performSegue(withIdentifier: "addEvent", sender: vc)
+            let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first!
+            vc.performSegue(withIdentifier: "addEvent", sender: nil)
             return true
         case "timetable":
             tabBarController.selectedIndex = 3
-            (tabBarController.selectedViewController as! UINavigationController).topViewController!.show(CurriculaViewController(), sender: nil)
+            tabBarController.selectedViewController!.show(CurriculaViewController(), sender: nil)
             return true
         case "detail":
-            let recievedEvent = events[Int(path[2])!]
+            let event = eventsForDate(Date())[Int(paths[2])!]
             tabBarController.selectedIndex = 1
-            let vc = (tabBarController.selectedViewController as! UINavigationController).topViewController as! CalendarViewController
-            vc.selectedEvent = recievedEvent
+            let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first as! CalendarViewController
+            vc.selectedEvent = event
             vc.selectedDate = Date()
             if vc.selectedEvent.category == .course || vc.selectedEvent.category == .exam {
-                vc.performSegue(withIdentifier: "showCourseDetail", sender: vc)
+                vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
             } else {
-                vc.performSegue(withIdentifier: "showEventDetail", sender: vc)
+                vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
             }
             return true
         default:

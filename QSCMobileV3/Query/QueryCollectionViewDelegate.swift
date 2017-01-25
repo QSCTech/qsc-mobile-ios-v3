@@ -54,12 +54,12 @@ extension QueryCollectionViewDelegate: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
             let vc = JwbinfosysLoginViewController()
-            viewController.present(vc, animated: true, completion: nil)
+            viewController.present(vc, animated: true)
         } else {
             switch indexPath.row {
             case 0:
                 let vc = BusViewController()
-                viewController.present(vc, animated: true, completion: nil)
+                viewController.present(vc, animated: true)
             case 1:
                 let vc = CurriculaViewController()
                 vc.hidesBottomBarWhenPushed = true

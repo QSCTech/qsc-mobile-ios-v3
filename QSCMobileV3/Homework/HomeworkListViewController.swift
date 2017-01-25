@@ -62,7 +62,7 @@ class HomeworkListViewController: UITableViewController {
         let sb = UIStoryboard(name: "Homework", bundle: Bundle.main)
         let nc = sb.instantiateInitialViewController() as! UINavigationController
         (nc.topViewController as! HomeworkViewController).homework = homeworks[indexPath.row]
-        present(nc, animated: true, completion: nil)
+        present(nc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

@@ -171,15 +171,15 @@ class QueryViewController: UITableViewController {
         case .score:
             if accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
-                present(vc, animated: true, completion: nil)
+                present(vc, animated: true)
             } else if MobileManager.sharedInstance.statistics != nil {
                 let vc = ScoreViewController()
-                present(vc, animated: true, completion: nil)
+                present(vc, animated: true)
             }
         case .login:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
-                present(vc, animated: true, completion: nil)
+                present(vc, animated: true)
                 break
             }
             if 1 <= indexPath.row && indexPath.row <= 2 && accountManager.accountForZjuwlan == nil {
@@ -207,11 +207,11 @@ class QueryViewController: UITableViewController {
                 break
             }
             let bvc = BrowserViewController(request: request)
-            present(bvc, animated: true, completion: nil)
+            present(bvc, animated: true)
         case .website:
             let url = URL(string: websites[indexPath.row]["url"]!)!
             let svc = SFSafariViewController(url: url)
-            present(svc, animated: true, completion: nil)
+            present(svc, animated: true)
         case .webpage:
             let url = webpages[indexPath.row]["url"]!
             let title = webpages[indexPath.row]["name"]!

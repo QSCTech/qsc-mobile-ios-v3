@@ -47,7 +47,7 @@ class AboutViewController: UIViewController {
     
     func tapHandler(_ sender: UITapGestureRecognizer) {
         let svc = SFSafariViewController(url: URL(string: url[sender.view!.tag])!)
-        present(svc, animated: true, completion: nil)
+        present(svc, animated: true)
     }
     
     @IBAction func showCopyright(_ sender: AnyObject) {

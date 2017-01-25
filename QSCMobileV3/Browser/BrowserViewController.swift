@@ -43,7 +43,7 @@ class BrowserViewController: UIViewController {
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     @IBAction func backward(_ sender: AnyObject) {

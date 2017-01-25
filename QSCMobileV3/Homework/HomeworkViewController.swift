@@ -45,7 +45,7 @@ class HomeworkViewController: UITableViewController {
             EventManager.sharedInstance.removeHomework(homework)
         }
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func save(_ sender: AnyObject) {
@@ -56,7 +56,7 @@ class HomeworkViewController: UITableViewController {
         homework.isFinished = finishSwitch.isOn as NSNumber
         EventManager.sharedInstance.save()
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

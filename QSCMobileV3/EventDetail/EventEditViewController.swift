@@ -304,7 +304,7 @@ class EventEditViewController: UITableViewController {
         }
         
         (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func save(_ sender: AnyObject) {
@@ -369,7 +369,7 @@ class EventEditViewController: UITableViewController {
         }
         
         (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     func allDaySwitchDidChange(_ sender: UISwitch) {

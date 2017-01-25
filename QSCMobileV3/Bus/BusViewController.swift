@@ -84,7 +84,7 @@ class BusViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

@@ -42,7 +42,7 @@ class CourseEditViewController: UITableViewController {
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func save(_ sender: AnyObject) {
@@ -58,7 +58,7 @@ class CourseEditViewController: UITableViewController {
         courseEvent.publicPassword = publicPasswordField.text
         courseEvent.notes = notesTextView.text
         EventManager.sharedInstance.save()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

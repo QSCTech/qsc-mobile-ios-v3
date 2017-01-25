@@ -105,7 +105,7 @@ class EventDetailViewController: UITableViewController {
         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         alert.addAction(cancel)
         alert.popoverPresentationController?.barButtonItem = toolbarItems![1]
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
 }

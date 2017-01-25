@@ -119,7 +119,7 @@ class MomentViewController: UIViewController {
     
     @IBAction func login(_ sender: AnyObject) {
         let vc = JwbinfosysLoginViewController()
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: true)
     }
 }
 

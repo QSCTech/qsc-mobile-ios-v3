@@ -298,7 +298,7 @@ class CourseDetailViewController: UITableViewController {
                 let handler = { (action: UIAlertAction) in
                     let url = URL(string: urlString + action.title!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
                     let svc = SFSafariViewController(url: url)
-                    self.present(svc, animated: true, completion: nil)
+                    self.present(svc, animated: true)
                 }
                 let teachers = cell.detailTextLabel!.text!.components(separatedBy: " ")
                 if teachers.count > 1 {
@@ -308,7 +308,7 @@ class CourseDetailViewController: UITableViewController {
                         alert.addAction(action)
                     }
                     alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
-                    present(alert, animated: true, completion: nil)
+                    present(alert, animated: true)
                 } else if teachers.count == 1 {
                     let action = UIAlertAction(title: teachers.first, style: .default, handler: handler)
                     handler(action)
@@ -318,7 +318,7 @@ class CourseDetailViewController: UITableViewController {
                     let mcvc = MFMailComposeViewController()
                     mcvc.mailComposeDelegate = self
                     mcvc.setToRecipients([cell.detailTextLabel!.text!])
-                    present(mcvc, animated: true, completion: nil)
+                    present(mcvc, animated: true)
                 } else {
                     UIPasteboard.general.string = cell.detailTextLabel!.text
                     SVProgressHUD.showSuccess(withStatus: "已拷贝到剪贴板")
@@ -334,12 +334,12 @@ class CourseDetailViewController: UITableViewController {
                 }
                 if let url = URL(string: prefix + cell.detailTextLabel!.text!) {
                     let svc = SFSafariViewController(url: url)
-                    present(svc, animated: true, completion: nil)
+                    present(svc, animated: true)
                 } else {
                     let alert = UIAlertController(title: "课程网站", message: "浏览器无法打开链接", preferredStyle: .alert)
                     let action = UIAlertAction(title: "好", style: .default, handler: nil)
                     alert.addAction(action)
-                    present(alert, animated: true, completion: nil)
+                    present(alert, animated: true)
                 }
             default:
                 UIPasteboard.general.string = cell.detailTextLabel!.text
@@ -382,7 +382,7 @@ class CourseDetailViewController: UITableViewController {
 extension CourseDetailViewController: MFMailComposeViewControllerDelegate {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true)
     }
     
 }

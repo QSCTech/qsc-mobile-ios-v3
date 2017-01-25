@@ -38,7 +38,7 @@ class JwbinfosysLoginViewController: UIViewController {
             SVProgressHUD.show(withStatus: notification.userInfo?["error"] as? String ?? "")
         }, callback: { success, error in
             if success {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
                 SVProgressHUD.showSuccess(withStatus: "登录成功")
             } else {
                 SVProgressHUD.showError(withStatus: error)
@@ -62,7 +62,7 @@ class JwbinfosysLoginViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

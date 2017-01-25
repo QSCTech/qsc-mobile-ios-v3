@@ -149,7 +149,7 @@ class PreferenceViewController: UITableViewController {
                 reloadRowsOfJwbinfosys()
             } else {
                 let vc = JwbinfosysLoginViewController()
-                present(vc, animated: true, completion: nil)
+                present(vc, animated: true)
             }
         case .zjuwlan:
             if indexPath.row == 0{
@@ -182,12 +182,12 @@ class PreferenceViewController: UITableViewController {
                         deviceInfo = "Device Token: \(deviceToken)\n"
                     }
                     mcvc.setMessageBody("版本信息：\nQSCMobile \(QSCVersion)\n\(Device()) \(ProcessInfo.processInfo.operatingSystemVersionString)\n\(deviceInfo)\n反馈（可附截屏）：\n\u{200b}", isHTML: false)
-                    present(mcvc, animated: true, completion: nil)
+                    present(mcvc, animated: true)
                 } else {
                     let alert = UIAlertController(title: "用户反馈", message: "您尚未设置系统邮件账户，请先行设置或直接发送邮件至 mobile@zjuqsc.com", preferredStyle: .alert)
                     let action = UIAlertAction(title: "好", style: .default, handler: nil)
                     alert.addAction(action)
-                    present(alert, animated: true, completion: nil)
+                    present(alert, animated: true)
                 }
             case 2:
                 let appLink = "https://itunes.apple.com/cn/app/id583334920"
@@ -244,12 +244,12 @@ class PreferenceViewController: UITableViewController {
 extension PreferenceViewController: MFMailComposeViewControllerDelegate {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true)
         if result == .sent {
             let alert = UIAlertController(title: "用户反馈", message: "感谢您的反馈！\n我们将尽快回复您的邮件", preferredStyle: .alert)
             let action = UIAlertAction(title: "好", style: .default, handler: nil)
             alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            present(alert, animated: true)
         }
     }
     

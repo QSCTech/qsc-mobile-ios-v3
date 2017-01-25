@@ -73,7 +73,6 @@ class CalendarViewController: UIViewController {
             let nc = segue.destination as! UINavigationController
             let vc = nc.topViewController as! EventEditViewController
             vc.selectedDate = selectedDate
-            vc.hidesBottomBarWhenPushed = true
         case "showCourseDetail":
             let vc = segue.destination as! CourseDetailViewController
             vc.managedObject = selectedEvent.object
