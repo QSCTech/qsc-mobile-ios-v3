@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,12 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="287" height="76.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="287" height="76"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rV-IF-bTj">
+                        <rect key="frame" x="16" y="8" width="60" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yax-3K-Acg">
+                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zxg-dE-hJU"/>
                                 </constraints>
@@ -31,6 +36,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="总学分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-pv-Uv0">
+                                <rect key="frame" x="8" y="12" width="31" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -56,8 +62,10 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fR2-Bz-CgX">
+                        <rect key="frame" x="84" y="8" width="59.5" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qym-l6-jfw">
+                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="sWQ-pl-hVD"/>
                                 </constraints>
@@ -71,6 +79,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="平均绩点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-76-3Fd">
+                                <rect key="frame" x="8" y="12" width="41" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,14 +99,16 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="vh3-fq-Emt"/>
-                                <exclude reference="euv-u7-KbC"/>
                                 <exclude reference="NQd-PV-0Iy"/>
+                                <exclude reference="euv-u7-KbC"/>
                             </mask>
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tb5-7M-kel">
+                        <rect key="frame" x="151.5" y="8" width="60" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUh-bS-QjI">
+                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="uWt-dw-7cW"/>
                                 </constraints>
@@ -111,6 +122,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="四分制" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-pL-wsY">
+                                <rect key="frame" x="8" y="12" width="31" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -136,8 +148,10 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSY-tt-kcG">
+                        <rect key="frame" x="219.5" y="8" width="59.5" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cR-1g-IwU">
+                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fmE-jR-dHg"/>
                                 </constraints>
@@ -151,6 +165,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="百分制" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov5-m6-0Sg">
+                                <rect key="frame" x="8" y="12" width="31" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -170,8 +185,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="h6Q-Xi-Nk4"/>
-                                <exclude reference="x9J-ww-TkP"/>
                                 <exclude reference="VId-9m-4fc"/>
+                                <exclude reference="x9J-ww-TkP"/>
                             </mask>
                         </variation>
                     </view>
@@ -196,9 +211,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="auxKeyLabel1" destination="Egm-pL-wsY" id="4fw-3M-fTv"/>
+                <outlet property="auxKeyLabel2" destination="ov5-m6-0Sg" id="mkK-W1-QXp"/>
+                <outlet property="auxValueLabel1" destination="SUh-bS-QjI" id="FtK-QX-Hfv"/>
+                <outlet property="auxValueLabel2" destination="9cR-1g-IwU" id="X0i-Lt-Vj1"/>
                 <outlet property="averageGradeLabel" destination="Qym-l6-jfw" id="M5L-dN-OdB"/>
-                <outlet property="fourPointLabel" destination="SUh-bS-QjI" id="4vi-Ln-Gmh"/>
-                <outlet property="hundredPointLabel" destination="9cR-1g-IwU" id="q9k-nO-gbu"/>
                 <outlet property="totalCreditLabel" destination="yax-3K-Acg" id="EsH-SQ-3Gj"/>
             </connections>
             <point key="canvasLocation" x="649" y="478.5"/>

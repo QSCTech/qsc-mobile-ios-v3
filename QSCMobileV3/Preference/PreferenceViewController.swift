@@ -14,6 +14,7 @@ import QSCMobileKit
 
 let RefreshOnLaunchKey = "RefreshOnLaunch"
 let ShowScoreKey = "ShowScore"
+let AuxiliaryScoreKey = "AuxiliaryScore"
 let DeviceTokenKey = "DeviceToken"
 
 class PreferenceViewController: UITableViewController {
@@ -62,7 +63,7 @@ class PreferenceViewController: UITableViewController {
         case .zjuwlan:
             return accountManager.accountForZjuwlan == nil ? 1 : 2
         case .setting:
-            return 2
+            return 3
         case .about:
             return 3
         }
@@ -111,7 +112,7 @@ class PreferenceViewController: UITableViewController {
                 cell.accessoryView = switchView
                 return cell
             case 1:
-                let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+                let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
                 cell.selectionStyle = .none
                 cell.textLabel!.attributedText = "\u{f06e}\t在课程和工具页面显示成绩".attributedWithFontAwesome
                 let switchView = UISwitch()
@@ -119,6 +120,16 @@ class PreferenceViewController: UITableViewController {
                 switchView.onTintColor = QSCColor.theme
                 switchView.addTarget(self, action: #selector(showScoreSwitchChanged), for: .valueChanged)
                 cell.accessoryView = switchView
+                return cell
+            case 2:
+                let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+                cell.selectionStyle = .none
+                cell.textLabel!.attributedText = "\u{f0f6}\t辅助成绩显示".attributedWithFontAwesome
+                let segmentedControl = UISegmentedControl(items: ["四／百分制", "主修成绩"])
+                segmentedControl.selectedSegmentIndex = groupDefaults.integer(forKey: AuxiliaryScoreKey)
+                segmentedControl.tintColor = QSCColor.theme
+                segmentedControl.addTarget(self, action: #selector(auxiliaryScoreChanged), for: .valueChanged)
+                cell.accessoryView = segmentedControl
                 return cell
             default:
                 return UITableViewCell()
@@ -218,14 +229,16 @@ class PreferenceViewController: UITableViewController {
         return [delete]
     }
     
-    func refreshSwitchChanged(_ sender: AnyObject) {
-        let switchView = sender as! UISwitch
-        groupDefaults.set(switchView.isOn, forKey: RefreshOnLaunchKey)
+    func refreshSwitchChanged(_ sender: UISwitch) {
+        groupDefaults.set(sender.isOn, forKey: RefreshOnLaunchKey)
     }
     
-    func showScoreSwitchChanged(_ sender: AnyObject) {
-        let switchView = sender as! UISwitch
-        groupDefaults.set(switchView.isOn, forKey: ShowScoreKey)
+    func showScoreSwitchChanged(_ sender: UISwitch) {
+        groupDefaults.set(sender.isOn, forKey: ShowScoreKey)
+    }
+    
+    func auxiliaryScoreChanged(_ sender: UISegmentedControl) {
+        groupDefaults.set(sender.selectedSegmentIndex, forKey: AuxiliaryScoreKey)
     }
     
     func reloadRowsOfJwbinfosys() {

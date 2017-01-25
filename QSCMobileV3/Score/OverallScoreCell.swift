@@ -13,14 +13,16 @@ class OverallScoreCell: UITableViewCell {
     
     @IBOutlet weak var totalCreditLabel: UILabel!
     @IBOutlet weak var averageGradeLabel: UILabel!
-    @IBOutlet weak var fourPointLabel: UILabel!
-    @IBOutlet weak var hundredPointLabel: UILabel!
+    @IBOutlet weak var auxKeyLabel1: UILabel!
+    @IBOutlet weak var auxValueLabel1: UILabel!
+    @IBOutlet weak var auxKeyLabel2: UILabel!
+    @IBOutlet weak var auxValueLabel2: UILabel!
     
     func hideAll() {
         averageGradeLabel.text = "-"
         totalCreditLabel.text = "-"
-        fourPointLabel.text = "-"
-        hundredPointLabel.text = "-"
+        auxValueLabel1.text = "-"
+        auxValueLabel2.text = "-"
     }
     
 }

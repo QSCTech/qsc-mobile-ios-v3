@@ -132,16 +132,28 @@ class QueryViewController: UITableViewController {
                 cell.textLabel!.attributedText = "\u{f0f6}\t暂无成绩数据，请下拉刷新".attributedWithFontAwesome
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Score") as! OverallScoreCell
+                if groupDefaults.integer(forKey: AuxiliaryScoreKey) == 0 {
+                    cell.auxKeyLabel1.text = "四分制"
+                    cell.auxKeyLabel2.text = "百分制"
+                } else {
+                    cell.auxKeyLabel1.text = "主修学分"
+                    cell.auxKeyLabel2.text = "主修绩点"
+                }
                 if groupDefaults.bool(forKey: ShowScoreKey) {
-                    let statistics = MobileManager.sharedInstance.statistics
-                    cell.totalCreditLabel.text = statistics!.totalCredit!.stringValue
-                    cell.averageGradeLabel.text = String(format: "%.2f", statistics!.averageGrade!.floatValue)
-                    if let overseaScore = MobileManager.sharedInstance.overseaScore {
-                        cell.fourPointLabel.text = String(format: "%.2f", overseaScore.fourPoint!.floatValue)
-                        cell.hundredPointLabel.text = String(format: "%.1f", overseaScore.hundredPoint!.floatValue)
+                    let statistics = MobileManager.sharedInstance.statistics!
+                    cell.totalCreditLabel.text = statistics.totalCredit!.stringValue
+                    cell.averageGradeLabel.text = String(format: "%.2f", statistics.averageGrade!.floatValue)
+                    if groupDefaults.integer(forKey: AuxiliaryScoreKey) == 0 {
+                        if let overseaScore = MobileManager.sharedInstance.overseaScore {
+                            cell.auxValueLabel1.text = String(format: "%.2f", overseaScore.fourPoint!.floatValue)
+                            cell.auxValueLabel2.text = String(format: "%.1f", overseaScore.hundredPoint!.floatValue)
+                        } else {
+                            cell.auxValueLabel1.text = "-"
+                            cell.auxValueLabel2.text = "-"
+                        }
                     } else {
-                        cell.fourPointLabel.text = "-"
-                        cell.hundredPointLabel.text = "-"
+                        cell.auxValueLabel1.text = statistics.majorCredit!.stringValue
+                        cell.auxValueLabel2.text = String(format: "%.2f", statistics.majorGrade!.floatValue)
                     }
                 } else {
                     cell.hideAll()
