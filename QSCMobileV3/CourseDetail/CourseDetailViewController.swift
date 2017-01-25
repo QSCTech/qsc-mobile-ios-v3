@@ -80,10 +80,6 @@ class CourseDetailViewController: UITableViewController {
     
     let infos = [
         [
-            "title": "教师",
-            "key": "teacher",
-        ],
-        [
             "title": "电子邮箱",
             "key": "email",
         ],
@@ -134,7 +130,7 @@ class CourseDetailViewController: UITableViewController {
         case .basic:
             return courseObject.timePlaces!.count + 1
         case .exam:
-            return 2
+            return 3
         case .info:
             var count = 0
             for info in infos {
@@ -162,7 +158,7 @@ class CourseDetailViewController: UITableViewController {
                 return 60
             }
         case .exam:
-            if indexPath.row == 1 && examObject?.startTime != nil {
+            if indexPath.row == 2 && examObject?.startTime != nil {
                 return 60
             } else {
                 return 44
@@ -217,7 +213,25 @@ class CourseDetailViewController: UITableViewController {
             }
         case .exam:
             switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
+                cell.textLabel!.text = "教师"
+                cell.detailTextLabel!.text = courseObject.teacher
+                return cell
             case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
+                cell.selectionStyle = .none
+                cell.textLabel!.text = "学分：" + courseObject.credit!.stringValue
+                if let scoreObject = scoreObject {
+                    cell.detailTextLabel!.text =  String(format: "成绩：%.1f / %@", scoreObject.gradePoint!.floatValue, scoreObject.score!)
+                } else {
+                    cell.detailTextLabel!.text = "暂无成绩信息"
+                }
+                if !groupDefaults.bool(forKey: ShowScoreKey) {
+                    cell.detailTextLabel!.text = ""
+                }
+                return cell
+            default:
                 if let examObject = examObject, examObject.startTime != nil {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TimePlace") as! CourseTimePlaceCell
                     cell.placeLabel!.text = examObject.place
@@ -233,19 +247,6 @@ class CourseDetailViewController: UITableViewController {
                     cell.detailTextLabel!.text = ""
                     return cell
                 }
-            default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
-                cell.selectionStyle = .none
-                cell.textLabel!.text = "学分：" + courseObject.credit!.stringValue
-                if let scoreObject = scoreObject {
-                    cell.detailTextLabel!.text =  String(format: "成绩：%.1f / %@", scoreObject.gradePoint!.floatValue, scoreObject.score!)
-                } else {
-                    cell.detailTextLabel!.text = "暂无成绩信息"
-                }
-                if !groupDefaults.bool(forKey: ShowScoreKey) {
-                    cell.detailTextLabel!.text = ""
-                }
-                return cell
             }
         case .info:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
@@ -289,30 +290,33 @@ class CourseDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)!
         switch Detail(rawValue: indexPath.section)! {
+        case .exam:
+            if indexPath.row != 0 {
+                break
+            }
+            let urlString = "http://chalaoshi.cn/search?q="
+            let handler = { (action: UIAlertAction) in
+                let url = URL(string: urlString + action.title!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true)
+            }
+            let teachers = cell.detailTextLabel!.text!.components(separatedBy: " ")
+            if teachers.count > 1 {
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                for teacher in teachers {
+                    let action = UIAlertAction(title: teacher, style: .default, handler: handler)
+                    alert.addAction(action)
+                }
+                alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+                present(alert, animated: true)
+            } else if teachers.count == 1 {
+                let action = UIAlertAction(title: teachers.first, style: .default, handler: handler)
+                handler(action)
+            }
         case .info:
-            let cell = tableView.cellForRow(at: indexPath)!
             switch cell.textLabel!.text! {
-            case "教师":
-                let urlString = "http://chalaoshi.cn/search?q="
-                let handler = { (action: UIAlertAction) in
-                    let url = URL(string: urlString + action.title!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
-                    let svc = SFSafariViewController(url: url)
-                    self.present(svc, animated: true)
-                }
-                let teachers = cell.detailTextLabel!.text!.components(separatedBy: " ")
-                if teachers.count > 1 {
-                    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                    for teacher in teachers {
-                        let action = UIAlertAction(title: teacher, style: .default, handler: handler)
-                        alert.addAction(action)
-                    }
-                    alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
-                    present(alert, animated: true)
-                } else if teachers.count == 1 {
-                    let action = UIAlertAction(title: teachers.first, style: .default, handler: handler)
-                    handler(action)
-                }
             case "电子邮箱", "助教邮箱":
                 if MFMailComposeViewController.canSendMail() {
                     let mcvc = MFMailComposeViewController()

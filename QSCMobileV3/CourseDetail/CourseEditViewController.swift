@@ -13,7 +13,6 @@ class CourseEditViewController: UITableViewController {
     
     var courseEvent: CourseEvent!
     
-    @IBOutlet weak var teacherField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var taField: UITextField!
@@ -28,7 +27,6 @@ class CourseEditViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        teacherField.text = courseEvent.teacher
         emailField.text = courseEvent.email
         phoneField.text = courseEvent.phone
         taField.text = courseEvent.ta
@@ -46,7 +44,6 @@ class CourseEditViewController: UITableViewController {
     }
     
     @IBAction func save(_ sender: AnyObject) {
-        courseEvent.teacher = teacherField.text
         courseEvent.email = emailField.text
         courseEvent.phone = phoneField.text
         courseEvent.ta = taField.text
