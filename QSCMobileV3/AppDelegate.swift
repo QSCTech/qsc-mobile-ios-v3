@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import SVProgressHUD
 import QSCMobileKit
 
@@ -64,11 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceToken = deviceToken.toHexString()
         groupDefaults.set(deviceToken, forKey: DeviceTokenKey)
-        if let account = AccountManager.sharedInstance.currentAccountForJwbinfosys {
-            let url = "https://ios.zjuqsc.com/kv"
-            let params = ["sid": account, "token": deviceToken]
-            _ = Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
-        }
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
