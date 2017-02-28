@@ -54,6 +54,7 @@
 		9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A014B1DA106B100CF5469 /* QueryList.storyboard */; };
 		9D5A01521DA106B100CF5469 /* SemesterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */; };
 		9D5A01531DA106B100CF5469 /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */; };
+		9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D608D991E65F678005A631E /* EAIntroView.framework */; };
 		9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */; };
 		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
 		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
@@ -230,6 +231,7 @@
 		9D5A014B1DA106B100CF5469 /* QueryList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QueryList.storyboard; sourceTree = "<group>"; };
 		9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListCell.swift; sourceTree = "<group>"; };
 		9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
+		9D608D991E65F678005A631E /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
 		9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeAPI.swift; path = Notice/NoticeAPI.swift; sourceTree = "<group>"; };
 		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
 		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */,
 				9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
+				9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
 				9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
@@ -714,6 +717,7 @@
 				9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */,
 				9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
+				9D608D991E65F678005A631E /* EAIntroView.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
@@ -943,6 +947,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/DeviceKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BTNavigationDropdownMenu.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CurriculaTable.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (

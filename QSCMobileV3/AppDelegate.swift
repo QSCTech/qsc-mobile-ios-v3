@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import EAIntroView
 import QSCMobileKit
 
 let UMengAppKey = "572381bf67e58e07a7005095"
@@ -56,6 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setMinimumSize(CGSize(width: 100, height: 100))
         SVProgressHUD.setMinimumDismissTimeInterval(1)
+        
+        let Build30020Key = "Build30020"
+        if groupDefaults.object(forKey: Build30020Key) == nil {
+            let view = window!.rootViewController!.view!
+            let introPage = EAIntroPage()
+            introPage.bgImage = UIImage(named: "TodayWidget")
+            let introView = EAIntroView(frame: view.bounds, andPages: [introPage])
+            introView?.skipButtonY = view.bounds.height - 20
+            introView?.show(in: view)
+            groupDefaults.set(true, forKey: Build30020Key)
+        }
         
         return true
     }
