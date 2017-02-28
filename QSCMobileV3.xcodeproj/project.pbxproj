@@ -42,7 +42,6 @@
 		9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* Copyright.html */; };
 		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
 		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
-		9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4179AC1CE4678E00955729 /* LaunchScreen.xib */; };
 		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
 		9D5A01391DA0D43500CF5469 /* HomeworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */; };
 		9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */; };
@@ -89,6 +88,7 @@
 		9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */; };
 		9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */; };
 		9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */; };
+		9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */; };
 		9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */; };
 		9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */; };
 		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
@@ -218,7 +218,6 @@
 		9D3139841CE78C7500CD7DAD /* Copyright.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Copyright.html; sourceTree = "<group>"; };
 		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
 		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
-		9D4179AB1CE4678E00955729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
 		9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkCell.swift; path = Homework/HomeworkCell.swift; sourceTree = "<group>"; };
 		9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeworkCell.xib; path = Homework/HomeworkCell.xib; sourceTree = "<group>"; };
@@ -266,6 +265,7 @@
 		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseEditViewController.swift; path = CourseDetail/CourseEditViewController.swift; sourceTree = "<group>"; };
 		9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+QSCMobileKit.swift"; path = "Extension/NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
 		9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkViewController.swift; path = Homework/HomeworkViewController.swift; sourceTree = "<group>"; };
+		9DCB0A401E65E8F700094A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurriculaViewController.swift; path = Curricula/CurriculaViewController.swift; sourceTree = "<group>"; };
 		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurriculaViewController.xib; path = Curricula/CurriculaViewController.xib; sourceTree = "<group>"; };
 		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
-				9D4179AC1CE4678E00955729 /* LaunchScreen.xib */,
+				9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */,
 				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
 				9D3139771CE789BF00CD7DAD /* Moment */,
 				9D31396E1CE789BF00CD7DAD /* Calendar */,
@@ -880,11 +880,11 @@
 				9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */,
 				9D08CF611D732B4A008C1D14 /* QueryCollectionViewCell.xib in Resources */,
 				9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */,
-				9D4179AA1CE4678E00955729 /* LaunchScreen.xib in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
 				9D1CC37A1DC73768004DA58E /* AboutViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
+				9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */,
 				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
 				9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */,
 				9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */,
@@ -1077,12 +1077,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		9D4179AC1CE4678E00955729 /* LaunchScreen.xib */ = {
+		9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9D4179AB1CE4678E00955729 /* Base */,
+				9DCB0A401E65E8F700094A1C /* Base */,
 			);
-			name = LaunchScreen.xib;
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */ = {
