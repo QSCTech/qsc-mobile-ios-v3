@@ -17,6 +17,16 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var eventType: UIView!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        if #available(iOSApplicationExtension 10, *) {
+           return
+        }
+        startTime.textColor = UIColor.white
+        eventName.textColor = UIColor.white
+        eventTime.textColor = UIColor.white
+    }
+    
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let bgColor = eventType.backgroundColor
         super.setHighlighted(highlighted, animated: animated)

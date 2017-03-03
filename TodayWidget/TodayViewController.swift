@@ -33,6 +33,12 @@ class TodayViewController: UIViewController {
         
         if #available(iOSApplicationExtension 10, *) {
             extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        } else {
+            nothingToDo.textColor = UIColor.white
+            firstEventName.textColor = UIColor.white
+            firstEventTimeRemain.textColor = UIColor.white
+            preferredContentSize.height = 110 + CGFloat(events.count > 8 ? 8 : events.count) * taskList.rowHeight + 40
+            expandView.isHidden = false
         }
         taskList.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
     }
@@ -63,6 +69,10 @@ class TodayViewController: UIViewController {
 
 extension TodayViewController: NCWidgetProviding {
     
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() }
         if let firstEvent = firstEvent {
@@ -90,7 +100,7 @@ extension TodayViewController: NCWidgetProviding {
             preferredContentSize.height = 110
             expandView.isHidden = true
         } else {
-            self.preferredContentSize.height = 110 + CGFloat(events.count > 8 ? 8 : events.count) * taskList.rowHeight + 40
+            preferredContentSize.height = 110 + CGFloat(events.count > 8 ? 8 : events.count) * taskList.rowHeight + 40
             expandView.isHidden = false
         }
     }

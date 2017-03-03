@@ -115,7 +115,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         case "timetable":
             tabBarController.selectedIndex = 3
-            tabBarController.selectedViewController!.show(CurriculaViewController(), sender: nil)
+            if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
+                let vc = JwbinfosysLoginViewController()
+                tabBarController.selectedViewController!.present(vc, animated: true)
+            } else {
+                let vc = CurriculaViewController()
+                vc.hidesBottomBarWhenPushed = true
+                tabBarController.selectedViewController!.show(vc, sender: nil)
+            }
             return true
         case "detail":
             let event = eventsForDate(Date())[Int(paths[2])!]

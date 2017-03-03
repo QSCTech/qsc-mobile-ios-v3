@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -188,8 +188,8 @@
                     <connections>
                         <outlet property="expandView" destination="Xw7-sp-yoZ" id="GnA-4J-t5I"/>
                         <outlet property="firstEventName" destination="ZIm-Kp-qeb" id="dur-Ah-AJG"/>
-                        <outlet property="firstEventPlace" destination="PVM-7t-VX5" id="cX8-Tl-cNE"/>
-                        <outlet property="firstEventTime" destination="xZC-gk-JBd" id="iIP-fh-OCP"/>
+                        <outlet property="firstEventPlace" destination="xZC-gk-JBd" id="fR7-nY-pq3"/>
+                        <outlet property="firstEventTime" destination="PVM-7t-VX5" id="Gzn-UK-3Xs"/>
                         <outlet property="firstEventTimePrompt" destination="Jd3-hg-48E" id="hci-qr-xXM"/>
                         <outlet property="firstEventTimeRemain" destination="XbO-35-qck" id="F9T-ix-XUi"/>
                         <outlet property="firstView" destination="pZY-yb-qD8" id="k1d-GO-dQ2"/>
