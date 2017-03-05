@@ -51,6 +51,11 @@ class QueryViewController: UITableViewController {
             "campus": "off",
         ],
         [
+            "name": "信息共享空间",
+            "url": "http://ic.zju.edu.cn/ClientWeb/xcus/zd/index.aspx",
+            "campus": "off",
+        ],
+        [
             "name": "体质健康测试",
             "url": "http://www.tyys.zju.edu.cn/tzjk/indexphone.jsp",
             "campus": "on",
