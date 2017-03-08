@@ -63,7 +63,7 @@ class PreferenceViewController: UITableViewController {
         case .zjuwlan:
             return accountManager.accountForZjuwlan == nil ? 1 : 2
         case .setting:
-            return 3
+            return groupDefaults.bool(forKey: ShowScoreKey) ? 3 : 2
         case .about:
             return 3
         }
@@ -235,6 +235,12 @@ class PreferenceViewController: UITableViewController {
     
     func showScoreSwitchChanged(_ sender: UISwitch) {
         groupDefaults.set(sender.isOn, forKey: ShowScoreKey)
+        let auxRow = IndexPath(row: 2, section: Preference.setting.rawValue)
+        if sender.isOn {
+            tableView.insertRows(at: [auxRow], with: .automatic)
+        } else {
+            tableView.deleteRows(at: [auxRow], with: .automatic)
+        }
     }
     
     func auxiliaryScoreChanged(_ sender: UISegmentedControl) {
