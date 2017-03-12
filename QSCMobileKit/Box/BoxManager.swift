@@ -70,6 +70,18 @@ public class BoxManager: NSObject {
         }
     }
     
+    public func createRandomFileName(prefix: String, suffix: String) -> String {
+        let shortDateWithoutDots = Date.dateToShortStringWithoutDots(date: Date())
+        var count = 1
+        while true {
+            let fileName = String(format: "%@-%@-%02d.%@", prefix, shortDateWithoutDots, count, suffix)
+            if getFileByFileName(fileName) == nil {
+                return fileName
+            }
+            count += 1
+        }
+    }
+    
     // MARK: - Deletion
     
     public func removeFile(file: File) {
@@ -103,6 +115,15 @@ public class BoxManager: NSObject {
     public func getFileByFileURL(_ fileURL: URL) -> File? {
         for file in allFiles {
             if getFileURL(file: file) == fileURL {
+                return file
+            }
+        }
+        return nil
+    }
+    
+    public func getFileByFileName(_ fileName: String) -> File? {
+        for file in allFiles {
+            if file.name == fileName {
                 return file
             }
         }

@@ -440,7 +440,7 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         if picker.navigationItem.prompt == "Upload from PhotoLibrary" || picker.navigationItem.prompt == "Upload from Camera" {
             let file = BoxManager.sharedInstance.newFile()
-            file.name = "\(file.directory).png"
+            file.name = BoxManager.sharedInstance.createRandomFileName(prefix: "Pic", suffix: "png")
             file.state = "正在上传"
             let data = UIImagePNGRepresentation(image)!
             let fileURL = BoxManager.sharedInstance.getFileURL(file: file)

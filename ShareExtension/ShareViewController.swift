@@ -46,7 +46,7 @@ class ShareViewController: UIViewController {
     
     func upload() {
         file = BoxManager.sharedInstance.newFile()
-        file.name = "\(file.directory).zip"
+        file.name = BoxManager.sharedInstance.createRandomFileName(prefix: "SE", suffix: "zip")
         file.state = "正在上传"
         BoxManager.sharedInstance.createZip(file: file, withFilesAtPaths: filePaths)
         BoxManager.sharedInstance.saveFiles()

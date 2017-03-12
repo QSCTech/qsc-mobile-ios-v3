@@ -23,6 +23,12 @@ public extension Date {
         return dateFormatter.string(from: date)
     }
     
+    public static func dateToShortStringWithoutDots(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter.string(from: date)
+    }
+    
     public static func dateToLongString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
