@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    var allowRotation: Bool = false
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         MobClick.start(withAppkey: UMengAppKey)
         if #available(iOS 10.0, *) {
@@ -104,40 +106,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let paths = url.pathComponents
         let tabBarController = window!.rootViewController as! UITabBarController
         tabBarController.presentedViewController?.dismiss(animated: false)
-        switch paths[1] {
-        case "add":
-            tabBarController.selectedIndex = 1
-            let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first!
-            vc.performSegue(withIdentifier: "addEvent", sender: nil)
-            return true
-        case "timetable":
-            tabBarController.selectedIndex = 3
-            if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
-                let vc = JwbinfosysLoginViewController()
-                tabBarController.selectedViewController!.present(vc, animated: true)
-            } else {
-                let vc = CurriculaViewController()
-                vc.hidesBottomBarWhenPushed = true
+        if let scheme = url.scheme {
+            switch scheme {
+            case "QSCMobile":
+                let paths = url.pathComponents
+                switch paths[1] {
+                case "add":
+                    tabBarController.selectedIndex = 1
+                    let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first!
+                    vc.performSegue(withIdentifier: "addEvent", sender: nil)
+                    return true
+                case "timetable":
+                    tabBarController.selectedIndex = 3
+                    tabBarController.selectedViewController!.show(CurriculaViewController(), sender: nil)
+                    return true
+                case "detail":
+                    let event = eventsForDate(Date())[Int(paths[2])!]
+                    tabBarController.selectedIndex = 1
+                    let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first as! CalendarViewController
+                    vc.selectedEvent = event
+                    vc.selectedDate = Date()
+                    if vc.selectedEvent.category == .course || vc.selectedEvent.category == .exam {
+                        vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
+                    } else {
+                        vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
+                    }
+                    return true
+                default:
+                    return false
+                }
+            case "file":
+                tabBarController.selectedIndex = 3
+                let storyboard = UIStoryboard(name: "Box", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController() as! BoxViewController
                 tabBarController.selectedViewController!.show(vc, sender: nil)
+                vc.uploadFromAppDelegate(url: url)
+                return true
+            default:
+                return false
             }
-            return true
-        case "detail":
-            let event = eventsForDate(Date())[Int(paths[2])!]
-            tabBarController.selectedIndex = 1
-            let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first as! CalendarViewController
-            vc.selectedEvent = event
-            vc.selectedDate = Date()
-            if vc.selectedEvent.category == .course || vc.selectedEvent.category == .exam {
-                vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
-            } else {
-                vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
-            }
-            return true
-        default:
+        } else {
             return false
+        }
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        let tabBarController = window!.rootViewController as! UITabBarController
+        if tabBarController.selectedIndex == 3 {
+            let navigationController = tabBarController.selectedViewController as! UINavigationController
+            if let boxViewController = navigationController.topViewController as? BoxViewController {
+                if boxViewController.files != nil && boxViewController.tableView != nil {
+                    boxViewController.files = BoxManager.sharedInstance.allFiles
+                    boxViewController.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if allowRotation {
+            return .allButUpsideDown
+        } else {
+            return .portrait
         }
     }
     

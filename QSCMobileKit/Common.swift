@@ -14,7 +14,7 @@ let AppKey = "aq86L/EUgOPxD7ZJzr3rK4zBRyo8oVzF"
 
 let MobileAPIURL = "https://m.zjuqsc.com/api/v3/s1"
 let NoticeURL    = "https://notice.zjuqsc.com"
-let BoxURL       = "https://box.zjuqsc.com"
+public let BoxURL       = "https://box.zjuqsc.com"
 
 public let AppGroupIdentifier = "group.QSCMobile"
 public let QSCMobileKitIdentifier = "com.myqsc.iQSC.MobileKit"
