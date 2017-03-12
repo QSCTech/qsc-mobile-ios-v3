@@ -17,8 +17,8 @@ class QueryViewController: UITableViewController {
     let collectionViewDelegate = QueryCollectionViewDelegate()
     
     enum Tools: Int {
-        case score = 0, query, login, website, webpage
-        static let count = 5
+        case score = 0, query, box, login, website, webpage
+        static let count = 6
     }
     
     let login: [[String: String]] = [
@@ -105,6 +105,8 @@ class QueryViewController: UITableViewController {
             return 1
         case .query:
             return 1
+        case .box:
+            return 1
         case .login:
             return login.count
         case .website:
@@ -172,6 +174,8 @@ class QueryViewController: UITableViewController {
             cell.collectionView.dataSource = collectionViewDelegate
             cell.selectionStyle = .none
             return cell
+        case .box:
+            cell.textLabel!.text = "Box云U盘"
         case .login:
             cell.textLabel!.text = login[indexPath.row]["name"]
         case .website:
@@ -193,6 +197,10 @@ class QueryViewController: UITableViewController {
                 let vc = ScoreViewController()
                 present(vc, animated: true)
             }
+        case .box:
+            let storyboard = UIStoryboard(name: "Box", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()!
+            show(vc, sender: nil)
         case .login:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
