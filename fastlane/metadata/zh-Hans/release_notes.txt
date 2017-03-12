@@ -1,4 +1,4 @@
-Build 30022
+Build 30023
 
-- 修复了 Today Widget 在 iOS 9 上的显示问题
-- 修复了从 Today Widget 进入一周课表的显示问题
+- 新增 Box 云优盘
+- 支持使用 Share Extension 上传到 Box

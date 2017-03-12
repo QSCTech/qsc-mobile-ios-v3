@@ -19,7 +19,8 @@ platform :ios do
   desc "Bump version and push commits to GitLab"
   lane :prepare do
     increment_build_number
-    increment_version_number(bump_type: prompt(text: "Bump type: (patch/minor/major)"))
+    type = prompt(text: "Bump type: (major/minor/patch/none)")
+    increment_version_number(bump_type: type) if type != "none"
 
     git_commit(path: ".", message: "Version bump to #{lane_context[:VERSION_NUMBER]}")
     lane_context[:CHANGE_LOG] = File.read("./metadata/zh-Hans/release_notes.txt")
