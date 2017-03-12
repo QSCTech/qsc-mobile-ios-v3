@@ -63,7 +63,6 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         } else {
             BoxAPI.sharedInstance.set(fileURL: fileURL, oldcode: file.code, newcode: code.text!, password: nil, secid: file.secid, expiration: expiration, callback: setCallBack)
         }
-        dismiss(animated: true, completion: nil)
     }
     
     
@@ -149,11 +148,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
             let expiration = parameter as! TimeInterval
             file.dueDate = file.operationDate.addingTimeInterval(expiration)
         case "Success":
-            qrcode.image = QRCodeGenerator.createImage(qrcode: "\(BoxURL)/-\(file.code)", size: qrcode.bounds.width)
-            let alert = UIAlertController(title: "Box", message: "上传设定成功", preferredStyle: .alert)
-            let action = UIAlertAction(title: "好", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true)
+            dismiss(animated: true, completion: nil)
         default:
             break
         }
