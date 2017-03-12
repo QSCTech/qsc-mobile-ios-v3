@@ -535,8 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				2697B9C31E7529FB00ECE931 /* DropDownMenuCell.swift */,
-				2697B9C41E7529FB00ECE931 /* DropDownMenuCell.xib */,
 				2697B9C51E7529FB00ECE931 /* DropDownMenuView.swift */,
+				2697B9C41E7529FB00ECE931 /* DropDownMenuCell.xib */,
 			);
 			path = DropDownMenu;
 			sourceTree = "<group>";

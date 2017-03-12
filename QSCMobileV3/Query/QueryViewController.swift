@@ -175,7 +175,7 @@ class QueryViewController: UITableViewController {
             cell.selectionStyle = .none
             return cell
         case .box:
-            cell.textLabel!.text = "Box云U盘"
+            cell.textLabel!.text = "Box 云优盘"
         case .login:
             cell.textLabel!.text = login[indexPath.row]["name"]
         case .website:

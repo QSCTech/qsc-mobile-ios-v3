@@ -16,10 +16,9 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
     var currentFileURL: URL!
     
     @IBOutlet weak var webView: UIWebView!
-    
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var tableView: UITableView!
+    
     var items: [[String: String]] = []
     
     var documentInteractionController: UIDocumentInteractionController!
@@ -86,7 +85,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         if tableView.isHidden {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.allowRotation = true
+            appDelegate.allowsRotation = true
         }
     }
     
@@ -98,7 +97,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         if tableView.isHidden {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.allowRotation = false
+            appDelegate.allowsRotation = false
         }
     }
     

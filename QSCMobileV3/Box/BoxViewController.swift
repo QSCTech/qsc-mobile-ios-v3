@@ -89,7 +89,7 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let code = qrcode.substring(from: qrcode.index(qrcode.startIndex, offsetBy: 24))
                     self.perform(#selector(self.download(code:)), with: code, afterDelay: 1)
                 } else {
-                    let alert = UIAlertController(title: "Box", message: "非求是潮Box二维码", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Box", message: "非求是潮 Box 二维码", preferredStyle: .alert)
                     let action = UIAlertAction(title: "好", style: .default, handler: nil)
                     alert.addAction(action)
                     self.present(alert, animated: true)
@@ -104,27 +104,23 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let uploadalertController = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
         let canceluploadAction = UIAlertAction(title: "取消", style: .cancel)
         uploadalertController.addAction(canceluploadAction)
-        let cameraAction = UIAlertAction(title: "拍照", style: .default) {
-            action in
+        let cameraAction = UIAlertAction(title: "拍照", style: .default) { action in
             let imagePickerController = UIImagePickerController()
             imagePickerController.sourceType = .camera
             imagePickerController.delegate = self
             imagePickerController.navigationItem.prompt = "Upload from Camera"
-            self.present(imagePickerController,animated: true,completion: nil)
+            self.present(imagePickerController, animated: true, completion: nil)
         }
         uploadalertController.addAction(cameraAction)
-        let photoPickerAction = UIAlertAction(title: "相册", style: .default) {
-            action in
-            
+        let photoPickerAction = UIAlertAction(title: "相册", style: .default) { action in
             let imagePickerController = UIImagePickerController()
             imagePickerController.sourceType = .photoLibrary
             imagePickerController.delegate = self
             imagePickerController.navigationItem.prompt = "Upload from PhotoLibrary"
-            self.present(imagePickerController,animated: true,completion: nil)
+            self.present(imagePickerController, animated: true, completion: nil)
         }
         uploadalertController.addAction(photoPickerAction)
-        let iCloudDriveAction = UIAlertAction(title: "iCloud Drive", style: .default) {
-            action in
+        let iCloudDriveAction = UIAlertAction(title: "iCloud Drive", style: .default) { action in
             if FileManager().url(forUbiquityContainerIdentifier: nil) != nil {
                 let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
                 documentPicker.delegate = self

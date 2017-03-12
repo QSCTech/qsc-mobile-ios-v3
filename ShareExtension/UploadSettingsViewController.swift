@@ -11,7 +11,6 @@ import QSCMobileKit
 
 class UploadSettingsViewController: UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var code: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var expire: UISegmentedControl!
@@ -20,7 +19,6 @@ class UploadSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tip: UILabel!
     
     var file: File!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +92,7 @@ class UploadSettingsViewController: UIViewController, UITextFieldDelegate {
             file.dueDate = file.operationDate.addingTimeInterval(expiration)
         case "Success":
             submitButton.isEnabled = true
-            let alert = UIAlertController(title: "设定成功", message: "文件提取码：\(file.code)\n二维码请于\"求是潮\"App 内查看", preferredStyle: .alert)
+            let alert = UIAlertController(title: "设定成功", message: "文件提取码：\(file.code)\n详细信息请于求是潮 App 内查看", preferredStyle: .alert)
             let action = UIAlertAction(title: "好", style: .default) { action in
                 self.performSegue(withIdentifier: "unwindToShare", sender: nil)
             }
@@ -105,5 +103,5 @@ class UploadSettingsViewController: UIViewController, UITextFieldDelegate {
         }
         BoxManager.sharedInstance.saveFiles()
     }
-
+    
 }

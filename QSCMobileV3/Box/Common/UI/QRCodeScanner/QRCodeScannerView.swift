@@ -72,27 +72,21 @@ class QRCodeScannerView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func torchOn() {
-        do
-        {
+        do {
             try device.lockForConfiguration()
             device.torchMode = .on
             device.unlockForConfiguration()
-        }
-        catch let error as NSError
-        {
+        } catch let error as NSError {
             print(error)
         }
     }
     
     func torchOff() {
-        do
-        {
+        do {
             try device.lockForConfiguration()
             device.torchMode = .off
             device.unlockForConfiguration()
-        }
-        catch let error as NSError
-        {
+        } catch let error as NSError {
             print(error)
         }
     }
@@ -102,17 +96,14 @@ class QRCodeScannerView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         if device != nil {
             captureSession = AVCaptureSession()
-            do
-            {
+            do {
                 input = try AVCaptureDeviceInput(device: device)
-                if (captureSession!.canAddInput(input))
-                {
+                if (captureSession!.canAddInput(input)) {
                     captureSession!.addInput(input)
                 }
                 output = AVCaptureMetadataOutput()
                 output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                if (captureSession!.canAddOutput(output))
-                {
+                if (captureSession!.canAddOutput(output)) {
                     captureSession!.addOutput(output)
                     output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
                 }
@@ -120,9 +111,7 @@ class QRCodeScannerView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                 captureVideoPreviewLayer.frame = bounds
                 layer.addSublayer(captureVideoPreviewLayer)
                 noError = true
-            }
-            catch let error as NSError
-            {
+            } catch let error as NSError {
                 print(error)
                 noError = false
             }

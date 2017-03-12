@@ -63,6 +63,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         } else {
             BoxAPI.sharedInstance.set(fileURL: fileURL, oldcode: file.code, newcode: code.text!, password: nil, secid: file.secid, expiration: expiration, callback: setCallBack)
         }
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -112,7 +113,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
             if code.text! == file.code {
                 UIImageWriteToSavedPhotosAlbum(qrcode.image!, self, #selector(imageSaveCompletion(image:didFinishSavingWithError:contextInfo:)), nil)
             } else {
-                let alert = UIAlertController(title: "Box", message: "检测到上传设定变化且尚未提交，请先提交修改再保存二维码", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Box", message: "检测到上传设定变化且尚未提交，请先提交修改再前往文件详情保存二维码", preferredStyle: .alert)
                 let action = UIAlertAction(title: "好", style: .default, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true)

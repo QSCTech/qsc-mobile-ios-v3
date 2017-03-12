@@ -29,7 +29,7 @@ class ShareViewController: UIViewController {
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true)
             } else {
-                self.label.text = "共\(self.filePaths.count)个文件正在上传"
+                self.label.text = "共 \(self.filePaths.count) 个文件正在上传"
                 self.upload()
             }
         }
@@ -81,11 +81,11 @@ class ShareViewController: UIViewController {
                 progress.setProgress(Float(file.progress), animated: true)
                 file.state = "已上传"
                 view.isHidden = true
-                let alertController = UIAlertController(title: "上传成功", message: "文件提取码：\(file.code)\n二维码请于\"求是潮\"App 内查看", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "上传成功", message: "文件提取码：\(file.code)\n详细信息请于求是潮 App 内查看", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "好的", style: .cancel) { action in
                     self.completeRequest()
                 }
-                let settingAction = UIAlertAction(title: "设置", style: .default) { action in
+                let settingAction = UIAlertAction(title: "高级设置", style: .default) { action in
                     self.performSegue(withIdentifier: "showUploadSettings", sender: file)
                 }
                 alertController.addAction(settingAction)
