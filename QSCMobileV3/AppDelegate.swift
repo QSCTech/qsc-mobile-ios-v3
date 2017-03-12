@@ -146,10 +146,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             case "file":
                 tabBarController.selectedIndex = 3
-                let storyboard = UIStoryboard(name: "Box", bundle: nil)
-                let vc = storyboard.instantiateInitialViewController() as! BoxViewController
-                tabBarController.selectedViewController!.show(vc, sender: nil)
-                vc.uploadFromAppDelegate(url: url)
+                let navigationController = tabBarController.selectedViewController! as! UINavigationController
+                if let boxViewController = navigationController.topViewController! as? BoxViewController {
+                    boxViewController.uploadFromAppDelegate(url: url)
+                } else {
+                    let storyboard = UIStoryboard(name: "Box", bundle: nil)
+                    let vc = storyboard.instantiateInitialViewController() as! BoxViewController
+                    tabBarController.selectedViewController!.show(vc, sender: nil)
+                    vc.uploadFromAppDelegate(url: url)
+                }
                 return true
             default:
                 return false
