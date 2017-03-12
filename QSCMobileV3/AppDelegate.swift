@@ -106,39 +106,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let paths = url.pathComponents
         let tabBarController = window!.rootViewController as! UITabBarController
         tabBarController.presentedViewController?.dismiss(animated: false)
-        switch paths[1] {
-        case "add":
-            tabBarController.selectedIndex = 1
-            let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first!
-            vc.performSegue(withIdentifier: "addEvent", sender: nil)
-            return true
-        case "timetable":
-            tabBarController.selectedIndex = 3
-            if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
-                let vc = JwbinfosysLoginViewController()
-                tabBarController.selectedViewController!.present(vc, animated: true)
-            } else {
-                let vc = CurriculaViewController()
-                vc.hidesBottomBarWhenPushed = true
+        if let scheme = url.scheme {
+            switch scheme {
+            case "QSCMobile":
+                let paths = url.pathComponents
+                switch paths[1] {
+                case "add":
+                    tabBarController.selectedIndex = 1
+                    let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first!
+                    vc.performSegue(withIdentifier: "addEvent", sender: nil)
+                    return true
+                case "timetable":
+                    tabBarController.selectedIndex = 3
+                    if AccountManager.sharedInstance.currentAccountForJwbinfosys == nil {
+                        let vc = JwbinfosysLoginViewController()
+                        tabBarController.selectedViewController!.present(vc, animated: true)
+                    } else {
+                        let vc = CurriculaViewController()
+                        vc.hidesBottomBarWhenPushed = true
+                        tabBarController.selectedViewController!.show(vc, sender: nil)
+                    }
+                    return true
+                case "detail":
+                    let event = eventsForDate(Date())[Int(paths[2])!]
+                    tabBarController.selectedIndex = 1
+                    let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first as! CalendarViewController
+                    vc.selectedEvent = event
+                    vc.selectedDate = Date()
+                    if vc.selectedEvent.category == .course || vc.selectedEvent.category == .exam {
+                        vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
+                    } else {
+                        vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
+                    }
+                    return true
+                default:
+                    return false
+                }
+            case "file":
+                tabBarController.selectedIndex = 3
+                let storyboard = UIStoryboard(name: "Box", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController() as! BoxViewController
                 tabBarController.selectedViewController!.show(vc, sender: nil)
+                vc.uploadFromAppDelegate(url: url)
+                return true
+            default:
+                return false
             }
-            return true
-        case "detail":
-            let event = eventsForDate(Date())[Int(paths[2])!]
-            tabBarController.selectedIndex = 1
-            let vc = (tabBarController.selectedViewController as! UINavigationController).viewControllers.first as! CalendarViewController
-            vc.selectedEvent = event
-            vc.selectedDate = Date()
-            if vc.selectedEvent.category == .course || vc.selectedEvent.category == .exam {
-                vc.performSegue(withIdentifier: "showCourseDetail", sender: nil)
-            } else {
-                vc.performSegue(withIdentifier: "showEventDetail", sender: nil)
-            }
-            return true
-        default:
+        } else {
             return false
         }
     }
