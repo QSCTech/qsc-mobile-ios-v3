@@ -42,10 +42,14 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         if FileRecognizer.getFileIconName(fileName: currentFileName) == "Picture" {
             let data = try! Data(contentsOf: currentFileURL)
-            view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchHandler)))
-            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
             imageView.image = UIImage(data: data)
             imageView.isHidden = false
+            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
+            longPressGestureRecognizer.minimumPressDuration = 0.5
+            longPressGestureRecognizer.allowableMovement = 100
+            view.addGestureRecognizer(longPressGestureRecognizer)
+            view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchHandler)))
+            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         } else if currentFileName.lowercased().hasSuffix(".zip") == true {
             let unzipURL = BoxManager.sharedInstance.getUnzipURL(file: file)
             if FileManager.default.fileExists(atPath: unzipURL.path) == false {
@@ -142,6 +146,10 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
     func pinchHandler(_ sender: UIPinchGestureRecognizer) {
         imageView.transform = imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
         sender.scale = 1
+    }
+    
+    func longPressHandler(_ sender: UITapGestureRecognizer) {
+        documentInteractionController.presentOptionsMenu(from: view.frame, in: view, animated: true)
     }
     
     // MARK: - TableView
