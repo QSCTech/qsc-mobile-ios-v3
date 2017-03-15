@@ -39,15 +39,11 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return .portrait
-        }
+        return .portrait
     }
     
     override var prefersStatusBarHidden: Bool {
-        get {
-            return false
-        }
+        return false
     }
     
     @IBAction func downloadBarButtonTapped(_ sender: UIBarButtonItem) {

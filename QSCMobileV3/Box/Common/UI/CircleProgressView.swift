@@ -41,18 +41,18 @@ class CircleProgressView: UIView {
         super.draw(rect)
         
         if current >= max {
-            current = max - 0.0001
+            current = max - 0.00001
         }
         
         let radius = rect.width / 2.0 - lineWidth
         let centerX = rect.midX
         let centerY = rect.midY
-        let startAngle = CGFloat(-90 * M_PI / 180)
-        let endAngle = CGFloat((((current + 0.00001) / max) * 360 - 90) ) * CGFloat(M_PI) / 180
+        let startAngle = -90 * CGFloat.pi / 180
+        let endAngle = (current / max * 360 - 90) * CGFloat.pi / 180
         
         let context = UIGraphicsGetCurrentContext()
-        context!.setStrokeColor(doneColor.cgColor)
         context!.setLineWidth(lineWidth)
+        context!.setStrokeColor(doneColor.cgColor)
         context!.addArc(center: CGPoint(x: centerX, y: centerY), radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
         context!.strokePath()
         context!.setStrokeColor(undoneColor.cgColor)

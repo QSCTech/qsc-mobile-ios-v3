@@ -106,9 +106,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     override var prefersStatusBarHidden: Bool {
-        get {
-            return hidden
-        }
+        return hidden
     }
     
     // MARK: - Buttons Tapped

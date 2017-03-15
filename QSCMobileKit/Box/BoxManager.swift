@@ -161,10 +161,6 @@ public class BoxManager: NSObject {
         }
     }
     
-    public func getUnzipFiles() {
-        
-    }
-    
     // MARK: - Save
     
     public func saveFiles() {

@@ -10,7 +10,7 @@ import UIKit
 import QSCMobileKit
 
 class FileDetailsViewController: UITableViewController {
-
+    
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var code: UILabel!
@@ -57,9 +57,7 @@ class FileDetailsViewController: UITableViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        get {
-            return false
-        }
+        return false
     }
     
     func saveQRCode(longPressGestureRecognizer: UILongPressGestureRecognizer) {
@@ -79,5 +77,5 @@ class FileDetailsViewController: UITableViewController {
         alert.addAction(action)
         self.present(alert, animated: true)
     }
-
+    
 }
