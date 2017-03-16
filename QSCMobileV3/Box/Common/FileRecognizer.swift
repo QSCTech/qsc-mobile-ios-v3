@@ -26,6 +26,8 @@ class FileRecognizer {
             fileIconName = "Excel"
         case let name where name.hasSuffix(".key"):
             fileIconName = "Key"
+        case let name where name.hasSuffix(".mp3"), let name where name.hasSuffix(".wma"), let name where name.hasSuffix(".wav"), let name where name.hasSuffix(".mid"):
+            fileIconName = "Music"
         case let name where name.hasSuffix(".numbers"):
             fileIconName = "Numbers"
         case let name where name.hasSuffix(".pages"):

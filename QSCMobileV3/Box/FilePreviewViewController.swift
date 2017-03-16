@@ -31,9 +31,11 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
         let currentFileName = currentFileURL.path.components(separatedBy: "/").last!
         
         navigationItem.title = currentFileName
-        
         let backBarButtonItem = UIBarButtonItem(title: "返回", style: .done, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
+        if currentFileURL != BoxManager.sharedInstance.getFileURL(file: file) {
+            navigationItem.setRightBarButton(nil, animated: false)
+        }
         
         let flexibleSpaceBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let openWithOtherAppsBarButtonItem = UIBarButtonItem(title: "用其它应用打开", style: .plain, target: self, action: #selector(openWithOtherAppsBarButtonTapped(_:)))
@@ -102,6 +104,14 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
         if tableView.isHidden {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.allowsRotation = false
+        }
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if tableView.isHidden {
+            return .allButUpsideDown
+        } else {
+            return .portrait
         }
     }
     
