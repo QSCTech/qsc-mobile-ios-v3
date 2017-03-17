@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRCodeScannerView: UIView, AVCaptureMetadataOutputObjectsDelegate {
+class QRCodeScannerView: UIView {
     
     var callback: ((String) -> ())!
     
@@ -148,7 +148,7 @@ class QRCodeScannerView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         scanRectLayer = CAShapeLayer()
         scanRectLayer.path = UIBezierPath(rect: rect).cgPath
         scanRectLayer.fillColor = UIColor.clear.cgColor
-        scanRectLayer.strokeColor = UIColor(red: 0 / 256.0, green: 122 / 256.0, blue: 255 / 256.0, alpha: 1.0).cgColor
+        scanRectLayer.strokeColor = UIColor(red: 0 / 255.0, green: 122 / 255.0, blue: 255 / 255.0, alpha: 1.0).cgColor
         scanRectLayer.lineWidth = 5
         layer.addSublayer(scanRectLayer)
     }
@@ -190,6 +190,10 @@ class QRCodeScannerView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         maskLayer.path = path.cgPath
         return maskLayer
     }
+    
+}
+
+extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         if metadataObjects.count > 0 {

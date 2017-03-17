@@ -118,7 +118,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="BIP-8J-rMh"/>
                                 </constraints>
-                                <state key="normal" title="上传文件" image="Upload">
+                                <state key="normal" title=" 上传文件" image="Upload">
                                     <color key="titleColor" red="0.46274509803921571" green="0.46277564764022827" blue="0.46268665790557861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

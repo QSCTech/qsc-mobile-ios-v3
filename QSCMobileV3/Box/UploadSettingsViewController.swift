@@ -41,17 +41,16 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func backBarButtonTapped(_ sender: UIBarButtonItem) {
         if code.text! == file.code {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         } else {
             let alertController = UIAlertController(title: "Box", message: "检测到上传设定变化且尚未提交，是否仍要返回？", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "是", style: .destructive, handler: {
-                action in
-                self.dismiss(animated: true, completion: nil)
-            })
-            let cancelAction = UIAlertAction(title: "否", style: .default, handler: nil)
+            let okAction = UIAlertAction(title: "是", style: .destructive) { action in
+                self.dismiss(animated: true)
+            }
+            let cancelAction = UIAlertAction(title: "否", style: .default)
             alertController.addAction(cancelAction)
             alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true)
         }
     }
     
@@ -71,7 +70,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         password.resignFirstResponder()
         UIPasteboard.general.string = code.text!
         let alert = UIAlertController(title: "Box", message: "提取码复制成功", preferredStyle: .alert)
-        let action = UIAlertAction(title: "好", style: .default, handler: nil)
+        let action = UIAlertAction(title: "好", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
     }
@@ -100,8 +99,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         if code.text!.isEmpty {
             copyButton.alpha = 0.4
             copyButton.isEnabled = false
-        }
-        else {
+        } else {
             copyButton.alpha = 1.0
             copyButton.isEnabled = true
         }
@@ -113,7 +111,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
                 UIImageWriteToSavedPhotosAlbum(qrcode.image!, self, #selector(imageSaveCompletion(image:didFinishSavingWithError:contextInfo:)), nil)
             } else {
                 let alert = UIAlertController(title: "Box", message: "检测到上传设定变化且尚未提交，请先提交修改再前往文件详情保存二维码", preferredStyle: .alert)
-                let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                let action = UIAlertAction(title: "好", style: .default)
                 alert.addAction(action)
                 self.present(alert, animated: true)
             }
@@ -127,7 +125,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         } else {
             alert = UIAlertController(title: "Box", message: "二维码保存失败", preferredStyle: .alert)
         }
-        let action = UIAlertAction(title: "好", style: .default, handler: nil)
+        let action = UIAlertAction(title: "好", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
     }
@@ -137,7 +135,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         case "Fail":
             let message = parameter as! String
             let alert = UIAlertController(title: "Box", message: message, preferredStyle: .alert)
-            let action = UIAlertAction(title: "好", style: .default, handler: nil)
+            let action = UIAlertAction(title: "好", style: .default)
             alert.addAction(action)
             self.present(alert, animated: true)
         case "Code":
@@ -148,7 +146,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
             let expiration = parameter as! TimeInterval
             file.dueDate = file.operationDate.addingTimeInterval(expiration)
         case "Success":
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         default:
             break
         }

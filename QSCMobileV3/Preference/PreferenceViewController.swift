@@ -196,7 +196,7 @@ class PreferenceViewController: UITableViewController {
                     present(mcvc, animated: true)
                 } else {
                     let alert = UIAlertController(title: "用户反馈", message: "您尚未设置系统邮件账户，请先行设置或直接发送邮件至 mobile@zjuqsc.com", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                    let action = UIAlertAction(title: "好", style: .default)
                     alert.addAction(action)
                     present(alert, animated: true)
                 }
@@ -266,7 +266,7 @@ extension PreferenceViewController: MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true)
         if result == .sent {
             let alert = UIAlertController(title: "用户反馈", message: "感谢您的反馈！\n我们将尽快回复您的邮件", preferredStyle: .alert)
-            let action = UIAlertAction(title: "好", style: .default, handler: nil)
+            let action = UIAlertAction(title: "好", style: .default)
             alert.addAction(action)
             present(alert, animated: true)
         }

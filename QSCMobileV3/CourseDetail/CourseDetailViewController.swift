@@ -309,7 +309,7 @@ class CourseDetailViewController: UITableViewController {
                     let action = UIAlertAction(title: teacher, style: .default, handler: handler)
                     alert.addAction(action)
                 }
-                alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "取消", style: .cancel))
                 present(alert, animated: true)
             } else if teachers.count == 1 {
                 let action = UIAlertAction(title: teachers.first, style: .default, handler: handler)
@@ -341,7 +341,7 @@ class CourseDetailViewController: UITableViewController {
                     present(svc, animated: true)
                 } else {
                     let alert = UIAlertController(title: "课程网站", message: "浏览器无法打开链接", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                    let action = UIAlertAction(title: "好", style: .default)
                     alert.addAction(action)
                     present(alert, animated: true)
                 }

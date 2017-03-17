@@ -21,18 +21,17 @@ class QRCodeGenerator {
     }
     
     static func createNonInterpolatedUIImage(from image: CIImage, size: CGFloat) -> UIImage {
-        let extent: CGRect = image.extent.integral
-        let scale: CGFloat = min(size / extent.width, size / extent.height)
+        let extent = image.extent.integral
+        let scale = min(size / extent.width, size / extent.height)
         let width = extent.width * scale
         let height = extent.height * scale
-        let cs: CGColorSpace = CGColorSpaceCreateDeviceGray()
-        let bitmapRef = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: 0)!
-        let context = CIContext(options: nil)
-        let bitmapImage: CGImage = context.createCGImage(image, from: extent)!
-        bitmapRef.interpolationQuality = CGInterpolationQuality.none
-        bitmapRef.scaleBy(x: scale, y: scale)
-        bitmapRef.draw(bitmapImage, in: extent)
-        let scaledImage: CGImage = bitmapRef.makeImage()!
+        let cs = CGColorSpaceCreateDeviceGray()
+        let bitmap = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: 0)!
+        bitmap.interpolationQuality = CGInterpolationQuality.none
+        bitmap.scaleBy(x: scale, y: scale)
+        let bitmapImage = CIContext(options: nil).createCGImage(image, from: extent)!
+        bitmap.draw(bitmapImage, in: extent)
+        let scaledImage = bitmap.makeImage()!
         return UIImage(cgImage: scaledImage)
     }
     

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class DropDownMenuView: UIButton, UITableViewDelegate, UITableViewDataSource {
+class DropDownMenuView: UIButton {
     
-    var callBack:((Int) -> ())!
+    var callBack: ((Int) -> ())!
     
-    var items: [[String: String]] = []
-    let itemHeight: CGFloat = 44
+    var items = [[String: String]]()
+    let itemHeight = CGFloat(44)
     
     var pointerImageView: UIImageView!
     var tableView: UITableView!
@@ -55,6 +55,14 @@ class DropDownMenuView: UIButton, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
     }
     
+    func otherAreaTapped() {
+        isHidden = true
+    }
+    
+}
+
+extension DropDownMenuView: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return itemHeight
     }
@@ -76,10 +84,6 @@ class DropDownMenuView: UIButton, UITableViewDelegate, UITableViewDataSource {
         if callBack != nil {
             callBack(indexPath.row)
         }
-    }
-    
-    func otherAreaTapped() {
-        isHidden = true
     }
     
 }

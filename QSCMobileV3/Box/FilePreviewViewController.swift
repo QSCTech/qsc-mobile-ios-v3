@@ -10,7 +10,7 @@ import UIKit
 import QuickLook
 import QSCMobileKit
 
-class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
+class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var file: File!
     var currentFileURL: URL!
@@ -160,11 +160,9 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate, 
         documentInteractionController.presentOptionsMenu(from: view.frame, in: view, animated: true)
     }
     
-    // MARK: - TableView
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+}
+
+extension FilePreviewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count

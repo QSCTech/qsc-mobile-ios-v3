@@ -9,7 +9,7 @@
 import UIKit
 import QSCMobileKit
 
-class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate, UITextFieldDelegate {
+class BoxViewController: UIViewController {
     
     var files: [File]!
     
@@ -67,26 +67,25 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 textField.tag = -1
                 textField.addTarget(self, action: #selector(self.textFieldChanged(textField:)), for: .editingChanged)
             }
-            let okAction = UIAlertAction(title: "确定", style: .default, handler: {
-                action in
+            let okAction = UIAlertAction(title: "确定", style: .default) { action in
                 let code = alertController.textFields!.first!.text!
                 self.download(code: code)
-            })
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            }
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel)
             alertController.addAction(cancelAction)
             alertController.addAction(okAction)
             okAction.isEnabled = false
-            present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true)
         case 1:
             let qrcodeScannerViewController = QRCodeScannerViewController()
-            present(qrcodeScannerViewController, animated: true, completion: nil)
+            present(qrcodeScannerViewController, animated: true)
             qrcodeScannerViewController.callback = { qrcode in
                 if qrcode.hasPrefix("\(BoxURL)/-") {
                     let code = qrcode.substring(from: qrcode.index(qrcode.startIndex, offsetBy: 24))
                     self.perform(#selector(self.download(code:)), with: code, afterDelay: 1)
                 } else {
                     let alert = UIAlertController(title: "Box", message: "非求是潮 Box 二维码", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                    let action = UIAlertAction(title: "好", style: .default)
                     alert.addAction(action)
                     self.present(alert, animated: true)
                 }
@@ -105,7 +104,7 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             imagePickerController.sourceType = .camera
             imagePickerController.delegate = self
             imagePickerController.navigationItem.prompt = "Upload from Camera"
-            self.present(imagePickerController, animated: true, completion: nil)
+            self.present(imagePickerController, animated: true)
         }
         uploadalertController.addAction(cameraAction)
         let photoPickerAction = UIAlertAction(title: "相册", style: .default) { action in
@@ -113,113 +112,23 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             imagePickerController.sourceType = .photoLibrary
             imagePickerController.delegate = self
             imagePickerController.navigationItem.prompt = "Upload from PhotoLibrary"
-            self.present(imagePickerController, animated: true, completion: nil)
+            self.present(imagePickerController, animated: true)
         }
         uploadalertController.addAction(photoPickerAction)
         let iCloudDriveAction = UIAlertAction(title: "iCloud Drive", style: .default) { action in
             if FileManager().url(forUbiquityContainerIdentifier: nil) != nil {
                 let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
                 documentPicker.delegate = self
-                self.present(documentPicker, animated: true, completion: nil)
+                self.present(documentPicker, animated: true)
             } else {
                 let alert = UIAlertController(title: "Box", message: "iCloud Drive 不可用", preferredStyle: .alert)
-                let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                let action = UIAlertAction(title: "好", style: .default)
                 alert.addAction(action)
                 self.present(alert, animated: true)
             }
         }
         uploadalertController.addAction(iCloudDriveAction)
         present(uploadalertController,animated: true, completion:nil)
-    }
-    
-    // MARK: - TableView
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if files.count > 0 {
-            noFileImageView.isHidden = true
-        } else {
-            noFileImageView.isHidden = false
-        }
-        return files.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.0001
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BoxViewCell
-        cell.icon.image = FileRecognizer.getFileIcon(fileName: files[indexPath.row].name)
-        cell.name.text = files[indexPath.row].name
-        cell.name.textColor = UIColor.black
-        let state = files[indexPath.row].state
-        cell.state.text = state + "(" + Date.dateToShortString(date: files[indexPath.row].operationDate) + ")"
-        switch state {
-        case "下载失败", "上传失败":
-            cell.state.textColor = UIColor.red
-            cell.indicator.isHidden = false
-            cell.progress.isHidden = true
-        case "云端到期":
-            cell.state.textColor = UIColor.red
-            cell.indicator.isHidden = false
-            cell.progress.isHidden = true
-        case "正在下载", "正在上传":
-            cell.state.textColor = UIColor.orange
-            cell.indicator.isHidden = true
-            cell.progress.current = CGFloat(files[indexPath.row].progress)
-            cell.progress.isHidden = false
-        case "已下载", "已上传":
-            cell.state.textColor = BoxColor.green
-            cell.indicator.isHidden = false
-            cell.progress.isHidden = true
-        default:
-            cell.state.text = "error"
-            cell.state.textColor = UIColor.purple
-            cell.indicator.isHidden = false
-            cell.progress.isHidden = true
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        switch files[indexPath.row].state {
-        case "下载失败":
-            break
-        case "上传失败":
-            break
-        case "正在下载":
-            break
-        case "正在上传":
-            break
-        default:
-            performSegue(withIdentifier: "showFilePreview", sender: files[indexPath.row])
-            break
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            BoxManager.sharedInstance.removeFile(file: files[indexPath.row])
-            files = BoxManager.sharedInstance.allFiles
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
     }
     
     // MARK: - Prepare For Segue
@@ -238,22 +147,6 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    // MARK: - TextField
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldChanged(textField: UITextField) {
-        if textField.tag == -1 {
-            let alertController = presentedViewController as! UIAlertController
-            let okAction = alertController.actions.last! as UIAlertAction
-            okAction.isEnabled = !textField.text!.isEmpty
-        }
-    }
-    
     // MARK: - Download
     
     func download(code: String) {
@@ -268,7 +161,7 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             case "Fail":
                 let message = parameter as! String
                 let alert = UIAlertController(title: "Box", message: message, preferredStyle: .alert)
-                let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                let action = UIAlertAction(title: "好", style: .default)
                 alert.addAction(action)
                 self.present(alert, animated: true)
             case "Success":
@@ -287,15 +180,14 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         textField.tag = -1
                         textField.addTarget(self, action: #selector(self.textFieldChanged(textField:)), for: .editingChanged)
                     }
-                    let okAction = UIAlertAction(title: "确定", style: .default, handler: {
-                        action in
+                    let okAction = UIAlertAction(title: "确定", style: .default) { action in
                         let password = alertController.textFields!.first!.text!
                         BoxAPI.sharedInstance.checkPassword(code: code, password: password, isMulti: isMulti) { code, state, parameter in
                             switch state {
                             case "Fail":
                                 let message = parameter as! String
                                 let alert = UIAlertController(title: "Box", message: message, preferredStyle: .alert)
-                                let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                                let action = UIAlertAction(title: "好", style: .default)
                                 alert.addAction(action)
                                 self.present(alert, animated: true)
                             case "Success":
@@ -309,12 +201,12 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                                 break
                             }
                         }
-                    })
-                    let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+                    }
+                    let cancelAction = UIAlertAction(title: "取消", style: .cancel)
                     alertController.addAction(cancelAction)
                     alertController.addAction(okAction)
                     okAction.isEnabled = false
-                    self.present(alertController, animated: true, completion: nil)
+                    self.present(alertController, animated: true)
                 } else {
                     if isMulti == true {
                         self.downloadMulti(code: code, password: "-")
@@ -334,7 +226,7 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             case "Fail":
                 let message = parameter as! String
                 let alert = UIAlertController(title: "Box", message: message, preferredStyle: .alert)
-                let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                let action = UIAlertAction(title: "好", style: .default)
                 alert.addAction(action)
                 self.present(alert, animated: true)
             case "Success":
@@ -363,7 +255,7 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             case "Fail":
                 let message = parameter as! String
                 let alert = UIAlertController(title: "Box", message: message, preferredStyle: .alert)
-                let action = UIAlertAction(title: "好", style: .default, handler: nil)
+                let action = UIAlertAction(title: "好", style: .default)
                 alert.addAction(action)
                 self.present(alert, animated: true)
             case "Item":
@@ -425,47 +317,6 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    // MARK: - Upload From Camera & PhotoLibrary
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        dismiss(animated: true, completion: nil)
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        if picker.navigationItem.prompt == "Upload from PhotoLibrary" || picker.navigationItem.prompt == "Upload from Camera" {
-            let file = BoxManager.sharedInstance.newFile()
-            file.name = BoxManager.sharedInstance.createRandomFileName(prefix: "Pic", suffix: "png")
-            file.state = "正在上传"
-            let data = UIImagePNGRepresentation(image)!
-            let fileURL = BoxManager.sharedInstance.getFileURL(file: file)
-            FileManager.default.createFile(atPath: fileURL.path, contents: data, attributes: nil)
-            BoxManager.sharedInstance.saveFiles()
-            self.files = BoxManager.sharedInstance.allFiles
-            let indexPath = IndexPath(row: self.files.count - 1, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .bottom)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-            BoxAPI.sharedInstance.upload(fileURL: fileURL, callback: uploadCallBack)
-        }
-    }
-    
-    // MARK: - Upload From iCloud Drive
-    
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        let file = BoxManager.sharedInstance.newFile()
-        file.name = "\(url.path.components(separatedBy: "/").last!)"
-        file.state = "正在上传"
-        let fileURL = BoxManager.sharedInstance.getFileURL(file: file)
-        try! FileManager.default.moveItem(at: url, to: fileURL)
-        BoxManager.sharedInstance.saveFiles()
-        self.files = BoxManager.sharedInstance.allFiles
-        let indexPath = IndexPath(row: self.files.count - 1, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .bottom)
-        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        BoxAPI.sharedInstance.upload(fileURL: fileURL, callback: uploadCallBack)
-    }
-    
     // MARK: - Upload From AppDelegate
     
     func uploadFromAppDelegate(url: URL) {
@@ -508,6 +359,145 @@ class BoxViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             BoxManager.sharedInstance.saveFiles()
             tableView.reloadData()
+        }
+    }
+    
+}
+
+extension BoxViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        noFileImageView.isHidden = files.count > 0
+        return files.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0001
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BoxViewCell
+        cell.icon.image = FileRecognizer.getFileIcon(fileName: files[indexPath.row].name)
+        cell.name.text = files[indexPath.row].name
+        cell.name.textColor = UIColor.black
+        let state = files[indexPath.row].state
+        cell.state.text = state + " (" + Date.dateToShortString(date: files[indexPath.row].operationDate) + ")"
+        switch state {
+        case "下载失败", "上传失败":
+            cell.state.textColor = UIColor.red
+            cell.indicator.isHidden = false
+            cell.progress.isHidden = true
+        case "云端到期":
+            cell.state.textColor = UIColor.red
+            cell.indicator.isHidden = false
+            cell.progress.isHidden = true
+        case "正在下载", "正在上传":
+            cell.state.textColor = UIColor.orange
+            cell.indicator.isHidden = true
+            cell.progress.current = CGFloat(files[indexPath.row].progress)
+            cell.progress.isHidden = false
+        case "已下载", "已上传":
+            cell.state.textColor = BoxColor.green
+            cell.indicator.isHidden = false
+            cell.progress.isHidden = true
+        default:
+            cell.state.text = "error"
+            cell.state.textColor = UIColor.purple
+            cell.indicator.isHidden = false
+            cell.progress.isHidden = true
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch files[indexPath.row].state {
+        case "下载失败", "上传失败", "正在下载", "正在上传":
+            break
+        default:
+            performSegue(withIdentifier: "showFilePreview", sender: files[indexPath.row])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            BoxManager.sharedInstance.removeFile(file: files[indexPath.row])
+            files = BoxManager.sharedInstance.allFiles
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+}
+
+extension BoxViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        if picker.navigationItem.prompt == "Upload from PhotoLibrary" || picker.navigationItem.prompt == "Upload from Camera" {
+            let file = BoxManager.sharedInstance.newFile()
+            file.name = BoxManager.sharedInstance.createRandomFileName(prefix: "Pic", suffix: "png")
+            file.state = "正在上传"
+            let data = UIImagePNGRepresentation(image)!
+            let fileURL = BoxManager.sharedInstance.getFileURL(file: file)
+            FileManager.default.createFile(atPath: fileURL.path, contents: data, attributes: nil)
+            BoxManager.sharedInstance.saveFiles()
+            self.files = BoxManager.sharedInstance.allFiles
+            let indexPath = IndexPath(row: self.files.count - 1, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .bottom)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            BoxAPI.sharedInstance.upload(fileURL: fileURL, callback: uploadCallBack)
+        }
+    }
+    
+}
+
+extension BoxViewController: UIDocumentPickerDelegate {
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        let file = BoxManager.sharedInstance.newFile()
+        file.name = "\(url.path.components(separatedBy: "/").last!)"
+        file.state = "正在上传"
+        let fileURL = BoxManager.sharedInstance.getFileURL(file: file)
+        try! FileManager.default.moveItem(at: url, to: fileURL)
+        BoxManager.sharedInstance.saveFiles()
+        self.files = BoxManager.sharedInstance.allFiles
+        let indexPath = IndexPath(row: self.files.count - 1, section: 0)
+        self.tableView.insertRows(at: [indexPath], with: .bottom)
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        BoxAPI.sharedInstance.upload(fileURL: fileURL, callback: uploadCallBack)
+    }
+    
+}
+
+extension BoxViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldChanged(textField: UITextField) {
+        if textField.tag == -1 {
+            let alertController = presentedViewController as! UIAlertController
+            let okAction = alertController.actions.last! as UIAlertAction
+            okAction.isEnabled = !textField.text!.isEmpty
         }
     }
     

@@ -32,7 +32,7 @@
 		2697B9DD1E752A2A00ECE931 /* Box.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9DA1E752A2A00ECE931 /* Box.xcdatamodeld */; };
 		2697B9DE1E752A2A00ECE931 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9DC1E752A2A00ECE931 /* File.swift */; };
 		2697B9E31E752A3A00ECE931 /* BoxAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E01E752A3A00ECE931 /* BoxAPI.swift */; };
-		2697B9E41E752A3A00ECE931 /* BoxDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E11E752A3A00ECE931 /* BoxDate.swift */; };
+		2697B9E41E752A3A00ECE931 /* Date+Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E11E752A3A00ECE931 /* Date+Box.swift */; };
 		2697B9E51E752A3A00ECE931 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E21E752A3A00ECE931 /* BoxManager.swift */; };
 		2697B9E71E752A6A00ECE931 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2697B9E61E752A6A00ECE931 /* ZipArchive.framework */; };
 		2697B9EF1E752C3A00ECE931 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9EE1E752C3A00ECE931 /* ShareViewController.swift */; };
@@ -249,7 +249,7 @@
 		2697B9DB1E752A2A00ECE931 /* Box.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Box.xcdatamodel; sourceTree = "<group>"; };
 		2697B9DC1E752A2A00ECE931 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = BoxModel/File.swift; sourceTree = "<group>"; };
 		2697B9E01E752A3A00ECE931 /* BoxAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxAPI.swift; sourceTree = "<group>"; };
-		2697B9E11E752A3A00ECE931 /* BoxDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxDate.swift; sourceTree = "<group>"; };
+		2697B9E11E752A3A00ECE931 /* Date+Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Box.swift"; sourceTree = "<group>"; };
 		2697B9E21E752A3A00ECE931 /* BoxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		2697B9E61E752A6A00ECE931 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
 		2697B9EC1E752C3900ECE931 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -534,8 +534,8 @@
 		2697B9C21E7529FB00ECE931 /* DropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
-				2697B9C31E7529FB00ECE931 /* DropDownMenuCell.swift */,
 				2697B9C51E7529FB00ECE931 /* DropDownMenuView.swift */,
+				2697B9C31E7529FB00ECE931 /* DropDownMenuCell.swift */,
 				2697B9C41E7529FB00ECE931 /* DropDownMenuCell.xib */,
 			);
 			path = DropDownMenu;
@@ -573,8 +573,8 @@
 			isa = PBXGroup;
 			children = (
 				2697B9E01E752A3A00ECE931 /* BoxAPI.swift */,
-				2697B9E11E752A3A00ECE931 /* BoxDate.swift */,
 				2697B9E21E752A3A00ECE931 /* BoxManager.swift */,
+				2697B9E11E752A3A00ECE931 /* Date+Box.swift */,
 			);
 			path = Box;
 			sourceTree = "<group>";
@@ -1287,7 +1287,7 @@
 				9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */,
 				9D129CBA1D32539F00A865DF /* SchoolBus.swift in Sources */,
 				9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */,
-				2697B9E41E752A3A00ECE931 /* BoxDate.swift in Sources */,
+				2697B9E41E752A3A00ECE931 /* Date+Box.swift in Sources */,
 				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
 				9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */,
 				9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */,
@@ -1535,13 +1535,13 @@
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1553,12 +1553,12 @@
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

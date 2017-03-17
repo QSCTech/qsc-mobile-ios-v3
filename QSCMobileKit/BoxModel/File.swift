@@ -20,5 +20,5 @@ public class File: NSManagedObject {
     @NSManaged public var operationDate: Date
     @NSManaged public var state: String
     @NSManaged public var progress: NSNumber
-   
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class QRCodeScannerViewController: UIViewController {
     
     var callback: ((String) -> ())!
 
@@ -85,7 +85,7 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
     }
 
     func backButtonTapped(button: UIButton) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     func torchButtonTapped(button: UIButton) {
@@ -109,19 +109,23 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
     }
     
     func qrcodeScannerViewCallBack(qrcode: String) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         if callback != nil {
             callback(qrcode)
         }
     }
     
+}
+
+extension QRCodeScannerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         scanView.start()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         let ciImage = CIImage(image: image)!
@@ -131,13 +135,13 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
         if features.count > 0 {
             let feature = features[0] as! CIQRCodeFeature
             let qrcode = feature.messageString!
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
             if callback != nil {
                 callback(qrcode)
             }
         } else {
             let alert = UIAlertController(title: "未读取到二维码", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "好", style: .default, handler: nil)
+            let action = UIAlertAction(title: "好", style: .default)
             alert.addAction(action)
             present(alert, animated: true)
             scanView.start()

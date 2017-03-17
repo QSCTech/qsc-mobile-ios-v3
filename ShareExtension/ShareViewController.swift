@@ -90,7 +90,7 @@ class ShareViewController: UIViewController {
                 }
                 alertController.addAction(settingAction)
                 alertController.addAction(okAction)
-                present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true)
             default:
                 break
             }
@@ -114,7 +114,7 @@ class ShareViewController: UIViewController {
     // MARK: - Extension Context
     
     func completeRequest() {
-        extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        extensionContext!.completeRequest(returningItems: [])
     }
     
     func cancelRequest(error: Error) {

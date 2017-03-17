@@ -35,14 +35,13 @@ class UploadSettingsViewController: UIViewController, UITextFieldDelegate {
             performSegue(withIdentifier: "unwindToShare", sender: nil)
         } else {
             let alertController = UIAlertController(title: "Box", message: "检测到上传设定变化且尚未提交，是否仍要取消？", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "是", style: .destructive, handler: {
-                action in
+            let okAction = UIAlertAction(title: "是", style: .destructive) { action in
                 self.performSegue(withIdentifier: "unwindToShare", sender: nil)
-            })
-            let cancelAction = UIAlertAction(title: "否", style: .default, handler: nil)
+            }
+            let cancelAction = UIAlertAction(title: "否", style: .default)
             alertController.addAction(cancelAction)
             alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true)
         }
     }
     

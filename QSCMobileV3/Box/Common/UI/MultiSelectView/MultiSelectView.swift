@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MultiSelectView: UIView, UITableViewDelegate, UITableViewDataSource {
+class MultiSelectView: UIView {
     
     var callBack:(([Int]) -> ())!
     
-    private var items: [[String: String]] = []
+    var items: [[String: String]] = []
     let itemHeight: CGFloat = 44
     
     var containerView: UIView!
@@ -163,6 +163,35 @@ class MultiSelectView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
     }
     
+    func setItems(items: [[String: String]]) {
+        self.items = items
+        tableView.reloadData()
+    }
+    
+    func doneButtonTapped(button: UIButton) {
+        isHidden = true
+        var multiSelect: [Int] = []
+        for (index, item) in items.enumerated() {
+            if item["select"] == "true" {
+                multiSelect.append(index)
+            }
+        }
+        if callBack != nil {
+            callBack(multiSelect)
+        }
+    }
+    
+    func cancelButtonTapped(button: UIButton) {
+        isHidden = true
+        if callBack != nil {
+            callBack([])
+        }
+    }
+    
+}
+
+extension MultiSelectView: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return itemHeight
     }
@@ -191,31 +220,6 @@ class MultiSelectView: UIView, UITableViewDelegate, UITableViewDataSource {
             items[indexPath.row]["select"] = "true"
         }
         tableView.reloadData()
-    }
-    
-    func setItems(items: [[String: String]]) {
-        self.items = items
-        tableView.reloadData()
-    }
-    
-    func doneButtonTapped(button: UIButton) {
-        isHidden = true
-        var multiSelect: [Int] = []
-        for (index, item) in items.enumerated() {
-            if item["select"] == "true" {
-                multiSelect.append(index)
-            }
-        }
-        if callBack != nil {
-            callBack(multiSelect)
-        }
-    }
-    
-    func cancelButtonTapped(button: UIButton) {
-        isHidden = true
-        if callBack != nil {
-            callBack([])
-        }
     }
     
 }

@@ -73,7 +73,7 @@ class FileDetailsViewController: UITableViewController {
         } else {
             alert = UIAlertController(title: "Box", message: "二维码保存失败", preferredStyle: .alert)
         }
-        let action = UIAlertAction(title: "好", style: .default, handler: nil)
+        let action = UIAlertAction(title: "好", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
     }
