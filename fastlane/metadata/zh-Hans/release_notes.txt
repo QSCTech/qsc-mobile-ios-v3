@@ -1,4 +1,4 @@
-Build 30023
+Build 30024
 
-- 新增 Box 云优盘
-- 支持使用 Share Extension 上传到 Box
+- 用户界面细节调整
+- 修复了一些问题
