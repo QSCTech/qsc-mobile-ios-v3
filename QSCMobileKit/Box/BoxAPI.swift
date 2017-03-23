@@ -14,8 +14,10 @@ public class BoxAPI: NSObject {
     
     public static let sharedInstance = BoxAPI()
     
+    private let alamofire = alamofireManager(timeoutInterval: 10)
+    
     public func getFileInfo(code: String, callback: @escaping (String, String, Any?) -> Void) {
-        Alamofire.request("\(BoxURL)/item/issec/\(code)",method: .get).responseString {
+        alamofire.request("\(BoxURL)/item/issec/\(code)",method: .get).responseString {
             response in
             if let statuscode = response.response?.statusCode, statuscode == 200 {
                 switch response.result.value! {
@@ -47,7 +49,7 @@ public class BoxAPI: NSObject {
     }
     
     private func checkSingglePassword(code: String, password: String, callback: @escaping (String, String, Any?) -> Void) {
-        Alamofire.request("\(BoxURL)/item/get/\(code)/\(password)", method: .head)
+        alamofire.request("\(BoxURL)/item/get/\(code)/\(password)", method: .head)
             .response { response in
                 if let response = response.response {
                     if response.allHeaderFields["Content-Disposition"] != nil {
@@ -62,7 +64,7 @@ public class BoxAPI: NSObject {
     }
     
     private func checkMultiPassword(code: String, password: String, callback: @escaping (String, String, Any?) -> Void) {
-        Alamofire.request("\(BoxURL)/item/get/\(code)/\(password)/json", method: .post).responseJSON { response in
+        alamofire.request("\(BoxURL)/item/get/\(code)/\(password)/json", method: .post).responseJSON { response in
             if response.result.error != nil {
                 callback(code, "Fail", "云端私密分享码获取失败")
                 return
@@ -77,7 +79,7 @@ public class BoxAPI: NSObject {
     }
     
     public func getSinggleFileSuggestName(code: String, password: String, callback: @escaping (String, String, Any?) -> Void) {
-        Alamofire.request("\(BoxURL)/item/get/\(code)/\(password)", method: .head)
+        alamofire.request("\(BoxURL)/item/get/\(code)/\(password)", method: .head)
             .response { response in
                 if let response = response.response {
                     if response.allHeaderFields["Content-Disposition"] != nil {
@@ -92,7 +94,7 @@ public class BoxAPI: NSObject {
     }
     
     public func getMultiFiles(code: String, password: String, callback: @escaping (String, String, Any?) -> Void) {
-        Alamofire.request("\(BoxURL)/item/get/\(code)/\(password)/json", method: .post).responseJSON { response in
+        alamofire.request("\(BoxURL)/item/get/\(code)/\(password)/json", method: .post).responseJSON { response in
             if response.result.error != nil {
                 callback(code, "Fail", "多文件信息获取失败")
                 return
@@ -139,9 +141,9 @@ public class BoxAPI: NSObject {
             }
         }
     }
-
+    
     public func upload(fileURL: URL, callback: @escaping (URL, String, Any?) -> Void) {
-            Alamofire.upload(
+        Alamofire.upload(
             multipartFormData: { multipartFormData in multipartFormData.append(fileURL, withName: "file") },
             to: "\(BoxURL)/item/add_item",
             encodingCompletion: { encodingResult in
@@ -172,7 +174,7 @@ public class BoxAPI: NSObject {
                 case .failure(let error):
                     callback(fileURL, "Fail", error.localizedDescription)
                 }
-            }
+        }
         )
     }
     
@@ -188,7 +190,7 @@ public class BoxAPI: NSObject {
             parameters["jiami"] = 1
             parameters["token_sec"] = password
         }
-        let request = Alamofire.request("\(BoxURL)/item/change_item", method: .post, parameters: parameters)
+        let request = alamofire.request("\(BoxURL)/item/change_item", method: .post, parameters: parameters)
         request.responseJSON { response in
             if response.result.error != nil {
                 callback(fileURL, "Fail", "网络故障")
