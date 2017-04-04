@@ -18,6 +18,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var unknownView: UIView!
     
     var items: [[String: String]] = []
     
@@ -68,6 +69,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
             tableView.delegate = self
             tableView.isHidden = false
         } else {
+            webView.delegate = self
             webView.dataDetectorTypes = .all
             webView.scalesPageToFit = true
             webView.backgroundColor = UIColor.clear
@@ -191,6 +193,15 @@ extension FilePreviewViewController: UITableViewDataSource, UITableViewDelegate 
         vc.file = file
         vc.currentFileURL = BoxManager.sharedInstance.getUnzipURL(file: file).appendingPathComponent(items[indexPath.row]["text"]!)
         show(vc, sender: nil)
+    }
+    
+}
+
+extension FilePreviewViewController: UIWebViewDelegate {
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        webView.isHidden = true
+        unknownView.isHidden = false
     }
     
 }

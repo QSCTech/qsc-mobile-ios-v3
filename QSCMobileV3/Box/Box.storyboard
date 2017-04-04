@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5H9-Sb-ffj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5H9-Sb-ffj">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -214,19 +214,49 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GX-7V-Dba">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unknown" translatesAutoresizingMaskIntoConstraints="NO" id="W6K-td-mKY">
+                                        <rect key="frame" x="157" y="276" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="1lS-It-iLh"/>
+                                            <constraint firstAttribute="width" constant="100" id="afs-92-N64"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该文件无法预览" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-vz-BkW">
+                                        <rect key="frame" x="0.0" y="383" width="414" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="W6K-td-mKY" firstAttribute="centerY" secondItem="8GX-7V-Dba" secondAttribute="centerY" constant="-10" id="Ezw-FG-D6r"/>
+                                    <constraint firstItem="W6K-td-mKY" firstAttribute="centerX" secondItem="8GX-7V-Dba" secondAttribute="centerX" id="KpL-lk-xAa"/>
+                                    <constraint firstAttribute="trailing" secondItem="KAr-vz-BkW" secondAttribute="trailing" id="hme-xV-mcF"/>
+                                    <constraint firstItem="KAr-vz-BkW" firstAttribute="leading" secondItem="8GX-7V-Dba" secondAttribute="leading" id="tf6-kD-fpm"/>
+                                    <constraint firstItem="KAr-vz-BkW" firstAttribute="top" secondItem="W6K-td-mKY" secondAttribute="bottom" constant="7" id="yr6-nT-QMZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AEi-g2-Vmf" firstAttribute="leading" secondItem="eDe-H1-qXJ" secondAttribute="leading" id="9Wb-c7-10i"/>
                             <constraint firstItem="1XW-qz-cKc" firstAttribute="top" secondItem="ZbX-4t-AlF" secondAttribute="bottom" id="Buo-rh-2iE"/>
+                            <constraint firstItem="8GX-7V-Dba" firstAttribute="leading" secondItem="eDe-H1-qXJ" secondAttribute="leading" id="GCh-dO-oIS"/>
                             <constraint firstItem="b0W-AQ-mVD" firstAttribute="top" secondItem="ZbX-4t-AlF" secondAttribute="bottom" id="H3k-xu-Prq"/>
                             <constraint firstItem="AEi-g2-Vmf" firstAttribute="top" secondItem="ZbX-4t-AlF" secondAttribute="bottom" id="Kk4-zX-wqS"/>
                             <constraint firstItem="5we-rL-gHB" firstAttribute="top" secondItem="1XW-qz-cKc" secondAttribute="bottom" id="Qlj-Rv-Mhi"/>
+                            <constraint firstAttribute="trailing" secondItem="8GX-7V-Dba" secondAttribute="trailing" id="aJU-s2-hAw"/>
+                            <constraint firstItem="5we-rL-gHB" firstAttribute="top" secondItem="8GX-7V-Dba" secondAttribute="bottom" id="eLs-nI-Qb1"/>
                             <constraint firstItem="b0W-AQ-mVD" firstAttribute="leading" secondItem="eDe-H1-qXJ" secondAttribute="leading" id="gkK-Lz-bxM"/>
                             <constraint firstAttribute="trailing" secondItem="b0W-AQ-mVD" secondAttribute="trailing" id="jdW-sm-t6m"/>
                             <constraint firstItem="5we-rL-gHB" firstAttribute="top" secondItem="b0W-AQ-mVD" secondAttribute="bottom" id="nMS-eC-dGP"/>
                             <constraint firstItem="1XW-qz-cKc" firstAttribute="leading" secondItem="eDe-H1-qXJ" secondAttribute="leading" id="u7F-M8-rnr"/>
                             <constraint firstItem="5we-rL-gHB" firstAttribute="top" secondItem="AEi-g2-Vmf" secondAttribute="bottom" id="wjv-Sz-F1R"/>
+                            <constraint firstItem="8GX-7V-Dba" firstAttribute="top" secondItem="ZbX-4t-AlF" secondAttribute="bottom" id="yLD-F6-g6a"/>
                             <constraint firstAttribute="trailing" secondItem="1XW-qz-cKc" secondAttribute="trailing" id="yri-fT-ggV"/>
                             <constraint firstAttribute="trailing" secondItem="AEi-g2-Vmf" secondAttribute="trailing" id="zqV-b5-sdE"/>
                         </constraints>
@@ -242,13 +272,14 @@
                     <connections>
                         <outlet property="imageView" destination="1XW-qz-cKc" id="HP1-LO-ukF"/>
                         <outlet property="tableView" destination="AEi-g2-Vmf" id="Y5L-XQ-bLp"/>
+                        <outlet property="unknownView" destination="8GX-7V-Dba" id="IGk-sk-22t"/>
                         <outlet property="webView" destination="b0W-AQ-mVD" id="ri1-Qd-RM0"/>
                         <segue destination="HdE-ro-W7Z" kind="show" identifier="showFileDetails" id="TyH-SK-hQV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebu-a1-k3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="-583.3583208395803"/>
+            <point key="canvasLocation" x="1986.9565217391305" y="-583.69565217391312"/>
         </scene>
         <!--文件详情-->
         <scene sceneID="dka-47-qD9">
@@ -678,7 +709,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8sB-wo-K36" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mdv-2w-Xb8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mdv-2w-Xb8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
