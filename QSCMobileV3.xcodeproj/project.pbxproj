@@ -11,6 +11,7 @@
 		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
+		26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26518C9E1EB2560E0025FBF2 /* Apollo.framework */; };
 		2697B9B51E7529DC00ECE931 /* Box.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2697B9AE1E7529DC00ECE931 /* Box.storyboard */; };
 		2697B9B61E7529DC00ECE931 /* BoxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9AF1E7529DC00ECE931 /* BoxViewCell.swift */; };
 		2697B9B71E7529DC00ECE931 /* BoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9B01E7529DC00ECE931 /* BoxViewController.swift */; };
@@ -228,6 +229,7 @@
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		260036431E752E080048DA05 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		26518C9E1EB2560E0025FBF2 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		2697B9AE1E7529DC00ECE931 /* Box.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Box.storyboard; path = Box/Box.storyboard; sourceTree = "<group>"; };
 		2697B9AF1E7529DC00ECE931 /* BoxViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxViewCell.swift; path = Box/BoxViewCell.swift; sourceTree = "<group>"; };
 		2697B9B01E7529DC00ECE931 /* BoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxViewController.swift; path = Box/BoxViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D9540BE1E754D5E002495F9 /* ZipArchive.framework in Frameworks */,
 				9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */,
+				26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
 				9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
@@ -902,6 +905,7 @@
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				2697B9E61E752A6A00ECE931 /* ZipArchive.framework */,
 				9D608D991E65F678005A631E /* EAIntroView.framework */,
+				26518C9E1EB2560E0025FBF2 /* Apollo.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
@@ -1177,6 +1181,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CurriculaTable.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
