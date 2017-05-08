@@ -10,7 +10,7 @@ import UIKit
 
 class QueryTableViewCell: UITableViewCell {
     
-    let contentSize = CGSize(width: 375, height: 80)
+    let contentSize = CGSize(width: UIScreen.main.bounds.width, height: 80)
     
     var scrollView: UIScrollView!
     var collectionView: UICollectionView!
@@ -20,6 +20,7 @@ class QueryTableViewCell: UITableViewCell {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 60, height: 80)
+        layout.minimumInteritemSpacing = (UIScreen.main.bounds.width - 400) / 4 > 0 ? (UIScreen.main.bounds.width - 400) / 4 : 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clear
