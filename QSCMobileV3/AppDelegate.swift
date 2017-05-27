@@ -60,18 +60,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setMinimumSize(CGSize(width: 100, height: 100))
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         
+        introduceNewVersion()
+        
+        return true
+    }
+    
+    func introduceNewVersion() {
+        var introPages = [EAIntroPage]()
+        
         let Build30020Key = "Build30020"
         if groupDefaults.object(forKey: Build30020Key) == nil {
-            let view = window!.rootViewController!.view!
             let introPage = EAIntroPage()
             introPage.bgImage = UIImage(named: "TodayWidget")
-            let introView = EAIntroView(frame: view.bounds, andPages: [introPage])
-            introView?.skipButtonY = view.bounds.height - 20
-            introView?.show(in: view)
+            introPages.append(introPage)
             groupDefaults.set(true, forKey: Build30020Key)
         }
         
-        return true
+        let Build30025Key = "Build30025"
+        if groupDefaults.object(forKey: Build30025Key) == nil {
+            var introPage = EAIntroPage()
+            introPage.bgImage = UIImage(named: "QSCBox")
+            introPages.append(introPage)
+            introPage = EAIntroPage()
+            introPage.bgImage = UIImage(named: "ShareExtension")
+            introPages.append(introPage)
+            groupDefaults.set(true, forKey: Build30025Key)
+        }
+        
+        if !introPages.isEmpty {
+            let view = window!.rootViewController!.view!
+            let introView = EAIntroView(frame: view.bounds, andPages: introPages)
+            introView?.skipButtonY = view.bounds.height - 20
+            introView?.show(in: view)
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
