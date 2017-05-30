@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import QuickLook
 import QSCMobileKit
 
 class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var file: File!
     var currentFileURL: URL!
+    var currentFileName: String!
     
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var imageView: UIImageView!
@@ -30,7 +30,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentFileName = currentFileURL.path.components(separatedBy: "/").last!
+        currentFileName = currentFileURL.path.components(separatedBy: "/").last!
         
         navigationItem.title = currentFileName
         let backBarButtonItem = UIBarButtonItem(title: "返回", style: .done, target: nil, action: nil)
@@ -201,6 +201,9 @@ extension FilePreviewViewController: UITableViewDataSource, UITableViewDelegate 
 extension FilePreviewViewController: UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if FileRecognizer.getFileIconName(fileName: currentFileName) == "Video" && (error as NSError).code == 204 {
+            return
+        }
         webView.isHidden = true
         unknownView.isHidden = false
     }
