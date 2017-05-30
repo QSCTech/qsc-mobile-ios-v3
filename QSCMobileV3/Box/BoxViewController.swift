@@ -16,6 +16,7 @@ class BoxViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noFileImageView: UIImageView!
     @IBOutlet weak var downloadBarButton: UIBarButtonItem!
+    @IBOutlet weak var uploadButton: UIButton!
     
     var downloadDropDownMenu: DropDownMenuView!
     var downloadMultiSelectView: MultiSelectView!
@@ -24,8 +25,6 @@ class BoxViewController: UIViewController {
         super.viewDidLoad()
         
         downloadBarButton.image = UIImage(named: "Download")?.withRenderingMode(.alwaysOriginal)
-        downloadDropDownMenu = DropDownMenuView(items: [["text": "输入提取码", "icon": "InputCode"], ["text": "扫一扫", "icon": "ScanQRCode"]], superView: view, width: 122, pointerX: view.frame.width - 37.5, pointerY: 0, menuX: view.frame.width - 130, shadow: true)
-        downloadDropDownMenu.callBack = downloadDropDownMenuCallBack
         downloadMultiSelectView = MultiSelectView(superView: view, title: "选择文件",width: 250, height: 218, offsetY: -10, shadow: true)
         
         files = BoxManager.sharedInstance.allFiles
@@ -47,7 +46,18 @@ class BoxViewController: UIViewController {
     }
     
     @IBAction func downloadBarButtonTapped(_ sender: UIBarButtonItem) {
-        downloadDropDownMenu.isHidden = !downloadDropDownMenu.isHidden
+        if downloadDropDownMenu != nil && downloadDropDownMenu.isHidden == true {
+            downloadDropDownMenu.removeFromSuperview()
+            downloadDropDownMenu = nil
+        }
+        if downloadDropDownMenu == nil {
+            downloadDropDownMenu = DropDownMenuView(items: [["text": "输入提取码", "icon": "InputCode"], ["text": "扫一扫", "icon": "ScanQRCode"]], superView: view, width: 122, pointerX: view.frame.width - 37.5, pointerY: 0, menuX: view.frame.width - 130, shadow: true)
+            downloadDropDownMenu.callBack = downloadDropDownMenuCallBack
+            downloadDropDownMenu.isHidden = false
+        } else {
+            downloadDropDownMenu.removeFromSuperview()
+            downloadDropDownMenu = nil
+        }
     }
     
     func downloadDropDownMenuCallBack(index: Int) {
@@ -96,7 +106,7 @@ class BoxViewController: UIViewController {
     }
     
     @IBAction func uploadButtonTapped() {
-        let uploadalertController = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
+        let uploadalertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let canceluploadAction = UIAlertAction(title: "取消", style: .cancel)
         uploadalertController.addAction(canceluploadAction)
         let cameraAction = UIAlertAction(title: "拍照", style: .default) { action in
@@ -128,6 +138,11 @@ class BoxViewController: UIViewController {
             }
         }
         uploadalertController.addAction(iCloudDriveAction)
+        if let popoverPresentationController = uploadalertController.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .down
+            popoverPresentationController.sourceView = uploadButton
+            popoverPresentationController.sourceRect = uploadButton.bounds
+        }
         present(uploadalertController,animated: true, completion:nil)
     }
     

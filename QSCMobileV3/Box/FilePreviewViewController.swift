@@ -23,6 +23,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     var items: [[String: String]] = []
     
     var documentInteractionController: UIDocumentInteractionController!
+    var openWithOtherAppsBarButtonItem: UIBarButtonItem!
     
     var hidden = false
     
@@ -39,7 +40,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         let flexibleSpaceBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let openWithOtherAppsBarButtonItem = UIBarButtonItem(title: "用其它应用打开", style: .plain, target: self, action: #selector(openWithOtherAppsBarButtonTapped(_:)))
+        openWithOtherAppsBarButtonItem = UIBarButtonItem(title: "用其它应用打开", style: .plain, target: self, action: #selector(openWithOtherAppsBarButtonTapped(_:)))
         setToolbarItems([flexibleSpaceBarButtonItem, openWithOtherAppsBarButtonItem, flexibleSpaceBarButtonItem], animated: false)
         navigationController!.toolbar.tintColor = navigationController!.navigationBar.tintColor
         
@@ -128,7 +129,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func openWithOtherAppsBarButtonTapped(_ sender: UIBarButtonItem) {
-        documentInteractionController.presentOptionsMenu(from: view.frame, in: view, animated: true)
+        documentInteractionController.presentOptionsMenu(from: openWithOtherAppsBarButtonItem, animated: true)
     }
     
     // MARK: - Prepare For Segue
