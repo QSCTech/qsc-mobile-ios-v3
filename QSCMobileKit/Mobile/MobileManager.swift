@@ -116,7 +116,17 @@ public class MobileManager: NSObject {
         for course in courses {
             for timePlace in course.timePlaces! {
                 let timePlace = timePlace as! TimePlace
-                if timePlace.weekday!.intValue == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
+                var qualified = false
+                if let specials = calendarManager.specialsForCourse(course: course, date: date) {
+                    for special in specials {
+                        if Calendar.current.isDate(date, inSameDayAs: special.date!) && special.weekly! == timePlace.week! {
+                            qualified = true
+                        }
+                    }
+                } else if timePlace.weekday!.intValue == weekday && timePlace.week!.matchesWeekOrdinal(weekOrdinal) {
+                    qualified = true
+                }
+                if qualified {
                     let startComponents = timePlace.periods!.startTimeForPeriods
                     dateComponents.hour = startComponents.hour
                     dateComponents.minute = startComponents.minute
@@ -135,6 +145,7 @@ public class MobileManager: NSObject {
                 }
             }
         }
+        
         return array.sorted { $0.start <= $1.start }
     }
     

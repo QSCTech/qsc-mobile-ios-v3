@@ -104,6 +104,31 @@ public class CalendarManager: NSObject {
     }
     
     /**
+     Return an array if there is a special arrangement of the crouse on the date.
+     
+     - parameter course: A course to be queried.
+     - parameter date: A date to be queried.
+     
+     - returns: An array of special arrangements of the course on the date or nil.
+     */
+    public func specialsForCourse(course: Course, date: Date) -> [Special]? {
+        var specials: [Special] = []
+        if let year = DataStore.entityForYear(date) {
+            for special in year.specials! {
+                let special = special as! Special
+                if special.code == course.code {
+                    specials.append(special)
+                }
+            }
+        }
+        if specials.isEmpty {
+            return nil
+        } else {
+            return specials
+        }
+    }
+    
+    /**
      Return the week ordinal of the specified date. We assume the first day of a week is Monday.
      
      - parameter date: A date to be queried.

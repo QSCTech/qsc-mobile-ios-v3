@@ -40,6 +40,7 @@
 		2697B9F21E752C3A00ECE931 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2697B9F01E752C3A00ECE931 /* MainInterface.storyboard */; };
 		2697B9F61E752C3A00ECE931 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2697B9EC1E752C3900ECE931 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26BE53091E752C9F000E4E0E /* UploadSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE53081E752C9F000E4E0E /* UploadSettingsViewController.swift */; };
+		26DACE7A1EE270D900F926D4 /* Special.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DACE791EE270D900F926D4 /* Special.swift */; };
 		9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
 		9D08CF5D1D72FE9E008C1D14 /* QueryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08CF5C1D72FE9E008C1D14 /* QueryTableViewCell.swift */; };
 		9D08CF601D732B4A008C1D14 /* QueryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08CF5E1D732B4A008C1D14 /* QueryCollectionViewCell.swift */; };
@@ -259,6 +260,7 @@
 		2697B9F11E752C3A00ECE931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		2697B9F31E752C3A00ECE931 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26BE53081E752C9F000E4E0E /* UploadSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSettingsViewController.swift; sourceTree = "<group>"; };
+		26DACE791EE270D900F926D4 /* Special.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Special.swift; sourceTree = "<group>"; };
 		9D031A2F1CE180BB008F3098 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Vendor/FontAwesome.otf; sourceTree = "<group>"; };
 		9D08CF5C1D72FE9E008C1D14 /* QueryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTableViewCell.swift; sourceTree = "<group>"; };
 		9D08CF5E1D732B4A008C1D14 /* QueryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				9DD4910B1CEAE68A009F70FA /* Semester.swift */,
 				9DD491071CEAE68A009F70FA /* Holiday.swift */,
 				9DD491021CEAE68A009F70FA /* Adjustment.swift */,
+				26DACE791EE270D900F926D4 /* Special.swift */,
 				9DD491031CEAE68A009F70FA /* Bus.swift */,
 				9DD491041CEAE68A009F70FA /* BusStop.swift */,
 			);
@@ -1277,6 +1280,7 @@
 				9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */,
 				9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */,
 				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
+				26DACE7A1EE270D900F926D4 /* Special.swift in Sources */,
 				2697B9DD1E752A2A00ECE931 /* Box.xcdatamodeld in Sources */,
 				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
 				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,

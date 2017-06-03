@@ -18,4 +18,5 @@ class Year: NSManagedObject {
     @NSManaged var semesters: NSSet?
     @NSManaged var holidays: NSSet?
     @NSManaged var adjustments: NSSet?
+    @NSManaged var specials: NSSet?
 }

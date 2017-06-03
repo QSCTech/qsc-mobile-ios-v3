@@ -272,6 +272,22 @@ class DataStore: NSObject {
                 adjustment.toStart = formatter.date(from: json["toStart"].stringValue)
                 adjustment.toEnd = formatter.date(from: json["toEnd"].stringValue)
             }
+            for (_, json) in json["special"] {
+                let special = NSEntityDescription.insertNewObject(forEntityName: "Special", into: managedObjectContext) as! Special
+                special.year = year
+                
+                special.code = json["code"].stringValue
+                special.weekly = json["weekly"].stringValue
+                special.date = formatter.date(from: json["date"].stringValue)
+                
+                if special.weekly! == "odd" {
+                    special.weekly! = "单"
+                } else if special.weekly! == "even" {
+                    special.weekly! = "双"
+                } else {
+                    special.weekly! = "每周"
+                }
+            }
         }
         try! managedObjectContext.save()
     }
@@ -336,6 +352,7 @@ class DataStore: NSObject {
         DataStore.deleteEntities("Semester")
         DataStore.deleteEntities("Holiday")
         DataStore.deleteEntities("Adjustment")
+        DataStore.deleteEntities("Special")
     }
     
     /**
