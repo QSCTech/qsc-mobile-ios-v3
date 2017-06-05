@@ -219,7 +219,7 @@ class QueryViewController: UITableViewController {
             case 0:
                 let username = accountManager.currentAccountForJwbinfosys!.percentEncoded
                 let password = accountManager.passwordForJwbinfosys(username)!.percentEncoded
-                request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2BRGE82%2BDpWCQpVjFtEpHZ1UJYg8w%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
+                request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
             case 1:
                 let username = accountManager.accountForZjuwlan!.percentEncoded
                 let password = accountManager.passwordForZjuwlan!.percentEncoded
