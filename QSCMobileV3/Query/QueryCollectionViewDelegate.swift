@@ -13,6 +13,7 @@ class QueryCollectionViewDelegate: NSObject {
     
     var viewController: UIViewController!
     
+    static let number = 5
     let titles = [
         "校车",
         "课表",
@@ -40,7 +41,7 @@ class QueryCollectionViewDelegate: NSObject {
 extension QueryCollectionViewDelegate: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles.count
+        return QueryCollectionViewDelegate.number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
