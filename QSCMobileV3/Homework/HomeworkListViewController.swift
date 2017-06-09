@@ -47,7 +47,7 @@ class HomeworkListViewController: UITableViewController {
         let hw = homeworks[indexPath.row]
         if hw.isFinished!.boolValue {
             cell.dotView.isHidden = true
-            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue, NSBaselineOffsetAttributeName: 0])
         } else {
             cell.dotView.isHidden = false
             cell.nameLabel.text = hw.name
