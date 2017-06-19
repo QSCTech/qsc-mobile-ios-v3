@@ -115,10 +115,12 @@ extension ScoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Score") as! ScoreCell
         let score = selectedScores[indexPath.row]
-        cell.nameLabel.text = score.name!
-        cell.creditLabel.text = "\(score.credit!) 学分"
-        cell.scoreLabel.text = String(format: "%.1f / %@", score.gradePoint!.floatValue, score.score!)
-        cell.gauge.rate = CGFloat(score.gradePoint!)
+        if score.managedObjectContext != nil {
+            cell.nameLabel.text = score.name!
+            cell.creditLabel.text = "\(score.credit!) 学分"
+            cell.scoreLabel.text = String(format: "%.1f / %@", score.gradePoint!.floatValue, score.score!)
+            cell.gauge.rate = CGFloat(score.gradePoint!)
+        }
         cell.backgroundColor = UIColor.clear
         return cell
     }
