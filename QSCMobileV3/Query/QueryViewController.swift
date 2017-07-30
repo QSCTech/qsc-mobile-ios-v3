@@ -17,9 +17,11 @@ class QueryViewController: UITableViewController {
     let collectionViewDelegate = QueryCollectionViewDelegate()
     
     enum Tools: Int {
-        case score = 0, query, box, login, website, webpage
+        case score = 0, query, qsc, login, website, webpage
         static let count = 6
     }
+    
+    let qsc = ["Box 云优盘", "水朝夕"]
     
     let login: [[String: String]] = [
         [
@@ -105,8 +107,8 @@ class QueryViewController: UITableViewController {
             return 1
         case .query:
             return 1
-        case .box:
-            return 1
+        case .qsc:
+            return qsc.count
         case .login:
             return login.count
         case .website:
@@ -174,8 +176,8 @@ class QueryViewController: UITableViewController {
             cell.collectionView.dataSource = collectionViewDelegate
             cell.selectionStyle = .none
             return cell
-        case .box:
-            cell.textLabel!.text = "Box 云优盘"
+        case .qsc:
+            cell.textLabel!.text = qsc[indexPath.row]
         case .login:
             cell.textLabel!.text = login[indexPath.row]["name"]
         case .website:
@@ -197,10 +199,18 @@ class QueryViewController: UITableViewController {
                 let vc = ScoreViewController()
                 present(vc, animated: true)
             }
-        case .box:
-            let storyboard = UIStoryboard(name: "Box", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController()!
-            show(vc, sender: nil)
+        case .qsc:
+            switch indexPath.row {
+            case 0:
+                let storyboard = UIStoryboard(name: "Box", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController()!
+                show(vc, sender: nil)
+            case 1:
+                let svc = SFSafariViewController(url: URL(string: TideURL)!)
+                present(svc, animated: true)
+            default:
+                break
+            }
         case .login:
             if indexPath.row == 0 && accountManager.currentAccountForJwbinfosys == nil {
                 let vc = JwbinfosysLoginViewController()
