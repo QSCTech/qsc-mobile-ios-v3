@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import StoreKit
 import SVProgressHUD
 import DeviceKit
 import QSCMobileKit
@@ -142,7 +143,7 @@ class PreferenceViewController: UITableViewController {
             case 1:
                 cell.textLabel!.text = "用户反馈"
             case 2:
-                cell.textLabel!.text = "去评分"
+                cell.textLabel!.text = "给应用评分"
             default:
                 return UITableViewCell()
             }
@@ -201,8 +202,12 @@ class PreferenceViewController: UITableViewController {
                     present(alert, animated: true)
                 }
             case 2:
-                let appLink = "https://itunes.apple.com/cn/app/id583334920"
-                UIApplication.shared.openURL(URL(string: appLink)!)
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                } else {
+                    let appLink = "https://itunes.apple.com/cn/app/id583334920"
+                    UIApplication.shared.openURL(URL(string: appLink)!)
+                }
             default:
                 break
             }
