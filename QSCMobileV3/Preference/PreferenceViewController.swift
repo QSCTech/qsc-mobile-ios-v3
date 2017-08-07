@@ -183,6 +183,9 @@ class PreferenceViewController: UITableViewController {
                 let vc = AboutViewController()
                 vc.hidesBottomBarWhenPushed = true
                 show(vc, sender: nil)
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                }
             case 1:
                 if MFMailComposeViewController.canSendMail() {
                     let mcvc = MFMailComposeViewController()
@@ -202,12 +205,10 @@ class PreferenceViewController: UITableViewController {
                     present(alert, animated: true)
                 }
             case 2:
-                if #available(iOS 10.3, *) {
-                    SKStoreReviewController.requestReview()
-                } else {
-                    let appLink = "https://itunes.apple.com/cn/app/id583334920"
-                    UIApplication.shared.openURL(URL(string: appLink)!)
-                }
+                let vc = SKStoreProductViewController()
+                vc.delegate = self
+                vc.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: 583334920])
+                present(vc, animated: true)
             default:
                 break
             }
@@ -275,6 +276,14 @@ extension PreferenceViewController: MFMailComposeViewControllerDelegate {
             alert.addAction(action)
             present(alert, animated: true)
         }
+    }
+    
+}
+
+extension PreferenceViewController: SKStoreProductViewControllerDelegate {
+    
+    func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
+        dismiss(animated: true)
     }
     
 }
