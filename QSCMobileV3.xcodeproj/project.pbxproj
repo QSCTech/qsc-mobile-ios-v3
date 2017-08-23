@@ -229,7 +229,6 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
-		260036431E752E080048DA05 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		26518C9E1EB2560E0025FBF2 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		2697B9AE1E7529DC00ECE931 /* Box.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Box.storyboard; path = Box/Box.storyboard; sourceTree = "<group>"; };
 		2697B9AF1E7529DC00ECE931 /* BoxViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxViewCell.swift; path = Box/BoxViewCell.swift; sourceTree = "<group>"; };
@@ -913,7 +912,6 @@
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
 				AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */,
-				260036431E752E080048DA05 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
