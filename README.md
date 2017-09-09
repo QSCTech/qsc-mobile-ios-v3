@@ -1,5 +1,7 @@
 # 求是潮手机站 V3 for iOS
 
+![Logo](QSCMobileV3/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png)
+
 ## Tech
 
 - IDE：Xcode 8
