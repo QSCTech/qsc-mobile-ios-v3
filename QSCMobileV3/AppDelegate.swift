@@ -9,7 +9,6 @@
 import UIKit
 import SVProgressHUD
 import EAIntroView
-import Alamofire
 import QSCMobileKit
 
 let UMengAppKey = "572381bf67e58e07a7005095"
@@ -22,9 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var allowsRotation = false
-    
-    let dynamicLaunchImageURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroupIdentifier)!.appendingPathComponent("dynamicLaunchImage.png")
-    var dynamicLaunchImageView: UIImageView!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         MobClick.start(withAppkey: UMengAppKey)
@@ -64,42 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setMinimumSize(CGSize(width: 100, height: 100))
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         
-        showDynamicLaunchImage()
-        Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateDynamicLaunchImage), userInfo: nil, repeats: false)
-        
         introduceNewVersion()
         
         return true
-    }
-    
-    func showDynamicLaunchImage() {
-        if !FileManager.default.fileExists(atPath: dynamicLaunchImageURL.path) {
-            return
-        }
-        let view = window!.rootViewController!.view!
-        let image = UIImage(contentsOfFile: dynamicLaunchImageURL.path)
-        dynamicLaunchImageView = UIImageView(image: image)
-        dynamicLaunchImageView.frame = view.frame
-        view.addSubview(dynamicLaunchImageView)
-        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(removeDynamicLaunchImage), userInfo: nil, repeats: false)
-    }
-    
-    func removeDynamicLaunchImage() {
-        dynamicLaunchImageView.removeFromSuperview()
-    }
-    
-    func updateDynamicLaunchImage() {
-        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-            return (self.dynamicLaunchImageURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-        let request = Alamofire.download("https://static.zjuqsc.com/ios/img.png", to: destination)
-        request.responseData { response in
-            if response.result.error != nil {
-                do {
-                    try FileManager.default.removeItem(at: self.dynamicLaunchImageURL)
-                } catch { }
-            }
-        }
     }
     
     func introduceNewVersion() {
