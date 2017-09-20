@@ -17,8 +17,8 @@ public class SchoolBus: NSObject {
             for stop in fromStop.bus!.busStops! {
                 let stop = stop as! BusStop
                 if stop.index! > fromStop.index! && stop.campus == to {
-                    if (isWeekend && fromStop.bus!.serviceDays!.contains("周一")) ||
-                       (!isWeekend && fromStop.bus!.serviceDays!.contains("周六")) {
+                    if (isWeekend && !fromStop.bus!.serviceDays!.contains("周六")) ||
+                       (!isWeekend && !fromStop.bus!.serviceDays!.contains("周一")) {
                         continue
                     }
                     stops.append((fromStop, stop))
