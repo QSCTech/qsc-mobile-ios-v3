@@ -116,7 +116,7 @@ class CalendarViewController: UIViewController {
     func updateForSelectedDate() {
         _ = calculatedColorsForDate(selectedDate)
         tableView.reloadData()
-        calendarView.contentController.refreshPresentedMonth()
+        calendarView.contentController?.refreshPresentedMonth()
         weekLabel.text = weekName
         updateDateLabel()
     }
