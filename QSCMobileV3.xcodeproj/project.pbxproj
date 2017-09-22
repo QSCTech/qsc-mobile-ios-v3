@@ -8,16 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
-		04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26518C9E1EB2560E0025FBF2 /* Apollo.framework */; };
-		2697B9B51E7529DC00ECE931 /* Box.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2697B9AE1E7529DC00ECE931 /* Box.storyboard */; };
-		2697B9B61E7529DC00ECE931 /* BoxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9AF1E7529DC00ECE931 /* BoxViewCell.swift */; };
-		2697B9B71E7529DC00ECE931 /* BoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9B01E7529DC00ECE931 /* BoxViewController.swift */; };
-		2697B9B91E7529DC00ECE931 /* FileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9B21E7529DC00ECE931 /* FileDetailsViewController.swift */; };
-		2697B9BA1E7529DC00ECE931 /* FilePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9B31E7529DC00ECE931 /* FilePreviewViewController.swift */; };
-		2697B9BB1E7529DC00ECE931 /* UploadSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9B41E7529DC00ECE931 /* UploadSettingsViewController.swift */; };
 		2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BD1E7529FB00ECE931 /* BoxColor.swift */; };
 		2697B9CE1E7529FB00ECE931 /* FileRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */; };
 		2697B9CF1E7529FB00ECE931 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */; };
@@ -30,7 +23,6 @@
 		2697B9D61E7529FB00ECE931 /* MultiSelectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2697B9C91E7529FB00ECE931 /* MultiSelectViewCell.xib */; };
 		2697B9D71E7529FB00ECE931 /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9CB1E7529FB00ECE931 /* QRCodeScannerView.swift */; };
 		2697B9D81E7529FB00ECE931 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9CC1E7529FB00ECE931 /* QRCodeScannerViewController.swift */; };
-		2697B9DD1E752A2A00ECE931 /* Box.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9DA1E752A2A00ECE931 /* Box.xcdatamodeld */; };
 		2697B9DE1E752A2A00ECE931 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9DC1E752A2A00ECE931 /* File.swift */; };
 		2697B9E31E752A3A00ECE931 /* BoxAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E01E752A3A00ECE931 /* BoxAPI.swift */; };
 		2697B9E41E752A3A00ECE931 /* Date+Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E11E752A3A00ECE931 /* Date+Box.swift */; };
@@ -49,7 +41,6 @@
 		9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */; };
 		9D113F8C1DA53ED1005E607C /* OverseaScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D113F8A1DA53ED1005E607C /* OverseaScore.swift */; };
 		9D113F8E1DA54B8F005E607C /* CourseNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D113F8D1DA54B8F005E607C /* CourseNotesCell.swift */; };
-		9D129CBA1D32539F00A865DF /* SchoolBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D129CB91D32539F00A865DF /* SchoolBus.swift */; };
 		9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387A1D5D937800782E93 /* EventDetail.storyboard */; };
 		9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D17387C1D5D939D00782E93 /* EventEdit.storyboard */; };
 		9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17387E1D5D93A500782E93 /* EventEditViewController.swift */; };
@@ -60,9 +51,6 @@
 		9D1CC37A1DC73768004DA58E /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D1CC3781DC73768004DA58E /* AboutViewController.xib */; };
 		9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */; };
 		9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */; };
-		9D3139631CE7849800CD7DAD /* String+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */; };
-		9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */; };
-		9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */; };
 		9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */; };
 		9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */; };
 		9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396D1CE789BF00CD7DAD /* WebViewController.swift */; };
@@ -71,8 +59,6 @@
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
 		9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* Copyright.html */; };
-		9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */; };
-		9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */; };
 		9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */; };
 		9D5A01391DA0D43500CF5469 /* HomeworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */; };
 		9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */; };
@@ -86,11 +72,6 @@
 		9D5A01521DA106B100CF5469 /* SemesterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */; };
 		9D5A01531DA106B100CF5469 /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */; };
 		9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D608D991E65F678005A631E /* EAIntroView.framework */; };
-		9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */; };
-		9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D4E71C1077A60012BB3F /* AccountManager.swift */; };
-		9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A895D1C0B0603008EC60B /* MobileManager.swift */; };
-		9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89611C0B11BB008EC60B /* CalendarManager.swift */; };
-		9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A89661C0C4EF7008EC60B /* DataStore.swift */; };
 		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B336D1CECC0E200C5372F /* Kingfisher.framework */; };
 		9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B337B1CF025F500C5372F /* BusViewController.swift */; };
@@ -110,7 +91,6 @@
 		9D9540BE1E754D5E002495F9 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2697B9E61E752A6A00ECE931 /* ZipArchive.framework */; };
 		9D9540BF1E754D81002495F9 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */; };
 		9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */; };
-		9DA74C051DF6C82600691A06 /* TimeInterval+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA74C041DF6C82600691A06 /* TimeInterval+Description.swift */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
 		9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */; };
@@ -120,12 +100,10 @@
 		9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475661D2D075800F4B3DF /* CourseNameCell.swift */; };
 		9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */; };
 		9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */; };
-		9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */; };
 		9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */; };
 		9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */; };
 		9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */; };
 		9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */; };
-		9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7AF1C08401D0087C31F /* APISession.swift */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
 		9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */; };
 		9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */; };
@@ -156,7 +134,29 @@
 		9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174DD1D59A2B800836575 /* DeviceKit.framework */; };
 		9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */; };
 		9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */; };
+		9DF23E9A1F76E0FD004C0BFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
+		9DF23E9B1F76E10E004C0BFD /* Box.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0F1F757AE000F1274F /* Box.storyboard */; };
+		9DF23E9C1F76E56A004C0BFD /* Box.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BE71F75798600F1274F /* Box.xcdatamodeld */; };
 		9DF612731BAA89CC004B0A8A /* QSCMobileKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9DFB7BED1F7579D300F1274F /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BEC1F7579D200F1274F /* AccountManager.swift */; };
+		9DFB7BEF1F7579EB00F1274F /* MobileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BEE1F7579EB00F1274F /* MobileManager.swift */; };
+		9DFB7BF11F7579F100F1274F /* SchoolBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BF01F7579F100F1274F /* SchoolBus.swift */; };
+		9DFB7BF61F7579F800F1274F /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BF21F7579F800F1274F /* APISession.swift */; };
+		9DFB7BF71F7579F800F1274F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BF31F7579F800F1274F /* CalendarManager.swift */; };
+		9DFB7BF81F7579F800F1274F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BF41F7579F800F1274F /* DataStore.swift */; };
+		9DFB7BFD1F757A3900F1274F /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BFA1F757A3900F1274F /* NoticeAPI.swift */; };
+		9DFB7BFE1F757A3900F1274F /* NoticeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BFB1F757A3900F1274F /* NoticeEvent.swift */; };
+		9DFB7BFF1F757A3900F1274F /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BFC1F757A3900F1274F /* NoticeManager.swift */; };
+		9DFB7C051F757A5500F1274F /* String+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C001F757A5500F1274F /* String+QSCMobileKit.swift */; };
+		9DFB7C061F757A5500F1274F /* NSDate+QSCMobileKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C011F757A5500F1274F /* NSDate+QSCMobileKit.swift */; };
+		9DFB7C071F757A5500F1274F /* NSNumber+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C021F757A5500F1274F /* NSNumber+Comparable.swift */; };
+		9DFB7C081F757A5500F1274F /* TimeInterval+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C031F757A5500F1274F /* TimeInterval+Description.swift */; };
+		9DFB7C091F757A5500F1274F /* Int+Chinese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C041F757A5500F1274F /* Int+Chinese.swift */; };
+		9DFB7C101F757AE000F1274F /* FilePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0A1F757ADF00F1274F /* FilePreviewViewController.swift */; };
+		9DFB7C111F757AE000F1274F /* BoxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0B1F757AE000F1274F /* BoxViewCell.swift */; };
+		9DFB7C121F757AE000F1274F /* BoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0C1F757AE000F1274F /* BoxViewController.swift */; };
+		9DFB7C131F757AE000F1274F /* FileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0D1F757AE000F1274F /* FileDetailsViewController.swift */; };
+		9DFB7C141F757AE000F1274F /* UploadSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0E1F757AE000F1274F /* UploadSettingsViewController.swift */; };
 		AE31A5321DC8217700A2CB33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */; };
 		AE31A5351DC8217700A2CB33 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31A5341DC8217700A2CB33 /* TodayViewController.swift */; };
 		AE31A5381DC8217700A2CB33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */; };
@@ -230,12 +230,6 @@
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		26518C9E1EB2560E0025FBF2 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
-		2697B9AE1E7529DC00ECE931 /* Box.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Box.storyboard; path = Box/Box.storyboard; sourceTree = "<group>"; };
-		2697B9AF1E7529DC00ECE931 /* BoxViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxViewCell.swift; path = Box/BoxViewCell.swift; sourceTree = "<group>"; };
-		2697B9B01E7529DC00ECE931 /* BoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxViewController.swift; path = Box/BoxViewController.swift; sourceTree = "<group>"; };
-		2697B9B21E7529DC00ECE931 /* FileDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileDetailsViewController.swift; path = Box/FileDetailsViewController.swift; sourceTree = "<group>"; };
-		2697B9B31E7529DC00ECE931 /* FilePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilePreviewViewController.swift; path = Box/FilePreviewViewController.swift; sourceTree = "<group>"; };
-		2697B9B41E7529DC00ECE931 /* UploadSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadSettingsViewController.swift; path = Box/UploadSettingsViewController.swift; sourceTree = "<group>"; };
 		2697B9BD1E7529FB00ECE931 /* BoxColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxColor.swift; sourceTree = "<group>"; };
 		2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRecognizer.swift; sourceTree = "<group>"; };
 		2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
@@ -248,8 +242,7 @@
 		2697B9C91E7529FB00ECE931 /* MultiSelectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiSelectViewCell.xib; sourceTree = "<group>"; };
 		2697B9CB1E7529FB00ECE931 /* QRCodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
 		2697B9CC1E7529FB00ECE931 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
-		2697B9DB1E752A2A00ECE931 /* Box.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Box.xcdatamodel; sourceTree = "<group>"; };
-		2697B9DC1E752A2A00ECE931 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = BoxModel/File.swift; sourceTree = "<group>"; };
+		2697B9DC1E752A2A00ECE931 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		2697B9E01E752A3A00ECE931 /* BoxAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxAPI.swift; sourceTree = "<group>"; };
 		2697B9E11E752A3A00ECE931 /* Date+Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Box.swift"; sourceTree = "<group>"; };
 		2697B9E21E752A3A00ECE931 /* BoxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
@@ -267,21 +260,17 @@
 		9D08CF641D7330CC008C1D14 /* QueryCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		9D113F8A1DA53ED1005E607C /* OverseaScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverseaScore.swift; sourceTree = "<group>"; };
-		9D113F8D1DA54B8F005E607C /* CourseNotesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseNotesCell.swift; path = CourseDetail/CourseNotesCell.swift; sourceTree = "<group>"; };
-		9D129CB91D32539F00A865DF /* SchoolBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolBus.swift; path = Mobile/SchoolBus.swift; sourceTree = "<group>"; };
-		9D17387A1D5D937800782E93 /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventDetail.storyboard; path = QSCMobileV3/EventDetail/EventDetail.storyboard; sourceTree = SOURCE_ROOT; };
-		9D17387C1D5D939D00782E93 /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventEdit.storyboard; path = QSCMobileV3/EventDetail/EventEdit.storyboard; sourceTree = SOURCE_ROOT; };
-		9D17387E1D5D93A500782E93 /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventEditViewController.swift; path = QSCMobileV3/EventDetail/EventEditViewController.swift; sourceTree = SOURCE_ROOT; };
-		9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatTypeViewController.swift; path = QSCMobileV3/EventDetail/RepeatTypeViewController.swift; sourceTree = SOURCE_ROOT; };
-		9D1B768E1D58F6380088B96E /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreCell.swift; path = Score/ScoreCell.swift; sourceTree = "<group>"; };
-		9D1B768F1D58F6380088B96E /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreCell.xib; path = Score/ScoreCell.xib; sourceTree = "<group>"; };
+		9D113F8D1DA54B8F005E607C /* CourseNotesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNotesCell.swift; sourceTree = "<group>"; };
+		9D17387A1D5D937800782E93 /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
+		9D17387C1D5D939D00782E93 /* EventEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEdit.storyboard; sourceTree = "<group>"; };
+		9D17387E1D5D93A500782E93 /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
+		9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatTypeViewController.swift; sourceTree = "<group>"; };
+		9D1B768E1D58F6380088B96E /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
+		9D1B768F1D58F6380088B96E /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
 		9D1CC3771DC73768004DA58E /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9D1CC3781DC73768004DA58E /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
-		9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreViewController.swift; path = Score/ScoreViewController.swift; sourceTree = "<group>"; };
-		9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = Score/ScoreViewController.xib; sourceTree = "<group>"; };
-		9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+QSCMobileKit.swift"; path = "Extension/String+QSCMobileKit.swift"; sourceTree = "<group>"; };
-		9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Chinese.swift"; path = "Extension/Int+Chinese.swift"; sourceTree = "<group>"; };
-		9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+Comparable.swift"; path = "Extension/NSNumber+Comparable.swift"; sourceTree = "<group>"; };
+		9D265DEC1D4C8D0C007F6D56 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		9D265DED1D4C8D0C007F6D56 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreViewController.xib; sourceTree = "<group>"; };
 		9D31396B1CE789BF00CD7DAD /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserViewController.xib; sourceTree = "<group>"; };
 		9D31396D1CE789BF00CD7DAD /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -290,14 +279,12 @@
 		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
 		9D3139841CE78C7500CD7DAD /* Copyright.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Copyright.html; sourceTree = "<group>"; };
-		9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeManager.swift; path = Notice/NoticeManager.swift; sourceTree = "<group>"; };
-		9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeEvent.swift; path = Notice/NoticeEvent.swift; sourceTree = "<group>"; };
-		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanConnection.swift; path = ZJUWLAN/ZjuwlanConnection.swift; sourceTree = "<group>"; };
-		9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkCell.swift; path = Homework/HomeworkCell.swift; sourceTree = "<group>"; };
-		9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeworkCell.xib; path = Homework/HomeworkCell.xib; sourceTree = "<group>"; };
-		9D5A013D1DA0D99E00CF5469 /* Homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Homework.storyboard; path = Homework/Homework.storyboard; sourceTree = "<group>"; };
-		9D5A01411DA0DDD700CF5469 /* HomeworkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkListViewController.swift; path = Homework/HomeworkListViewController.swift; sourceTree = "<group>"; };
-		9D5A01421DA0DDD700CF5469 /* HomeworkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeworkListViewController.xib; path = Homework/HomeworkListViewController.xib; sourceTree = "<group>"; };
+		9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZjuwlanConnection.swift; sourceTree = "<group>"; };
+		9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkCell.swift; sourceTree = "<group>"; };
+		9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeworkCell.xib; sourceTree = "<group>"; };
+		9D5A013D1DA0D99E00CF5469 /* Homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Homework.storyboard; sourceTree = "<group>"; };
+		9D5A01411DA0DDD700CF5469 /* HomeworkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkListViewController.swift; sourceTree = "<group>"; };
+		9D5A01421DA0DDD700CF5469 /* HomeworkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeworkListViewController.xib; sourceTree = "<group>"; };
 		9D5A01481DA106B100CF5469 /* CourseListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListCell.swift; sourceTree = "<group>"; };
 		9D5A01491DA106B100CF5469 /* CourseListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListViewController.swift; sourceTree = "<group>"; };
 		9D5A014A1DA106B100CF5469 /* ExamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamListViewController.swift; sourceTree = "<group>"; };
@@ -305,20 +292,15 @@
 		9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListCell.swift; sourceTree = "<group>"; };
 		9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
 		9D608D991E65F678005A631E /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
-		9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeAPI.swift; path = Notice/NoticeAPI.swift; sourceTree = "<group>"; };
-		9D64D4E71C1077A60012BB3F /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Account/AccountManager.swift; sourceTree = "<group>"; };
-		9D6A895D1C0B0603008EC60B /* MobileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileManager.swift; path = Mobile/MobileManager.swift; sourceTree = "<group>"; };
-		9D6A89611C0B11BB008EC60B /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarManager.swift; path = Mobile/CalendarManager.swift; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
-		9D6A89661C0C4EF7008EC60B /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Mobile/DataStore.swift; sourceTree = "<group>"; };
-		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = QSCMobileV3/Moment/MomentViewController.swift; sourceTree = SOURCE_ROOT; };
+		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		9D6B337B1CF025F500C5372F /* BusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusViewController.swift; path = Bus/BusViewController.swift; sourceTree = "<group>"; };
-		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusViewController.xib; path = Bus/BusViewController.xib; sourceTree = "<group>"; };
+		9D6B337B1CF025F500C5372F /* BusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusViewController.swift; sourceTree = "<group>"; };
+		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusViewController.xib; sourceTree = "<group>"; };
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		9D7173651D3141BE0074043E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendor/libMobClickLibrary.a; sourceTree = "<group>"; };
-		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZjuwlanLoginViewController.swift; path = Login/ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
-		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZjuwlanLoginViewController.xib; path = Login/ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
+		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
+		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
 		9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = Carthage/Build/iOS/CVCalendar.framework; sourceTree = "<group>"; };
 		9D8AB4441CD7838B0098451A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -326,24 +308,21 @@
 		9D8AB44B1CD787810098451A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GaugeKit.framework; path = Carthage/Build/iOS/GaugeKit.framework; sourceTree = "<group>"; };
-		9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTypeViewController.swift; path = QSCMobileV3/EventDetail/NotificationTypeViewController.swift; sourceTree = SOURCE_ROOT; };
+		9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTypeViewController.swift; sourceTree = "<group>"; };
 		9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CurriculaTable.framework; path = Carthage/Build/iOS/CurriculaTable.framework; sourceTree = "<group>"; };
-		9DA74C041DF6C82600691A06 /* TimeInterval+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeInterval+Description.swift"; path = "Extension/TimeInterval+Description.swift"; sourceTree = "<group>"; };
-		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusCell.swift; path = Bus/BusCell.swift; sourceTree = "<group>"; };
-		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusCell.xib; path = Bus/BusCell.xib; sourceTree = "<group>"; };
-		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverallScoreCell.swift; path = Score/OverallScoreCell.swift; sourceTree = "<group>"; };
-		9DBC53AD1D350FC8006AA1BD /* OverallScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverallScoreCell.xib; path = Score/OverallScoreCell.xib; sourceTree = "<group>"; };
-		9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CourseDetail.storyboard; path = CourseDetail/CourseDetail.storyboard; sourceTree = "<group>"; };
-		9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = CourseDetail/CourseDetailViewController.swift; sourceTree = "<group>"; };
-		9DC475661D2D075800F4B3DF /* CourseNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseNameCell.swift; path = CourseDetail/CourseNameCell.swift; sourceTree = "<group>"; };
-		9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTimePlaceCell.swift; path = CourseDetail/CourseTimePlaceCell.swift; sourceTree = "<group>"; };
-		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseEditViewController.swift; path = CourseDetail/CourseEditViewController.swift; sourceTree = "<group>"; };
-		9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+QSCMobileKit.swift"; path = "Extension/NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
-		9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeworkViewController.swift; path = Homework/HomeworkViewController.swift; sourceTree = "<group>"; };
+		9DBC53A41D32ACCC006AA1BD /* BusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCell.swift; sourceTree = "<group>"; };
+		9DBC53A81D32B00A006AA1BD /* BusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusCell.xib; sourceTree = "<group>"; };
+		9DBC53AC1D350FC8006AA1BD /* OverallScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallScoreCell.swift; sourceTree = "<group>"; };
+		9DBC53AD1D350FC8006AA1BD /* OverallScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverallScoreCell.xib; sourceTree = "<group>"; };
+		9DC475621D2CF9EF00F4B3DF /* CourseDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CourseDetail.storyboard; sourceTree = "<group>"; };
+		9DC475641D2D069200F4B3DF /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
+		9DC475661D2D075800F4B3DF /* CourseNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameCell.swift; sourceTree = "<group>"; };
+		9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTimePlaceCell.swift; sourceTree = "<group>"; };
+		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEditViewController.swift; sourceTree = "<group>"; };
+		9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkViewController.swift; sourceTree = "<group>"; };
 		9DCB0A401E65E8F700094A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurriculaViewController.swift; path = Curricula/CurriculaViewController.swift; sourceTree = "<group>"; };
-		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurriculaViewController.xib; path = Curricula/CurriculaViewController.xib; sourceTree = "<group>"; };
-		9DCDE7AF1C08401D0087C31F /* APISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISession.swift; path = Mobile/APISession.swift; sourceTree = "<group>"; };
+		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculaViewController.swift; sourceTree = "<group>"; };
+		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurriculaViewController.xib; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		9DD043F01D2BFBF5007CE9B3 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
@@ -368,15 +347,36 @@
 		9DD491241CEAFA81009F70FA /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QSCMobileV3-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DE34AF91C0999DC00C9534A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JwbinfosysLoginViewController.swift; path = Login/JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
-		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JwbinfosysLoginViewController.xib; path = Login/JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
+		9DE716031CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JwbinfosysLoginViewController.swift; sourceTree = "<group>"; };
+		9DE716041CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwbinfosysLoginViewController.xib; sourceTree = "<group>"; };
 		9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMessage_Sdk_1.4.0.a; path = QSCMobileV3/Vendor/libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
-		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentPageViewController.swift; path = QSCMobileV3/Moment/MomentPageViewController.swift; sourceTree = SOURCE_ROOT; };
-		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentPageViewController.xib; path = QSCMobileV3/Moment/MomentPageViewController.xib; sourceTree = SOURCE_ROOT; };
+		9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentPageViewController.swift; sourceTree = "<group>"; };
+		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentPageViewController.xib; sourceTree = "<group>"; };
 		9DF174DD1D59A2B800836575 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
-		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = QSCMobileV3/EventDetail/EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = Carthage/Build/iOS/BTNavigationDropdownMenu.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DFB7BE81F75798600F1274F /* Box.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Box.xcdatamodel; sourceTree = "<group>"; };
+		9DFB7BEC1F7579D200F1274F /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		9DFB7BEE1F7579EB00F1274F /* MobileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileManager.swift; sourceTree = "<group>"; };
+		9DFB7BF01F7579F100F1274F /* SchoolBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolBus.swift; sourceTree = "<group>"; };
+		9DFB7BF21F7579F800F1274F /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
+		9DFB7BF31F7579F800F1274F /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		9DFB7BF41F7579F800F1274F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		9DFB7BFA1F757A3900F1274F /* NoticeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPI.swift; sourceTree = "<group>"; };
+		9DFB7BFB1F757A3900F1274F /* NoticeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeEvent.swift; sourceTree = "<group>"; };
+		9DFB7BFC1F757A3900F1274F /* NoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeManager.swift; sourceTree = "<group>"; };
+		9DFB7C001F757A5500F1274F /* String+QSCMobileKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+QSCMobileKit.swift"; sourceTree = "<group>"; };
+		9DFB7C011F757A5500F1274F /* NSDate+QSCMobileKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+QSCMobileKit.swift"; sourceTree = "<group>"; };
+		9DFB7C021F757A5500F1274F /* NSNumber+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Comparable.swift"; sourceTree = "<group>"; };
+		9DFB7C031F757A5500F1274F /* TimeInterval+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Description.swift"; sourceTree = "<group>"; };
+		9DFB7C041F757A5500F1274F /* Int+Chinese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Chinese.swift"; sourceTree = "<group>"; };
+		9DFB7C0A1F757ADF00F1274F /* FilePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreviewViewController.swift; sourceTree = "<group>"; };
+		9DFB7C0B1F757AE000F1274F /* BoxViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewCell.swift; sourceTree = "<group>"; };
+		9DFB7C0C1F757AE000F1274F /* BoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewController.swift; sourceTree = "<group>"; };
+		9DFB7C0D1F757AE000F1274F /* FileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetailsViewController.swift; sourceTree = "<group>"; };
+		9DFB7C0E1F757AE000F1274F /* UploadSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSettingsViewController.swift; sourceTree = "<group>"; };
+		9DFB7C0F1F757AE000F1274F /* Box.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Box.storyboard; sourceTree = "<group>"; };
 		AE31A5301DC8217700A2CB33 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		AE31A5341DC8217700A2CB33 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -501,15 +501,15 @@
 		2697B9AD1E7529B500ECE931 /* Box */ = {
 			isa = PBXGroup;
 			children = (
-				2697B9AE1E7529DC00ECE931 /* Box.storyboard */,
-				2697B9AF1E7529DC00ECE931 /* BoxViewCell.swift */,
-				2697B9B01E7529DC00ECE931 /* BoxViewController.swift */,
-				2697B9B21E7529DC00ECE931 /* FileDetailsViewController.swift */,
-				2697B9B31E7529DC00ECE931 /* FilePreviewViewController.swift */,
-				2697B9B41E7529DC00ECE931 /* UploadSettingsViewController.swift */,
+				9DFB7C0F1F757AE000F1274F /* Box.storyboard */,
+				9DFB7C0B1F757AE000F1274F /* BoxViewCell.swift */,
+				9DFB7C0C1F757AE000F1274F /* BoxViewController.swift */,
+				9DFB7C0D1F757AE000F1274F /* FileDetailsViewController.swift */,
+				9DFB7C0A1F757ADF00F1274F /* FilePreviewViewController.swift */,
+				9DFB7C0E1F757AE000F1274F /* UploadSettingsViewController.swift */,
 				2697B9BC1E7529FB00ECE931 /* Common */,
 			);
-			name = Box;
+			path = Box;
 			sourceTree = "<group>";
 		};
 		2697B9BC1E7529FB00ECE931 /* Common */ = {
@@ -520,8 +520,7 @@
 				2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */,
 				2697B9C01E7529FB00ECE931 /* UI */,
 			);
-			name = Common;
-			path = Box/Common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		2697B9C01E7529FB00ECE931 /* UI */ = {
@@ -567,10 +566,10 @@
 		2697B9D91E752A1100ECE931 /* BoxModel */ = {
 			isa = PBXGroup;
 			children = (
-				2697B9DA1E752A2A00ECE931 /* Box.xcdatamodeld */,
+				9DFB7BE71F75798600F1274F /* Box.xcdatamodeld */,
 				2697B9DC1E752A2A00ECE931 /* File.swift */,
 			);
-			name = BoxModel;
+			path = BoxModel;
 			sourceTree = "<group>";
 		};
 		2697B9DF1E752A3A00ECE931 /* Box */ = {
@@ -598,13 +597,13 @@
 		9D31395F1CE7844C00CD7DAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9D3139621CE7849800CD7DAD /* String+QSCMobileKit.swift */,
-				9D3139641CE7859F00CD7DAD /* Int+Chinese.swift */,
-				9DC5360E1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift */,
-				9D3139661CE7866C00CD7DAD /* NSNumber+Comparable.swift */,
-				9DA74C041DF6C82600691A06 /* TimeInterval+Description.swift */,
+				9DFB7C001F757A5500F1274F /* String+QSCMobileKit.swift */,
+				9DFB7C041F757A5500F1274F /* Int+Chinese.swift */,
+				9DFB7C011F757A5500F1274F /* NSDate+QSCMobileKit.swift */,
+				9DFB7C021F757A5500F1274F /* NSNumber+Comparable.swift */,
+				9DFB7C031F757A5500F1274F /* TimeInterval+Description.swift */,
 			);
-			name = Extension;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		9D31396A1CE789BF00CD7DAD /* Browser */ = {
@@ -662,8 +661,7 @@
 				9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */,
 				9DF126A91D4B2A4900C237DB /* MomentPageViewController.swift */,
 			);
-			name = Moment;
-			path = Today;
+			path = Moment;
 			sourceTree = "<group>";
 		};
 		9D3139831CE78C7500CD7DAD /* About */ = {
@@ -679,21 +677,21 @@
 		9D42D2DA1C1867800066EEFC /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				9D64D4E71C1077A60012BB3F /* AccountManager.swift */,
+				9DFB7BEC1F7579D200F1274F /* AccountManager.swift */,
 			);
-			name = Account;
+			path = Account;
 			sourceTree = "<group>";
 		};
 		9D42D2DC1C1867950066EEFC /* Mobile */ = {
 			isa = PBXGroup;
 			children = (
-				9D6A895D1C0B0603008EC60B /* MobileManager.swift */,
-				9DCDE7AF1C08401D0087C31F /* APISession.swift */,
-				9D6A89661C0C4EF7008EC60B /* DataStore.swift */,
-				9D6A89611C0B11BB008EC60B /* CalendarManager.swift */,
-				9D129CB91D32539F00A865DF /* SchoolBus.swift */,
+				9DFB7BEE1F7579EB00F1274F /* MobileManager.swift */,
+				9DFB7BF21F7579F800F1274F /* APISession.swift */,
+				9DFB7BF41F7579F800F1274F /* DataStore.swift */,
+				9DFB7BF31F7579F800F1274F /* CalendarManager.swift */,
+				9DFB7BF01F7579F100F1274F /* SchoolBus.swift */,
 			);
-			name = Mobile;
+			path = Mobile;
 			sourceTree = "<group>";
 		};
 		9D42D2DD1C1867B00066EEFC /* ZJUWLAN */ = {
@@ -701,7 +699,7 @@
 			children = (
 				9D42D2D81C182A2F0066EEFC /* ZjuwlanConnection.swift */,
 			);
-			name = ZJUWLAN;
+			path = ZJUWLAN;
 			sourceTree = "<group>";
 		};
 		9D5A01341DA0D39200CF5469 /* Homework */ = {
@@ -714,7 +712,7 @@
 				9D5A01381DA0D43500CF5469 /* HomeworkCell.xib */,
 				9D5A01371DA0D43500CF5469 /* HomeworkCell.swift */,
 			);
-			name = Homework;
+			path = Homework;
 			sourceTree = "<group>";
 		};
 		9D5A01471DA106B100CF5469 /* QueryList */ = {
@@ -733,11 +731,11 @@
 		9D6413311C19AD5200EC5D95 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
-				9D413CA71C1AE51E00E87C42 /* NoticeManager.swift */,
-				9D6413321C19AD7500EC5D95 /* NoticeAPI.swift */,
-				9D413CA91C1AE61400E87C42 /* NoticeEvent.swift */,
+				9DFB7BFC1F757A3900F1274F /* NoticeManager.swift */,
+				9DFB7BFA1F757A3900F1274F /* NoticeAPI.swift */,
+				9DFB7BFB1F757A3900F1274F /* NoticeEvent.swift */,
 			);
-			name = Notice;
+			path = Notice;
 			sourceTree = "<group>";
 		};
 		9D6B336F1CED90CC00C5372F /* EventDetail */ = {
@@ -750,8 +748,7 @@
 				9D17387F1D5D93A500782E93 /* RepeatTypeViewController.swift */,
 				9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */,
 			);
-			name = EventDetail;
-			path = AddEvent;
+			path = EventDetail;
 			sourceTree = "<group>";
 		};
 		9D6B337A1CF0215E00C5372F /* Bus */ = {
@@ -762,7 +759,7 @@
 				9DBC53A81D32B00A006AA1BD /* BusCell.xib */,
 				9DBC53A41D32ACCC006AA1BD /* BusCell.swift */,
 			);
-			name = Bus;
+			path = Bus;
 			sourceTree = "<group>";
 		};
 		9DBC53AB1D350F86006AA1BD /* Score */ = {
@@ -775,7 +772,7 @@
 				9D1B768F1D58F6380088B96E /* ScoreCell.xib */,
 				9D1B768E1D58F6380088B96E /* ScoreCell.swift */,
 			);
-			name = Score;
+			path = Score;
 			sourceTree = "<group>";
 		};
 		9DC475611D2CF9A200F4B3DF /* CourseDetail */ = {
@@ -788,7 +785,7 @@
 				9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */,
 				9D113F8D1DA54B8F005E607C /* CourseNotesCell.swift */,
 			);
-			name = CourseDetail;
+			path = CourseDetail;
 			sourceTree = "<group>";
 		};
 		9DCC2F771D89A627002740D1 /* Curricula */ = {
@@ -797,7 +794,7 @@
 				9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */,
 				9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */,
 			);
-			name = Curricula;
+			path = Curricula;
 			sourceTree = "<group>";
 		};
 		9DCDE7B11C0840900087C31F /* Support Files */ = {
@@ -858,7 +855,7 @@
 				9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */,
 				9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */,
 			);
-			name = Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		9DEF63841C12FB9000A70C5B /* Support Files */ = {
@@ -1102,34 +1099,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C331D01BA2F2E600EF959F /* Main.storyboard in Resources */,
-				9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */,
+				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
+				9DF23E9A1F76E0FD004C0BFD /* Main.storyboard in Resources */,
+				9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */,
+				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
+				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
+				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
+				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
+				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
 				9D08CF611D732B4A008C1D14 /* QueryCollectionViewCell.xib in Resources */,
+				9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */,
+				9DBC53AF1D350FC8006AA1BD /* OverallScoreCell.xib in Resources */,
 				9D265DEF1D4C8D0C007F6D56 /* ScoreViewController.xib in Resources */,
+				9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */,
+				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
+				9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */,
+				9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */,
+				9D5A013E1DA0D99E00CF5469 /* Homework.storyboard in Resources */,
+				9D5A01441DA0DDD700CF5469 /* HomeworkListViewController.xib in Resources */,
+				9D5A013A1DA0D43500CF5469 /* HomeworkCell.xib in Resources */,
 				9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */,
+				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
+				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
+				9DF23E9B1F76E10E004C0BFD /* Box.storyboard in Resources */,
 				2697B9D21E7529FB00ECE931 /* DropDownMenuCell.xib in Resources */,
 				2697B9D61E7529FB00ECE931 /* MultiSelectViewCell.xib in Resources */,
 				9D1CC37A1DC73768004DA58E /* AboutViewController.xib in Resources */,
-				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
-				9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */,
-				2697B9B51E7529DC00ECE931 /* Box.storyboard in Resources */,
-				9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */,
-				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
-				9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */,
-				9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */,
-				9DBC53AF1D350FC8006AA1BD /* OverallScoreCell.xib in Resources */,
-				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
-				9DE716061CE7AA9F00282DCD /* JwbinfosysLoginViewController.xib in Resources */,
-				9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */,
-				9D5A01441DA0DDD700CF5469 /* HomeworkListViewController.xib in Resources */,
-				9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */,
-				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */,
-				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
-				9D5A013E1DA0D99E00CF5469 /* Homework.storyboard in Resources */,
-				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
-				9D1B76911D58F6380088B96E /* ScoreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,60 +1196,60 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */,
-				2697B9D41E7529FB00ECE931 /* MultiSelectView.swift in Sources */,
-				2697B9CE1E7529FB00ECE931 /* FileRecognizer.swift in Sources */,
-				9D5A01501DA106B100CF5469 /* ExamListViewController.swift in Sources */,
-				9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */,
-				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
-				2697B9D01E7529FB00ECE931 /* CircleProgressView.swift in Sources */,
-				9D5A01531DA106B100CF5469 /* SemesterListViewController.swift in Sources */,
-				9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */,
-				2697B9CF1E7529FB00ECE931 /* QRCodeGenerator.swift in Sources */,
-				2697B9D71E7529FB00ECE931 /* QRCodeScannerView.swift in Sources */,
-				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
-				9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */,
-				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
-				9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */,
-				9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */,
-				2697B9BB1E7529DC00ECE931 /* UploadSettingsViewController.swift in Sources */,
-				9D08CF5D1D72FE9E008C1D14 /* QueryTableViewCell.swift in Sources */,
-				9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */,
-				9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */,
-				9D5A014F1DA106B100CF5469 /* CourseListViewController.swift in Sources */,
-				9D5A01521DA106B100CF5469 /* SemesterListCell.swift in Sources */,
-				2697B9BA1E7529DC00ECE931 /* FilePreviewViewController.swift in Sources */,
-				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
-				2697B9B61E7529DC00ECE931 /* BoxViewCell.swift in Sources */,
-				9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */,
+				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
+				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
+				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */,
-				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
-				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
-				9D08CF601D732B4A008C1D14 /* QueryCollectionViewCell.swift in Sources */,
-				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
-				9D5A01431DA0DDD700CF5469 /* HomeworkListViewController.swift in Sources */,
-				2697B9B71E7529DC00ECE931 /* BoxViewController.swift in Sources */,
-				2697B9D31E7529FB00ECE931 /* DropDownMenuView.swift in Sources */,
-				9D1CC3791DC73768004DA58E /* AboutViewController.swift in Sources */,
-				9D113F8E1DA54B8F005E607C /* CourseNotesCell.swift in Sources */,
 				9DC475651D2D069200F4B3DF /* CourseDetailViewController.swift in Sources */,
-				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */,
+				9DC475671D2D075800F4B3DF /* CourseNameCell.swift in Sources */,
+				9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */,
+				9D113F8E1DA54B8F005E607C /* CourseNotesCell.swift in Sources */,
+				9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */,
+				9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */,
 				9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */,
-				9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */,
-				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
-				2697B9D51E7529FB00ECE931 /* MultiSelectViewCell.swift in Sources */,
-				9D5A01391DA0D43500CF5469 /* HomeworkCell.swift in Sources */,
-				9D08CF651D7330CC008C1D14 /* QueryCollectionViewDelegate.swift in Sources */,
-				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
-				9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */,
-				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
 				9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */,
-				2697B9D11E7529FB00ECE931 /* DropDownMenuCell.swift in Sources */,
+				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
+				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
+				9D08CF5D1D72FE9E008C1D14 /* QueryTableViewCell.swift in Sources */,
+				9D08CF651D7330CC008C1D14 /* QueryCollectionViewDelegate.swift in Sources */,
+				9D08CF601D732B4A008C1D14 /* QueryCollectionViewCell.swift in Sources */,
+				9D5A01531DA106B100CF5469 /* SemesterListViewController.swift in Sources */,
+				9D5A01521DA106B100CF5469 /* SemesterListCell.swift in Sources */,
+				9D5A014F1DA106B100CF5469 /* CourseListViewController.swift in Sources */,
 				9D5A014E1DA106B100CF5469 /* CourseListCell.swift in Sources */,
-				2697B9B91E7529DC00ECE931 /* FileDetailsViewController.swift in Sources */,
+				9D5A01501DA106B100CF5469 /* ExamListViewController.swift in Sources */,
+				9DBC53AE1D350FC8006AA1BD /* OverallScoreCell.swift in Sources */,
+				9D265DEE1D4C8D0C007F6D56 /* ScoreViewController.swift in Sources */,
+				9D1B76901D58F6380088B96E /* ScoreCell.swift in Sources */,
+				9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */,
+				9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */,
+				9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */,
+				9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */,
+				9D5A01431DA0DDD700CF5469 /* HomeworkListViewController.swift in Sources */,
+				9D5A01391DA0D43500CF5469 /* HomeworkCell.swift in Sources */,
+				9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */,
+				9D3139791CE789BF00CD7DAD /* BrowserViewController.swift in Sources */,
+				9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */,
+				9DE716051CE7AA9F00282DCD /* JwbinfosysLoginViewController.swift in Sources */,
+				9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */,
+				9DFB7C111F757AE000F1274F /* BoxViewCell.swift in Sources */,
+				9DFB7C121F757AE000F1274F /* BoxViewController.swift in Sources */,
+				9DFB7C131F757AE000F1274F /* FileDetailsViewController.swift in Sources */,
+				9DFB7C101F757AE000F1274F /* FilePreviewViewController.swift in Sources */,
+				9DFB7C141F757AE000F1274F /* UploadSettingsViewController.swift in Sources */,
+				2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */,
+				2697B9CE1E7529FB00ECE931 /* FileRecognizer.swift in Sources */,
+				2697B9CF1E7529FB00ECE931 /* QRCodeGenerator.swift in Sources */,
+				2697B9D01E7529FB00ECE931 /* CircleProgressView.swift in Sources */,
+				2697B9D31E7529FB00ECE931 /* DropDownMenuView.swift in Sources */,
+				2697B9D11E7529FB00ECE931 /* DropDownMenuCell.swift in Sources */,
+				2697B9D41E7529FB00ECE931 /* MultiSelectView.swift in Sources */,
+				2697B9D51E7529FB00ECE931 /* MultiSelectViewCell.swift in Sources */,
+				2697B9D71E7529FB00ECE931 /* QRCodeScannerView.swift in Sources */,
 				2697B9D81E7529FB00ECE931 /* QRCodeScannerViewController.swift in Sources */,
+				9D1CC3791DC73768004DA58E /* AboutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1272,45 +1269,45 @@
 				9DD491161CEAE68A009F70FA /* Bus.swift in Sources */,
 				9DD4911E1CEAE68A009F70FA /* SemesterScore.swift in Sources */,
 				9DD4911D1CEAE68A009F70FA /* Semester.swift in Sources */,
+				9DFB7BFF1F757A3900F1274F /* NoticeManager.swift in Sources */,
 				9DD491141CEAE68A009F70FA /* Homework.swift in Sources */,
 				9DD491211CEAE68A009F70FA /* User.swift in Sources */,
-				9D413CAA1C1AE61400E87C42 /* NoticeEvent.swift in Sources */,
 				9DD491251CEAFA81009F70FA /* EventManager.swift in Sources */,
-				9D6A89621C0B11BB008EC60B /* CalendarManager.swift in Sources */,
-				9D6A89671C0C4EF7008EC60B /* DataStore.swift in Sources */,
 				26DACE7A1EE270D900F926D4 /* Special.swift in Sources */,
-				2697B9DD1E752A2A00ECE931 /* Box.xcdatamodeld in Sources */,
-				9DCDE7B01C08401D0087C31F /* APISession.swift in Sources */,
-				9D413CA81C1AE51E00E87C42 /* NoticeManager.swift in Sources */,
+				9DFB7BFE1F757A3900F1274F /* NoticeEvent.swift in Sources */,
 				2697B9E51E752A3A00ECE931 /* BoxManager.swift in Sources */,
+				9DFB7C061F757A5500F1274F /* NSDate+QSCMobileKit.swift in Sources */,
 				9DD4911C1CEAE68A009F70FA /* Score.swift in Sources */,
-				9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */,
-				9D64D4E81C1077A60012BB3F /* AccountManager.swift in Sources */,
 				9DD491201CEAE68A009F70FA /* TimePlace.swift in Sources */,
 				9DD491191CEAE68A009F70FA /* Exam.swift in Sources */,
 				2697B9DE1E752A2A00ECE931 /* File.swift in Sources */,
-				9D6A895E1C0B0603008EC60B /* MobileManager.swift in Sources */,
+				9DFB7BF11F7579F100F1274F /* SchoolBus.swift in Sources */,
 				9DCDE7B71C0841130087C31F /* Common.swift in Sources */,
-				9D3139671CE7866C00CD7DAD /* NSNumber+Comparable.swift in Sources */,
-				9D129CBA1D32539F00A865DF /* SchoolBus.swift in Sources */,
 				9DD491151CEAE68A009F70FA /* Adjustment.swift in Sources */,
 				2697B9E41E752A3A00ECE931 /* Date+Box.swift in Sources */,
-				9D6413331C19AD7500EC5D95 /* NoticeAPI.swift in Sources */,
-				9D3139651CE7859F00CD7DAD /* Int+Chinese.swift in Sources */,
-				9DC5360F1D7C4A53008FFED7 /* NSDate+QSCMobileKit.swift in Sources */,
+				9DFB7BEF1F7579EB00F1274F /* MobileManager.swift in Sources */,
 				2697B9E31E752A3A00ECE931 /* BoxAPI.swift in Sources */,
-				9D3139631CE7849800CD7DAD /* String+QSCMobileKit.swift in Sources */,
+				9DFB7C091F757A5500F1274F /* Int+Chinese.swift in Sources */,
+				9DFB7BED1F7579D300F1274F /* AccountManager.swift in Sources */,
+				9DFB7C071F757A5500F1274F /* NSNumber+Comparable.swift in Sources */,
 				9DD491221CEAE68A009F70FA /* Year.swift in Sources */,
+				9DFB7BFD1F757A3900F1274F /* NoticeAPI.swift in Sources */,
 				9DD491171CEAE68A009F70FA /* BusStop.swift in Sources */,
+				9DFB7C051F757A5500F1274F /* String+QSCMobileKit.swift in Sources */,
 				9D42D2D91C182A2F0066EEFC /* ZjuwlanConnection.swift in Sources */,
-				9DA74C051DF6C82600691A06 /* TimeInterval+Description.swift in Sources */,
 				9DD491121CEAE68A009F70FA /* CustomEvent.swift in Sources */,
 				9DD4911A1CEAE68A009F70FA /* Holiday.swift in Sources */,
-				9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */,
+				9DFB7C081F757A5500F1274F /* TimeInterval+Description.swift in Sources */,
+				9DFB7BF71F7579F800F1274F /* CalendarManager.swift in Sources */,
 				9D113F8C1DA53ED1005E607C /* OverseaScore.swift in Sources */,
 				9DD491111CEAE68A009F70FA /* CourseEvent.swift in Sources */,
+				9DFB7BF61F7579F800F1274F /* APISession.swift in Sources */,
+				9DFB7BF81F7579F800F1274F /* DataStore.swift in Sources */,
 				9DD4911F1CEAE68A009F70FA /* Statistics.swift in Sources */,
 				9DD491181CEAE68A009F70FA /* Course.swift in Sources */,
+				9DD4911B1CEAE68A009F70FA /* Mobile.xcdatamodeld in Sources */,
+				9DD491131CEAE68A009F70FA /* Event.xcdatamodeld in Sources */,
+				9DF23E9C1F76E56A004C0BFD /* Box.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1728,17 +1725,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2697B9DA1E752A2A00ECE931 /* Box.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2697B9DB1E752A2A00ECE931 /* Box.xcdatamodel */,
-			);
-			currentVersion = 2697B9DB1E752A2A00ECE931 /* Box.xcdatamodel */;
-			name = Box.xcdatamodeld;
-			path = BoxModel/Box.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		9DD490FE1CEAE68A009F70FA /* Event.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
@@ -1756,6 +1742,16 @@
 			);
 			currentVersion = 9DD491091CEAE68A009F70FA /* Mobile.xcdatamodel */;
 			path = Mobile.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		9DFB7BE71F75798600F1274F /* Box.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9DFB7BE81F75798600F1274F /* Box.xcdatamodel */,
+			);
+			currentVersion = 9DFB7BE81F75798600F1274F /* Box.xcdatamodel */;
+			path = Box.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
