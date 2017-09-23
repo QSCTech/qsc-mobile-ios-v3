@@ -59,8 +59,12 @@ class SemesterListViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination
-        vc.setValue(selectedSemester, forKey: "semester")
+//        segue.destination.setValue(selectedSemester, forKey: "semester")
+        if let vc = segue.destination as? CourseListViewController {
+            vc.semester = selectedSemester
+        } else if let vc = segue.destination as? ExamListViewController {
+            vc.semester = selectedSemester
+        }
     }
     
 }

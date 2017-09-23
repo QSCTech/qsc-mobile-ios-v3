@@ -95,7 +95,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
-    func codeTextFieldChanged(textField: UITextField) {
+    @objc func codeTextFieldChanged(textField: UITextField) {
         if code.text!.isEmpty {
             copyButton.alpha = 0.4
             copyButton.isEnabled = false
@@ -105,7 +105,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func saveQRCode(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+    @objc func saveQRCode(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == .began {
             if code.text! == file.code {
                 UIImageWriteToSavedPhotosAlbum(qrcode.image!, self, #selector(imageSaveCompletion(image:didFinishSavingWithError:contextInfo:)), nil)
@@ -118,7 +118,7 @@ class UploadSettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func imageSaveCompletion(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+    @objc func imageSaveCompletion(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         let alert: UIAlertController!
         if error == nil {
             alert = UIAlertController(title: "Box", message: "二维码保存成功", preferredStyle: .alert)

@@ -101,7 +101,7 @@ class CalendarViewController: UIViewController {
     
     var weekName: String {
         var name = calendarManager.semesterForDate(selectedDate).name
-        if name.characters.count == 1 {
+        if name.count == 1 {
             name += calendarManager.weekOrdinalForDate(selectedDate).chinese
         }
         return name

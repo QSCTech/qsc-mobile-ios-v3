@@ -168,7 +168,7 @@ class MultiSelectView: UIView {
         tableView.reloadData()
     }
     
-    func doneButtonTapped(button: UIButton) {
+    @objc func doneButtonTapped(button: UIButton) {
         isHidden = true
         var multiSelect: [Int] = []
         for (index, item) in items.enumerated() {
@@ -181,7 +181,7 @@ class MultiSelectView: UIView {
         }
     }
     
-    func cancelButtonTapped(button: UIButton) {
+    @objc func cancelButtonTapped(button: UIButton) {
         isHidden = true
         if callBack != nil {
             callBack([])

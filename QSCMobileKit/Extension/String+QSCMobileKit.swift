@@ -17,20 +17,20 @@ extension String {
     
     /// Return an attributed string with FontAwesome 16.0
     public var attributedWithFontAwesome: NSAttributedString {
-        return NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
+        return NSAttributedString(string: self, attributes: [NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 16)!])
     }
     
     public var attributedWithHelveticaNeue: NSAttributedString {
-        return NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 16)!])
+        return NSAttributedString(string: self, attributes: [NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 16)!])
     }
     
     public var isValidSid: Bool {
-        return characters.count == 10
+        return count == 10
     }
     
     var startTimeForPeriods: DateComponents {
         var time = DateComponents()
-        if self.characters.count == 0 {
+        if count == 0 {
             return time
         }
         switch characters.first! {
@@ -84,7 +84,7 @@ extension String {
     
     var endTimeForPeriods: DateComponents {
         var time = DateComponents()
-        if characters.count == 0 {
+        if count == 0 {
             return time
         }
         switch characters.last! {
@@ -180,13 +180,13 @@ extension String {
     
     /// For example, "2016-2017-1" -> "2016-2017 秋冬".
     public var fullNameForSemester: String {
-        return substring(to: index(endIndex, offsetBy: -2)) + (hasSuffix("1") ? " 秋冬" : " 春夏")
+        return self[..<index(endIndex, offsetBy: -2)] + (hasSuffix("1") ? " 秋冬" : " 春夏")
     }
     
     /// Same as `String#chomp` in Ruby.
     func chomp(_ separator: String) -> String {
         if hasSuffix(separator) {
-            return substring(to: index(before: endIndex))
+            return String(self[..<index(before: endIndex)])
         } else {
             return self
         }

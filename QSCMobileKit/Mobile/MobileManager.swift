@@ -64,7 +64,7 @@ public class MobileManager: NSObject {
     public func changeUser(_ username: String) {
         accountManager.currentAccountForJwbinfosys = username
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
-        apiSession.loginRequest { _ in }
+        apiSession.loginRequest { _, _  in }
         dataStore = DataStore(username: username)
         NotificationCenter.default.post(name: .eventsModified, object: nil)
     }
@@ -187,7 +187,7 @@ public class MobileManager: NSObject {
     // MARK: - Retrieve managed objects
     
     public func prefixForIdentifier(_ identifier: String) -> String {
-        return identifier.substring(to: identifier.index(identifier.startIndex, offsetBy: 22))
+        return String(identifier[..<identifier.index(identifier.startIndex, offsetBy: 22)])
     }
     
     public func courseObjectsWithIdentifier(_ identifier: String) -> [Course] {

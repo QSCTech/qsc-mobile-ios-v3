@@ -45,7 +45,7 @@ class AboutViewController: UIViewController {
         "http://alej.wang",
     ]
     
-    func tapHandler(_ sender: UITapGestureRecognizer) {
+    @objc func tapHandler(_ sender: UITapGestureRecognizer) {
         let svc = SFSafariViewController(url: URL(string: url[sender.view!.tag])!)
         present(svc, animated: true)
     }

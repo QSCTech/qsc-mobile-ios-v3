@@ -89,7 +89,7 @@ class MomentPageViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
     }
     
-    func refresh() {
+    @objc func refresh() {
         if let event = event {
             if Date().tomorrow <= event.start {
                 let days = Int(event.start.today.timeIntervalSince(Date().today) / 86400)

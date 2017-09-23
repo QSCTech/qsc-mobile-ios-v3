@@ -95,8 +95,8 @@ class CurriculaViewController: UIViewController {
                 let timePlace = timePlace as! TimePlace
                 let name = "\(course.name!)（\(timePlace.week!)）".replacingOccurrences(of: "（每周）", with: "")
                 let weekday = CurriculaTableWeekday(rawValue: timePlace.weekday!.intValue)!
-                let startPeriod = Int(timePlace.periods!.substring(to: timePlace.periods!.index(after: timePlace.periods!.startIndex)), radix: 16)!
-                let endPeriod = Int(timePlace.periods!.substring(from: timePlace.periods!.index(before: timePlace.periods!.endIndex)), radix: 16)!
+                let startPeriod = Int(String(timePlace.periods![timePlace.periods!.startIndex]), radix: 16)!
+                let endPeriod = Int(String(timePlace.periods![timePlace.periods!.index(before: timePlace.periods!.endIndex)]), radix: 16)!
                 let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.white, bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
                     let sb = UIStoryboard(name: "CourseDetail", bundle: Bundle.main)
                     let vc = sb.instantiateInitialViewController() as! CourseDetailViewController

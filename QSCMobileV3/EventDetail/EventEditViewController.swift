@@ -372,7 +372,7 @@ class EventEditViewController: UITableViewController {
         dismiss(animated: true)
     }
     
-    func allDaySwitchDidChange(_ sender: UISwitch) {
+    @objc func allDaySwitchDidChange(_ sender: UISwitch) {
         if sender.isOn {
             startTimePicker.datePickerMode = .date
             endTimePicker.datePickerMode = .date

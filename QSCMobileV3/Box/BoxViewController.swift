@@ -51,7 +51,7 @@ class BoxViewController: UIViewController {
             downloadDropDownMenu = nil
         }
         if downloadDropDownMenu == nil {
-            downloadDropDownMenu = DropDownMenuView(items: [["text": "输入提取码", "icon": "InputCode"], ["text": "扫一扫", "icon": "ScanQRCode"]], superView: view, width: 122, pointerX: view.frame.width - 37.5, pointerY: 0, menuX: view.frame.width - 130, shadow: true)
+            downloadDropDownMenu = DropDownMenuView(items: [["text": "提取码", "icon": "InputCode"], ["text": "扫一扫", "icon": "ScanQRCode"]], superView: view, width: 122, pointerX: view.frame.width - 37.5, pointerY: 0, menuX: view.frame.width - 130, shadow: true)
             downloadDropDownMenu.callBack = downloadDropDownMenuCallBack
             downloadDropDownMenu.isHidden = false
         } else {
@@ -91,7 +91,7 @@ class BoxViewController: UIViewController {
             present(qrcodeScannerViewController, animated: true)
             qrcodeScannerViewController.callback = { qrcode in
                 if qrcode.hasPrefix("\(BoxURL)/-") {
-                    let code = qrcode.substring(from: qrcode.index(qrcode.startIndex, offsetBy: 24))
+                    let code = String(qrcode[qrcode.index(qrcode.startIndex, offsetBy: 24)...])
                     self.perform(#selector(self.download(code:)), with: code, afterDelay: 1)
                 } else {
                     let alert = UIAlertController(title: "Box", message: "非求是潮 Box 二维码", preferredStyle: .alert)
@@ -164,7 +164,7 @@ class BoxViewController: UIViewController {
     
     // MARK: - Download
     
-    func download(code: String) {
+    @objc func download(code: String) {
         var isPassword: Bool!
         var isMulti: Bool!
         BoxAPI.sharedInstance.getFileInfo(code: code) { code, state, parameter in
@@ -334,7 +334,7 @@ class BoxViewController: UIViewController {
     
     // MARK: - Upload From AppDelegate
     
-    func uploadFromAppDelegate(url: URL) {
+    @objc func uploadFromAppDelegate(url: URL) {
         if tableView != nil {
             let file = BoxManager.sharedInstance.newFile()
             file.name = "\(url.path.components(separatedBy: "/").last!)"
@@ -413,7 +413,7 @@ extension BoxViewController: UITableViewDataSource, UITableViewDelegate {
         case "正在下载", "正在上传":
             cell.state.textColor = UIColor.orange
             cell.indicator.isHidden = true
-            cell.progress.current = CGFloat(files[indexPath.row].progress)
+            cell.progress.current = CGFloat(truncating: files[indexPath.row].progress)
             cell.progress.isHidden = false
         case "已下载", "已上传":
             cell.state.textColor = BoxColor.green
@@ -508,7 +508,7 @@ extension BoxViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldChanged(textField: UITextField) {
+    @objc func textFieldChanged(textField: UITextField) {
         if textField.tag == -1 {
             let alertController = presentedViewController as! UIAlertController
             let okAction = alertController.actions.last! as UIAlertAction

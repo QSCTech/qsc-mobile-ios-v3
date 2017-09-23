@@ -128,7 +128,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
         performSegue(withIdentifier: "showFileDetails", sender: file)
     }
     
-    func openWithOtherAppsBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func openWithOtherAppsBarButtonTapped(_ sender: UIBarButtonItem) {
         documentInteractionController.presentOptionsMenu(from: openWithOtherAppsBarButtonItem, animated: true)
     }
     
@@ -147,19 +147,19 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    func tapHandler(_ sender: UITapGestureRecognizer) {
+    @objc func tapHandler(_ sender: UITapGestureRecognizer) {
         hidden = !hidden
         navigationController!.setNavigationBarHidden(hidden, animated: true)
         navigationController!.setToolbarHidden(hidden, animated: true)
         setNeedsStatusBarAppearanceUpdate()
     }
     
-    func pinchHandler(_ sender: UIPinchGestureRecognizer) {
+    @objc func pinchHandler(_ sender: UIPinchGestureRecognizer) {
         imageView.transform = imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
         sender.scale = 1
     }
     
-    func longPressHandler(_ sender: UITapGestureRecognizer) {
+    @objc func longPressHandler(_ sender: UITapGestureRecognizer) {
         documentInteractionController.presentOptionsMenu(from: view.frame, in: view, animated: true)
     }
     

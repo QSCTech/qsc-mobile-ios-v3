@@ -34,8 +34,8 @@ class BrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], for: .normal)
-        forwardButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: 26)!], for: .normal)
+        backwardButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 26)!], for: .normal)
+        forwardButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 26)!], for: .normal)
         navBar.delegate = self
         webView.delegate = self
         webView.loadRequest(urlRequest)

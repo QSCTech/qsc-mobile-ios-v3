@@ -61,7 +61,7 @@ class ShareViewController: UIViewController {
             switch state {
             case "Progress":
                 file.progress = NSNumber(value: parameter as! Double)
-                progress.setProgress(Float(file.progress), animated: true)
+                progress.setProgress(Float(truncating: file.progress), animated: true)
             case "Code":
                 file.code = parameter as! String
             case "Secid":
@@ -78,7 +78,7 @@ class ShareViewController: UIViewController {
                 self.present(alert, animated: true)
             case "Success":
                 file.progress = NSNumber(value: 1)
-                progress.setProgress(Float(file.progress), animated: true)
+                progress.setProgress(Float(truncating: file.progress), animated: true)
                 file.state = "已上传"
                 view.isHidden = true
                 let alertController = UIAlertController(title: "上传成功", message: "文件提取码：\(file.code)\n详细信息请于求是潮 App 内查看", preferredStyle: .alert)

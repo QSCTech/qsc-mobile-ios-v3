@@ -142,7 +142,8 @@ class DataStore: NSObject {
                 exam.seat = json["seat"].stringValue
                 exam.semester = json["semester_real"].stringValue
                 exam.time = json["time"].stringValue.replacingOccurrences(of: "(", with: " ").replacingOccurrences(of: ")", with: "")
-                exam.year = semester.substring(to: semester.characters.index(semester.startIndex, offsetBy: 9))
+                let yearIndex = semester.index(semester.startIndex, offsetBy: 9)
+                exam.year = String(semester[..<yearIndex])
                 
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -169,8 +170,10 @@ class DataStore: NSObject {
             let semesterScore = NSEntityDescription.insertNewObject(forEntityName: "SemesterScore", into: managedObjectContext) as! SemesterScore
             semesterScore.user = currentUser
             
-            semesterScore.year = semester.substring(to: semester.characters.index(semester.startIndex, offsetBy: 9))
-            semesterScore.semester = semester.substring(from: semester.characters.index(semester.endIndex, offsetBy: -2))
+            let yearIndex = semester.index(semester.startIndex, offsetBy: 9)
+            semesterScore.year = String(semester[..<yearIndex])
+            let semesterIndex = semester.index(semester.endIndex, offsetBy: -2)
+            semesterScore.semester = String(semester[semesterIndex...])
             semesterScore.totalCredit = json["totalCredit"].numberValue
             semesterScore.averageGrade = json["averageScore"].numberValue
             
@@ -483,9 +486,11 @@ class DataStore: NSObject {
             while semesters.last != end {
                 var current = semesters.last!
                 if current.hasSuffix("1") {
-                    current = current.substring(to: current.index(before: current.endIndex)) + "2"
+                    let index = current.index(before: current.endIndex)
+                    current = current[..<index] + "2"
                 } else {
-                    let year = Int(current.substring(to: current.index(current.startIndex, offsetBy: 4)))!
+                    let index = current.index(current.startIndex, offsetBy: 4)
+                    let year = Int(current[..<index])!
                     current = "\(year + 1)-\(year + 2)-1"
                 }
                 semesters.append(current)

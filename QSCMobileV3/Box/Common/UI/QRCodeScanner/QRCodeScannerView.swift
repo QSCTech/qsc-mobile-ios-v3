@@ -93,7 +93,7 @@ class QRCodeScannerView: UIView {
     
     func initCaptureVideoPreviewLayer() -> Bool {
         var noError: Bool!
-        device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        device = AVCaptureDevice.default(for: AVMediaType.video)
         if device != nil {
             captureSession = AVCaptureSession()
             do {
@@ -105,7 +105,7 @@ class QRCodeScannerView: UIView {
                 output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                 if (captureSession!.canAddOutput(output)) {
                     captureSession!.addOutput(output)
-                    output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+                    output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
                 }
                 captureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session:captureSession)
                 captureVideoPreviewLayer.frame = bounds
@@ -195,13 +195,13 @@ class QRCodeScannerView: UIView {
 
 extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             stop()
             removeFromSuperview()
             let metadataObject = metadataObjects.first! as! AVMetadataMachineReadableCodeObject
             if callback != nil {
-                callback(metadataObject.stringValue)
+                callback(metadataObject.stringValue!)
             }
         }
     }

@@ -84,11 +84,11 @@ class QRCodeScannerViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func backButtonTapped(button: UIButton) {
+    @objc func backButtonTapped(button: UIButton) {
         dismiss(animated: true)
     }
     
-    func torchButtonTapped(button: UIButton) {
+    @objc func torchButtonTapped(button: UIButton) {
         if torchButton.tag == 1 {
             scanView.torchOn()
             torchButton.setImage(UIImage(named: "TorchOff"), for: .normal)
@@ -100,7 +100,7 @@ class QRCodeScannerViewController: UIViewController {
         }
     }
     
-    func photoLibraryButtonTapped(button: UIButton) {
+    @objc func photoLibraryButtonTapped(button: UIButton) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self

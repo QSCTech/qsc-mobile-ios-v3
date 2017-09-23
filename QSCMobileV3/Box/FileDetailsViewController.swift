@@ -60,13 +60,13 @@ class FileDetailsViewController: UITableViewController {
         return false
     }
     
-    func saveQRCode(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+    @objc func saveQRCode(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == .began {
             UIImageWriteToSavedPhotosAlbum(qrcode.image!, self, #selector(imageSaveCompletion(image:didFinishSavingWithError:contextInfo:)), nil)
         }
     }
     
-    func imageSaveCompletion(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+    @objc func imageSaveCompletion(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         let alert: UIAlertController!
         if error == nil {
             alert = UIAlertController(title: "Box", message: "二维码保存成功", preferredStyle: .alert)

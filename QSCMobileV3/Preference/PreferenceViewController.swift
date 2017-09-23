@@ -235,11 +235,11 @@ class PreferenceViewController: UITableViewController {
         return [delete]
     }
     
-    func refreshSwitchChanged(_ sender: UISwitch) {
+    @objc func refreshSwitchChanged(_ sender: UISwitch) {
         groupDefaults.set(sender.isOn, forKey: RefreshOnLaunchKey)
     }
     
-    func showScoreSwitchChanged(_ sender: UISwitch) {
+    @objc func showScoreSwitchChanged(_ sender: UISwitch) {
         groupDefaults.set(sender.isOn, forKey: ShowScoreKey)
         let auxRow = IndexPath(row: 2, section: Preference.setting.rawValue)
         if sender.isOn {
@@ -249,7 +249,7 @@ class PreferenceViewController: UITableViewController {
         }
     }
     
-    func auxiliaryScoreChanged(_ sender: UISegmentedControl) {
+    @objc func auxiliaryScoreChanged(_ sender: UISegmentedControl) {
         groupDefaults.set(sender.selectedSegmentIndex, forKey: AuxiliaryScoreKey)
     }
     

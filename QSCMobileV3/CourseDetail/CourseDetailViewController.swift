@@ -272,7 +272,7 @@ class CourseDetailViewController: UITableViewController {
                 let hw = homeworks[indexPath.row - 1]
                 if hw.isFinished!.boolValue {
                     cell.dotView.isHidden = true
-                    cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+                    cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle.rawValue])
                 } else {
                     cell.dotView.isHidden = false
                     cell.nameLabel.text = hw.name
@@ -377,7 +377,7 @@ class CourseDetailViewController: UITableViewController {
         return [delete]
     }
     
-    func edit(_ sender: AnyObject) {
+    @objc func edit(_ sender: AnyObject) {
         performSegue(withIdentifier: "Edit", sender: nil)
     }
     

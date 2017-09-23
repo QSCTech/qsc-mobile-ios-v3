@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             center.delegate = self
-            center.requestAuthorization(options: [.alert, .badge, .sound]) { _ in }
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { _, _  in }
         }
         UMessage.start(withAppkey: UMengAppKey, launchOptions: launchOptions)
         UMessage.registerForRemoteNotifications()

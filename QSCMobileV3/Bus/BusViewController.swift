@@ -113,7 +113,7 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func addEvent(_ sender: UIButton) {
+    @objc func addEvent(_ sender: UIButton) {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "HH:mm"

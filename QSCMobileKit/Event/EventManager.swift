@@ -43,7 +43,7 @@ public class EventManager: NSObject {
      - returns: The object of `CourseEvent`.
      */
     public func courseEventForIdentifier(_ identifier: String) -> CourseEvent? {
-        let identifier = identifier.substring(to: identifier.index(identifier.startIndex, offsetBy: 22))
+        let identifier = String(identifier[..<identifier.index(identifier.startIndex, offsetBy: 22)])
         
 //        if #available(iOSApplicationExtension 10.0, *) {
 //            let request: NSFetchRequest<CourseEvent> = CourseEvent.fetchRequest()

@@ -63,7 +63,7 @@ class MomentViewController: UIViewController {
             
             stackView.isHidden = true
             navigationItem.title = "今日无事"
-            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         } else {
             stackView.isHidden = false
             updateCurrentEvent()
@@ -106,7 +106,7 @@ class MomentViewController: UIViewController {
         placeLabel.text = event.place
         
         let color = QSCColor.categoría(event.category)
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: color]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
         timeLabel.textColor = color
         placeLabel.textColor = color
     }

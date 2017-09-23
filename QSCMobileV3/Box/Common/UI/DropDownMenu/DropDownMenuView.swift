@@ -55,7 +55,7 @@ class DropDownMenuView: UIButton {
         super.init(coder: aDecoder)
     }
     
-    func otherAreaTapped() {
+    @objc func otherAreaTapped() {
         isHidden = true
     }
     

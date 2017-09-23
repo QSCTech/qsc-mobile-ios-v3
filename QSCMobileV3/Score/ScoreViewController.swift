@@ -95,7 +95,7 @@ class ScoreViewController: UIViewController {
         imageView.frame = CGRect(x: buttonWidth * CGFloat(selectedIndex) + 38, y: 0, width: 23, height: 12)
     }
     
-    func semesterWasSelected(sender: UIButton) {
+    @objc func semesterWasSelected(sender: UIButton) {
         selectedIndex = sender.tag
         refreshScores()
     }
@@ -119,7 +119,7 @@ extension ScoreViewController: UITableViewDelegate, UITableViewDataSource {
             cell.nameLabel.text = score.name!
             cell.creditLabel.text = "\(score.credit!) 学分"
             cell.scoreLabel.text = String(format: "%.1f / %@", score.gradePoint!.floatValue, score.score!)
-            cell.gauge.rate = CGFloat(score.gradePoint!)
+            cell.gauge.rate = CGFloat(truncating: score.gradePoint!)
         }
         cell.backgroundColor = UIColor.clear
         return cell
