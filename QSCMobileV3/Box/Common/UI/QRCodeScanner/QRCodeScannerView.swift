@@ -195,7 +195,7 @@ class QRCodeScannerView: UIView {
 
 extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
     
-    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             stop()
             removeFromSuperview()
