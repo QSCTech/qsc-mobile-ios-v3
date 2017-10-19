@@ -4,8 +4,8 @@
 
 ## Tech
 
-- IDE：Xcode 8
-- 语言：Swift 3
+- IDE：Xcode 9
+- 语言：Swift 4
 - 操作系统：iOS 9+
 - 包管理器：Carthage
 - 版本发布：fastlane
