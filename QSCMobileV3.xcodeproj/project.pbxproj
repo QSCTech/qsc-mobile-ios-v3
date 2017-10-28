@@ -78,6 +78,7 @@
 		9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B337C1CF025F500C5372F /* BusViewController.xib */; };
 		9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */; };
 		9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173651D3141BE0074043E /* libMobClickLibrary.a */; };
+		9D7628681FA4EB03000423D4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7628661FA4EB03000423D4 /* LaunchScreen.xib */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -101,7 +102,6 @@
 		9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */; };
 		9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */; };
 		9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */; };
-		9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */; };
 		9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */; };
 		9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
@@ -299,6 +299,7 @@
 		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusViewController.xib; sourceTree = "<group>"; };
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		9D7173651D3141BE0074043E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendor/libMobClickLibrary.a; sourceTree = "<group>"; };
+		9D7628671FA4EB03000423D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
 		9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = Carthage/Build/iOS/CVCalendar.framework; sourceTree = "<group>"; };
@@ -320,7 +321,6 @@
 		9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTimePlaceCell.swift; sourceTree = "<group>"; };
 		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEditViewController.swift; sourceTree = "<group>"; };
 		9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkViewController.swift; sourceTree = "<group>"; };
-		9DCB0A401E65E8F700094A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculaViewController.swift; sourceTree = "<group>"; };
 		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurriculaViewController.xib; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -475,7 +475,7 @@
 				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
-				9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */,
+				9D7628661FA4EB03000423D4 /* LaunchScreen.xib */,
 				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
 				9D3139771CE789BF00CD7DAD /* Moment */,
 				9D31396E1CE789BF00CD7DAD /* Calendar */,
@@ -1103,11 +1103,11 @@
 			files = (
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9DF23E9A1F76E0FD004C0BFD /* Main.storyboard in Resources */,
-				9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */,
 				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
+				9D7628681FA4EB03000423D4 /* LaunchScreen.xib in Resources */,
 				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
 				9D08CF611D732B4A008C1D14 /* QueryCollectionViewCell.xib in Resources */,
 				9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */,
@@ -1359,12 +1359,12 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
-		9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */ = {
+		9D7628661FA4EB03000423D4 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9DCB0A401E65E8F700094A1C /* Base */,
+				9D7628671FA4EB03000423D4 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 		AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */ = {
