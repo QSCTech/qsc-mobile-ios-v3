@@ -69,7 +69,7 @@ class QueryViewController: UITableViewController {
         ],
         [
             "name": "第二课堂",
-            "url": "http://www.qzlake.zju.edu.cn",
+            "url": "http://www.youth.zju.edu.cn/sztz/",
             "campus": "on",
         ],
         [
