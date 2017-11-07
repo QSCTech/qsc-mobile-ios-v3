@@ -297,7 +297,33 @@ class QueryViewController: UITableViewController {
     
     @objc func refresh(_ sender: UIRefreshControl) {
         MobileManager.sharedInstance.refreshAll(errorBlock: { notification in
-            sender.attributedTitle = NSAttributedString(string: notification.userInfo?["error"] as? String ?? "")
+            if let error = notification.userInfo?["error"] as? String {
+                sender.attributedTitle = NSAttributedString(string: error)
+                if error == "教务网通知，请登录网站查收" {
+                    let alertController = UIAlertController(title: "刷新失败", message: "教务网有新通知，需查收后才能刷新", preferredStyle: .alert)
+                    let goAction = UIAlertAction(title: "立即前往", style: .default) { action in
+                        let url = URL(string: "http://jwbinfosys.zju.edu.cn/default2.aspx")!
+                        var request = URLRequest(url: url)
+                        request.httpMethod = "POST"
+                        let username = self.accountManager.currentAccountForJwbinfosys!.percentEncoded
+                        let password = self.accountManager.passwordForJwbinfosys(username)!.percentEncoded
+                        request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
+                        let bvc = BrowserViewController(request: request)
+                        bvc.webViewDidFinishLoadCallBack = { webView in
+                            bvc.webViewDidFinishLoadCallBack = nil
+                            webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(username)")!))
+                        }
+                        self.present(bvc, animated: true)
+                    }
+                    let cancelAction = UIAlertAction(title: "下次再说", style: .cancel)
+                    alertController.addAction(goAction)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true)
+                }
+            } else {
+                sender.attributedTitle = NSAttributedString(string: "")
+            }
+            
         }, callback: {
             if sender.attributedTitle?.string == " " {
                 sender.attributedTitle = NSAttributedString(string: "刷新成功")

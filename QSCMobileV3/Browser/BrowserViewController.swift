@@ -22,6 +22,8 @@ class BrowserViewController: UIViewController {
     
     var urlRequest: URLRequest!
     
+    var webViewDidFinishLoadCallBack: ((_ webView: UIWebView) -> Void)!
+    
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -77,6 +79,9 @@ extension BrowserViewController: UIWebViewDelegate {
         navItem.title = webView.stringByEvaluatingJavaScript(from: "document.title")
         backwardButton.isEnabled = webView.canGoBack
         forwardButton.isEnabled = webView.canGoForward
+        if webViewDidFinishLoadCallBack != nil {
+            webViewDidFinishLoadCallBack(webView)
+        }
     }
     
 }

@@ -8,16 +8,20 @@
 
 import UIKit
 import QSCMobileKit
+import SVProgressHUD
 
 class MomentViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     @IBOutlet weak var stackView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
+    
+    let accountManager = AccountManager.sharedInstance
     
     var events = [Event]()
     var pageControllers = [MomentPageViewController]()
@@ -121,6 +125,54 @@ class MomentViewController: UIViewController {
         let vc = JwbinfosysLoginViewController()
         present(vc, animated: true)
     }
+    
+    @IBAction func refresh(_ sender: Any) {
+        if accountManager.currentAccountForJwbinfosys != nil {
+            refreshButton.isEnabled = false
+            SVProgressHUD.show(withStatus: "刷新中")
+            var result = " "
+            MobileManager.sharedInstance.refreshAll(errorBlock: { notification in
+                if let error = notification.userInfo?["error"] as? String {
+                    result = error
+                    if error != "教务网通知，请登录网站查收" {
+                        SVProgressHUD.showError(withStatus: error)
+                    } else {
+                        SVProgressHUD.dismiss()
+                        let alertController = UIAlertController(title: "刷新失败", message: "教务网有新通知，需查收后才能刷新", preferredStyle: .alert)
+                        let goAction = UIAlertAction(title: "立即前往", style: .default) { action in
+                            let url = URL(string: "http://jwbinfosys.zju.edu.cn/default2.aspx")!
+                            var request = URLRequest(url: url)
+                            request.httpMethod = "POST"
+                            let username = self.accountManager.currentAccountForJwbinfosys!.percentEncoded
+                            let password = self.accountManager.passwordForJwbinfosys(username)!.percentEncoded
+                            request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
+                            let bvc = BrowserViewController(request: request)
+                            bvc.webViewDidFinishLoadCallBack = { webView in
+                                bvc.webViewDidFinishLoadCallBack = nil
+                                webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(username)")!))
+                            }
+                            self.present(bvc, animated: true)
+                        }
+                        let cancelAction = UIAlertAction(title: "下次再说", style: .cancel)
+                        alertController.addAction(goAction)
+                        alertController.addAction(cancelAction)
+                        self.present(alertController, animated: true)
+                    }
+                } else {
+                    result = ""
+                }
+                
+            }, callback: {
+                if result == " " {
+                    SVProgressHUD.showSuccess(withStatus: "刷新成功")
+                }
+                self.refreshButton.isEnabled = true
+            })
+        } else {
+            SVProgressHUD.showError(withStatus: "请先登录")
+        }
+    }
+    
 }
 
 extension MomentViewController: UIScrollViewDelegate {
