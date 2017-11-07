@@ -10,7 +10,6 @@
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
-		26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26518C9E1EB2560E0025FBF2 /* Apollo.framework */; };
 		2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BD1E7529FB00ECE931 /* BoxColor.swift */; };
 		2697B9CE1E7529FB00ECE931 /* FileRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */; };
 		2697B9CF1E7529FB00ECE931 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */; };
@@ -406,7 +405,6 @@
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D9540BE1E754D5E002495F9 /* ZipArchive.framework in Frameworks */,
 				9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */,
-				26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
 				9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
@@ -1181,7 +1179,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CurriculaTable.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
