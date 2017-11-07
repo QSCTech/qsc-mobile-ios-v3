@@ -26,17 +26,14 @@ class QueryViewController: UITableViewController {
     let login: [[String: String]] = [
         [
             "name": "教务网",
-            "url": "http://jwbinfosys.zju.edu.cn/default2.aspx",
             "campus": "off",
         ],
         [
             "name": "浙大邮箱",
-            "url": "http://mail.zju.edu.cn/coremail/login.jsp",
             "campus": "off",
         ],
         [
             "name": "网络中心",
-            "url": "http://myvpn.zju.edu.cn/j_security_check",
             "campus": "on",
         ],
     ]
@@ -221,27 +218,16 @@ class QueryViewController: UITableViewController {
                 SVProgressHUD.showError(withStatus: "您未设置 ZJUWLAN 账号")
                 break
             }
-            // TODO: Handle login errors
-            let url = URL(string: login[indexPath.row]["url"]!)!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
+            let website: BrowserViewController.Website
             switch indexPath.row {
             case 0:
-                let username = accountManager.currentAccountForJwbinfosys!.percentEncoded
-                let password = accountManager.passwordForJwbinfosys(username)!.percentEncoded
-                request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
+                website = .jwbinfosys
             case 1:
-                let username = accountManager.accountForZjuwlan!.percentEncoded
-                let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.httpBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action%3Alogin=".data(using: String.Encoding.ascii)
-            case 2:
-                let username = accountManager.accountForZjuwlan!.percentEncoded
-                let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.httpBody = "j_username=\(username)&j_password=\(password)".data(using: String.Encoding.ascii)
+                website = .mail
             default:
-                break
+                website = .myvpn
             }
-            let bvc = BrowserViewController(request: request)
+            let bvc = BrowserViewController.builtin(website: website)
             present(bvc, animated: true)
         case .website:
             let url = URL(string: websites[indexPath.row]["url"]!)!
@@ -296,43 +282,16 @@ class QueryViewController: UITableViewController {
     }
     
     @objc func refresh(_ sender: UIRefreshControl) {
-        MobileManager.sharedInstance.refreshAll(errorBlock: { notification in
-            if let error = notification.userInfo?["error"] as? String {
-                sender.attributedTitle = NSAttributedString(string: error)
-                if error == "教务网通知，请登录网站查收" {
-                    let alertController = UIAlertController(title: "刷新失败", message: "教务网有新通知，需查收后才能刷新", preferredStyle: .alert)
-                    let goAction = UIAlertAction(title: "立即前往", style: .default) { action in
-                        let url = URL(string: "http://jwbinfosys.zju.edu.cn/default2.aspx")!
-                        var request = URLRequest(url: url)
-                        request.httpMethod = "POST"
-                        let username = self.accountManager.currentAccountForJwbinfosys!.percentEncoded
-                        let password = self.accountManager.passwordForJwbinfosys(username)!.percentEncoded
-                        request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
-                        let bvc = BrowserViewController(request: request)
-                        bvc.webViewDidFinishLoadCallBack = { webView in
-                            bvc.webViewDidFinishLoadCallBack = nil
-                            webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(username)")!))
-                        }
-                        self.present(bvc, animated: true)
-                    }
-                    let cancelAction = UIAlertAction(title: "下次再说", style: .cancel)
-                    alertController.addAction(goAction)
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true)
-                }
-            } else {
-                sender.attributedTitle = NSAttributedString(string: "")
-            }
-            
-        }, callback: {
-            if sender.attributedTitle?.string == " " {
+        MobileManager.sharedInstance.refreshAll {
+            if !globalErrorFlag {
                 sender.attributedTitle = NSAttributedString(string: "刷新成功")
             }
+            globalErrorFlag = false
             delay(1) {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")
             }
-        })
+        }
     }
     
 }

@@ -11,9 +11,11 @@ import SVProgressHUD
 import EAIntroView
 import QSCMobileKit
 
+let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
+
 let UMengAppKey = "572381bf67e58e07a7005095"
 
-let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
+var globalErrorFlag = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             groupDefaults.set(true, forKey: RefreshOnLaunchKey)
         }
         if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
-            MobileManager.sharedInstance.refreshAll(errorBlock: { _ in }, callback: {
+            MobileManager.sharedInstance.refreshAll {
                 print("Refresh on launch completed")
-            })
+            }
         }
         if groupDefaults.object(forKey: ShowScoreKey) == nil {
             groupDefaults.set(true, forKey: ShowScoreKey)
@@ -58,9 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setMinimumSize(CGSize(width: 100, height: 100))
-        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setMinimumDismissTimeInterval(2)
         
         introduceNewVersion()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshErrorHandler), name: .refreshError, object: nil)
         
         return true
     }
@@ -92,6 +96,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let introView = EAIntroView(frame: view.bounds, andPages: introPages)
             introView?.skipButtonY = view.bounds.height - 20
             introView?.show(in: view)
+        }
+    }
+    
+    @objc func refreshErrorHandler(notification: Notification) {
+        globalErrorFlag = true
+        if let error = notification.userInfo?["error"] as? String {
+            if error.contains("教务网通知") {
+                SVProgressHUD.dismiss()
+                let alertController = UIAlertController(title: "刷新失败", message: "教务网通知，需确认后才能刷新", preferredStyle: .alert)
+                let goAction = UIAlertAction(title: "立即前往", style: .default) { action in
+                    let bvc = BrowserViewController.builtin(website: .jwbinfosys)
+                    bvc.webViewDidFinishLoadCallback = { webView in
+                        webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(AccountManager.sharedInstance.currentAccountForJwbinfosys!)")!))
+                        bvc.webViewDidFinishLoadCallback = nil
+                    }
+                    self.window?.rootViewController?.present(bvc, animated: true)
+                }
+                let cancelAction = UIAlertAction(title: "下次再说", style: .cancel)
+                alertController.addAction(goAction)
+                alertController.addAction(cancelAction)
+                window?.rootViewController?.present(alertController, animated: true)
+            } else {
+                SVProgressHUD.showError(withStatus: error)
+            }
         }
     }
     

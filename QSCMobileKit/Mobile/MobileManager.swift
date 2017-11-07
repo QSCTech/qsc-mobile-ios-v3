@@ -39,7 +39,7 @@ public class MobileManager: NSObject {
      - parameter password: Password of the account.
      - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
      */
-    public func loginValidate(_ username: String, _ password: String, errorBlock: @escaping (Notification) -> Void, callback: @escaping (Bool, String?) -> Void) {
+    public func loginValidate(_ username: String, _ password: String, callback: @escaping (Bool, String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { success, error in
             if success {
@@ -47,9 +47,9 @@ public class MobileManager: NSObject {
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
-                self.refreshAll(errorBlock: errorBlock, callback: {
+                self.refreshAll {
                     callback(success, error)
-                })
+                }
             } else {
                 callback(success, error)
             }
@@ -276,11 +276,9 @@ public class MobileManager: NSObject {
     /**
      Try to refresh data of calendar, courses, exams, scores and buses.
      
-     - parameter errorBlock: A closure to be executed if there is any error.
      - parameter callback:   A closure to be executed once the request has finished.
      */
-    public func refreshAll(errorBlock: @escaping (Notification) -> Void, callback: @escaping () -> Void) {
-        let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main, using: errorBlock)
+    public func refreshAll(callback: @escaping () -> Void) {
         // First refresh calendar to prevent multiple sessionFail retries at the same time
         refreshCalendar { success, error in
             if success {
@@ -290,7 +288,7 @@ public class MobileManager: NSObject {
                 }
                 let closure = { (success: Bool, error: String?) in
                     if !success && !error!.isEmpty {
-                        NotificationCenter.default.post(Notification(name: .refreshError, object: nil, userInfo: ["error": error!]))
+                        NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error!])
                     }
                     group.leave()
                 }
@@ -300,14 +298,12 @@ public class MobileManager: NSObject {
                 self.refreshBuses(closure)
                 group.notify(queue: DispatchQueue.main) {
                     callback()
-                    NotificationCenter.default.removeObserver(observer)
                     NotificationCenter.default.post(name: .refreshCompleted, object: nil)
                     NotificationCenter.default.post(name: .eventsModified, object: nil)
                 }
             } else {
-                NotificationCenter.default.post(Notification(name: .refreshError, object: nil, userInfo: ["error": error!]))
+                NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error!])
                 callback()
-                NotificationCenter.default.removeObserver(observer)
             }
         }
     }

@@ -33,7 +33,7 @@ extension String {
         if count == 0 {
             return time
         }
-        switch characters.first! {
+        switch first! {
         case "1":
             time.hour = 8
             time.minute = 0
@@ -87,7 +87,7 @@ extension String {
         if count == 0 {
             return time
         }
-        switch characters.last! {
+        switch last! {
         case "1":
             time.hour = 8
             time.minute = 45
