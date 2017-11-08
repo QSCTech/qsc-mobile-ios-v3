@@ -33,9 +33,12 @@ class CurriculaViewController: UIViewController {
         return mobileManager.allSemesters.count * 2 - 1
     }
     
+    let bgColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = bgColor
         navigationItem.title = "一周课表"
         titleLabel.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
         previousButton.setTitleColor(UIColor.lightGray, for: .disabled)
@@ -107,7 +110,7 @@ class CurriculaViewController: UIViewController {
             }
         }
         curriculaTable.curricula = curricula
-        curriculaTable.bgColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+        curriculaTable.bgColor = bgColor
         curriculaTable.borderWidth = 0.5
         curriculaTable.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.9)
         curriculaTable.cornerRadius = 2
