@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-import EAIntroView
+import BWWalkthrough
 import QSCMobileKit
 
 let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
@@ -70,32 +70,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func introduceNewVersion() {
-        var introPages = [EAIntroPage]()
+        let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
+        let walkthrough = storyboard.instantiateInitialViewController() as! BWWalkthroughViewController
+        walkthrough.delegate = self
         
         let Build30020Key = "Build30020"
         if groupDefaults.object(forKey: Build30020Key) == nil {
-            let introPage = EAIntroPage()
-            introPage.bgImage = UIImage(named: "TodayWidget")
-            introPages.append(introPage)
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "TodayWidget"))
             groupDefaults.set(true, forKey: Build30020Key)
         }
         
         let Build30025Key = "Build30025"
         if groupDefaults.object(forKey: Build30025Key) == nil {
-            var introPage = EAIntroPage()
-            introPage.bgImage = UIImage(named: "QSCBox")
-            introPages.append(introPage)
-            introPage = EAIntroPage()
-            introPage.bgImage = UIImage(named: "ShareExtension")
-            introPages.append(introPage)
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "QSCBox"))
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "ShareExtension"))
             groupDefaults.set(true, forKey: Build30025Key)
         }
         
-        if !introPages.isEmpty {
-            let view = window!.rootViewController!.view!
-            let introView = EAIntroView(frame: view.bounds, andPages: introPages)
-            introView?.skipButtonY = view.bounds.height - 20
-            introView?.show(in: view)
+        if walkthrough.numberOfPages > 0 {
+            delay(1) { self.window?.rootViewController?.present(walkthrough, animated: true) }
         }
     }
     
@@ -251,6 +244,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             UMessage.didReceiveRemoteNotification(response.notification.request.content.userInfo)
         }
         completionHandler()
+    }
+    
+}
+
+extension AppDelegate: BWWalkthroughViewControllerDelegate {
+    
+    func walkthroughCloseButtonPressed() {
+        window?.rootViewController?.dismiss(animated: true)
     }
     
 }

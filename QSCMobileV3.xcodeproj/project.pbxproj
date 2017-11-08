@@ -70,13 +70,14 @@
 		9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A014B1DA106B100CF5469 /* QueryList.storyboard */; };
 		9D5A01521DA106B100CF5469 /* SemesterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */; };
 		9D5A01531DA106B100CF5469 /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */; };
-		9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D608D991E65F678005A631E /* EAIntroView.framework */; };
 		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B336D1CECC0E200C5372F /* Kingfisher.framework */; };
 		9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B337B1CF025F500C5372F /* BusViewController.swift */; };
 		9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B337C1CF025F500C5372F /* BusViewController.xib */; };
 		9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */; };
 		9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173651D3141BE0074043E /* libMobClickLibrary.a */; };
+		9D71FF0D1FB3B962005A64DE /* BWWalkthrough.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D71FF0C1FB3B962005A64DE /* BWWalkthrough.framework */; };
+		9D71FF0F1FB3BA01005A64DE /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D71FF0E1FB3BA01005A64DE /* Walkthrough.storyboard */; };
 		9D7628681FA4EB03000423D4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7628661FA4EB03000423D4 /* LaunchScreen.xib */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
@@ -228,7 +229,6 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
-		26518C9E1EB2560E0025FBF2 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		2697B9BD1E7529FB00ECE931 /* BoxColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxColor.swift; sourceTree = "<group>"; };
 		2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRecognizer.swift; sourceTree = "<group>"; };
 		2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
@@ -290,7 +290,6 @@
 		9D5A014B1DA106B100CF5469 /* QueryList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QueryList.storyboard; sourceTree = "<group>"; };
 		9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListCell.swift; sourceTree = "<group>"; };
 		9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
-		9D608D991E65F678005A631E /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -298,6 +297,8 @@
 		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusViewController.xib; sourceTree = "<group>"; };
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		9D7173651D3141BE0074043E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendor/libMobClickLibrary.a; sourceTree = "<group>"; };
+		9D71FF0C1FB3B962005A64DE /* BWWalkthrough.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWWalkthrough.framework; path = Carthage/Build/iOS/BWWalkthrough.framework; sourceTree = "<group>"; };
+		9D71FF0E1FB3BA01005A64DE /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		9D7628671FA4EB03000423D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
@@ -404,7 +405,7 @@
 				9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D9540BE1E754D5E002495F9 /* ZipArchive.framework in Frameworks */,
-				9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */,
+				9D71FF0D1FB3B962005A64DE /* BWWalkthrough.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
 				9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
@@ -474,6 +475,7 @@
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
 				9D7628661FA4EB03000423D4 /* LaunchScreen.xib */,
+				9D71FF0E1FB3BA01005A64DE /* Walkthrough.storyboard */,
 				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
 				9D3139771CE789BF00CD7DAD /* Moment */,
 				9D31396E1CE789BF00CD7DAD /* Calendar */,
@@ -901,8 +903,7 @@
 				9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				2697B9E61E752A6A00ECE931 /* ZipArchive.framework */,
-				9D608D991E65F678005A631E /* EAIntroView.framework */,
-				26518C9E1EB2560E0025FBF2 /* Apollo.framework */,
+				9D71FF0C1FB3B962005A64DE /* BWWalkthrough.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
@@ -1102,6 +1103,7 @@
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9DF23E9A1F76E0FD004C0BFD /* Main.storyboard in Resources */,
 				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
+				9D71FF0F1FB3BA01005A64DE /* Walkthrough.storyboard in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
@@ -1177,8 +1179,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/DeviceKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BTNavigationDropdownMenu.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CurriculaTable.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BWWalkthrough.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
