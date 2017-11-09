@@ -52,7 +52,7 @@ class BoxViewController: UIViewController {
         }
         if downloadDropDownMenu == nil {
             downloadDropDownMenu = DropDownMenuView(items: [["text": "提取码", "icon": "InputCode"], ["text": "扫一扫", "icon": "ScanQRCode"]], superView: view, width: 122, pointerX: view.frame.width - 37.5, pointerY: 0, menuX: view.frame.width - 130, shadow: true)
-            downloadDropDownMenu.callBack = downloadDropDownMenuCallBack
+            downloadDropDownMenu.selectCallBack = downloadDropDownMenuCallBack
             downloadDropDownMenu.isHidden = false
         } else {
             downloadDropDownMenu.removeFromSuperview()

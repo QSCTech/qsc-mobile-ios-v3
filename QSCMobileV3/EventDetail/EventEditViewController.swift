@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BTNavigationDropdownMenu
 import QSCMobileKit
 
 class EventEditViewController: UITableViewController {
@@ -107,25 +106,7 @@ class EventEditViewController: UITableViewController {
         }
         startTimeDidChange(startTimePicker)
         
-        let items = [Event.Category.lesson.name, Event.Category.quiz.name, Event.Category.activity.name, Event.Category.todo.name]
-        if eventCategory.rawValue - 2 < items.count {
-            let menuView = BTNavigationDropdownMenu(title: items[eventCategory.rawValue - 2], items: items as [NSString])
-            menuView.didSelectItemAtIndexHandler = { index in
-                self.customEvent!.category = (index + 2) as NSNumber
-                self.navigationController?.navigationBar.backgroundColor = QSCColor.category(self.eventCategory)
-            }
-            menuView.arrowTintColor = UIColor.black
-            menuView.cellBackgroundColor = UIColor.darkGray
-            menuView.cellSeparatorColor = UIColor.darkGray
-            menuView.cellTextLabelColor = UIColor.white
-            menuView.cellTextLabelAlignment = .center
-            menuView.cellHeight = 44
-            menuView.checkMarkImage = nil
-            navigationItem.titleView = menuView
-        } else {
-            navigationItem.title = eventCategory.name
-        }
-        navigationController?.navigationBar.backgroundColor = QSCColor.category(eventCategory)
+        prepareDropDownMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -303,7 +284,6 @@ class EventEditViewController: UITableViewController {
             eventManager.removeCustomEvent(customEvent!)
         }
         
-        (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
         dismiss(animated: true)
     }
     
@@ -368,7 +348,6 @@ class EventEditViewController: UITableViewController {
             }
         }
         
-        (navigationItem.titleView as? BTNavigationDropdownMenu)?.hide()
         dismiss(animated: true)
     }
     
@@ -390,6 +369,8 @@ class EventEditViewController: UITableViewController {
         }
     }
     
+    // MARK: - Local notifications
+    
     @discardableResult static func addLocalNotification(_ event: CustomEvent) -> UILocalNotification {
         let notif = UILocalNotification()
         let time = event.notification == 0 ? "已" : "将于 " + event.notification!.stringFromNotificationType.replacingOccurrences(of: "前", with: "后")
@@ -402,6 +383,61 @@ class EventEditViewController: UITableViewController {
             UIApplication.shared.scheduleLocalNotification(notif)
         }
         return notif
+    }
+    
+    // MARK: - Drop-down Menu
+    
+    var dropDownMenu: DropDownMenuView!
+    let dropDownItems = [
+        ["text": Event.Category.lesson.name, "icon": "DotLesson"],
+        ["text": Event.Category.quiz.name, "icon": "DotQuiz"],
+        ["text": Event.Category.activity.name, "icon": "DotActivity"],
+        ["text": Event.Category.todo.name, "icon": "DotTodo"],
+    ]
+    let dropDownArrow = "▾"
+    let foldUpArrow   = "▴"
+    
+    func prepareDropDownMenu() {
+        if eventCategory.rawValue - 2 < dropDownItems.count {
+            let halfWidth = view.bounds.width / 2
+            dropDownMenu = DropDownMenuView(items: dropDownItems, superView: view, width: 100, pointerX: halfWidth - 11, pointerY: 0, menuX: halfWidth - 50, shadow: true)
+            dropDownMenu.selectCallBack = selectCallBack
+            dropDownMenu.cancelCallBack = cancelCallBack
+        }
+        navigationItem.titleView = titleView
+        selectCallBack(index: -1)
+    }
+    
+    func selectCallBack(index: Int) {
+        if index >= 0 {
+            customEvent?.category = (index + 2) as NSNumber
+        }
+        titleView.text = "\(dropDownArrow)  \(eventCategory.name)"
+        navigationController?.navigationBar.backgroundColor = QSCColor.category(self.eventCategory)
+        dropDownMenu.isHidden = true
+    }
+    
+    func cancelCallBack() {
+        titleView.text = titleView.text!.replacingOccurrences(of: foldUpArrow, with: dropDownArrow)
+        dropDownMenu.isHidden = true
+    }
+    
+    lazy var titleView: UILabel = {
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
+        titleView.font = UIFont.boldSystemFont(ofSize: 18)
+        titleView.textAlignment = .center
+        titleView.isUserInteractionEnabled = true
+        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleViewTapHandler)))
+        return titleView
+    }()
+    
+    @objc func titleViewTapHandler(_ sender: AnyObject?) {
+        if titleView.text!.contains(dropDownArrow) {
+            titleView.text = titleView.text!.replacingOccurrences(of: dropDownArrow, with: foldUpArrow)
+            dropDownMenu.isHidden = false
+        } else {
+            cancelCallBack()
+        }
     }
     
 }

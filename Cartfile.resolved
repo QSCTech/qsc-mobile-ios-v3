@@ -1,6 +1,5 @@
 github "Alamofire/Alamofire" "4.5.1"
 github "Mozharovsky/CVCalendar" "1.6.0"
-github "PhamBaTho/BTNavigationDropdownMenu" "0.4.1"
 github "SVProgressHUD/SVProgressHUD" "2.2.2"
 github "SwiftyJSON/SwiftyJSON" "3.1.4"
 github "ZipArchive/ZipArchive" "v2.1.1"
