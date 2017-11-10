@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
             MobileManager.sharedInstance.refreshAll {
+                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
                 print("Refresh on launch completed")
             }
         }
@@ -204,6 +205,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
+            let now = Date()
+            if let date = groupDefaults.object(forKey: LastRefreshDateKey) as? Date, !Calendar.current.isDate(date, inSameDayAs: now) {
+                MobileManager.sharedInstance.refreshAll {
+                    groupDefaults.set(now, forKey: LastRefreshDateKey)
+                    print("Daily refresh completed (last refresh: \(date))")
+                }
+            }
+        }
         let tabBarController = window!.rootViewController as! UITabBarController
         if tabBarController.selectedIndex == 3 {
             let navigationController = tabBarController.selectedViewController as! UINavigationController

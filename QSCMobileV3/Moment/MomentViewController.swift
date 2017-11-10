@@ -138,6 +138,7 @@ class MomentViewController: UIViewController {
                 }
                 NotificationCenter.default.removeObserver(observer)
                 self.refreshButton.isEnabled = true
+                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
             }
         } else {
             SVProgressHUD.showError(withStatus: "请先登录")

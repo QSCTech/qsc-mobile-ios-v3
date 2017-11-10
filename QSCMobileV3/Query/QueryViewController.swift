@@ -289,6 +289,7 @@ class QueryViewController: UITableViewController {
                 sender.attributedTitle = NSAttributedString(string: "刷新成功")
             }
             NotificationCenter.default.removeObserver(observer)
+            groupDefaults.set(Date(), forKey: LastRefreshDateKey)
             delay(1) {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")

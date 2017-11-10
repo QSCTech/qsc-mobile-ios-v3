@@ -14,6 +14,7 @@ import DeviceKit
 import QSCMobileKit
 
 let RefreshOnLaunchKey = "RefreshOnLaunch"
+let LastRefreshDateKey = "LastRefreshDate"
 let ShowScoreKey = "ShowScore"
 let AuxiliaryScoreKey = "AuxiliaryScore"
 let DeviceTokenKey = "DeviceToken"
