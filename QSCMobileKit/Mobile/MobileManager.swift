@@ -30,6 +30,10 @@ public class MobileManager: NSObject {
     private var apiSession: APISession!
     private var dataStore: DataStore!
     
+    public enum LoginState {
+        case success, refreshError, loginError
+    }
+    
     // MARK: - Manage accounts
     
     /**
@@ -37,9 +41,9 @@ public class MobileManager: NSObject {
      
      - parameter username: Username of the account.
      - parameter password: Password of the account.
-     - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
+     - parameter callback: A closure to be executed once login request has finished. The first parameter is the login state, and the second one is the description of error if failed.
      */
-    public func loginValidate(_ username: String, _ password: String, callback: @escaping (Bool, String?) -> Void) {
+    public func loginValidate(_ username: String, _ password: String, callback: @escaping (LoginState, String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { success, error in
             if success {
@@ -47,11 +51,18 @@ public class MobileManager: NSObject {
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
+                var errorFlag = false
+                let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
                 self.refreshAll {
-                    callback(success, error)
+                    if !errorFlag {
+                        callback(.success, nil)
+                    } else {
+                        callback(.refreshError, nil)
+                    }
+                    NotificationCenter.default.removeObserver(observer)
                 }
             } else {
-                callback(success, error)
+                callback(.loginError, error)
             }
         }
     }

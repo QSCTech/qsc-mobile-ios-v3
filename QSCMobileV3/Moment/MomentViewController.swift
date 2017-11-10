@@ -130,11 +130,13 @@ class MomentViewController: UIViewController {
         if accountManager.currentAccountForJwbinfosys != nil {
             refreshButton.isEnabled = false
             SVProgressHUD.show(withStatus: "刷新中")
+            var errorFlag = false
+            let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
             MobileManager.sharedInstance.refreshAll {
-                if !globalErrorFlag {
+                if !errorFlag {
                     SVProgressHUD.showSuccess(withStatus: "刷新成功")
                 }
-                globalErrorFlag = false
+                NotificationCenter.default.removeObserver(observer)
                 self.refreshButton.isEnabled = true
             }
         } else {

@@ -34,11 +34,14 @@ class JwbinfosysLoginViewController: UIViewController {
     
     @IBAction func login(_ sender: AnyObject) {
         SVProgressHUD.show(withStatus: "登录中")
-        MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { success, error in
-            if success {
-                self.dismiss(animated: true)
+        MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!) { state, error in
+            switch state {
+            case .success:
                 SVProgressHUD.showSuccess(withStatus: "登录成功")
-            } else {
+                fallthrough
+            case .refreshError:
+                self.dismiss(animated: true)
+            case .loginError:
                 SVProgressHUD.showError(withStatus: error)
             }
         }

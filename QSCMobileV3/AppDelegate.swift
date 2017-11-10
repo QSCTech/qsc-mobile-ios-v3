@@ -15,8 +15,6 @@ let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
 
 let UMengAppKey = "572381bf67e58e07a7005095"
 
-var globalErrorFlag = false
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -93,7 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @objc func refreshErrorHandler(notification: Notification) {
-        globalErrorFlag = true
         if let error = notification.userInfo?["error"] as? String {
             if error.contains("教务网通知") {
                 SVProgressHUD.dismiss()

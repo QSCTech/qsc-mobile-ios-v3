@@ -282,11 +282,13 @@ class QueryViewController: UITableViewController {
     }
     
     @objc func refresh(_ sender: UIRefreshControl) {
+        var errorFlag = false
+        let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
         MobileManager.sharedInstance.refreshAll {
-            if !globalErrorFlag {
+            if !errorFlag {
                 sender.attributedTitle = NSAttributedString(string: "刷新成功")
             }
-            globalErrorFlag = false
+            NotificationCenter.default.removeObserver(observer)
             delay(1) {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")
