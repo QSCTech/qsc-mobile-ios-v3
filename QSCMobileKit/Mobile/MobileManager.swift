@@ -30,52 +30,39 @@ public class MobileManager: NSObject {
     private var apiSession: APISession!
     private var dataStore: DataStore!
     
-    public enum LoginState {
-        case success, refreshError, loginError
-    }
-    
     // MARK: - Manage accounts
     
     /**
-     Validate a newly added account of JWBInfoSys. If valid, it will be added to account manager as current account and created as a user entity.
+     Validate a newly added account of JWBInfoSys. If valid, it will be added to account manager as current account and created as a user entity. Usually you want to call `refreshAll` in the callback function.
      
      - parameter username: Username of the account.
      - parameter password: Password of the account.
-     - parameter callback: A closure to be executed once login request has finished. The first parameter is the login state, and the second one is the description of error if failed.
+     - parameter callback: A closure to be executed once login request has finished. The argument will be nil if login succeeds, otherwise it will be the description of error.
      */
-    public func loginValidate(_ username: String, _ password: String, callback: @escaping (LoginState, String?) -> Void) {
+    public func loginValidate(_ username: String, _ password: String, callback: @escaping (String?) -> Void) {
         let apiSession = APISession(username: username, password: password)
-        apiSession.loginRequest { success, error in
-            if success {
+        apiSession.loginRequest { error in
+            if let error = error {
+                callback(error)
+            } else {
                 DataStore.createUser(username)
                 self.accountManager.addAccountToJwbinfosys(username, password)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
-                var errorFlag = false
-                let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
-                self.refreshAll {
-                    if !errorFlag {
-                        callback(.success, nil)
-                    } else {
-                        callback(.refreshError, nil)
-                    }
-                    NotificationCenter.default.removeObserver(observer)
-                }
-            } else {
-                callback(.loginError, error)
+                callback(nil)
             }
         }
     }
     
     /**
-     Change current account to already existed one and try to update sessions without refreshing its data.
+     Change current account to already existed one and try to update sessions without refreshing its data. Usually you want to call `refreshAll` afterwards.
      
      - parameter username: Username of the account.
      */
     public func changeUser(_ username: String) {
         accountManager.currentAccountForJwbinfosys = username
         apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
-        apiSession.loginRequest { _, _  in }
+        apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
         NotificationCenter.default.post(name: .eventsModified, object: nil)
     }
@@ -291,15 +278,16 @@ public class MobileManager: NSObject {
      */
     public func refreshAll(callback: @escaping () -> Void) {
         // First refresh calendar to prevent multiple sessionFail retries at the same time
-        refreshCalendar { success, error in
-            if success {
+        refreshCalendar { error in
+            if let error = error {
+                NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error])
+                callback()
+            } else {
                 let group = DispatchGroup()
-                for _ in 0..<4 {
-                    group.enter()
-                }
-                let closure = { (success: Bool, error: String?) in
-                    if !success && !error!.isEmpty {
-                        NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error!])
+                for _ in 0..<4 { group.enter() }
+                let closure = { (error: String?) in
+                    if let error = error {
+                        NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error])
                     }
                     group.leave()
                 }
@@ -312,9 +300,6 @@ public class MobileManager: NSObject {
                     NotificationCenter.default.post(name: .refreshCompleted, object: nil)
                     NotificationCenter.default.post(name: .eventsModified, object: nil)
                 }
-            } else {
-                NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error!])
-                callback()
             }
         }
     }
@@ -322,16 +307,16 @@ public class MobileManager: NSObject {
     /**
      Delete and retrieve course data from API.
      
-     - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
+     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
      */
-    public func refreshCourses(_ callback: @escaping (Bool, String?) -> Void) {
+    public func refreshCourses(_ callback: @escaping (String?) -> Void) {
         apiSession.courseRequest { json, error in
             if let json = json {
                 self.dataStore.deleteCourses()
                 self.dataStore.createCourses(json)
-                callback(true, error)
+                callback(nil)
             } else {
-                callback(false, error)
+                callback(error)
             }
         }
     }
@@ -339,16 +324,16 @@ public class MobileManager: NSObject {
     /**
      Delete and retrieve exam data from API.
      
-     - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
+     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
      */
-    public func refreshExams(_ callback: @escaping (Bool, String?) -> Void) {
+    public func refreshExams(_ callback: @escaping (String?) -> Void) {
         apiSession.examRequest { json, error in
             if let json = json {
                 self.dataStore.deleteExams()
                 self.dataStore.createExams(json)
-                callback(true, error)
+                callback(nil)
             } else {
-                callback(false, error)
+                callback(error)
             }
         }
     }
@@ -356,9 +341,9 @@ public class MobileManager: NSObject {
     /**
      Delete and retrieve score data from API.
      
-     - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
+     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
      */
-    public func refreshScores(_ callback: @escaping (Bool, String?) -> Void) {
+    public func refreshScores(_ callback: @escaping (String?) -> Void) {
         apiSession.scoreRequest { json, error in
             if let json = json {
                 self.dataStore.deleteScores()
@@ -367,13 +352,13 @@ public class MobileManager: NSObject {
                     if let json = json {
                         self.dataStore.deleteStatistics()
                         self.dataStore.createStatistics(json)
-                        callback(true, error)
+                        callback(nil)
                     } else {
-                        callback(false, error)
+                        callback(error)
                     }
                 }
             } else {
-                callback(false, error)
+                callback(error)
             }
         }
     }
@@ -381,16 +366,16 @@ public class MobileManager: NSObject {
     /**
      Delete and retrieve calendar data from API.
      
-     - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
+     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
      */
-    public func refreshCalendar(_ callback: @escaping (Bool, String?) -> Void) {
+    public func refreshCalendar(_ callback: @escaping (String?) -> Void) {
         apiSession.calendarRequest { json, error in
             if let json = json {
                 self.dataStore.deleteCalendar()
                 self.dataStore.createCalendar(json)
-                callback(true, error)
+                callback(nil)
             } else {
-                callback(false, error)
+                callback(error)
             }
         }
     }
@@ -398,16 +383,16 @@ public class MobileManager: NSObject {
     /**
      Delete and retrieve bus data from API.
      
-     - parameter callback: A closure to be executed once the request has finished. The parameter is whether data has been refreshed successfully.
+     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
      */
-    public func refreshBuses(_ callback: @escaping (Bool, String?) -> Void) {
+    public func refreshBuses(_ callback: @escaping (String?) -> Void) {
         apiSession.busRequest { json, error in
             if let json = json {
                 self.dataStore.deleteBuses()
                 self.dataStore.createBuses(json)
-                callback(true, error)
+                callback(nil)
             } else {
-                callback(false, error)
+                callback(error)
             }
         }
     }
