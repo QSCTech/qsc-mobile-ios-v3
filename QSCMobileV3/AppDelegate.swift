@@ -68,29 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func introduceNewVersion() {
-        let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
-        let walkthrough = storyboard.instantiateInitialViewController() as! BWWalkthroughViewController
-        walkthrough.delegate = self
-        
-        let Build30020Key = "Build30020"
-        if groupDefaults.object(forKey: Build30020Key) == nil {
-            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "TodayWidget"))
-            groupDefaults.set(true, forKey: Build30020Key)
-        }
-        
-        let Build30025Key = "Build30025"
-        if groupDefaults.object(forKey: Build30025Key) == nil {
-            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "QSCBox"))
-            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "ShareExtension"))
-            groupDefaults.set(true, forKey: Build30025Key)
-        }
-        
-        if walkthrough.numberOfPages > 0 {
-            delay(1) { self.window?.rootViewController?.present(walkthrough, animated: true) }
-        }
-    }
-    
     @objc func refreshErrorHandler(notification: Notification) {
         if let error = notification.userInfo?["error"] as? String {
             if error.contains("教务网通知") {
@@ -102,12 +79,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(AccountManager.sharedInstance.currentAccountForJwbinfosys!)")!))
                         bvc.webViewDidFinishLoadCallback = nil
                     }
-                    self.window?.rootViewController?.present(bvc, animated: true)
+                    UIApplication.topViewController()?.present(bvc, animated: true)
                 }
                 let cancelAction = UIAlertAction(title: "下次再说", style: .cancel)
                 alertController.addAction(goAction)
                 alertController.addAction(cancelAction)
-                window?.rootViewController?.present(alertController, animated: true)
+                UIApplication.topViewController()?.present(alertController, animated: true)
             } else {
                 SVProgressHUD.showError(withStatus: error)
             }
@@ -261,4 +238,43 @@ extension AppDelegate: BWWalkthroughViewControllerDelegate {
         window?.rootViewController?.dismiss(animated: true)
     }
     
+    func introduceNewVersion() {
+        let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
+        let walkthrough = storyboard.instantiateInitialViewController() as! BWWalkthroughViewController
+        walkthrough.delegate = self
+        
+        let Build30020Key = "Build30020"
+        if groupDefaults.object(forKey: Build30020Key) == nil {
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "TodayWidget"))
+            groupDefaults.set(true, forKey: Build30020Key)
+        }
+        
+        let Build30025Key = "Build30025"
+        if groupDefaults.object(forKey: Build30025Key) == nil {
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "QSCBox"))
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "ShareExtension"))
+            groupDefaults.set(true, forKey: Build30025Key)
+        }
+        
+        if walkthrough.numberOfPages > 0 {
+            delay(1) { self.window?.rootViewController?.present(walkthrough, animated: true) }
+        }
+    }
+    
+}
+
+// Adapted from https://gist.github.com/snikch/3661188
+extension UIApplication {
+    static func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return topViewController(base: selected)
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
 }
