@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 import EAIntroView
 import QSCMobileKit
+import WatchConnectivity
 
 let UMengAppKey = "572381bf67e58e07a7005095"
 
@@ -61,6 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         
         introduceNewVersion()
+        
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
         
         return true
     }
@@ -223,6 +230,44 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             UMessage.didReceiveRemoteNotification(response.notification.request.content.userInfo)
         }
         completionHandler()
+    }
+    
+}
+
+extension AppDelegate: WCSessionDelegate {
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("[WC Session] Did become inactive")
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("[WC Session] Did deactivate")
+        WCSession.default.activate()
+    }
+    
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if let error = error {
+            print("[WC Session] Activation failed with error: \(error.localizedDescription)")
+            return
+        }
+        print("[WC Session] Activated with state: \(activationState.rawValue)")
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        if let date = message["date"] as? Date {
+            let events = eventsForDate(date).filter { $0.end >= date }
+            var titles = ""
+            var times = ""
+            var places = ""
+            for event in events {
+                titles.append("\(event.name)_")
+                times.append("\(event.time)_")
+                places.append("\(event.place)_")
+            }
+            let reply = ["titles": titles, "times": times, "places": places]
+            replyHandler(reply)
+        }
     }
     
 }
