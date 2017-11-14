@@ -264,7 +264,25 @@ extension AppDelegate: WCSessionDelegate {
             var categories = ""
             for event in events {
                 titles.append("\(event.name)_")
-                times.append("\(event.start.stringOfTime) - \(event.end.stringOfTime)_")
+                if event.duration == .partialTime {
+                    if Calendar.current.isDate(event.start, inSameDayAs: event.end) {
+                        times.append("\(event.start.stringOfTime) ～ \(event.end.stringOfTime)_")
+                    } else {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale.current
+                        dateFormatter.dateFormat = "MM-dd hh:mm"
+                        times.append("\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))_")
+                    }
+                } else {
+                    if event.end.timeIntervalSince(event.start) == 86400 {
+                        times.append("全天_")
+                    } else {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale.current
+                        dateFormatter.dateFormat = "MM-dd"
+                        times.append("\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))_")
+                    }
+                }
                 places.append("\(event.place)_")
                 categories.append("\(event.category.rawValue)_")
             }
