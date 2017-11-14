@@ -256,17 +256,21 @@ extension AppDelegate: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         if let date = message["date"] as? Date {
+            print("[WC Session] Message received by iOS")
             let events = eventsForDate(date).filter { $0.end >= date }
             var titles = ""
             var times = ""
             var places = ""
+            var categories = ""
             for event in events {
                 titles.append("\(event.name)_")
-                times.append("\(event.time)_")
+                times.append("\(event.start.stringOfTime) - \(event.end.stringOfTime)_")
                 places.append("\(event.place)_")
+                categories.append("\(event.category.rawValue)_")
             }
-            let reply = ["titles": titles, "times": times, "places": places]
+            let reply = ["titles": titles, "times": times, "places": places, "categories": categories]
             replyHandler(reply)
+            print("[WC Session] Replied by iOS")
         }
     }
     

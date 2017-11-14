@@ -40,15 +40,18 @@ extension InterfaceController {
             if session.isReachable {
                 let message = ["date": date]
                 session.sendMessage(message, replyHandler: { (reply: [String: Any]) -> Void in
-                    if let titles = reply["titles"] as? String, let times = reply["times"] as? String, let places = reply["places"] as? String {
+                    if let titles = reply["titles"] as? String, let times = reply["times"] as? String, let places = reply["places"] as? String, let categories = reply["categories"] as? String {
+                        print("[WC Session] Reply received by watchOS")
                         let titleArray = titles.components(separatedBy: "_")
                         let timeArray = times.components(separatedBy: "_")
                         let placeArray = places.components(separatedBy: "_")
+                        let categoryArray = categories.components(separatedBy: "_")
                         DispatchQueue.main.async {
                             self.mainTable.setNumberOfRows(titleArray.count - 1, withRowType: "EventCell")
                             for i in 0..<titleArray.count - 1 {
                                 let row = self.mainTable.rowController(at: i) as! EventTableRowController
                                 row.name.setText(titleArray[i])
+                                row.name.setTextColor(colors[Int(categoryArray[i])!])
                                 row.time.setText(timeArray[i])
                                 row.place.setText(placeArray[i])
                             }
