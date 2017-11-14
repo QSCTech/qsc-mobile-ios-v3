@@ -19,7 +19,7 @@
                                     <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="h8F-Hl-aex">
                                         <items>
                                             <label alignment="left" text="Label" id="gQE-dF-rF2">
-                                                <fontDescription key="font" type="system" pointSize="18"/>
+                                                <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
                                             </label>
                                             <label alignment="left" text="Label" id="HTF-Fu-Wxe">
                                                 <fontDescription key="font" type="system" pointSize="12"/>
