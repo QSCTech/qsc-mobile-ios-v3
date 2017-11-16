@@ -1,14 +1,25 @@
-# 求是潮手机站 V3 for iOS
+# 求是潮手机站 V3 for watchOS
 
 ![Logo](QSCMobileV3/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png)
 
 ## Tech
 
-- IDE：Xcode 8
-- 语言：Swift 3
-- 操作系统：iOS 9+
+- IDE：Xcode 9
+- 语言：Swift 4
+- 操作系统：watchOS 2.0+
 - 包管理器：Carthage
 - 版本发布：fastlane
+
+### Life cycle
+#### awake(withContext:)
+- 保留
+#### willActivate()
+- 通过 WatchConnectivity 的 `sendMessage(_:replyHandler:errorHandler:)` 向 iOS 端发起获取事件请求
+- 处理返回的请求，并在 DispatchQueue.main 上更新显示界面
+
+### Get events
+#### reqeust(eventsFor:)
+- 参数 Date
 
 ## Usage
 
