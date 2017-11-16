@@ -13,6 +13,7 @@
 ### Life cycle
 #### awake(withContext:)
 - 保留
+
 #### willActivate()
 - 通过 WatchConnectivity 的 `sendMessage(_:replyHandler:errorHandler:)` 向 iOS 端发起获取事件请求
 - 处理返回的请求，并在 DispatchQueue.main 上更新显示界面

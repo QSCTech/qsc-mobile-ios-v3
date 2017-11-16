@@ -16,16 +16,14 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-//        request(eventsFor: Date())
-        request(eventsFor: Date(timeIntervalSince1970: 1510702200))
+        request(eventsFor: Date())
         // Configure interface objects here.
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        request(eventsFor: Date(timeIntervalSince1970: 1510702200))
-//        request(eventsFor: Date())
+        request(eventsFor: Date())
     }
     
     override func didDeactivate() {
