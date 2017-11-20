@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
     </dependencies>
@@ -37,6 +38,10 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <label alignment="center" text="没有更多事项了哦٩(๑&gt;◡&lt;๑)۶" textAlignment="center" numberOfLines="2" id="OS1-DI-DOW">
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
                     </items>
                     <connections>
                         <outlet property="mainTable" destination="EMN-mg-2Cd" id="eFn-IY-IJq"/>
