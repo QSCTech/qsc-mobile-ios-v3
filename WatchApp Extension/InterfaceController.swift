@@ -34,6 +34,7 @@ class InterfaceController: WKInterfaceController {
 }
 
 extension InterfaceController {
+    // MARK: - Watch Connectivity
     func request(eventsFor date: Date) {
         if WCSession.isSupported() {
             let session = WCSession.default
