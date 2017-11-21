@@ -19,12 +19,12 @@ public class ZjuwlanConnection: NSObject {
     /**
      Connect VPN under ZJUWLAN. This method tries to logout first in case that VPN has been logged in at another place.
      
-     - parameter callback: A closure to be executed once login request has finished. The first parameter is whether the connection is successful, and the second one is the description of error if failed.
+     - parameter callback: A closure to be executed once login request has finished. The argument will be nil if the connection has established, otherwise it will be the description of error.
      */
-    public static func link(_ callback: @escaping (Bool, String?) -> Void) {
+    public static func link(_ callback: @escaping (String?) -> Void) {
         let accountManager = AccountManager.sharedInstance
         if accountManager.accountForZjuwlan == nil {
-            callback(false, "未输入 ZJUWLAN 账号")
+            callback("未输入 ZJUWLAN 账号")
             return
         }
         let username = accountManager.accountForZjuwlan!
@@ -33,7 +33,7 @@ public class ZjuwlanConnection: NSObject {
         login(username, password, callback: callback)
     }
     
-    private static func login(_ username: String, _ password: String, callback: @escaping (Bool, String?) -> Void) {
+    private static func login(_ username: String, _ password: String, callback: @escaping (String?) -> Void) {
         let headers = ["Referer": "https://net.zju.edu.cn/srun_portal_phone.php?url=http://www.zju.edu.cn/&ac_id=3"]
         let postData = [
             "action": "login",
@@ -50,15 +50,15 @@ public class ZjuwlanConnection: NSObject {
             if let result = response.result.value {
                 let string = (String(data: result, encoding: String.Encoding.utf8) ?? "未知错误").trimmingCharacters(in: CharacterSet(charactersIn: "()"))
                 if string.contains("login_ok") {
-                    callback(true, nil)
+                    callback(nil)
                 } else if string.contains("IP地址异常") {
-                    callback(false, "您未连接到 ZJUWLAN")
+                    callback("您未连接到 ZJUWLAN")
                 } else {
-                    callback(false, string)
+                    callback(string)
                 }
             } else {
                 let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
-                callback(false, errorDescription)
+                callback(errorDescription)
             }
         }
     }

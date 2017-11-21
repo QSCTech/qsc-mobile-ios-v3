@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,9 +31,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUc-M2-FvP" customClass="CurriculaTable" customModule="CurriculaTable">
+                    <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yT-Ss-bMO">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="lsp-qO-v8L"/>
                     </constraints>
@@ -37,6 +44,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGk-23-0Do">
+                    <rect key="frame" x="0.0" y="623" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="rGk-23-0Do" secondAttribute="height" multiplier="1:1" id="drv-lh-JPx"/>
                     </constraints>
@@ -49,6 +57,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVM-CL-8eg">
+                    <rect key="frame" x="331" y="623" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="47" id="6lX-Hf-YZM"/>
                         <constraint firstAttribute="width" secondItem="JVM-CL-8eg" secondAttribute="height" multiplier="1:1" id="Ma1-bI-RpQ"/>
@@ -72,26 +81,27 @@
                 <constraint firstItem="qUc-M2-FvP" firstAttribute="top" secondItem="9yT-Ss-bMO" secondAttribute="bottom" id="4dC-nm-IYG"/>
                 <constraint firstItem="JVM-CL-8eg" firstAttribute="bottom" secondItem="rGk-23-0Do" secondAttribute="bottom" id="5ck-vy-SdG"/>
                 <constraint firstItem="9yT-Ss-bMO" firstAttribute="top" secondItem="qUc-M2-FvP" secondAttribute="bottom" id="5wm-AP-WU8"/>
+                <constraint firstItem="Pgr-Nf-NK9" firstAttribute="top" secondItem="qUc-M2-FvP" secondAttribute="top" id="BV7-0d-fGe"/>
                 <constraint firstItem="rGk-23-0Do" firstAttribute="leading" secondItem="9yT-Ss-bMO" secondAttribute="leading" id="BbX-jN-6XH"/>
                 <constraint firstItem="9yT-Ss-bMO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DCq-fT-ofY"/>
                 <constraint firstItem="rGk-23-0Do" firstAttribute="bottom" secondItem="9yT-Ss-bMO" secondAttribute="bottom" id="L8G-KW-VwY"/>
                 <constraint firstItem="qUc-M2-FvP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="145" id="LTm-jB-fQN"/>
-                <constraint firstItem="qUc-M2-FvP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Orc-YI-Ay6"/>
                 <constraint firstItem="9yT-Ss-bMO" firstAttribute="trailing" secondItem="qUc-M2-FvP" secondAttribute="trailing" id="Oy0-dT-uUf"/>
                 <constraint firstItem="JVM-CL-8eg" firstAttribute="top" secondItem="9yT-Ss-bMO" secondAttribute="top" id="RZc-LQ-Khc"/>
                 <constraint firstItem="rGk-23-0Do" firstAttribute="top" secondItem="9yT-Ss-bMO" secondAttribute="top" id="Sd3-F0-j8n"/>
                 <constraint firstItem="JVM-CL-8eg" firstAttribute="top" secondItem="rGk-23-0Do" secondAttribute="top" id="SlV-5W-mi6"/>
                 <constraint firstItem="9yT-Ss-bMO" firstAttribute="leading" secondItem="qUc-M2-FvP" secondAttribute="leading" id="Xm2-U2-dnT"/>
                 <constraint firstItem="JVM-CL-8eg" firstAttribute="trailing" secondItem="9yT-Ss-bMO" secondAttribute="trailing" id="ZpX-wE-GId"/>
+                <constraint firstItem="9yT-Ss-bMO" firstAttribute="bottom" secondItem="Pgr-Nf-NK9" secondAttribute="bottom" id="Zy1-If-fEi"/>
                 <constraint firstItem="JVM-CL-8eg" firstAttribute="bottom" secondItem="9yT-Ss-bMO" secondAttribute="bottom" id="dA4-pu-DZs"/>
                 <constraint firstAttribute="trailing" secondItem="9yT-Ss-bMO" secondAttribute="trailing" id="dBs-fT-vn0"/>
                 <constraint firstAttribute="bottom" secondItem="qUc-M2-FvP" secondAttribute="bottom" id="n3Q-WI-7cm"/>
                 <constraint firstAttribute="trailing" secondItem="qUc-M2-FvP" secondAttribute="trailing" id="qGw-iQ-FxY"/>
-                <constraint firstAttribute="bottom" secondItem="9yT-Ss-bMO" secondAttribute="bottom" id="rs2-Qy-ogS"/>
                 <constraint firstItem="qUc-M2-FvP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sGH-rO-ba5"/>
                 <constraint firstItem="9yT-Ss-bMO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yjv-xd-0oM"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Pgr-Nf-NK9"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="4dC-nm-IYG"/>

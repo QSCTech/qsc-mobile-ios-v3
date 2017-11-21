@@ -10,7 +10,8 @@ import UIKit
 
 class DropDownMenuView: UIButton {
     
-    var callBack: ((Int) -> ())!
+    var selectCallBack: ((Int) -> Void)?
+    var cancelCallBack: (() -> Void)?
     
     var items = [[String: String]]()
     let itemHeight = CGFloat(44)
@@ -22,12 +23,7 @@ class DropDownMenuView: UIButton {
         super.init(frame: superView.bounds)
         
         self.items = items
-        
-        if shadow {
-            backgroundColor = BoxColor.shadow
-        } else {
-            backgroundColor = UIColor.clear
-        }
+        backgroundColor = shadow ? BoxColor.shadow : UIColor.clear
         addTarget(self, action: #selector(otherAreaTapped), for: .touchDown)
         
         pointerImageView = UIImageView(frame: CGRect(x: pointerX, y: pointerY, width: 23, height: 11))
@@ -56,7 +52,7 @@ class DropDownMenuView: UIButton {
     }
     
     @objc func otherAreaTapped() {
-        isHidden = true
+        cancelCallBack?()
     }
     
 }
@@ -81,9 +77,7 @@ extension DropDownMenuView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         isHidden = true
-        if callBack != nil {
-            callBack(indexPath.row)
-        }
+        selectCallBack?(indexPath.row)
     }
     
 }

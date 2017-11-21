@@ -53,8 +53,8 @@ class TodayViewController: UIViewController {
     
     @IBAction func connectWlan() {
         wlanSwitch.setImage(UIImage.init(named: "WiFiConnecting"), for: .normal)
-        ZjuwlanConnection.link { success, error in
-            if success {
+        ZjuwlanConnection.link { error in
+            if error != nil {
                 self.wlanSwitch.setImage(UIImage.init(named: "WiFiSuccess"), for: .normal)
             } else {
                 self.wlanSwitch.setImage(UIImage.init(named: "WiFiFailed"), for: .normal)
@@ -74,8 +74,8 @@ extension TodayViewController: NCWidgetProviding {
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        let firstEvent = events.first { $0.duration == .partialTime && $0.end >= Date() }
-        if let firstEvent = firstEvent {
+        let upcomingEvents = events.filter { $0.end >= Date() }
+        if let firstEvent = upcomingEvents.first(where: { $0.duration == .partialTime }) {
             firstEventName.text = firstEvent.name
             firstEventPlace.text = firstEvent.place
             firstEventTime.text = firstEvent.time
@@ -87,8 +87,11 @@ extension TodayViewController: NCWidgetProviding {
                 firstEventTimeRemain.text = firstEvent.end.timeIntervalSince(Date()).timeDescription
             }
         } else {
-            nothingToDo.isHidden = false
             firstView.isHidden = true
+            nothingToDo.isHidden = false
+            if upcomingEvents.contains(where: { $0.duration == .allDay }) {
+                nothingToDo.text = "全天事项"
+            }
         }
         taskList.reloadData()
         completionHandler(NCUpdateResult.newData)
@@ -121,31 +124,33 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = events[indexPath.row]
-        
         let cell = taskList.dequeueReusableCell(withIdentifier: "Event") as! TableViewCell
         
-        if event.duration == .partialTime {
-            if Calendar.current.isDate(event.start, inSameDayAs: event.end) {
-                cell.startTime.text = event.start.stringOfTime
-                cell.endTime.text = event.end.stringOfTime
-            } else {
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "en_US_POSIX")
-                formatter.dateFormat = "MM-dd"
-                cell.startTime.text = formatter.string(from: event.start)
-                cell.endTime.text = formatter.string(from: event.end)
-            }
-            cell.eventName.text = event.name
-            cell.eventPlace.text = event.place
-            if Date() < event.start {
-                cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
-            } else if Date() <= event.end {
-                cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
-            } else {
-                cell.eventTime.text = "已结束"
-            }
-        }
+        cell.eventName.text = event.name
         cell.eventType.backgroundColor = QSCColor.category(event.category)
+        cell.eventPlace.text = event.place
+        
+        if event.duration == .partialTime && Calendar.current.isDate(event.start, inSameDayAs: event.end) {
+            cell.startTime.text = event.start.stringOfTime
+            cell.endTime.text = event.end.stringOfTime
+        } else {
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.dateFormat = "MM-dd"
+            cell.startTime.text = formatter.string(from: event.start)
+            cell.endTime.text = formatter.string(from: event.end.addingTimeInterval(-1))
+        }
+        
+        if event.duration == .allDay {
+            cell.eventTime.text = "全天事项"
+        } else if Date() < event.start {
+            cell.eventTime.text = "距开始 " + event.start.timeIntervalSince(Date()).timeDescription
+        } else if Date() <= event.end {
+            cell.eventTime.text = "距结束 " + event.end.timeIntervalSince(Date()).timeDescription
+        } else {
+            cell.eventTime.text = "已结束"
+        }
+        
         return cell
     }
     

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="教务网密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-of-fky">
+                    <rect key="frame" x="50" y="330" width="275" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="uOy-WY-QGh"/>
                     </constraints>
@@ -36,6 +42,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8pG-MZ-0Gc">
+                    <rect key="frame" x="50" y="280" width="275" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="3z6-zZ-usm"/>
                         <constraint firstAttribute="width" constant="200" id="dyl-9H-SQh"/>
@@ -52,6 +59,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-Ue-bPw">
+                    <rect key="frame" x="50" y="390" width="275" height="40"/>
                     <color key="backgroundColor" red="0.52156862745098043" green="0.82745098039215681" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="mu1-Qv-VKb"/>
@@ -74,6 +82,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="x10-Q4-8ne">
+                    <rect key="frame" x="125.5" y="100" width="124" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="480" id="2Q8-Dj-HHo"/>
                         <constraint firstAttribute="width" constant="124" id="VVC-MU-Vbw"/>
@@ -90,6 +99,7 @@
                     </variation>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfb-K1-mbU">
+                    <rect key="frame" x="16" y="40" width="30" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="╳">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,12 +118,12 @@
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="x10-Q4-8ne" secondAttribute="bottom" constant="80" id="8AX-Vy-4g8"/>
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="height" secondItem="hMe-of-fky" secondAttribute="height" id="8EN-K5-wlE"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="300" id="9wR-nf-SkM"/>
+                <constraint firstItem="x10-Q4-8ne" firstAttribute="top" secondItem="8Ek-bK-lMO" secondAttribute="top" constant="80" id="C35-W5-oJP"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="D7U-mb-Z5v"/>
                 <constraint firstItem="x10-Q4-8ne" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="200" id="Dag-1g-fyn"/>
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="width" secondItem="hMe-of-fky" secondAttribute="width" id="HtQ-o7-8xs"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="width" secondItem="8pG-MZ-0Gc" secondAttribute="width" id="J4Q-mI-zEU"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" id="ND5-Bn-uv7"/>
-                <constraint firstItem="qfb-K1-mbU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="20" id="Ni4-jG-ard"/>
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="top" secondItem="hMe-of-fky" secondAttribute="bottom" constant="20" id="Nmc-FI-OUG"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="8pG-MZ-0Gc" secondAttribute="centerX" id="PTx-xL-U3B"/>
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="RRF-Tv-6LR"/>
@@ -122,12 +132,13 @@
                 <constraint firstItem="8pG-MZ-0Gc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aVL-NG-QQM"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="top" secondItem="8pG-MZ-0Gc" secondAttribute="bottom" constant="10" id="dE1-eF-X5j"/>
                 <constraint firstItem="hMe-of-fky" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="diG-cN-3GH"/>
-                <constraint firstItem="x10-Q4-8ne" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="k1n-zV-p9T"/>
+                <constraint firstItem="qfb-K1-mbU" firstAttribute="top" secondItem="8Ek-bK-lMO" secondAttribute="top" constant="20" id="jxx-Gs-Cod"/>
                 <constraint firstItem="BL1-Ue-bPw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="leS-dY-PcF"/>
                 <constraint firstAttribute="trailing" secondItem="8pG-MZ-0Gc" secondAttribute="trailing" constant="100" id="nRm-qd-vL1"/>
                 <constraint firstItem="qfb-K1-mbU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="s1M-qL-We6"/>
                 <constraint firstItem="x10-Q4-8ne" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uLj-VW-QpI"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="8Ek-bK-lMO"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="Dag-1g-fyn"/>
@@ -153,6 +164,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Logo" width="211" height="170"/>
+        <image name="Logo" width="635" height="512"/>
     </resources>
 </document>

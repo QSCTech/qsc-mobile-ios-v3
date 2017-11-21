@@ -62,7 +62,7 @@ class ScoreViewController: UIViewController {
             button.addTarget(self, action: #selector(semesterWasSelected), for: .touchUpInside)
             scrollView.addSubview(button)
         }
-        let offset = CGPoint(x: scrollView.contentSize.width, y: 0)
+        let offset = CGPoint(x: scrollView.contentSize.width - view.frame.width, y: 0)
         scrollView.setContentOffset(offset, animated: false)
         scrollView.scrollsToTop = false
         scrollView.addSubview(imageView)

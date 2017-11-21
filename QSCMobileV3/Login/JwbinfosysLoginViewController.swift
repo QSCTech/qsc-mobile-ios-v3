@@ -33,17 +33,27 @@ class JwbinfosysLoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: AnyObject) {
+        let mobileManager = MobileManager.sharedInstance
         SVProgressHUD.show(withStatus: "登录中")
-        MobileManager.sharedInstance.loginValidate(usernameField.text!, passwordField.text!, errorBlock: { notification in
-            SVProgressHUD.show(withStatus: notification.userInfo?["error"] as? String ?? "")
-        }, callback: { success, error in
-            if success {
-                self.dismiss(animated: true)
-                SVProgressHUD.showSuccess(withStatus: "登录成功")
-            } else {
+        mobileManager.loginValidate(usernameField.text!, passwordField.text!) { error in
+            if let error = error {
                 SVProgressHUD.showError(withStatus: error)
+            } else {
+                SVProgressHUD.showSuccess(withStatus: "登录成功")
+                self.dismiss(animated: true)
+                delay(1) {
+                    SVProgressHUD.show(withStatus: "刷新中")
+                    var errorFlag = false
+                    let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
+                    mobileManager.refreshAll {
+                        if !errorFlag {
+                            SVProgressHUD.showSuccess(withStatus: "刷新成功")
+                        }
+                        NotificationCenter.default.removeObserver(observer)
+                    }
+                }
             }
-        })
+        }
     }
     
     @IBAction func textFieldDidChange(_ sender: AnyObject) {

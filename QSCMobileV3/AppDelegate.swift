@@ -8,13 +8,13 @@
 
 import UIKit
 import SVProgressHUD
-import EAIntroView
+import BWWalkthrough
 import QSCMobileKit
 import WatchConnectivity
 
-let UMengAppKey = "572381bf67e58e07a7005095"
-
 let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
+
+let UMengAppKey = "572381bf67e58e07a7005095"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,9 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             groupDefaults.set(true, forKey: RefreshOnLaunchKey)
         }
         if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
-            MobileManager.sharedInstance.refreshAll(errorBlock: { _ in }, callback: {
+            MobileManager.sharedInstance.refreshAll {
+                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
                 print("Refresh on launch completed")
-            })
+            }
         }
         if groupDefaults.object(forKey: ShowScoreKey) == nil {
             groupDefaults.set(true, forKey: ShowScoreKey)
@@ -59,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setMinimumSize(CGSize(width: 100, height: 100))
-        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setMinimumDismissTimeInterval(2)
         
         introduceNewVersion()
         
@@ -69,36 +70,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             session.activate()
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshErrorHandler), name: .refreshError, object: nil)
+        
         return true
     }
     
-    func introduceNewVersion() {
-        var introPages = [EAIntroPage]()
-        
-        let Build30020Key = "Build30020"
-        if groupDefaults.object(forKey: Build30020Key) == nil {
-            let introPage = EAIntroPage()
-            introPage.bgImage = UIImage(named: "TodayWidget")
-            introPages.append(introPage)
-            groupDefaults.set(true, forKey: Build30020Key)
-        }
-        
-        let Build30025Key = "Build30025"
-        if groupDefaults.object(forKey: Build30025Key) == nil {
-            var introPage = EAIntroPage()
-            introPage.bgImage = UIImage(named: "QSCBox")
-            introPages.append(introPage)
-            introPage = EAIntroPage()
-            introPage.bgImage = UIImage(named: "ShareExtension")
-            introPages.append(introPage)
-            groupDefaults.set(true, forKey: Build30025Key)
-        }
-        
-        if !introPages.isEmpty {
-            let view = window!.rootViewController!.view!
-            let introView = EAIntroView(frame: view.bounds, andPages: introPages)
-            introView?.skipButtonY = view.bounds.height - 20
-            introView?.show(in: view)
+    @objc func refreshErrorHandler(notification: Notification) {
+        if let error = notification.userInfo?["error"] as? String {
+            if error.contains("教务网通知") {
+                SVProgressHUD.dismiss()
+                let alertController = UIAlertController(title: "刷新失败", message: "教务网通知，需确认后才能刷新", preferredStyle: .alert)
+                let goAction = UIAlertAction(title: "立即前往", style: .default) { action in
+                    let bvc = BrowserViewController.builtin(website: .jwbinfosys)
+                    bvc.webViewDidFinishLoadCallback = { webView in
+                        webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(AccountManager.sharedInstance.currentAccountForJwbinfosys!)")!))
+                        bvc.webViewDidFinishLoadCallback = nil
+                    }
+                    UIApplication.topViewController()?.present(bvc, animated: true)
+                }
+                let cancelAction = UIAlertAction(title: "下次再说", style: .cancel)
+                alertController.addAction(goAction)
+                alertController.addAction(cancelAction)
+                UIApplication.topViewController()?.present(alertController, animated: true)
+            } else {
+                SVProgressHUD.showError(withStatus: error)
+            }
         }
     }
     
@@ -193,6 +189,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
+            let now = Date()
+            if let date = groupDefaults.object(forKey: LastRefreshDateKey) as? Date, !Calendar.current.isDate(date, inSameDayAs: now) {
+                MobileManager.sharedInstance.refreshAll {
+                    groupDefaults.set(now, forKey: LastRefreshDateKey)
+                    print("Daily refresh completed (last refresh: \(date))")
+                }
+            }
+        }
         let tabBarController = window!.rootViewController as! UITabBarController
         if tabBarController.selectedIndex == 3 {
             let navigationController = tabBarController.selectedViewController as! UINavigationController
@@ -292,4 +297,51 @@ extension AppDelegate: WCSessionDelegate {
         }
     }
     
+}
+
+extension AppDelegate: BWWalkthroughViewControllerDelegate {
+    
+    func walkthroughCloseButtonPressed() {
+        window?.rootViewController?.dismiss(animated: true)
+    }
+    
+    func introduceNewVersion() {
+        let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
+        let walkthrough = storyboard.instantiateInitialViewController() as! BWWalkthroughViewController
+        walkthrough.delegate = self
+        
+        let Build30020Key = "Build30020"
+        if groupDefaults.object(forKey: Build30020Key) == nil {
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "TodayWidget"))
+            groupDefaults.set(true, forKey: Build30020Key)
+        }
+        
+        let Build30025Key = "Build30025"
+        if groupDefaults.object(forKey: Build30025Key) == nil {
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "QSCBox"))
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "ShareExtension"))
+            groupDefaults.set(true, forKey: Build30025Key)
+        }
+        
+        if walkthrough.numberOfPages > 0 {
+            delay(1) { self.window?.rootViewController?.present(walkthrough, animated: true) }
+        }
+    }
+    
+}
+
+// Adapted from https://gist.github.com/snikch/3661188
+extension UIApplication {
+    static func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return topViewController(base: selected)
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
 }

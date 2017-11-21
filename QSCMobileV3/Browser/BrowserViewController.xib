@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,37 +28,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-ye-IUD">
+                    <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                 </webView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gT-Tm-8VB">
-                    <items>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CML-hO-Qeu"/>
-                        <barButtonItem enabled="NO" title="" id="WD7-73-hKa">
-                            <connections>
-                                <action selector="backward:" destination="-1" id="bx2-Tv-whp"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="3kR-w3-otw"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dFC-QK-K5M"/>
-                        <barButtonItem enabled="NO" title="" id="tAo-d6-fql">
-                            <connections>
-                                <action selector="forward:" destination="-1" id="HhQ-C6-b6a"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ip9-ZI-YHL"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="1bf-fw-gAc"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="d7F-ZF-0ag"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Fkf-Z6-k3a"/>
-                        <barButtonItem systemItem="refresh" id="Vxq-D3-Par">
-                            <connections>
-                                <action selector="refresh:" destination="-1" id="8bO-6s-6py"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="K2r-YC-xEU"/>
-                    </items>
-                </toolbar>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2B8-qo-LPi">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <items>
                         <navigationItem id="Rsv-No-S2O">
                             <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="d1r-Va-5Tx">
@@ -64,20 +44,46 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-jJ-TAa"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-jJ-TAa">
+                    <rect key="frame" x="339" y="32" width="20" height="20"/>
+                </activityIndicatorView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gT-Tm-8VB">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CML-hO-Qeu"/>
+                        <barButtonItem enabled="NO" image="Backward" id="WD7-73-hKa">
+                            <connections>
+                                <action selector="backward:" destination="-1" id="bx2-Tv-whp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dFC-QK-K5M"/>
+                        <barButtonItem enabled="NO" image="Forward" id="tAo-d6-fql">
+                            <connections>
+                                <action selector="forward:" destination="-1" id="HhQ-C6-b6a"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Fkf-Z6-k3a"/>
+                        <barButtonItem systemItem="refresh" id="Vxq-D3-Par">
+                            <connections>
+                                <action selector="refresh:" destination="-1" id="8bO-6s-6py"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="K2r-YC-xEU"/>
+                    </items>
+                </toolbar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="I0C-jJ-TAa" firstAttribute="centerY" secondItem="2B8-qo-LPi" secondAttribute="centerY" id="07D-j8-5wf"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" symbolic="YES" id="4aB-gB-ySk"/>
+                <constraint firstItem="2B8-qo-LPi" firstAttribute="top" secondItem="Tid-fF-YCf" secondAttribute="top" id="6ze-ax-KND"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="top" secondItem="2B8-qo-LPi" secondAttribute="bottom" id="99D-2S-ymg"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="leading" secondItem="3gT-Tm-8VB" secondAttribute="leading" id="DIG-x4-9B8"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="leading" secondItem="2B8-qo-LPi" secondAttribute="trailing" constant="-600" id="Euz-Lw-o18"/>
+                <constraint firstItem="Tid-fF-YCf" firstAttribute="bottom" secondItem="3gT-Tm-8VB" secondAttribute="bottom" id="Joc-eU-bXo"/>
                 <constraint firstItem="3gT-Tm-8VB" firstAttribute="top" secondItem="AUb-ye-IUD" secondAttribute="bottom" id="KF9-Kq-EFF"/>
-                <constraint firstItem="2B8-qo-LPi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="L1g-Zv-NUH"/>
                 <constraint firstItem="I0C-jJ-TAa" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="RfF-90-9QV"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TGB-gc-9Ta"/>
-                <constraint firstAttribute="bottom" secondItem="3gT-Tm-8VB" secondAttribute="bottom" symbolic="YES" id="a49-R3-yOE"/>
                 <constraint firstItem="3gT-Tm-8VB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" symbolic="YES" id="aIg-WW-p8C"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="trailing" secondItem="3gT-Tm-8VB" secondAttribute="trailing" id="pXg-0U-XxK"/>
                 <constraint firstAttribute="trailing" secondItem="2B8-qo-LPi" secondAttribute="trailing" symbolic="YES" id="s6X-QF-XZw"/>
@@ -86,6 +92,7 @@
                 <constraint firstAttribute="trailing" secondItem="3gT-Tm-8VB" secondAttribute="trailing" symbolic="YES" id="yVr-G2-sR9"/>
                 <constraint firstAttribute="trailing" secondItem="AUb-ye-IUD" secondAttribute="trailing" id="yof-R4-6x2"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="Tid-fF-YCf"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="DIG-x4-9B8"/>
@@ -98,4 +105,8 @@
             <point key="canvasLocation" x="598" y="499"/>
         </view>
     </objects>
+    <resources>
+        <image name="Backward" width="25" height="25"/>
+        <image name="Forward" width="25" height="25"/>
+    </resources>
 </document>

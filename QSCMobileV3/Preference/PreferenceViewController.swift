@@ -14,6 +14,7 @@ import DeviceKit
 import QSCMobileKit
 
 let RefreshOnLaunchKey = "RefreshOnLaunch"
+let LastRefreshDateKey = "LastRefreshDate"
 let ShowScoreKey = "ShowScore"
 let AuxiliaryScoreKey = "AuxiliaryScore"
 let DeviceTokenKey = "DeviceToken"
@@ -169,11 +170,11 @@ class PreferenceViewController: UITableViewController {
                 show(vc, sender: nil)
             } else {
                 SVProgressHUD.show(withStatus: "连接中")
-                ZjuwlanConnection.link { success, error in
-                    if success {
-                        SVProgressHUD.showSuccess(withStatus: "连接成功")
+                ZjuwlanConnection.link { error in
+                    if let error = error {
+                        SVProgressHUD.showError(withStatus: error)
                     } else {
-                        SVProgressHUD.showError(withStatus: error!)
+                        SVProgressHUD.showSuccess(withStatus: "连接成功")
                     }
                 }
             }

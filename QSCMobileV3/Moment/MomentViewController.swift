@@ -8,16 +8,20 @@
 
 import UIKit
 import QSCMobileKit
+import SVProgressHUD
 
 class MomentViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     @IBOutlet weak var stackView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
+    
+    let accountManager = AccountManager.sharedInstance
     
     var events = [Event]()
     var pageControllers = [MomentPageViewController]()
@@ -121,6 +125,26 @@ class MomentViewController: UIViewController {
         let vc = JwbinfosysLoginViewController()
         present(vc, animated: true)
     }
+    
+    @IBAction func refresh(_ sender: Any) {
+        if accountManager.currentAccountForJwbinfosys != nil {
+            refreshButton.isEnabled = false
+            SVProgressHUD.show(withStatus: "刷新中")
+            var errorFlag = false
+            let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
+            MobileManager.sharedInstance.refreshAll {
+                if !errorFlag {
+                    SVProgressHUD.showSuccess(withStatus: "刷新成功")
+                }
+                NotificationCenter.default.removeObserver(observer)
+                self.refreshButton.isEnabled = true
+                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
+            }
+        } else {
+            SVProgressHUD.showError(withStatus: "请先登录")
+        }
+    }
+    
 }
 
 extension MomentViewController: UIScrollViewDelegate {

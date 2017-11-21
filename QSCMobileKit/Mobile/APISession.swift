@@ -70,9 +70,9 @@ class APISession: NSObject {
     /**
      Send a login request to API asynchronously and execute a closure after completion.
      
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is whether the request is successful, and the second one is the description of error if failed.
+     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if login succeeds, otherwise it will be the description of error.
      */
-    func loginRequest(_ callback: @escaping (Bool, String?) -> Void) {
+    func loginRequest(_ callback: @escaping (String?) -> Void) {
         let salt = generateSalt()
         let hash = try! PKCS5.PBKDF2(password: AppKey.utf8.map({$0}), salt: salt, iterations: 2048, keyLength: 6, variant: .sha1).calculate()
         let postData: [String: Any] = [
@@ -90,7 +90,7 @@ class APISession: NSObject {
             if response.result.isFailure {
                 let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
                 print("[Login request] Alamofire: \(errorDescription)")
-                callback(false, errorDescription)
+                callback(errorDescription)
                 return
             }
             let json = JSON(response.result.value!)
@@ -99,13 +99,13 @@ class APISession: NSObject {
             }
             if json["status"].string == "ok" {
                 self.session = (json["sessionId"].string, json["sessionKey"].string)
-                callback(true, nil)
+                callback(nil)
             } else if json["error"].stringValue.contains("登录失败") {
                 printError()
-                callback(false, json["error"].stringValue.replacingOccurrences(of: "登录失败：", with: ""))
+                callback(json["error"].stringValue.replacingOccurrences(of: "登录失败：", with: ""))
             } else {
                 printError()
-                callback(false, "请求失败，请重试")
+                callback("请求失败，请重试")
             }
         }
     }
@@ -150,11 +150,11 @@ class APISession: NSObject {
                 }
             } else if json["status"].string == "sessionFail" {
                 printError()
-                self.loginRequest { success, error in
-                    if success {
-                        self.resourceRequest(requestList, callback: callback)
-                    } else {
+                self.loginRequest { error in
+                    if let error = error {
                         callback(nil, error)
+                    } else {
+                        self.resourceRequest(requestList, callback: callback)
                     }
                 }
             } else if json["error"].stringValue.contains("教务网通知") {

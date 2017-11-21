@@ -10,7 +10,6 @@
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
-		26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26518C9E1EB2560E0025FBF2 /* Apollo.framework */; };
 		2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BD1E7529FB00ECE931 /* BoxColor.swift */; };
 		2697B9CE1E7529FB00ECE931 /* FileRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */; };
 		2697B9CF1E7529FB00ECE931 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */; };
@@ -27,7 +26,6 @@
 		2697B9E31E752A3A00ECE931 /* BoxAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E01E752A3A00ECE931 /* BoxAPI.swift */; };
 		2697B9E41E752A3A00ECE931 /* Date+Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E11E752A3A00ECE931 /* Date+Box.swift */; };
 		2697B9E51E752A3A00ECE931 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9E21E752A3A00ECE931 /* BoxManager.swift */; };
-		2697B9E71E752A6A00ECE931 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2697B9E61E752A6A00ECE931 /* ZipArchive.framework */; };
 		2697B9EF1E752C3A00ECE931 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9EE1E752C3A00ECE931 /* ShareViewController.swift */; };
 		2697B9F21E752C3A00ECE931 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2697B9F01E752C3A00ECE931 /* MainInterface.storyboard */; };
 		2697B9F61E752C3A00ECE931 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2697B9EC1E752C3900ECE931 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -71,13 +69,15 @@
 		9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A014B1DA106B100CF5469 /* QueryList.storyboard */; };
 		9D5A01521DA106B100CF5469 /* SemesterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */; };
 		9D5A01531DA106B100CF5469 /* SemesterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */; };
-		9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D608D991E65F678005A631E /* EAIntroView.framework */; };
 		9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B336B1CEC77B500C5372F /* MomentViewController.swift */; };
 		9D6B336E1CECC0E200C5372F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B336D1CECC0E200C5372F /* Kingfisher.framework */; };
 		9D6B337D1CF025F500C5372F /* BusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B337B1CF025F500C5372F /* BusViewController.swift */; };
 		9D6B337E1CF025F500C5372F /* BusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B337C1CF025F500C5372F /* BusViewController.xib */; };
 		9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */; };
 		9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7173651D3141BE0074043E /* libMobClickLibrary.a */; };
+		9D71FF0D1FB3B962005A64DE /* BWWalkthrough.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D71FF0C1FB3B962005A64DE /* BWWalkthrough.framework */; };
+		9D71FF0F1FB3BA01005A64DE /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D71FF0E1FB3BA01005A64DE /* Walkthrough.storyboard */; };
+		9D7628681FA4EB03000423D4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7628661FA4EB03000423D4 /* LaunchScreen.xib */; };
 		9D7851ED1CE8488E008A7DBF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4441CD7838B0098451A /* Alamofire.framework */; };
 		9D7851EE1CE84892008A7DBF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
 		9D7851EF1CE84895008A7DBF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */; };
@@ -101,7 +101,6 @@
 		9DC475691D2D711E00F4B3DF /* CourseTimePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */; };
 		9DC4756B1D2F5BFE00F4B3DF /* CourseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */; };
 		9DC536111D7C5197008FFED7 /* HomeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */; };
-		9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */; };
 		9DCC2F7A1D89A68E002740D1 /* CurriculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */; };
 		9DCC2F7B1D89A68E002740D1 /* CurriculaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */; };
 		9DCDE7B71C0841130087C31F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDE7B61C0841130087C31F /* Common.swift */; };
@@ -133,7 +132,6 @@
 		9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */; };
 		9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174DD1D59A2B800836575 /* DeviceKit.framework */; };
 		9DF174E21D5B8C5500836575 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */; };
-		9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */; };
 		9DF23E9A1F76E0FD004C0BFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C331CE1BA2F2E600EF959F /* Main.storyboard */; };
 		9DF23E9B1F76E10E004C0BFD /* Box.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFB7C0F1F757AE000F1274F /* Box.storyboard */; };
 		9DF23E9C1F76E56A004C0BFD /* Box.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB7BE71F75798600F1274F /* Box.xcdatamodeld */; };
@@ -276,7 +274,6 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
-		26518C9E1EB2560E0025FBF2 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		2697B9BD1E7529FB00ECE931 /* BoxColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxColor.swift; sourceTree = "<group>"; };
 		2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRecognizer.swift; sourceTree = "<group>"; };
 		2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
@@ -338,7 +335,6 @@
 		9D5A014B1DA106B100CF5469 /* QueryList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QueryList.storyboard; sourceTree = "<group>"; };
 		9D5A014C1DA106B100CF5469 /* SemesterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListCell.swift; sourceTree = "<group>"; };
 		9D5A014D1DA106B100CF5469 /* SemesterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterListViewController.swift; sourceTree = "<group>"; };
-		9D608D991E65F678005A631E /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
 		9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QSCMobileV3.entitlements; sourceTree = "<group>"; };
 		9D6B336B1CEC77B500C5372F /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		9D6B336D1CECC0E200C5372F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -346,6 +342,9 @@
 		9D6B337C1CF025F500C5372F /* BusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusViewController.xib; sourceTree = "<group>"; };
 		9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		9D7173651D3141BE0074043E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = QSCMobileV3/Vendor/libMobClickLibrary.a; sourceTree = "<group>"; };
+		9D71FF0C1FB3B962005A64DE /* BWWalkthrough.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWWalkthrough.framework; path = Carthage/Build/iOS/BWWalkthrough.framework; sourceTree = "<group>"; };
+		9D71FF0E1FB3BA01005A64DE /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		9D7628671FA4EB03000423D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
 		9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = Carthage/Build/iOS/CVCalendar.framework; sourceTree = "<group>"; };
@@ -367,7 +366,6 @@
 		9DC475681D2D711E00F4B3DF /* CourseTimePlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTimePlaceCell.swift; sourceTree = "<group>"; };
 		9DC4756A1D2F5BFE00F4B3DF /* CourseEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEditViewController.swift; sourceTree = "<group>"; };
 		9DC536101D7C5197008FFED7 /* HomeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkViewController.swift; sourceTree = "<group>"; };
-		9DCB0A401E65E8F700094A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DCC2F781D89A68E002740D1 /* CurriculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculaViewController.swift; sourceTree = "<group>"; };
 		9DCC2F791D89A68E002740D1 /* CurriculaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurriculaViewController.xib; sourceTree = "<group>"; };
 		9DCDE7B61C0841130087C31F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -401,7 +399,6 @@
 		9DF126AA1D4B2A4900C237DB /* MomentPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentPageViewController.xib; sourceTree = "<group>"; };
 		9DF174DD1D59A2B800836575 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		9DF174E11D5B8C5500836575 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = Carthage/Build/iOS/BTNavigationDropdownMenu.framework; sourceTree = "<group>"; };
 		9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QSCMobileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFB7BE81F75798600F1274F /* Box.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Box.xcdatamodel; sourceTree = "<group>"; };
 		9DFB7BEC1F7579D200F1274F /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
@@ -461,13 +458,11 @@
 				9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */,
 				9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */,
 				9DF174DE1D59A2B800836575 /* DeviceKit.framework in Frameworks */,
-				9DF174F31D5C43B400836575 /* BTNavigationDropdownMenu.framework in Frameworks */,
 				9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */,
 				9D0B8C8A1D377D9900EB80E2 /* SVProgressHUD.framework in Frameworks */,
 				9D6B33801CF0264100C5372F /* CoreActionSheetPicker.framework in Frameworks */,
 				9D9540BE1E754D5E002495F9 /* ZipArchive.framework in Frameworks */,
-				9D608D9A1E65F678005A631E /* EAIntroView.framework in Frameworks */,
-				26518C9F1EB2560E0025FBF2 /* Apollo.framework in Frameworks */,
+				9D71FF0D1FB3B962005A64DE /* BWWalkthrough.framework in Frameworks */,
 				9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */,
 				9D7173661D3141BE0074043E /* libMobClickLibrary.a in Frameworks */,
 				9DEC20DD1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
@@ -487,7 +482,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2697B9E71E752A6A00ECE931 /* ZipArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,11 +489,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE563C171DDA683E00C05CA2 /* Alamofire.framework in Frameworks */,
-				AE563C181DDA683E00C05CA2 /* CryptoSwift.framework in Frameworks */,
-				AE563C191DDA683E00C05CA2 /* SwiftyJSON.framework in Frameworks */,
-				AE563C161DDA640E00C05CA2 /* KeychainAccess.framework in Frameworks */,
 				AE31A5401DC857C600A2CB33 /* QSCMobileKit.framework in Frameworks */,
+				AE563C171DDA683E00C05CA2 /* Alamofire.framework in Frameworks */,
+				AE563C191DDA683E00C05CA2 /* SwiftyJSON.framework in Frameworks */,
+				AE563C181DDA683E00C05CA2 /* CryptoSwift.framework in Frameworks */,
+				AE563C161DDA640E00C05CA2 /* KeychainAccess.framework in Frameworks */,
 				AE31A5321DC8217700A2CB33 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +541,8 @@
 				9DE34AEA1C08AC9000C9534A /* QSCMobileV3-Bridging-Header.h */,
 				04C331C81BA2F2E600EF959F /* AppDelegate.swift */,
 				04C331CE1BA2F2E600EF959F /* Main.storyboard */,
-				9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */,
+				9D7628661FA4EB03000423D4 /* LaunchScreen.xib */,
+				9D71FF0E1FB3BA01005A64DE /* Walkthrough.storyboard */,
 				04C331D11BA2F2E600EF959F /* Assets.xcassets */,
 				9D3139771CE789BF00CD7DAD /* Moment */,
 				9D31396E1CE789BF00CD7DAD /* Calendar */,
@@ -564,6 +559,7 @@
 				9D3139721CE789BF00CD7DAD /* Preference */,
 				9DE716021CE7A9E900282DCD /* Login */,
 				2697B9AD1E7529B500ECE931 /* Box */,
+				2697B9C21E7529FB00ECE931 /* DropDownMenu */,
 				9D3139831CE78C7500CD7DAD /* About */,
 				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
@@ -599,7 +595,6 @@
 			isa = PBXGroup;
 			children = (
 				2697B9C11E7529FB00ECE931 /* CircleProgressView.swift */,
-				2697B9C21E7529FB00ECE931 /* DropDownMenu */,
 				2697B9C61E7529FB00ECE931 /* MultiSelectView */,
 				2697B9CA1E7529FB00ECE931 /* QRCodeScanner */,
 			);
@@ -970,13 +965,11 @@
 				9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */,
 				9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */,
 				9DF174DD1D59A2B800836575 /* DeviceKit.framework */,
-				9DF174F21D5C43B400836575 /* BTNavigationDropdownMenu.framework */,
 				9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */,
 				9D0B8C891D377D9900EB80E2 /* SVProgressHUD.framework */,
 				9D6B337F1CF0264100C5372F /* CoreActionSheetPicker.framework */,
 				2697B9E61E752A6A00ECE931 /* ZipArchive.framework */,
-				9D608D991E65F678005A631E /* EAIntroView.framework */,
-				26518C9E1EB2560E0025FBF2 /* Apollo.framework */,
+				9D71FF0C1FB3B962005A64DE /* BWWalkthrough.framework */,
 				9D8AB44B1CD787810098451A /* libz.tbd */,
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
@@ -1249,11 +1242,12 @@
 			files = (
 				04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */,
 				9DF23E9A1F76E0FD004C0BFD /* Main.storyboard in Resources */,
-				9DCB0A411E65E8F700094A1C /* LaunchScreen.storyboard in Resources */,
 				9DF126AC1D4B2A4900C237DB /* MomentPageViewController.xib in Resources */,
+				9D71FF0F1FB3BA01005A64DE /* Walkthrough.storyboard in Resources */,
 				9DD043F21D2BFBF5007CE9B3 /* EventCell.xib in Resources */,
 				9DC475631D2CF9EF00F4B3DF /* CourseDetail.storyboard in Resources */,
 				9D17387B1D5D937800782E93 /* EventDetail.storyboard in Resources */,
+				9D7628681FA4EB03000423D4 /* LaunchScreen.xib in Resources */,
 				9D17387D1D5D939D00782E93 /* EventEdit.storyboard in Resources */,
 				9D08CF611D732B4A008C1D14 /* QueryCollectionViewCell.xib in Resources */,
 				9D5A01511DA106B100CF5469 /* QueryList.storyboard in Resources */,
@@ -1340,11 +1334,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GaugeKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DeviceKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BTNavigationDropdownMenu.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CurriculaTable.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BWWalkthrough.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -1545,12 +1537,12 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
-		9DCB0A3F1E65E8F700094A1C /* LaunchScreen.storyboard */ = {
+		9D7628661FA4EB03000423D4 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9DCB0A401E65E8F700094A1C /* Base */,
+				9D7628671FA4EB03000423D4 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 		AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */ = {

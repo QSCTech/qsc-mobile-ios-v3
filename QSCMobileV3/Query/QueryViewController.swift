@@ -26,17 +26,14 @@ class QueryViewController: UITableViewController {
     let login: [[String: String]] = [
         [
             "name": "教务网",
-            "url": "http://jwbinfosys.zju.edu.cn/default2.aspx",
             "campus": "off",
         ],
         [
             "name": "浙大邮箱",
-            "url": "http://mail.zju.edu.cn/coremail/login.jsp",
             "campus": "off",
         ],
         [
             "name": "网络中心",
-            "url": "http://myvpn.zju.edu.cn/j_security_check",
             "campus": "on",
         ],
     ]
@@ -69,7 +66,7 @@ class QueryViewController: UITableViewController {
         ],
         [
             "name": "第二课堂",
-            "url": "http://www.qzlake.zju.edu.cn",
+            "url": "http://www.youth.zju.edu.cn/sztz/",
             "campus": "on",
         ],
         [
@@ -221,27 +218,16 @@ class QueryViewController: UITableViewController {
                 SVProgressHUD.showError(withStatus: "您未设置 ZJUWLAN 账号")
                 break
             }
-            // TODO: Handle login errors
-            let url = URL(string: login[indexPath.row]["url"]!)!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
+            let website: BrowserViewController.Website
             switch indexPath.row {
             case 0:
-                let username = accountManager.currentAccountForJwbinfosys!.percentEncoded
-                let password = accountManager.passwordForJwbinfosys(username)!.percentEncoded
-                request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
+                website = .jwbinfosys
             case 1:
-                let username = accountManager.accountForZjuwlan!.percentEncoded
-                let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.httpBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action%3Alogin=".data(using: String.Encoding.ascii)
-            case 2:
-                let username = accountManager.accountForZjuwlan!.percentEncoded
-                let password = accountManager.passwordForZjuwlan!.percentEncoded
-                request.httpBody = "j_username=\(username)&j_password=\(password)".data(using: String.Encoding.ascii)
+                website = .mail
             default:
-                break
+                website = .myvpn
             }
-            let bvc = BrowserViewController(request: request)
+            let bvc = BrowserViewController.builtin(website: website)
             present(bvc, animated: true)
         case .website:
             let url = URL(string: websites[indexPath.row]["url"]!)!
@@ -296,17 +282,19 @@ class QueryViewController: UITableViewController {
     }
     
     @objc func refresh(_ sender: UIRefreshControl) {
-        MobileManager.sharedInstance.refreshAll(errorBlock: { notification in
-            sender.attributedTitle = NSAttributedString(string: notification.userInfo?["error"] as? String ?? "")
-        }, callback: {
-            if sender.attributedTitle?.string == " " {
+        var errorFlag = false
+        let observer = NotificationCenter.default.addObserver(forName: .refreshError, object: nil, queue: .main) { _ in errorFlag = true }
+        MobileManager.sharedInstance.refreshAll {
+            if !errorFlag {
                 sender.attributedTitle = NSAttributedString(string: "刷新成功")
             }
+            NotificationCenter.default.removeObserver(observer)
+            groupDefaults.set(Date(), forKey: LastRefreshDateKey)
             delay(1) {
                 sender.endRefreshing()
                 sender.attributedTitle = NSAttributedString(string: " ")
             }
-        })
+        }
     }
     
 }
