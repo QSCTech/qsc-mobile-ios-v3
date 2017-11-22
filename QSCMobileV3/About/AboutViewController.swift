@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import AVFoundation
 import QSCMobileKit
 
 class AboutViewController: UIViewController {
@@ -26,6 +27,9 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var imageView3: UIImageView!
     @IBOutlet weak var imageView4: UIImageView!
     
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var easterEggView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +40,7 @@ class AboutViewController: UIViewController {
         imageView2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         imageView3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         imageView4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
+        logoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(easterEggHandler)))
     }
     
     let url = [
@@ -48,6 +53,22 @@ class AboutViewController: UIViewController {
     @objc func tapHandler(_ sender: UITapGestureRecognizer) {
         let svc = SFSafariViewController(url: URL(string: url[sender.view!.tag])!)
         present(svc, animated: true)
+    }
+    
+    var audioPlayer: AVAudioPlayer?
+    var easterEggCounter = 0
+    @objc func easterEggHandler(_ sender: AnyObject) {
+        easterEggCounter += 1
+        if easterEggCounter == 5 {
+            navigationItem.title = "初日"
+            easterEggView.isHidden = false
+            guard let url = Bundle.main.url(forResource: "EasterEgg", withExtension: "mp3") else { return }
+            try? AVAudioSession.sharedInstance().setActive(true)
+            audioPlayer = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            guard let player = audioPlayer else { return }
+            player.play()
+            print("Easter Egg!")
+        }
     }
     
     @IBAction func showCopyright(_ sender: AnyObject) {

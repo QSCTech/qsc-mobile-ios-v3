@@ -84,6 +84,7 @@
 		9D7851F51CE87F81008A7DBF /* ZjuwlanLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */; };
 		9D7851F61CE87F81008A7DBF /* ZjuwlanLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */; };
 		9D7EEF9D1CE447C400B09E7C /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */; };
+		9D86A4451FC4A330005454BD /* EasterEgg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D86A4441FC4A330005454BD /* EasterEgg.mp3 */; };
 		9D8AB44C1CD787810098451A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB44B1CD787810098451A /* libz.tbd */; };
 		9D8E5E5C1D3E644C009D5881 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5B1D3E644C009D5881 /* CryptoSwift.framework */; };
 		9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */; };
@@ -301,6 +302,7 @@
 		9D7851F31CE87F81008A7DBF /* ZjuwlanLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZjuwlanLoginViewController.swift; sourceTree = "<group>"; };
 		9D7851F41CE87F81008A7DBF /* ZjuwlanLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZjuwlanLoginViewController.xib; sourceTree = "<group>"; };
 		9D7EEF9C1CE447C400B09E7C /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = Carthage/Build/iOS/CVCalendar.framework; sourceTree = "<group>"; };
+		9D86A4441FC4A330005454BD /* EasterEgg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = EasterEgg.mp3; path = Vendor/EasterEgg.mp3; sourceTree = "<group>"; };
 		9D8AB4441CD7838B0098451A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9D8AB4461CD783AF0098451A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9D8AB4481CD783B30098451A /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
@@ -857,6 +859,7 @@
 			isa = PBXGroup;
 			children = (
 				9D031A2F1CE180BB008F3098 /* FontAwesome.otf */,
+				9D86A4441FC4A330005454BD /* EasterEgg.mp3 */,
 				04C331D61BA2F2E600EF959F /* Info.plist */,
 				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
 			);
@@ -1123,6 +1126,7 @@
 				9D1CC37A1DC73768004DA58E /* AboutViewController.xib in Resources */,
 				9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
+				9D86A4451FC4A330005454BD /* EasterEgg.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
