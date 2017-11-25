@@ -13,4 +13,5 @@ class EventTableRowController: NSObject {
     @IBOutlet var name: WKInterfaceLabel!
     @IBOutlet var time: WKInterfaceLabel!
     @IBOutlet var place: WKInterfaceLabel!
+
 }

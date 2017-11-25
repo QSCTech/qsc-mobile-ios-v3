@@ -263,35 +263,35 @@ extension AppDelegate: WCSessionDelegate {
         if let date = message["date"] as? Date {
             print("[WC Session] Message received by iOS")
             let events = eventsForDate(date).filter { $0.end >= date }
-            var titles = ""
-            var times = ""
-            var places = ""
-            var categories = ""
+            var result = [String:Any]()
             for event in events {
-                titles.append("\(event.name)_")
+                let name = event.name
+                var time = ""
                 if event.duration == .partialTime {
                     if Calendar.current.isDate(event.start, inSameDayAs: event.end) {
-                        times.append("\(event.start.stringOfTime) ～ \(event.end.stringOfTime)_")
+                        time = "\(event.start.stringOfTime) ～ \(event.end.stringOfTime)"
                     } else {
                         let dateFormatter = DateFormatter()
                         dateFormatter.locale = Locale.current
                         dateFormatter.dateFormat = "MM-dd hh:mm"
-                        times.append("\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))_")
+                        time = "\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))"
                     }
                 } else {
                     if event.end.timeIntervalSince(event.start) == 86400 {
-                        times.append("全天_")
+                        time = "全天"
                     } else {
                         let dateFormatter = DateFormatter()
                         dateFormatter.locale = Locale.current
                         dateFormatter.dateFormat = "MM-dd"
-                        times.append("\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))_")
+                        time = "\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))"
                     }
                 }
-                places.append("\(event.place)_")
-                categories.append("\(event.category.rawValue)_")
+                let place = event.place
+                let color = QSCColor.category(event.category).cgColor.components!
+                let singleEvent = ["name": name, "time": time, "place": place, "color": color] as [String : Any]
+                result["\(result.count)"] = singleEvent
             }
-            let reply = ["titles": titles, "times": times, "places": places, "categories": categories]
+            let reply = ["result": result]
             replyHandler(reply)
             print("[WC Session] Replied by iOS")
         }

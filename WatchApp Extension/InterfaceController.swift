@@ -41,25 +41,22 @@ extension InterfaceController {
             if session.isReachable {
                 let message = ["date": date]
                 session.sendMessage(message, replyHandler: { (reply: [String: Any]) -> Void in
-                    if let titles = reply["titles"] as? String, let times = reply["times"] as? String, let places = reply["places"] as? String, let categories = reply["categories"] as? String {
+                    if let result = reply["result"] as? [String: [String: Any]] {
                         print("[WC Session] Reply received by watchOS")
-                        let titleArray = titles.components(separatedBy: "_")
-                        let timeArray = times.components(separatedBy: "_")
-                        let placeArray = places.components(separatedBy: "_")
-                        let categoryArray = categories.components(separatedBy: "_")
                         DispatchQueue.main.async {
-                            self.mainTable.setNumberOfRows(titleArray.count - 1, withRowType: "EventCell")
-                            for i in 0..<titleArray.count - 1 {
-                                let row = self.mainTable.rowController(at: i) as! EventTableRowController
-                                row.name.setText(titleArray[i])
-                                row.name.setTextColor(colors[Int(categoryArray[i])!])
-                                row.time.setText(timeArray[i])
-                                row.place.setText(placeArray[i])
+                            self.mainTable.setNumberOfRows(result.count, withRowType: "EventCell")
+                            for (index, subResult): (String, [String: Any]) in result {
+                                let row = self.mainTable.rowController(at: Int(index)!) as! EventTableRowController
+                                row.name.setText(subResult["name"] as? String)
+                                let colors = subResult["color"] as! [CGFloat]
+                                row.name.setTextColor(UIColor(red: colors[0], green: colors[1], blue: colors[2], alpha: colors[3]))
+                                row.time.setText(subResult["time"] as? String)
+                                row.place.setText(subResult["place"] as? String)
                             }
                         }
                     }
                 }, errorHandler: { (error: Error) in
-                    print("[ERROR] Reply handler error: \(error.localizedDescription)")
+                    print("[WC Session] Reply handler error: \(error.localizedDescription)")
                 })
             } else {
                 print("[WC Session] Not reachable")
