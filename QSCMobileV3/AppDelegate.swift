@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 import BWWalkthrough
 import QSCMobileKit
+import WatchConnectivity
 
 let groupDefaults = UserDefaults(suiteName: AppGroupIdentifier)!
 
@@ -62,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setMinimumDismissTimeInterval(2)
         
         introduceNewVersion()
+        
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshErrorHandler), name: .refreshError, object: nil)
         
@@ -228,6 +235,66 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             UMessage.didReceiveRemoteNotification(response.notification.request.content.userInfo)
         }
         completionHandler()
+    }
+    
+}
+
+extension AppDelegate: WCSessionDelegate {
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("[WC Session] Did become inactive")
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("[WC Session] Did deactivate")
+        WCSession.default.activate()
+    }
+    
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if let error = error {
+            print("[WC Session] Activation failed with error: \(error.localizedDescription)")
+            return
+        }
+        print("[WC Session] Activated with state: \(activationState.rawValue)")
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        if let date = message["date"] as? Date {
+            print("[WC Session] Message received by iOS")
+            let events = eventsForDate(date).filter { $0.end >= date }
+            var result = [String:Any]()
+            for event in events {
+                let name = event.name
+                var time = ""
+                if event.duration == .partialTime {
+                    if Calendar.current.isDate(event.start, inSameDayAs: event.end) {
+                        time = "\(event.start.stringOfTime) ～ \(event.end.stringOfTime)"
+                    } else {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale.current
+                        dateFormatter.dateFormat = "MM-dd hh:mm"
+                        time = "\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))"
+                    }
+                } else {
+                    if event.end.timeIntervalSince(event.start) == 86400 {
+                        time = "全天"
+                    } else {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale.current
+                        dateFormatter.dateFormat = "MM-dd"
+                        time = "\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))"
+                    }
+                }
+                let place = event.place
+                let color = QSCColor.category(event.category).cgColor.components!
+                let singleEvent = ["name": name, "time": time, "place": place, "color": color] as [String : Any]
+                result["\(result.count)"] = singleEvent
+            }
+            let reply = ["result": result]
+            replyHandler(reply)
+            print("[WC Session] Replied by iOS")
+        }
     }
     
 }
