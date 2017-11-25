@@ -310,17 +310,10 @@ extension AppDelegate: BWWalkthroughViewControllerDelegate {
         let walkthrough = storyboard.instantiateInitialViewController() as! BWWalkthroughViewController
         walkthrough.delegate = self
         
-        let Build30020Key = "Build30020"
-        if groupDefaults.object(forKey: Build30020Key) == nil {
-            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "TodayWidget"))
-            groupDefaults.set(true, forKey: Build30020Key)
-        }
-        
-        let Build30025Key = "Build30025"
-        if groupDefaults.object(forKey: Build30025Key) == nil {
-            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "QSCBox"))
-            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "ShareExtension"))
-            groupDefaults.set(true, forKey: Build30025Key)
+        let Build30032Key = "Build30032"
+        if groupDefaults.object(forKey: Build30032Key) == nil {
+            walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "AppleWatch"))
+            groupDefaults.set(true, forKey: Build30032Key)
         }
         
         if walkthrough.numberOfPages > 0 {

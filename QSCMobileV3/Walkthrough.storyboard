@@ -15,7 +15,6 @@
         <!--Walkthrough View Controller-->
         <scene sceneID="TpZ-YF-E2I">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AeJ-Cj-5bg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="FTZ-lG-tnN" customClass="BWWalkthroughViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WCL-aV-I1C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -24,7 +23,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-bJ-nA7">
                                 <rect key="frame" x="363" y="24" width="31" height="30"/>
                                 <state key="normal" title="关闭">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="close:" destination="FTZ-lG-tnN" eventType="touchUpInside" id="fJq-wu-AgP"/>
@@ -32,8 +31,8 @@
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="yXp-wG-IR9">
                                 <rect key="frame" x="188" y="21" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,97 +49,40 @@
                         <outlet property="pageControl" destination="yXp-wG-IR9" id="iAD-3T-cxs"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AeJ-Cj-5bg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1116" y="23"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="jjg-LB-ATF">
+        <scene sceneID="Rsh-ou-LUw">
             <objects>
-                <viewController storyboardIdentifier="TodayWidget" id="77c-OZ-J6t" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3S2-P5-Kmv">
+                <viewController storyboardIdentifier="AppleWatch" id="Ilg-VR-ZS0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OLF-Ce-cZR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TodayWidget" translatesAutoresizingMaskIntoConstraints="NO" id="Bkq-GF-HE6">
-                                <rect key="frame" x="0.0" y="0.33333333333331439" width="414" height="735.33333333333348"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatch" translatesAutoresizingMaskIntoConstraints="NO" id="1YQ-44-cuG">
+                                <rect key="frame" x="0.0" y="-80.333333333333314" width="414" height="896.66666666666652"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Bkq-GF-HE6" secondAttribute="height" multiplier="9:16" id="fxK-Dn-MZq"/>
+                                    <constraint firstAttribute="width" secondItem="1YQ-44-cuG" secondAttribute="height" multiplier="1125:2436" id="lag-Bc-qub"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bkq-GF-HE6" firstAttribute="leading" secondItem="afe-a9-OlL" secondAttribute="leading" id="EYQ-5k-FVz"/>
-                            <constraint firstItem="Bkq-GF-HE6" firstAttribute="centerY" secondItem="3S2-P5-Kmv" secondAttribute="centerY" id="e4d-wR-4kr"/>
-                            <constraint firstItem="afe-a9-OlL" firstAttribute="trailing" secondItem="Bkq-GF-HE6" secondAttribute="trailing" id="hYD-eB-hNV"/>
+                            <constraint firstItem="1YQ-44-cuG" firstAttribute="centerY" secondItem="OLF-Ce-cZR" secondAttribute="centerY" id="82w-BW-kXQ"/>
+                            <constraint firstItem="c0e-ll-YfN" firstAttribute="trailing" secondItem="1YQ-44-cuG" secondAttribute="trailing" id="9Mb-kC-5rj"/>
+                            <constraint firstItem="1YQ-44-cuG" firstAttribute="leading" secondItem="c0e-ll-YfN" secondAttribute="leading" id="OS5-cv-Wt9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="afe-a9-OlL"/>
+                        <viewLayoutGuide key="safeArea" id="c0e-ll-YfN"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pYi-3d-j4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1E-Jz-zsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-399" y="23"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="8dC-uN-Yqs">
-            <objects>
-                <viewController storyboardIdentifier="QSCBox" id="3hf-Th-RgD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c4r-h5-GUq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QSCBox" translatesAutoresizingMaskIntoConstraints="NO" id="Wl7-M5-uNa">
-                                <rect key="frame" x="0.0" y="0.33333333333331439" width="414" height="735.33333333333348"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Wl7-M5-uNa" secondAttribute="height" multiplier="9:16" id="uWi-lr-iiv"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Wl7-M5-uNa" firstAttribute="leading" secondItem="9PI-9A-3QU" secondAttribute="leading" id="JZJ-KE-zdH"/>
-                            <constraint firstItem="9PI-9A-3QU" firstAttribute="trailing" secondItem="Wl7-M5-uNa" secondAttribute="trailing" id="Q2F-ZV-swT"/>
-                            <constraint firstItem="Wl7-M5-uNa" firstAttribute="centerY" secondItem="c4r-h5-GUq" secondAttribute="centerY" id="f6j-fN-SeW"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9PI-9A-3QU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BPy-Px-pzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="304" y="23"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tgK-1G-kdH">
-            <objects>
-                <viewController storyboardIdentifier="ShareExtension" id="ajS-9P-9Zn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d0p-XC-anN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShareExtension" translatesAutoresizingMaskIntoConstraints="NO" id="yIR-mj-ZQt">
-                                <rect key="frame" x="0.0" y="0.33333333333331439" width="414" height="735.33333333333348"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="yIR-mj-ZQt" secondAttribute="height" multiplier="9:16" id="YmH-KJ-6qs"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="yIR-mj-ZQt" firstAttribute="centerY" secondItem="d0p-XC-anN" secondAttribute="centerY" id="1on-48-jRY"/>
-                            <constraint firstItem="yIR-mj-ZQt" firstAttribute="leading" secondItem="JG0-9B-CjN" secondAttribute="leading" id="2Pa-ko-oxR"/>
-                            <constraint firstItem="JG0-9B-CjN" firstAttribute="trailing" secondItem="yIR-mj-ZQt" secondAttribute="trailing" id="RI9-9N-kiq"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="JG0-9B-CjN"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzn-df-nb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1009" y="23"/>
+            <point key="canvasLocation" x="-377" y="23"/>
         </scene>
     </scenes>
     <resources>
-        <image name="QSCBox" width="2667" height="4733"/>
-        <image name="ShareExtension" width="2667" height="4733"/>
-        <image name="TodayWidget" width="1080" height="1920"/>
+        <image name="AppleWatch" width="1125" height="2436"/>
     </resources>
 </document>
