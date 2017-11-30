@@ -387,7 +387,8 @@ class EventEditViewController: UITableViewController {
     
     // MARK: - Drop-down Menu
     
-    var dropDownMenu: DropDownMenuView!
+    var titleView: UILabel?
+    var dropDownMenu: DropDownMenuView?
     let dropDownItems = [
         ["text": Event.Category.lesson.name, "icon": "DotLesson"],
         ["text": Event.Category.quiz.name, "icon": "DotQuiz"],
@@ -401,10 +402,15 @@ class EventEditViewController: UITableViewController {
         if eventCategory.rawValue - 2 < dropDownItems.count {
             let halfWidth = view.bounds.width / 2
             dropDownMenu = DropDownMenuView(items: dropDownItems, superView: view, width: 100, pointerX: halfWidth - 11, pointerY: 0, menuX: halfWidth - 50, shadow: true)
-            dropDownMenu.selectCallBack = selectCallBack
-            dropDownMenu.cancelCallBack = cancelCallBack
+            dropDownMenu!.selectCallBack = selectCallBack
+            dropDownMenu!.cancelCallBack = cancelCallBack
+            titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
+            titleView!.font = UIFont.boldSystemFont(ofSize: 18)
+            titleView!.textAlignment = .center
+            titleView!.isUserInteractionEnabled = true
+            titleView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleViewTapHandler)))
+            navigationItem.titleView = titleView
         }
-        navigationItem.titleView = titleView
         selectCallBack(index: -1)
     }
     
@@ -412,29 +418,24 @@ class EventEditViewController: UITableViewController {
         if index >= 0 {
             customEvent?.category = (index + 2) as NSNumber
         }
-        titleView.text = "\(dropDownArrow)  \(eventCategory.name)"
+        if let titleView = titleView {
+            titleView.text = "\(dropDownArrow)  \(eventCategory.name)"
+        } else {
+            navigationItem.title = eventCategory.name
+        }
         navigationController?.navigationBar.backgroundColor = QSCColor.category(self.eventCategory)
-        dropDownMenu.isHidden = true
+        dropDownMenu?.isHidden = true
     }
     
     func cancelCallBack() {
-        titleView.text = titleView.text!.replacingOccurrences(of: foldUpArrow, with: dropDownArrow)
-        dropDownMenu.isHidden = true
+        titleView!.text = titleView!.text!.replacingOccurrences(of: foldUpArrow, with: dropDownArrow)
+        dropDownMenu!.isHidden = true
     }
     
-    lazy var titleView: UILabel = {
-        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
-        titleView.font = UIFont.boldSystemFont(ofSize: 18)
-        titleView.textAlignment = .center
-        titleView.isUserInteractionEnabled = true
-        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleViewTapHandler)))
-        return titleView
-    }()
-    
     @objc func titleViewTapHandler(_ sender: AnyObject?) {
-        if titleView.text!.contains(dropDownArrow) {
-            titleView.text = titleView.text!.replacingOccurrences(of: dropDownArrow, with: foldUpArrow)
-            dropDownMenu.isHidden = false
+        if titleView!.text!.contains(dropDownArrow) {
+            titleView!.text = titleView!.text!.replacingOccurrences(of: dropDownArrow, with: foldUpArrow)
+            dropDownMenu!.isHidden = false
         } else {
             cancelCallBack()
         }
