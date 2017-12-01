@@ -18,7 +18,7 @@ public class NoticeManager: NSObject {
     private func eventFromJSON(_ json: JSON) -> NoticeEvent {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 28800)
+        formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
         return NoticeEvent(

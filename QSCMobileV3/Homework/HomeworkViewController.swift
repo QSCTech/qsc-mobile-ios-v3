@@ -27,6 +27,8 @@ class HomeworkViewController: UITableViewController {
         datePicker.date = homework.deadline ?? Date()
         finishSwitch.isOn = homework.isFinished?.boolValue ?? false
         
+        datePicker.timeZone = TimeZone(identifier: "Asia/Shanghai")
+        
         nameDidChange(nameField)
         detailView.delegate = self
         textViewDidChange(detailView)

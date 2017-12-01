@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -24,6 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCe-b7-P4a" customClass="Gauge" customModule="GaugeKit">
+                    <rect key="frame" x="40" y="40" width="520" height="520"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FCe-b7-P4a" secondAttribute="height" multiplier="1:1" id="gR5-Te-wVU"/>
                         <constraint firstAttribute="width" secondItem="FCe-b7-P4a" secondAttribute="height" multiplier="1:1" id="ppf-tm-KE2"/>
@@ -36,22 +41,26 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IG-LH-HmY">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IG-LH-HmY">
+                    <rect key="frame" x="271.5" y="88" width="57.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:48" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="TFp-eD-Aof">
+                    <rect key="frame" x="-54.5" y="211.5" width="709" height="177"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="300"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07-30 周六" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwX-ap-ZWM">
+                    <rect key="frame" x="264" y="388.5" width="72" height="17"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnw-cf-G57">
+                    <rect key="frame" x="273" y="492" width="54" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="日程详情"/>
                     <connections>
@@ -103,6 +112,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="UEi-Sj-fr4"/>
+                    <exclude reference="dsr-Dz-f2N"/>
+                    <exclude reference="0nf-B6-026"/>
+                    <exclude reference="QZ5-X8-bbF"/>
+                    <exclude reference="m9D-kH-qcl"/>
+                    <exclude reference="sDn-sm-O28"/>
                     <exclude reference="2oh-I6-zns"/>
                     <exclude reference="FiI-rM-l0V"/>
                     <exclude reference="Sgn-XT-oU1"/>
@@ -121,12 +136,6 @@
                     <exclude reference="Mh5-ec-3Ok"/>
                     <exclude reference="cdA-hU-nC3"/>
                     <exclude reference="zPt-Pg-MRO"/>
-                    <exclude reference="UEi-Sj-fr4"/>
-                    <exclude reference="dsr-Dz-f2N"/>
-                    <exclude reference="0nf-B6-026"/>
-                    <exclude reference="QZ5-X8-bbF"/>
-                    <exclude reference="m9D-kH-qcl"/>
-                    <exclude reference="sDn-sm-O28"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="302" y="502"/>

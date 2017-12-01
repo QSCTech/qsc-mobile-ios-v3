@@ -40,7 +40,7 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(forName: .eventsModified, object: nil, queue: .main) { notification in
             if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
-                var date = Calendar.current.startOfDay(for: start)
+                var date = self.chineseCalendar.startOfDay(for: start)
                 while date <= end {
                     self.cache.removeValue(forKey: date)
                     date = date.addingTimeInterval(86400)
@@ -99,6 +99,12 @@ class CalendarViewController: UIViewController {
         calendarView.toggleCurrentDayView()
     }
     
+    var chineseCalendar: Calendar = {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(identifier: "Asia/Shanghai")!
+        return calendar
+    }()
+    
     var weekName: String {
         var name = calendarManager.semesterForDate(selectedDate).name
         if name.count == 1 {
@@ -108,9 +114,9 @@ class CalendarViewController: UIViewController {
     }
     
     func updateDateLabel() {
-        dayLabel.text = String(Calendar.current.component(.day, from: selectedDate))
-        monthLabel.text = Calendar.current.component(.month, from: selectedDate).stringForMonth
-        yearLabel.text = String(Calendar.current.component(.year, from: selectedDate))
+        dayLabel.text = String(chineseCalendar.component(.day, from: selectedDate))
+        monthLabel.text = chineseCalendar.component(.month, from: selectedDate).stringForMonth
+        yearLabel.text = String(chineseCalendar.component(.year, from: selectedDate))
     }
     
     func updateForSelectedDate() {
@@ -163,18 +169,18 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     }
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
-        selectedDate = dayView.date.convertedDate(calendar: Calendar.current)!
+        selectedDate = dayView.date.convertedDate(calendar: chineseCalendar)!
         updateForSelectedDate()
     }
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
-        let date = dayView.date.convertedDate(calendar: Calendar.current)!
+        let date = dayView.date.convertedDate(calendar: chineseCalendar)!
         let colors = cachedColorsForDate(date)
         return !colors.isEmpty
     }
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
-        let date = dayView.date.convertedDate(calendar: Calendar.current)!
+        let date = dayView.date.convertedDate(calendar: chineseCalendar)!
         var colors = cachedColorsForDate(date)
         // Workaround to display dots in one line
         while colors.count > 3 {

@@ -76,7 +76,7 @@ class MomentPageViewController: UIViewController {
             if Device().isPad {
                 dateLabel.isHidden = true
             }
-            promptLabel.text = ""
+            promptLabel.text = TimeZone.current.secondsFromGMT() == 28800 ? "" : "北京时间"
             gauge.rate = 0
             detailButton.isHidden = true
             
@@ -119,6 +119,7 @@ class MomentPageViewController: UIViewController {
         } else {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "zh_CN")
+            formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
             formatter.dateFormat = "HH:mm"
             timerLabel.text = formatter.string(from: Date())
             formatter.dateFormat = "MM-dd EEE"

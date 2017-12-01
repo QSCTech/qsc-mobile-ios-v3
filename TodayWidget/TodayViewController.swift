@@ -136,6 +136,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
             formatter.dateFormat = "MM-dd"
             cell.startTime.text = formatter.string(from: event.start)
             cell.endTime.text = formatter.string(from: event.end.addingTimeInterval(-1))

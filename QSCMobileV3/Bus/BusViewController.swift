@@ -116,6 +116,7 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func addEvent(_ sender: UIButton) {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
         formatter.dateFormat = "HH:mm"
         let index = Int(sender.currentTitle!)!
         let from = schoolBus.fromTime(index) != "*" ? schoolBus.fromTime(index) : schoolBus.toTime(index)

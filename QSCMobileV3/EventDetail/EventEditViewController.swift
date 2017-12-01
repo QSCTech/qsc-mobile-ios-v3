@@ -76,6 +76,11 @@ class EventEditViewController: UITableViewController {
         allDaySwitch.onTintColor = QSCColor.theme
         allDayCell.accessoryView = allDaySwitch
         
+        let chineseStandardTime = TimeZone(identifier: "Asia/Shanghai")
+        startTimePicker.timeZone = chineseStandardTime
+        endTimePicker.timeZone = chineseStandardTime
+        repeatEndPicker.timeZone = chineseStandardTime
+        
         if let event = customEvent {
             titleField.text = event.name
             titleDidChange(titleField)

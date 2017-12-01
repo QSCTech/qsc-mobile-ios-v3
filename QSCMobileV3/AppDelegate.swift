@@ -272,7 +272,8 @@ extension AppDelegate: WCSessionDelegate {
                         time = "\(event.start.stringOfTime) ～ \(event.end.stringOfTime)"
                     } else {
                         let dateFormatter = DateFormatter()
-                        dateFormatter.locale = Locale.current
+                        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                        dateFormatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
                         dateFormatter.dateFormat = "MM-dd hh:mm"
                         time = "\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))"
                     }
@@ -281,7 +282,8 @@ extension AppDelegate: WCSessionDelegate {
                         time = "全天"
                     } else {
                         let dateFormatter = DateFormatter()
-                        dateFormatter.locale = Locale.current
+                        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                        dateFormatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
                         dateFormatter.dateFormat = "MM-dd"
                         time = "\(dateFormatter.string(from: event.start)) ～ \(dateFormatter.string(from: event.end))"
                     }

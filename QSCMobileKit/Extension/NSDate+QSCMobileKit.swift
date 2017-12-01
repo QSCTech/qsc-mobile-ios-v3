@@ -11,7 +11,9 @@ import Foundation
 extension Date {
     
     public var today: Date {
-        return Calendar.current.startOfDay(for: self)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(identifier: "Asia/Shanghai")!
+        return calendar.startOfDay(for: self)
     }
     
     public var tomorrow: Date {
@@ -22,6 +24,7 @@ extension Date {
     private var datetimeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
         formatter.dateFormat = "yyyy年M月d日    HH:mm"
         return formatter
     }
