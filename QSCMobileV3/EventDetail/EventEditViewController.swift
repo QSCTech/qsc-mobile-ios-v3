@@ -60,14 +60,11 @@ class EventEditViewController: UITableViewController {
     let eventManager = EventManager.sharedInstance
     
     var customEvent: CustomEvent?
+    var eventCategory: Event.Category?
     var selectedDate: Date? {
         didSet {
             selectedDate = selectedDate!.today
         }
-    }
-    
-    var eventCategory: Event.Category {
-        return Event.Category(rawValue: customEvent!.category!.intValue)!
     }
     
     override func viewDidLoad() {
@@ -83,6 +80,7 @@ class EventEditViewController: UITableViewController {
             titleField.text = event.name
             titleDidChange(titleField)
             placeField.text = event.place
+            eventCategory = Event.Category(rawValue: event.category!.intValue)
             allDaySwitch.isOn = (event.duration!.intValue == Event.Duration.allDay.rawValue)
             allDaySwitchDidChange(allDaySwitch)
             startTimePicker.date = event.start!
@@ -98,7 +96,8 @@ class EventEditViewController: UITableViewController {
             }
         } else {
             customEvent = eventManager.newCustomEvent
-            customEvent!.category = Event.Category.todo.rawValue as NSNumber
+            eventCategory = Event.Category.todo
+            customEvent!.category = eventCategory!.rawValue as NSNumber
             
             startTimePicker.date = selectedDate!
             endTimePicker.date = selectedDate!
@@ -294,6 +293,7 @@ class EventEditViewController: UITableViewController {
         
         customEvent!.name = titleField.text
         customEvent!.place = placeField.text
+        customEvent!.category = eventCategory!.rawValue as NSNumber
         if allDaySwitch.isOn {
             customEvent!.duration = Event.Duration.allDay.rawValue as NSNumber
         } else {
@@ -399,7 +399,7 @@ class EventEditViewController: UITableViewController {
     let foldUpArrow   = "▴"
     
     func prepareDropDownMenu() {
-        if eventCategory.rawValue - 2 < dropDownItems.count {
+        if eventCategory!.rawValue - 2 < dropDownItems.count {
             let halfWidth = view.bounds.width / 2
             dropDownMenu = DropDownMenuView(items: dropDownItems, superView: view, width: 100, pointerX: halfWidth - 11, pointerY: 0, menuX: halfWidth - 50, shadow: true)
             dropDownMenu!.selectCallBack = selectCallBack
@@ -416,14 +416,14 @@ class EventEditViewController: UITableViewController {
     
     func selectCallBack(index: Int) {
         if index >= 0 {
-            customEvent?.category = (index + 2) as NSNumber
+            eventCategory = Event.Category(rawValue: index + 2)
         }
         if let titleView = titleView {
-            titleView.text = "\(dropDownArrow)  \(eventCategory.name)"
+            titleView.text = "\(dropDownArrow)  \(eventCategory!.name)"
         } else {
-            navigationItem.title = eventCategory.name
+            navigationItem.title = eventCategory!.name
         }
-        navigationController?.navigationBar.backgroundColor = QSCColor.category(self.eventCategory)
+        navigationController?.navigationBar.backgroundColor = QSCColor.category(eventCategory!)
         dropDownMenu?.isHidden = true
     }
     
