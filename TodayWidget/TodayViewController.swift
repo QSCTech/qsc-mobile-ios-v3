@@ -54,7 +54,7 @@ class TodayViewController: UIViewController {
     @IBAction func connectWlan() {
         wlanSwitch.setImage(UIImage.init(named: "WiFiConnecting"), for: .normal)
         ZjuwlanConnection.link { error in
-            if error != nil {
+            if error == nil {
                 self.wlanSwitch.setImage(UIImage.init(named: "WiFiSuccess"), for: .normal)
             } else {
                 self.wlanSwitch.setImage(UIImage.init(named: "WiFiFailed"), for: .normal)
