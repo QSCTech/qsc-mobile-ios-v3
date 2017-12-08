@@ -17,62 +17,42 @@ class QueryViewController: UITableViewController {
     let collectionViewDelegate = QueryCollectionViewDelegate()
     
     enum Tools: Int {
-        case score = 0, query, qsc, login, website, webpage
-        static let count = 6
+        case score = 0, query, qsc, login, website, webpage, annotation
+        static let count = 7
     }
     
     let qsc = ["Box 云优盘", "水朝夕"]
     
-    let login: [[String: String]] = [
-        [
-            "name": "教务网",
-            "campus": "off",
-        ],
-        [
-            "name": "浙大邮箱",
-            "campus": "off",
-        ],
-        [
-            "name": "网络中心",
-            "campus": "on",
-        ],
-    ]
+    let login = ["教务网", "浙大邮箱", "网络中心*"]
     
     let websites: [[String: String]] = [
         [
             "name": "院系网站",
             "url": "https://info.zjuqsc.com/zju-websites/",
-            "campus": "off",
         ],
         [
             "name": "图书馆",
             "url": "http://webpac.zju.edu.cn",
-            "campus": "off",
         ],
         [
             "name": "信息共享空间",
-            "url": "http://ic.zju.edu.cn/ClientWeb/xcus/zd/index.aspx",
-            "campus": "off",
+            "url": "http://ic.zju.edu.cn/ClientWeb/m/ic2/Default.aspx",
         ],
         [
             "name": "体质健康测试",
             "url": "http://www.tyys.zju.edu.cn/tzjk/indexphone.jsp",
-            "campus": "on",
         ],
         [
             "name": "健康之友",
             "url": "http://www.tyys.zju.edu.cn/hyz/indexphone.jsp",
-            "campus": "on",
         ],
         [
             "name": "第二课堂",
             "url": "http://www.youth.zju.edu.cn/sztz/",
-            "campus": "on",
         ],
         [
-            "name": "综合数据服务平台",
+            "name": "综合数据服务平台*",
             "url": "http://zuds.zju.edu.cn/zfsjzx/jspdspp/zjuindex/index.jsp",
-            "campus": "on",
         ],
     ]
     
@@ -80,17 +60,18 @@ class QueryViewController: UITableViewController {
         [
             "name": "学年校历",
             "url": "https://info.zjuqsc.com/academic-calendar/",
-            "campus": "off",
         ],
         [
             "name": "体育锻炼制度",
             "url": "https://info.zjuqsc.com/exercise-regulations/",
-            "campus": "off",
         ],
         [
-            "name": "教室占用查询",
+            "name": "教室占用查询*",
             "url": "http://jxzygl.zju.edu.cn/jxzwsyqk/jszycx.aspx",
-            "campus": "on",
+        ],
+        [
+            "name": "校园地图",
+            "url": "http://map.zju.edu.cn/mobile/index",
         ],
     ]
     
@@ -112,6 +93,8 @@ class QueryViewController: UITableViewController {
             return websites.count
         case .webpage:
             return webpages.count
+        case .annotation:
+            return 0
         }
     }
     
@@ -123,6 +106,8 @@ class QueryViewController: UITableViewController {
             return "校网链接"
         case .webpage:
             return "实用查询"
+        case .annotation:
+            return "* 加星号的网站仅限校内访问"
         default:
             return nil
         }
@@ -176,11 +161,13 @@ class QueryViewController: UITableViewController {
         case .qsc:
             cell.textLabel!.text = qsc[indexPath.row]
         case .login:
-            cell.textLabel!.text = login[indexPath.row]["name"]
+            cell.textLabel!.text = login[indexPath.row]
         case .website:
             cell.textLabel!.text = websites[indexPath.row]["name"]
         case .webpage:
             cell.textLabel!.text = webpages[indexPath.row]["name"]
+        default:
+            break
         }
         return cell
     }
@@ -235,7 +222,7 @@ class QueryViewController: UITableViewController {
             present(svc, animated: true)
         case .webpage:
             let url = webpages[indexPath.row]["url"]!
-            let title = webpages[indexPath.row]["name"]!
+            let title = webpages[indexPath.row]["name"]!.replacingOccurrences(of: "*", with: "")
             let wvc = WebViewController(url: url, title: title)
             show(wvc, sender: nil)
         default:
