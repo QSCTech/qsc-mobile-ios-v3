@@ -11,7 +11,7 @@ import QSCMobileKit
 
 class BoxViewController: UIViewController {
     
-    var files: [File]!
+    var files = BoxManager.sharedInstance.allFiles
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noFileImageView: UIImageView!
@@ -27,7 +27,7 @@ class BoxViewController: UIViewController {
         downloadBarButton.image = UIImage(named: "Download")?.withRenderingMode(.alwaysOriginal)
         downloadMultiSelectView = MultiSelectView(superView: view, title: "选择文件",width: 250, height: 218, offsetY: -10, shadow: true)
         
-        files = BoxManager.sharedInstance.allFiles
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .UIApplicationDidBecomeActive, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

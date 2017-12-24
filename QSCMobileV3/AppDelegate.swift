@@ -198,16 +198,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        let tabBarController = window!.rootViewController as! UITabBarController
-        if tabBarController.selectedIndex == 3 {
-            let navigationController = tabBarController.selectedViewController as! UINavigationController
-            if let boxViewController = navigationController.topViewController as? BoxViewController {
-                if boxViewController.files != nil && boxViewController.tableView != nil {
-                    boxViewController.files = BoxManager.sharedInstance.allFiles
-                    boxViewController.tableView.reloadData()
-                }
-            }
-        }
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

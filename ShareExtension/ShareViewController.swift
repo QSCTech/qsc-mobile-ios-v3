@@ -123,7 +123,7 @@ class ShareViewController: UIViewController {
     
     func getAttachments(completionHandler: @escaping (Error?) -> ()) {
         var count = 0
-        for inputItem in extensionContext!.inputItems as [AnyObject] {
+        for inputItem in extensionContext!.inputItems as! [NSExtensionItem] {
             for attachment in inputItem.attachments as! [NSItemProvider] {
                 count += 1
                 attachment.loadItem(forTypeIdentifier: "public.data", options: nil) { data, error in
