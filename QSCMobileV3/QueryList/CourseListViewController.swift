@@ -31,7 +31,8 @@ class CourseListViewController: UITableViewController {
         let course = mobileManager.getCourses(semester)[indexPath.row]
         cell.titleLabel.text = course.name
         cell.identifierLabel.text = course.identifier
-        cell.creditLabel.text = "学分 " + course.credit!.stringValue
+        let credit = mobileManager.courseCreditWithIdentifier(course.identifier!)
+        cell.creditLabel.text = "学分 \(credit)"
         cell.categoryLabel.text = course.category
         return cell
     }

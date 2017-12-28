@@ -197,6 +197,18 @@ public class MobileManager: NSObject {
         return course?.name ?? ""
     }
     
+    public func courseCreditWithIdentifier(_ identifier: String) -> Float {
+        if let course = courseObjectsWithIdentifier(identifier).first, let credit = course.credit?.floatValue, credit > 0 {
+            return credit
+        } else if let exam = examObjectsWithIdentifier(identifier).first, let credit = exam.credit?.floatValue, credit > 0 {
+            return credit
+        } else if let score = scoreObjectsWithIdentifier(identifier).first, let credit = score.credit?.floatValue, credit > 0 {
+            return credit
+        } else {
+            return 0
+        }
+    }
+    
     public func examObjectsWithIdentifier(_ identifier: String) -> [Exam] {
         return dataStore.objectsWithIdentifier(prefixForIdentifier(identifier), entityName: "Exam") as! [Exam]
     }

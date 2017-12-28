@@ -221,7 +221,14 @@ class CourseDetailViewController: UITableViewController {
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
                 cell.selectionStyle = .none
-                cell.textLabel!.text = "学分：" + courseObject.credit!.stringValue
+                var credit = courseObject.credit!.floatValue
+                if credit == 0 {
+                    credit = examObject?.credit?.floatValue ?? 0
+                }
+                if credit == 0 {
+                    credit = scoreObject?.credit?.floatValue ?? 0
+                }
+                cell.textLabel!.text = "学分：\(credit)"
                 if let scoreObject = scoreObject {
                     cell.detailTextLabel!.text =  String(format: "成绩：%.1f / %@", scoreObject.gradePoint!.floatValue, scoreObject.score!)
                 } else {
