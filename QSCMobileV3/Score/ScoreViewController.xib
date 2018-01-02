@@ -288,11 +288,13 @@
                 <constraint firstItem="obk-3c-FXe" firstAttribute="top" secondItem="LPK-yW-RrN" secondAttribute="bottom" constant="8" symbolic="YES" id="6d3-r4-nCE"/>
                 <constraint firstItem="zG2-gN-OJt" firstAttribute="top" secondItem="7NZ-jb-f0c" secondAttribute="bottom" id="8am-1M-HJ1"/>
                 <constraint firstItem="LPK-yW-RrN" firstAttribute="trailing" secondItem="7NZ-jb-f0c" secondAttribute="trailing" constant="-8" id="9eA-y9-JwW"/>
-                <constraint firstItem="hfr-1a-5Qi" firstAttribute="top" secondItem="ANY-c1-3oo" secondAttribute="top" id="Bak-O5-QK5"/>
+                <constraint firstItem="hfr-1a-5Qi" firstAttribute="top" secondItem="ANY-c1-3oo" secondAttribute="top" priority="750" id="Bak-O5-QK5"/>
                 <constraint firstItem="zG2-gN-OJt" firstAttribute="bottom" secondItem="hfr-1a-5Qi" secondAttribute="bottom" id="CJj-cY-Y1C"/>
+                <constraint firstItem="zG2-gN-OJt" firstAttribute="trailing" secondItem="hfr-1a-5Qi" secondAttribute="trailing" id="H8e-wr-oJD"/>
                 <constraint firstItem="obk-3c-FXe" firstAttribute="leading" secondItem="LPK-yW-RrN" secondAttribute="leading" id="IUE-nA-2Yj"/>
+                <constraint firstItem="ANY-c1-3oo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Jve-cb-rAz"/>
                 <constraint firstItem="LPK-yW-RrN" firstAttribute="leading" secondItem="7NZ-jb-f0c" secondAttribute="leading" constant="8" id="Kac-i0-MZQ"/>
-                <constraint firstItem="zG2-gN-OJt" firstAttribute="trailing" secondItem="7NZ-jb-f0c" secondAttribute="trailing" id="Rsb-9H-jq8"/>
+                <constraint firstItem="zG2-gN-OJt" firstAttribute="trailing" secondItem="7NZ-jb-f0c" secondAttribute="trailing" priority="750" id="Rsb-9H-jq8"/>
                 <constraint firstItem="ANY-c1-3oo" firstAttribute="trailing" secondItem="7NZ-jb-f0c" secondAttribute="trailing" id="SjP-uF-3uQ"/>
                 <constraint firstItem="7NZ-jb-f0c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WQX-mr-Oor"/>
                 <constraint firstItem="ALV-X4-Tb2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Yvs-Vd-9Rn"/>

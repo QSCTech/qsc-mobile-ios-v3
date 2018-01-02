@@ -76,7 +76,7 @@
             <constraints>
                 <constraint firstItem="I0C-jJ-TAa" firstAttribute="centerY" secondItem="2B8-qo-LPi" secondAttribute="centerY" id="07D-j8-5wf"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" symbolic="YES" id="4aB-gB-ySk"/>
-                <constraint firstItem="2B8-qo-LPi" firstAttribute="top" secondItem="Tid-fF-YCf" secondAttribute="top" id="6ze-ax-KND"/>
+                <constraint firstItem="2B8-qo-LPi" firstAttribute="top" secondItem="Tid-fF-YCf" secondAttribute="top" priority="750" id="6ze-ax-KND"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="top" secondItem="2B8-qo-LPi" secondAttribute="bottom" id="99D-2S-ymg"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="leading" secondItem="3gT-Tm-8VB" secondAttribute="leading" id="DIG-x4-9B8"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="leading" secondItem="2B8-qo-LPi" secondAttribute="trailing" constant="-600" id="Euz-Lw-o18"/>
@@ -87,6 +87,7 @@
                 <constraint firstItem="3gT-Tm-8VB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" symbolic="YES" id="aIg-WW-p8C"/>
                 <constraint firstItem="2B8-qo-LPi" firstAttribute="trailing" secondItem="3gT-Tm-8VB" secondAttribute="trailing" id="pXg-0U-XxK"/>
                 <constraint firstAttribute="trailing" secondItem="2B8-qo-LPi" secondAttribute="trailing" symbolic="YES" id="s6X-QF-XZw"/>
+                <constraint firstItem="2B8-qo-LPi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="sCt-tX-uD2"/>
                 <constraint firstAttribute="bottom" secondItem="AUb-ye-IUD" secondAttribute="bottom" id="uAx-Av-GFC"/>
                 <constraint firstItem="AUb-ye-IUD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uDs-Pi-rZa"/>
                 <constraint firstAttribute="trailing" secondItem="3gT-Tm-8VB" secondAttribute="trailing" symbolic="YES" id="yVr-G2-sR9"/>
