@@ -60,7 +60,7 @@ class AboutViewController: UIViewController {
     @objc func easterEggHandler(_ sender: AnyObject) {
         easterEggCounter += 1
         if easterEggCounter == 5 {
-            navigationItem.title = "初日"
+            navigationItem.title = "初日♪"
             easterEggView.isHidden = false
             guard let url = Bundle.main.url(forResource: "EasterEgg", withExtension: "mp3") else { return }
             try? AVAudioSession.sharedInstance().setActive(true)
