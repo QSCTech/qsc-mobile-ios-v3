@@ -52,7 +52,7 @@ class PreferenceViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Preference(rawValue: section)! {
         case .about:
-            return "Copyright © 2016-2017 QSC Tech."
+            return "Copyright © 2016-2018 QSC Tech."
         default:
             return nil
         }
