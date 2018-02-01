@@ -66,8 +66,8 @@ class QueryViewController: UITableViewController {
             "url": "https://info.zjuqsc.com/exercise-regulations/",
         ],
         [
-            "name": "教室占用查询*",
-            "url": "http://jxzygl.zju.edu.cn/jxzwsyqk/jszycx.aspx",
+            "name": "教室占用查询",
+            "url": "https://app.zjuqsc.com/classroom/",
         ],
         [
             "name": "校园地图",
