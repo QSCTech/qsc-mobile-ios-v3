@@ -24,8 +24,6 @@ class QueryTableViewCell: UITableViewCell {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        let number = CGFloat(QueryCollectionViewDelegate.number)
-        layout.minimumInteritemSpacing = max((UIScreen.main.bounds.width - 2 * sectionInset - number * itemWidth) / (number - 1), 0)
         layout.sectionInset = UIEdgeInsets(top: 0, left: sectionInset, bottom: 0, right: sectionInset)
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clear
