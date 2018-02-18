@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -28,8 +28,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCe-b7-P4a" customClass="Gauge" customModule="GaugeKit">
-                    <rect key="frame" x="40" y="40" width="520" height="520"/>
+                    <rect key="frame" x="50" y="50" width="500" height="500"/>
                     <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="LaZ-EV-lcC"/>
                         <constraint firstAttribute="width" secondItem="FCe-b7-P4a" secondAttribute="height" multiplier="1:1" id="gR5-Te-wVU"/>
                         <constraint firstAttribute="width" secondItem="FCe-b7-P4a" secondAttribute="height" multiplier="1:1" id="ppf-tm-KE2"/>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="vel-tG-VPN"/>
@@ -42,25 +43,25 @@
                     </variation>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IG-LH-HmY">
-                    <rect key="frame" x="271.5" y="88" width="57.5" height="17"/>
+                    <rect key="frame" x="271.5" y="98" width="57.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:48" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="TFp-eD-Aof">
-                    <rect key="frame" x="-54.5" y="211.5" width="709" height="177"/>
+                    <rect key="frame" x="-54.5" y="215" width="709" height="170"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="300"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07-30 周六" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwX-ap-ZWM">
-                    <rect key="frame" x="264" y="388.5" width="72" height="17"/>
+                    <rect key="frame" x="264" y="385" width="72" height="17"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnw-cf-G57">
-                    <rect key="frame" x="273" y="492" width="54" height="28"/>
+                    <rect key="frame" x="273" y="482" width="54" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="日程详情"/>
                     <connections>
@@ -73,7 +74,7 @@
                 <constraint firstItem="CwX-ap-ZWM" firstAttribute="top" secondItem="TFp-eD-Aof" secondAttribute="bottom" constant="8" symbolic="YES" id="0nf-B6-026"/>
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="centerX" secondItem="FCe-b7-P4a" secondAttribute="centerX" id="1eQ-Sk-44N"/>
                 <constraint firstAttribute="trailing" secondItem="FCe-b7-P4a" secondAttribute="trailing" constant="32" id="2oh-I6-zns"/>
-                <constraint firstItem="FCe-b7-P4a" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leading" priority="750" constant="40" id="3Sj-UG-9nq"/>
+                <constraint firstItem="FCe-b7-P4a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ncl-Y5-yqU" secondAttribute="leading" priority="750" constant="40" id="3Sj-UG-9nq"/>
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="leading" secondItem="ncl-Y5-yqU" secondAttribute="leading" constant="80" id="8LY-A9-J1Z"/>
                 <constraint firstItem="Xnw-cf-G57" firstAttribute="centerX" secondItem="TFp-eD-Aof" secondAttribute="centerX" id="8v9-hl-VDh"/>
                 <constraint firstItem="3IG-LH-HmY" firstAttribute="top" secondItem="FCe-b7-P4a" secondAttribute="top" constant="48" id="981-z3-Szd"/>
@@ -104,7 +105,7 @@
                 <constraint firstItem="CwX-ap-ZWM" firstAttribute="top" secondItem="TFp-eD-Aof" secondAttribute="bottom" id="vHV-0l-q2s"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="centerX" secondItem="ncl-Y5-yqU" secondAttribute="centerX" id="vlA-j1-kc7"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="top" secondItem="3IG-LH-HmY" secondAttribute="bottom" constant="-49" id="wO4-c4-Utc"/>
-                <constraint firstItem="FCe-b7-P4a" firstAttribute="top" secondItem="ncl-Y5-yqU" secondAttribute="top" constant="40" id="xCU-er-uXT"/>
+                <constraint firstItem="FCe-b7-P4a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ncl-Y5-yqU" secondAttribute="top" constant="40" id="xCU-er-uXT"/>
                 <constraint firstItem="FCe-b7-P4a" firstAttribute="width" secondItem="ncl-Y5-yqU" secondAttribute="height" multiplier="1:1" id="xxX-Or-P8J"/>
                 <constraint firstItem="TFp-eD-Aof" firstAttribute="centerY" secondItem="ncl-Y5-yqU" secondAttribute="centerY" id="zPt-Pg-MRO"/>
             </constraints>
@@ -112,12 +113,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="UEi-Sj-fr4"/>
-                    <exclude reference="dsr-Dz-f2N"/>
-                    <exclude reference="0nf-B6-026"/>
-                    <exclude reference="QZ5-X8-bbF"/>
-                    <exclude reference="m9D-kH-qcl"/>
-                    <exclude reference="sDn-sm-O28"/>
                     <exclude reference="2oh-I6-zns"/>
                     <exclude reference="FiI-rM-l0V"/>
                     <exclude reference="Sgn-XT-oU1"/>
@@ -136,6 +131,12 @@
                     <exclude reference="Mh5-ec-3Ok"/>
                     <exclude reference="cdA-hU-nC3"/>
                     <exclude reference="zPt-Pg-MRO"/>
+                    <exclude reference="UEi-Sj-fr4"/>
+                    <exclude reference="dsr-Dz-f2N"/>
+                    <exclude reference="0nf-B6-026"/>
+                    <exclude reference="QZ5-X8-bbF"/>
+                    <exclude reference="m9D-kH-qcl"/>
+                    <exclude reference="sDn-sm-O28"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="302" y="502"/>
