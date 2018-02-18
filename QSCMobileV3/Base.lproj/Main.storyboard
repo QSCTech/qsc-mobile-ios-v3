@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -327,7 +327,7 @@
                                 <rect key="frame" x="64" y="107" width="311" height="447"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Basic" textLabel="y8N-wF-cRc" rowHeight="44" style="IBUITableViewCellStyleDefault" id="m9p-hF-ohV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Basic" textLabel="y8N-wF-cRc" rowHeight="44" style="IBUITableViewCellStyleDefault" id="m9p-hF-ohV">
                                         <rect key="frame" x="0.0" y="55.5" width="311" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m9p-hF-ohV" id="SEb-SF-S3P">
@@ -540,13 +540,11 @@
             </objects>
             <point key="canvasLocation" x="2172" y="1144"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--工具-->
         <scene sceneID="ZrD-2v-zQf">
             <objects>
                 <navigationController id="XZf-SV-YIi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Query" selectedImage="QueryFilled" id="Iys-tw-le7">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="工具" image="Query" selectedImage="QueryFilled" id="Iys-tw-le7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="g6B-iD-COS">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -597,13 +595,11 @@
             </objects>
             <point key="canvasLocation" x="2812" y="1144"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--设置-->
         <scene sceneID="uLV-Mc-gKV">
             <objects>
                 <navigationController id="nWB-Rd-QKm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Preference" selectedImage="PreferenceFilled" id="AEf-u5-uMk">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="设置" image="Preference" selectedImage="PreferenceFilled" id="AEf-u5-uMk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RG9-6b-56D">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -626,9 +622,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="jGM-69-hfV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Discover" selectedImage="DiscoverFilled" id="yL4-N3-ia1">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="发现" image="Discover" selectedImage="DiscoverFilled" id="yL4-N3-ia1"/>
                     <navigationItem key="navigationItem" title="发现" id="BMB-JG-G0R"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9G-XH-uKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -662,13 +656,11 @@
             </objects>
             <point key="canvasLocation" x="1534" y="-542"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--日程-->
         <scene sceneID="qKN-25-TcH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tzo-ct-FnG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Calendar" selectedImage="CalendarFilled" id="cPa-gy-q4n">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="日程" image="Calendar" selectedImage="CalendarFilled" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cWw-OK-yzr">
                         <autoresizingMask key="autoresizingMask"/>
@@ -683,13 +675,11 @@
             </objects>
             <point key="canvasLocation" x="896" y="390"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--今日-->
         <scene sceneID="TnQ-SE-dXH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PWm-LG-XNl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Moment" selectedImage="MomentFilled" id="wEP-as-Bdh">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="今日" image="Moment" selectedImage="MomentFilled" id="wEP-as-Bdh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="wnD-Dn-giv">
                         <autoresizingMask key="autoresizingMask"/>
