@@ -60,8 +60,12 @@ public class MobileManager: NSObject {
      - parameter username: Username of the account.
      */
     public func changeUser(_ username: String) {
+        guard let password = accountManager.passwordForJwbinfosys(username) else {
+            deleteUser(username)
+            return
+        }
         accountManager.currentAccountForJwbinfosys = username
-        apiSession = APISession(username: username, password: accountManager.passwordForJwbinfosys(username)!)
+        apiSession = APISession(username: username, password: password)
         apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
         NotificationCenter.default.post(name: .eventsModified, object: nil)
