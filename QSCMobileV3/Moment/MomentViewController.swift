@@ -42,7 +42,7 @@ class MomentViewController: UIViewController {
             self.viewWillAppear(false)
             self.viewDidAppear(false)
         }
-        NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: .main, using: viewAppear)
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main, using: viewAppear)
         NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main, using: viewAppear)
     }
     
@@ -67,7 +67,7 @@ class MomentViewController: UIViewController {
             
             stackView.isHidden = true
             navigationItem.title = "今日无事"
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         } else {
             stackView.isHidden = false
             updateCurrentEvent()
@@ -110,7 +110,7 @@ class MomentViewController: UIViewController {
         placeLabel.text = event.place
         
         let color = QSCColor.categoría(event.category)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
         timeLabel.textColor = color
         placeLabel.textColor = color
     }

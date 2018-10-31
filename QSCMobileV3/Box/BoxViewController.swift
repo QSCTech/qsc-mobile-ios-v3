@@ -27,7 +27,7 @@ class BoxViewController: UIViewController {
         downloadBarButton.image = UIImage(named: "Download")?.withRenderingMode(.alwaysOriginal)
         downloadMultiSelectView = MultiSelectView(superView: view, title: "选择文件",width: 250, height: 218, offsetY: -10, shadow: true)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,7 +158,7 @@ class BoxViewController: UIViewController {
         if segue.identifier == "showUploadSettings" {
             let navigationController = segue.destination as! UINavigationController
             let uploadSettingsViewController = navigationController.viewControllers.first! as! UploadSettingsViewController
-            uploadSettingsViewController.file = sender as! File
+            uploadSettingsViewController.file = (sender as! File)
         }
     }
     
@@ -170,9 +170,9 @@ class BoxViewController: UIViewController {
         BoxAPI.sharedInstance.getFileInfo(code: code) { code, state, parameter in
             switch state {
             case "Password":
-                isPassword = parameter as! Bool
+                isPassword = (parameter as! Bool)
             case "Multi":
-                isMulti = parameter as! Bool
+                isMulti = (parameter as! Bool)
             case "Fail":
                 let message = parameter as! String
                 let alert = UIAlertController(title: "Box", message: message, preferredStyle: .alert)
@@ -446,7 +446,7 @@ extension BoxViewController: UITableViewDataSource, UITableViewDelegate {
         return "删除"
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             BoxManager.sharedInstance.removeFile(file: files[indexPath.row])
             files = BoxManager.sharedInstance.allFiles
@@ -462,14 +462,14 @@ extension BoxViewController: UIImagePickerControllerDelegate, UINavigationContro
         dismiss(animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         if picker.navigationItem.prompt == "Upload from PhotoLibrary" || picker.navigationItem.prompt == "Upload from Camera" {
             let file = BoxManager.sharedInstance.newFile()
             file.name = BoxManager.sharedInstance.createRandomFileName(prefix: "Pic", suffix: "png")
             file.state = "正在上传"
-            let data = UIImagePNGRepresentation(image)!
+            let data = image.pngData()!
             let fileURL = BoxManager.sharedInstance.getFileURL(file: file)
             FileManager.default.createFile(atPath: fileURL.path, contents: data, attributes: nil)
             BoxManager.sharedInstance.saveFiles()

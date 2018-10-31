@@ -47,10 +47,10 @@ class HomeworkListViewController: UITableViewController {
         let hw = homeworks[indexPath.row]
         if hw.isFinished!.boolValue {
             cell.dotView.isHidden = true
-            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle.rawValue, NSAttributedStringKey.baselineOffset: 0])
+            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.baselineOffset: 0])
         } else {
             cell.dotView.isHidden = false
-            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleNone.rawValue, NSAttributedStringKey.baselineOffset: 0])
+            cell.nameLabel.attributedText = NSAttributedString(string: hw.name!)
         }
         cell.courseLabel.text = MobileManager.sharedInstance.courseNameWithIdentifier(hw.courseEvent!.identifier!)
         cell.timeLabel.text = hw.deadline!.stringOfDatetime

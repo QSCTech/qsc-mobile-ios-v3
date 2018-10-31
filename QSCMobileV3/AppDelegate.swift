@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var allowsRotation = false
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         MobClick.start(withAppkey: UMengAppKey)
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(true)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let tabBarController = window!.rootViewController as! UITabBarController
         tabBarController.presentedViewController?.dismiss(animated: false)
         if let scheme = url.scheme {

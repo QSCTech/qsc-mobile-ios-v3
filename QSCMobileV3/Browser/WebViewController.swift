@@ -37,7 +37,7 @@ class WebViewController: UIViewController {
         view = webView
         
         navigationItem.title = name
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         

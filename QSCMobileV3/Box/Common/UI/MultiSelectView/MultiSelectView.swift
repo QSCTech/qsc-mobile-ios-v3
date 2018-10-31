@@ -69,7 +69,7 @@ class MultiSelectView: UIView {
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorInset = UIEdgeInsetsMake(0, 5, 0, 5)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         tableView.isScrollEnabled = true
         tableView.backgroundColor = UIColor.white
         tableView.register(UINib(nibName: "MultiSelectViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")

@@ -103,7 +103,7 @@ class ShareViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showUploadSettings" {
             let uploadSettingsViewController = segue.destination as! UploadSettingsViewController
-            uploadSettingsViewController.file = sender as! File
+            uploadSettingsViewController.file = (sender as! File)
         }
     }
     
@@ -124,7 +124,7 @@ class ShareViewController: UIViewController {
     func getAttachments(completionHandler: @escaping (Error?) -> ()) {
         var count = 0
         for inputItem in extensionContext!.inputItems as! [NSExtensionItem] {
-            for attachment in inputItem.attachments as! [NSItemProvider] {
+            for attachment in inputItem.attachments! {
                 count += 1
                 attachment.loadItem(forTypeIdentifier: "public.data", options: nil) { data, error in
                     if error == nil {

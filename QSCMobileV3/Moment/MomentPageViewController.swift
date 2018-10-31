@@ -137,7 +137,7 @@ class MomentPageViewController: UIViewController {
         } else {
             let storyboard = UIStoryboard(name: "EventDetail", bundle: Bundle.main)
             let vc = storyboard.instantiateInitialViewController() as! EventDetailViewController
-            vc.customEvent = event!.object as! CustomEvent
+            vc.customEvent = (event!.object as! CustomEvent)
             vc.hidesBottomBarWhenPushed = true
             momentViewController.show(vc, sender: nil)
         }

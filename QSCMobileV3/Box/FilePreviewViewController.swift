@@ -137,7 +137,7 @@ class FilePreviewViewController: UIViewController, UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFileDetails" {
             let fileDetailsViewController = segue.destination as! FileDetailsViewController
-            fileDetailsViewController.file = sender as! File
+            fileDetailsViewController.file = (sender as! File)
         }
     }
     

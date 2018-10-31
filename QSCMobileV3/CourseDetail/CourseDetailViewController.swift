@@ -279,7 +279,7 @@ class CourseDetailViewController: UITableViewController {
                 let hw = homeworks[indexPath.row - 1]
                 if hw.isFinished!.boolValue {
                     cell.dotView.isHidden = true
-                    cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle.rawValue])
+                    cell.nameLabel.attributedText = NSAttributedString(string: hw.name!, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
                 } else {
                     cell.dotView.isHidden = false
                     cell.nameLabel.text = hw.name

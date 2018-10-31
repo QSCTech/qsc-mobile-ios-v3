@@ -79,7 +79,7 @@ class CalendarViewController: UIViewController {
             vc.hidesBottomBarWhenPushed = true
         case "showEventDetail":
             let vc = segue.destination as! EventDetailViewController
-            vc.customEvent = selectedEvent.object as! CustomEvent
+            vc.customEvent = (selectedEvent.object as! CustomEvent)
         default:
             break
         }

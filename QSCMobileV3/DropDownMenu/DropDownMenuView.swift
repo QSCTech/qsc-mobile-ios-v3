@@ -33,7 +33,7 @@ class DropDownMenuView: UIButton {
         tableView = UITableView(frame: CGRect(x: menuX, y: pointerY + 11, width: width, height: itemHeight * CGFloat(items.count) - 1))
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorInset = UIEdgeInsetsMake(0, 5, 0, 5)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         tableView.isScrollEnabled = false
         tableView.backgroundColor = UIColor.clear
         tableView.backgroundView = UIImageView(image: UIImage(named: "MenuBackground"))

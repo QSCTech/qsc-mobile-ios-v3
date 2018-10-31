@@ -12,7 +12,7 @@ class QRCodeGenerator {
     
     static func createImage(qrcode: String, size: CGFloat) -> UIImage {
         let qrData = qrcode.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-        let qrFilter = CIFilter(name: "CIQRCodeGenerator", withInputParameters: ["inputMessage": qrData])!
+        let qrFilter = CIFilter(name: "CIQRCodeGenerator", parameters: ["inputMessage": qrData])!
         let qrCIImage = qrFilter.outputImage!
         let qrImage = createNonInterpolatedUIImage(from: qrCIImage, size: size)
         return qrImage

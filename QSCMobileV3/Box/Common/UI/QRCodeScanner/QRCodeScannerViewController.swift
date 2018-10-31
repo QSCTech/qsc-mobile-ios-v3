@@ -124,10 +124,10 @@ extension QRCodeScannerViewController: UIImagePickerControllerDelegate, UINaviga
         scanView.start()
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let ciImage = CIImage(image: image)!
         let context = CIContext(options: nil)
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!

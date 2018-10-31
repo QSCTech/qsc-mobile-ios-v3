@@ -17,11 +17,11 @@ extension String {
     
     /// Return an attributed string with FontAwesome 16.0
     public var attributedWithFontAwesome: NSAttributedString {
-        return NSAttributedString(string: self, attributes: [NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 16)!])
+        return NSAttributedString(string: self, attributes: [NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: 16)!])
     }
     
     public var attributedWithHelveticaNeue: NSAttributedString {
-        return NSAttributedString(string: self, attributes: [NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 16)!])
+        return NSAttributedString(string: self, attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 16)!])
     }
     
     public var isValidSid: Bool {

@@ -29,7 +29,7 @@ class BusViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.register(UINib(nibName: "BusCell", bundle: Bundle.main), forCellReuseIdentifier: "Bus")
         
