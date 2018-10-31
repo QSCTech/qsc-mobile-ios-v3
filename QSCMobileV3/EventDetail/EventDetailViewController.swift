@@ -97,7 +97,11 @@ class EventDetailViewController: UITableViewController {
             for notif in UIApplication.shared.scheduledLocalNotifications!.filter({ $0.userInfo!["objectID"] as! String == self.customEvent.objectID.uriRepresentation().absoluteString }) {
                 UIApplication.shared.cancelLocalNotification(notif)
             }
-            NotificationCenter.default.post(name: .eventsModified, object: nil, userInfo: ["start": self.customEvent.start!, "end": self.customEvent.end!])
+            if self.customEvent.repeatType != "永不" {
+                NotificationCenter.default.post(name: .eventsModified, object: nil)
+            } else {
+                NotificationCenter.default.post(name: .eventsModified, object: nil, userInfo: ["start": self.customEvent.start!, "end": self.customEvent.end!])
+            }
             EventManager.sharedInstance.removeCustomEvent(self.customEvent)
             _ = self.navigationController?.popViewController(animated: true)
         }

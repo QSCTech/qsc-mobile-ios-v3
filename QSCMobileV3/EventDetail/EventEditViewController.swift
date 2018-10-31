@@ -294,7 +294,7 @@ class EventEditViewController: UITableViewController {
     @IBAction func save(_ sender: AnyObject) {
         let started = customEvent!.start
         let ended = customEvent!.end
-        let repeated = (customEvent!.notification ?? -1) >= 0
+        let repeated = customEvent!.repeatType != "永不"
         
         customEvent!.name = titleField.text
         customEvent!.place = placeField.text
@@ -314,7 +314,7 @@ class EventEditViewController: UITableViewController {
         customEvent!.tags = ""
         eventManager.save()
         
-        if repeated || customEvent!.notification!.intValue >= 0 {
+        if repeated || customEvent!.repeatType != "永不" {
             NotificationCenter.default.post(name: .eventsModified, object: nil)
         } else {
             if let started = started, let ended = ended {
