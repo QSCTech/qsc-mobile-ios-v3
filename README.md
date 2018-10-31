@@ -4,8 +4,8 @@
 
 ## 技术
 
-- IDE：Xcode 9.1
-- 语言：Swift 4.0.2
+- IDE：Xcode 10
+- 语言：Swift 4.2
 - 操作系统：iOS 9+, watchOS 2+
 - 包管理器：Carthage
 - 版本发布：fastlane
