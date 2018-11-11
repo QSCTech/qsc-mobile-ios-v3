@@ -281,7 +281,27 @@ public class MobileManager: NSObject {
     
     /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
     public var allSemesters: [String] {
-        return dataStore.allSemesters
+        let user = DataStore.entityForUser(accountManager.currentAccountForJwbinfosys!)!
+        if let start = user.startSemester, let end = user.endSemester {
+            var semesters = [start]
+            var current = start
+            while current != end {
+                if current.hasSuffix("1") {
+                    let index = current.index(before: current.endIndex)
+                    current = current[..<index] + "2"
+                } else {
+                    let index = current.index(current.startIndex, offsetBy: 4)
+                    let year = Int(current[..<index])!
+                    current = "\(year + 1)-\(year + 2)-1"
+                }
+                if !getCourses(current).isEmpty {
+                    semesters.append(current)
+                }
+            }
+            return semesters
+        } else {
+            return []
+        }
     }
     
     

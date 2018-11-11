@@ -479,28 +479,6 @@ class DataStore: NSObject {
         return currentUser.overseaScore
     }
     
-    /// All semesters in which the current user has studied.
-    var allSemesters: [String] {
-        if let start = currentUser.startSemester, let end = currentUser.endSemester {
-            var semesters = [start]
-            while semesters.last != end {
-                var current = semesters.last!
-                if current.hasSuffix("1") {
-                    let index = current.index(before: current.endIndex)
-                    current = current[..<index] + "2"
-                } else {
-                    let index = current.index(current.startIndex, offsetBy: 4)
-                    let year = Int(current[..<index])!
-                    current = "\(year + 1)-\(year + 2)-1"
-                }
-                semesters.append(current)
-            }
-            return semesters
-        } else {
-            return []
-        }
-    }
-    
     /**
      Return all bus stops on the specific campus.
      
