@@ -37,12 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if groupDefaults.object(forKey: RefreshOnLaunchKey) == nil {
             groupDefaults.set(true, forKey: RefreshOnLaunchKey)
         }
-        if groupDefaults.bool(forKey: RefreshOnLaunchKey) && AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
-            MobileManager.sharedInstance.refreshAll {
-                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
-                print("Refresh on launch completed")
-            }
-        }
         if groupDefaults.object(forKey: ShowScoreKey) == nil {
             groupDefaults.set(true, forKey: ShowScoreKey)
         }

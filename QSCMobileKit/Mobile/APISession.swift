@@ -145,8 +145,8 @@ class APISession: NSObject {
                 if responseData.exists() {
                     callback(responseData, nil)
                 } else {
-                    print("[Resource request] Response data is null")
-                    callback(nil, "刷新失败，请重试")
+                    print("[Resource request] \(json["responseList"].stringValue)")
+                    callback(nil, "数据无需更新")
                 }
             } else if json["status"].string == "sessionFail" {
                 printError()
