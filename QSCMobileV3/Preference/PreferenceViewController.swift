@@ -106,7 +106,7 @@ class PreferenceViewController: UITableViewController {
             case 0:
                 let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
                 cell.selectionStyle = .none
-                cell.textLabel!.attributedText = "\u{f021}\t每天自动刷新".attributedWithFontAwesome
+                cell.textLabel!.attributedText = "\u{f021}\t每天自动刷新数据".attributedWithFontAwesome
                 let switchView = UISwitch()
                 switchView.isOn = groupDefaults.bool(forKey: RefreshOnLaunchKey)
                 switchView.onTintColor = QSCColor.theme

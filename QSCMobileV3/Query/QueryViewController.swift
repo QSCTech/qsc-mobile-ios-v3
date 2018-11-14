@@ -39,32 +39,16 @@ class QueryViewController: UITableViewController {
             "url": "http://ic.zju.edu.cn/ClientWeb/m/ic2/Default.aspx",
         ],
         [
-            "name": "体质健康测试",
-            "url": "http://www.tyys.zju.edu.cn/tzjk/indexphone.jsp",
-        ],
-        [
-            "name": "健康之友",
-            "url": "http://www.tyys.zju.edu.cn/hyz/indexphone.jsp",
+            "name": "公共体育信息平台",
+            "url": "http://www.tyys.zju.edu.cn/ggtypt/login",
         ],
         [
             "name": "第二课堂",
             "url": "http://www.youth.zju.edu.cn/sztz/",
         ],
-        [
-            "name": "综合数据服务平台*",
-            "url": "http://zuds.zju.edu.cn/zfsjzx/jspdspp/zjuindex/index.jsp",
-        ],
     ]
     
     let webpages: [[String: String]] = [
-        [
-            "name": "学年校历",
-            "url": "https://info.zjuqsc.com/academic-calendar/",
-        ],
-        [
-            "name": "体育锻炼制度",
-            "url": "https://info.zjuqsc.com/exercise-regulations/",
-        ],
         [
             "name": "教室占用查询",
             "url": "https://app.zjuqsc.com/classroom/",
@@ -72,6 +56,10 @@ class QueryViewController: UITableViewController {
         [
             "name": "校园地图",
             "url": "http://map.zju.edu.cn/mobile/index",
+        ],
+        [
+            "name": "学年校历",
+            "url": "https://info.zjuqsc.com/academic-calendar/",
         ],
     ]
     
