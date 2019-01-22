@@ -351,6 +351,8 @@ public class MobileManager: NSObject {
                 self.dataStore.deleteCourses()
                 self.dataStore.createCourses(json)
                 callback(nil)
+            } else if error == "数据无需更新" {
+                callback(nil)
             } else {
                 callback(error)
             }
@@ -367,6 +369,8 @@ public class MobileManager: NSObject {
             if let json = json {
                 self.dataStore.deleteExams()
                 self.dataStore.createExams(json)
+                callback(nil)
+            } else if error == "数据无需更新" {
                 callback(nil)
             } else {
                 callback(error)
@@ -393,6 +397,8 @@ public class MobileManager: NSObject {
                         callback(error)
                     }
                 }
+            } else if error == "数据无需更新" {
+                callback(nil)
             } else {
                 callback(error)
             }
@@ -410,6 +416,8 @@ public class MobileManager: NSObject {
                 self.dataStore.deleteCalendar()
                 self.dataStore.createCalendar(json)
                 callback(nil)
+            } else if error == "数据无需更新" {
+                callback(nil)
             } else {
                 callback(error)
             }
@@ -426,6 +434,8 @@ public class MobileManager: NSObject {
             if let json = json {
                 self.dataStore.deleteBuses()
                 self.dataStore.createBuses(json)
+                callback(nil)
+            } else if error == "数据无需更新" {
                 callback(nil)
             } else {
                 callback(error)
