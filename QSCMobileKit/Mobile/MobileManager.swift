@@ -390,9 +390,13 @@ public class MobileManager: NSObject {
                 self.dataStore.createScores(json)
                 self.apiSession.statisticsRequest { json, error in
                     if let json = json {
-                        self.dataStore.deleteStatistics()
-                        self.dataStore.createStatistics(json)
-                        callback(nil)
+                        if json["totalCredit"].numberValue == 0 {
+                            callback(nil)
+                        } else {
+                            self.dataStore.deleteStatistics()
+                            self.dataStore.createStatistics(json)
+                            callback(nil)
+                        }
                     } else {
                         callback(error)
                     }
