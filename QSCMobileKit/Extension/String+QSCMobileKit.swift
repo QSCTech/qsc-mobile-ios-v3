@@ -25,7 +25,7 @@ extension String {
     }
     
     public var isValidSid: Bool {
-        return count == 10
+        return count == 10 || count == 8
     }
     
     var startTimeForPeriods: DateComponents {
