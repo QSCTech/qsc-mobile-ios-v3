@@ -189,7 +189,7 @@ public class MobileManager: NSObject {
     // MARK: - Retrieve managed objects
     
     public func prefixForIdentifier(_ identifier: String) -> String {
-        return String(identifier[..<identifier.index(identifier.startIndex, offsetBy: 22)])
+        return identifier.count < 22 ? identifier : String(identifier[..<identifier.index(identifier.startIndex, offsetBy: 22)])
     }
     
     public func courseObjectsWithIdentifier(_ identifier: String) -> [Course] {

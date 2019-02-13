@@ -85,13 +85,7 @@ class APISession: NSObject {
                 ]
             ]
         ]
-        
-        var loginURL = URL(string: MobileAPIURL)!
-        if (username.count == 8) {
-            loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("loginGrs")
-        } else {
-            loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login")
-        }
+        let loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login" + (username.count == 8 ? "Grs" : ""))
         
         alamofire.request(loginURL, method: .post, parameters: postData, encoding: JSONEncoding.default).responseJSON { response in
             if response.result.isFailure {
@@ -135,13 +129,7 @@ class APISession: NSObject {
             "sessionVerify": verify.toBase64()!,
             "requestList": request,
         ]
-        
-        var resourcesURL = URL(string: MobileAPIURL)!
-        if (username.count == 8) {
-            resourcesURL = URL(string: MobileAPIURL)!.appendingPathComponent("getResourcesGrs")
-        } else {
-            resourcesURL = URL(string: MobileAPIURL)!.appendingPathComponent("getResources")
-        }
+        let resourcesURL = URL(string: MobileAPIURL)!.appendingPathComponent("getResources" + (username.count == 8 ? "Grs" : ""))
         
         alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default).responseJSON { response in
             if response.result.isFailure {

@@ -38,12 +38,12 @@ public class EventManager: NSObject {
     /**
      Return the corresponding event for courses with the identifier.
      
-     - parameter identifier: Whose first 22 characters are used as the identifier.
+     - parameter identifier: For undergraduate courses, the first 22 characters are used as the identifier; otherwise remains as it is (21 characters for graduate).
      
      - returns: The object of `CourseEvent`.
      */
     public func courseEventForIdentifier(_ identifier: String) -> CourseEvent? {
-        let identifier = String(identifier[..<identifier.index(identifier.startIndex, offsetBy: 22)])
+        let identifier = identifier.count < 22 ? identifier : String(identifier[..<identifier.index(identifier.startIndex, offsetBy: 22)])
         
 //        if #available(iOSApplicationExtension 10.0, *) {
 //            let request: NSFetchRequest<CourseEvent> = CourseEvent.fetchRequest()
