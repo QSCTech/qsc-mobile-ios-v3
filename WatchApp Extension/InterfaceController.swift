@@ -48,7 +48,8 @@ extension InterfaceController {
                             for (index, subResult): (String, [String: Any]) in result {
                                 let row = self.mainTable.rowController(at: Int(index)!) as! EventTableRowController
                                 row.name.setText(subResult["name"] as? String)
-                                let colors = subResult["color"] as! [CGFloat]
+                                let rawColors = subResult["color"] as! [NSNumber]
+                                let colors = rawColors.map { (CGFloat)($0.floatValue) }
                                 row.name.setTextColor(UIColor(red: colors[0], green: colors[1], blue: colors[2], alpha: colors[3]))
                                 row.time.setText(subResult["time"] as? String)
                                 row.place.setText(subResult["place"] as? String)
