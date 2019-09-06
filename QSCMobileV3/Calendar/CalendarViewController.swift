@@ -38,6 +38,10 @@ class CalendarViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
         
+        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorCompatibility.label]
+        tableView?.backgroundColor = ColorCompatibility.systemBackground
+        
         NotificationCenter.default.addObserver(forName: .eventsModified, object: nil, queue: .main) { notification in
             if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
                 var date = self.chineseCalendar.startOfDay(for: start)
@@ -205,6 +209,23 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
         return UIColor.black
     }
     
+    func dayLabelColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
+        return ColorCompatibility.label
+    }
+    
+    func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
+        if #available(iOS 13.0, *) {
+            switch (weekDay, status, present) {
+            case (_, .selected, _):
+                return UIColor.systemGray5
+            default:
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
 }
 
 // TODO: Decide whether to use system time zone or UTC+8
@@ -288,6 +309,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             imageName += "Bus"
         }
         cell.lineView.image = UIImage(named: imageName)
+        
+        cell.backgroundColor = ColorCompatibility.systemBackground
+        cell.nameLabel.textColor = ColorCompatibility.label
+        cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0)
+        
         return cell
     }
     

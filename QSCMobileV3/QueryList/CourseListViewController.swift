@@ -20,6 +20,7 @@ class CourseListViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = semester.fullNameForSemester
+        view.backgroundColor = ColorCompatibility.systemBackground
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +35,7 @@ class CourseListViewController: UITableViewController {
         let credit = mobileManager.courseCreditWithIdentifier(course.identifier!)
         cell.creditLabel.text = "学分 \(credit)"
         cell.categoryLabel.text = course.category
+        cell.titleLabel.textColor = ColorCompatibility.label
         return cell
     }
     

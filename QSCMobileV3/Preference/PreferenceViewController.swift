@@ -24,6 +24,14 @@ class PreferenceViewController: UITableViewController {
     let accountManager = AccountManager.sharedInstance
     let mobileManager = MobileManager.sharedInstance
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView?.backgroundColor = UIColor.groupTableViewBackground
+        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -89,12 +97,22 @@ class PreferenceViewController: UITableViewController {
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
                 cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
+                
+                if #available(iOS 13, *) {
+                    cell.textLabel!.textColor = UIColor.label
+                }
+                
                 return cell
             }
         case .zjuwlan:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
                 cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
+                
+                if #available(iOS 13, *) {
+                    cell.textLabel!.textColor = UIColor.label
+                }
+                
                 return cell
             } else {
                 let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -148,6 +166,7 @@ class PreferenceViewController: UITableViewController {
             default:
                 return UITableViewCell()
             }
+            cell.textLabel!.textColor = ColorCompatibility.label
             return cell
         }
     }

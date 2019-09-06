@@ -19,6 +19,7 @@ class ExamListViewController: UITableViewController {
         
         navigationItem.title = semester.fullNameForSemester
         tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
+        view.backgroundColor = ColorCompatibility.systemBackground
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,6 +41,8 @@ class ExamListViewController: UITableViewController {
             cell.placeLabel.text = "-"
             cell.timeLabel.text = "-"
         }
+        cell.contentView.backgroundColor = UIColor(white: 0, alpha: 0)
+        cell.nameLabel.textColor = ColorCompatibility.label
         return cell
     }
     

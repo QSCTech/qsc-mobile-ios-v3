@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,19 +13,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="287" height="76"/>
+                <rect key="frame" x="0.0" y="0.0" width="292.5" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rV-IF-bTj">
-                        <rect key="frame" x="16" y="8" width="60" height="60.5"/>
+                        <rect key="frame" x="23" y="11" width="59.5" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yax-3K-Acg">
-                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
+                                <rect key="frame" x="8" y="24" width="10" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zxg-dE-hJU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -42,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Ey-pv-Uv0" firstAttribute="leading" secondItem="0rV-IF-bTj" secondAttribute="leadingMargin" id="JCN-F8-yh3"/>
                             <constraint firstItem="0Ey-pv-Uv0" firstAttribute="leading" secondItem="yax-3K-Acg" secondAttribute="leading" id="KFO-ub-9eL"/>
@@ -62,15 +59,14 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fR2-Bz-CgX">
-                        <rect key="frame" x="84" y="8" width="59.5" height="60.5"/>
+                        <rect key="frame" x="90.5" y="11" width="60" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qym-l6-jfw">
-                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
+                                <rect key="frame" x="8" y="24" width="10" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="sWQ-pl-hVD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -85,7 +81,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hZz-76-3Fd" firstAttribute="top" secondItem="fR2-Bz-CgX" secondAttribute="topMargin" constant="4" id="EEb-QD-6pd"/>
                             <constraint firstAttribute="bottom" secondItem="Qym-l6-jfw" secondAttribute="bottom" constant="4" id="Fyk-i3-d0T"/>
@@ -99,21 +95,20 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="vh3-fq-Emt"/>
-                                <exclude reference="NQd-PV-0Iy"/>
                                 <exclude reference="euv-u7-KbC"/>
+                                <exclude reference="NQd-PV-0Iy"/>
                             </mask>
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tb5-7M-kel">
-                        <rect key="frame" x="151.5" y="8" width="60" height="60.5"/>
+                        <rect key="frame" x="158.5" y="11" width="59.5" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUh-bS-QjI">
-                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
+                                <rect key="frame" x="8" y="24" width="10" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="uWt-dw-7cW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -128,7 +123,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Egm-pL-wsY" firstAttribute="leading" secondItem="Tb5-7M-kel" secondAttribute="leadingMargin" id="4wO-94-MK7"/>
                             <constraint firstAttribute="width" constant="100" id="FVY-z4-TwB"/>
@@ -148,15 +143,14 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSY-tt-kcG">
-                        <rect key="frame" x="219.5" y="8" width="59.5" height="60.5"/>
+                        <rect key="frame" x="226" y="11" width="59.5" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cR-1g-IwU">
-                                <rect key="frame" x="8" y="24" width="10" height="32.5"/>
+                                <rect key="frame" x="8" y="24" width="10" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fmE-jR-dHg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -171,7 +165,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ov5-m6-0Sg" firstAttribute="leading" secondItem="9cR-1g-IwU" secondAttribute="leading" id="4fo-df-Y5f"/>
                             <constraint firstItem="9cR-1g-IwU" firstAttribute="top" secondItem="ov5-m6-0Sg" secondAttribute="bottom" id="6qP-9h-s26"/>
@@ -185,12 +179,13 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="h6Q-Xi-Nk4"/>
-                                <exclude reference="VId-9m-4fc"/>
                                 <exclude reference="x9J-ww-TkP"/>
+                                <exclude reference="VId-9m-4fc"/>
                             </mask>
                         </variation>
                     </view>
                 </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="0rV-IF-bTj" firstAttribute="width" secondItem="fR2-Bz-CgX" secondAttribute="width" id="3I1-N5-z3f"/>
                     <constraint firstItem="0rV-IF-bTj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="EXb-FS-wT1"/>
@@ -218,7 +213,7 @@
                 <outlet property="averageGradeLabel" destination="Qym-l6-jfw" id="M5L-dN-OdB"/>
                 <outlet property="totalCreditLabel" destination="yax-3K-Acg" id="EsH-SQ-3Gj"/>
             </connections>
-            <point key="canvasLocation" x="649" y="478.5"/>
+            <point key="canvasLocation" x="648" y="478.11094452773619"/>
         </tableViewCell>
     </objects>
 </document>

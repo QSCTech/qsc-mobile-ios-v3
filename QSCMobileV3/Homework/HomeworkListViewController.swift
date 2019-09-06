@@ -31,6 +31,7 @@ class HomeworkListViewController: UITableViewController {
         
         navigationItem.title = "作业一览"
         tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
+        view.backgroundColor = ColorCompatibility.systemBackground
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +55,8 @@ class HomeworkListViewController: UITableViewController {
         }
         cell.courseLabel.text = MobileManager.sharedInstance.courseNameWithIdentifier(hw.courseEvent!.identifier!)
         cell.timeLabel.text = hw.deadline!.stringOfDatetime
+        cell.courseLabel.textColor = ColorCompatibility.systemGray
+        cell.nameLabel.textColor = ColorCompatibility.label
         return cell
     }
     

@@ -10,6 +10,7 @@
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
+		260741B52320A69E00C9484D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260741B42320A69E00C9484D /* Colors.swift */; };
 		2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BD1E7529FB00ECE931 /* BoxColor.swift */; };
 		2697B9CE1E7529FB00ECE931 /* FileRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */; };
 		2697B9CF1E7529FB00ECE931 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */; };
@@ -274,6 +275,7 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		260741B42320A69E00C9484D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2697B9BD1E7529FB00ECE931 /* BoxColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxColor.swift; sourceTree = "<group>"; };
 		2697B9BE1E7529FB00ECE931 /* FileRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRecognizer.swift; sourceTree = "<group>"; };
 		2697B9BF1E7529FB00ECE931 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 				9D86A4441FC4A330005454BD /* EasterEgg.mp3 */,
 				04C331D61BA2F2E600EF959F /* Info.plist */,
 				9D6A89631C0C2E89008EC60B /* QSCMobileV3.entitlements */,
+				260741B42320A69E00C9484D /* Colors.swift */,
 			);
 			name = "Support Files";
 			sourceTree = "<group>";
@@ -1356,6 +1359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
+				260741B52320A69E00C9484D /* Colors.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,

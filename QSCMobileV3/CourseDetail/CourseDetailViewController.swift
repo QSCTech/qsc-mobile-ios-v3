@@ -38,6 +38,7 @@ class CourseDetailViewController: UITableViewController {
         tableView.register(UINib(nibName: "HomeworkCell", bundle: Bundle.main), forCellReuseIdentifier: "Homework")
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: .refreshCompleted, object: nil)
+        tableView.backgroundColor = UIColor.groupTableViewBackground
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,6 +203,7 @@ class CourseDetailViewController: UITableViewController {
                 } else if managedObject as? Exam != nil {
                     cell.dotView.backgroundColor = QSCColor.exam
                 }
+                cell.nameLabel.textColor = ColorCompatibility.label
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TimePlace") as! CourseTimePlaceCell
@@ -217,6 +219,7 @@ class CourseDetailViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
                 cell.textLabel!.text = "教师"
                 cell.detailTextLabel!.text = courseObject.teacher
+                cell.textLabel!.textColor = ColorCompatibility.label
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
@@ -237,6 +240,7 @@ class CourseDetailViewController: UITableViewController {
                 if !groupDefaults.bool(forKey: ShowScoreKey) {
                     cell.detailTextLabel!.text = ""
                 }
+                cell.textLabel!.textColor = ColorCompatibility.label
                 return cell
             default:
                 if let examObject = examObject, examObject.startTime != nil {
@@ -246,12 +250,14 @@ class CourseDetailViewController: UITableViewController {
                         cell.placeLabel!.text! += " #" + examObject.seat!
                     }
                     cell.timeLabel!.text = examObject.time
+                    cell.textLabel!.textColor = ColorCompatibility.label
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
                     cell.selectionStyle = .none
                     cell.textLabel!.text = "无考试信息"
                     cell.detailTextLabel!.text = ""
+                    cell.textLabel!.textColor = ColorCompatibility.label
                     return cell
                 }
             }
@@ -273,6 +279,7 @@ class CourseDetailViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Detail")!
                 cell.textLabel!.text = "添加新的作业…"
                 cell.detailTextLabel!.text = ""
+                cell.textLabel!.textColor = ColorCompatibility.label
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Homework") as! HomeworkCell
@@ -286,11 +293,13 @@ class CourseDetailViewController: UITableViewController {
                 }
                 cell.timeLabel.text = hw.deadline?.stringOfDatetime
                 cell.courseLabel.removeFromSuperview()
+                cell.nameLabel.textColor = ColorCompatibility.label
                 return cell
             }
         case .notes:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Notes") as! CourseNotesCell
             cell.notesTextView.text = courseEvent.notes
+            cell.notesTextView.backgroundColor = cell.contentView.backgroundColor
             return cell
         }
     }

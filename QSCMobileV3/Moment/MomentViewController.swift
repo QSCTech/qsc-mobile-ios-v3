@@ -67,7 +67,7 @@ class MomentViewController: UIViewController {
             
             stackView.isHidden = true
             navigationItem.title = "今日无事"
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorCompatibility.label]
         } else {
             stackView.isHidden = false
             updateCurrentEvent()
@@ -78,6 +78,9 @@ class MomentViewController: UIViewController {
         } else {
             loginButton.isHidden = true
         }
+
+        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

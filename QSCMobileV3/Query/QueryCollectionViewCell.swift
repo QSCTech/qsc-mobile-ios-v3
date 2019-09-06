@@ -18,6 +18,7 @@ class QueryCollectionViewCell: UICollectionViewCell {
         
         iconLabel.layer.cornerRadius = 19
         iconLabel.clipsToBounds = true
+        titleLabel.textColor = ColorCompatibility.label
     }
     
 }

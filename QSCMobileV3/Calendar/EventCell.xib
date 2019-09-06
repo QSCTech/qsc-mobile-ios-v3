@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,23 +18,22 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gt-NA-lfc">
-                        <rect key="frame" x="45" y="11" width="43" height="20.5"/>
+                        <rect key="frame" x="44" y="11" width="43" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIO-UP-lpu">
-                        <rect key="frame" x="45" y="39.5" width="15" height="15.5"/>
+                        <rect key="frame" x="46" y="39.5" width="7.5" height="13"/>
                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="13"/>
                         <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed7-5G-teO">
-                        <rect key="frame" x="45" y="63" width="15" height="15.5"/>
+                        <rect key="frame" x="44" y="60.5" width="11.5" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="i89-tp-8af"/>
                         </constraints>
@@ -51,13 +47,13 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWr-rb-KhT">
-                        <rect key="frame" x="68" y="39.5" width="33.5" height="16"/>
+                        <rect key="frame" x="63.5" y="38" width="33.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiA-qR-y8D">
-                        <rect key="frame" x="68" y="63" width="30" height="16"/>
+                        <rect key="frame" x="63.5" y="59" width="30" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="XsR-Jj-Vzn"/>
                         </constraints>
@@ -71,7 +67,7 @@
                         </variation>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineCourse" translatesAutoresizingMaskIntoConstraints="NO" id="Qth-zk-puO">
-                        <rect key="frame" x="16" y="0.0" width="21" height="80"/>
+                        <rect key="frame" x="15" y="0.0" width="21" height="80"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="COh-NT-rdk"/>
                             <constraint firstAttribute="width" constant="21" id="WIB-iX-PRt"/>
@@ -84,6 +80,7 @@
                         </variation>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="7gt-NA-lfc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="2Ci-WM-9hh"/>
                     <constraint firstItem="Ed7-5G-teO" firstAttribute="leading" secondItem="7gt-NA-lfc" secondAttribute="leading" id="3uP-bC-1Fd"/>
@@ -107,12 +104,12 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="LtS-uC-19t"/>
-                        <exclude reference="P1t-CH-PaT"/>
                         <exclude reference="J9S-nl-tJ7"/>
                         <exclude reference="UNd-KK-Rf2"/>
                         <exclude reference="Ukj-vK-URw"/>
                         <exclude reference="fga-nK-g3M"/>
+                        <exclude reference="LtS-uC-19t"/>
+                        <exclude reference="P1t-CH-PaT"/>
                         <exclude reference="BV1-ZW-PV4"/>
                     </mask>
                 </variation>

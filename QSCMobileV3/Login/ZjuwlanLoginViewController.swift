@@ -33,6 +33,9 @@ class ZjuwlanLoginViewController: UIViewController {
         saveButton.layer.cornerRadius = 5
         usernameField.text = accountManager.accountForZjuwlan
         passwordField.text = accountManager.passwordForZjuwlan
+        view.backgroundColor = ColorCompatibility.systemBackground
+        usernameField.textColor = ColorCompatibility.label
+        passwordField.textColor = ColorCompatibility.label
     }
     
     @IBAction func save(_ sender: AnyObject) {

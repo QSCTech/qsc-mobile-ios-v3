@@ -30,6 +30,10 @@ class JwbinfosysLoginViewController: UIViewController {
         passwordField.delegate = self
         navigationItem.title = "教务网账号"
         loginButton.layer.cornerRadius = 5
+        view.backgroundColor = ColorCompatibility.systemBackground
+        usernameField.textColor = ColorCompatibility.label
+        passwordField.textColor = ColorCompatibility.label
+        loginButton.titleLabel!.textColor = ColorCompatibility.systemBackground
     }
     
     @IBAction func login(_ sender: AnyObject) {

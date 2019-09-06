@@ -32,6 +32,9 @@ class HomeworkViewController: UITableViewController {
         nameDidChange(nameField)
         detailView.delegate = self
         textViewDidChange(detailView)
+        
+        view.backgroundColor = ColorCompatibility.systemBackground
+        detailView.backgroundColor = UIColor(white: 0, alpha: 0)
     }
     
     @IBAction func nameDidChange(_ sender: UITextField) {

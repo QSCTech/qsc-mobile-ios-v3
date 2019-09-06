@@ -80,10 +80,27 @@ class MomentPageViewController: UIViewController {
             gauge.rate = 0
             detailButton.isHidden = true
             
-            timerLabel.textColor = UIColor.black
+            timerLabel.textColor = ColorCompatibility.label
+            dateLabel.textColor = ColorCompatibility.label
         }
-        gauge.bgColor = UIColor.white
-        gauge.bgAlpha = 0.9
+        if #available(iOS 13.0, *) {
+            let bgColor = UIColor { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor.systemGray5
+                } else {
+                    return UIColor.white
+                }
+            }
+            gauge.bgAlpha = 0.9
+            gauge.bgColor = bgColor
+        } else {
+            gauge.bgColor = UIColor.white
+            gauge.bgAlpha = 0.9
+        }
+        
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+        }
         
         refresh()
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)

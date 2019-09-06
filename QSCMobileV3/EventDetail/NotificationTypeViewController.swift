@@ -22,6 +22,8 @@ class NotificationTypeViewController: UITableViewController {
                 cell.accessoryType = .checkmark
             }
         }
+        
+        view.backgroundColor = ColorCompatibility.systemBackground
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

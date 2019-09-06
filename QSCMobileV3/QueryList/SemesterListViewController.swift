@@ -24,6 +24,9 @@ class SemesterListViewController: UITableViewController {
         } else {
             navigationItem.title = "考试一览"
         }
+        if #available(iOS 13, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +37,7 @@ class SemesterListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Semester") as! SemesterListCell
         let semester = mobileManager.allSemesters.reversed()[indexPath.row]
         cell.titleLabel.text = semester.fullNameForSemester
+        cell.titleLabel.textColor = ColorCompatibility.label
         let courses = mobileManager.getCourses(semester)
         cell.subtitleLabel.text = "\(courses.count) 门课程"
         if source == .course {

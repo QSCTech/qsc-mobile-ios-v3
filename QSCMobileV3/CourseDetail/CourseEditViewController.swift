@@ -26,7 +26,7 @@ class CourseEditViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.backgroundColor = UIColor.groupTableViewBackground
         emailField.text = courseEvent.email
         phoneField.text = courseEvent.phone
         taField.text = courseEvent.ta
@@ -37,6 +37,7 @@ class CourseEditViewController: UITableViewController {
         publicEmailField.text = courseEvent.publicEmail
         publicPasswordField.text = courseEvent.publicPassword
         notesTextView.text = courseEvent.notes
+        notesTextView.backgroundColor = UIColor(white: 1, alpha: 0)
     }
     
     @IBAction func cancel(_ sender: AnyObject) {

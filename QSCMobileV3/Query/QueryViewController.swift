@@ -103,6 +103,7 @@ class QueryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
+        cell.textLabel!.textColor = ColorCompatibility.label
         switch Tools(rawValue: indexPath.section)! {
         case .score:
             if accountManager.currentAccountForJwbinfosys == nil {
@@ -139,6 +140,10 @@ class QueryViewController: UITableViewController {
                 } else {
                     cell.hideAll()
                 }
+                cell.auxValueLabel1.textColor = ColorCompatibility.label
+                cell.auxValueLabel2.textColor = ColorCompatibility.label
+                cell.totalCreditLabel.textColor = ColorCompatibility.label
+                cell.averageGradeLabel.textColor = ColorCompatibility.label
                 return cell
             }
         case .query:
@@ -245,6 +250,10 @@ class QueryViewController: UITableViewController {
         NotificationCenter.default.addObserver(forName: .refreshCompleted, object: nil, queue: .main) { _ in
             self.tableView.reloadSections(IndexSet(integer: Tools.score.rawValue), with: .automatic)
         }
+        
+        tableView?.backgroundColor = UIColor.groupTableViewBackground
+        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

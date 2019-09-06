@@ -70,11 +70,14 @@ class EventEditViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.groupTableViewBackground
+        
         allDaySwitch = UISwitch()
         allDaySwitch.addTarget(self, action: #selector(allDaySwitchDidChange), for: .valueChanged)
         allDaySwitch.isOn = false
         allDaySwitch.onTintColor = QSCColor.theme
         allDayCell.accessoryView = allDaySwitch
+        allDayCell.textLabel?.textColor = ColorCompatibility.label
         
         let chineseStandardTime = TimeZone(identifier: "Asia/Shanghai")
         startTimePicker.timeZone = chineseStandardTime
@@ -110,6 +113,7 @@ class EventEditViewController: UITableViewController {
         }
         startTimeDidChange(startTimePicker)
         
+        notesTextView.backgroundColor = UIColor(white: 0, alpha: 0)
         prepareDropDownMenu()
     }
     

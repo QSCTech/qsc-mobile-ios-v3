@@ -33,16 +33,29 @@ class CurriculaViewController: UIViewController {
         return mobileManager.allSemesters.count * 2 - 1
     }
     
-    let bgColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+//    let bgColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+//    let bgColor = UIColor.systemGray5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = bgColor
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = UIColor.systemGray6
+            titleLabel.backgroundColor = UIColor.systemGray6
+            titleLabel.textColor = UIColor.label
+            nextButton.setTitleColor(UIColor.label, for: .normal)
+            nextButton.setTitleColor(UIColor.systemGray, for: .highlighted)
+            nextButton.setTitleColor(UIColor.systemGray, for: .disabled)
+            previousButton.setTitleColor(UIColor.label, for: .normal)
+            previousButton.setTitleColor(UIColor.systemGray, for: .highlighted)
+            previousButton.setTitleColor(UIColor.systemGray, for: .disabled)
+        } else {
+            view.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+            titleLabel.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+            previousButton.setTitleColor(UIColor.lightGray, for: .disabled)
+            nextButton.setTitleColor(UIColor.lightGray, for: .disabled)
+        }
         navigationItem.title = "一周课表"
-        titleLabel.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
-        previousButton.setTitleColor(UIColor.lightGray, for: .disabled)
-        nextButton.setTitleColor(UIColor.lightGray, for: .disabled)
         currentIndex = maxIndex - 1
         let semester = calendarManager.semesterForDate(Date())
         if semester == .Winter || semester == .Summer {
@@ -105,7 +118,7 @@ class CurriculaViewController: UIViewController {
                 let weekday = CurriculaTableWeekday(rawValue: timePlace.weekday!.intValue)!
                 let startPeriod = Int(String(timePlace.periods![timePlace.periods!.startIndex]), radix: 16)!
                 let endPeriod = Int(String(timePlace.periods![timePlace.periods!.index(before: timePlace.periods!.endIndex)]), radix: 16)!
-                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: UIColor.white, bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
+                let curriculum = CurriculaTableItem(name: name, place: timePlace.place!, weekday: weekday, startPeriod: startPeriod, endPeriod: endPeriod, textColor: ColorCompatibility.curriculaLabel, bgColor: QSCColor.theme, identifier: course.identifier!) { curriculum in
                     let sb = UIStoryboard(name: "CourseDetail", bundle: Bundle.main)
                     let vc = sb.instantiateInitialViewController() as! CourseDetailViewController
                     vc.managedObject = self.mobileManager.courseObjectsWithIdentifier(curriculum.identifier).first!
@@ -115,9 +128,15 @@ class CurriculaViewController: UIViewController {
             }
         }
         curriculaTable.curricula = curricula
-        curriculaTable.bgColor = bgColor
+        if #available(iOS 13.0, *) {
+            curriculaTable.bgColor = UIColor.systemGray6
+            curriculaTable.borderColor = UIColor.systemGray5
+        } else {
+            curriculaTable.bgColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1.0)
+            curriculaTable.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.9)
+        }
         curriculaTable.borderWidth = 0.5
-        curriculaTable.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.9)
+        
         curriculaTable.cornerRadius = 2
         curriculaTable.rectEdgeInsets = UIEdgeInsets(top: 0.5, left: 0.5, bottom: 0.5, right: 0.5)
         curriculaTable.textEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)

@@ -41,7 +41,7 @@ class EventDetailViewController: UITableViewController {
         
         let category = Event.Category(rawValue: customEvent.category!.intValue)!
         navigationItem.title = category.name
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorCompatibility.label]
         dotView.backgroundColor = QSCColor.category(category)
         nameLabel.text = customEvent.name
         placeLabel.text = customEvent.place
@@ -61,7 +61,13 @@ class EventDetailViewController: UITableViewController {
         notificationLabel.text = customEvent.notification!.stringFromNotificationType
         notesTextView.text = customEvent.notes
         
+        view.backgroundColor = UIColor.groupTableViewBackground
+        nameLabel.textColor = ColorCompatibility.label
+        placeLabel.textColor = ColorCompatibility.label
+        notesTextView.backgroundColor = UIColor(white: 0, alpha: 0)
+        
         tableView.reloadData()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

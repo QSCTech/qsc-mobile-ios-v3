@@ -41,6 +41,7 @@ class AboutViewController: UIViewController {
         imageView3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         imageView4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHandler)))
         logoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(easterEggHandler)))
+        view.backgroundColor = ColorCompatibility.systemBackground
     }
     
     let url = [

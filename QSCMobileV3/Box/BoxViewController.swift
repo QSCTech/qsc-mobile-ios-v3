@@ -17,6 +17,7 @@ class BoxViewController: UIViewController {
     @IBOutlet weak var noFileImageView: UIImageView!
     @IBOutlet weak var downloadBarButton: UIBarButtonItem!
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var sepertator: UIView!
     
     var downloadDropDownMenu: DropDownMenuView!
     var downloadMultiSelectView: MultiSelectView!
@@ -28,6 +29,9 @@ class BoxViewController: UIViewController {
         downloadMultiSelectView = MultiSelectView(superView: view, title: "选择文件",width: 250, height: 218, offsetY: -10, shadow: true)
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
+        uploadButton.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor = UIColor.groupTableViewBackground
+        sepertator.backgroundColor = ColorCompatibility.separator
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -398,7 +402,7 @@ extension BoxViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BoxViewCell
         cell.icon.image = FileRecognizer.getFileIcon(fileName: files[indexPath.row].name)
         cell.name.text = files[indexPath.row].name
-        cell.name.textColor = UIColor.black
+        cell.name.textColor = ColorCompatibility.label
         let state = files[indexPath.row].state
         cell.state.text = state + " (" + Date.dateToShortString(date: files[indexPath.row].operationDate) + ")"
         switch state {
