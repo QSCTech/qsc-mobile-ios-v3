@@ -13,7 +13,7 @@ import MessageUI
 import SVProgressHUD
 import QSCMobileKit
 
-class CourseDetailViewController: UITableViewController {
+class CourseDetailViewController: UITableViewController, CourseEditViewControllerDelegate, HomeworkViewControllerDelegate {
     
     var managedObject: NSManagedObject!
     var courseObject: Course?
@@ -51,6 +51,10 @@ class CourseDetailViewController: UITableViewController {
         }
     }
     
+    func refresh() {
+        self.viewWillAppear(true)
+    }
+    
     func reloadData() {
         homeworks = courseEvent.homeworks!.sortedArray(using: [NSSortDescriptor(key: "deadline", ascending: false)]) as! [Homework]
         tableView.reloadData()
@@ -62,8 +66,10 @@ class CourseDetailViewController: UITableViewController {
         case "Edit":
             let vc = nc.topViewController as! CourseEditViewController
             vc.courseEvent = courseEvent
+            vc.delegate = self
         case "Homework":
             let vc = nc.topViewController as! HomeworkViewController
+            vc.delegate = self
             if let hw = selectedHomework {
                 vc.homework = hw
             } else {

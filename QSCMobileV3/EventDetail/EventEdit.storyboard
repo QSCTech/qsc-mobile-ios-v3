@@ -664,7 +664,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WPX-33-YUe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="BiZ-87-vAM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BiZ-87-vAM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AEp-Mt-ho3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

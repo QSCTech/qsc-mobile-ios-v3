@@ -9,6 +9,10 @@
 import UIKit
 import QSCMobileKit
 
+protocol EventEditViewControllerDelegate: class {
+    func reloadTableView()
+}
+
 class EventEditViewController: UITableViewController {
     
     let timeSection = 1
@@ -67,6 +71,8 @@ class EventEditViewController: UITableViewController {
         }
     }
     
+    weak var delegate: EventEditViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,6 +129,11 @@ class EventEditViewController: UITableViewController {
         hideStartPicker()
         hideEndPicker()
         hideRepeatPicker()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.reloadTableView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

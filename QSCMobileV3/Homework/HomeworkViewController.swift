@@ -9,6 +9,10 @@
 import UIKit
 import QSCMobileKit
 
+protocol HomeworkViewControllerDelegate: class {
+    func refresh()
+}
+
 class HomeworkViewController: UITableViewController {
     
     var homework: Homework!
@@ -18,6 +22,7 @@ class HomeworkViewController: UITableViewController {
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var finishSwitch: UISwitch!
+    weak var delegate: HomeworkViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +66,7 @@ class HomeworkViewController: UITableViewController {
         homework.isFinished = finishSwitch.isOn as NSNumber
         EventManager.sharedInstance.save()
         
+        delegate?.refresh()
         dismiss(animated: true)
     }
     

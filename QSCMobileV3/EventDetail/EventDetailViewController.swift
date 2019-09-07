@@ -9,7 +9,7 @@
 import UIKit
 import QSCMobileKit
 
-class EventDetailViewController: UITableViewController {
+class EventDetailViewController: UITableViewController, EventEditViewControllerDelegate {
     
     // MARK: - IBOutlets
     
@@ -70,6 +70,10 @@ class EventDetailViewController: UITableViewController {
         
     }
     
+    func reloadTableView() {
+        self.viewWillAppear(true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: animated)
@@ -79,6 +83,7 @@ class EventDetailViewController: UITableViewController {
         let nc = segue.destination as! UINavigationController
         let vc = nc.topViewController as! EventEditViewController
         vc.customEvent = customEvent
+        vc.delegate = self
     }
     
     // MARK: - Table view delegate

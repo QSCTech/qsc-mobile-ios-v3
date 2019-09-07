@@ -9,6 +9,10 @@
 import UIKit
 import QSCMobileKit
 
+protocol CourseEditViewControllerDelegate: class {
+    func refresh()
+}
+
 class CourseEditViewController: UITableViewController {
     
     var courseEvent: CourseEvent!
@@ -23,6 +27,8 @@ class CourseEditViewController: UITableViewController {
     @IBOutlet weak var publicEmailField: UITextField!
     @IBOutlet weak var publicPasswordField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
+    
+    weak var delegate: CourseEditViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +62,7 @@ class CourseEditViewController: UITableViewController {
         courseEvent.publicPassword = publicPasswordField.text
         courseEvent.notes = notesTextView.text
         EventManager.sharedInstance.save()
+        delegate?.refresh()
         dismiss(animated: true)
     }
     
