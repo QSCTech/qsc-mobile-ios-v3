@@ -121,7 +121,17 @@ class QueryViewController: UITableViewController {
                 if groupDefaults.bool(forKey: ShowScoreKey) {
                     let statistics = MobileManager.sharedInstance.statistics!
                     cell.totalCreditLabel.text = statistics.totalCredit!.stringValue
-                    cell.averageGradeLabel.text = String(format: "%.2f", statistics.averageGrade!.floatValue)
+                    if statistics.averageGrade!.floatValue > 0 {
+                        cell.averageGradeLabel.text = String(format: "%.2f", statistics.averageGrade!.floatValue)
+                    } else { // We need to calculate GPA for graduate students because it's not available from API.
+                        var averageGrade = Float(0)
+                        let semesterScores = MobileManager.sharedInstance.semesterScores
+                        for semesterScore in semesterScores {
+                            averageGrade += semesterScore.averageGrade!.floatValue * semesterScore.totalCredit!.floatValue
+                        }
+                        averageGrade /= statistics.totalCredit!.floatValue
+                        cell.averageGradeLabel.text = String(format: "%.2f", averageGrade)
+                    }
                     if groupDefaults.integer(forKey: AuxiliaryScoreKey) == 0 {
                         if let overseaScore = MobileManager.sharedInstance.overseaScore {
                             cell.auxValueLabel1.text = String(format: "%.2f", overseaScore.fourPoint!.floatValue)
