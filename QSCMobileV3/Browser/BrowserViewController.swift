@@ -69,6 +69,7 @@ class BrowserViewController: UIViewController {
         webView.delegate = self
         webView.loadRequest(urlRequest)
         activityIndicator.startAnimating()
+        view.backgroundColor = ColorCompatibility.systemBackground
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {

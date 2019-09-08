@@ -37,6 +37,7 @@ class MomentViewController: UIViewController {
         loginButton.layer.cornerRadius = 18
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0).cgColor
+        view.backgroundColor = ColorCompatibility.systemBackground
         
         let viewAppear = { (_: Notification) in
             self.viewWillAppear(false)

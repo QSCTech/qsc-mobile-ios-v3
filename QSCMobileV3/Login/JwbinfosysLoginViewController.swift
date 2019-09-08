@@ -10,6 +10,10 @@ import UIKit
 import SVProgressHUD
 import QSCMobileKit
 
+protocol JwbLoginViewControllerDelegate: class {
+    func refresh()
+}
+
 class JwbinfosysLoginViewController: UIViewController {
 
     init() {
@@ -24,6 +28,8 @@ class JwbinfosysLoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    weak var delegate: JwbLoginViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +40,12 @@ class JwbinfosysLoginViewController: UIViewController {
         usernameField.textColor = ColorCompatibility.label
         passwordField.textColor = ColorCompatibility.label
         loginButton.titleLabel!.textColor = ColorCompatibility.systemBackground
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        delegate?.refresh()
     }
     
     @IBAction func login(_ sender: AnyObject) {

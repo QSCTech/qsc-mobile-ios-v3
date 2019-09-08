@@ -19,7 +19,7 @@ let ShowScoreKey = "ShowScore"
 let AuxiliaryScoreKey = "AuxiliaryScore"
 let DeviceTokenKey = "DeviceToken"
 
-class PreferenceViewController: UITableViewController {
+class PreferenceViewController: UITableViewController, JwbLoginViewControllerDelegate {
     
     let accountManager = AccountManager.sharedInstance
     let mobileManager = MobileManager.sharedInstance
@@ -35,6 +35,10 @@ class PreferenceViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    func refresh() {
+        self.viewWillAppear(true)
     }
     
     enum Preference: Int {
@@ -97,10 +101,7 @@ class PreferenceViewController: UITableViewController {
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
                 cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
-                
-                if #available(iOS 13, *) {
-                    cell.textLabel!.textColor = UIColor.label
-                }
+                cell.textLabel!.textColor = ColorCompatibility.label
                 
                 return cell
             }
@@ -181,6 +182,7 @@ class PreferenceViewController: UITableViewController {
                 reloadRowsOfJwbinfosys()
             } else {
                 let vc = JwbinfosysLoginViewController()
+                vc.delegate = self
                 present(vc, animated: true)
             }
         case .zjuwlan:

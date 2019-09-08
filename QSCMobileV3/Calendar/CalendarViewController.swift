@@ -41,6 +41,8 @@ class CalendarViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorCompatibility.label]
         tableView?.backgroundColor = ColorCompatibility.systemBackground
+        view.backgroundColor = ColorCompatibility.systemBackground
+        calendarView.backgroundColor = ColorCompatibility.systemBackground
         
         NotificationCenter.default.addObserver(forName: .eventsModified, object: nil, queue: .main) { notification in
             if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
@@ -270,6 +272,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
             cell.textLabel!.adjustsFontSizeToFitWidth = true
+            cell.textLabel?.textColor = ColorCompatibility.label
+            cell.contentView.backgroundColor = ColorCompatibility.systemBackground
             let semester = calendarManager.semesterForDate(selectedDate)
             if let holiday = calendarManager.holidayForDate(selectedDate) {
                 cell.textLabel!.text = holiday
