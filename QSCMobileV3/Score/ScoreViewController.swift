@@ -45,7 +45,9 @@ class ScoreViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ScoreCell", bundle: Bundle.main), forCellReuseIdentifier: "Score")
         
-        averageGradeLabel.text = String(format: "%.2f", mobileManager.statistics!.averageGrade!.floatValue)
+        let grade = mobileManager.statistics!.averageGrade!.floatValue
+        // GPA is not available from graduate API.
+        averageGradeLabel.text = String(format: "%.2f", grade > 0 ? grade : mobileManager.calculatedGPA)
         totalCreditLabel.text = mobileManager.statistics!.totalCredit!.stringValue
         semesterGradeLabel.text = "0.00"
         semesterCreditLabel.text = "0"

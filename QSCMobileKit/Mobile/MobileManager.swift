@@ -279,6 +279,15 @@ public class MobileManager: NSObject {
         return dataStore.overseaScore
     }
     
+    public var calculatedGPA: Float {
+        var grade = Float(0)
+        for semesterScore in semesterScores {
+            grade += semesterScore.averageGrade!.floatValue * semesterScore.totalCredit!.floatValue
+        }
+        grade /= statistics!.totalCredit!.floatValue
+        return grade
+    }
+    
     /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
     public var allSemesters: [String] {
         let user = DataStore.entityForUser(accountManager.currentAccountForJwbinfosys!)!
