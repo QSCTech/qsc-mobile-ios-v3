@@ -24,7 +24,7 @@ class APISession: NSObject {
         super.init()
     }
     
-    private let alamofire = alamofireManager(timeoutInterval: 10)
+    private let alamofire = alamofireManager(timeoutInterval: 30)
     private let accountManager: AccountManager
     
     private let username: String
@@ -68,7 +68,7 @@ class APISession: NSObject {
     // MARK: - API Requests
     
     /**
-     Send a login request to API asynchronously and execute a closure after completion.
+     Send a login request asynchronously and execute a closure after completion.
      
      - parameter callback: A closure to be executed once the request has finished. The argument will be nil if login succeeds, otherwise it will be the description of error.
      */
@@ -87,7 +87,7 @@ class APISession: NSObject {
         ]
         let loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login" + (username.count == 8 ? "Grs" : ""))
         
-        alamofire.request(loginURL, method: .post, parameters: postData, encoding: JSONEncoding.default).responseJSON { response in
+        alamofire.request(loginURL, method: .post, parameters: postData, encoding: JSONEncoding.default).validate().responseJSON { response in
             if response.result.isFailure {
                 let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
                 print("[Login request] Alamofire: \(errorDescription)")
@@ -112,51 +112,82 @@ class APISession: NSObject {
     }
     
     /**
-     Send a resource request to API asynchronously and execute a closure after completion.
+     Send a resource request asynchronously to fetch all data and execute a closure after completion.
      
-     - parameter requestList: A request list used in JSON.
-     - parameter callback:    A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
+     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response list (`JSON`), or nil if failed. The second one is the description of error.
      */
-    private func resourceRequest(_ requestList: [[String: String]], callback: @escaping (JSON?, String?) -> Void) {
+    func resourceRequest(_ callback: @escaping (JSON?, String?) -> Void) {
         if session.id == nil || session.key == nil {
             // Delay processing until `sessionFail`
             session = ("", "")
         }
-        let request = stringFromJSONObject(requestList)
-        let verify = try! HMAC(key: session.key!.utf8.map({$0}), variant: .sha1).authenticate(request.utf8.map({$0}))
-        let postData: [String: Any] = [
+        let requestList = stringFromJSONObject([
+            [
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"CourseAll\"}",
+                "uuid": "courses",
+                "version": "",
+            ],
+            [
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"ExamAll\"}",
+                "uuid": "exams",
+                "version": "",
+            ],
+            [
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"ScoreAll\"}",
+                "uuid": "grades",
+                "version": "",
+            ],
+            [
+                "fetcher": "jwbInfoSystem",
+                "data": "{\"action\":\"Statistics\"}",
+                "uuid": "statistics",
+                "version": "",
+            ],
+            [
+                "fetcher": "staticInterface",
+                "data": "{\"key\":\"schoolCal.all\"}",
+                "uuid": "calendars",
+                "version": "",
+            ],
+            [
+                "fetcher": "staticInterface",
+                "data": "{\"key\":\"schoolBus\"}",
+                "uuid": "buses",
+                "version": "",
+            ],
+        ])
+        let verify = try! HMAC(key: session.key!.utf8.map({$0}), variant: .sha1).authenticate(requestList.utf8.map({$0}))
+        let postData: [String: String] = [
             "sessionId": session.id!,
             "sessionVerify": verify.toBase64()!,
-            "requestList": request,
+            "requestList": requestList,
         ]
         let resourcesURL = URL(string: MobileAPIURL)!.appendingPathComponent("getResources" + (username.count == 8 ? "Grs" : ""))
         
-        alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default).responseJSON { response in
+        alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default).validate().responseJSON { response in
             if response.result.isFailure {
                 let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
-                print("[Resource request] Alamofire: \(errorDescription) \(requestList[0]["data"]!)")
+                print("[Resource request] Alamofire: \(errorDescription)")
                 callback(nil, errorDescription)
                 return
             }
             let json = JSON(response.result.value!)
             let printError = {
-                print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue)  \(requestList[0]["data"]!)")
+                print("[Resource request] \(json["status"].stringValue): \(json["error"].stringValue)")
             }
             if json["status"].string == "ok" {
-                let responseData = JSON(self.jsonObjectFromString(json["responseList"].stringValue))[0]["data"]
-                if responseData.exists() {
-                    callback(responseData, nil)
-                } else {
-                    print("[Resource request] \(json["responseList"].stringValue)")
-                    callback(nil, "数据无需更新")
-                }
+                let responseList = JSON(self.jsonObjectFromString(json["responseList"].stringValue))
+                callback(responseList, nil)
             } else if json["status"].string == "sessionFail" {
                 printError()
                 self.loginRequest { error in
                     if let error = error {
                         callback(nil, error)
                     } else {
-                        self.resourceRequest(requestList, callback: callback)
+                        self.resourceRequest(callback)
                     }
                 }
             } else if json["error"].stringValue.contains("教务网通知") {
@@ -168,118 +199,5 @@ class APISession: NSObject {
             }
         }
     }
-    
-    /**
-     Send a course request to API asynchronously and execute a closure after completion.
-     
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
-     */
-    func courseRequest(_ callback: @escaping (JSON?, String?) -> Void) {
-        let requestList = [
-            [
-                "fetcher": "jwbInfoSystem",
-                "data": "{\"action\":\"CourseAll\"}",
-                "uuid": "",
-                "version": "",
-            ]
-        ]
-        resourceRequest(requestList, callback: callback)
-    }
-    
-    /**
-     Send a exam request to API asynchronously and execute a closure after completion.
-     
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
-     */
-    func examRequest(_ callback: @escaping (JSON?, String?) -> Void) {
-        let requestList = [
-            [
-                "fetcher": "jwbInfoSystem",
-                "data": "{\"action\":\"ExamAll\"}",
-                "uuid": "",
-                "version": "",
-            ]
-        ]
-        resourceRequest(requestList, callback: callback)
-    }
-    
-    /**
-     Send a score request to API asynchronously and execute a closure after completion.
-     
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
-     */
-    func scoreRequest(_ callback: @escaping (JSON?, String?) -> Void) {
-        let requestList = [
-            [
-                "fetcher": "jwbInfoSystem",
-                "data": "{\"action\":\"ScoreAll\"}",
-                "uuid": "",
-                "version": "",
-            ]
-        ]
-        resourceRequest(requestList) { json, error in
-            if let json = json {
-                if json["scoreObject"].dictionaryValue.isEmpty {
-                    print("[Score request] Score object is empty")
-                    callback(nil, "")
-                } else {
-                    callback(json, nil)
-                }
-            } else {
-                callback(nil, error)
-            }
-        }
-    }
-    
-    /**
-     Send a statistics  request to API asynchronously and execute a closure after completion.
-     
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
-     */
-    func statisticsRequest(_ callback: @escaping (JSON?, String?) -> Void) {
-        let requestList = [
-            [
-                "fetcher": "jwbInfoSystem",
-                "data": "{\"action\":\"Statistics\"}",
-                "uuid": "",
-                "version": "",
-            ]
-        ]
-        resourceRequest(requestList, callback: callback)
-    }
-    
-    /**
-     Send a calendar request to API asynchronously and execute a closure after completion.
-     
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
-     */
-    func calendarRequest(_ callback: @escaping (JSON?, String?) -> Void) {
-        let requestList = [
-            [
-                "fetcher": "staticInterface",
-                "data": "{\"key\":\"schoolCal.all\"}",
-                "uuid": "",
-                "version": "",
-            ]
-        ]
-        resourceRequest(requestList, callback: callback)
-    }
-    
-    /**
-     Send a bus request to API asynchronously and execute a closure after completion.
-     
-     - parameter callback: A closure to be executed once the request has finished. The first parameter is the response JSON, or nil if failed. The second one is the description of error.
-     */
-    func busRequest(_ callback: @escaping (JSON?, String?) -> Void) {
-        let requestList = [
-            [
-                "fetcher": "staticInterface",
-                "data": "{\"key\":\"schoolBus\"}",
-                "uuid": "",
-                "version": "",
-            ]
-        ]
-        resourceRequest(requestList, callback: callback)
-    }
-    
+
 }

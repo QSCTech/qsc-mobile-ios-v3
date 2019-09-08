@@ -313,136 +313,42 @@ public class MobileManager: NSObject {
      - parameter callback:   A closure to be executed once the request has finished.
      */
     public func refreshAll(callback: @escaping () -> Void) {
-        // First refresh calendar to prevent multiple sessionFail retries at the same time
-        refreshCalendar { error in
-            if let error = error {
-                NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error])
-                callback()
-            } else {
-                let group = DispatchGroup()
-                for _ in 0..<4 { group.enter() }
-                let closure = { (error: String?) in
-                    if let error = error {
-                        NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error])
+        apiSession.resourceRequest { json, error in
+            if let json = json {
+                for response in json.arrayValue {
+                    let data = response["data"]
+                    if data.dictionaryValue.isEmpty { continue }
+                    switch response["uuid"].stringValue {
+                    case "courses":
+                        self.dataStore.deleteCourses()
+                        self.dataStore.createCourses(data)
+                    case "exams":
+                        self.dataStore.deleteExams()
+                        self.dataStore.createExams(data)
+                    case "grades":
+                        if data["scoreObject"].dictionaryValue.isEmpty { continue }
+                        self.dataStore.deleteScores()
+                        self.dataStore.createScores(data)
+                    case "statistics":
+                        if data["totalCredit"].numberValue == 0 { continue }
+                        self.dataStore.deleteStatistics()
+                        self.dataStore.createStatistics(data)
+                    case "calendars":
+                        self.dataStore.deleteCalendar()
+                        self.dataStore.createCalendar(data)
+                    case "buses":
+                        self.dataStore.deleteBuses()
+                        self.dataStore.createBuses(data)
+                    default:
+                        print("Unknown uuid in the response list: \(response["uuid"].stringValue)")
                     }
-                    group.leave()
-                }
-                self.refreshCourses(closure)
-                self.refreshExams(closure)
-                self.refreshScores(closure)
-                self.refreshBuses(closure)
-                group.notify(queue: DispatchQueue.main) {
                     callback()
                     NotificationCenter.default.post(name: .refreshCompleted, object: nil)
                     NotificationCenter.default.post(name: .eventsModified, object: nil)
                 }
-            }
-        }
-    }
-    
-    /**
-     Delete and retrieve course data from API.
-     
-     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
-     */
-    public func refreshCourses(_ callback: @escaping (String?) -> Void) {
-        apiSession.courseRequest { json, error in
-            if let json = json {
-                self.dataStore.deleteCourses()
-                self.dataStore.createCourses(json)
-                callback(nil)
-            } else if error == "数据无需更新" {
-                callback(nil)
             } else {
-                callback(error)
-            }
-        }
-    }
-    
-    /**
-     Delete and retrieve exam data from API.
-     
-     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
-     */
-    public func refreshExams(_ callback: @escaping (String?) -> Void) {
-        apiSession.examRequest { json, error in
-            if let json = json {
-                self.dataStore.deleteExams()
-                self.dataStore.createExams(json)
-                callback(nil)
-            } else if error == "数据无需更新" {
-                callback(nil)
-            } else {
-                callback(error)
-            }
-        }
-    }
-    
-    /**
-     Delete and retrieve score data from API.
-     
-     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
-     */
-    public func refreshScores(_ callback: @escaping (String?) -> Void) {
-        apiSession.scoreRequest { json, error in
-            if let json = json {
-                self.dataStore.deleteScores()
-                self.dataStore.createScores(json)
-                self.apiSession.statisticsRequest { json, error in
-                    if let json = json {
-                        if json["totalCredit"].numberValue == 0 {
-                            callback(nil)
-                        } else {
-                            self.dataStore.deleteStatistics()
-                            self.dataStore.createStatistics(json)
-                            callback(nil)
-                        }
-                    } else {
-                        callback(error)
-                    }
-                }
-            } else if error == "数据无需更新" {
-                callback(nil)
-            } else {
-                callback(error)
-            }
-        }
-    }
-    
-    /**
-     Delete and retrieve calendar data from API.
-     
-     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
-     */
-    public func refreshCalendar(_ callback: @escaping (String?) -> Void) {
-        apiSession.calendarRequest { json, error in
-            if let json = json {
-                self.dataStore.deleteCalendar()
-                self.dataStore.createCalendar(json)
-                callback(nil)
-            } else if error == "数据无需更新" {
-                callback(nil)
-            } else {
-                callback(error)
-            }
-        }
-    }
-    
-    /**
-     Delete and retrieve bus data from API.
-     
-     - parameter callback: A closure to be executed once the request has finished. The argument will be nil if data has been refreshed successfully, otherwise it will be the description of error.
-     */
-    public func refreshBuses(_ callback: @escaping (String?) -> Void) {
-        apiSession.busRequest { json, error in
-            if let json = json {
-                self.dataStore.deleteBuses()
-                self.dataStore.createBuses(json)
-                callback(nil)
-            } else if error == "数据无需更新" {
-                callback(nil)
-            } else {
-                callback(error)
+                NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error ?? ""])
+                callback()
             }
         }
     }

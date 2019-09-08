@@ -66,6 +66,11 @@ class CurriculaViewController: UIViewController {
     }
     
     func checkBounds() {
+        if currentIndex == -1 {
+            previousButton.isEnabled = false
+            nextButton.isEnabled = false
+            return
+        }
         if currentIndex == 0 {
             previousButton.isEnabled = false
         } else {
