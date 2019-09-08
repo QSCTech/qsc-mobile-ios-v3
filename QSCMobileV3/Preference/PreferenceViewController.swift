@@ -197,7 +197,7 @@ class PreferenceViewController: UITableViewController {
                     if let deviceToken = groupDefaults.string(forKey: DeviceTokenKey) {
                         deviceInfo = "Device Token: \(deviceToken)\n"
                     }
-                    mcvc.setMessageBody("版本信息：\nQSCMobile \(QSCVersion)\n\(Device()) \(ProcessInfo.processInfo.operatingSystemVersionString)\n\(deviceInfo)\n反馈（可附截屏）：\n\u{200b}", isHTML: false)
+                    mcvc.setMessageBody("版本信息：\nQSCMobile \(QSCVersion)\n\(Device.current) \(ProcessInfo.processInfo.operatingSystemVersionString)\n\(deviceInfo)\n反馈（可附截屏）：\n\u{200b}", isHTML: false)
                     present(mcvc, animated: true)
                 } else {
                     let alert = UIAlertController(title: "用户反馈", message: "您尚未设置系统邮件账户，请先行设置或直接发送邮件至 mobile@zjuqsc.com", preferredStyle: .alert)

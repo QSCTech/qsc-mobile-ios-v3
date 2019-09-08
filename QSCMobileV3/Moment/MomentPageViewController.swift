@@ -73,7 +73,7 @@ class MomentPageViewController: UIViewController {
             detailButton.setTitleColor(color, for: .normal)
             detailButton.layer.borderColor = color.cgColor
         } else {
-            if Device().isPad {
+            if Device.current.isPad {
                 dateLabel.isHidden = true
             }
             promptLabel.text = TimeZone.current.secondsFromGMT() == 28800 ? "" : "北京时间"
