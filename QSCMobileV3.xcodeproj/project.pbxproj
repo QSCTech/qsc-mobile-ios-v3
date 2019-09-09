@@ -54,7 +54,6 @@
 		9D31397A1CE789BF00CD7DAD /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */; };
 		9D31397B1CE789BF00CD7DAD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396D1CE789BF00CD7DAD /* WebViewController.swift */; };
 		9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */; };
-		9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */; };
 		9D31397F1CE789BF00CD7DAD /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */; };
 		9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3139761CE789BF00CD7DAD /* QueryViewController.swift */; };
 		9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D3139841CE78C7500CD7DAD /* Copyright.html */; };
@@ -321,7 +320,6 @@
 		9D31396C1CE789BF00CD7DAD /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserViewController.xib; sourceTree = "<group>"; };
 		9D31396D1CE789BF00CD7DAD /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9D31396F1CE789BF00CD7DAD /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		9D3139741CE789BF00CD7DAD /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		9D3139761CE789BF00CD7DAD /* QueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
 		9D3139841CE78C7500CD7DAD /* Copyright.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Copyright.html; sourceTree = "<group>"; };
@@ -550,7 +548,6 @@
 				9D31396E1CE789BF00CD7DAD /* Calendar */,
 				9DC475611D2CF9A200F4B3DF /* CourseDetail */,
 				9D6B336F1CED90CC00C5372F /* EventDetail */,
-				9D3139701CE789BF00CD7DAD /* Discover */,
 				9D3139751CE789BF00CD7DAD /* Query */,
 				9D5A01471DA106B100CF5469 /* QueryList */,
 				9DBC53AB1D350F86006AA1BD /* Score */,
@@ -693,14 +690,6 @@
 				9DD043EF1D2BFBF5007CE9B3 /* EventCell.swift */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		9D3139701CE789BF00CD7DAD /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-				9D3139711CE789BF00CD7DAD /* DiscoverViewController.swift */,
-			);
-			path = Discover;
 			sourceTree = "<group>";
 		};
 		9D3139721CE789BF00CD7DAD /* Preference */ = {
@@ -1373,7 +1362,6 @@
 				9D1738801D5D93A500782E93 /* EventEditViewController.swift in Sources */,
 				9D1738811D5D93A500782E93 /* RepeatTypeViewController.swift in Sources */,
 				9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */,
-				9D31397D1CE789BF00CD7DAD /* DiscoverViewController.swift in Sources */,
 				9D3139801CE789BF00CD7DAD /* QueryViewController.swift in Sources */,
 				9D08CF5D1D72FE9E008C1D14 /* QueryTableViewCell.swift in Sources */,
 				9D08CF651D7330CC008C1D14 /* QueryCollectionViewDelegate.swift in Sources */,
