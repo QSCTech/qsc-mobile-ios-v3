@@ -209,23 +209,7 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
                     SKStoreReviewController.requestReview()
                 }
             case 1:
-                if MFMailComposeViewController.canSendMail() {
-                    let mcvc = MFMailComposeViewController()
-                    mcvc.mailComposeDelegate = self
-                    mcvc.setToRecipients(["mobile@zjuqsc.com"])
-                    mcvc.setSubject("[QSCMobileV3] Feedback")
-                    var deviceInfo = ""
-                    if let deviceToken = groupDefaults.string(forKey: DeviceTokenKey) {
-                        deviceInfo = "Device Token: \(deviceToken)\n"
-                    }
-                    mcvc.setMessageBody("版本信息：\nQSCMobile \(QSCVersion)\n\(Device.current) \(ProcessInfo.processInfo.operatingSystemVersionString)\n\(deviceInfo)\n反馈（可附截屏）：\n\u{200b}", isHTML: false)
-                    present(mcvc, animated: true)
-                } else {
-                    let alert = UIAlertController(title: "用户反馈", message: "您尚未设置系统邮件账户，请先行设置或直接发送邮件至 mobile@zjuqsc.com", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "好", style: .default)
-                    alert.addAction(action)
-                    present(alert, animated: true)
-                }
+                UIApplication.shared.openURL(URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=515794930")!)
             case 2:
                 let vc = SKStoreProductViewController()
                 vc.delegate = self

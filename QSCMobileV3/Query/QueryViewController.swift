@@ -23,7 +23,7 @@ class QueryViewController: UITableViewController {
     
     let qsc = ["Box 云优盘", "水朝夕"]
     
-    let login = ["教务网", "浙大邮箱", "网络中心*"]
+    let login = ["本科生教务网", "浙大邮箱", "网络中心*"]
     
     let websites: [[String: String]] = [
         [
