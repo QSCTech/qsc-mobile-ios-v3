@@ -1674,7 +1674,7 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30035;
+				CURRENT_PROJECT_VERSION = 30036;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1706,7 +1706,7 @@
 				CODE_SIGN_ENTITLEMENTS = QSCMobileV3/QSCMobileV3.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30035;
+				CURRENT_PROJECT_VERSION = 30036;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
