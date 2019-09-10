@@ -228,6 +228,10 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
         }
     }
     
+    func dayOfWeekBackGroundColor() -> UIColor {
+        return ColorCompatibility.systemBackground
+    }
+    
 }
 
 // TODO: Decide whether to use system time zone or UTC+8

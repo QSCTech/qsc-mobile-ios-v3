@@ -61,10 +61,10 @@ class MultiSelectView: UIView {
         containerView.layer.masksToBounds = true
         addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addConstraint(NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        containerView.addConstraint(NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: height + navigationBarHeight + separatorLineForNavigationBarViewHeight + separatorLineForButtonsWidth + buttonBarHeight))
-        addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: containerView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: offsetY))
+        containerView.addConstraint(NSLayoutConstraint(item: containerView as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        containerView.addConstraint(NSLayoutConstraint(item: containerView as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: height + navigationBarHeight + separatorLineForNavigationBarViewHeight + separatorLineForButtonsWidth + buttonBarHeight))
+        addConstraint(NSLayoutConstraint(item: containerView as Any, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: containerView as Any, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: offsetY))
         
         tableView = UITableView()
         tableView.dataSource = self
@@ -75,19 +75,19 @@ class MultiSelectView: UIView {
         tableView.register(UINib(nibName: "MultiSelectViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
         containerView.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.addConstraint(NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        tableView.addConstraint(NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: height))
-        containerView.addConstraint(NSLayoutConstraint(item: tableView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
-        containerView.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1, constant: navigationBarHeight + separatorLineForNavigationBarViewHeight))
+        tableView.addConstraint(NSLayoutConstraint(item: tableView as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        tableView.addConstraint(NSLayoutConstraint(item: tableView as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: height))
+        containerView.addConstraint(NSLayoutConstraint(item: tableView as Any, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
+        containerView.addConstraint(NSLayoutConstraint(item: tableView as Any, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1, constant: navigationBarHeight + separatorLineForNavigationBarViewHeight))
         
         navigationBarView = UIView()
         navigationBarView.backgroundColor = UIColor.white
         containerView.addSubview(navigationBarView)
         navigationBarView.translatesAutoresizingMaskIntoConstraints = false
-        navigationBarView.addConstraint(NSLayoutConstraint(item: navigationBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        navigationBarView.addConstraint(NSLayoutConstraint(item: navigationBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: navigationBarHeight))
-        containerView.addConstraint(NSLayoutConstraint(item: navigationBarView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
-        containerView.addConstraint(NSLayoutConstraint(item: navigationBarView, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1, constant: 0))
+        navigationBarView.addConstraint(NSLayoutConstraint(item: navigationBarView as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        navigationBarView.addConstraint(NSLayoutConstraint(item: navigationBarView as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: navigationBarHeight))
+        containerView.addConstraint(NSLayoutConstraint(item: navigationBarView as Any, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
+        containerView.addConstraint(NSLayoutConstraint(item: navigationBarView as Any, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1, constant: 0))
         
         titleLabel = UILabel()
         titleLabel.backgroundColor = UIColor.clear
@@ -97,66 +97,66 @@ class MultiSelectView: UIView {
         titleLabel.textColor = UIColor.black
         navigationBarView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        titleLabel.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: navigationBarHeight))
-        navigationBarView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: navigationBarView, attribute: .centerX, multiplier: 1, constant: 0))
-        navigationBarView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: navigationBarView, attribute: .centerY, multiplier: 1, constant: 0))
+        titleLabel.addConstraint(NSLayoutConstraint(item: titleLabel as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        titleLabel.addConstraint(NSLayoutConstraint(item: titleLabel as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: navigationBarHeight))
+        navigationBarView.addConstraint(NSLayoutConstraint(item: titleLabel as Any, attribute: .centerX, relatedBy: .equal, toItem: navigationBarView, attribute: .centerX, multiplier: 1, constant: 0))
+        navigationBarView.addConstraint(NSLayoutConstraint(item: titleLabel as Any, attribute: .centerY, relatedBy: .equal, toItem: navigationBarView, attribute: .centerY, multiplier: 1, constant: 0))
         
         separatorLineForNavigationBarView = UIView()
         separatorLineForNavigationBarView.backgroundColor = BoxColor.gray
         containerView.addSubview(separatorLineForNavigationBarView)
         separatorLineForNavigationBarView.translatesAutoresizingMaskIntoConstraints = false
-        separatorLineForNavigationBarView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        separatorLineForNavigationBarView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: separatorLineForNavigationBarViewHeight))
-        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
-        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView, attribute: .top, relatedBy: .equal, toItem: navigationBarView, attribute: .bottom, multiplier: 1, constant: 0))
+        separatorLineForNavigationBarView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        separatorLineForNavigationBarView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: separatorLineForNavigationBarViewHeight))
+        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView as Any, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
+        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForNavigationBarView as Any, attribute: .top, relatedBy: .equal, toItem: navigationBarView, attribute: .bottom, multiplier: 1, constant: 0))
         
         buttonBarView = UIView()
         buttonBarView.backgroundColor = UIColor.white
         containerView.addSubview(buttonBarView)
         buttonBarView.translatesAutoresizingMaskIntoConstraints = false
-        buttonBarView.addConstraint(NSLayoutConstraint(item: buttonBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: buttonBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight))
-        containerView.addConstraint(NSLayoutConstraint(item: buttonBarView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
-        containerView.addConstraint(NSLayoutConstraint(item: buttonBarView, attribute: .top, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: separatorLineForButtonBarViewHeight))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: buttonBarView as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: buttonBarView as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight))
+        containerView.addConstraint(NSLayoutConstraint(item: buttonBarView as Any, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
+        containerView.addConstraint(NSLayoutConstraint(item: buttonBarView as Any, attribute: .top, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: separatorLineForButtonBarViewHeight))
         
         separatorLineForButtonBarView = UIView()
         separatorLineForButtonBarView.backgroundColor = BoxColor.gray
         containerView.addSubview(separatorLineForButtonBarView)
         separatorLineForButtonBarView.translatesAutoresizingMaskIntoConstraints = false
-        separatorLineForButtonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
-        separatorLineForButtonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: separatorLineForButtonBarViewHeight))
-        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
-        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView, attribute: .top, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: 0))
+        separatorLineForButtonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width))
+        separatorLineForButtonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: separatorLineForButtonBarViewHeight))
+        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView as Any, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1, constant: 0))
+        containerView.addConstraint(NSLayoutConstraint(item: separatorLineForButtonBarView as Any, attribute: .top, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: 0))
         
         doneButton = UIButton(type: .system)
         doneButton.setTitle("确定", for: .normal)
         doneButton.addTarget(self, action: #selector(doneButtonTapped(button:)), for: .touchDown)
         buttonBarView.addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.addConstraint(NSLayoutConstraint(item: doneButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight - 5))
-        doneButton.addConstraint(NSLayoutConstraint(item: doneButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width / 2))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: doneButton, attribute: .right, relatedBy: .equal, toItem: buttonBarView, attribute: .right, multiplier: 1.0, constant: 0))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: doneButton, attribute: .top, relatedBy: .equal, toItem: buttonBarView, attribute: .top, multiplier: 1.0, constant: 5))
+        doneButton.addConstraint(NSLayoutConstraint(item: doneButton as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight - 5))
+        doneButton.addConstraint(NSLayoutConstraint(item: doneButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width / 2))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: doneButton as Any, attribute: .right, relatedBy: .equal, toItem: buttonBarView, attribute: .right, multiplier: 1.0, constant: 0))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: doneButton as Any, attribute: .top, relatedBy: .equal, toItem: buttonBarView, attribute: .top, multiplier: 1.0, constant: 5))
         
         cancelButton = UIButton(type: .system)
         cancelButton.setTitle("取消", for: .normal)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped(button:)), for: .touchDown)
         buttonBarView.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.addConstraint(NSLayoutConstraint(item: cancelButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight - 5))
-        cancelButton.addConstraint(NSLayoutConstraint(item: cancelButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width / 2))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: cancelButton, attribute: .left, relatedBy: .equal, toItem: buttonBarView, attribute: .left, multiplier: 1.0, constant: 0))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: cancelButton, attribute: .top, relatedBy: .equal, toItem: buttonBarView, attribute: .top, multiplier: 1.0, constant: 5))
+        cancelButton.addConstraint(NSLayoutConstraint(item: cancelButton as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight - 5))
+        cancelButton.addConstraint(NSLayoutConstraint(item: cancelButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: width / 2))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: cancelButton as Any, attribute: .left, relatedBy: .equal, toItem: buttonBarView, attribute: .left, multiplier: 1.0, constant: 0))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: cancelButton as Any, attribute: .top, relatedBy: .equal, toItem: buttonBarView, attribute: .top, multiplier: 1.0, constant: 5))
         
         separatorLineForButtons = UIView()
         separatorLineForButtons.backgroundColor = BoxColor.gray
         buttonBarView.addSubview(separatorLineForButtons)
         separatorLineForButtons.translatesAutoresizingMaskIntoConstraints = false
-        separatorLineForButtons.addConstraint(NSLayoutConstraint(item: separatorLineForButtons, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: separatorLineForButtonsWidth))
-        separatorLineForButtons.addConstraint(NSLayoutConstraint(item: separatorLineForButtons, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight - 5))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtons, attribute: .centerX, relatedBy: .equal, toItem: buttonBarView, attribute: .centerX, multiplier: 1, constant: 0))
-        buttonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtons, attribute: .top, relatedBy: .equal, toItem: buttonBarView, attribute: .top, multiplier: 1, constant: 5))
+        separatorLineForButtons.addConstraint(NSLayoutConstraint(item: separatorLineForButtons as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: separatorLineForButtonsWidth))
+        separatorLineForButtons.addConstraint(NSLayoutConstraint(item: separatorLineForButtons as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: buttonBarHeight - 5))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtons as Any, attribute: .centerX, relatedBy: .equal, toItem: buttonBarView, attribute: .centerX, multiplier: 1, constant: 0))
+        buttonBarView.addConstraint(NSLayoutConstraint(item: separatorLineForButtons as Any, attribute: .top, relatedBy: .equal, toItem: buttonBarView, attribute: .top, multiplier: 1, constant: 5))
     }
     
     required init?(coder aDecoder: NSCoder) {

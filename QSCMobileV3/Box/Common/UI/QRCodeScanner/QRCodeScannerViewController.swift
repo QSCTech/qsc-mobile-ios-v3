@@ -41,10 +41,10 @@ class QRCodeScannerViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backButtonTapped(button:)), for: .touchDown)
         view.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.addConstraint(NSLayoutConstraint(item: backButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
-        backButton.addConstraint(NSLayoutConstraint(item: backButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
-        view.addConstraint(NSLayoutConstraint(item: backButton, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 20))
-        view.addConstraint(NSLayoutConstraint(item: backButton, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 25))
+        backButton.addConstraint(NSLayoutConstraint(item: backButton as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
+        backButton.addConstraint(NSLayoutConstraint(item: backButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
+        view.addConstraint(NSLayoutConstraint(item: backButton as Any, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 20))
+        view.addConstraint(NSLayoutConstraint(item: backButton as Any, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 25))
         
         photoLibraryButton = UIButton(type: .custom)
         photoLibraryButton.setImage(UIImage(named: "PhotoLibrary"), for: .normal)
@@ -52,10 +52,10 @@ class QRCodeScannerViewController: UIViewController {
         photoLibraryButton.addTarget(self, action: #selector(photoLibraryButtonTapped(button:)), for: .touchDown)
         view.addSubview(photoLibraryButton)
         photoLibraryButton.translatesAutoresizingMaskIntoConstraints = false
-        photoLibraryButton.addConstraint(NSLayoutConstraint(item: photoLibraryButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
-        photoLibraryButton.addConstraint(NSLayoutConstraint(item: photoLibraryButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
-        view.addConstraint(NSLayoutConstraint(item: photoLibraryButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -70))
-        view.addConstraint(NSLayoutConstraint(item: photoLibraryButton, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 25))
+        photoLibraryButton.addConstraint(NSLayoutConstraint(item: photoLibraryButton as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
+        photoLibraryButton.addConstraint(NSLayoutConstraint(item: photoLibraryButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
+        view.addConstraint(NSLayoutConstraint(item: photoLibraryButton as Any, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -70))
+        view.addConstraint(NSLayoutConstraint(item: photoLibraryButton as Any, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 25))
         
         torchButton = UIButton(type: .custom)
         torchButton.setImage(UIImage(named: "TorchOn"), for: .normal)
@@ -64,10 +64,10 @@ class QRCodeScannerViewController: UIViewController {
         torchButton.addTarget(self, action: #selector(torchButtonTapped(button:)), for: .touchDown)
         view.addSubview(torchButton)
         torchButton.translatesAutoresizingMaskIntoConstraints = false
-        torchButton.addConstraint(NSLayoutConstraint(item: torchButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
-        torchButton.addConstraint(NSLayoutConstraint(item: torchButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
-        view.addConstraint(NSLayoutConstraint(item: torchButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -20))
-        view.addConstraint(NSLayoutConstraint(item: torchButton, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 25))
+        torchButton.addConstraint(NSLayoutConstraint(item: torchButton as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
+        torchButton.addConstraint(NSLayoutConstraint(item: torchButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 40))
+        view.addConstraint(NSLayoutConstraint(item: torchButton as Any, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -20))
+        view.addConstraint(NSLayoutConstraint(item: torchButton as Any, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 25))
     }
     
     override func viewWillAppear(_ animated: Bool) {

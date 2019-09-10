@@ -126,7 +126,7 @@ extension BusViewController: UITableViewDelegate, UITableViewDataSource {
         if let from = formatter.date(from: from), let to = formatter.date(from: to) {
             var dateComps = Calendar.current.dateComponents([.year, .month, .day], from: Date())
             
-            var fromComps = Calendar.current.dateComponents([.hour, .minute], from: from)
+            let fromComps = Calendar.current.dateComponents([.hour, .minute], from: from)
             dateComps.hour = fromComps.hour
             dateComps.minute = fromComps.minute
             fromDate = Calendar.current.date(from: dateComps)

@@ -13,6 +13,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>com.qscbox.common-data</string>
+            <key>LSHandlerRank</key>
+            <string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.microsoft.powerpoint.ppt</string>
