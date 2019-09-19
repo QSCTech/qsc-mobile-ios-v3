@@ -66,7 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshErrorHandler), name: .refreshError, object: nil)
         
-        UINavigationBar.appearance().tintColor = ColorCompatibility.systemGray
+        UINavigationBar.appearance().tintColor = ColorCompatibility.QSCGray
+ //       UINavigationBar.appearance().backgroundColor = ColorCompatibility.systemBackground
         
         return true
     }

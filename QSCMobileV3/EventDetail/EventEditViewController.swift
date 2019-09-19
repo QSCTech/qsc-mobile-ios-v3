@@ -121,6 +121,9 @@ class EventEditViewController: UITableViewController {
         
         notesTextView.backgroundColor = UIColor(white: 0, alpha: 0)
         prepareDropDownMenu()
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

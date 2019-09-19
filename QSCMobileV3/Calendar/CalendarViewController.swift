@@ -38,7 +38,7 @@ class CalendarViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "Event")
         
-        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+       // navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorCompatibility.label]
         tableView?.backgroundColor = ColorCompatibility.systemBackground
         view.backgroundColor = ColorCompatibility.systemBackground
@@ -79,6 +79,7 @@ class CalendarViewController: UIViewController {
             let nc = segue.destination as! UINavigationController
             let vc = nc.topViewController as! EventEditViewController
             vc.selectedDate = selectedDate
+            vc.delegate = self
         case "showCourseDetail":
             let vc = segue.destination as! CourseDetailViewController
             vc.managedObject = selectedEvent.object
@@ -216,14 +217,10 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
     }
     
     func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
-        if #available(iOS 13.0, *) {
-            switch (weekDay, status, present) {
-            case (_, .selected, _):
-                return UIColor.systemGray5
-            default:
-                return nil
-            }
-        } else {
+        switch (weekDay, status, present) {
+        case (_, .selected, _):
+            return ColorCompatibility.systemGray5
+        default:
             return nil
         }
     }
@@ -350,4 +347,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+extension CalendarViewController: EventEditViewControllerDelegate {
+    func reloadTableView() {
+         self.viewWillAppear(true)
+    }
 }

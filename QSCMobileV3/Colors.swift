@@ -225,4 +225,16 @@ enum ColorCompatibility {
         }
         return UIColor(red: 0.9490196078431372, green: 0.9490196078431372, blue: 0.9686274509803922, alpha: 1.0)
     }
+    static var QSCGray: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (trainCollection) -> UIColor in
+                if trainCollection.userInterfaceStyle == .dark {
+                    return UIColor.lightGray
+                } else {
+                    return UIColor.darkGray
+                }
+            }
+        }
+        return UIColor.darkGray
+    }
 }

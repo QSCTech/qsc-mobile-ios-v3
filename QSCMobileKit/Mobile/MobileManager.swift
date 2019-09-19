@@ -288,6 +288,14 @@ public class MobileManager: NSObject {
         return grade
     }
     
+    public var totalCredit: Float {
+        var credit = Float(0)
+        for semesterScore in semesterScores {
+            credit += semesterScore.totalCredit!.floatValue
+        }
+        return credit
+    }
+    
     /// All semesters in which the current user has studied, sorted in ascending order, e.g. ["2015-2016-1", "2015-2016-2"].
     public var allSemesters: [String] {
         let user = DataStore.entityForUser(accountManager.currentAccountForJwbinfosys!)!
@@ -339,7 +347,7 @@ public class MobileManager: NSObject {
                         self.dataStore.deleteScores()
                         self.dataStore.createScores(data)
                     case "statistics":
-                        if data["totalCredit"].numberValue == 0 { continue }
+                        //if data["totalCredit"].numberValue == 0 { continue }
                         self.dataStore.deleteStatistics()
                         self.dataStore.createStatistics(data)
                     case "calendars":

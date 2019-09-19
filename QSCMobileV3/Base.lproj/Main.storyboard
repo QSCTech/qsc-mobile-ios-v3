@@ -31,7 +31,6 @@
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="G7C-7c-jIr">
                                 <rect key="frame" x="168" y="375" width="39" height="102"/>
                                 <color key="pageIndicatorTintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="pageDidChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="0W9-bg-Xp8"/>
                                 </connections>
@@ -79,7 +78,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbw-yh-sDk">
                                         <rect key="frame" x="0.0" y="34" width="343" height="1"/>
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ytM-sa-qCF">
                                                 <userDefinedRuntimeAttributes>
@@ -223,7 +222,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Y3o-08-sGR">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Neb-hm-etX">
-                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="refresh:" destination="9pv-A4-QxB" id="PZa-wh-fmW"/>
                             </connections>
@@ -445,13 +443,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="日程" id="tK8-OC-7Ln">
                         <barButtonItem key="leftBarButtonItem" title="今日" id="Voz-9R-dHw">
-                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="toggleToday:" destination="8rJ-Kc-sve" id="q81-OE-dyI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uUX-hh-sTC">
-                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="2xs-uO-Ddu" kind="presentation" identifier="addEvent" id="hz0-YR-iHO"/>
                             </connections>
@@ -471,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="1144"/>
+            <point key="canvasLocation" x="895.20000000000005" y="1143.7781109445277"/>
         </scene>
         <!--EventEdit-->
         <scene sceneID="h7q-IP-KL4">

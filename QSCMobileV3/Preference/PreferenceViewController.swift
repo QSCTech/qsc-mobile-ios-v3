@@ -28,7 +28,7 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
         super.viewDidLoad()
         
         tableView?.backgroundColor = UIColor.groupTableViewBackground
-        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+        //navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
         
     }
     

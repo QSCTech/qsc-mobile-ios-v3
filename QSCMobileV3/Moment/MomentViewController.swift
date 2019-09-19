@@ -55,6 +55,8 @@ class MomentViewController: UIViewController {
             events += MobileManager.sharedInstance.comingExams
         }
         pageControl.numberOfPages = events.count
+        pageControl.currentPageIndicatorTintColor = ColorCompatibility.QSCGray
+        pageControl.pageIndicatorTintColor = ColorCompatibility.systemGray5
         
         pageControllers.removeAll()
         for event in events {
@@ -80,8 +82,7 @@ class MomentViewController: UIViewController {
             loginButton.isHidden = true
         }
 
-        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
-        
+        stackView.backgroundColor = ColorCompatibility.systemBackground
     }
     
     override func viewDidAppear(_ animated: Bool) {

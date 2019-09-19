@@ -44,6 +44,9 @@ class CourseEditViewController: UITableViewController {
         publicPasswordField.text = courseEvent.publicPassword
         notesTextView.text = courseEvent.notes
         notesTextView.backgroundColor = UIColor(white: 1, alpha: 0)
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
     }
     
     @IBAction func cancel(_ sender: AnyObject) {

@@ -40,6 +40,10 @@ class HomeworkViewController: UITableViewController {
         
         view.backgroundColor = ColorCompatibility.systemBackground
         detailView.backgroundColor = UIColor(white: 0, alpha: 0)
+        
+        if #available(iOS 13, *) {
+            self.isModalInPresentation = true
+        }
     }
     
     @IBAction func nameDidChange(_ sender: UITextField) {

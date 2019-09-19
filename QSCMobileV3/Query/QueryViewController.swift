@@ -121,7 +121,9 @@ class QueryViewController: UITableViewController {
                 }
                 if groupDefaults.bool(forKey: ShowScoreKey) {
                     let statistics = MobileManager.sharedInstance.statistics!
-                    cell.totalCreditLabel.text = statistics.totalCredit!.stringValue
+                    let totalCredit = MobileManager.sharedInstance.totalCredit
+                    let formatString = (totalCredit - Float(Int(totalCredit))) == 0.5 ? "%.1f" : "%.0f"
+                    cell.totalCreditLabel.text = String(format: formatString, totalCredit)
                     let grade = statistics.averageGrade!.floatValue
                     // GPA is not available from graduate API.
                     cell.averageGradeLabel.text = String(format: "%.2f", grade > 0 ? grade : MobileManager.sharedInstance.calculatedGPA)
@@ -252,7 +254,7 @@ class QueryViewController: UITableViewController {
         }
         
         tableView?.backgroundColor = UIColor.groupTableViewBackground
-        navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
+        //navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
         
     }
     
