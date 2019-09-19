@@ -169,9 +169,17 @@ class APISession: NSObject {
         
         alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default).validate().responseJSON { response in
             if response.result.isFailure {
-                let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
-                print("[Resource request] Alamofire: \(errorDescription)")
-                callback(nil, errorDescription)
+                let statusCode = response.response?.statusCode
+                switch statusCode {
+                case 503:
+                    callback(nil, "服务器繁忙")
+                case (500..<600)?:
+                    callback(nil, "服务器异常")
+                default:
+                    let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
+                    print("[Resource request] Alamofire: \(errorDescription)")
+                    callback(nil, errorDescription)
+                }
                 return
             }
             let json = JSON(response.result.value!)
