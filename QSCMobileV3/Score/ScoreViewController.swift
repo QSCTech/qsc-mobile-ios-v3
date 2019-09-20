@@ -48,7 +48,9 @@ class ScoreViewController: UIViewController {
         let grade = mobileManager.statistics!.averageGrade!.floatValue
         // GPA is not available from graduate API.
         averageGradeLabel.text = String(format: "%.2f", grade > 0 ? grade : mobileManager.calculatedGPA)
-        totalCreditLabel.text = mobileManager.statistics!.totalCredit!.stringValue
+        let totalCredit = MobileManager.sharedInstance.totalCredit
+        let formatString = (totalCredit - Float(Int(totalCredit))) == 0.5 ? "%.1f" : "%.0f"
+        totalCreditLabel.text = String(format: formatString, totalCredit)
         semesterGradeLabel.text = "0.00"
         semesterCreditLabel.text = "0"
         
