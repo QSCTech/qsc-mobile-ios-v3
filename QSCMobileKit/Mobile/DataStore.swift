@@ -219,12 +219,8 @@ class DataStore: NSObject {
     func createStatistics(_ json: JSON) {
         let statistics = NSEntityDescription.insertNewObject(forEntityName: "Statistics", into: managedObjectContext) as! Statistics
         statistics.user = currentUser
-//
-//        var totalCredit: Double = 0
-//        for semesterScore in self.semesterScores {
-//            totalCredit += semesterScore.totalCredit!.doubleValue
-//        }
-//        statistics.totalCredit = NSNumber(floatLiteral: totalCredit)
+        
+        statistics.totalCredit = json["totalCredit"].numberValue
         statistics.averageGrade = json["averageGradePoint"].numberValue
         statistics.majorCredit = json["totalCreditMajor"].numberValue
         statistics.majorGrade = json["averageGradePointMajor"].numberValue

@@ -146,6 +146,11 @@ class QueryViewController: UITableViewController {
                 cell.auxValueLabel2.textColor = ColorCompatibility.label
                 cell.totalCreditLabel.textColor = ColorCompatibility.label
                 cell.averageGradeLabel.textColor = ColorCompatibility.label
+                cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0)
+                cell.totalCreditView.backgroundColor = UIColor(white: 1, alpha: 0)
+                cell.averageGradeView.backgroundColor = UIColor(white: 1, alpha: 0)
+                cell.overseaGradeView.backgroundColor = UIColor(white: 1, alpha: 0)
+                cell.averageScoreView.backgroundColor = UIColor(white: 1, alpha: 0)
                 return cell
             }
         case .query:

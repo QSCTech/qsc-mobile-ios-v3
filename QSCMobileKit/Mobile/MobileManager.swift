@@ -334,7 +334,7 @@ public class MobileManager: NSObject {
             if let json = json {
                 for response in json.arrayValue {
                     let data = response["data"]
-                    if data.dictionaryValue.isEmpty { continue }
+                    guard data.exists() else { continue }
                     switch response["uuid"].stringValue {
                     case "courses":
                         self.dataStore.deleteCourses()
@@ -347,7 +347,7 @@ public class MobileManager: NSObject {
                         self.dataStore.deleteScores()
                         self.dataStore.createScores(data)
                     case "statistics":
-                        //if data["totalCredit"].numberValue == 0 { continue }
+//                        if data["totalCredit"].numberValue == 0 { continue }
                         self.dataStore.deleteStatistics()
                         self.dataStore.createStatistics(data)
                     case "calendars":

@@ -17,6 +17,10 @@ class OverallScoreCell: UITableViewCell {
     @IBOutlet weak var auxValueLabel1: UILabel!
     @IBOutlet weak var auxKeyLabel2: UILabel!
     @IBOutlet weak var auxValueLabel2: UILabel!
+    @IBOutlet weak var totalCreditView: UIView!
+    @IBOutlet weak var averageGradeView: UIView!
+    @IBOutlet weak var overseaGradeView: UIView!
+    @IBOutlet weak var averageScoreView: UIView!
     
     func hideAll() {
         averageGradeLabel.text = "-"
