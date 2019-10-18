@@ -27,6 +27,7 @@ class JwbinfosysLoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginMethodSwitch: UISegmentedControl!
     
     weak var delegate: JwbLoginViewControllerDelegate?
     
@@ -51,7 +52,7 @@ class JwbinfosysLoginViewController: UIViewController {
     @IBAction func login(_ sender: AnyObject) {
         let mobileManager = MobileManager.sharedInstance
         SVProgressHUD.show(withStatus: "登录中")
-        mobileManager.loginValidate(usernameField.text!, passwordField.text!) { error in
+        mobileManager.loginValidate(usernameField.text!, passwordField.text!, loginMethodSwitch.selectedSegmentIndex) { error in
             if let error = error {
                 SVProgressHUD.showError(withStatus: error)
             } else {

@@ -33,12 +33,14 @@ public class AccountManager: NSObject {
     private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
     private let JwbinfosysSessionId = "JwbinfosysSessionId"
     private let JwbinfosysSessionKey = "JwbinfosysSessionKey"
+    public var methodForUsername: [String: Int] = [:]
     
     /**
      Add an account to JWBInfoSys and set it to current account.
      */
-    func addAccountToJwbinfosys(_ username: String, _ password: String) {
+    func addAccountToJwbinfosys(_ username: String, _ password: String, _ method: Int) {
         jwbinfosysKeychain[username] = password
+        methodForUsername[username] = method
         currentAccountForJwbinfosys = username
     }
     
