@@ -81,11 +81,12 @@ class APISession: NSObject {
             "appKeyHash": hash.toBase64()!,
             "salt": salt.toBase64()!,
             "login": [
-                loginMethod == 0 ? "jwbinfosys" : "ZJUPassport": [
+                "jwbinfosys": [
                     "userName": username,
                     "userPass": password,
                 ]
-            ]
+            ],
+            "type": loginMethod == 0 ? "jwb" : "zju_passport"
         ]
         let loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login" + (username.count == 8 ? "Grs" : ""))
         
