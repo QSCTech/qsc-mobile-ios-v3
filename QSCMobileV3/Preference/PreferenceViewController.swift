@@ -64,7 +64,7 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Preference(rawValue: section)! {
         case .about:
-            return "Copyright © 2016-2019 QSC Tech."
+            return "Copyright © 2016-2020 QSC Tech."
         default:
             return nil
         }
