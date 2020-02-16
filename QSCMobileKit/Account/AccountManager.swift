@@ -10,6 +10,9 @@ import Foundation
 import KeychainAccess
 
 /// The account manager of JWBInfoSys and ZJUWLAN. This class does NOT handle login validation, which is in the control of mobile manager. Singleton pattern is used in this class.
+
+let loginMethodKey = "LoginMethod"
+
 public class AccountManager: NSObject {
     
     private override init() {
@@ -22,6 +25,7 @@ public class AccountManager: NSObject {
         if accountForZjuwlan == nil && !zjuwlanKeychain.allKeys().isEmpty {
             try! zjuwlanKeychain.removeAll()
         }
+        methodForUsername = groupDefaults.dictionary(forKey: loginMethodKey) as? [String : String] ?? [:]
     }
     
     public static let sharedInstance = AccountManager()
@@ -33,15 +37,16 @@ public class AccountManager: NSObject {
     private let JwbinfosysCurrentAccountKey = "JwbinfosysCurrentAccount"
     private let JwbinfosysSessionId = "JwbinfosysSessionId"
     private let JwbinfosysSessionKey = "JwbinfosysSessionKey"
-    public var methodForUsername: [String: Int] = [:]
+    public var methodForUsername: [String: String] = [:]
     
     /**
      Add an account to JWBInfoSys and set it to current account.
      */
-    func addAccountToJwbinfosys(_ username: String, _ password: String, _ method: Int) {
+    func addAccountToJwbinfosys(_ username: String, _ password: String, _ method: LoginMethod) {
         jwbinfosysKeychain[username] = password
-        methodForUsername[username] = method
+        methodForUsername[username] = method.rawValue
         currentAccountForJwbinfosys = username
+        groupDefaults.setValue(methodForUsername, forKey: loginMethodKey)
     }
     
     /**

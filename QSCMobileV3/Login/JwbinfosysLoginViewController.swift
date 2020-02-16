@@ -52,7 +52,7 @@ class JwbinfosysLoginViewController: UIViewController {
     @IBAction func login(_ sender: AnyObject) {
         let mobileManager = MobileManager.sharedInstance
         SVProgressHUD.show(withStatus: "登录中")
-        mobileManager.loginValidate(usernameField.text!, passwordField.text!, loginMethodSwitch.selectedSegmentIndex) { error in
+        mobileManager.loginValidate(usernameField.text!, passwordField.text!, loginMethodSwitch?.selectedSegmentIndex == 0 ? LoginMethod.Jwb : LoginMethod.ZJU_passport) { error in
             if let error = error {
                 SVProgressHUD.showError(withStatus: error)
             } else {
