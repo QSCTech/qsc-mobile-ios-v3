@@ -193,7 +193,7 @@ class DataStore: NSObject {
                 score.year = semesterScore.year!
                 score.semester = semesterScore.semester!
                 
-                creditSum += credit
+                creditSum += score.score != "弃修" ? credit : 0
                 fourPointSum += (gradePoint > 4 ? 4 : gradePoint) * credit
                 if let score = Float(score.score!) {
                     hundredPointSum += score * credit
