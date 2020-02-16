@@ -39,14 +39,14 @@ public class MobileManager: NSObject {
      - parameter password: Password of the account.
      - parameter callback: A closure to be executed once login request has finished. The argument will be nil if login succeeds, otherwise it will be the description of error.
      */
-    public func loginValidate(_ username: String, _ password: String, callback: @escaping (String?) -> Void) {
-        let apiSession = APISession(username: username, password: password)
+    public func loginValidate(_ username: String, _ password: String, _ loginMethod: LoginMethod, callback: @escaping (String?) -> Void) {
+        let apiSession = APISession(username: username, password: password, method: loginMethod)
         apiSession.loginRequest { error in
             if let error = error {
                 callback(error)
             } else {
                 DataStore.createUser(username)
-                self.accountManager.addAccountToJwbinfosys(username, password)
+                self.accountManager.addAccountToJwbinfosys(username, password, loginMethod)
                 self.apiSession = apiSession
                 self.dataStore = DataStore(username: username)
                 callback(nil)
@@ -65,7 +65,7 @@ public class MobileManager: NSObject {
             return
         }
         accountManager.currentAccountForJwbinfosys = username
-        apiSession = APISession(username: username, password: password)
+        apiSession = APISession(username: username, password: password, method: accountManager.methodForUsername[username].map { LoginMethod(rawValue: $0) } as? LoginMethod ?? LoginMethod.ZJU_passport)
         apiSession.loginRequest { _ in }
         dataStore = DataStore(username: username)
         NotificationCenter.default.post(name: .eventsModified, object: nil)

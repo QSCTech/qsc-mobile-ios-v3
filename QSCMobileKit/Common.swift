@@ -187,3 +187,8 @@ extension Notification.Name {
     public static let eventsModified   = Notification.Name("EventsModified")
     
 }
+
+public enum LoginMethod: String {
+    case Jwb = "jwb"
+    case ZJU_passport = "zju_passport"
+}

@@ -14,11 +14,12 @@ import CryptoSwift
 /// A session of API used to send login and resource requests. This class is used by mobile manager.
 class APISession: NSObject {
     
-    init(username: String, password: String) {
+    init(username: String, password: String, method: LoginMethod) {
         accountManager = AccountManager.sharedInstance
         
         self.username = username
         self.password = password
+        self.loginMethod = method
         session = accountManager.sessionForCurrentAccount
         
         super.init()
@@ -29,6 +30,7 @@ class APISession: NSObject {
     
     private let username: String
     private let password: String
+    private let loginMethod: LoginMethod
     private var session: (id: String?, key: String?) {
         willSet {
             accountManager.sessionForCurrentAccount = newValue
@@ -82,8 +84,9 @@ class APISession: NSObject {
                 "jwbinfosys": [
                     "userName": username,
                     "userPass": password,
+                    "type": loginMethod.rawValue
                 ]
-            ]
+            ],
         ]
         let loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login" + (username.count == 8 ? "Grs" : ""))
         
