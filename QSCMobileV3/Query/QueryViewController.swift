@@ -217,6 +217,7 @@ class QueryViewController: UITableViewController {
                 website = .myvpn
             }
             let bvc = BrowserViewController.builtin(website: website)
+            bvc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
             present(bvc, animated: true)
         case .website:
             let url = URL(string: websites[indexPath.row]["url"]!)!

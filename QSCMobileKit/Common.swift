@@ -194,24 +194,6 @@ public enum LoginMethod: String {
     case ZJU_passport = "zju_passport"
 }
 
-//public func getCookie(username: String, password: String, method: LoginMethod) {
-//    let url =  "https://m.zjuqsc.com/api/v2/jw/validate?stuid=\(username)&pwd=\(password)&type=zju_passport&from=qsc_mobile_android"
-//    if  method == LoginMethod.ZJU_passport{
-//        Alamofire.request(url, method: .get).responseJSON {
-//            response in
-//            var props = Dictionary<HTTPCookiePropertyKey, Any>()
-//            props[HTTPCookiePropertyKey.name] = "cookie_for_zjuam"
-//            props[HTTPCookiePropertyKey.path] = "/"
-//            props[HTTPCookiePropertyKey.domain] = "jwbinfosys.zju.edu.cn"
-//            props[HTTPCookiePropertyKey.value] = JSON(response.result.value!)["cli_cookie"].string!
-//            let cookie = HTTPCookie(properties: props)
-//            _ = HTTPCookieStorage.shared.setCookie(cookie!)
-//        }
-//    } else {
-////        return
-//    }
-//}
-
 private func parse(_ data: String) -> String {
     let pattern = "ASP.NET_SessionId=(\\S*);"
     let regex = try! NSRegularExpression(pattern: pattern, options:[])
