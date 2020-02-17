@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Alamofire
+import SwiftyJSON
 
 let AppKey = "aq86L/EUgOPxD7ZJzr3rK4zBRyo8oVzF"
 
@@ -191,4 +192,61 @@ extension Notification.Name {
 public enum LoginMethod: String {
     case Jwb = "jwb"
     case ZJU_passport = "zju_passport"
+}
+
+//public func getCookie(username: String, password: String, method: LoginMethod) {
+//    let url =  "https://m.zjuqsc.com/api/v2/jw/validate?stuid=\(username)&pwd=\(password)&type=zju_passport&from=qsc_mobile_android"
+//    if  method == LoginMethod.ZJU_passport{
+//        Alamofire.request(url, method: .get).responseJSON {
+//            response in
+//            var props = Dictionary<HTTPCookiePropertyKey, Any>()
+//            props[HTTPCookiePropertyKey.name] = "cookie_for_zjuam"
+//            props[HTTPCookiePropertyKey.path] = "/"
+//            props[HTTPCookiePropertyKey.domain] = "jwbinfosys.zju.edu.cn"
+//            props[HTTPCookiePropertyKey.value] = JSON(response.result.value!)["cli_cookie"].string!
+//            let cookie = HTTPCookie(properties: props)
+//            _ = HTTPCookieStorage.shared.setCookie(cookie!)
+//        }
+//    } else {
+////        return
+//    }
+//}
+
+private func parse(_ data: String) -> String {
+    let pattern = "ASP.NET_SessionId=(\\S*);"
+    let regex = try! NSRegularExpression(pattern: pattern, options:[])
+    let matches = regex.matches(in: data, options: [], range: NSRange(data.startIndex...,in: data))
+    var subStr = [String]()
+    for match in matches {
+        subStr.append((data as NSString).substring(with: match.range))
+
+    }
+    let str:String = subStr.first!
+    let index = str.index(after: str.firstIndex(of: "=") ?? str.startIndex)
+    let finalIndex = str.index(before: str.endIndex)
+    return String(str[index..<finalIndex])
+}
+
+public func getCookie(username: String, password: String, method: LoginMethod) -> [HTTPCookiePropertyKey:Any] {
+    let urlForZjuam = "https://m.zjuqsc.com/api/v2/jw/validate?stuid=\(username)&pwd=\(password)&type=\(method.rawValue)&from=qsc_mobile_android"
+    let url = NSURL(string: urlForZjuam)!
+    let request = NSMutableURLRequest(url: url as URL)
+    request.httpMethod = "GET"
+    var response:URLResponse?
+    var props = Dictionary<HTTPCookiePropertyKey, Any>()
+    do{
+        let received:NSData? = try NSURLConnection.sendSynchronousRequest(request as URLRequest,
+                                                                          returning: &response) as NSData
+        let datastring = NSString(data:received! as Data, encoding: String.Encoding.utf8.rawValue)
+        if datastring != nil{
+            props[HTTPCookiePropertyKey.name] = "ASP.NET_SessionId"
+            props[HTTPCookiePropertyKey.path] = "/"
+            props[HTTPCookiePropertyKey.domain] = "jwbinfosys.zju.edu.cn"
+            props[HTTPCookiePropertyKey.value] = parse(datastring! as String)
+            return props
+        }
+    } catch let error as NSError{
+        print(error.description)
+    }
+    return props
 }

@@ -5,10 +5,10 @@
 //  Created by 孙耀珠 on 2016-05-10.
 //  Copyright © 2016年 QSC Tech. All rights reserved.
 //
-
 import UIKit
 import QSCMobileKit
-
+import Alamofire
+import SwiftyJSON
 // TODO: Change UIWebView to WKWebView
 class BrowserViewController: UIViewController {
     
@@ -22,22 +22,30 @@ class BrowserViewController: UIViewController {
     }
     
     enum Website: String {
-        case jwbinfosys = "http://jwbinfosys.zju.edu.cn/default2.aspx"
-        case mail       = "http://mail.zju.edu.cn/coremail/login.jsp"
+        case jwbinfosys = "http://jwbinfosys.zju.edu.cn/xsmain_pyjh.htm"
+        case mail      = "http://mail.zju.edu.cn/coremail/login.jsp"
         case myvpn      = "http://myvpn.zju.edu.cn/j_security_check"
     }
+    
     static func builtin(website: Website) -> BrowserViewController {
-        let accountManager = AccountManager.sharedInstance
         
+        let accountManager = AccountManager.sharedInstance
+        let loginMethod = accountManager.methodForUsername
         // TODO: Handle login errors
         let url = URL(string: website.rawValue)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         switch website {
         case .jwbinfosys:
+            request.httpMethod = "GET"
             let username = accountManager.currentAccountForJwbinfosys!.percentEncoded
             let password = accountManager.passwordForJwbinfosys(username)!.percentEncoded
-            request.httpBody = "__EVENTTARGET=Button1&__EVENTARGUMENT=&__VIEWSTATE=dDwxNTc0MzA5MTU4Ozs%2Bb5wKASjiu%2BfSjITNzcKuKXEUyXg%3D&TextBox1=\(username)&TextBox2=\(password)&RadioButtonList1=%D1%A7%C9%FA&Text1=".data(using: String.Encoding.ascii)
+            let props = getCookie(username: username, password: password, method: loginMethod[username]=="jwb" ? LoginMethod.Jwb : LoginMethod.ZJU_passport)
+            let cookie = HTTPCookie(properties: props)
+            let cstorage = HTTPCookieStorage.shared
+            if let cookie = cookie {
+                cstorage.setCookie(cookie)
+            }
         case .mail:
             let username = accountManager.accountForZjuwlan!.percentEncoded
             let password = accountManager.passwordForZjuwlan!.percentEncoded
@@ -89,7 +97,6 @@ class BrowserViewController: UIViewController {
     }
     
 }
-
 extension BrowserViewController: UINavigationBarDelegate {
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -97,7 +104,6 @@ extension BrowserViewController: UINavigationBarDelegate {
     }
     
 }
-
 extension BrowserViewController: UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
