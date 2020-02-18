@@ -40,11 +40,13 @@ class BrowserViewController: UIViewController {
             request.httpMethod = "GET"
             let username = accountManager.currentAccountForJwbinfosys!.percentEncoded
             let password = accountManager.passwordForJwbinfosys(username)!.percentEncoded
-            let props = getCookie(username: username, password: password, method: loginMethod[username]=="jwb" ? LoginMethod.Jwb : LoginMethod.ZJU_passport)
-            let cookie = HTTPCookie(properties: props)
-            let cstorage = HTTPCookieStorage.shared
-            if let cookie = cookie {
-                cstorage.setCookie(cookie)
+            DispatchQueue.global().async {
+                let props = getCookie(username: username, password: password, method: loginMethod[username]=="jwb" ? LoginMethod.Jwb : LoginMethod.ZJU_passport)
+                let cookie = HTTPCookie(properties: props)
+                let cstorage = HTTPCookieStorage.shared
+                if let cookie = cookie {
+                    cstorage.setCookie(cookie)
+                }
             }
         case .mail:
             let username = accountManager.accountForZjuwlan!.percentEncoded
