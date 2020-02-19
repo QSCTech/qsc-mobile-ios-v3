@@ -75,12 +75,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc func refreshErrorHandler(notification: Notification) {
         if let error = notification.userInfo?["error"] as? String {
             if error.contains("教务网通知") {
+                let studentId = AccountManager.sharedInstance.currentAccountForJwbinfosys!
+                if studentId.count < 10 { // Graduate student
+                    SVProgressHUD.showError(withStatus: error)
+                    return
+                }
                 SVProgressHUD.dismiss()
                 let alertController = UIAlertController(title: "刷新失败", message: "教务网通知，需确认后才能刷新", preferredStyle: .alert)
                 let goAction = UIAlertAction(title: "立即前往", style: .default) { action in
                     let bvc = BrowserViewController.builtin(website: .jwbinfosys)
                     bvc.webViewDidFinishLoadCallback = { webView in
-                        webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(AccountManager.sharedInstance.currentAccountForJwbinfosys!)")!))
+                        webView.loadRequest(URLRequest(url: URL(string:"http://jwbinfosys.zju.edu.cn/xskbcx.aspx?xh=\(studentId)")!))
                         bvc.webViewDidFinishLoadCallback = nil
                     }
                     UIApplication.topViewController()?.present(bvc, animated: true)

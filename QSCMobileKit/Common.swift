@@ -194,14 +194,14 @@ public enum LoginMethod: String {
     case ZJU_passport = "zju_passport"
 }
 
-private func parse(_ data: String) -> String {
+private func parse(_ data: String) -> String? {
     let pattern = "ASP.NET_SessionId=(\\S*);"
     let regex = try! NSRegularExpression(pattern: pattern, options:[])
     let matches = regex.matches(in: data, options: [], range: NSRange(data.startIndex...,in: data))
+    guard !matches.isEmpty else { return nil }
     var subStr = [String]()
     for match in matches {
         subStr.append((data as NSString).substring(with: match.range))
-
     }
     let str:String = subStr.first!
     let index = str.index(after: str.firstIndex(of: "=") ?? str.startIndex)
@@ -209,26 +209,27 @@ private func parse(_ data: String) -> String {
     return String(str[index..<finalIndex])
 }
 
-public func getCookie(username: String, password: String, method: LoginMethod) -> [HTTPCookiePropertyKey:Any] {
+public func getCookie(username: String, password: String, method: LoginMethod) -> [HTTPCookiePropertyKey:Any]? {
     let urlForZjuam = "https://m.zjuqsc.com/api/v2/jw/validate?stuid=\(username)&pwd=\(password)&type=\(method.rawValue)&from=qsc_mobile_android"
     let url = NSURL(string: urlForZjuam)!
     let request = NSMutableURLRequest(url: url as URL)
     request.httpMethod = "GET"
     var response:URLResponse?
     var props = Dictionary<HTTPCookiePropertyKey, Any>()
-    do{
-        let received:NSData? = try NSURLConnection.sendSynchronousRequest(request as URLRequest,
-                                                                          returning: &response) as NSData
-        let datastring = NSString(data:received! as Data, encoding: String.Encoding.utf8.rawValue)
-        if datastring != nil{
+    do {
+        let received:NSData? = try NSURLConnection.sendSynchronousRequest(request as URLRequest, returning: &response) as NSData
+        if let datastring = NSString(data:received! as Data, encoding: String.Encoding.utf8.rawValue) {
             props[HTTPCookiePropertyKey.name] = "ASP.NET_SessionId"
             props[HTTPCookiePropertyKey.path] = "/"
             props[HTTPCookiePropertyKey.domain] = "jwbinfosys.zju.edu.cn"
-            props[HTTPCookiePropertyKey.value] = parse(datastring! as String)
+            guard let cookieValue = parse(datastring as String) else { return nil }
+            props[HTTPCookiePropertyKey.value] = cookieValue
             return props
+        } else {
+            return nil
         }
     } catch let error as NSError{
         print(error.description)
+        return nil
     }
-    return props
 }
