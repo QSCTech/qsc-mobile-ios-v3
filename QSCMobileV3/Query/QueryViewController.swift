@@ -21,7 +21,8 @@ class QueryViewController: UITableViewController {
         static let count = 7
     }
     
-    let qsc = ["Box 云优盘", "水朝夕"]
+//    let qsc = ["Box 云优盘", "水朝夕"]
+    let qsc = ["Box 云优盘"]
     
     let login = ["本科生教务网", "浙大邮箱", "网络中心*"]
     
@@ -191,9 +192,9 @@ class QueryViewController: UITableViewController {
                 let storyboard = UIStoryboard(name: "Box", bundle: nil)
                 let vc = storyboard.instantiateInitialViewController()!
                 show(vc, sender: nil)
-            case 1:
-                let svc = SFSafariViewController(url: URL(string: TideURL)!)
-                present(svc, animated: true)
+//            case 1:
+//                let svc = SFSafariViewController(url: URL(string: TideURL)!)
+//                present(svc, animated: true)
             default:
                 break
             }
