@@ -1,4 +1,4 @@
-github "Alamofire/Alamofire"
+github "Alamofire/Alamofire" "4.8.2"
 github "SwiftyJSON/SwiftyJSON"
 github "kishikawakatsumi/KeychainAccess"
 github "Mozharovsky/CVCalendar"

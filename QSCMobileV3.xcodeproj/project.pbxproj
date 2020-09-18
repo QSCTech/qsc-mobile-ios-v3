@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -90,7 +90,7 @@
 		9D8E5E5E1D3E8163009D5881 /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8E5E5D1D3E8163009D5881 /* GaugeKit.framework */; };
 		9D914DC11D798FE900853981 /* NotificationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D914DC01D798FE900853981 /* NotificationTypeViewController.swift */; };
 		9D9540BE1E754D5E002495F9 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2697B9E61E752A6A00ECE931 /* ZipArchive.framework */; };
-		9D9540BF1E754D81002495F9 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */; };
+		9D9540BF1E754D81002495F9 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */; platformFilter = ios; };
 		9DA550551D86EFDD00FB3DA7 /* CurriculaTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA550541D86EFDD00FB3DA7 /* CurriculaTable.framework */; };
 		9DBC53A51D32ACCC006AA1BD /* BusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC53A41D32ACCC006AA1BD /* BusCell.swift */; };
 		9DBC53A91D32B00A006AA1BD /* BusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC53A81D32B00A006AA1BD /* BusCell.xib */; };
@@ -159,7 +159,7 @@
 		AE31A5321DC8217700A2CB33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */; };
 		AE31A5351DC8217700A2CB33 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31A5341DC8217700A2CB33 /* TodayViewController.swift */; };
 		AE31A5381DC8217700A2CB33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE31A5361DC8217700A2CB33 /* MainInterface.storyboard */; };
-		AE31A53C1DC8217700A2CB33 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AE31A5301DC8217700A2CB33 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AE31A53C1DC8217700A2CB33 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AE31A5301DC8217700A2CB33 /* TodayWidget.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AE31A5401DC857C600A2CB33 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		AE3432BC1DDEC6CF000D4D2A /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D031A2F1CE180BB008F3098 /* FontAwesome.otf */; };
 		AE563C161DDA640E00C05CA2 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AB4481CD783B30098451A /* KeychainAccess.framework */; };
@@ -177,7 +177,7 @@
 		AEDB72071FB9DCA700D6585D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDB72061FB9DCA700D6585D /* NotificationController.swift */; };
 		AEDB72091FB9DCA700D6585D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDB72081FB9DCA700D6585D /* ComplicationController.swift */; };
 		AEDB720B1FB9DCA700D6585D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEDB720A1FB9DCA700D6585D /* Assets.xcassets */; };
-		AEDB72101FB9DCA700D6585D /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AEDB71F11FB9DCA700D6585D /* WatchApp.app */; };
+		AEDB72101FB9DCA700D6585D /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AEDB71F11FB9DCA700D6585D /* WatchApp.app */; platformFilter = ios; };
 		AEFEB8471DE7122300E80BDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -1499,6 +1499,7 @@
 		};
 		AE31A53B1DC8217700A2CB33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = AE31A52F1DC8217700A2CB33 /* TodayWidget */;
 			targetProxy = AE31A53A1DC8217700A2CB33 /* PBXContainerItemProxy */;
 		};
@@ -1509,6 +1510,7 @@
 		};
 		AEDB720F1FB9DCA700D6585D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = AEDB71F01FB9DCA700D6585D /* WatchApp */;
 			targetProxy = AEDB720E1FB9DCA700D6585D /* PBXContainerItemProxy */;
 		};
@@ -1606,7 +1608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1657,10 +1659,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1685,7 +1688,11 @@
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/QSCMobileV3/Vendor";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
@@ -1693,6 +1700,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1720,7 +1728,11 @@
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/QSCMobileV3/Vendor";
 				INFOPLIST_FILE = QSCMobileV3/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
@@ -1728,6 +1740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "QSCMobileV3/QSCMobileV3-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1743,10 +1756,15 @@
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1761,10 +1779,15 @@
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1790,7 +1813,11 @@
 				);
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1821,7 +1848,11 @@
 				);
 				INFOPLIST_FILE = QSCMobileKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1845,10 +1876,15 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TodayWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1869,10 +1905,15 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TodayWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1947,7 +1988,11 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1974,7 +2019,11 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
