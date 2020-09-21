@@ -225,8 +225,15 @@ class QueryViewController: UITableViewController {
             let svc = SFSafariViewController(url: url)
             present(svc, animated: true)
         case .webpage:
-            let url = webpages[indexPath.row]["url"]!
+            var url = webpages[indexPath.row]["url"]!
+            let date = Date()
+            let format = DateFormatter()
+            format.dateFormat = "yyyyMMdd"
+            let formattedDate = format.string(from: date)
             let title = webpages[indexPath.row]["name"]!.replacingOccurrences(of: "*", with: "")
+            if indexPath.row == 2 {
+                url = url + "?date=" + formattedDate
+            }
             let wvc = WebViewController(url: url, title: title)
             show(wvc, sender: nil)
         default:
