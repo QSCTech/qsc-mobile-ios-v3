@@ -64,7 +64,7 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Preference(rawValue: section)! {
         case .about:
-            return "Copyright © 2016-2020 QSC Tech."
+            return "Copyright © 2016-2021 QSC Tech."
         default:
             return nil
         }
@@ -205,9 +205,6 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
                 let vc = AboutViewController()
                 vc.hidesBottomBarWhenPushed = true
                 show(vc, sender: nil)
-                if #available(iOS 10.3, *) {
-                    SKStoreReviewController.requestReview()
-                }
             case 1:
                 UIApplication.shared.openURL(URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=515794930")!)
             case 2:

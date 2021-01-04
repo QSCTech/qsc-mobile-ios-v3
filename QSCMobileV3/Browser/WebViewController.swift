@@ -33,7 +33,6 @@ class WebViewController: UIViewController {
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
-        webView.backgroundColor = UIColor.white
         view = webView
         
         navigationItem.title = name

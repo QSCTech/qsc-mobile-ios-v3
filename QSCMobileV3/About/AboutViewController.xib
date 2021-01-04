@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HiraginoMincho.ttc">
-            <string>HiraMinProN-W3</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="QSCMobileV3" customModuleProvider="target">
             <connections>
@@ -29,24 +22,24 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tpp-Kz-9Gm">
-                    <rect key="frame" x="126.5" y="59.5" width="122" height="100"/>
+                    <rect key="frame" x="126.5" y="69.5" width="122" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="122" id="gRI-Dk-Jaq"/>
                         <constraint firstAttribute="height" constant="100" id="tgz-pM-ZZJ"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 3.0.0 (Build 30015)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eR-2Z-ug4">
-                    <rect key="frame" x="94.5" y="175.5" width="186" height="18"/>
+                    <rect key="frame" x="94.5" y="185.5" width="186" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Yzyzsun" translatesAutoresizingMaskIntoConstraints="NO" id="ZJw-gq-jXo">
-                    <rect key="frame" x="87.5" y="241.5" width="80" height="80"/>
+                    <rect key="frame" x="87.5" y="251.5" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="rca-db-DoL"/>
                         <constraint firstAttribute="width" constant="80" id="uT1-tq-tsT"/>
@@ -58,7 +51,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <imageView clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iynix" translatesAutoresizingMaskIntoConstraints="NO" id="Zwk-Uj-JH9">
-                    <rect key="frame" x="207.5" y="241.5" width="80" height="80"/>
+                    <rect key="frame" x="207.5" y="251.5" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="VNR-8n-2yd"/>
                         <constraint firstAttribute="height" constant="80" id="Xb9-Xg-sXl"/>
@@ -70,7 +63,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <imageView clipsSubviews="YES" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rei" translatesAutoresizingMaskIntoConstraints="NO" id="JYj-Ul-CRH">
-                    <rect key="frame" x="87.5" y="380.5" width="80" height="80"/>
+                    <rect key="frame" x="87.5" y="390.5" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="me9-7a-YAy"/>
                         <constraint firstAttribute="width" constant="80" id="u5G-XS-lFG"/>
@@ -82,7 +75,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <imageView clipsSubviews="YES" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alej" translatesAutoresizingMaskIntoConstraints="NO" id="Yat-BX-hDV">
-                    <rect key="frame" x="207.5" y="380.5" width="80" height="80"/>
+                    <rect key="frame" x="207.5" y="390.5" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="DWW-Qp-0rp"/>
                         <constraint firstAttribute="width" constant="80" id="J7j-SR-phD"/>
@@ -94,55 +87,55 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孙耀珠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60U-DR-bVT">
-                    <rect key="frame" x="104.5" y="329.5" width="46" height="18"/>
+                    <rect key="frame" x="104.5" y="339.5" width="46" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姚心仪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpX-wm-UHK">
-                    <rect key="frame" x="224.5" y="329.5" width="46" height="18"/>
+                    <rect key="frame" x="224.5" y="339.5" width="46" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王朕" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tas-c9-rVz">
-                    <rect key="frame" x="231.5" y="468.5" width="31" height="18"/>
+                    <rect key="frame" x="232" y="478.5" width="31" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="边嘉蒙" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mel-kE-qHe">
-                    <rect key="frame" x="104.5" y="468.5" width="46" height="18"/>
+                    <rect key="frame" x="104.5" y="478.5" width="46" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[tech]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA5-F6-Efe">
-                    <rect key="frame" x="98.5" y="349.5" width="58" height="15"/>
+                    <rect key="frame" x="110.5" y="359.5" width="34" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[design]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hF-UJ-zZI">
-                    <rect key="frame" x="228.5" y="349.5" width="37" height="15"/>
+                    <rect key="frame" x="224" y="359.5" width="47" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[design]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUe-TK-aes">
-                    <rect key="frame" x="231.5" y="488.5" width="31" height="15"/>
+                    <rect key="frame" x="224" y="498.5" width="47" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[product]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEq-fP-sOm">
-                    <rect key="frame" x="114.5" y="488.5" width="26" height="15"/>
+                    <rect key="frame" x="100.5" y="498.5" width="54" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5Z-5e-97V">
-                    <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="579" width="375" height="44"/>
                     <items>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="FcB-zt-OiJ"/>
                         <barButtonItem title="版权信息" id="WgV-aw-7eq">
@@ -154,7 +147,7 @@
                     </items>
                 </toolbar>
                 <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inD-Mv-2w3">
-                    <rect key="frame" x="67" y="241.5" width="240" height="316.5"/>
+                    <rect key="frame" x="67.5" y="251.5" width="240" height="326.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="4e8-bm-74h"/>
@@ -163,9 +156,11 @@
 冷静に　丁寧に　正確に
 みんなの夢が叶いますように
 
-
 まゆゆ
-卒業おめでとう</string>
+卒業おめでとう
+
+2017-12-26</string>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
