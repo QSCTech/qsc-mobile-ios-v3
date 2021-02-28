@@ -72,10 +72,10 @@ public let QSCVersion: String = {
 }()
 
 public struct Event {
-    public enum Duration: Int {
+    public enum Duration: Int, Hashable {
         case allDay = 0, partialTime
     }
-    public enum Category: Int {
+    public enum Category: Int, Hashable {
         case course = 0, exam, lesson, quiz, activity, todo, bus
         
         public var name: String {

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
+		18BB194225EB9CB300373E4B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194125EB9CB300373E4B /* WidgetKit.framework */; };
+		18BB194425EB9CB300373E4B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194325EB9CB300373E4B /* SwiftUI.framework */; };
+		18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194625EB9CB300373E4B /* QSCWidget.swift */; };
+		18BB194A25EB9CB500373E4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BB194925EB9CB500373E4B /* Assets.xcassets */; };
+		18BB194C25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */; };
+		18BB194D25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */; };
+		18BB195025EB9CB500373E4B /* QSCWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		260741B52320A69E00C9484D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260741B42320A69E00C9484D /* Colors.swift */; };
 		2697B9CD1E7529FB00ECE931 /* BoxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697B9BD1E7529FB00ECE931 /* BoxColor.swift */; };
@@ -182,6 +189,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		18BB194E25EB9CB500373E4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18BB193F25EB9CB300373E4B;
+			remoteInfo = QSCWidgetExtension;
+		};
 		2697B9F41E752C3A00ECE931 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04C331BD1BA2F2E600EF959F /* Project object */;
@@ -237,6 +251,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				18BB195025EB9CB500373E4B /* QSCWidgetExtension.appex in Embed App Extensions */,
 				2697B9F61E752C3A00ECE931 /* ShareExtension.appex in Embed App Extensions */,
 				AE31A53C1DC8217700A2CB33 /* TodayWidget.appex in Embed App Extensions */,
 			);
@@ -273,6 +288,13 @@
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QSCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		18BB194125EB9CB300373E4B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		18BB194325EB9CB300373E4B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		18BB194625EB9CB300373E4B /* QSCWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCWidget.swift; sourceTree = "<group>"; };
+		18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = QSCWidget.intentdefinition; sourceTree = "<group>"; };
+		18BB194925EB9CB500373E4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18BB194B25EB9CB500373E4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2600363F1E752CBF0048DA05 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		260741B42320A69E00C9484D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2697B9BD1E7529FB00ECE931 /* BoxColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxColor.swift; sourceTree = "<group>"; };
@@ -470,6 +492,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18BB193D25EB9CB300373E4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BB194425EB9CB300373E4B /* SwiftUI.framework in Frameworks */,
+				18BB194225EB9CB300373E4B /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2697B9E91E752C3900ECE931 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +548,7 @@
 				2697B9ED1E752C3900ECE931 /* ShareExtension */,
 				AEDB71F21FB9DCA700D6585D /* WatchApp */,
 				AEDB72011FB9DCA700D6585D /* WatchApp Extension */,
+				18BB194525EB9CB300373E4B /* QSCWidget */,
 				9DF612801BAA8A03004B0A8A /* Frameworks */,
 				04C331C61BA2F2E600EF959F /* Products */,
 			);
@@ -531,6 +563,7 @@
 				2697B9EC1E752C3900ECE931 /* ShareExtension.appex */,
 				AEDB71F11FB9DCA700D6585D /* WatchApp.app */,
 				AEDB71FD1FB9DCA700D6585D /* WatchApp Extension.appex */,
+				18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -563,6 +596,17 @@
 				9DEF63841C12FB9000A70C5B /* Support Files */,
 			);
 			path = QSCMobileV3;
+			sourceTree = "<group>";
+		};
+		18BB194525EB9CB300373E4B /* QSCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				18BB194625EB9CB300373E4B /* QSCWidget.swift */,
+				18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */,
+				18BB194925EB9CB500373E4B /* Assets.xcassets */,
+				18BB194B25EB9CB500373E4B /* Info.plist */,
+			);
+			path = QSCWidget;
 			sourceTree = "<group>";
 		};
 		2697B9AD1E7529B500ECE931 /* Box */ = {
@@ -967,6 +1011,8 @@
 				9D7173651D3141BE0074043E /* libMobClickLibrary.a */,
 				9DEC20DC1DABB5E3001F35C1 /* libUMessage_Sdk_1.4.0.a */,
 				AE31A5311DC8217700A2CB33 /* NotificationCenter.framework */,
+				18BB194125EB9CB300373E4B /* WidgetKit.framework */,
+				18BB194325EB9CB300373E4B /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1041,11 +1087,29 @@
 				AE31A53B1DC8217700A2CB33 /* PBXTargetDependency */,
 				2697B9F51E752C3A00ECE931 /* PBXTargetDependency */,
 				AEDB720F1FB9DCA700D6585D /* PBXTargetDependency */,
+				18BB194F25EB9CB500373E4B /* PBXTargetDependency */,
 			);
 			name = QSCMobileV3;
 			productName = QSCMobileV3;
 			productReference = 04C331C51BA2F2E600EF959F /* QSCMobileV3.app */;
 			productType = "com.apple.product-type.application";
+		};
+		18BB193F25EB9CB300373E4B /* QSCWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18BB195325EB9CB500373E4B /* Build configuration list for PBXNativeTarget "QSCWidgetExtension" */;
+			buildPhases = (
+				18BB193C25EB9CB300373E4B /* Sources */,
+				18BB193D25EB9CB300373E4B /* Frameworks */,
+				18BB193E25EB9CB300373E4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QSCWidgetExtension;
+			productName = QSCWidgetExtension;
+			productReference = 18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		2697B9EB1E752C3900ECE931 /* ShareExtension */ = {
 			isa = PBXNativeTarget;
@@ -1139,7 +1203,7 @@
 		04C331BD1BA2F2E600EF959F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "QSC Tech";
 				TargetAttributes = {
@@ -1162,6 +1226,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					18BB193F25EB9CB300373E4B = {
+						CreatedOnToolsVersion = 12.4;
 					};
 					2697B9EB1E752C3900ECE931 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1225,6 +1292,7 @@
 				2697B9EB1E752C3900ECE931 /* ShareExtension */,
 				AEDB71F01FB9DCA700D6585D /* WatchApp */,
 				AEDB71FC1FB9DCA700D6585D /* WatchApp Extension */,
+				18BB193F25EB9CB300373E4B /* QSCWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1264,6 +1332,14 @@
 				9D3139861CE78C7500CD7DAD /* Copyright.html in Resources */,
 				9D031A301CE180BC008F3098 /* FontAwesome.otf in Resources */,
 				9D86A4451FC4A330005454BD /* EasterEgg.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BB193E25EB9CB300373E4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BB194A25EB9CB500373E4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1351,6 +1427,7 @@
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				260741B52320A69E00C9484D /* Colors.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
+				18BB194D25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */,
@@ -1402,6 +1479,15 @@
 				2697B9D71E7529FB00ECE931 /* QRCodeScannerView.swift in Sources */,
 				2697B9D81E7529FB00ECE931 /* QRCodeScannerViewController.swift in Sources */,
 				9D1CC3791DC73768004DA58E /* AboutViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BB193C25EB9CB300373E4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BB194C25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */,
+				18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1487,6 +1573,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		18BB194F25EB9CB500373E4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18BB193F25EB9CB300373E4B /* QSCWidgetExtension */;
+			targetProxy = 18BB194E25EB9CB500373E4B /* PBXContainerItemProxy */;
+		};
 		2697B9F51E752C3A00ECE931 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2697B9EB1E752C3900ECE931 /* ShareExtension */;
@@ -1745,6 +1836,74 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		18BB195125EB9CB500373E4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RURVDL9XJS;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = QSCWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.QSCWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		18BB195225EB9CB500373E4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RURVDL9XJS;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = QSCWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.QSCWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -2052,6 +2211,15 @@
 			buildConfigurations = (
 				04C331F01BA2F2E700EF959F /* Debug */,
 				04C331F11BA2F2E700EF959F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18BB195325EB9CB500373E4B /* Build configuration list for PBXNativeTarget "QSCWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18BB195125EB9CB500373E4B /* Debug */,
+				18BB195225EB9CB500373E4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
