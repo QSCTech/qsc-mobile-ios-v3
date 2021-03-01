@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 /// The mobile manager for JWBInfoSys. This class deals with login validation, data refresh and a variety of methods to filter data. Make sure current account exists or login validation is invoked before using instance methods. Singleton pattern is used here.
 public class MobileManager: NSObject {
@@ -367,6 +368,10 @@ public class MobileManager: NSObject {
                 NotificationCenter.default.post(name: .refreshError, object: nil, userInfo: ["error": error ?? ""])
                 callback()
             }
+        }
+        
+        if #available(iOSApplicationExtension 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     

@@ -63,8 +63,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/&#x6c42;&#x662f;&#x6f6e;">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AEDB71F01FB9DCA700D6585D"
@@ -72,7 +74,7 @@
             BlueprintName = "WatchApp"
             ReferencedContainer = "container:QSCMobileV3.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -80,8 +82,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/&#x6c42;&#x662f;&#x6f6e;">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AEDB71F01FB9DCA700D6585D"
@@ -89,7 +93,16 @@
             BlueprintName = "WatchApp"
             ReferencedContainer = "container:QSCMobileV3.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AEDB71F01FB9DCA700D6585D"
+            BuildableName = "WatchApp.app"
+            BlueprintName = "WatchApp"
+            ReferencedContainer = "container:QSCMobileV3.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

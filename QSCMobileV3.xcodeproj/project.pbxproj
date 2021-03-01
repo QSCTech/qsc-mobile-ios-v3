@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
+		186D4DB825ECAE5900FBFF29 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */; };
+		186D4EF425ED080400FBFF29 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		18BB194225EB9CB300373E4B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194125EB9CB300373E4B /* WidgetKit.framework */; };
 		18BB194425EB9CB300373E4B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194325EB9CB300373E4B /* SwiftUI.framework */; };
 		18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194625EB9CB300373E4B /* QSCWidget.swift */; };
@@ -288,6 +290,8 @@
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = QSCMobileV3/Vendor/FontAwesome.otf; sourceTree = "<group>"; };
+		186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QSCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QSCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BB194125EB9CB300373E4B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		18BB194325EB9CB300373E4B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -496,6 +500,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186D4EF425ED080400FBFF29 /* QSCMobileKit.framework in Frameworks */,
 				18BB194425EB9CB300373E4B /* SwiftUI.framework in Frameworks */,
 				18BB194225EB9CB300373E4B /* WidgetKit.framework in Frameworks */,
 			);
@@ -542,6 +547,8 @@
 		04C331BC1BA2F2E600EF959F = {
 			isa = PBXGroup;
 			children = (
+				186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */,
+				186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */,
 				04C331C71BA2F2E600EF959F /* QSCMobileV3 */,
 				9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */,
 				AE31A5331DC8217700A2CB33 /* TodayWidget */,
@@ -1340,6 +1347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BB194A25EB9CB500373E4B /* Assets.xcassets in Resources */,
+				186D4DB825ECAE5900FBFF29 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1414,7 +1422,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1851,10 +1859,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = QSCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = QSCWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -1886,10 +1896,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = QSCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = QSCWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;

@@ -89,7 +89,7 @@ let name3 = "概率论与数理统计"
 let place3 = "紫金港西2-202（录播研）#37"
 let simpleEvent3 = WidgetEvent(duration: Event.Duration.partialTime, category: Event.Category.course, tags: [], name: name3, time: time3, place: place3, start: startTime3, end: endTime3)
 
-let simpleEvents = [simpleEvent1, simpleEvent2, simpleEvent3]
+let simpleEvents = [simpleEvent1, simpleEvent2]
 
 let simpleConfig = ConfigurationIntent()
 
@@ -107,28 +107,37 @@ struct Provider: IntentTimelineProvider {
         var entries: [QSCWidgetEntry] = []
         let events = eventsForDate(Date())
         
-        let currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
-        for minuteOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
-            
-            let upcomingEvents = events.filter { $0.end >= entryDate }
-            let upcomingWidgetEvents = upcomingEvents.map{ return WidgetEvent(event: $0) }
-            
-            var style: EntryStyle
-            switch configuration.style {
-            case .concise:
-                style = .concise
-            default:
-                style = .detailed
+//        let currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
+        var currentDate = Date()
+        let oneMinute: TimeInterval = 60
+        
+        let upcomingEvents = events.filter { $0.end >= currentDate }
+        let upcomingWidgetEvents = upcomingEvents.map{ return WidgetEvent(event: $0) }
+//        let upcomingWidgetEvents = simpleEvents
+        let firstEvent: WidgetEvent? = upcomingWidgetEvents.first
+        
+        if let firstEvent = firstEvent {
+            while currentDate < firstEvent.end {
+                var style: EntryStyle
+                switch configuration.style {
+                case .concise:
+                    style = .concise
+                default:
+                    style = .detailed
+                }
+                
+                let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
+                entries.append(entry)
+                
+                currentDate += oneMinute
             }
-            
-            let entry = QSCWidgetEntry(date: entryDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
-            entries.append(entry)
-            
-        }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
+        } else {
+            let timeline = Timeline(entries: entries, policy: .never)
+            completion(timeline)
+        }
     }
 }
 
@@ -224,8 +233,12 @@ struct mediumWidgetView: View {
         return entry.events.first(where: { $0.duration == Event.Duration.partialTime })
     }
     
-    var upcomingEvents: [WidgetEvent] {
-        Array(entry.events.prefix(3))
+    var upcomingEvents: [WidgetEvent?] {
+        var upcomingEvents: [WidgetEvent?] = Array(entry.events.prefix(3))
+        for _ in upcomingEvents.endIndex ..< 3 {
+            upcomingEvents.append(nil)
+        }
+        return upcomingEvents
     }
     
     var body: some View {
@@ -237,10 +250,9 @@ struct mediumWidgetView: View {
                 default:
                     FirstEventView(firstEvent: firstEvent)
                 }
-                Spacer(minLength: 0)
                 EventsView(upcomingEvents: upcomingEvents)
+                Spacer(minLength: 0)
             }
-            .padding(.horizontal, 10.0)
         } else {
             NothingView()
         }
@@ -277,51 +289,50 @@ struct FirstEventView: View {
     let firstEvent: WidgetEvent
     
     var body: some View {
-        ZStack{
-            Color.white
-            VStack(alignment: .leading){
-                Text(firstEvent.name)
-                    .font(.system(size: 20, weight: .bold))
+        VStack(alignment: .leading){
+            Text(firstEvent.name)
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(firstEvent.mainColor)
+                .lineLimit(1)
+            Spacer()
+            if Date() < firstEvent.start {
+                Text("距日程开始")
+                    .font(.system(size: 12, weight: .light))
+                    .foregroundColor(.gray)
+                Text(firstEvent.start.timeIntervalSince(Date()).timeDescription)
+                    .font(.system(size: 32, weight: .bold))
                     .foregroundColor(firstEvent.mainColor)
-                    .lineLimit(1)
-                Spacer()
-                if Date() < firstEvent.start {
-                    Text("距日程开始")
-                        .font(.system(size: 12, weight: .light))
-                        .foregroundColor(.gray)
-                    Text(firstEvent.start.timeIntervalSince(Date()).timeDescription)
-                        .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(firstEvent.mainColor)
-                } else {
-                    Text("距日程结束")
-                        .font(.system(size: 12, weight: .light))
-                        .foregroundColor(.gray)
-                    Text(firstEvent.end.timeIntervalSince(Date()).timeDescription)
-                        .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(firstEvent.mainColor)
-                }
-                Spacer()
-                HStack{
-                    Text("\u{F041}")
-                        .font(.custom("FontAwesome", size: 12))
-                    Text(firstEvent.place)
-                        .font(.system(size: 12, weight: .light))
-                }
-                HStack{
-                    Text("\u{F017}")
-                        .font(.custom("FontAwesome", size: 12))
-                    let timeString = firstEvent.start.stringOfTime + "-" + firstEvent.end.stringOfTime
-                    Text(timeString)
-                        .font(.system(size: 12, weight: .light))
-                        .padding(.leading, -3)
-                }
-                .padding(.leading, -2)
-                
+            } else {
+                Text("距日程结束")
+                    .font(.system(size: 12, weight: .light))
+                    .foregroundColor(.gray)
+                Text(firstEvent.end.timeIntervalSince(Date()).timeDescription)
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundColor(firstEvent.mainColor)
             }
-            .frame(width: 135, height: 135, alignment: .leading)
-            .padding(.leading,  15)
+            Spacer()
+            HStack{
+                Text("\u{F041}")
+                    .font(.custom("FontAwesome", size: 12))
+                Text(firstEvent.place)
+                    .font(.system(size: 12, weight: .light))
+                    .lineLimit(1)
+            }
+            HStack{
+                Text("\u{F017}")
+                    .font(.custom("FontAwesome", size: 12))
+                let timeString = firstEvent.start.stringOfTime + "-" + firstEvent.end.stringOfTime
+                Text(timeString)
+                    .font(.system(size: 12, weight: .light))
+                    .lineLimit(1)
+                    .padding(.leading, -3)
+            }
+            .padding(.leading, -2)
+            .padding(.bottom, -2)
+            
         }
-        
+        .frame(width: 135, height: 135, alignment: .leading)
+        .padding(.leading, 15)
     }
 }
 
@@ -384,48 +395,59 @@ struct RingProgressView: View {
     }
 }
 struct EventCellView: View {
-    let event: WidgetEvent
+    let event: WidgetEvent?
     let cellHeight: CGFloat
     
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .stroke(event.mainColor, lineWidth: 1)
-            HStack{
-                VStack(alignment: .leading){
-                    Text(event.start.stringOfTime)
-                        .font(.system(size: 10))
-                        .foregroundColor(.gray)
-                    Text(event.end.stringOfTime)
-                        .font(.system(size: 10))
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical, 5.0)
-                .frame(width: 40)
+        if let event = event {
+            ZStack{
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(event.mainColor, lineWidth: 1)
                 HStack{
                     VStack(alignment: .leading){
-                        Text(event.name)
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundColor(.gray)
-                            .lineLimit(1)
-                        Text(event.place)
+                        Text(event.start.stringOfTime)
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
-                            .lineLimit(1)
+                        Text(event.end.stringOfTime)
+                            .font(.system(size: 10))
+                            .foregroundColor(.gray)
                     }
-                    Spacer(minLength: 0)
+                    .padding(.vertical, 5.0)
+                    .frame(width: 40)
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text(event.name)
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundColor(.gray)
+                                .lineLimit(1)
+                            Text(event.place)
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray)
+                                .lineLimit(1)
+                        }
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.vertical, 5.0)
+                    .frame(width: 110)
                 }
-                .padding(.vertical, 5.0)
-                .frame(width: 110)
             }
+            .frame(width: 165,height: cellHeight)
+        } else {
+            ZStack{
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(Color.gray, lineWidth: 1)
+                Text("无更多日程")
+                    .font(.system(size: 14))
+                    .foregroundColor(.gray)
+            }
+            .frame(width: 165,height: cellHeight)
         }
-        .frame(width: 165,height: cellHeight)
     }
     
 }
 
 struct EventsView: View {
-    var upcomingEvents: [WidgetEvent]
+    var upcomingEvents: [WidgetEvent?]
     var body: some View {
             VStack{
                 Spacer()
@@ -434,6 +456,7 @@ struct EventsView: View {
                     Spacer(minLength: 10)
                 }
             }
+            .padding(.leading, 3.0)
     }
 }
 
@@ -452,6 +475,7 @@ struct EventRingView: View {
         }
         .frame(width: 130 * multiplier)
         .padding(.vertical)
+        .padding(.horizontal, 10.0)
     }
 }
 
