@@ -9,7 +9,6 @@
 import UIKit
 import CVCalendar
 import QSCMobileKit
-import WidgetKit
 
 // MARK: - UIViewController
 class CalendarViewController: UIViewController {
@@ -352,10 +351,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CalendarViewController: EventEditViewControllerDelegate {
     func reloadTableView() {
-         self.viewWillAppear(true)
-        
-        if #available(iOS 14.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
+        self.viewWillAppear(true)
     }
 }

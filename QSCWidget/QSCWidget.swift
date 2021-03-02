@@ -119,7 +119,7 @@ let name3 = "概率论与数理统计"
 let place3 = "紫金港西2-202（录播研）#37"
 let simpleEvent3 = WidgetEvent(duration: Event.Duration.partialTime, category: Event.Category.course, tags: [], name: name3, time: time3, place: place3, start: startTime3, end: endTime3)
 
-let simpleEvents = [simpleEvent1, simpleEvent2]
+let simpleEvents: [WidgetEvent] = []
 
 let simpleConfig = ConfigurationIntent()
 
@@ -136,26 +136,23 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [QSCWidgetEntry] = []
         let events = eventsForDate(Date())
-        
         var currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60) + TimeInterval(1)
-//        var currentDate = Date()
         let oneMinute: TimeInterval = 60
         
         let upcomingEvents = events.filter { $0.end >= currentDate }
         let upcomingWidgetEvents = upcomingEvents.map{ return WidgetEvent(event: $0) }
-//        let upcomingWidgetEvents = simpleEvents
-        let firstEvent: WidgetEvent? = upcomingWidgetEvents.first
+        let firstEndEvent: WidgetEvent? = upcomingWidgetEvents.sorted { $0.end <= $1.end }.first
         
-        if let firstEvent = firstEvent {
-            while currentDate < firstEvent.end {
-                var style: EntryStyle
-                switch configuration.style {
-                case .concise:
-                    style = .concise
-                default:
-                    style = .detailed
-                }
-
+        var style: EntryStyle
+        switch configuration.style {
+        case .concise:
+            style = .concise
+        default:
+            style = .detailed
+        }
+        
+        if let firstEndEvent = firstEndEvent {
+            while currentDate < firstEndEvent.end {
                 let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
                 entries.append(entry)
 
@@ -165,7 +162,12 @@ struct Provider: IntentTimelineProvider {
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         } else {
-            let timeline = Timeline(entries: entries, policy: .never)
+            let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
+            
+            entries.append(entry)
+            
+            let timeline = Timeline(entries: entries, policy: .after(currentDate.tomorrow))
+            
             completion(timeline)
         }
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import WidgetKit
 
 public class EventManager: NSObject {
     
@@ -156,6 +157,10 @@ public class EventManager: NSObject {
     public func removeCustomEvent(_ event: CustomEvent) {
         managedObjectContext.delete(event)
         try! managedObjectContext.save()
+        
+        if #available(iOSApplicationExtension 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
     public func newHomeworkOfCourseEvent(_ courseEvent: CourseEvent) -> Homework {
@@ -173,6 +178,10 @@ public class EventManager: NSObject {
     
     public func save() {
         try! managedObjectContext.save()
+        
+        if #available(iOSApplicationExtension 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
 }
