@@ -38,6 +38,8 @@ public class QSCColor {
     public static let bus = UIColor(red: 0.451, green: 0.804, blue: 0.122, alpha: 1.0) // #73CD1F
     public static let autobús = UIColor(red: 0.039, green: 0.733, blue: 0.27, alpha: 1.0) // #0ABB07
     
+    public static let gray = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 0.6)
+    
     public static func category(_ cat: Event.Category) -> UIColor {
         switch cat {
         case .course, .lesson:

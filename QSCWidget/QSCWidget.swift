@@ -60,6 +60,36 @@ struct WidgetEvent: Hashable{
         self.start = start
         self.end = end
     }
+    
+    var toStartText: String {
+        switch category {
+        case .course, .lesson:
+            return "距上课"
+        case .exam, .quiz:
+            return "距考试开始"
+        case .activity:
+            return "距活动开始"
+        case .todo:
+            return "距日程开始"
+        case .bus:
+            return "距校车出发"
+        }
+    }
+    
+    var toEndText: String {
+        switch category {
+        case .course, .lesson:
+            return "距下课"
+        case .exam, .quiz:
+            return "距考试结束"
+        case .activity:
+            return "距活动结束"
+        case .todo:
+            return "距日程结束"
+        case .bus:
+            return "距校车到达"
+        }
+    }
 }
 
 enum EntryStyle {
@@ -73,7 +103,7 @@ let endTime1 = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
 let time1 = startTime1.stringOfDatetime + "-" + endTime1.stringOfDatetime
 let name1 = "沟通技巧"
 let place1 = "紫金港西2-103（录播)"
-let simpleEvent1 = WidgetEvent(duration: Event.Duration.partialTime, category: Event.Category.course, tags: [], name: name1, time: time1, place: place1, start: startTime1, end: endTime1)
+let simpleEvent1 = WidgetEvent(duration: Event.Duration.partialTime, category: Event.Category.bus, tags: [], name: name1, time: time1, place: place1, start: startTime1, end: endTime1)
 
 let startTime2 = Calendar.current.date(byAdding: .hour, value: 2, to: Date())!
 let endTime2 = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
@@ -107,8 +137,8 @@ struct Provider: IntentTimelineProvider {
         var entries: [QSCWidgetEntry] = []
         let events = eventsForDate(Date())
         
-//        let currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
-        var currentDate = Date()
+        var currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60) + TimeInterval(1)
+//        var currentDate = Date()
         let oneMinute: TimeInterval = 60
         
         let upcomingEvents = events.filter { $0.end >= currentDate }
@@ -125,10 +155,10 @@ struct Provider: IntentTimelineProvider {
                 default:
                     style = .detailed
                 }
-                
+
                 let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
                 entries.append(entry)
-                
+
                 currentDate += oneMinute
             }
 
@@ -212,11 +242,11 @@ struct smallWidgetView: View {
             switch entry.style {
             case .concise:
                 HStack{
-                    EventRingView(event: firstEvent, multiplier: 1)
+                    EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 1)
                 }
             default:
                 HStack{
-                    FirstEventView(firstEvent: firstEvent)
+                    FirstEventView(firstEvent: firstEvent, currentDate: entry.date)
                     Spacer(minLength: 0)
                 }
             }
@@ -246,9 +276,9 @@ struct mediumWidgetView: View {
             HStack{
                 switch entry.style {
                 case .concise:
-                    EventRingView(event: firstEvent, multiplier: 1)
+                    EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 1)
                 default:
-                    FirstEventView(firstEvent: firstEvent)
+                    FirstEventView(firstEvent: firstEvent, currentDate: entry.date)
                 }
                 EventsView(upcomingEvents: upcomingEvents)
                 Spacer(minLength: 0)
@@ -271,11 +301,11 @@ struct largeWidgetView: View {
             switch entry.style {
             case .concise:
                 HStack{
-                    EventRingView(event: firstEvent, multiplier: 2.4)
+                    EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 2.4)
                 }
             default:
                 HStack{
-                    FirstEventView(firstEvent: firstEvent)
+                    FirstEventView(firstEvent: firstEvent, currentDate: entry.date)
                     Spacer(minLength: 0)
                 }
             }
@@ -287,26 +317,34 @@ struct largeWidgetView: View {
 
 struct FirstEventView: View {
     let firstEvent: WidgetEvent
+    let currentDate: Date
+    
+    static let taskDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
+    }()
     
     var body: some View {
         VStack(alignment: .leading){
+//            Text("\(currentDate, formatter: Self.taskDateFormat)")
             Text(firstEvent.name)
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(firstEvent.mainColor)
                 .lineLimit(1)
             Spacer()
-            if Date() < firstEvent.start {
-                Text("距日程开始")
+            if currentDate < firstEvent.start {
+                Text(firstEvent.toStartText)
                     .font(.system(size: 12, weight: .light))
                     .foregroundColor(.gray)
-                Text(firstEvent.start.timeIntervalSince(Date()).timeDescription)
+                Text(firstEvent.start.timeIntervalSince(currentDate).timeDescription)
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(firstEvent.mainColor)
             } else {
-                Text("距日程结束")
+                Text(firstEvent.toEndText)
                     .font(.system(size: 12, weight: .light))
                     .foregroundColor(.gray)
-                Text(firstEvent.end.timeIntervalSince(Date()).timeDescription)
+                Text(firstEvent.end.timeIntervalSince(currentDate).timeDescription)
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(firstEvent.mainColor)
             }
@@ -338,15 +376,16 @@ struct FirstEventView: View {
 
 struct RingProgressView: View {
     let event: WidgetEvent
+    let currentDate: Date
     var width: CGFloat = 80
     var percent: CGFloat {
-        if Date().tomorrow <= event.start {
-            let days = Int(event.start.today.timeIntervalSince(Date().today) / 86400)
+        if currentDate.tomorrow <= event.start {
+            let days = Int(event.start.today.timeIntervalSince(currentDate.today) / 86400)
             return CGFloat(30 - days) / 30.0
         } else if Date() < event.start {
-            return CGFloat(Date().timeIntervalSince(Date().today)) / CGFloat(event.start.timeIntervalSince(Date().today))
-        } else if Date() <= event.end {
-            return CGFloat(Date().timeIntervalSince(event.start)) / CGFloat(event.end.timeIntervalSince(event.start))
+            return CGFloat(Date().timeIntervalSince(currentDate.today)) / CGFloat(event.start.timeIntervalSince(currentDate.today))
+        } else if currentDate <= event.end {
+            return CGFloat(currentDate.timeIntervalSince(event.start)) / CGFloat(event.end.timeIntervalSince(event.start))
         } else {
             return 0
         }
@@ -360,7 +399,7 @@ struct RingProgressView: View {
         
         ZStack {
             Circle()
-                .stroke(Color.black.opacity(0.1),
+                .stroke(Color(QSCColor.gray),
                         style: StrokeStyle(lineWidth: 5 * mutiplier))
                 .frame(width: width, height: width)
             
@@ -375,18 +414,18 @@ struct RingProgressView: View {
                 .frame(width: width, height: width)
                 .shadow(color: color1.opacity(0.1), radius: 3, x: 0, y: 3)
             VStack{
-                if Date() < event.start {
-                    Text("距开始")
-                        .font(.system(size: 10 * mutiplier, weight: .light))
+                if currentDate < event.start {
+                    Text(event.toStartText)
+                        .font(.system(size: 9 * mutiplier, weight: .light))
                         .foregroundColor(.gray)
-                    Text(event.start.timeIntervalSince(Date()).timeDescription)
+                    Text(event.start.timeIntervalSince(currentDate).timeDescription)
                         .font(.system(size: 20 * mutiplier, weight: .bold))
                         .foregroundColor(event.mainColor)
                 } else {
-                    Text("距结束")
-                        .font(.system(size: 10 * mutiplier, weight: .light))
+                    Text(event.toEndText)
+                        .font(.system(size: 9 * mutiplier, weight: .light))
                         .foregroundColor(.gray)
-                    Text(event.end.timeIntervalSince(Date()).timeDescription)
+                    Text(event.end.timeIntervalSince(currentDate).timeDescription)
                         .font(.system(size: 20 * mutiplier, weight: .bold))
                         .foregroundColor(event.mainColor)
                 }
@@ -462,19 +501,28 @@ struct EventsView: View {
 
 struct EventRingView: View {
     var event: WidgetEvent
+    var currentDate: Date
     var multiplier: CGFloat
+    
+    static let taskDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
+    }()
     
     var body: some View {
         VStack{
+//            Text("\(currentDate, formatter: Self.taskDateFormat)")
             Text(event.name)
                 .font(.system(size: 20 * multiplier, weight: .bold))
                 .foregroundColor(event.mainColor)
                 .lineLimit(1)
             Spacer()
-            RingProgressView(event: event, width: 100 * multiplier, color1: event.mainColor, color2: event.mainColor)
+            RingProgressView(event: event, currentDate: currentDate, width: 100 * multiplier, color1: event.mainColor, color2: event.mainColor)
         }
         .frame(width: 130 * multiplier)
-        .padding(.vertical)
+        .padding(.top, 14.0)
+        .padding(.bottom, 16.0)
         .padding(.horizontal, 10.0)
     }
 }
