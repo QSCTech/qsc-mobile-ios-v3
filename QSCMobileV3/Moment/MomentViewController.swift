@@ -16,7 +16,7 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
-    
+
     @IBOutlet weak var stackView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
@@ -50,7 +50,7 @@ class MomentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        events = eventsForDate(Date()).filter { $0.end >= Date() }
+        events = eventsForDate(UTC8Date()).filter { $0.end >= UTC8Date() }
         if AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
             events += MobileManager.sharedInstance.comingExams
         }
@@ -143,7 +143,7 @@ class MomentViewController: UIViewController {
                 }
                 NotificationCenter.default.removeObserver(observer)
                 self.refreshButton.isEnabled = true
-                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
+                groupDefaults.set(UTC8Date(), forKey: LastRefreshDateKey)
             }
         } else {
             SVProgressHUD.showError(withStatus: "请先登录")

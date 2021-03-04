@@ -90,6 +90,19 @@ struct WidgetEvent: Hashable{
             return "距校车到达"
         }
     }
+    
+    func timeString(_ date: Date) -> String {
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            if self.category == .todo {
+                formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
+            }
+            formatter.dateFormat = "hh:mm"
+            return formatter
+        }()
+        
+        return dateFormatter.string(from: date)
+    }
 }
 
 enum EntryStyle {
@@ -136,7 +149,7 @@ func RatioLen(_ length: CGFloat) -> CGFloat {
     } else if iPhoneHeight == 568 {
         return length * 141 / widgetTargetWidth
     } else {
-        return length * iPhoneHeight / 844
+        return length
     }
 }
 
@@ -146,7 +159,7 @@ let endTime1 = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
 let time1 = startTime1.stringOfDatetime + "-" + endTime1.stringOfDatetime
 let name1 = "沟通技巧"
 let place1 = "紫金港西2-103（录播)"
-let simpleEvent1 = WidgetEvent(duration: Event.Duration.allDay, category: Event.Category.bus, tags: [], name: name1, time: time1, place: place1, start: startTime1, end: endTime1)
+let simpleEvent1 = WidgetEvent(duration: Event.Duration.allDay, category: Event.Category.course, tags: [], name: name1, time: time1, place: place1, start: startTime1, end: endTime1)
 
 let startTime2 = Calendar.current.date(byAdding: .hour, value: 2, to: Date())!
 let endTime2 = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
@@ -168,7 +181,7 @@ let simpleConfig = ConfigurationIntent()
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> QSCWidgetEntry {
-        QSCWidgetEntry(date: Date(), configuration: ConfigurationIntent(), events: simpleEvents, style: .concise)
+        QSCWidgetEntry(date: Date(), configuration: ConfigurationIntent(), events: [simpleEvent1, simpleEvent2], style: .concise)
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (QSCWidgetEntry) -> ()) {
@@ -178,7 +191,7 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [QSCWidgetEntry] = []
-        let events = eventsForDate(Date())
+        let events = eventsForDate(UTC8Date())
         var currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60) + TimeInterval(1)
         let oneMinute: TimeInterval = 60
         
@@ -195,7 +208,7 @@ struct Provider: IntentTimelineProvider {
         }
         
         for _ in 0 ..< 60 {
-            upcomingWidgetEvents = upcomingWidgetEvents.filter{ $0.end > currentDate }
+            upcomingWidgetEvents = upcomingWidgetEvents.filter{ $0.end > UTC8Date(from: currentDate) }
             let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
             entries.append(entry)
             currentDate += oneMinute
@@ -255,9 +268,9 @@ struct QSCWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             QSCWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .configurationDisplayName("求是潮")
+        .description("这是求是潮小组件")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
@@ -288,9 +301,9 @@ struct smallWidgetView: View {
             HStack{
                 switch entry.style {
                 case .concise:
-                        EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 1)
+                        EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1)
                 default:
-                        FirstEventView(firstEvent: firstEvent, currentDate: entry.date)
+                        FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date))
                         Spacer(minLength: 0)
                 }
             }
@@ -321,9 +334,9 @@ struct mediumWidgetView: View {
             HStack{
                 switch entry.style {
                 case .concise:
-                    EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 1)
+                    EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1)
                 default:
-                    FirstEventView(firstEvent: firstEvent, currentDate: entry.date)
+                    FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date))
                 }
                 Spacer(minLength: 0)
                 EventsView(upcomingEvents: upcomingEvents)
@@ -364,12 +377,6 @@ struct FirstEventView: View {
     let firstEvent: WidgetEvent
     let currentDate: Date
     
-    static let taskDateFormat: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
-        return formatter
-    }()
-    
     var body: some View {
         VStack(alignment: .leading){
             Text(firstEvent.name)
@@ -403,7 +410,7 @@ struct FirstEventView: View {
             HStack{
                 Text("\u{F017}")
                     .font(.custom("FontAwesome", size: RatioLen(12)))
-                let timeString = firstEvent.duration == Event.Duration.partialTime ? firstEvent.start.stringOfTime + "-" + firstEvent.end.stringOfTime : "全天"
+                let timeString = firstEvent.duration == Event.Duration.partialTime ? firstEvent.timeString(firstEvent.start) + "-" + firstEvent.timeString(firstEvent.end) : "全天"
                 Text(timeString)
                     .font(.system(size: RatioLen(12), weight: .light))
                     .lineLimit(1)
@@ -490,10 +497,10 @@ struct EventCellView: View {
                 HStack{
                     if event.duration == Event.Duration.partialTime {
                         VStack(alignment: .leading){
-                            Text(event.start.stringOfTime)
+                            Text(event.timeString(event.start))
                                 .font(.system(size: RatioLen(10)))
                                 .foregroundColor(.gray)
-                            Text(event.end.stringOfTime)
+                            Text(event.timeString(event.end))
                                 .font(.system(size: RatioLen(10)))
                                 .foregroundColor(.gray)
                         }

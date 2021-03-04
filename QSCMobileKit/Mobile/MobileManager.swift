@@ -371,7 +371,9 @@ public class MobileManager: NSObject {
         }
         
         if #available(iOSApplicationExtension 14.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
+            #if arch(arm64) || arch(i386) || arch(x86_64)
+                WidgetCenter.shared.reloadAllTimelines()
+            #endif
         }
     }
     

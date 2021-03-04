@@ -16,7 +16,7 @@ class CalendarViewController: UIViewController {
     let mobileManager = MobileManager.sharedInstance
     let calendarManager = CalendarManager.sharedInstance
     
-    var selectedDate = Date()
+    var selectedDate = UTC8Date()
     var selectedEvent: Event!
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
