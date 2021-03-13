@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FTZ-lG-tnN">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FTZ-lG-tnN">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-bJ-nA7">
-                                <rect key="frame" x="363" y="24" width="31" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-bJ-nA7">
+                                <rect key="frame" x="363" y="4" width="31" height="30"/>
                                 <state key="normal" title="关闭">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -30,11 +26,12 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="yXp-wG-IR9">
-                                <rect key="frame" x="188" y="21" width="39" height="37"/>
+                                <rect key="frame" x="146.33333333333334" y="5.3333333333333339" width="121.33333333333334" height="27.333333333333329"/>
                                 <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="PRm-lH-nuF"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yXp-wG-IR9" firstAttribute="centerY" secondItem="SWO-bJ-nA7" secondAttribute="centerY" id="WpI-h4-cSH"/>
@@ -42,7 +39,6 @@
                             <constraint firstItem="SWO-bJ-nA7" firstAttribute="trailing" secondItem="WCL-aV-I1C" secondAttribute="trailingMargin" id="j6g-2L-znu"/>
                             <constraint firstItem="yXp-wG-IR9" firstAttribute="centerX" secondItem="WCL-aV-I1C" secondAttribute="centerX" id="xG3-Z7-NmK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PRm-lH-nuF"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="SWO-bJ-nA7" id="mfk-oq-VX3"/>
@@ -68,13 +64,13 @@
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="c0e-ll-YfN"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1YQ-44-cuG" firstAttribute="centerY" secondItem="OLF-Ce-cZR" secondAttribute="centerY" id="82w-BW-kXQ"/>
                             <constraint firstItem="c0e-ll-YfN" firstAttribute="trailing" secondItem="1YQ-44-cuG" secondAttribute="trailing" id="9Mb-kC-5rj"/>
                             <constraint firstItem="1YQ-44-cuG" firstAttribute="leading" secondItem="c0e-ll-YfN" secondAttribute="leading" id="OS5-cv-Wt9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="c0e-ll-YfN"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1E-Jz-zsT" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -192,6 +192,9 @@ extension String {
         }
     }
     
+    public var simplifiedPlaceString: String {
+        return self.replacingOccurrences(of: "曹光彪西楼", with: "曹西")
+    }
 }
 
 public func += (left: inout String!, right: String) {

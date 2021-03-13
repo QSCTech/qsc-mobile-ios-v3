@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
+		184A329B25FBBFCF009B37BD /* SimpleEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A329A25FBBFCF009B37BD /* SimpleEvents.swift */; };
 		186D4DB825ECAE5900FBFF29 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */; };
 		186D4EF425ED080400FBFF29 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		18BB194225EB9CB300373E4B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194125EB9CB300373E4B /* WidgetKit.framework */; };
@@ -290,6 +291,7 @@
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		184A329A25FBBFCF009B37BD /* SimpleEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEvents.swift; sourceTree = "<group>"; };
 		186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = QSCMobileV3/Vendor/FontAwesome.otf; sourceTree = "<group>"; };
 		186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QSCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QSCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -613,6 +615,7 @@
 				18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */,
 				18BB194925EB9CB500373E4B /* Assets.xcassets */,
 				18BB194B25EB9CB500373E4B /* Info.plist */,
+				184A329A25FBBFCF009B37BD /* SimpleEvents.swift */,
 			);
 			path = QSCWidget;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BB194C25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */,
+				184A329B25FBBFCF009B37BD /* SimpleEvents.swift in Sources */,
 				18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

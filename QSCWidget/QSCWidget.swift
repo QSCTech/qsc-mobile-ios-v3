@@ -23,20 +23,7 @@ struct WidgetEvent: Hashable{
     let end: Date
     
     var mainColor: Color {
-        switch self.category {
-        case .activity:
-            return Color(QSCColor.activity)
-        case .bus:
-            return Color(QSCColor.bus)
-        case .course:
-            return Color(QSCColor.course)
-        case .exam:
-            return Color(QSCColor.exam)
-        case .todo:
-            return Color(QSCColor.todo)
-        default:
-            return Color.black
-        }
+        return Color(QSCColor.category(self.category))
     }
     
     init(event: Event) {
@@ -105,6 +92,31 @@ struct WidgetEvent: Hashable{
     }
 }
 
+struct QSCWidgetEntry: TimelineEntry {
+    let date: Date
+    let configuration: ConfigurationIntent
+    
+    let events: [WidgetEvent]
+    let tomorrowEvents: [WidgetEvent]
+    let style: EntryStyle
+    
+    var firstEvent: WidgetEvent? {
+        return self.events.first(where: { $0.duration == Event.Duration.partialTime }) ?? self.events.first(where: { $0.duration == Event.Duration.allDay }) ?? self.tomorrowEvents.first(where: { $0.duration == Event.Duration.partialTime }) ?? self.tomorrowEvents.first(where: { $0.duration == Event.Duration.allDay })
+    }
+    
+    var isTomorrow: Bool {
+        return self.events.count == 0
+    }
+    
+    var upcomingEvents: [WidgetEvent?] {
+        var upcomingEvents: [WidgetEvent?] = Array(self.isTomorrow ? self.tomorrowEvents.prefix(2) : self.events.prefix(3))
+        for _ in upcomingEvents.endIndex ..< (self.isTomorrow ? 2 : 3) {
+            upcomingEvents.append(nil)
+        }
+        return upcomingEvents
+    }
+}
+
 enum EntryStyle {
     case detailed
     case concise
@@ -153,39 +165,15 @@ func RatioLen(_ length: CGFloat) -> CGFloat {
     }
 }
 
-let startTime1 = Calendar.current.date(byAdding: .minute, value: -30, to: Date())!
-let endTime1 = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
-
-let time1 = startTime1.stringOfDatetime + "-" + endTime1.stringOfDatetime
-let name1 = "沟通技巧"
-let place1 = "紫金港西2-103（录播)"
-let simpleEvent1 = WidgetEvent(duration: Event.Duration.allDay, category: Event.Category.course, tags: [], name: name1, time: time1, place: place1, start: startTime1, end: endTime1)
-
-let startTime2 = Calendar.current.date(byAdding: .hour, value: 2, to: Date())!
-let endTime2 = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
-let time2 = startTime2.stringOfDatetime + "-" + endTime2.stringOfDatetime
-let name2 = "面向对象程序设计"
-let place2 = "紫金港西1-102（录播）"
-let simpleEvent2 = WidgetEvent(duration: Event.Duration.allDay, category: Event.Category.course, tags: [], name: name2, time: time2, place: place2, start: startTime2, end: endTime2)
-
-let startTime3 = Calendar.current.date(byAdding: .hour, value: 4, to: Date())!
-let endTime3 = Calendar.current.date(byAdding: .hour, value: 5, to: Date())!
-let time3 = startTime3.stringOfDatetime + "-" + endTime3.stringOfDatetime
-let name3 = "概率论与数理统计"
-let place3 = "紫金港西2-202（录播研）#37"
-let simpleEvent3 = WidgetEvent(duration: Event.Duration.partialTime, category: Event.Category.course, tags: [], name: name3, time: time3, place: place3, start: startTime3, end: endTime3)
-
-let simpleEvents: [WidgetEvent] = []
-
 let simpleConfig = ConfigurationIntent()
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> QSCWidgetEntry {
-        QSCWidgetEntry(date: Date(), configuration: ConfigurationIntent(), events: [simpleEvent1, simpleEvent2], style: .concise)
+        QSCWidgetEntry(date: Date(), configuration: ConfigurationIntent(), events: [simpleEvent1, simpleEvent2], tomorrowEvents: [], style: .concise)
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (QSCWidgetEntry) -> ()) {
-        let entry = QSCWidgetEntry(date: Date(), configuration: configuration, events: simpleEvents, style: .concise)
+        let entry = QSCWidgetEntry(date: Date(), configuration: configuration, events: simpleEvents, tomorrowEvents: [], style: .concise)
         completion(entry)
     }
 
@@ -198,7 +186,7 @@ struct Provider: IntentTimelineProvider {
         let upcomingEvents = events.filter { $0.end > currentDate }
         var upcomingWidgetEvents = upcomingEvents.map{ return WidgetEvent(event: $0) }
         let firstEndEvent: WidgetEvent? = upcomingWidgetEvents.sorted { $0.end <= $1.end }.first
-        
+        let tomorrowWidgetEvents: [WidgetEvent] = upcomingEvents.count == 0 ? eventsForDate(UTC8Date().tomorrow).map{ return WidgetEvent(event: $0)} : []
         var style: EntryStyle
         switch configuration.style {
         case .concise:
@@ -209,7 +197,8 @@ struct Provider: IntentTimelineProvider {
         
         for _ in 0 ..< 60 {
             upcomingWidgetEvents = upcomingWidgetEvents.filter{ $0.end > UTC8Date(from: currentDate) }
-            let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, style: style)
+            
+            let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, tomorrowEvents: tomorrowWidgetEvents, style: style)
             entries.append(entry)
             currentDate += oneMinute
         }
@@ -224,14 +213,6 @@ struct Provider: IntentTimelineProvider {
         let timeline = Timeline(entries: entries, policy: .after(reloadDate))
         completion(timeline)
     }
-}
-
-struct QSCWidgetEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationIntent
-    
-    let events: [WidgetEvent]
-    let style: EntryStyle
 }
 
 struct QSCWidgetEntryView : View {
@@ -276,15 +257,15 @@ struct QSCWidget: Widget {
 
 struct QSCWidget_Previews: PreviewProvider {
     static var previews: some View {
-        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, style: .concise))
+        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, tomorrowEvents: simpleTomorrowEvents, style: .concise))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
-        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, style: .detailed))
+        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, tomorrowEvents: simpleTomorrowEvents, style: .detailed))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
-        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, style: .concise))
+        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, tomorrowEvents: simpleTomorrowEvents, style: .concise))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
-        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, style: .detailed))
+        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, tomorrowEvents: simpleTomorrowEvents, style: .detailed))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
-        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, style: .concise))
+        QSCWidgetEntryView(entry: QSCWidgetEntry(date: Date(), configuration: simpleConfig, events: simpleEvents, tomorrowEvents: simpleTomorrowEvents, style: .concise))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
@@ -292,23 +273,22 @@ struct QSCWidget_Previews: PreviewProvider {
 struct smallWidgetView: View {
     var entry: Provider.Entry
     
-    var firstEvent: WidgetEvent? {
-        return entry.events.first(where: { $0.duration == Event.Duration.partialTime }) != nil ? entry.events.first(where: { $0.duration == Event.Duration.partialTime }) :  entry.events.first(where: { $0.duration == Event.Duration.allDay })
-    }
-    
     var body: some View {
-        if let firstEvent = firstEvent {
-            HStack{
-                switch entry.style {
-                case .concise:
-                        EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1)
-                default:
-                        FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date))
-                        Spacer(minLength: 0)
+        ZStack{
+            WidgetBackground()
+            if let firstEvent = entry.firstEvent {
+                HStack{
+                    switch entry.style {
+                    case .concise:
+                        EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1, isTomorrow: entry.isTomorrow)
+                    default:
+                        FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date), isTomorrow: entry.isTomorrow)
+                            Spacer(minLength: 0)
+                    }
                 }
+            } else {
+                NothingView()
             }
-        } else {
-            NothingView()
         }
     }
     
@@ -317,32 +297,23 @@ struct smallWidgetView: View {
 struct mediumWidgetView: View {
     let entry: Provider.Entry
     
-    var firstEvent: WidgetEvent? {
-        return entry.events.first(where: { $0.duration == Event.Duration.partialTime }) != nil ? entry.events.first(where: { $0.duration == Event.Duration.partialTime }) :  entry.events.first(where: { $0.duration == Event.Duration.allDay })
-    }
-    
-    var upcomingEvents: [WidgetEvent?] {
-        var upcomingEvents: [WidgetEvent?] = Array(entry.events.prefix(3))
-        for _ in upcomingEvents.endIndex ..< 3 {
-            upcomingEvents.append(nil)
-        }
-        return upcomingEvents
-    }
-    
     var body: some View {
-        if let firstEvent = firstEvent {
-            HStack{
-                switch entry.style {
-                case .concise:
-                    EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1)
-                default:
-                    FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date))
+        ZStack {
+            WidgetBackground()
+            if let firstEvent = entry.firstEvent {
+                HStack{
+                    switch entry.style {
+                    case .concise:
+                        EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1, isTomorrow: entry.isTomorrow)
+                    default:
+                        FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date), isTomorrow: entry.isTomorrow)
+                    }
+                    Spacer(minLength: 0)
+                    EventsView(upcomingEvents: entry.upcomingEvents, isTomorrow: entry.isTomorrow)
                 }
-                Spacer(minLength: 0)
-                EventsView(upcomingEvents: upcomingEvents)
+            } else {
+                NothingView()
             }
-        } else {
-            NothingView()
         }
     }
 }
@@ -350,39 +321,45 @@ struct mediumWidgetView: View {
 struct largeWidgetView: View {
     var entry: Provider.Entry
     
-    var firstEvent: WidgetEvent? {
-        return entry.events.first(where: { $0.duration == Event.Duration.partialTime }) != nil ? entry.events.first(where: { $0.duration == Event.Duration.partialTime }) :  entry.events.first(where: { $0.duration == Event.Duration.allDay })
-    }
-    
     var body: some View {
-        if let firstEvent = firstEvent {
-            switch entry.style {
-            case .concise:
-                HStack{
-                    EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 2.4)
+        ZStack {
+            WidgetBackground()
+            if let firstEvent = entry.firstEvent {
+                switch entry.style {
+                case .concise:
+                    HStack{
+                        EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 2.4, isTomorrow: entry.isTomorrow)
+                    }
+                default:
+                    HStack{
+                        FirstEventView(firstEvent: firstEvent, currentDate: entry.date, isTomorrow: entry.isTomorrow)
+                        Spacer(minLength: 0)
+                    }
                 }
-            default:
-                HStack{
-                    FirstEventView(firstEvent: firstEvent, currentDate: entry.date)
-                    Spacer(minLength: 0)
-                }
+            } else {
+                NothingView()
             }
-        } else {
-            NothingView()
         }
+        
     }
 }
 
 struct FirstEventView: View {
     let firstEvent: WidgetEvent
     let currentDate: Date
+    let isTomorrow: Bool
     
     var body: some View {
         VStack(alignment: .leading){
-            Text(firstEvent.name)
-                .font(.system(size: RatioLen(20), weight: .bold))
-                .foregroundColor(firstEvent.mainColor)
-                .lineLimit(1)
+            HStack{
+                if isTomorrow {
+                    TomorrowIcon(mainColor: firstEvent.mainColor, mutiplier: 1.0)
+                }
+                Text(firstEvent.name)
+                    .font(.system(size: RatioLen(20), weight: .bold))
+                    .foregroundColor(firstEvent.mainColor)
+                    .lineLimit(1)
+            }
             Spacer()
             if currentDate < firstEvent.start {
                 Text(firstEvent.toStartText)
@@ -403,7 +380,7 @@ struct FirstEventView: View {
             HStack{
                 Text("\u{F041}")
                     .font(.custom("FontAwesome", size: RatioLen(12)))
-                Text(firstEvent.place)
+                Text(firstEvent.place.simplifiedPlaceString)
                     .font(.system(size: RatioLen(12), weight: .light))
                     .lineLimit(1)
             }
@@ -451,7 +428,7 @@ struct RingProgressView: View {
         
         ZStack {
             Circle()
-                .stroke(Color(QSCColor.gray),
+                .stroke(Color(QSCColor.ringGray),
                         style: StrokeStyle(lineWidth: RatioLen(5) * mutiplier))
                 .frame(width: width, height: width)
             
@@ -487,8 +464,7 @@ struct RingProgressView: View {
 }
 struct EventCellView: View {
     let event: WidgetEvent?
-    let cellHeight: CGFloat
-    
+    let isTomorrow: Bool
     var body: some View {
         if let event = event {
             ZStack{
@@ -516,10 +492,16 @@ struct EventCellView: View {
                     
                     HStack{
                         VStack(alignment: .leading){
-                            Text(event.name)
-                                .font(.system(size: RatioLen(12), weight: .bold))
-                                .foregroundColor(.gray)
-                                .lineLimit(1)
+                            HStack {
+                                if isTomorrow {
+                                    TomorrowIcon(mainColor: Color.black, mutiplier: 0.65)
+                                        .padding(.trailing, RatioLen(-5))
+                                }
+                                Text(event.name)
+                                    .font(.system(size: RatioLen(12)))
+                                    .foregroundColor(.black)
+                                    .lineLimit(1)
+                            }
                             Text(event.place)
                                 .font(.system(size: RatioLen(10)))
                                 .foregroundColor(.gray)
@@ -531,16 +513,16 @@ struct EventCellView: View {
                     .frame(width: RatioLen(110))
                 }
             }
-            .frame(width: RatioLen(165),height: cellHeight)
+            .frame(width: RatioLen(165),height: RatioLen(35))
         } else {
             ZStack{
                 RoundedRectangle(cornerRadius: RatioLen(12), style: .continuous)
                     .stroke(Color.gray, lineWidth: RatioLen(1))
-                Text("无更多日程")
+                Text(isTomorrow ? "无更多日程"  : "今日无更多日程" )
                     .font(.system(size: RatioLen(14)))
                     .foregroundColor(.gray)
             }
-            .frame(width: RatioLen(165),height: cellHeight)
+            .frame(width: RatioLen(165),height: RatioLen(35))
         }
     }
     
@@ -548,13 +530,26 @@ struct EventCellView: View {
 
 struct EventsView: View {
     var upcomingEvents: [WidgetEvent?]
+    let isTomorrow: Bool
+    
     var body: some View {
             VStack{
+                if isTomorrow {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: RatioLen(12), style: .continuous)
+                            .stroke(Color.gray, lineWidth: RatioLen(1))
+                        Text("今日无事")
+                            .font(.system(size: RatioLen(14)))
+                            .foregroundColor(.gray)
+                    }
+                    .frame(width: RatioLen(165),height: RatioLen(35))
+                    Spacer(minLength: 0)
+                }
                 ForEach(0 ..< upcomingEvents.count, id: \.self){index in
                     if index > 0 {
-                        Spacer(minLength: RatioLen(0))
+                        Spacer(minLength: 0)
                     }
-                    EventCellView(event: upcomingEvents[index], cellHeight: RatioLen(35))
+                    EventCellView(event: upcomingEvents[index], isTomorrow: isTomorrow)
                 }
             }
             .padding(.trailing, RatioLen(12.5))
@@ -567,6 +562,7 @@ struct EventRingView: View {
     var event: WidgetEvent
     var currentDate: Date
     var multiplier: CGFloat
+    let isTomorrow: Bool
     
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
@@ -576,20 +572,51 @@ struct EventRingView: View {
     
     var body: some View {
         VStack{
-            Text(event.name)
-                .font(.system(size: RatioLen(20) * multiplier, weight: .bold))
-                .foregroundColor(event.mainColor)
-                .lineLimit(1)
+            HStack{
+                if isTomorrow {
+                    TomorrowIcon(mainColor: event.mainColor, mutiplier: 1.0)
+                }
+                Text(event.name)
+                    .font(.system(size: RatioLen(20) * multiplier, weight: .bold))
+                    .foregroundColor(event.mainColor)
+                    .lineLimit(1)
+            }
             Spacer()
             RingProgressView(event: event, currentDate: currentDate, width: RatioLen(100) * multiplier, color1: event.mainColor, color2: event.mainColor)
+                .padding(.bottom, RatioLen(15.0))
         }
         .frame(width: RatioLen(130) * multiplier)
-        .padding(.top, RatioLen(14.0))
-        .padding(.bottom, RatioLen(16.0))
+        .padding(.top, RatioLen(7.0))
         .padding(.horizontal, RatioLen(10.0))
     }
 }
+struct WidgetBackground: View {
+    @Environment(\.colorScheme) var colorScheme
+    var body: some View {
+        switch colorScheme {
+        case .dark:
+            Color(QSCColor.darkGray)
+        default:
+            Color.white
+        }
+    }
+}
 
+struct TomorrowIcon: View {
+    let mainColor: Color
+    let mutiplier: CGFloat
+    
+    var body: some View {
+        Text("明")
+            .font(.system(size: RatioLen(9) * mutiplier))
+            .foregroundColor(mainColor)
+            .frame(width: RatioLen(16) * mutiplier, height: RatioLen(16) * mutiplier)
+            .overlay(
+                RoundedRectangle(cornerRadius: RatioLen(8) * mutiplier, style: .continuous)
+                    .stroke(mainColor, lineWidth: RatioLen(1) * mutiplier)
+            )
+    }
+}
 struct NothingView: View {
     var body: some View {
         Text("今日无事")
