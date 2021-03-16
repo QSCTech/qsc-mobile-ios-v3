@@ -10,6 +10,8 @@
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
 		184A329B25FBBFCF009B37BD /* SimpleEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A329A25FBBFCF009B37BD /* SimpleEvents.swift */; };
+		184A32A925FCE268009B37BD /* WidgetEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A32A825FCE267009B37BD /* WidgetEvent.swift */; };
+		184A32B125FCE327009B37BD /* WidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A32B025FCE327009B37BD /* WidgetEntry.swift */; };
 		186D4DB825ECAE5900FBFF29 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */; };
 		186D4EF425ED080400FBFF29 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		18BB194225EB9CB300373E4B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194125EB9CB300373E4B /* WidgetKit.framework */; };
@@ -292,7 +294,9 @@
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184A329A25FBBFCF009B37BD /* SimpleEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEvents.swift; sourceTree = "<group>"; };
-		186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = QSCMobileV3/Vendor/FontAwesome.otf; sourceTree = "<group>"; };
+		184A32A825FCE267009B37BD /* WidgetEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEvent.swift; sourceTree = "<group>"; };
+		184A32B025FCE327009B37BD /* WidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntry.swift; sourceTree = "<group>"; };
+		186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QSCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QSCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BB194125EB9CB300373E4B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -550,8 +554,6 @@
 		04C331BC1BA2F2E600EF959F = {
 			isa = PBXGroup;
 			children = (
-				186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */,
-				186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */,
 				04C331C71BA2F2E600EF959F /* QSCMobileV3 */,
 				9DF6125E1BAA89CC004B0A8A /* QSCMobileKit */,
 				AE31A5331DC8217700A2CB33 /* TodayWidget */,
@@ -611,7 +613,11 @@
 		18BB194525EB9CB300373E4B /* QSCWidget */ = {
 			isa = PBXGroup;
 			children = (
+				186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */,
+				186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */,
 				18BB194625EB9CB300373E4B /* QSCWidget.swift */,
+				184A32B025FCE327009B37BD /* WidgetEntry.swift */,
+				184A32A825FCE267009B37BD /* WidgetEvent.swift */,
 				18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */,
 				18BB194925EB9CB500373E4B /* Assets.xcassets */,
 				18BB194B25EB9CB500373E4B /* Info.plist */,
@@ -1498,8 +1504,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184A32B125FCE327009B37BD /* WidgetEntry.swift in Sources */,
 				18BB194C25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */,
 				184A329B25FBBFCF009B37BD /* SimpleEvents.swift in Sources */,
+				184A32A925FCE268009B37BD /* WidgetEvent.swift in Sources */,
 				18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1783,7 +1791,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1801,7 +1809,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1824,7 +1832,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1842,7 +1850,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/QSCMobileV3/Vendor",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1870,7 +1878,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1881,7 +1889,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.QSCWidgetExtension;
@@ -1909,7 +1917,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1920,7 +1928,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.QSCWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1936,7 +1944,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1944,7 +1952,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1961,7 +1969,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1969,7 +1977,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1986,7 +1994,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2004,7 +2012,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2022,7 +2030,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2040,7 +2048,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.MobileKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2058,7 +2066,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2070,7 +2078,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2089,7 +2097,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2101,7 +2109,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.TodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2123,12 +2131,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2153,12 +2161,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2181,7 +2189,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
@@ -2190,7 +2198,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2214,7 +2222,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30044;
+				CURRENT_PROJECT_VERSION = 30045;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
@@ -2223,7 +2231,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.0;
+				MARKETING_VERSION = 3.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myqsc.iQSC.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";

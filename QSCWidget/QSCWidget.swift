@@ -12,116 +12,6 @@ import Intents
 import QSCMobileKit
 import CoreData
 
-struct WidgetEvent: Hashable{
-    let duration: Event.Duration
-    let category: Event.Category
-    let tags: [String]
-    let name: String
-    let time: String
-    let place: String
-    let start: Date
-    let end: Date
-    
-    var mainColor: Color {
-        return Color(QSCColor.category(self.category))
-    }
-    
-    init(event: Event) {
-        self.duration = event.duration
-        self.category = event.category
-        self.tags = event.tags
-        self.name = event.name
-        self.time = event.time
-        self.place = event.place
-        self.start = event.start
-        self.end = event.end
-    }
-    
-    init(duration: Event.Duration, category: Event.Category, tags: [String], name: String, time: String, place: String, start: Date, end: Date) {
-        self.duration = duration
-        self.category = category
-        self.tags = tags
-        self.name = name
-        self.time = time
-        self.place = place
-        self.start = start
-        self.end = end
-    }
-    
-    var toStartText: String {
-        switch category {
-        case .course, .lesson:
-            return "距上课"
-        case .exam, .quiz:
-            return "距考试开始"
-        case .activity:
-            return "距活动开始"
-        case .todo:
-            return "距日程开始"
-        case .bus:
-            return "距校车出发"
-        }
-    }
-    
-    var toEndText: String {
-        switch category {
-        case .course, .lesson:
-            return "距下课"
-        case .exam, .quiz:
-            return "距考试结束"
-        case .activity:
-            return "距活动结束"
-        case .todo:
-            return "距日程结束"
-        case .bus:
-            return "距校车到达"
-        }
-    }
-    
-    func timeString(_ date: Date) -> String {
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            if self.category == .todo {
-                formatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
-            }
-            formatter.dateFormat = "hh:mm"
-            return formatter
-        }()
-        
-        return dateFormatter.string(from: date)
-    }
-}
-
-struct QSCWidgetEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationIntent
-    
-    let events: [WidgetEvent]
-    let tomorrowEvents: [WidgetEvent]
-    let style: EntryStyle
-    
-    var firstEvent: WidgetEvent? {
-        return self.events.first(where: { $0.duration == Event.Duration.partialTime }) ?? self.events.first(where: { $0.duration == Event.Duration.allDay }) ?? self.tomorrowEvents.first(where: { $0.duration == Event.Duration.partialTime }) ?? self.tomorrowEvents.first(where: { $0.duration == Event.Duration.allDay })
-    }
-    
-    var isTomorrow: Bool {
-        return self.events.count == 0
-    }
-    
-    var upcomingEvents: [WidgetEvent?] {
-        var upcomingEvents: [WidgetEvent?] = Array(self.isTomorrow ? self.tomorrowEvents.prefix(2) : self.events.prefix(3))
-        for _ in upcomingEvents.endIndex ..< (self.isTomorrow ? 2 : 3) {
-            upcomingEvents.append(nil)
-        }
-        return upcomingEvents
-    }
-}
-
-enum EntryStyle {
-    case detailed
-    case concise
-}
-
 /**
 
  屏幕尺寸         - portrait                                小-systemSmall  中-systemMedium 大-systemLarge
@@ -462,6 +352,7 @@ struct RingProgressView: View {
         }
     }
 }
+
 struct EventCellView: View {
     let event: WidgetEvent?
     let isTomorrow: Bool
@@ -590,6 +481,7 @@ struct EventRingView: View {
         .padding(.horizontal, RatioLen(10.0))
     }
 }
+
 struct WidgetBackground: View {
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -617,21 +509,9 @@ struct TomorrowIcon: View {
             )
     }
 }
+
 struct NothingView: View {
     var body: some View {
         Text("今日无事")
     }
-}
-
-private func ReloadCheck(_ events: [WidgetEvent], at date: Date) {
-    let firstEndEvent: WidgetEvent? = events.sorted { $0.end <= $1.end }.first
-    if let endDate = firstEndEvent?.end {
-        guard endDate <= date else { return }
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-}
-
-private func ReloadCheck(_ event: WidgetEvent, at date: Date) {
-    guard event.end <= date else { return }
-    WidgetCenter.shared.reloadAllTimelines()
 }
