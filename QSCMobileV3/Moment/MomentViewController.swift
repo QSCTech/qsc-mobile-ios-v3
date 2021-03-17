@@ -50,7 +50,7 @@ class MomentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        events = eventsForDate(UTC8Date()).filter { $0.end >= UTC8Date() }
+        events = eventsForDate(Date()).filter { $0.end >= Date() }
         if AccountManager.sharedInstance.currentAccountForJwbinfosys != nil {
             events += MobileManager.sharedInstance.comingExams
         }
@@ -143,7 +143,7 @@ class MomentViewController: UIViewController {
                 }
                 NotificationCenter.default.removeObserver(observer)
                 self.refreshButton.isEnabled = true
-                groupDefaults.set(UTC8Date(), forKey: LastRefreshDateKey)
+                groupDefaults.set(Date(), forKey: LastRefreshDateKey)
             }
         } else {
             SVProgressHUD.showError(withStatus: "请先登录")

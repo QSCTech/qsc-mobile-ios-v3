@@ -69,14 +69,14 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [QSCWidgetEntry] = []
-        let events = eventsForDate(UTC8Date())
+        let events = eventsForDate(Date())
         var currentDate = Date() - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60) + TimeInterval(1)
         let oneMinute: TimeInterval = 60
         
         let upcomingEvents = events.filter { $0.end > currentDate }
         var upcomingWidgetEvents = upcomingEvents.map{ return WidgetEvent(event: $0) }
         let firstEndEvent: WidgetEvent? = upcomingWidgetEvents.sorted { $0.end <= $1.end }.first
-        let tomorrowWidgetEvents: [WidgetEvent] = upcomingEvents.count == 0 ? eventsForDate(UTC8Date().tomorrow).map{ return WidgetEvent(event: $0)} : []
+        let tomorrowWidgetEvents: [WidgetEvent] = upcomingEvents.count == 0 ? eventsForDate(Date().tomorrow).map{ return WidgetEvent(event: $0)} : []
         var style: EntryStyle
         switch configuration.style {
         case .concise:
@@ -86,7 +86,7 @@ struct Provider: IntentTimelineProvider {
         }
         
         for _ in 0 ..< 60 {
-            upcomingWidgetEvents = upcomingWidgetEvents.filter{ $0.end > UTC8Date(from: currentDate) }
+            upcomingWidgetEvents = upcomingWidgetEvents.filter{ $0.end > currentDate}
             
             let entry = QSCWidgetEntry(date: currentDate, configuration: configuration, events: upcomingWidgetEvents, tomorrowEvents: tomorrowWidgetEvents, style: style)
             entries.append(entry)
@@ -170,9 +170,9 @@ struct smallWidgetView: View {
                 HStack{
                     switch entry.style {
                     case .concise:
-                        EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1, isTomorrow: entry.isTomorrow)
+                        EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 1, isTomorrow: entry.isTomorrow)
                     default:
-                        FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date), isTomorrow: entry.isTomorrow)
+                        FirstEventView(firstEvent: firstEvent, currentDate: entry.date, isTomorrow: entry.isTomorrow)
                             Spacer(minLength: 0)
                     }
                 }
@@ -194,9 +194,9 @@ struct mediumWidgetView: View {
                 HStack{
                     switch entry.style {
                     case .concise:
-                        EventRingView(event: firstEvent, currentDate: UTC8Date(from: entry.date), multiplier: 1, isTomorrow: entry.isTomorrow)
+                        EventRingView(event: firstEvent, currentDate: entry.date, multiplier: 1, isTomorrow: entry.isTomorrow)
                     default:
-                        FirstEventView(firstEvent: firstEvent, currentDate: UTC8Date(from: entry.date), isTomorrow: entry.isTomorrow)
+                        FirstEventView(firstEvent: firstEvent, currentDate: entry.date, isTomorrow: entry.isTomorrow)
                     }
                     Spacer(minLength: 0)
                     EventsView(upcomingEvents: entry.upcomingEvents, isTomorrow: entry.isTomorrow)

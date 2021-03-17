@@ -108,19 +108,19 @@ class MomentPageViewController: UIViewController {
     
     @objc func refresh() {
         if let event = event {
-            if UTC8Date().tomorrow <= event.start {
-                let days = Int(event.start.today.timeIntervalSince(UTC8Date().today) / 86400)
+            if Date().tomorrow <= event.start {
+                let days = Int(event.start.today.timeIntervalSince(Date().today) / 86400)
                 gauge.maxValue = 30
                 gauge.rate = CGFloat(30 - days)
                 timerLabel.text = "\(days)日"
-            } else if UTC8Date() < event.start {
-                gauge.maxValue = CGFloat(event.start.timeIntervalSince(UTC8Date().today))
-                gauge.rate = CGFloat(UTC8Date().timeIntervalSince(UTC8Date().today))
-                timerLabel.text = event.start.timeIntervalSince(UTC8Date()).timeDescription
-            } else if UTC8Date() <= event.end {
+            } else if Date() < event.start {
+                gauge.maxValue = CGFloat(event.start.timeIntervalSince(Date().today))
+                gauge.rate = CGFloat(Date().timeIntervalSince(Date().today))
+                timerLabel.text = event.start.timeIntervalSince(Date()).timeDescription
+            } else if Date() <= event.end {
                 gauge.maxValue = CGFloat(event.end.timeIntervalSince(event.start))
-                gauge.rate = CGFloat(UTC8Date().timeIntervalSince(event.start))
-                timerLabel.text = event.end.timeIntervalSince(UTC8Date()).timeDescription
+                gauge.rate = CGFloat(Date().timeIntervalSince(event.start))
+                timerLabel.text = event.end.timeIntervalSince(Date()).timeDescription
                 if event.category == .course || event.category == .lesson {
                     promptLabel.text = "距下课"
                 } else if event.category == .bus {

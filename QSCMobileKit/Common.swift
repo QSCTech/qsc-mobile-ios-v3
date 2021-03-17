@@ -256,15 +256,3 @@ func MD5(string: String) -> Data {
     }
     return digestData
 }
-
-public func UTC8Date() -> Date {
-    return Date()
-    let timeZone = TimeZone.current
-    return Date() - TimeInterval(timeZone.secondsFromGMT() - 28800)
-}
-
-public func UTC8Date(from date: Date) -> Date {
-    return date
-    let timeZone = TimeZone.current
-    return date - TimeInterval(timeZone.secondsFromGMT() - 28800)
-}

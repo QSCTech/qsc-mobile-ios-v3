@@ -613,8 +613,8 @@
 		18BB194525EB9CB300373E4B /* QSCWidget */ = {
 			isa = PBXGroup;
 			children = (
-				186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */,
 				186D4F0825ED0EFA00FBFF29 /* QSCWidgetExtension.entitlements */,
+				186D4DB725ECAE5900FBFF29 /* FontAwesome.otf */,
 				18BB194625EB9CB300373E4B /* QSCWidget.swift */,
 				184A32B025FCE327009B37BD /* WidgetEntry.swift */,
 				184A32A825FCE267009B37BD /* WidgetEvent.swift */,
@@ -1874,7 +1874,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = QSCWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = QSCWidget/QSCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1913,7 +1913,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = QSCWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = QSCWidget/QSCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
