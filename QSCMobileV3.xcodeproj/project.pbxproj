@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C331C81BA2F2E600EF959F /* AppDelegate.swift */; };
 		04C331D21BA2F2E600EF959F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C331D11BA2F2E600EF959F /* Assets.xcassets */; };
+		18364E0226032C92002C0A1C /* QSCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18364E0526032C92002C0A1C /* QSCWidget.intentdefinition */; };
+		18364E0326032C92002C0A1C /* QSCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18364E0526032C92002C0A1C /* QSCWidget.intentdefinition */; };
 		184A329B25FBBFCF009B37BD /* SimpleEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A329A25FBBFCF009B37BD /* SimpleEvents.swift */; };
 		184A32A925FCE268009B37BD /* WidgetEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A32A825FCE267009B37BD /* WidgetEvent.swift */; };
 		184A32B125FCE327009B37BD /* WidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A32B025FCE327009B37BD /* WidgetEntry.swift */; };
@@ -18,8 +20,6 @@
 		18BB194425EB9CB300373E4B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB194325EB9CB300373E4B /* SwiftUI.framework */; };
 		18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194625EB9CB300373E4B /* QSCWidget.swift */; };
 		18BB194A25EB9CB500373E4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BB194925EB9CB500373E4B /* Assets.xcassets */; };
-		18BB194C25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */; };
-		18BB194D25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */; };
 		18BB195025EB9CB500373E4B /* QSCWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18BB194025EB9CB300373E4B /* QSCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		260036401E752CE40048DA05 /* QSCMobileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF6125D1BAA89CC004B0A8A /* QSCMobileKit.framework */; };
 		260741B52320A69E00C9484D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260741B42320A69E00C9484D /* Colors.swift */; };
@@ -293,6 +293,7 @@
 		04C331CF1BA2F2E600EF959F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C331D11BA2F2E600EF959F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C331D61BA2F2E600EF959F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18364E5826033D0B002C0A1C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = "zh-Hans"; path = "zh-Hans.lproj/QSCWidget.intentdefinition"; sourceTree = "<group>"; };
 		184A329A25FBBFCF009B37BD /* SimpleEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEvents.swift; sourceTree = "<group>"; };
 		184A32A825FCE267009B37BD /* WidgetEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEvent.swift; sourceTree = "<group>"; };
 		184A32B025FCE327009B37BD /* WidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntry.swift; sourceTree = "<group>"; };
@@ -302,7 +303,6 @@
 		18BB194125EB9CB300373E4B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		18BB194325EB9CB300373E4B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		18BB194625EB9CB300373E4B /* QSCWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSCWidget.swift; sourceTree = "<group>"; };
-		18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = QSCWidget.intentdefinition; sourceTree = "<group>"; };
 		18BB194925EB9CB500373E4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BB194B25EB9CB500373E4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18ED7DBE25EFC0D00035A855 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/WidgetKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -618,7 +618,7 @@
 				18BB194625EB9CB300373E4B /* QSCWidget.swift */,
 				184A32B025FCE327009B37BD /* WidgetEntry.swift */,
 				184A32A825FCE267009B37BD /* WidgetEvent.swift */,
-				18BB194825EB9CB300373E4B /* QSCWidget.intentdefinition */,
+				18364E0526032C92002C0A1C /* QSCWidget.intentdefinition */,
 				18BB194925EB9CB500373E4B /* Assets.xcassets */,
 				18BB194B25EB9CB500373E4B /* Info.plist */,
 				184A329A25FBBFCF009B37BD /* SimpleEvents.swift */,
@@ -1445,7 +1445,7 @@
 				04C331C91BA2F2E600EF959F /* AppDelegate.swift in Sources */,
 				260741B52320A69E00C9484D /* Colors.swift in Sources */,
 				9D6B336C1CEC77B500C5372F /* MomentViewController.swift in Sources */,
-				18BB194D25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */,
+				18364E0226032C92002C0A1C /* QSCWidget.intentdefinition in Sources */,
 				9DF126AB1D4B2A4900C237DB /* MomentPageViewController.swift in Sources */,
 				9D31397C1CE789BF00CD7DAD /* CalendarViewController.swift in Sources */,
 				9DD043F11D2BFBF5007CE9B3 /* EventCell.swift in Sources */,
@@ -1505,7 +1505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184A32B125FCE327009B37BD /* WidgetEntry.swift in Sources */,
-				18BB194C25EB9CB500373E4B /* QSCWidget.intentdefinition in Sources */,
+				18364E0326032C92002C0A1C /* QSCWidget.intentdefinition in Sources */,
 				184A329B25FBBFCF009B37BD /* SimpleEvents.swift in Sources */,
 				184A32A925FCE268009B37BD /* WidgetEvent.swift in Sources */,
 				18BB194725EB9CB300373E4B /* QSCWidget.swift in Sources */,
@@ -1635,6 +1635,14 @@
 				04C331CF1BA2F2E600EF959F /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		18364E0526032C92002C0A1C /* QSCWidget.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18364E5826033D0B002C0A1C /* zh-Hans */,
+			);
+			name = QSCWidget.intentdefinition;
 			sourceTree = "<group>";
 		};
 		2697B9F01E752C3A00ECE931 /* MainInterface.storyboard */ = {
@@ -1791,7 +1799,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1832,7 +1840,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1878,7 +1886,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1917,7 +1925,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1944,7 +1952,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1969,7 +1977,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1994,7 +2002,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2030,7 +2038,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2066,7 +2074,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2097,7 +2105,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2131,7 +2139,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = WatchApp_Extension;
@@ -2161,7 +2169,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = RURVDL9XJS;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = WatchApp_Extension;
@@ -2189,7 +2197,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
@@ -2222,7 +2230,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30045;
+				CURRENT_PROJECT_VERSION = 30047;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
