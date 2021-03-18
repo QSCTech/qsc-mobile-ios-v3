@@ -19,7 +19,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-bJ-nA7">
                                 <rect key="frame" x="363" y="4" width="31" height="30"/>
                                 <state key="normal" title="关闭">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="close:" destination="FTZ-lG-tnN" eventType="touchUpInside" id="fJq-wu-AgP"/>
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AeJ-Cj-5bg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1116" y="23"/>
+            <point key="canvasLocation" x="-1117.3913043478262" y="22.826086956521742"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Rsh-ou-LUw">

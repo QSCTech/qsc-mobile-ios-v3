@@ -193,7 +193,11 @@ extension String {
     }
     
     public var simplifiedPlaceString: String {
-        return self.replacingOccurrences(of: "曹光彪西楼", with: "曹西")
+        return self
+            .replacingOccurrences(of: "曹光彪西楼", with: "曹西")
+            .replacingOccurrences(of: "永谦活动中心", with: "永谦")
+            .replacingOccurrences(of: "蒙民伟楼", with: "蒙楼")
+            .replacingOccurrences(of: "曾宪梓大楼", with: "曾楼")
     }
 }
 
