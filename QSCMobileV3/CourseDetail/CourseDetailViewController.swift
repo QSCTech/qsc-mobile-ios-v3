@@ -318,7 +318,7 @@ class CourseDetailViewController: UITableViewController, CourseEditViewControlle
             if indexPath.row != 0 {
                 break
             }
-            let urlString = "https://chalaoshi.cn/search?q="
+            let urlString = "https://chalaoshi.24dt.cn/search?q="
             let handler = { (action: UIAlertAction) in
                 let url = URL(string: urlString + action.title!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
                 let svc = SFSafariViewController(url: url)

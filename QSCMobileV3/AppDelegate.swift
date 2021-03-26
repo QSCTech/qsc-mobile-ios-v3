@@ -304,15 +304,15 @@ extension AppDelegate: BWWalkthroughViewControllerDelegate {
         let walkthrough = storyboard.instantiateInitialViewController() as! BWWalkthroughViewController
         walkthrough.delegate = self
         
-        let Build30047Key = "Build30047"
-        if groupDefaults.object(forKey: Build30047Key) == nil {
+        let Build30048Key = "Build30048"
+        if groupDefaults.object(forKey: Build30048Key) == nil {
             walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "Widget1"))
             walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "Widget2"))
             walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "Widget3"))
             walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "Widget4"))
             walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "Widget5"))
             walkthrough.add(viewController: storyboard.instantiateViewController(withIdentifier: "Widget6"))
-            groupDefaults.set(true, forKey: Build30047Key)
+            groupDefaults.set(true, forKey: Build30048Key)
         }
         
         if walkthrough.numberOfPages > 0 {
