@@ -2,17 +2,17 @@
 
 "LNf6Sw" = "详细";
 
-"OLYOzk-LNf6Sw" = "Just to confirm, you wanted ‘详细’?";
+"OLYOzk-LNf6Sw" = "确认一下，你想要‘详细’吗?";
 
-"OLYOzk-XZhOsB" = "Just to confirm, you wanted ‘简洁’?";
+"OLYOzk-XZhOsB" = "确认一下，你想要 ‘简洁’吗?";
 
 "XZhOsB" = "简洁";
 
-"dBVDyq" = "Widget Style";
+"dBVDyq" = "小组件风格";
 
-"eUcj3A-LNf6Sw" = "There are ${count} options matching ‘详细’.";
+"eUcj3A-LNf6Sw" = "有 ${count} 个选项符合 ‘详细’.";
 
-"eUcj3A-XZhOsB" = "There are ${count} options matching ‘简洁’.";
+"eUcj3A-XZhOsB" = "有 ${count} 个选项符合 ‘简洁’.";
 
 "gpCwrM" = "配置";
 

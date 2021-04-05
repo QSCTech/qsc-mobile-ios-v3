@@ -356,7 +356,6 @@ struct RingProgressView: View {
 struct EventCellView: View {
     let event: WidgetEvent?
     let isTomorrow: Bool
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         if let event = event {
@@ -387,12 +386,12 @@ struct EventCellView: View {
                         VStack(alignment: .leading){
                             HStack {
                                 if isTomorrow {
-                                    TomorrowIcon(mainColor: colorScheme == .dark ? Color.white : Color.black, mutiplier: 0.65)
+                                    TomorrowIcon(mainColor: Color(UIColor.label), mutiplier: 0.65)
                                         .padding(.trailing, RatioLen(-5))
                                 }
                                 Text(event.name)
                                     .font(.system(size: RatioLen(12)))
-                                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                                    .foregroundColor(Color(UIColor.label))
                                     .lineLimit(1)
                             }
                             Text(event.place)
