@@ -44,6 +44,13 @@ class CalendarViewController: UIViewController {
         view.backgroundColor = ColorCompatibility.systemBackground
         calendarView.backgroundColor = ColorCompatibility.systemBackground
         
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
         NotificationCenter.default.addObserver(forName: .eventsModified, object: nil, queue: .main) { notification in
             if let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date {
                 var date = self.chineseCalendar.startOfDay(for: start)

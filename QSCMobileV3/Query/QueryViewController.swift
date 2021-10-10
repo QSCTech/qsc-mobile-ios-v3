@@ -270,6 +270,13 @@ class QueryViewController: UITableViewController {
         tableView?.backgroundColor = UIColor.groupTableViewBackground
         //navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
         
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

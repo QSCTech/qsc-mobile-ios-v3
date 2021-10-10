@@ -30,6 +30,13 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
         tableView?.backgroundColor = UIColor.groupTableViewBackground
         //navigationController?.navigationBar.barTintColor = ColorCompatibility.systemGray6
         
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,8 +49,8 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
     }
     
     enum Preference: Int {
-        case jwbinfosys = 0, zjuwlan, setting, about
-        static let count = 4
+        case jwbinfosys = 0, setting, about
+        static let count = 3
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,8 +61,6 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
         switch Preference(rawValue: section)! {
         case .jwbinfosys:
             return "教务网"
-        case .zjuwlan:
-            return "ZJUWLAN"
         default:
             return nil
         }
@@ -74,8 +79,6 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
         switch Preference(rawValue: section)! {
         case .jwbinfosys:
             return accountManager.allAccountsForJwbinfosys.count + 1
-        case .zjuwlan:
-            return accountManager.accountForZjuwlan == nil ? 1 : 2
         case .setting:
             return groupDefaults.bool(forKey: ShowScoreKey) ? 3 : 2
         case .about:
@@ -103,21 +106,6 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
                 cell.textLabel!.attributedText = "\u{f234}\t添加用户".attributedWithFontAwesome
                 cell.textLabel!.textColor = ColorCompatibility.label
                 
-                return cell
-            }
-        case .zjuwlan:
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Basic")!
-                cell.textLabel!.attributedText = "\u{f1eb}\t\(accountManager.accountForZjuwlan ?? "未设置账号")".attributedWithFontAwesome
-                
-                if #available(iOS 13, *) {
-                    cell.textLabel!.textColor = UIColor.label
-                }
-                
-                return cell
-            } else {
-                let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-                cell.textLabel!.attributedText = "\u{f0ec}\t一键连接".attributedWithFontAwesome
                 return cell
             }
         case .setting:
@@ -184,20 +172,6 @@ class PreferenceViewController: UITableViewController, JwbLoginViewControllerDel
                 let vc = JwbinfosysLoginViewController()
                 vc.delegate = self
                 present(vc, animated: true)
-            }
-        case .zjuwlan:
-            if indexPath.row == 0{
-                let vc = ZjuwlanLoginViewController()
-                show(vc, sender: nil)
-            } else {
-                SVProgressHUD.show(withStatus: "连接中")
-                ZjuwlanConnection.link { error in
-                    if let error = error {
-                        SVProgressHUD.showError(withStatus: error)
-                    } else {
-                        SVProgressHUD.showSuccess(withStatus: "连接成功")
-                    }
-                }
             }
         case .about:
             switch indexPath.row {

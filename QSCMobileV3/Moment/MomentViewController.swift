@@ -64,6 +64,14 @@ class MomentViewController: UIViewController {
             vc.momentViewController = self
             pageControllers.append(vc)
         }
+        
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
         if events.isEmpty {
             let vc = MomentPageViewController(event: nil)
             pageControllers.append(vc)
