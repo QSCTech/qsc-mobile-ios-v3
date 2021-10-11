@@ -92,8 +92,9 @@ class APISession: NSObject {
             "genuineClient": genuineCheck
         ]
         let loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login" + (username.count == 8 ? "Grs" : ""))
+        let headers = ["X-QSC-Channel" : "Testing"]
         
-        alamofire.request(loginURL, method: .post, parameters: postData, encoding: JSONEncoding.default).validate().responseJSON { response in
+        alamofire.request(loginURL, method: .post, parameters: postData, encoding: JSONEncoding.default, headers:  headers).validate().responseJSON { response in
             if response.result.isFailure {
                 let errorDescription = response.result.error!.localizedDescription.trimmingCharacters(in: CharacterSet(charactersIn: "。"))
                 print("[Login request] Alamofire: \(errorDescription)")
@@ -175,8 +176,9 @@ class APISession: NSObject {
             "requestList": requestList,
         ]
         let resourcesURL = URL(string: MobileAPIURL)!.appendingPathComponent("getResources" + (username.count == 8 ? "Grs" : ""))
+        let headers = ["X-QSC-Channel" : "Testing"]
         
-        alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default).validate().responseJSON { response in
+        alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             if response.result.isFailure {
                 let statusCode = response.response?.statusCode
                 switch statusCode {
