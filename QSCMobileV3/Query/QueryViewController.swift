@@ -24,7 +24,7 @@ class QueryViewController: UITableViewController {
 //    let qsc = ["Box 云优盘", "水朝夕"]
     let qsc = ["Box 云优盘"]
     
-    let login = ["本科生教务网", "浙大邮箱", "网络中心*"]
+    let login = ["本科生教务网", "浙大邮箱", "网络中心*", "浙大通行码"]
     
     let websites: [[String: String]] = [
         [
@@ -214,8 +214,10 @@ class QueryViewController: UITableViewController {
                 website = .jwbinfosys
             case 1:
                 website = .mail
-            default:
+            case 2:
                 website = .myvpn
+            default:
+                website = .passCode
             }
             let bvc = BrowserViewController.builtin(website: website)
             bvc.modalPresentationStyle = UIModalPresentationStyle.fullScreen

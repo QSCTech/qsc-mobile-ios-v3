@@ -25,6 +25,7 @@ class BrowserViewController: UIViewController {
         case jwbinfosys = "http://jwbinfosys.zju.edu.cn/xsmain_pyjh.htm"
         case mail      = "http://mail.zju.edu.cn/coremail/login.jsp"
         case myvpn      = "http://myvpn.zju.edu.cn/j_security_check"
+        case passCode   = "https://passcode.zju.edu.cn/pass_code/zx"
     }
     
     static func builtin(website: Website) -> BrowserViewController {
@@ -55,6 +56,7 @@ class BrowserViewController: UIViewController {
             let username = accountManager.accountForZjuwlan!.percentEncoded
             let password = accountManager.passwordForZjuwlan!.percentEncoded
             request.httpBody = "j_username=\(username)&j_password=\(password)".data(using: String.Encoding.ascii)
+        case .passCode: break
         }
         return BrowserViewController(request: request)
     }
@@ -117,6 +119,14 @@ extension BrowserViewController: UIWebViewDelegate {
         backwardButton.isEnabled = webView.canGoBack
         forwardButton.isEnabled = webView.canGoForward
         webViewDidFinishLoadCallback?(webView)
+        if urlRequest.url!.absoluteString == Website.passCode.rawValue {
+            let username = AccountManager.sharedInstance.currentAccountForJwbinfosys!.percentEncoded
+            let password = AccountManager.sharedInstance.passwordForJwbinfosys(username)!.percentEncoded
+            let simClick = "document.querySelector('#username').value = 'un' \ndocument.querySelector('#password').value = 'pd'\ndocument.querySelector('#dl').click()".replacingOccurrences(of: "un", with: username).replacingOccurrences(of: "pd", with: password)
+            
+            webView.stringByEvaluatingJavaScript(from: simClick)
+    
+        }
     }
     
 }
