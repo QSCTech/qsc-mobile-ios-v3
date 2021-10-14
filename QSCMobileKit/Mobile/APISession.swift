@@ -77,11 +77,11 @@ class APISession: NSObject {
     func loginRequest(_ callback: @escaping (String?) -> Void) {
         let salt = generateSalt()
         let hash = try! PKCS5.PBKDF2(password: AppKey.utf8.map({$0}), salt: salt, iterations: 2048, keyLength: 6, variant: .sha1).calculate()
-        let inside = MD5(string: "QSC_iOS_mobile_v3" + salt.toBase64() + "QSC_iOS_mobile_v3").map { String(format: "%02hhx", $0) }.joined()
+        let inside = MD5(string: "QSC_iOS_mobile_v3" + salt.toBase64()! + "QSC_iOS_mobile_v3").map { String(format: "%02hhx", $0) }.joined()
         let genuineCheck = MD5(string: inside + "QSC_iOS_mobile_v3").map { String(format: "%02hhx", $0) }.joined()
         let postData: [String: Any] = [
-            "appKeyHash": hash.toBase64(),
-            "salt": salt.toBase64(),
+            "appKeyHash": hash.toBase64()!,
+            "salt": salt.toBase64()!,
             "login": [
                 "jwbinfosys": [
                     "userName": username,
@@ -167,11 +167,11 @@ class APISession: NSObject {
             ],
         ])
         let verify = try! HMAC(key: session.key!.utf8.map({$0}), variant: .sha1).authenticate(requestList.utf8.map({$0})).toBase64()
-        let inside = MD5(string: "QSC_iOS_mobile_v3" + verify + "QSC_iOS_mobile_v3").map { String(format: "%02hhx", $0) }.joined()
+        let inside = MD5(string: "QSC_iOS_mobile_v3" + verify! + "QSC_iOS_mobile_v3").map { String(format: "%02hhx", $0) }.joined()
         let genuineCheck = MD5(string: inside + "QSC_iOS_mobile_v3").map { String(format: "%02hhx", $0) }.joined()
         let postData: [String: String] = [
             "sessionId": session.id!,
-            "sessionVerify": verify,
+            "sessionVerify": verify!,
             "genuineClient": genuineCheck,
             "requestList": requestList,
         ]
