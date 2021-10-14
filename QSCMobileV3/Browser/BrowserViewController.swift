@@ -122,10 +122,12 @@ extension BrowserViewController: UIWebViewDelegate {
         if urlRequest.url!.absoluteString == Website.passCode.rawValue {
             let username = AccountManager.sharedInstance.currentAccountForJwbinfosys!.percentEncoded
             let password = AccountManager.sharedInstance.passwordForJwbinfosys(username)!.percentEncoded
-            let simClick = "document.querySelector('#username').value = 'un' \ndocument.querySelector('#password').value = 'pd'\ndocument.querySelector('#dl').click()".replacingOccurrences(of: "un", with: username).replacingOccurrences(of: "pd", with: password)
-            
-            webView.stringByEvaluatingJavaScript(from: simClick)
+            if AccountManager.sharedInstance.methodForUsername[username] == LoginMethod.ZJU_passport.rawValue {
+                let simClick = "document.querySelector('#username').value = 'un' \ndocument.querySelector('#password').value = 'pd'\ndocument.querySelector('#dl').click()".replacingOccurrences(of: "un", with: username).replacingOccurrences(of: "pd", with: password)
+                
+                webView.stringByEvaluatingJavaScript(from: simClick)
     
+            }
         }
     }
     

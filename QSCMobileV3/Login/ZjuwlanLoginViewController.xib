@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dpA-ux-ZCL">
-                    <rect key="frame" x="50" y="120" width="275" height="40"/>
+                    <rect key="frame" x="50" y="100" width="275" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Cd6-w8-Ayg"/>
                     </constraints>
@@ -36,7 +33,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DCq-Qc-WZl">
-                    <rect key="frame" x="50" y="170" width="275" height="40"/>
+                    <rect key="frame" x="50" y="150" width="275" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="8av-ds-2rh"/>
                     </constraints>
@@ -52,7 +49,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-1S-dmo">
-                    <rect key="frame" x="50" y="230" width="275" height="40"/>
+                    <rect key="frame" x="50" y="210" width="275" height="40"/>
                     <color key="backgroundColor" red="0.52156862749999999" green="0.82745098039999998" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="保存">
@@ -62,7 +59,7 @@
                         <action selector="save:" destination="-1" eventType="touchUpInside" id="ENU-g2-a84"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrH-fA-wee">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrH-fA-wee">
                     <rect key="frame" x="126" y="577" width="123" height="30"/>
                     <state key="normal" title="删除已保存的账号">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,6 +69,7 @@
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="l2L-kH-Znw"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
@@ -92,7 +90,6 @@
                 <constraint firstItem="WrH-fA-wee" firstAttribute="centerX" secondItem="3g5-1S-dmo" secondAttribute="centerX" id="smI-sa-KpV"/>
                 <constraint firstItem="3g5-1S-dmo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x2c-fa-3AC"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="l2L-kH-Znw"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="4by-Nz-yth"/>
@@ -103,6 +100,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="8gI-iD-4WB" appends="YES" id="ixO-zb-CJp"/>
             </connections>
+            <point key="canvasLocation" x="140" y="97"/>
         </view>
         <tapGestureRecognizer id="8gI-iD-4WB">
             <connections>
