@@ -450,7 +450,7 @@ class DataStore: NSObject {
     func getExams(year: String, semester: CalendarSemester) -> [Exam] {
         return currentUser.exams!.filter {
             let exam = $0 as! Exam
-            return exam.year == year && exam.semester!.includesSemester(semester)
+            return exam.year == year
         } as! [Exam]
     }
     
