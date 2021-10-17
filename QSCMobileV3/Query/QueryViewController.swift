@@ -90,7 +90,7 @@ class QueryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch Tools(rawValue: section)! {
         case .login:
-            return "一键登录"
+            return "快捷入口"
         case .website:
             return "校网链接"
         case .webpage:
@@ -204,10 +204,7 @@ class QueryViewController: UITableViewController {
                 present(vc, animated: true)
                 break
             }
-            if 1 <= indexPath.row && indexPath.row <= 2 && accountManager.accountForZjuwlan == nil {
-                SVProgressHUD.showError(withStatus: "您未设置 ZJUWLAN 账号")
-                break
-            }
+            
             let website: BrowserViewController.Website
             switch indexPath.row {
             case 0:

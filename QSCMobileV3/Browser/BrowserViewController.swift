@@ -24,7 +24,7 @@ class BrowserViewController: UIViewController {
     enum Website: String {
         case jwbinfosys = "http://jwbinfosys.zju.edu.cn/xsmain_pyjh.htm"
         case mail      = "http://mail.zju.edu.cn/coremail/login.jsp"
-        case myvpn      = "http://myvpn.zju.edu.cn/j_security_check"
+        case myvpn      = "http://myvpn.zju.edu.cn/"
         case passCode   = "https://passcode.zju.edu.cn/pass_code/zx"
     }
     
@@ -49,13 +49,9 @@ class BrowserViewController: UIViewController {
                 }
             }
         case .mail:
-            let username = accountManager.accountForZjuwlan!.percentEncoded
-            let password = accountManager.passwordForZjuwlan!.percentEncoded
-            request.httpBody = "service=PHONE&face=XJS&locale=zh_CN&destURL=%2Fcoremail%2Fxphone%2Fmain.jsp&uid=\(username)&password=\(password)&action%3Alogin=".data(using: String.Encoding.ascii)
+            break
         case .myvpn:
-            let username = accountManager.accountForZjuwlan!.percentEncoded
-            let password = accountManager.passwordForZjuwlan!.percentEncoded
-            request.httpBody = "j_username=\(username)&j_password=\(password)".data(using: String.Encoding.ascii)
+            break
         case .passCode: break
         }
         return BrowserViewController(request: request)
