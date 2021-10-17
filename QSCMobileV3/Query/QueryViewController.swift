@@ -24,7 +24,7 @@ class QueryViewController: UITableViewController {
 //    let qsc = ["Box 云优盘", "水朝夕"]
     let qsc = ["Box 云优盘"]
     
-    let login = ["本科生教务网", "浙大邮箱", "网络中心*", "浙大通行码"]
+    let login = ["本科生教务网", "浙大邮箱", "网络中心", "浙大通行码"]
     
     let websites: [[String: String]] = [
         [
@@ -96,7 +96,8 @@ class QueryViewController: UITableViewController {
         case .webpage:
             return "实用查询"
         case .annotation:
-            return "* 加星号的网站仅限校内访问"
+//            return "* 加星号的网站仅限校内访问"
+            return nil
         default:
             return nil
         }
