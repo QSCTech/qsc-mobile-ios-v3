@@ -47,7 +47,7 @@ class AboutViewController: UIViewController {
     let url = [
         "https://yzsun.me/?qsc",
         "https://iynix.lofter.com",
-        "https://www.qsc.zju.edu.cn/",
+        "https://omeolime.bitcron.com",
         "http://alej.wang",
     ]
     
