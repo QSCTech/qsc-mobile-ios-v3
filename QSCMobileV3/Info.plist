@@ -88,6 +88,14 @@
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>PassCode</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>PassCode</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>通行码</string>
+		</dict>
+		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>Course</string>
 			<key>UIApplicationShortcutItemTitle</key>

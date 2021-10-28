@@ -124,6 +124,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 tabBarController.selectedViewController?.show(vc, sender: nil)
             case "Bus":
                 tabBarController.present(BusViewController(), animated: true)
+            case "PassCode":
+                let website: BrowserViewController.Website = .passCode
+                let bvc = BrowserViewController.builtin(website: website)
+                bvc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                tabBarController.present(bvc, animated: true)
             default:
                 break
             }
