@@ -116,13 +116,14 @@ extension BrowserViewController: UIWebViewDelegate {
         forwardButton.isEnabled = webView.canGoForward
         webViewDidFinishLoadCallback?(webView)
         if urlRequest.url!.absoluteString == Website.passCode.rawValue {
-            let username = AccountManager.sharedInstance.currentAccountForJwbinfosys!.percentEncoded
-            let password = AccountManager.sharedInstance.passwordForJwbinfosys(username)!.percentEncoded
-            if AccountManager.sharedInstance.methodForUsername[username] == LoginMethod.ZJU_passport.rawValue {
-                let simClick = "document.querySelector('#username').value = 'un' \ndocument.querySelector('#password').value = 'pd'\ndocument.querySelector('#dl').click()".replacingOccurrences(of: "un", with: username).replacingOccurrences(of: "pd", with: password)
-                
-                webView.stringByEvaluatingJavaScript(from: simClick)
-    
+            if let username = AccountManager.sharedInstance.currentAccountForJwbinfosys?.percentEncoded {
+                let password = AccountManager.sharedInstance.passwordForJwbinfosys(username)!.percentEncoded
+                if AccountManager.sharedInstance.methodForUsername[username] == LoginMethod.ZJU_passport.rawValue {
+                    let simClick = "document.querySelector('#username').value = 'un' \ndocument.querySelector('#password').value = 'pd'\ndocument.querySelector('#dl').click()".replacingOccurrences(of: "un", with: username).replacingOccurrences(of: "pd", with: password)
+                    
+                    webView.stringByEvaluatingJavaScript(from: simClick)
+        
+                }
             }
         }
     }
