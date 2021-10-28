@@ -92,7 +92,7 @@ class APISession: NSObject {
             "genuineClient": genuineCheck
         ]
         let loginURL = URL(string: MobileAPIURL)!.appendingPathComponent("login" + (username.count == 8 ? "Grs" : ""))
-        let headers = ["X-QSC-Channel" : "Testing"]
+        let headers = ["X-QSC-Channel" : "Stable"]
         
         alamofire.request(loginURL, method: .post, parameters: postData, encoding: JSONEncoding.default, headers:  headers).validate().responseJSON { response in
             if response.result.isFailure {
@@ -176,7 +176,7 @@ class APISession: NSObject {
             "requestList": requestList,
         ]
         let resourcesURL = URL(string: MobileAPIURL)!.appendingPathComponent("getResources" + (username.count == 8 ? "Grs" : ""))
-        let headers = ["X-QSC-Channel" : "Testing"]
+        let headers = ["X-QSC-Channel" : "Stable"]
         
         alamofire.request(resourcesURL, method: .post, parameters: postData, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             if response.result.isFailure {
